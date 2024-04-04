@@ -1,0 +1,4 @@
+==== 7.4.1.35 OBR-35 Transcriptionist (NDL) 00267
+
+Definition: *_This field was retained for backward compatibility only as of v 2.6 and the detail was withdrawn and removed from the standard as of v 2.9._* The reader is referred to the PRTsegment used relative to OBR as described in section *Error! Reference source not found.*, "link:#obx-observationresult-segment[_Principal Result Interpreter_]."
+

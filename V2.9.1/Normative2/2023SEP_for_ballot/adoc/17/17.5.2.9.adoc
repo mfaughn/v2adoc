@@ -1,0 +1,4 @@
+==== 17.5.2.9 ITM-9 Manufacturer Catalog Number (ST) 02192
+
+Definition: This field contains the catalog assigned to the item by the manufacturer.
+

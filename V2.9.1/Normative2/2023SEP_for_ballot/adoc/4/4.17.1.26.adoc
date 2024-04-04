@@ -1,0 +1,4 @@
+==== 4.17.1.26 DON-26 Aphaeresis Machine Serial Number (ST) 03365
+
+Definition: The serial number of the aphaeresis machine, if used, for the donation.
+

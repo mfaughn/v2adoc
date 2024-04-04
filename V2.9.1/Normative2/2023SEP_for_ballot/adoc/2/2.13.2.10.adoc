@@ -1,0 +1,4 @@
+==== 2.13.2.10 BHS-10 Batch Comment (ST) 00090
+
+Definition: This field is a comment field that is not further defined in the HL7 protocol.
+

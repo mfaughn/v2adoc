@@ -1,0 +1,40 @@
+=== 2A.2.12 CSU - channel sensitivity and units
+
+*Attention: _Retained for backward compatibility only in version 2.7._* This is used only in the CD Channel Definition data type, which has been retained for backward compatibility only in version 2.7.
+
+As of v2.7 a third tuple, formerly known as triplet, has been added to the CSU data type. Additionally, 3 new components were added to each tuple such that each tuple now has a total of 7 components. The Original Text component applies to the CSU as a whole.
+
+HL7 Component Table – CSU - Channel Sensitivity and Units
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |NM |R | |Channel Sensitivity | |2A.2.47
+|2 | |20= |ST |C | |Unit of Measure Identifier | |2A.2.76
+|3 | |199# |ST |C | |Unit of Measure Description | |2A.2.76
+|4 |1..12 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Unit of Measure Coding System | |2A.2.35
+|5 | |20= |ST |O | |Alternate Unit of Measure Identifier | |2A.2.76
+|6 | |199# |ST |O | |Alternate Unit of Measure Description | |2A.2.76
+|7 |1..12 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Alternate Unit of Measure Coding System | |2A.2.35
+|8 | |10= |ST |C | |Unit of Measure Coding System Version ID | |2A.2.76
+|9 | |10= |ST |O | |Alternate Unit of Measure Coding System Version ID | |2A.2.76
+|10 |199 |199# |ST |O | |Original Text | |2A.2.76
+|11 | |20= |ST |O | |Second Alternate Unit of Measure Identifier | |2A.2.76
+|12 | |199# |ST |O | |Second Alternate Unit of Measure Text | |2A.2.76
+|13 |1..12 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Name of Second Alternate Unit of Measure Coding System | |2A.2.35
+|14 | |10= |ST |C | |Second Alternate Unit of Measure Coding System Version ID | |2A.2.76
+|15 | |199= |ST |C | |Unit of Measure Coding System OID | |2A.2.76
+|16 | |199= |ST |O | |Unit of Measure Value Set OID | |2A.2.76
+|17 | |8= |DTM |C | |Unit of Measure Value Set Version ID | |2A.2.76
+|18 | |199= |ST |C | |Alternate Unit of Measure Coding System OID | |2A.2.76
+|19 | |199= |ST |O | |Alternate Unit of Measure Value Set OID | |2A.2.76
+|20 | |8= |DTM |C | |Alternate Unit of Measure Value Set Version ID | |2A.2.76
+|21 | |199= |ST |C | |Alternate Unit of Measure Coding System OID | |2A.2.76
+|22 | |199= |ST |O | |Alternate Unit of Measure Value Set OID | |2A.2.76
+|23 | |8= |ST |C | |Alternate Unit of Measure Value Set Version ID | |2A.2.76
+|===
+
+Definition: This data type defines the channel sensitivity (gain) and the units in which it is measured in a waveform result.
+
+*Note:* Replaces the CM data type used in 7.14.1.5 OBX-5.3 where OBX-5 Observation value (*) is data type CD as of v 2.5.
+

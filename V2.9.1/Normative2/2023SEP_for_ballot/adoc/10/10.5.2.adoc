@@ -1,0 +1,4 @@
+=== 10.5.2 Original Mode Queries - Record Oriented
+
+*_Retained for backwards compatibility only in version 2.4 and withdraw as of v2.7_*; refer to Chapter 5 section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+

@@ -1,0 +1,4 @@
+==== 7.12.2.22 PEO-22 Primary Observer's Qualification (ID) 01094
+
+Definition: This field contains the qualification of the primary observer which may assist in assessing the validity of the observations. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70242[_HL7 Table 0242 - Primary Observer's Qualification_] for valid values.
+

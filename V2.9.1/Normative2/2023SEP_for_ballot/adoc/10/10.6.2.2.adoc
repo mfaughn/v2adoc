@@ -1,0 +1,8 @@
+==== 10.6.2.2 SCH-2 Filler Appointment ID (EI) 00861
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the filler application's permanent identifier for the appointment request (and the scheduled appointment itself, when it has been confirmed as a booked slot by the filler application). This is a composite field.
+
+The first component is a string of up to fifteen characters that identifies an individual appointment request, or a booked appointment. It is assigned by the filler application, and identifies an appointment request, and the subsequent scheduled appointment, uniquely among all such requests and/or booked appointments from a particular processing application. If _SCH-2-Filler Appointment ID_ identifies a parent of a repeating schedule request, then the individual child scheduled appointments can be uniquely identified either by a new _SCH-2-Filler Appointment ID_ or by _SCH-25-Parent Filler Appointment ID_ plus an _SCH-3-Occurrence Number_.
+

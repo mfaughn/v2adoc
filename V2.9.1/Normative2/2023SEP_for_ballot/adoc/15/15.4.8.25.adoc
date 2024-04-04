@@ -1,0 +1,4 @@
+==== 15.4.8.25 STF-25 Date Last DMV Review (DT) 01298
+
+Definition: This field contains the date of the staff member's most recent Department of Motor Vehicles review, especially for use when staff is a driver for the institution.
+

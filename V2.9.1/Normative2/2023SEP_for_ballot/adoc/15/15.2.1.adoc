@@ -1,0 +1,6 @@
+=== 15.2.1 Usage of Chapter 15 vs. Chapter 8
+
+Chapter 8 deals with master file maintenance.
+
+Chapter 15 manages operational relationships based on trigger events.
+

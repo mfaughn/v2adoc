@@ -1,0 +1,12 @@
+==== 2.13.9.21 MSH-21 Message Profile Identifier (EI) 01598
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Sites MAY use this field to assert adherence to, or reference, a message profile. Message profiles contain detailed explanations of grammar, syntax, and usage for a particular message or set of messages. See section 2B, "Conformance Using Message Profiles".
+
+Repetition of this field allows more flexibility in creating and naming message profiles. Using repetition, this field can identify a set of message profiles that the message conforms to. For example, the first repetition could reference a vendor's message profile. The second could reference another compatible provider's profile or a later version of the first vendor profile.
+
+As of v2.5, the HL7 message profile identifiers might be used for conformance claims and/or publish/subscribe systems. Refer to sections 2B.1.1"Message profile identifier" and 2.B.1.2, "Message profile publish/subscribe topics" for details of the message profile identifiers. Refer to sections 2.B.4.1, "Static definition identifier" and 2.B.4.2, "Static definition publish/subscribe topics" for details of the static definition identifiers.
+
+Prior to v2.5, the field was called Conformance Statement ID. For backward compatibility, the Conformance Statement ID can be used here. Examples of the use of Conformance Statements appear in Chapter 5, "Query."
+

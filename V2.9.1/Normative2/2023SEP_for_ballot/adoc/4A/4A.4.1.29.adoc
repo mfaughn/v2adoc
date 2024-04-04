@@ -1,0 +1,8 @@
+==== 4A.4.1.29 RXO-29 Medication Instance Identifier (EI) 02149
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a value that uniquely identifies the medication associated with this segment. Rather than identifying the product to be given, as in _RXO-1 Requested Give Code_, this field serves to identify the medication in association with the order represented by the segment instance. This identifier is persistent within and across message instances.
+
+Note: RXO-29 Medication Instance Identifier was introduced in v2.6 to support Patient Care messaging concepts and constructs. At this time, there are no documented use cases for this field in the context of a pharmacy/treatment orders as described in this chapter. This statement does not preclude the use of RXO-29 in pharmacy messages, but implementers should exercise caution in using this field outside of the Patient Care context until the pharmacy/treatment use cases are established.
+

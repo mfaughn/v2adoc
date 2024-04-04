@@ -1,0 +1,4 @@
+==== 8.10.3.12 PRC-12 Effective End Date (DTM) 01005
+
+Definition: This field contains the date/time when this CDM entry is no longer effective.
+

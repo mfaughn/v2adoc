@@ -1,0 +1,4 @@
+==== 4A.4.7.10 RXA-10 Administering Provider
+
+Attention: This field was retained for backward compatibilty only as of v 2.7 and the detail was withdrawn and removed from the standard as of v 2.9. The reader is referred to the PRT segment described in Chapter 7.
+

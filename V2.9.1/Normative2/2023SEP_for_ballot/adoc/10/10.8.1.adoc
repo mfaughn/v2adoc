@@ -1,0 +1,4 @@
+=== 10.8.1 Logical Relationship of Resource and Service Segments
+
+This chapter implies that the relationship of the repeating resource and service specific segments has a logical "and" relationship. In other words, if more than one AIP segment is sent in a transaction, it is logical to assume that both specified personnel resources are required for the appointment. Currently, there is no way to specify an "or" relationship between the resource and service segments. It is possible to specify a resource type and achieve a similar (but not equivalent) effect.
+

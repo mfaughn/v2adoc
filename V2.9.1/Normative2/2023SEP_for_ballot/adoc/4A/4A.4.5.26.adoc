@@ -1,0 +1,8 @@
+==== 4A.4.5.26 RXD-26 Initiating Location (CWE) 01477 
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the pharmacy or other treatment dispensing service (e.g., respiratory) that received the initial request. Refer to Table 0711 - Initiating Location in Chapter 2C for valid values.
+
+Example: Pharmacy A (the Intake/Receiving) receives a phone call from the patient requesting a medication refill, but stipulates that the prescription will be picked up in pharmacy B. In accordance with the business process the prescription will be packaged/assembled in Pharmacy C.
+

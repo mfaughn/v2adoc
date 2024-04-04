@@ -1,0 +1,10 @@
+==== 13.1.3.44 Sample//(Specimen):
+
+*1)* A small part of anything ... intended to show the quality, style, or nature of the whole; *2)* *_In NCCLS LAB AUTOMATION Standard documents_*, a portion or aliquot withdrawn from a container for the actual test;
+
+*Notes:* In NCCLS LAB AUTOMATION Standard documents,
+
+{empty}a) samples are typically not placed in containers that will have to be uniquely identified, but may go directly into the instrument or specimen processing and handling device test stream or may be placed in sample cups unique to the instrument or specimen processing and handling device;
+
+{empty}b) the ID of the specimen is typically assured by computer linkage of the pipetting or aspiration step to the ID of the container from which it was obtained, or by a separate numbering system for the sample cups that is internal to the analytical instrument or specimen processing and handling device.
+

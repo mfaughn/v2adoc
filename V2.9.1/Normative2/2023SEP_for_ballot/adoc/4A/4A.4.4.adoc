@@ -1,0 +1,58 @@
+=== 4A.4.4 RXE - Pharmacy/Treatment Encoded Order Segment
+
+The RXE segment details the pharmacy or treatment application's encoding of the order. It also contains several pharmacy-specific order status fields, such as _RXE-16-number of refills remaining_, _RXE-17-number of refills/doses dispensed, RXE-18-D/T of most recent refill or dose dispensed_, and _RXE-19-total daily dose._
+
+Note that _ORC-7-quantity/timing_ has a different meaning from _RXE-1-quantity/timing_ and _RXG-3-quantity/timing_. The pharmacy or treatment department has the "authority" (and/or necessity) to schedule dispense/give events. Hence, the pharmacy or treatment department has the responsibility to encode this scheduling information in _RXE-1-quantity/timing_ and _RXG-3-quantity/timing. ORC-7-quantity/timing_ does not change: it always specifies the requested give/dispense schedule of the original order.
+
+HL7 Attribute Table – RXE – Pharmacy/Treatment Encoded Order
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | | |W | | |00221 |Quantity/Timing
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70292[0292]/file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70479[0479] |00317 |Give Code
+|3 | | |NM |R | | |00318 |Give Amount - Minimum
+|4 | | |NM |O | | |00319 |Give Amount - Maximum
+|5 | | |CWE |R | |0715 |00320 |Give Units
+|6 | | |CWE |O | |0716 |00321 |Give Dosage Form
+|7 | | |CWE |O |Y |0718 |00298 |Provider's Administration Instructions
+|8 | | | |W | | |00299 |Deliver-to Location
+|9 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70167[0167] |00322 |Substitution Status
+|10 | | |NM |C | | |00323 |Dispense Amount
+|11 | | |CWE |C | |0720 |00324 |Dispense Units
+|12 | |3= |NM |O | | |00304 |Number of Refills
+|13 | | |XCN |B |Y | |00305 |Ordering Provider's DEA Number
+|14 | | |XCN |B |Y | |00306 |Pharmacist/Treatment Supplier's Verifier ID
+|15 | |20= |ST |C | | |00325 |Prescription Number
+|16 | | |NM |C | | |00326 |Number of Refills Remaining
+|17 | | |NM |C | | |00327 |Number of Refills/Doses Dispensed
+|18 | | |DTM |C | | |00328 |D/T of Most Recent Refill or Dose Dispensed
+|19 | | |CQ |C | | |00329 |Total Daily Dose
+|20 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00307 |Needs Human Review
+|21 | | |CWE |O |Y |0721 |00330 |Special Dispensing Instructions
+|22 | |20= |ST |C | | |00331 |Give Per (Time Unit)
+|23 | |6= |ST |O | | |00332 |Give Rate Amount
+|24 | | |CWE |O | |0722 |00333 |Give Rate Units
+|25 | | |NM |O | | |01126 |Give Strength
+|26 | | |CWE |O | |0723 |01127 |Give Strength Units
+|27 | | |CWE |O |Y |0724 |01128 |Give Indication
+|28 | | |NM |O | | |01220 |Dispense Package Size
+|29 | | |CWE |O | |0726 |01221 |Dispense Package Size Unit
+|30 |1..2 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70321[0321] |01222 |Dispense Package Method
+|31 | | |CWE |O |Y |0727 |01476 |Supplementary Code
+|32 | | |DTM |O | | |01673 |Original Order Date/Time
+|33 | |5# |NM |O | | |01674 |Give Drug Strength Volume
+|34 | | |CWE |O | |0729 |01675 |Give Drug Strength Volume Units
+|35 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70477[0477] |01676 |Controlled Substance Schedule
+|36 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70478[0478] |01677 |Formulary Status
+|37 | | |CWE |O |Y |0730 |01678 |Pharmaceutical Substance Alternative
+|38 | | |CWE |O | |0732 |01679 |Pharmacy of Most Recent Fill
+|39 | | |NM |O | | |01680 |Initial Dispense Amount
+|40 | | |CWE |B | |0733 |01681 |Dispensing Pharmacy
+|41 | | |XAD |B | | |01682 |Dispensing Pharmacy Address
+|42 | | |PL |O | | |01683 |Deliver-to Patient Location
+|43 | | |XAD |O | | |01684 |Deliver-to Address
+|44 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70480[0480] |01685 |Pharmacy Order Type
+|45 | | |XTN |O |Y | |02310 |Pharmacy Phone Number
+|===
+

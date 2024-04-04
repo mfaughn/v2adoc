@@ -1,0 +1,6 @@
+==== 9.7.3.12 TXA-12 Unique Document Number (EI) 00925
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a unique document identification number assigned by the sending system. This document number is used to assist the receiving system in matching future updates to the document, as well as to identify the document in a query. When the vendor does not provide a unique document ID number, some type of document identifier should be entered here, or the Unique Document File name should be utilized. See Chapter 2A, section 2.A.89, "XTN - extended telecommunication number." Where the system does not customarily have a document filler number, this number could serve as that value, as well.
+

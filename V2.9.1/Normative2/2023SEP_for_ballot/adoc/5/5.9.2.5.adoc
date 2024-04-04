@@ -1,0 +1,14 @@
+==== 5.9.2.5 Lab example different instantiation
+
+The same Query Name might be invoked with a different query tag (456) as follows:
+
+The user wishes to know all the lab results reported having a LOINC code of 6777-7 between March 21, 1999 and March 23, 1999.
+
+MSH|^~\&|PCR|GenHosp|LIS||199907131040-0800||QBP^Z89^QBP_Z89|4495|D|2.8|
+
+QPD|Z89^LabResultsHistory^HL7nnnn||@OBX.3.4^EQ^6777-7^AND|@OBR.22^GE^19990321^AND|@OBR.22^LE^19990323
+
+RCP|I||R|
+
+The second instance of the "Lab Results for Specified Criteria" query would clearly return quite different results than the first even though both are invocations of the same query.
+

@@ -1,0 +1,4 @@
+=== 11.6.3 CCR/ACK – Collaborative Care Referral (Event I16)
+
+This event triggers a message to be sent from one healthcare provider to another regarding a specific patient or group of patients. The intent is to create a collaborative relationship between the referring provider, the referred to provider or providers and the patient or patients, for the shared care of the patient or patients. Whilst the acknowledgment is a simple ACK message, the expectation is that the referred to provider(s) will send back a CCU – Asynchronous Collaborative Care Update at a later time to indicate acceptance or rejection of the referral.
+

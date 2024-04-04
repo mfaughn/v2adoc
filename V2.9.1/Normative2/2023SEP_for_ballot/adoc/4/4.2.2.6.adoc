@@ -1,0 +1,4 @@
+==== 4.2.2.6 Placer order group: 
+
+A list of associated orders coming from a single location regarding a single patient.
+

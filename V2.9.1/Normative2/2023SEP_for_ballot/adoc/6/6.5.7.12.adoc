@@ -1,0 +1,4 @@
+==== 6.5.7.12 IN2-12 Military Organization (ST) 00483
+
+Definition: This field is defined by CMS or other regulatory agencies.
+

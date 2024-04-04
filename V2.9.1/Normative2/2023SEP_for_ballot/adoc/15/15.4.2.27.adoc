@@ -1,0 +1,4 @@
+==== 15.4.2.27 CER-27 Expiration Date (DTM) 01880
+
+Definition: This field contains the date/time when the certificate expires or will expire.
+

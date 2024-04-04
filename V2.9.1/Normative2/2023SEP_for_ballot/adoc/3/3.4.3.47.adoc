@@ -1,0 +1,4 @@
+==== *3.4.3.47* PV1-47 Total Charges (NM) 00177
+
+Definition: This field contains the total visit charges.
+

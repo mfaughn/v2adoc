@@ -1,0 +1,4 @@
+==== 2A.2.87.14 Expiration Date (DTM)
+
+Definition: The last date, if known, on which the address is valid and active for the ‘owning’ entity.
+

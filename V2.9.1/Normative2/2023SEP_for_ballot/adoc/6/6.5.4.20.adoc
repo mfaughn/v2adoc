@@ -1,0 +1,4 @@
+==== 6.5.4.20 PR1-20 Procedure Action Code (ID) 01849
+
+This field defines the action to be taken for this procedure. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70206[_H__L7 Table 0206 - Segment Actio__n Code_] in Chapter 2C, Code Tables, for valid values. This field is required for the Update Diagnosis/Procedures (P12) message. In all other events it is optional.
+

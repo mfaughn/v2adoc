@@ -1,0 +1,56 @@
+==== 5.6.3.4 Message fragmentation example
+
+Query responses, like unsolicited updates, may need to force the continuation of a message, or even a segment, across multiple physical messages. This is more precisely described as fragmenting. Fragmentation is discussed in detail in Chapter 2. Those aspects pertaining to how this would apply to a query response are repeated here for the reader's convenience.
+
+The Client requests the last chest x-ray for the patient whose medical record number is 555444222111. The following query is submitted.
+
+MSH|^~\&|CIS||RAD||199910180900-0700||QBP^Q61^QBP_Q11|7777|P|2.7|
+
+QPD|Q61^Radiology Result^HL7nnnn|Q98|555444222111^^^^MR|
+
+RCP|I|
+
+The Server returns the following response but the OBX segment that contains a DICOM image overflows its buffer. The segment is fragmented as follows:
+
+MSH|^~\&|RAD||CIS||||RSP^K61^RSP_K61|5555|P|2.8|
+
+MSA|AA|7777|
+
+QAK|Q98|OK|Q61^Radiology Result^HL7nnnn|
+
+QPD|Q61^Radiology Result^HL7nnnn|Q98|555444222111^^^^MR|
+
+PID|||5554442221111^^^^MR|
+
+ORC
+
+OBR
+
+OBX||ED|13^^L||abcdefghij|
+
+ADD|
+
+DSC|99|F|
+
+The Client returns an ACK upon receipt of the response.
+
+MSH|^~\&|CIS||RAD||||ACK^K61^ACK|7780|P|2.8|
+
+MSA|AA|5555|
+
+The Server sends the following continued response. Note that the ADD segment will contain the remainder of the data from the fragmented segment. The response then continues on as normal.
+
+MSH|^~\&|RAD||CIS||||RSP^K61^RSP_K61|5560|P|2.7||99|
+
+ADD|klmnop|
+
+OBX|
+
+...
+
+The Client returns an ACK upon receipt of the response.
+
+MSH|^~\&|CIS||RAD||||ACK^K61|7782|P|2.8|
+
+MSA|AA|5560|
+

@@ -1,0 +1,103 @@
+=== 4.5.1 ORC – Common Order Segment
+
+The Common Order segment (ORC) is used to transmit fields that are common to all orders (all types of services that are requested).
+
+There is some overlap between fields of the ORC and those in the order detail segments. These are described in the succeeding sections.
+
+HL7 Attribute Table – ORC – Common Order
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |2..2 | |ID |R | |file:///D:\AppData\Local\Microsoft\Windows\INetCache\Content.Outlook\8CXE3V7V\V282_CH02C_CodeTables.doc#0119[0119] |00215 |Order Control
+|2 | | |EI |C | | |00216 |Placer Order Number
+|3 | | |EI |C | | |00217 |Filler Order Number
+|4 | | |EI |O | | |00218 |Placer Order Group Number
+|5 |1..2 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70038[0038] |00219 |Order Status
+|6 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70121[0121] |00220 |Response Flag
+|7 | | | |W |Y | |00221 |Quantity/Timing
+|8 | | |EIP |O |Y | |00222 |Parent Order
+|9 | | |DTM |O | | |00223 |Date/Time of Order Event
+|10 | | | |W | | |00224 |Entered By
+|11 | | | |W | | |00225 |Verified By
+|12 | | | |W | | |00226 |Ordering Provider
+|13 | | |PL |O | | |00227 |Enterer's Location
+|14 | | |XTN |O |Y/2 | |00228 |Call Back Phone Number
+|15 | | |DTM |O | | |00229 |Order Effective Date/Time
+|16 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70949[0949] |00230 |Order Control Code Reason
+|17 | | | |W | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70666[0666] |00231 |Entering Organization
+|18 | | | |W | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70668[0668] |00232 |Entering Device
+|19 | | | |W | | |00233 |Action By
+|20 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70339[0339] |01310 |Advanced Beneficiary Notice Code
+|21 | | | |W | | |01311 |Ordering Facility Name
+|22 | | | |W | | |01312 |Ordering Facility Address
+|23 | | | |W | | |01313 |Ordering Facility Phone Number
+|24 | | | |W | | |01314 |Ordering Provider Address
+|25 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70950[0950] |01473 |Order Status Modifier
+|26 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70552[0552] |01641 |Advanced Beneficiary Notice Override Reason
+|27 | | |DTM |O | | |01642 |Filler's Expected Availability Date/Time
+|28 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70177[0177] |00615 |Confidentiality Code
+|29 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70482[0482] |01643 |Order Type
+|30 | | |CNE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70483[0483] |01644 |Enterer Authorization Mode
+|31 | | | |W | | |02287 |Parent Universal Service Identifier
+|32 | | |DT |O | | |02301 |Advanced Beneficiary Notice Date
+|33 | | |CX |O |Y | |03300 |Alternate Placer Order Number
+|34 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70934[0934] |03387 |Order Workflow Profile
+|35 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00816 |Action Code
+|36 | | |DR |O | | |03509 |Order Status Date Range
+|37 | | |DTM |O | | |03515 |Order Creation Date/Time
+|38 | | |EI |O | | |02482 |Filler Order Group Number
+|===
+
+ORC use notes
+
+{empty}a) placer order groups
+
+____
+The Standard supports a mechanism to collect several orders together in a group. Most often this is used to represent an "ordering session" for a single patient. A common use case is the grouping of laboratory batteries and tests ordered together by a physician for a patient with a common diagnostic goal (e.g. preoperative blood testing, diabetes follow-up, …).
+____
+
+An order group is a list of orders (ORCs) associated with an ORC-4-placer group number. A group is established when the placer supplies a placer group number with the original order or when the filler accessions the order group and supplies a filler group number with the received order. The order group may be identified by the placer or by the filler or by both applications. The order group consists of all the ORCs and order detail segments that have the same placer group number, or using the assign number/number assigned mechanism. Orders can be removed from the group using cancel, or added using the replacement or parent‑child mechanisms. New orders cannot otherwise be added to the group.
+
+{empty}b) duplicate fields
+
+____
+The ORC is intended to uniformly define the fields that are common to all orders (i.e., requested services). Some ORC fields are duplicated in some order detail segments (e.g., OBR, RXO). For example, ORC-2-placer order number has the same meaning and purpose as OBR-2-placer order number field. This promotes upward compatibility with past versions and ASTM.
+
+The rule for using these fields is that the value must appear in the order detail segment if it does not appear in the ORC. However, it is recommended to transmit the field value in both places to avoid confusion.
+____
+
+{empty}c) parent/child – cancel, hold, discontinue
+
+____
+During transmission of a request to cancel, hold, or discontinue a parent order, the request is intended to apply recursively to the parent order and all associated child orders.
+____
+
+For example:
+
+{empty}1) An EKG application receives an order for three EKGs on successive mornings.
+
+{empty}2) The EKG application creates three child orders, one for each requested EKG..
+
+{empty}3) The first daily EKG has already been performed when a request is received to cancel the original parent order. (The parent is beyond the point of cancellation.)
+
+{empty}4) The remaining, unperformed, children are canceled as a result of the request.
+
+Date/Time Use Notes:
+
+Various dates are available in ORC that seem overlapping, but serve distinct purposes. The following provides use notes on these relationships, while the individual field definitions provide further details.
+
+• ORC-7 Quantity/Timing - This field was retained for backward compatibility only as of v 2.5 and the detail was withdrawn and removed from the standard as of v 2.7. The reader is referred to the TQ1 – Timing/Quantity and TQ2 – Timing/Quantity Relationship segments described in sections 4.5.4 and 4.5.5, respectively. The purpose of this field (and now these segments) is to capture Priority, Frequency, and Timing of the service being ordered. For example, an order for a unit of blood to be administered to a patient every morning for 3 days..
+
+• ORC-9 Date/Time of Order Event – This field is the date/time when the action indicated in ORC-1 was initiated. Every time a new action, as indicated by ORC-1, occurs the date/time of that action should appear in ORC-9. This field is not equivalent to MSH-7 Date and Time of Message, which reflects the date/time of message generation.
+
+• ORC-15 Order Effective Date/Time – The field focuses on when the information communicated is to take effect. It is most appropriate when used on an order that is by nature a “continuing” (or continuous) order. This field has a close relationship to ORC-9 and the TQ1, TQ2 segments in so much as the value in ORC-15 takes precedence over both. For example, an order is placed on June 1, for an activity that is to be performed over ten days as indicated in the TQ1 segment. The Filler then receives a cancel message on June 2 with the ORC-9 value of June 2, but the ORC-15 Order Effective Date/Time indicated the cancel is to be effective on June 7th. ORC-15 by taking precedence over TQ1 and ORC-9, would tell the Filler to continue to perform the order event until June 7, and cancel all remaining events (treatment, procedures etc.) after that time.
+
+• ORC-27 Filler’s Expected Availability Date/Time – This field focuses on when the filler expects to complete the order, e.g., have the results available, the prescription ready, etc. This is a Filler assigned field and would typically only be sent from Filler to Placer on either application level acknowledgments or order status messages. (Could be delivered with result messag but would have little relevance at that time.)
+
+• ORC-32 Advanced Beneficiary Notice Date – This field contains the date the patient gave consent to pay for potentially uninsured services or the date that the Advanced Beneficiary Notice Code (ORC-20) was collected.
+
+• ORC-36 Order Status Range – This field is a Filler assigned date/time indicating a date range that the ORC-5 Order Status is intended to be effective. For example, if the Filler recommends an alternate test, and sets the ORC-5 status to “Hold”, this date/time reflects how long the Filler will keep the order in that status (barring additional communications from the Placer or Filler in regard to this order.)
+
+• ORC-37 Order Creation Date/Time – focuses on the date that the order was originally created; whether as an electronic order or as an initial paper requisition. This date/time is designed to preserve the creation date/time from initial order to final result, and for all stages in-between. (Acknowledgments, Updates, Cancels, etc.)
+

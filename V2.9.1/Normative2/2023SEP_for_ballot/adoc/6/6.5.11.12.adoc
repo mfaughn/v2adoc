@@ -1,0 +1,4 @@
+==== 6.5.11.12 UB2-12 Document Control Number (ST) 00564
+
+Definition: This field contains the number assigned by payor that is used for rebilling/adjustment purposes. It may repeat up to three times. Refer Uniform Billing field 37.
+

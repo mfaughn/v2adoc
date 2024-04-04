@@ -1,0 +1,8 @@
+==== *3.4.5.23* NK1-23 Protection Indicator (ID) 00744
+
+Definition: This field identifies that next of kin/associated party's protection that determines, in turn, whether access to information about this person should be kept from users who do not have adequate authority. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/No Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y protect access to next-of-kin information
+
+N normal access
+

@@ -1,0 +1,6 @@
+== 2.10 Local Extension
+
+The following section specifies where local extensions to a message and its constituent parts are allowed, where they are not, and where they are ill-advised. Inter-version compatibility rules must be followed plus there are certain restrictions and prohibitions outlined in the sections that follow. In general, basic structures SHOULD NOT be altered.
+
+The reader is advised to review the Conformance mechanism defined in section 2B__,__ "Conformance Using Message Profiles" before applying local extensions. Using the conformance mechanismighteliminate the need for local extension.
+

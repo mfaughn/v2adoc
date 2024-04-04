@@ -1,0 +1,6 @@
+==== 8.10.3.10 PRC-10 Maximum Price (MO) 01003
+
+Components: <Quantity (NM)> ^ <Denomination (ID)>
+
+Definition: This field contains the maximum total price (after computation of components of price) that can be charged for this item.
+

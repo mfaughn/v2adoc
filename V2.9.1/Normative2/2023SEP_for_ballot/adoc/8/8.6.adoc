@@ -1,0 +1,12 @@
+== 8.6 GENERIC MASTER FILE EXAMPLES
+
+The following are examples of a generic method of updating a standard HL7 table, covering the following two cases:
+
+{empty}1) The case with a site-defined "Z" segment. This message type is used when standard HL7 segments are not available to carry all of the required information on the master file. This message type can also be used in the case where standard HL7 segments are available, but the transaction type is not currently defined by HL7. Refer to Section 8.4.3, "MFN/MFK - Master File Notification - Site Defined (Event M14)," for more information on this message type.
+
+{empty}2) The case without a site-defined "Z" segment. This message type is used when standard HL7 segments are available to carry all of the required information on the master file (in the case of a 'simple' master file that contains only a key and the text value of that key). Refer to Section 8.4.2, "MFN/MFK - Master File Notification - General (Event M13)," for more information on this message type.
+
+The following examples show two records being added to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70006[User-defined Table 0006 - Religion] (in Chapter 2C, Code Tables).
+
+*Note*: A site-defined "Z" table segment ("ZL7" in this example) can be constructed by defining two fields: a table entry field (as a CWE field) and a display-sort-key field (a numeric field) as follows.
+

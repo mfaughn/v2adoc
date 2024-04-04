@@ -1,0 +1,15 @@
+==== *3.6.2.1* Definitions: Merge, move, and change identifier events
+
+The term "identifier" is used throughout this section. An identifier is associated with a set (or sets) of data. For example, an identifier (_PID-3 - Patient Identifier List_) may be a medical record number which has associated with it account numbers (_PID-18 - Patient Account Number_). Account number (_PID-18 - Patient Account Number_) is a type of identifier which may have associated with it visit numbers (_PV1-19 - Visit Number_).
+
+This section addresses the events that occur usually for the purposes of correcting errors in person, patient, account, or visit identifiers. The types of errors that occur typically fall into three categories:
+
+{empty}1) *Duplicate identifier created* +
+The registrar fails to identify an existing person, patient, account, or visit and creates a new, "duplicate" record instead of using the existing record. A "merge" operation is used to fix this type of error.
+
+{empty}2) *Incorrect identifier selected* +
+The registrar mistakenly selects the wrong person, patient, or account and creates or attaches a patient, account, or visit underneath the incorrect person, patient, or account. A "move" operation is used to fix this type of error.
+
+{empty}3) *Incorrect identifier assigned* +
+The registrar accidentally types in the wrong new identifier for a person, patient, account, or visit. This type of mistake usually occurs when identifiers are manually assigned (not system generated). A "change identifier" operation is used to fix this type of error.
+

@@ -1,0 +1,6 @@
+==== 13.3.3.14 SAC-14 Position in Tray (NA) 01341
+
+Components: <Value1 (NM)> ^ <Value2 (NM)> ^ <Value3 (NM)> ^ <Value4 (NM)> ^ < ()>
+
+Definition: This field identifies the position of the carrier in the tray. The sub-components allow, if necessary, to transfer multiple axis information, e.g., 2-dimensional tray (X^Y).
+

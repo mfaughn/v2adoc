@@ -1,0 +1,4 @@
+==== 4.17.1.27 DON-27 Donor Reaction (ID) 03366
+
+Definition: Did the donor have any adverse reaction during the donation procedure? Yes or No. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 -Yes/No Indicator] as defined in Chapter 2C, Code Tables. If this element is valued "Y"es, there should be OBX segments following the Donation segment which details the adverse reactions.
+

@@ -1,0 +1,4 @@
+==== 8.8.9.21 OM1-21 Date/Time Stamp for Any Change in Definition for the Observation (DTM) 00606
+
+Definition: This field contains the date and time that the last of any field change was made and in the host's record corresponding to the OM1 segment.
+

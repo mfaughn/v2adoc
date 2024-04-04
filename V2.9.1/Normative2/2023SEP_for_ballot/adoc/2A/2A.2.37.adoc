@@ -1,0 +1,20 @@
+=== 2A.2.37 JCC - job code/class
+
+HL7 Component Table – JCC – Job Code/Class
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70327[0327] |Job Code | |2A.2.36
+|2 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70328[0328] |Job Class | |2A.2.36
+|3 | | |TX |O | |Job Description Text | |2A.2.80
+|===
+
+Example 1: Codified job (where 1 represents the code for Administrator and F represents full time)
+
+|1^F^Administrator|
+
+Example 2: Uncodified job (where job codes are not codified and PT represents part time)
+
+|^PT^Analyst|.
+

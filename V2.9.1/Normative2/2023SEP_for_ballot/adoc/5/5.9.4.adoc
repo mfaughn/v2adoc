@@ -1,0 +1,2 @@
+=== 5.9.4 Query using QSC variant / tabular response (RTB)
+

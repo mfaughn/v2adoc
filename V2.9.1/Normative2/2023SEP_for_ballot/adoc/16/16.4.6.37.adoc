@@ -1,0 +1,4 @@
+==== 16.4.6.37 PSL-37 External Scaling Factor PP (NM) 01991
+
+Definition: External Scaling Factor for the amount of the professional part of the service.
+

@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+ORC-3_vs_TXA-15
+</h1>
+<hr>
+<h3>
+For 00217 there were 6 versions found.<br>This diff compares the version found in fields ["ORC-3", "ORC-3"] from sections ["4.5.1", nil], respectively<br>with the version found in fields ["TXA-15", "TXA-15"] from sections ["9.7.3", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This field is the order number associated with the filling application. <strong>It is a case of </strong>the <strong>Entity I</strong>dentifier<strong> data type (Section 2.A.28).</strong> Its first component is a string <strong>t</strong>hat identifies an order detail segment (i.e., O<strong>RC segment and associated order detail segment). It is assigned by the order filler (receiving) application. </strong>This string must uniquely identify the order (as specified in the order detail segment) from other orders in a particular filling application (<strong>e.g., clinical laboratory</strong>). This uniqueness must persist over time.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field is the order number associated with the filling application. <strong>Where a transcription service or similar organization creates </strong>the <strong>document and uses an internally unique i</strong>dentifier<strong>, that number should be inserted in this field.</strong> Its first component is a string <strong>of characters t</strong>hat identifies an order detail segment (i.e., O<strong>BR). </strong>This string must uniquely identify the order (as specified in the order detail segment) from other orders in a particular filling application (<strong>i.e., transcription service</strong>). This uniqueness must persist over time.<strong> Where a number is reused over time, a date can be affixed to the non-unique number to make it unique.</strong></ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00217,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:EI,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field is the order number associated with the filling application. <strong>It is a case of </strong>the <strong>Entity I</strong>dentifier<strong> data type (Section 2.A.28).</strong> Its first component is a string <strong>t</strong>hat identifies an order detail segment (i.e., O<strong>RC segment and associated order detail segment). It is assigned by the order filler (receiving) application. </strong>This string must uniquely identify the order (as specified in the order detail segment) from other orders in a particular filling application (<strong>e.g., clinical laboratory</strong>). This uniqueness must persist over time.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field is the order number associated with the filling application. <strong>Where a transcription service or similar organization creates </strong>the <strong>document and uses an internally unique i</strong>dentifier<strong>, that number should be inserted in this field.</strong> Its first component is a string <strong>of characters t</strong>hat identifies an order detail segment (i.e., O<strong>BR). </strong>This string must uniquely identify the order (as specified in the order detail segment) from other orders in a particular filling application (<strong>i.e., transcription service</strong>). This uniqueness must persist over time.<strong> Where a number is reused over time, a date can be affixed to the non-unique number to make it unique.</strong></ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

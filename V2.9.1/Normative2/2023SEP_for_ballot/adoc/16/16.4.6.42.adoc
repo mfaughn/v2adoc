@@ -1,0 +1,4 @@
+==== 16.4.6.42 PSL-42 External Scaling Factor Technical Part (NM) 01996
+
+Definition: External Scaling Factor for the amount of the technical part of the service.
+

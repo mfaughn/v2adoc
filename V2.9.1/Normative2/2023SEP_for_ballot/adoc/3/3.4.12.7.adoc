@@ -1,0 +1,4 @@
+==== *3.4.12.7* DB1-7 Disability Return to Work Date (DT) 01289
+
+Definition: This field indicates the authorized date on which the patient can return to work for a specified disability case.
+

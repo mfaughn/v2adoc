@@ -1,0 +1,4 @@
+==== 17.5.8.4 ILT-4 Inventory Received Date (DTM) 01804
+
+Definition: This field contains the most recent date that the product in question was received into inventory.
+

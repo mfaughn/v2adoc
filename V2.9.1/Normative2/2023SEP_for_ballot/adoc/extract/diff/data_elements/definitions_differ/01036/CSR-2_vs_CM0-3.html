@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+CSR-2_vs_CM0-3
+</h1>
+<hr>
+<h3>
+For 01036 there were 2 versions found.<br>This diff compares the version found in fields ["CSR-2", "CSR-2"] from sections ["7.8.1", nil], respectively<br>with the version found in fields ["CM0-3", "CM0-3"] from sections ["8.11.2", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains <strong>an alternate identifier that may be used as agreed upon by messaging parties. For example, the sending application may code its internal st</strong>udy number<strong> here</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains <strong>the local or collaborators&#39; cross-referenced st</strong>udy number<strong>s</strong>.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:01036,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:EI,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains <strong>an alternate identifier that may be used as agreed upon by messaging parties. For example, the sending application may code its internal st</strong>udy number<strong> here</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains <strong>the local or collaborators&#39; cross-referenced st</strong>udy number<strong>s</strong>.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

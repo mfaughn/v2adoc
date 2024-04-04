@@ -1,0 +1,4 @@
+==== 8.8.9.26 OM1-26 Reporting Priority (ID) 00611
+
+Definition: This field contains the available priorities reporting the test results when the user is asked to specify the reporting priority independent of the processing priority. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70169[HL7 Table 0169 - Reporting Priority] in Chapter 2C, Code Tables, for valid values.
+

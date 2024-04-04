@@ -1,0 +1,4 @@
+==== 2A.2.15.2 Monetary Amount (MO)
+
+Definition: The monetary amount of the deductible.
+

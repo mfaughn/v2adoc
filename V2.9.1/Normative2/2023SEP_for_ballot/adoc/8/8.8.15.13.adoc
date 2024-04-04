@@ -1,0 +1,4 @@
+==== 8.8.15.13 OM7-13 Consent Effective Start Date/Time (DTM) 01491
+
+Definition: This field contains the date and time the consent is valid for the service item.
+

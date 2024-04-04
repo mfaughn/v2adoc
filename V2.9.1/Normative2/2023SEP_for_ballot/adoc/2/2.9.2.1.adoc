@@ -1,0 +1,68 @@
+==== 2.9.2.1 Segment fragmentation/continuation using the DSC segment
+
+When a message itself must be fragmented and sent as several HL7 messages, the DSC segment is used.
+
+{empty}a) First, the logical message is broken after an arbitrary segment.
+
+{empty}b) Next, a DSC segment is sent. The link:#_DSC-1___Continuation Pointer (ST)  [DSC-1 Continuation Pointer] field will contain a unique value that is used to match a subsequent message with this specific value.
+
+{empty}c) The DSC terminates the first fragment of the logical message.
+
+{empty}d) A subsequent message will contain in link:#_MSH-14___Continuation Pointer  (ST)[MSH-14 Continuation Pointer], a value that matches the value from DSC-1. (The presence of a value in MSH-14 indicates that the message is a fragment of an earlier message.). Each subsequent message will have its own unique value for link:#_MSH-10___Message Control ID  (ST)  [MSH-10 Message Control ID]. Coordination between link:#_DSC-1___Continuation Pointer (ST)  [DSC-1 Continuation Pointer] and the subsequent message's link:#_MSH-14___Continuation Pointer  (ST)[MSH-14 Continuation Pointer] is used to link the fragments in their proper order.
+
+{empty}e) The logical message is the concatenation of the contents of the first message (which while having no value in MSH-14, did end with DSC, and hence was actually a message fragment), plus all subsequent fragments (as identified by values in MSH-14).
+
+{empty}f) If enhanced mode acknowledgments are used to request an accept ACK, then the receiver will acknowledge each fragment with an ACK message. Since each fragment has its own Message Control ID, each fragment level accept ACK will use the Message Control ID from the fragment it is acknowledging.
+
+{empty}g) If enhanced mode acknowledgments are used to request an application level ACK, then the receiver will send an acknowledgment after receiving the final fragment.
+
+*Note*: The application level ACK SHOULD refer to the message by the Message Control ID of the first fragment.
+
+*Note*: The receiver can tell that a given incoming message is a fragment by the presence of the trailing DSC. Subsequent HL7 messages are identified as fragments by the presence of an MSH-14 value. The presence of a DSC in a fragment indicates that more fragments are to follow.
+
+It is a protocol error to end a message with DSC, and then never send a fragment.
+
+For example, a single logical message MAY be fragmented into three HL7 messages:
+
+---- Sender HL7 message (incomplete,fragment1)---
+
+MSH|||||||||1001||2.4|123||..
+
+A|...
+
+B|...
+
+DSC|W4xy
+
+---- Sender HL7 message (fragment 2)---
+
+MSH|||||||||2106||2.4|124|W4xy|
+
+C|...
+
+D|...
+
+DSC|V292
+
+----- another HL7 message(fragment 3, final)---
+
+MSH|||||||||2401||2.4|125|V292
+
+E|...
+
+Such a sequence is logically the same as the single message:
+
+MSH|...|2.4|123||..
+
+A|...
+
+B|...
+
+C|...
+
+D|...
+
+E|...
+
+See example in section *_Error! Reference source not found._* for a more elaborate example.
+

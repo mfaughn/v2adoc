@@ -1,0 +1,6 @@
+==== 2.13.2.5 BHS-5 Batch Receiving Application (HD) 00085
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field uniquely identifies the receiving applications among all other applications within the network enterprise. The network enterprise consists of all those applications that participate in the exchange of HL7 messages within the enterprise. Entirely site-defined.
+

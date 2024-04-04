@@ -1,0 +1,6 @@
+==== 7.4.2.18 OBX-18 Equipment Instance Identifier (EI) 01479 
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: *_Retained for backwards compatibility as of v 2.7 only. This field is now represented through the PRT segment._* This field identifies the Equipment Instance (e.g., Analyzer, Analyzer module, group of Analyzers, etc.) responsible for the production of the observation. This is the identifier from an institution's master list of equipment, where the institution is specified by the _namespace ID_ or if it is blank, then by the "Producer's ID" (OBX-15). It should be possible to retrieve from this master list the equipment type, serial number, etc., however it is not planned to transfer this information with every OBX. The repeating of this field allows for the hierarchical representation of the equipment (lowest level first), e.g., module of an instrument, instrument consisting of modules, cluster of multiple instruments, etc.
+

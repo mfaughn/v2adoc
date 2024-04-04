@@ -1,0 +1,4 @@
+==== 16.4.6.48 PSL-48 Comment (ST) 02002
+
+Definition: Reason why the service line item has not passed the validator software.
+

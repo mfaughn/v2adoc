@@ -1,0 +1,40 @@
+=== 11.8.2 AUT - Authorization Information Segment
+
+This segment represents an authorization or a pre-authorization for a referred procedure or requested service by the payor covering the patient's health care.
+
+[#AUT .anchor]####HL7 Attribute Table - AUT – Authorization Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70072[0072] |01146 |Authorizing Payor, Plan ID
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70285[0285] |01147 |Authorizing Payor, Company ID
+|3 | |45# |ST |O | | |01148 |Authorizing Payor, Company Name
+|4 | | |DTM |O | | |01149 |Authorization Effective Date
+|5 | | |DTM |O | | |01150 |Authorization Expiration Date
+|6 | | |EI |C | | |01151 |Authorization Identifier
+|7 | | |CP |O | | |01152 |Reimbursement Limit
+|8 | | |CQ |O | | |01153 |Requested Number of Treatments
+|9 | | |CQ |O | | |01154 |Authorized Number of Treatments
+|10 | | |DTM |O | | |01145 |Process Date
+|11 | | |CWE |O |Y |0522 |02375 |Requested Discipline(s)
+|12 | | |CWE |O |Y |0546 |02376 |Authorized Discipline(s)
+|13 |250 | |CWE |R |N |0551 |03413 |Authorization Referral Type
+|14 |250 | |CWE |O |N |0563 |03414 |Approval Status
+|15 |24 | |DTM |O |N | |03415 |Planned Treatment Stop Date
+|16 |250 | |CWE |O |N |0573 |03416 |Clinical Service
+|17 |60 | |ST |O |N | |03417 |Reason Text
+|18 |721 | |CQ |O |N | |03418 |Number of Authorized Treatments/Units
+|19 |721 | |CQ |O |N | |03419 |Number of Used Treatments/Units
+|20 |721 | |CQ |O |N | |03420 |Number of Schedule Treatments/Units
+|21 |250 | |CWE |O |N |0574 |03421 |Encounter Type
+|22 |20 | |MO |O |N | |03422 |Remaining Benefit Amount
+|23 |250 | |XON |O |N | |03423 |Authorized Provider
+|24 |250 | |XCN |O |N | |03424 |Authorized Health Professional
+|25 |60 | |ST |O |N | |03425 |Source Text
+|26 |24 | |DTM |O |N | |03426 |Source Date
+|27 |250 | |XTN |O |N | |03427 |Source Phone
+|28 |254 | |ST |O |N | |03428 |Comment
+|29 |1..1 | |ID |O |N |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |03429 |Action Code
+|===
+

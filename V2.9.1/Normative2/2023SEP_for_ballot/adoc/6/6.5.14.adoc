@@ -1,0 +1,14 @@
+=== 6.5.14 RMI - Risk Management Incident Segment
+
+The RMI segment is used to report an occurrence of an incident event pertaining or attaching to a patient encounter.
+
+[#RMI .anchor]####HL7 Attribute Table - RMI - Risk Management Incident
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70427[0427] |01530 |Risk Management Incident Code
+|2 | | |DTM |O | | |01531 |Date/Time Incident
+|3 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70428[0428] |01533 |Incident Type Code
+|===
+

@@ -1,0 +1,116 @@
+=== 12.3.3 PPP/ACK - Patient Pathway Message (Problem-Oriented) (Events PCB, PCC, PCD) 
+
+PPP^PCB-PCD^PPP_PCB: Patient Pathway Problem-Oriented Message
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|PID |Patient Identification | |3
+|[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|\{ |--- PROVIDER begin | |
+|link:#PRD[PRD] |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|[ |--- PATIENT_VISIT begin | |
+|PV1 |Patient Visit | |3
+|[PV2] |Patient Visit | |3
+|] |--- PATIENT_VISIT end | |
+|\{ |--- PATHWAY begin | |
+|link:#PTH[PTH] |Pathway Detail | |12
+|[\{NTE}] |Notes & Comments(Pathway Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Pathway) | |12
+|[\{ |--- PATHWAY_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Pathway) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PATHWAY_PARTICIPATION end | |
+|[\{ |--- PROBLEM begin | |
+|link:#PRB[PRB] |Detail Problem | |12
+|[\{NTE}] |Notes & Comments(Problem Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Problem) | |12
+|[\{ |--- PROBLEM_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Problem) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PROBLEM_PARTICIPATION end | |
+|[\{ |--- PROBLEM_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments(Observation/Result Comments) | |2
+|}] |--- PROBLEM_OBSERVATION end | |
+|[\{ |--- GOAL begin | |
+|link:#GOL[GOL] |Detail Goal | |12
+|[\{NTE}] |Notes & Comments(Goal Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Goal) | |12
+|[\{ |--- GOAL_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Goal) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- GOAL_PARTICIPATION end | |
+|[\{ |--- GOAL_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |2
+|}] |--- GOAL_OBSERVATION end | |
+|}] |--- GOAL end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[ |--- ORDER_DETAIL begin | |
+|< |--- CHOICE begin | |
+|OBR |Order Detail Segment | |4
+|\| | | |
+|Hxx |etc. | |
+|> |--- CHOICE end | |
+|[\{NTE}] |Notes & Comments(Order Detail Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Order) | |12
+|[\{ |--- ORDER_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments(Observation Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Observation/Result) | |12
+|}] |--- ORDER_OBSERVATION end | |
+|] |--- ORDER_DETAIL end | |
+|}] |--- ORDER end | |
+|}] |--- PROBLEM end | |
+|} |--- PATHWAY end | |
+|===
+
+[width="100%",cols="18%,23%,5%,19%,14%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|PPP^PCB-PCD^PPP_PCB | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^PCB-PCD^ACK |- |ACK^PCB-PCD^ACK
+|Application Ack |ACK^PCB-PCD^ACK |- |- |ACK^PCB-PCD^ACK |ACK^PCB-PCD^ACK
+|===
+
+ACK^PCB-PCD^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^PCB-PCD^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^PCB-PCD^ACK
+|Application Ack |- |- |-
+|===
+

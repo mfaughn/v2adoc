@@ -1,0 +1,110 @@
+=== 4A.5.1 Example of various levels of coding in an order
+
+The order "_give 500 mg Ampicillin P.O. Q6H for 10 days for a total of 40 tablets_" is sent to the RX application from the OE application. This order can be coded with various levels of precision by an ordering application:
+
+{empty}a) E-mail only version (uses only free text, _RXO-6-provider's pharmacy/treatment instructions_ or _RXO-7-provider's administration instructions_ only); fully encoded version must be re-entered or verified manually by the pharmacy or treatment application.
+
+{empty}b) With _RXO-2-requested give amount-minimum_, _RXO-4-requested give units_, and _ORC-7-quantity/timing coded_, and _RXO-1-requested give code_ as free text.
+
+{empty}c) With _RXO-1-requested give code_, _RXO-2-requested give amount-minimum_, _RXO-4-requested give units_, and _ORC-7-quantity/timing coded_, but where _RXO-1-requested give code_ does not include units.
+
+{empty}d) With _RXO-1-requested give code_, _RXO-2-requested give amount-minimum_, _RXO-4-requested give units_, and _ORC-7-quantity/timing coded_, and where _RXO-1-requested give code_ does include units.
+
+In this case, the units are optional. The rule for this case (on orders, dispense results, give results, and administration results) is as follows: if units are coded, they override or supersede the units value implied by the give code.
+
+{empty}e) The E-mail only version of the order: no coded fields exist in the RXO.
+
+MSH|^&~\|Pharm|GenHosp|CIS|GenHosp|2006052911150700||OMP^O09^OMP_O09|...<cr>
+
+PID|...<cr>
+
+ORC|NW|1000^OE||||E|...<cr>
+
+RXO||||||500 mg Polycillin Q6H for 10 days, dispense 40 Tablets|...<cr>
+
+{empty}f) A partially coded version of the order. This version has the _RXO-2-requested give amount-minimum_, _RXO-4-requested give units_, and _ORC-7-quantity/timing coded_, but the _RXO-1-requested give code_ as free text.
+
+MSH|^&~\|Pharm|GenHosp|CIS|GenHosp|2006052911150700||OMP^O09^OMP_O09|...<cr>
+
+PID|...<cr>
+
+ORC|NW|1000^OE||||E|^Q6H^D10^^^R|...<cr>
+
+RXO|^Polycillin 500 mg TAB^|500||MG|||||Y||40|...<cr>
+
+RXR|PO|...<cr>
+
+{empty}g) A more completely coded version of the order, with the _RXO-1-requested give code_, _RXO-2-requested give amount-minimum_, _RXO-4-requested give units_, and _ORC-7-quantity/timing coded_, but where _RXO-1-requested give code_ does not imply units.
+
+MSH|^&~\|Pharm|GenHosp|CIS|GenHosp|2006052911150700||OMP^O09^OMP_O09|...<cr>
+
+PID|...<cr>
+
+ORC|NW|1000^OE||||E|^Q6H^D10^^^R|...<cr>
+
+RXO|RX1001^Polycillin^L|500||MG|||||Y||40|...<cr>
+
+RXR|PO|...<cr>
+
+{empty}h) A completely encoded version, with the _RXO-1-requested give code_, _RXO-2-requested give amount-minimum_, _RXO-4-requested give units_, and _ORC-7-quantity/timing coded_, and where _RXO-1-requested give code_ does imply units.
+
+MSH|^&~\|Pharm|GenHosp|CIS|GenHosp|2006052911150700||OMP^O09^OMP_O09|...<cr>
+
+PID|...<cr>
+
+ORC|NW|1000^OE||||E|^Q6H^D10^^^R|...<cr>
+
+RXO|RX1001^Polycillin 500 mg TAB^L|500||MG|||||G||40|...<cr>
+
+RXR|PO|...<cr>
+
+{empty}i) Pharmacy or treatment supplier's encoded version (RDE message) sent to nursing application (a generic substitution).
+
+MSH|^&~\|Pharm|GenHosp|CIS|GenHosp|2006052911150700||RDE^O11^RDE_O11|...<cr>
+
+PID|...<cr>
+
+ORC|RE|1000^OE|9999999^RX|||E|^Q6H^D10^^^R|...<cr>
+
+RXE|^^^200612100600^^R|0047-0402-30^Ampicillin 250 MG
+
+TAB^NDC|2||TAB|||||G|80||||123456|rx#1001|...<cr>
+
+RXR|PO|...<cr>
+
+{empty}j) Pharmacy or treatment supplier's dispense results (RDS message).
+
+MSH|...<cr>
+
+PID|...<cr>
+
+ORC|RE|1000^OE|9999999^RX|||E|^Q6H^D10^^^R|...<cr>
+
+RXD|1|0047-0402-30^Ampicillin 250 MG TAB^NDC|199012100400|8|TAB||RX#1001|
+
+123456|G|8|...<cr>
+
+{empty}k) Pharmacy or treatment supplier's give results (RGV message).
+
+MSH|^&~\|Pharm|GenHosp|CIS|GenHosp|2006052911150700||RGV^O15^RGV_O15|...<cr>
+
+PID|...<cr>
+
+ORC|RE|1000^OE|9999999^RX|||E|^Q6H^D10^^^R|...<cr>
+
+RXG|1|1|^^200612100600^^R|0047-0402-30^Ampicillin 250 MG TAB^NDC|500||MG|||G|...<cr>
+
+RXR|PO|...<cr>
+
+{empty}l) Nursing application Medications Administration results to pharmacy, treatment, or Order Entry application.
+
+MSH|^&~\|Pharm|GenHosp|CIS|GenHosp|2006052911150700||RAS^O17^RAS_O17|...<cr>
+
+PID|...<cr>
+
+ORC|RE|1000^OE|9999999^RX|||E|^Q6H^D10^^^R|...<cr>
+
+RXA|1|1|200612100615||0047-0402-30^Ampicillin 250 MG TAB^NDC|2|TAB|...<cr>
+
+RXR|PO|...<cr>
+

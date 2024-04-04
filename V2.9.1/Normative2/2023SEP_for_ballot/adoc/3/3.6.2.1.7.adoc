@@ -1,0 +1,51 @@
+===== 3.6.2.1.7 Ordered pairwise relationship
+
+In a strict sense, this type of relationship is characterized by a one-to-one association based on type (e.g., medical record number to medical record number, etc.) and the corresponding order of the element, and is typically found in list or set operations. However, for purposes of practical implementation, this relationship will be defined as a simple one-for-one pairing, as exists between the _PID-3 - Patient Identifier List_ and the _MRG-1 - Prior Patient Identifier List_. In other words, elements "A", "B", and "C" in the first list would directly correspond to elements "X", "Y", and "Z" in the second list. No consideration is made to the type or value of the corresponding elements; it is the explicit order of the elements which controls the association process. This scenario could be expressed as follows:
+
+List~1~ = \{A,B,C}
+
+List~2~ = \{X,Y,Z}
+
+[width="100%",cols="100%",]
+|===
+|*A : X*
+|*B : Y*
+|*C : Z*
+|===
+
+A second scenario may arise which deserves mention. As in the list example above, elements "A", "B", and "C" in the first list would "pair-up" with elements "X", "Y", "Z", "Q", "R", and "S" in the second list. Again, no consideration is made to the type or value of the corresponding elements; it is the order and presence which controls the association process. This scenario could be expressed as follows:
+
+List~1~ = \{A,B,C}
+
+List~2~ = \{X,Y,Z,Q,R,S}
+
+[width="100%",cols="100%",]
+|===
+|*A : X*
+|*B : Y*
+|*C : Z*
+|*: Q*
+|*: R*
+|*: S*
+|===
+
+In the second scenario, the last three elements "Q", "R", and "S" are not affected and their value remains as if no association had been made.
+
+A third scenario may arise which deserves mention. As in the list example above, elements "A", "B", "C", "D", "E", and "F" in the first list would "pair-up" with elements "X", "Y", and "Z" in the second list. Again, no consideration is made to the type or value of the corresponding elements; it is the order and presence which controls the association process. This scenario could be expressed as follows:
+
+List~1~ = \{A,B,C,D,E,F}
+
+List~2~ = \{X,Y,Z}
+
+[width="100%",cols="100%",]
+|===
+|*A : X*
+|*B : Y*
+|*C : Z*
+|*D :*
+|*E :*
+|*F :*
+|===
+
+In the third scenario, the last three elements "D", "E", and "F" are not affected and their value remains the same as if no association had been made.
+

@@ -1,0 +1,6 @@
+==== 12.4.4.1 VAR-1 Variance Instance ID (EI) 01212
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the unique identifier of the specific variance record.
+

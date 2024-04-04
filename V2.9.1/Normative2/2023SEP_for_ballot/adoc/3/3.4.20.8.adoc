@@ -1,0 +1,4 @@
+==== *3.4.20.8* GSR-8 Acquisition Date (DTM) 02521
+
+Definition: This field contains the date/time when the sex or gender value was first recorded in the system.
+

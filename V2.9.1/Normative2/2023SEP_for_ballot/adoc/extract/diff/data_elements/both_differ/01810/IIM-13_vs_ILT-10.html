@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+IIM-13_vs_ILT-10
+</h1>
+<hr>
+<h3>
+For 01810 there were 2 versions found.<br>This diff compares the version found in fields ["IIM-13", "IIM-13"] from sections ["17.5.1", nil], respectively<br>with the version found in fields ["ILT-10", "ILT-10"] from sections ["17.5.8", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>table:,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field <strong>specifie</strong>s the <strong>unit for _IIM-12</strong> Inventory on Hand <strong>Quantity_</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:<strong>0818</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field <strong>contain</strong>s the <strong>quantity of this inventory item that was available for issue/use as of the date specified in _ILT-8</strong> Inventory on Hand <strong>Date_ field. No adjustment has been made for subsequent use. See _User-defined Table 0818 – Package_ as described in _PKG-2 Packaging Units_ and as presented in Chapter 2C, Code Tables, for suggested values</strong>.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:01810,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="del"><del><span class="symbol">-</span>table:,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field <strong>specifie</strong>s the <strong>unit for _IIM-12</strong> Inventory on Hand <strong>Quantity_</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:<strong>0818</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field <strong>contain</strong>s the <strong>quantity of this inventory item that was available for issue/use as of the date specified in _ILT-8</strong> Inventory on Hand <strong>Date_ field. No adjustment has been made for subsequent use. See _User-defined Table 0818 – Package_ as described in _PKG-2 Packaging Units_ and as presented in Chapter 2C, Code Tables, for suggested values</strong>.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

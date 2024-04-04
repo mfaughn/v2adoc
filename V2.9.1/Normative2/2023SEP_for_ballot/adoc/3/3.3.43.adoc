@@ -1,0 +1,66 @@
+=== 3.3.43 ADT/ACK - Move Patient Information - Patient Identifier List (Event A43)
+
+A move has been done at the patient identifier list level. Identifier to be moved in the _PID-3 - Patient Identifier List_ and _MRG-1 - Prior Patient Identifier List_ will have the same value. The "from" (incorrect source patient ID) and "to" (correct target patient ID) identifiers have different values. See A43 examples in section 5. The identifiers involved in identifying the patient to be moved (_MRG-1 - Prior Patient Identifier List_) may or may not have accounts, which may or may not have visits. In any case, all subordinate data sets associated with the identifier in _MRG-1 - Prior Patient Identifier List_ are moved along with the identifier, from the "incorrect source patient ID" to the "correct target patient ID."
+
+No identifiers subordinate to the identifier (account number, visit number, alternate visit ID) are valued in this message. Specification of these other subordinate identifiers is not required.
+
+This event and the message syntax do, however, allow for the specification of a "new identifier" (_PID-3 - Patient Identifier List_), which may be application and/or implementation specific and therefore require site negotiation.
+
+See sections link:#merging-patientperson-information[_3.6.2_&#44;] "link:#merging-patientperson-information[_Merging patient/person information_]," and link:#move[_3.6.2.1.3_], "link:#move[_Move_]," for a discussion of issues related to the implementation of move messages.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. When demographic data in other fields change, it is recommended that the A08 (update patient information) event be used in conjunction with this message. However, all PID data associated with the "correct target identifier" (_PID-3 - Patient Identifier List_) are treated as updated information.
+
+ADT^A43^ADT_A43: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|\{ |--- PATIENT begin | |
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|link:#MRG[MRG] |Merge Information | |3
+|} |--- PATIENT end | |
+|===
+
+[width="100%",cols="19%,24%,5%,17%,18%,17%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A43^ADT_A43 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A43^ACK |- |ACK^A43^ACK
+|Application Ack |ADT^A43^ADT_A43 |- |- |ACK^A43^ACK |ACK^A43^ACK
+|===
+
+ACK^A43^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="29%,33%,6%,32%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A43^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A43^ACK
+|Application Ack |- |- |-
+|===
+

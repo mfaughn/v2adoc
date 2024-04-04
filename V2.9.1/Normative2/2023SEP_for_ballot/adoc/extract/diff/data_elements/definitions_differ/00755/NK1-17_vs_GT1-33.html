@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+NK1-17_vs_GT1-33
+</h1>
+<hr>
+<h3>
+For 00755 there were 4 versions found.<br>This diff compares the version found in fields ["NK1-17", "NK1-17"] from sections ["3.4.5", nil], respectively<br>with the version found in fields ["GT1-33", "GT1-33"] from sections ["6.5.5", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:<strong>This field id</strong>entifies specific living conditions <strong>(e.g., spouse dependent on patient, walk-up) that are relevant to an evaluation o</strong>f the <strong>patient&#39;s healthcare needs. This information can be used for discharge planning. Examples might include Spouse Dependent, Medical Supervision Required, Small Children Dependent. This field repeats because, for example, &quot;spouse dependent&quot; and &quot;medical supervision required&quot; can apply at the same time</strong>. Refer to _User-defined Table 0223 - Living Dependency_ in Chapter 2C, Code Tables, for suggested values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:<strong>Id</strong>entifies <strong>the </strong>specific living conditions <strong>o</strong>f the <strong>guarantor</strong>. Refer to _User-defined Table 0223 - Living Dependency_ in Chapter 2C, Code Tables, for suggested values.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00755,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:0223,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:<strong>This field id</strong>entifies specific living conditions <strong>(e.g., spouse dependent on patient, walk-up) that are relevant to an evaluation o</strong>f the <strong>patient&#39;s healthcare needs. This information can be used for discharge planning. Examples might include Spouse Dependent, Medical Supervision Required, Small Children Dependent. This field repeats because, for example, &quot;spouse dependent&quot; and &quot;medical supervision required&quot; can apply at the same time</strong>. Refer to _User-defined Table 0223 - Living Dependency_ in Chapter 2C, Code Tables, for suggested values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:<strong>Id</strong>entifies <strong>the </strong>specific living conditions <strong>o</strong>f the <strong>guarantor</strong>. Refer to _User-defined Table 0223 - Living Dependency_ in Chapter 2C, Code Tables, for suggested values.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

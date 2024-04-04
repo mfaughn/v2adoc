@@ -1,0 +1,7 @@
+== 2.17 Outstanding Issues
+
+The following items are being discussed in the Infrastructure and Messaging work group for addition to future versions of HL7:
+
+____
+{empty}1) Conformance Based Queries use of the Message Profiles. Current status of this can be found on the Conformance WG web site (http://www.hl7.org).
+____

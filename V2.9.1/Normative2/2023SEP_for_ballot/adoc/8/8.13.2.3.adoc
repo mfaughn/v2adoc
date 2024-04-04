@@ -1,0 +1,16 @@
+==== 8.13.2.3 DMI-3 Lower and Upper Trim Points (NR) 02231
+
+Components: <Low Value (NM)> ^ <High Value (NM)>
+
+Components: <Lower Trim Point (NM)> ^ <Upper Trim Point (NM)>
+
+Definition: This field contains the lower and upper trim points as calculated for this DRG..
+
+Example as used in Germany: The "lower trim point" is equivalent to 1/3 of the average length of stay for patients having this DRG. The "upper trim point" is equivalent to 3 times the average length of stay. It is marked as the right dotted line within the graphics below.
+
+The following graphics provides an overview of the German usage:
+
+image:extracted-media/media/image1.wmf[extracted-media/media/image1]
+
+The gray boxes represent the amount of cases according to the length of stay. The higher and lower 2,5% outliers (white boxes) are cut off. The average length of stay is calculated thereof and is represented by the middle dotted line. From that the lower trim point is calculated by dividing by 3, the upper trim point is the average multiplied with 3.
+

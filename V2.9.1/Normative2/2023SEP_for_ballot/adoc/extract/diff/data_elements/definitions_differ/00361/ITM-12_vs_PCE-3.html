@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+ITM-12_vs_PCE-3
+</h1>
+<hr>
+<h3>
+For 00361 there were 4 versions found.<br>This diff compares the version found in fields ["ITM-12", "ITM-12"] from sections ["17.5.2", nil], respectively<br>with the version found in fields ["PCE-3", "PCE-3"] from sections ["17.5.6", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains <strong>the</strong> code <strong>assign</strong>ed by <strong>the institution </strong>for the <strong>purpose of uniquely identifying a patient billing code specific for a </strong>supply item<strong>. In </strong>the <strong>context </strong>of th<strong>is message, this is a code that is a cross-reference to the I</strong>tem <strong>Code/Id. This field would be used to uniquely identify a procedure, supply item,</strong> or <strong>test for </strong>charge<strong>s; or to identify</strong> the <strong>payment medium for payments. It can reference, for example, a CBC (a lab </strong>charge<strong>), or an Elastic Bandage 3&#39;&#39; (supply charge), or Chest 1 View (radiology charge). For instance the code would be 300-0001, with a description of CBC</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains <strong>a</strong> code <strong>that is us</strong>ed by <strong>a billing system to charge </strong>for the <strong>inventory </strong>supply item<strong>, </strong>the <strong>descriptive name </strong>of th<strong>e patient charge for that sys</strong>tem <strong>(as it may appear on a patient&#39;s bill</strong> or charge<strong> labels) and</strong> the <strong>name of the coding system that assigned the </strong>charge<strong> code. Refer to _User-defined Table 0132 – Transaction Codes_ in Chapter 6, Financial Management, for suggested values</strong>.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00361,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:0132,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains <strong>the</strong> code <strong>assign</strong>ed by <strong>the institution </strong>for the <strong>purpose of uniquely identifying a patient billing code specific for a </strong>supply item<strong>. In </strong>the <strong>context </strong>of th<strong>is message, this is a code that is a cross-reference to the I</strong>tem <strong>Code/Id. This field would be used to uniquely identify a procedure, supply item,</strong> or <strong>test for </strong>charge<strong>s; or to identify</strong> the <strong>payment medium for payments. It can reference, for example, a CBC (a lab </strong>charge<strong>), or an Elastic Bandage 3&#39;&#39; (supply charge), or Chest 1 View (radiology charge). For instance the code would be 300-0001, with a description of CBC</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains <strong>a</strong> code <strong>that is us</strong>ed by <strong>a billing system to charge </strong>for the <strong>inventory </strong>supply item<strong>, </strong>the <strong>descriptive name </strong>of th<strong>e patient charge for that sys</strong>tem <strong>(as it may appear on a patient&#39;s bill</strong> or charge<strong> labels) and</strong> the <strong>name of the coding system that assigned the </strong>charge<strong> code. Refer to _User-defined Table 0132 – Transaction Codes_ in Chapter 6, Financial Management, for suggested values</strong>.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

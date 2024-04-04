@@ -1,0 +1,4 @@
+==== 4A.8.1.2 Using RXA-17 in vaccine messagesUse in _RXA-17-substance manufacturer name_ to identify the manufacturer or distributor of the particular vaccine administered. The codes listed are used by immunization registries in the U.S. Entries will be added as needed to accommodate international requirements. Refer to chapter 2C file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70227[_Imported Table 0227 – manufacturers of Vaccines_] in Chapter 2C, Code Tables, for valid values. If using an MVX, Manufacturer, code, the coding system component (RXA-17.3) should be valued as "MVX", not as "HL70227."
+
+== 
+

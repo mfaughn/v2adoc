@@ -1,0 +1,4 @@
+==== 13.3.10.6 TCD-6 Automatic Repeat Allowed (ID) 01416
+
+Definition: This field identifies whether or not automatic repeats are to be initiated for this particular specimen for this particular test code. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 -Yes/no Indicator_] for valid values.
+

@@ -1,0 +1,4 @@
+==== 14.4.3.3 NST-3 Source Type (ID) 01175
+
+Definition: This field identifies (in certain systems) whether a lower level source identifier is an initiate or accept type. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70332[_HL7 Table 033__2 – Sou__rce Type_] in Chapter 2C, Code Tables, for valid values.
+

@@ -1,0 +1,4 @@
+==== 6.5.2.11 DG1-11 Outlier Type 00385
+
+*Attention: _DG1-11 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6_*
+

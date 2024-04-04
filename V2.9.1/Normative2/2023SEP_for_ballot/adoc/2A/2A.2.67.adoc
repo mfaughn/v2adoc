@@ -1,0 +1,40 @@
+=== 2A.2.67 RPT – repeat pattern
+
+HL7 Component Table - RPT – Repeat Pattern
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |CWE |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70335[0335] |Repeat Pattern Code | |2A.2.13
+|2 |2..2 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70527[0527] |Calendar Alignment | |2A.2.35
+|3 | |10= |NM |O | |Phase Range Begin Value | |2A.2.47
+|4 | |10= |NM |O | |Phase Range End Value | |2A.2.47
+|5 | |10= |NM |O | |Period Quantity | |2A.2.47
+|6 | | |CWE |C | |Period Units | |2A.2.36
+|7 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |Institution Specified Time | |2A.2.35
+|8 |2..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70528[0528] |Event | |2A.2.35
+|9 | |10= |NM |O | |Event Offset Quantity | |2A.2.47
+|10 | | |CWE |C | |Event Offset Units | |2A.2.36
+|11 | | |GTS |O | |General Timing Specification | |2A.2.32
+|===
+
+Definition: The repeat pattern data type should be used where it is necessary to define the frequency at which an event is to take place. This data type provides a way to define repeat pattern codes "on the fly". The repeat pattern code is equivalent to the TQ data type, component 2, sub-component 1 (repeat pattern). The additional components define the meaning of the repeat pattern code. Components 2 - 10 are used to define relatively simple repeat patterns. Component 11 is provided to define complex repeat patterns. This data type forms a bridge between the 2.x Repeat Pattern concept from Quantity/Timing, and the Version 3.0 GTS General Timing Specification. Component 1 is the 2.x concept of repeat pattern. Components 2-7 are derived from the version 3.0 data type PIVL. Components 8-10 are derived from the version 3.0 EIVL data type. If a repeat pattern cannot be defined using components 2-10, then component 11, General Timing Specification is provided. This allows the full literal form of the version 3.0 GTS to be specified.
+
+When using the RPT, if an application doesn't recognize the code in component 1, then it may attempt to determine the appropriate frequency using the remaining components. If the application does recognize the code in component 1, the application is not required to determine the frequency from the remaining components.
+
+*Use Case*: The use case supporting this proposal is the need to define repeat patterns on the fly while placing an order. The TQ data type did not have the capability to define the meaning of a repeat pattern on the fly. To get around this problem, vendors have implemented a variety of solutions to solve this issue. One way was to add Z-components to the TQ data type to transmit information about the repeat pattern. Another solution was to attempt to parse the repeat pattern code in an attempt to decipher what the code meant.
+
+Examples:
+
+|Q1H&Every 1 Hour&HL7xxx^^^^1^h|
+
+|Q2J2&Every second Tuesday&HL7xxx^DW^2^^2^wk|
+
+|BID&Twice a day at institution specified times&HL7xxx^^^^12^h^Y|
+
+|QAM&Every morning at the institution specified time&HL7xxx^HD^00^11^1^d^Y|
+
+|QHS&Every day before the hours of sleep&HL7xxx^^^^1^d^^AHS|
+
+|ACM&Before Breakfast&HL7xxx^^^^^^^ACM|
+

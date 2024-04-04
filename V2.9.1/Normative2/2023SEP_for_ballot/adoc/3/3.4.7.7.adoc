@@ -1,0 +1,8 @@
+==== *3.4.7.7* IAM-7 Allergy Unique Identifier (EI) 01552
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a value that uniquely identifies a single allergy for a person.
+
+This field is conditionally required. The surrogate field to use is _IAM-3 - Allergen Code/Mnemonic/Description_ if that field can uniquely identify the allergy on the receiving system.
+

@@ -1,0 +1,4 @@
+==== 17.9.1.11 DEV-11 Device Serial Number (ST) 03480
+
+Definition: Manufacturer’s serial number for this device. This field may be the same as DEV-2, Unique Device Identifier when the device does not involve a UDI Carrier for UDI and DEV-2 represents a serial number. The implementation guide would determine whether DEV-11 is then used or not.
+

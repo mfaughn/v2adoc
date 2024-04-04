@@ -1,0 +1,4 @@
+==== 9.7.1.17 CON-17 Translator Assistance Indicator (ID) 01792
+
+Definition: Identifies whether translation was (or will be) required to obtain informed consent from the subject. Refer to table file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/No Indicator._]
+

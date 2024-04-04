@@ -1,0 +1,4 @@
+==== 13.3.5.4 ECD-4 Requested Completion Time 01393
+
+*_Attention: As of version 2.5 this fieldwas retained for backward compatibility only and withdrawn as of v2.7._* The TQ data type was deprecated; see Chapter 2A, section 2.A.81. Instead use the "Explicit time" (TQ1-4) or "Relative Time and Units" (TQ1-5) fields of the TQ1 segment in a message using ECD segment.
+

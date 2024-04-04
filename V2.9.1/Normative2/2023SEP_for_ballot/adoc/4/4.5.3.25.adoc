@@ -1,0 +1,8 @@
+==== 4.5.3.25 OBR-25 Result Status (ID) 00258
+
+Definition: This field contains the status of results for this order. This conditional field is required whenever the OBR is contained in a report message. It is not required as part of an initial order.
+
+There are two methods of sending status information. If the status is that of the entire order, use ORC-15-order effective date/time and ORC-5-order status. If the status pertains to the order detail segment, use OBR-25-result status and OBR-22-results rpt/status chng – date/time. If both are present, the OBR values override the ORC values.
+
+This field would typically be used in a response to an order status query where the level of detail requested does not include the OBX segments. When the individual status of each result is necessary, OBX-11-observ result status may be used. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70123[HL7 Table 0123 – Result Status] in Chapter 2C, Code Tables, for valid entries.
+

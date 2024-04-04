@@ -1,0 +1,34 @@
+=== 3.4.11 PD1 - Patient Additional Demographic Segment
+
+The patient additional demographic segment contains demographic information that is likely to change about the patient.
+
+[#_Hlt479197572 .anchor]####HL7 Attribute Table - PD1 - Patient Additional Demographic
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70223[0223] |00755 |Living Dependency
+|2 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70220[0220] |00742 |Living Arrangement
+|3 | | |XON |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70204[0204] |00756 |Patient Primary Facility
+|4 | | | |W | | |00757 |Patient Primary Care Provider Name & ID No.
+|5 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70231[0231] |00745 |Student Indicator
+|6 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70295[0295] |00753 |Handicap
+|7 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70315[0315] |00759 |Living Will Code
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70316[0316] |00760 |Organ Donor Code
+|9 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00761 |Separate Bill
+|10 | | |CX |O |Y | |00762 |Duplicate Patient
+|11 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70215[0215] |00743 |Publicity Code
+|12 |1..1 | |ID |B | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00744 |Protection Indicator
+|13 | | |DT |B | | |01566 |Protection Indicator Effective Date
+|14 | | |XON |O |Y | |01567 |Place of Worship
+|15 | | |CWE |C |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70435[0435] |01548 |Advance Directive Code
+|16 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70441[0441] |01569 |Immunization Registry Status
+|17 | | |DT |O | | |01570 |Immunization Registry Status Effective Date
+|18 | | |DT |O | | |01571 |Publicity Code Effective Date
+|19 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70140[0140] |01572 |Military Branch
+|20 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70141[0141] |00486 |Military Rank/Grade
+|21 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70142[0142] |01573 |Military Status
+|22 | | |DT |O | | |02141 |Advance Directive Last Verified Date
+|23 | | |DT |O | | |03511 |Retirement Date
+|===
+

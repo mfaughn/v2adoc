@@ -1,0 +1,17 @@
+=== 8.11.4 CM2 - Clinical Study Schedule Master Segment
+
+The Technical Steward for the CM2 segment is Orders and Observations.
+
+The Clinical Study Schedule Master (CM2) contains the information about the scheduled time points for study or phase-related treatment or evaluation events. The fact that a patient has data satisfying a scheduled time point is sent in the CSS segment, sequence 2. The CM2 segment describes the scheduled time points in general.
+
+[#CM2 .anchor]####HL7 Attribute Table - CM2 - Clinical Study Schedule Master
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |O | | |01024 |Set ID- CM2
+|2 | | |CWE |R | | |01025 |Scheduled Time Point
+|3 | |300= |ST |O | | |01026 |Description of Time Point
+|4 | | |CWE |R |Y/200 | |01027 |Events Scheduled This Time Point
+|===
+

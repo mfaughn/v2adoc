@@ -1,0 +1,4 @@
+==== 13.3.12.2 EQP-2 File Name (ST) 01431
+
+Definition: This field is the physical file name that is being used to store information about the transmitted log and/or service event.
+

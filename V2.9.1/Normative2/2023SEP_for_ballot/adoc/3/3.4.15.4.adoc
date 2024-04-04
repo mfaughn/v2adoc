@@ -1,0 +1,4 @@
+==== *3.4.15.4* OH1-4 Employment Status Start Date (DT) 03519
+
+Definition: This field asserts when the employment status began.
+

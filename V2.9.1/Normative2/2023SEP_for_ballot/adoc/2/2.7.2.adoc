@@ -1,0 +1,68 @@
+=== 2.7.2 Changing messages or message constituents
+
+____
+Allowable changes to messages or message constituents can be categorized as name, data type, optionality, repeatability, length or definition changes.
+____
+
+{empty}a) The descriptive text name of a message or message constituent (except for segment group name) MAY be changed. This is not expected to have impact on either the sender's ability to transmit a message or the receiver's ability to receive and understand the message. Reasons for changing the descriptive text name include: 1) clarify a misleading name, and 2) encompassing a broader use without jeopardizing current use.
+
+{empty}b) The data type of a field or data type component MAY be changed. A sending system SHOULD be able to send the modified field or data type; the receiver, regardless of its version level, SHOULD be able to understand the message and to ignore any message constituent it is not expecting.
+
+____
+{empty}1) The data type of the field MAY be changed provided that the components of the new data type have the same structure and interpretation as the old data type. For example, an IS data type MAY be changed to a CE, but a PPN data type cannot be changed to a PN. An NM data type cannot be changed to an ST data type.
+
+{empty}2) For existing fields in existing segments, data types MAY be changed if the leftmost (prior version) part of the field has the same meaning as it had in the prior version of HL7. This is in accordance with the rules governing the addition of new components and subcomponents described in the section above. In other words, if the new parts of the field (those that are part of the new data type) are ignored, what remains is the old field (defined by the old data type), which has the same meaning as it had in the prior version of HL7.
+
+{empty}3) If a data type component has its data type changed, the structure and interpretation SHALL remain the same as the pre-existing component. Any new component is added at the end of the data type.
+____
+
+{empty}c) The optionality of a message constituent MAY be changed. A sending system SHOULD be able to send the modified field; the receiver, regardless of its version level, SHOULD be able to understand the message. This pertains as follows:
+
+____
+{empty}1) Existing optional segment groups MAY be made required.
+
+{empty}2) Existing optional segments MAY be made conditional or required.
+
+{empty}3) Existing optional fields MAY be made conditional or required.
+
+{empty}4) Existing required fields MAY be made conditional if a new trigger event has been applied. The condition must be specified such that the field remains required for the pre-existing trigger events.
+
+{empty}5) Existing optional components of a data type MAY be made conditional or required.
+____
+
+{empty}d) The repeatability of a message constituent MAY be changed. A sending system SHOULD be able to send the modified message constituent; the receiver, regardless of its version level, SHOULD be able to understand the message. Note that if a non-repeating message constituent is made repeating, information sent in the new repetitions couldbe lost to the recipient who is not expecting them.
+
+If HL7 has given, or will give, semantic meaning to the first instance, to allow backward compatibility, the first instance of the repeating constituent SHALL have the same meaning as the non-repeating constituent had in the prior version of HL7. In this way, a receiving application that interprets the message based upon the prior standard would continue to find the same intent communicated in the message.
+
+If HL7 has not given, and will/can not give, semantic meaning to the first instance, and one or more implementation-applied business rules exist to select one of several occurrences to populate a non-repeating constituent, those same rules SHOULD be applied when a newer version of the standard allows for repetition of the constituent. By applying the prior business rules to determine the first occurrence of a repeating constituent, a receiving application that interprets the message based upon the prior standard would continue to find the same intent communicated in the message.
+
+If, in the judgment of the owner/author of the standard section in question, changing a message constituent from non-repeating to repeating poses logical, parsing, business, or other compatibility issues, the owner/author SHOULD create a new structure to eliminate the compatibility concern.
+
+For example, if allowing a segment to repeat implies a change to the business intent of the message, the work group(s) responsible SHOULD define a new message structure (as a new message/trigger) and retain the old structure for backward compatibility.
+
+This pertains as follows:
+
+____
+{empty}1) A segment group MAY change from non-repeating to repeating, subject to the backward compatibility concerns expressed above.
+
+{empty}2) A segment group SHALL NOT be changed from repeating to non-repeating.
+
+{empty}3) A segment MAY be changed from non-repeating to repeating, subject to the backward compatibility concerns expressed above.
+
+{empty}4) A segment SHALL NOT be changed from repeating to non-repeating.
+
+{empty}5) A field MAY be changed from non-repeating to repeating, subject to the backward compatibility concerns expressed above. A field SHALL NOT be changed from repeating to non-repeating.
+____
+
+{empty}e) The minimum and maximum normative lengths and the conformance length and truncation status of each field or data type component MAY be changed between versions. .
+
+{empty}f) Table definition MAY change.
+
+____
+{empty}1) A table MAY be changed from user-defined to HL7 defined or externally defined.
+
+{empty}2) A table MAY be changed from HL7 defined to an externally defined table. When this occurs, the data type of the field SHOULD be changed to a CNE or CWE.
+
+{empty}3) A table MAY be changed from HL7 defined published in Chapter 2c to HL7 Defined sourced externally (HL7-EXT).
+____
+

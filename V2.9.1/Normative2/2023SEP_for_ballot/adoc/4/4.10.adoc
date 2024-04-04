@@ -1,0 +1,10 @@
+== 4.10 Supply Trigger Events & Messages
+
+The Requisition Detail segment (RQD) is used for ordering medical, surgical, and patient care supplies. It is assumed that these supplies are managed by a materials management application, which contains a master list of all items the hospital uses.
+
+There are basically two types of supplies, commonly referred to as stock and non-stock.
+
+Stock supplies are, as the name suggests, stocked in the hospital in designated areas, such as the warehouse, Central Supply, Nursing floors, or Operating Room. When requisitioning stock supplies, the requesting application need only specify the information in the RQD segment. It is assumed that this is enough information for the application receiving to identify the item. If the sending application is not aware whether the supply is stock, it may optionally send an RQ1 along with the RQD. Typically in that case, the item is requested with a free text description.
+
+Non-stock supplies are not stocked anywhere in the hospital and must be ordered from an industry distributor or manufacturer. When the requesting application knows that it is requisitioning non-stock supplies, it may also send an RQ1 segment with the RQD if at least one field in RQ1 is known to the sending application. This may be necessary in order for the receiving application to properly determine where to get these supplies. This depends on the sophistication of the database of the receiving application, which may contain a history of requisitions from the sending application.
+

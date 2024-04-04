@@ -1,0 +1,22 @@
+==== 8.8.13.2 OM5-2 Tests/Observations Included Within an Ordered Test Battery (CWE) 00655
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the codes and names of all tests/observations included within a single battery (nature code P, as described in _OM1-18 - Nature of Service/Test/Observation_), a single functional procedure (nature code F), or a given superset (nature code S). When a segment includes a list of component elements, the sending system should be sure that the segments defining all of the components are sent before the segment that references them. An entry in this list can itself be a battery. Refer to Table 0662 - Test/Observations Included Within an Ordered Test Battery in Chapter 2C for valid values.
+
+The individual service/test/observation code should be recorded as type CWE, i.e., in the standard format for coded observation identifiers. Multiple observations should be separated by repeat delimiters. In the US, it is recommended that, within a single occurrence of OM5-2 Tests/Observations included within an Orders Test Battery, these child observations be identified with LOINC codes as well as by the producer’s local identifier. Examples of code systems used may be LOINC (emerging as the global standard for observation identifiers), JLAC10, or SNOMED CT.
+
+If the definition segment defined serum electrolytes, this field might look like the following:
+
+2951-2^SODIUM^LN~
+
+2823-3^POTASSIUM^LN~
+
+2075-0^CHLORIDE^LN~
+
+2028-9^CARBON DIOXIDE^LN
+
+For S (superset) parameters, this field contains the batteries that are included within the "super" battery. For example, ROUTINES might be defined as:
+
+402^Electrolytes~352^Urinalysis~432^CBC~520^SMA12
+

@@ -1,0 +1,42 @@
+=== 4.4.19 OSU – Order Status Update Acknowledgement (Event O52) 
+
+This message is used to create simple order status updates, through an acknowledgement, for any type of order where the ORC is sufficient to communicate the order identifier and no other data updates are necessary. This is particularly relevant when a status update occurred in response to a new or updated order. The OSU structure allows it to be used instead of, but equivalent to the application level acknowledgement message, e.g., ORG.
+
+OSU^O52^OSU_O52: Order Status Update Acknowledgement Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ARV]} |Access Restrictions | |3
+|[\{ ERR }] |Error | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for Header) | |2
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{PRT}] |Participation | |7
+|] |--- PATIENT end | |
+|[\{ARV}] |For backwards compatibilitty only as of V2.9. |B |3
+|\{ |--- ORDER_STATUS begin | |
+|ORC |Common Order | |4
+|\{[ PRT ]} |Participation | |7
+|} |--- ORDER_STATUS end | |
+|===
+
+[width="99%",cols="28%,35%,13%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|OSU^O52^OSU_O52 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O52^ACK |- |ACK^O52^ACK
+|Application Ack |- |- |-
+|===
+
+____
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+____
+

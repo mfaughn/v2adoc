@@ -1,0 +1,13 @@
+=== 2A.2.58 PT - processing type
+
+HL7 Component Table - PT – Processing Type
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 |1..1 | |ID |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70103[0103] |Processing ID | |2A.2.35
+|2 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70207[0207] |Processing Mode | |2A.2.35
+|===
+
+Definition: This data type indicates whether to process a message as defined in HL7 Application (level 7) Processing rules.
+

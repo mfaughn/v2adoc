@@ -1,0 +1,14 @@
+==== 7.4.2.7 OBX-7 Reference Range (ST) 00575 
+
+Components: for numeric values in the format:
+
+{empty}a) lower limit-upper limit (when both lower and upper limits are defined, e.g., for potassium 3.5 - 4.5)
+
+{empty}b) > lower limit (if no upper limit, e.g., >10)
+
+{empty}c) < upper limit (if no lower limit, e.g., <15)
+
+alphabetical values: the normal value may be reported in this location
+
+Definition: When the observation quantifies the amount of a toxic substance, then the upper limit of the range identifies the toxic limit. If the observation quantifies a drug, the lower limits identify the lower therapeutic bounds and the upper limits represent the upper therapeutic bounds above which toxic side effects are common.
+

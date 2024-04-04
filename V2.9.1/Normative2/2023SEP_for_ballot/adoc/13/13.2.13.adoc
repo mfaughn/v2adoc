@@ -1,0 +1,51 @@
+=== 13.2.13 LSR/ACK - Automated Equipment Log/Service Request (Event U13)
+
+This message is used to request log and/or service events from one application to another (e.g., Laboratory Automation System to automated equipment).
+
+LSR^U13^LSU_U12: Equipment Log/Service Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ link:#EQP[EQP] } | |Equipment Log/Service | | | |13 |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,23%,5%,16%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|LSR^U13^LSU_U12 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U13^ACK |- |ACK^U13^ACK
+|Application Ack |LSU^U12^LSU_U12 |- |- |LSU^U12^LSU_U12 |LSU^U12^LSU_U12
+|===
+
+ACK^U13^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U13^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U13^ACK
+|Application Ack |- |- |-
+|===
+

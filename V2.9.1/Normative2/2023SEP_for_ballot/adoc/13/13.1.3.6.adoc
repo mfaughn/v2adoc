@@ -1,0 +1,4 @@
+==== 13.1.3.6 Bar code: 
+
+An array of parallel rectangular bars and spaces that creates a symbology representing a number or alphanumeric identifier.
+

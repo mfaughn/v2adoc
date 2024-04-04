@@ -1,0 +1,71 @@
+=== 9.6.11 MDM/ACK - Document Cancel Notification (Event T11)
+
+This is a notification of a cancellation of a document. This trigger event should be used only for an original document with an availability status of "Unavailable." When a document has been made available for patient care, the process should be to replace the original document, which then becomes obsolete. The replacement document describes why the erroneous information exists.
+
+*Scenario:* When the author dictated a document, the wrong patient identification was given, and the document was transcribed and sent to the wrong patient's record. When the error is discovered, a cancellation notice is sent to remove the document from general access in the wrong patient's record. In these cases, a reason should be supplied in the cancellation message. To protect patient privacy, the correct patient's identifying information should not be placed on the erroneous document that is retained in the wrong patient's record for historical reference. A new document notification and content will be created using a T02 (original document notification and content) event and sent for association with the correct patient's record.
+
+MDM^T11^MDM_T01: Document Cancel Notification
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type |B, v2.5 |3
+|PID |Patient Identification | |3
+|[ \{ GSP } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ \{ GSC } ] |Sex Parameter for Clinical Use | |3
+|[ \{ PRT } ] |Participation | |7
+|PV1 |Patient Visit | |3
+|[ \{ PRT } ] |Participation Segment | |7
+|[\{ |--- COMMON_ORDER begin | |
+|ORC |Common order segment | |4
+|[ \{ PRT } ] |Participation | |7
+|[\{ |--- TIMING begin | |4
+|TQ1 |Timing/Quantity | |4
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|OBR |Observation request segment | |4
+|[ \{ PRT } ] |Participation | |7
+|[\{ NTE }] |Notes and comments about the OBR | |2
+|}] |--- COMMON_ORDER end | |
+|link:#TXA[TXA] |Document Notification | |9
+|[\{CON}] |Consent Segment | |9
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MDM^T11^MDM_T01 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |ACK^T11^ACK |- |ACK^T11^ACK |- |ACK^T11^ACK
+|Application Ack |- |- |- |ACK^T11^ACK |ACK^T11^ACK
+|===
+
+ACK^T11^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:#SFT[SFT] }] |Software segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ link:#ERR[ERR] }] |Error Information | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^T11^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^T11^ACK |- |ACK^T11^ACK
+|Application Ack |- |- |-
+|===
+

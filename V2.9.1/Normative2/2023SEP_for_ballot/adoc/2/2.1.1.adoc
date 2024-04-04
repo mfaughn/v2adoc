@@ -1,0 +1,15 @@
+=== 2.1.1 ANSI modal verbs
+
+____
+An effort has been made in this version of Chapter 2 to use the ANSI MODAL verbs as described in ISO/IEC Directive, Appendix G, as delineated in the following table:
+____
+
+[width="100%",cols="34%,33%,33%",options="header",]
+|===
+|To convey the Sense of: |Use the following (in UPPERCASE) |
+|Required/Mandatory |SHALL* |SHALL NOT*
+|Best Practice/Recommendation |SHOULD* |SHOULD NOT*
+|Acceptable Permitted |MAY* |NEED NOT*
+|*Usage of any of these in lower case does not carry the same weight. | |
+|===
+

@@ -1,0 +1,4 @@
+==== 8.14.2.2 CTR-2 Contract Description (ST) 02393
+
+Definition: The Contract Description is a description of the contract identified in CTR-1.
+

@@ -1,0 +1,69 @@
+=== 8.10.1 MFN/MFK - Charge Description Master File Message (Event M04)
+
+The charge description (CDM) master file segment should be used in conjunction with the general master file segments in Section 8.5, "GENERAL MASTER FILE SEGMENTS." Interfacing systems often need not only to communicate data about a patient's detailed charges, but also to communicate the charge identification entries by which an application knows how to handle a particular charge code. The charge description master is a master file.
+
+The NTE segment may also contain other information to the provider to convey other requirements or context. For example:
+
+____
+• Convey the status of Federal Drug Administration (FDA) approval of the test. For example, the test may have FDA approval but is not validated yet because of limited gathering of data to confirm the validity of the test.
+
+• Convey that a patient’s consent must be obtained before the test is ordered. This requirement can be conveyed in this NTE as well.
+____
+
+The CDM segment below is a specially designed master file segment for interfacing charge description masters. In the following message, the MFI-master file identifier should equal "CDM." When the CDM segment is used in an MFN message, the abstract definition is as follows:
+
+MFN^M04^MFN_M04: Master File Notification – Charge Description
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ NTE }] |Notes and Comments Segment | |2
+|\{ |--- MF_CDM begin | |
+|link:#MFE[MFE] |Master File Entry | |8
+|[\{ NTE }] |Notes and Comments Segment | |2
+|link:#CDM[CDM] |Charge Description Master | |8
+|[\{ NTE }] |Notes and Comments Segment | |2
+|[\{ link:#PRC[PRC] }] |Price Segment | |8
+|} |--- MF_CDM end | |
+|===
+
+[width="100%",cols="17%,23%,5%,18%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M04^MFN_M04 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M04^ACK |- |ACK^M04^ACK
+|Application Ack |MFK^M04^MFK_M01 |- |- |MFK^M04^MFK_M01 |MFK^M04^MFK_M01
+|===
+
+MFK^M04^MFK_M01: Master File Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK segment | |8
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M04^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^M04^ACK |- |ACK^M04^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,4 @@
+== 15.4 MESSAGE SEGMENTS
+
+The following segments are defined for the Personnel Management messages.
+

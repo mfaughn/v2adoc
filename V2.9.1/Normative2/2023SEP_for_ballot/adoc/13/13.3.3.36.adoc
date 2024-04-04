@@ -1,0 +1,4 @@
+==== 13.3.3.36 SAC-36 Icterus Index (NM) 01363
+
+Definition: This field is the index identifier that is being used to describe the Icterus Index of the specimen.
+

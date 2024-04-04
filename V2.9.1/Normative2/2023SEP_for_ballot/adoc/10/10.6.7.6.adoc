@@ -1,0 +1,6 @@
+==== 10.6.7.6 AIP-6 Start Date/Time (DTM) 01202
+
+Definition: This field contains the date and time this service needs for the appointment. This field allows the application to identify that the service is required for the appointment at a different time than the appointment's start date/time.
+
+This field is conditionally required. If a value for _AIP-7 Start Date/Time Offset_ is not provided, then a value is required for this field. To specify that there is no difference between the appointment's start date/time and the resource's start date/time either replicate the appointment's start date/time into this field, or specify an offset of zero (0) in _AIP-7 Start Date/Time Offset_ and any valid time unit code in _AIP-8 Start Date/Time Offset Units._
+

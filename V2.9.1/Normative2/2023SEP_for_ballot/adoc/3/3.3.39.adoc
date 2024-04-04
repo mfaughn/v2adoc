@@ -1,0 +1,4 @@
+=== 3.3.39 ADT/ACK - Merge Person - Patient ID (Event A39)
+
+*Attention: The Merge Person – Patient ID (A39) event was maintained for backward compatibility only as of v2.3.1 and withdrawn as of v2.7.* From V 2.3.1 onwards, the reader is referred to the A41 (Merge Patient - Patient Account Number) event.
+

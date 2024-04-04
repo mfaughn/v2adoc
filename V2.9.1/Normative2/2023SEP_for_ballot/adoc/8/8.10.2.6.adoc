@@ -1,0 +1,8 @@
+==== 8.10.2.6 CDM-6 Exploding Charges (CWE) 00987
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the repeating occurrences for a list of other CDM entry charge codes identifying the other charges which should be generated from this CDM entry. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70132[User-defined Table 0132 - Transaction Code] in Chapter 2C, Code Tables, for suggested values. If non-null, posting a charge to this CDM entry should result in posting the charges identified here. These are sometimes called "linked items."
+
+In the case of "chained" charges where the "lead" charge must be included in the exploded charges, the "lead" charge should be included in the list of exploding charges. If the price of this parent charge is included in the message, then it overrides the sum of the exploded charges prices.
+

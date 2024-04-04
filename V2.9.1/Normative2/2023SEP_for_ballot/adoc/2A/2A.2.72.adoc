@@ -1,0 +1,20 @@
+=== 2A.2.72 SNM - string of telephone number digits
+
+HL7 Component Table - SNM - String of Telephone Number Digits
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+| |1.. | | | | |String of telephone number digits | |
+|===
+
+Definition: A string whose characters are limited to "+" and/or the decimal digits 0 through 9. As a string, leading zeros are always considered significant.
+
+Used only in the XTN data type as of v2.7.
+
+*Minimum Length*: 1
+
+*Maximum Length*: Not specified for the type. May be specified in the context of use
+
+SNM is used for telephone numbers, so it is never appropriate to truncate values of type SNM.
+

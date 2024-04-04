@@ -1,0 +1,4 @@
+==== 4.5.1.24 ORC-24 Ordering Provider Address (XAD) 01314
+
+Definition: *_This field was retained for backward compatibility only as of v 2.7 and the detail was withdrawn and removed from the standard as of v 2.9._* The reader is referred to the PRT segment described in Chapter 7.
+

@@ -1,0 +1,4 @@
+==== 8.10.3.7 PRC-7 Minimum Quantity (NM) 01000
+
+Definition: This field contains the minimum number of identical charges allowed on one patient account for this CDM entry.
+

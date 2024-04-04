@@ -1,0 +1,117 @@
+=== 7.7.2 CSU - Unsolicited Study Data Message (Events C09-C12)
+
+Data are entered in the clinical trials system or may reside in laboratory, pathology, radiology, pharmacy and/or other clinical applications. Most clinical trials data ‑ clinical observations and study variables ‑ will be communicated in OBR and OBX segments. The CSR, CSP, and CSS segments will identify the specific association these OBR and OBX have to the clinical trial. Data can be broadcast or transmitted in batch mode to study sponsors or the data management center for collaborative studies.
+
+The general acknowledgement message as defined in Chapter 2 should be used for any acknowledgements.
+
+[width="100%",cols="13%,87%",options="header",]
+|===
+|Event |Description
+|C09 |Automated time intervals for reporting, like monthly
+|C10 |Patient completes the clinical trial
+|C11 |Patient completes a phase of the clinical trial
+|C12 |Update/correction of patient order/result information
+|===
+
+CSU^C09-C12^CSU_C09: Clinical Trial Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ARV}] |Access Restrictions | |3 | |
+|[\{SFT}] |Software Segment | |2 | |
+|[UAC] |User Authentication Credential | |2 | |
+|\{ |--- PATIENT begin | | | |
+|PID |Patient Identification | |3 | |
+|[PD1] |Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient) | |7 | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 | |
+|[\{NTE}] |Notes and comments | |2 | |
+|[ |--- VISIT begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[PV2] |Patient Visit - Additional Info | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient Visit) | |7 | |
+|] |--- VISIT end | | | |
+|link:#CSR[CSR] |Clinical Study Registration | |7 | |
+|\{ |--- STUDY_PHASE begin | | | |
+|[link:#CSP[CSP]] |Clinical Study Phase | |7 | |
+|\{ |--- STUDY_SCHEDULE begin | | | |
+|[link:#CSS[CSS]] |Clinical Study Data Schedule | |7 | |
+|\{ |--- STUDY_OBSERVATION begin | | | |
+|[ | | | | |
+|ORC |Common Order | |4 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for common order) | |7 | |
+|] | | | | |
+|link:#OBR[OBR] |Observation Battery | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for observation) | |7 | |
+|[\{ |--- TIMING_QTY begin | | | |
+|TQ1 |Timing/Quantity | |4 | |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 | |
+|}] |--- TIMING_QTY end | | | |
+|link:#OBX[OBX] |Observation Results | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participaton (for Observation Results) | |7 | |
+|} |--- STUDY_OBSERVATION end | | | |
+|\{ |--- STUDY_PHARM begin | | | |
+|[ |--- COMMON_ORDER begin | | | |
+|ORC |Common Order | |4 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Common Order) | |7 | |
+|] |--- COMMON_ORDER end | | | |
+|\{ |--- RX_ADMIN begin | | | |
+|RXA |Pharmacy Administration | |4 | |
+|RXR |Pharmacy Route | |4 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Pharmacy Administration) | |7 | |
+|} |--- RX_ADMIN end | | | |
+|} |--- STUDY_PHARM end | | | |
+|} |--- STUDY_SCHEDULE end | | | |
+|} |--- STUDY_PHASE end | | | |
+|} |--- PATIENT end | | | |
+|===
+
+[width="99%",cols="22%,24%,10%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CSU^C09^CSU_C09 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C09^ACK
+|Application Ack |ACK^C09^ACK |- |ACK^C09^ACK |ACK^C09^ACK
+|===
+
+[width="99%",cols="22%,24%,10%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CSU^C10^CSU_C09 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C10^ACK
+|Application Ack |ACK^C10^ACK |- |ACK^C10^ACK |ACK^C10^ACK
+|===
+
+[width="99%",cols="22%,24%,10%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CSU^C11^CSU_C09 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C11^ACK
+|Application Ack |ACK^C11^ACK |- |ACK^C11^ACK |ACK^C11^ACK
+|===
+
+[width="99%",cols="22%,24%,10%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CSU^C12^CSU_C09 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C12^ACK
+|Application Ack |ACK^C12^ACK |- |ACK^C12^ACK |ACK^C12^ACK
+|===
+

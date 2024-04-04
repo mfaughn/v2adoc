@@ -1,0 +1,6 @@
+==== 2.13.9.14 MSH-14 Continuation Pointer (ST) 00014
+
+Definition: This field is used to define continuations in application-specific ways.
+
+Only the sender of a fragmented message values this field.
+

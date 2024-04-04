@@ -1,0 +1,6 @@
+==== 13.1.3.53 Specimen carrier//Sample carrier//Carrier: 
+
+A device that holds the specimen container.
+
+*Note:* The specimen carrier interfaces mechanically with the transportation system to move the specimen from location to location, and may carry one specimen container or many specimen containers. (See Figure 13-5.)
+

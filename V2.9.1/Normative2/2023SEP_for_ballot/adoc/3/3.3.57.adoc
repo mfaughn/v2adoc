@@ -1,0 +1,150 @@
+=== 3.3.57 QBP/RSP - Find Candidates (QBP) and Response (RSP) (Events Q22 and K22)
+
+This query/response is designed for interaction between a client system and an MPI (Master Person Index). The query consists of a set of demographics for a person, and the response is the list of candidates considered by the MPI to match that set.
+
+Each returned person, specified by a PID segment, can also have an optional _QRI - Query Response_ Instance segment containing information about the quality of the match.
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID: |Q22
+|Query Type: |Query
+|Query Name: |Q22 Find Candidates
+|Query Trigger: |QBP^Q22^QBP_Q21
+|Query Mode: |
+|Response Trigger: |RSP^K22^RSP_K22
+|Query Characteristics |
+|Purpose: |Returns list of candidates matching demographic data specified by the input parameters.
+|===
+
+QBP^Q22^QBP_Q21: Query By Parameter
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|QPD |Query Parameter Definition Segment | |5
+|RCP |Response Control Parameters | |5
+|[ DSC ] |Continuation Pointer | |2
+|===
+
+[width="100%",cols="19%,24%,4%,16%,19%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|QBP^Q22^QBP_Q21 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^Q22^ACK |- |ACK^Q22^ACK
+|Application Ack |RSP^K22^RSP_K22 |- |- |RSP^K22^RSP_K22 |RSP^K22^RSP_K22
+|===
+
+RSP^K22^RSP_K22: Segment Pattern Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ERR] |Error | |2
+|QAK |Query Acknowledgment | |5
+|QPD |Query Parameter Definition Segment | |5
+|[\{ |--- QUERY_RESPONSE begin | |
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[ link:#_Hlt479197572[PD1] ] |Additional Demographics | |5
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[\{ |--- NEXT_OF_KIN begin | |
+|NK1 |Next of Kin | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|}] |--- NEXT_OF_KIN end | |
+|[ QRI ] |Query Response Instance | |5
+|}] |--- QUERY_RESPONSE end | |
+|[ DSC ] |Continuation Pointer | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|RSP^K22^RSP_K22 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^K22^ACK
+|Application Ack |- |- |-
+|===
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq. |Field Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |LOINC or HL7 Code/Domain |ElementName
+|1 |DemographicsFields | | | |QIP |R |Y | | | | |
+|2 |SearchConfidenceThreshold | | | |NM |O |N | | | | |
+|3 |AlgorithmName | | | |ST |O |N | | | | |
+|4 |AlgorithmVersion | | | |ST |O |N | | | | |
+|5 |AlgorithmDescription | | | |ST |O |N | | | | |
+|6 |WhatDomainsReturned | | | |CX |O |Y | | |PID-3 | |Patient Identifier List
+|===
+
+[width="100%",cols="19%,11%,6%,64%",options="header",]
+|===
+|Input Parameter |Comp. Name |DT |Description
+|DemographicsFields | |QIP |Components: <segment field name (ST)> ^ <value1 (ST) & value2 (ST) & value3 (ST...>
+| | | |Components may be any fields in the PID or PD1. If subcomponents of fields need to be specified, each subcomponent should be listed separately.
+| | | |Example: ...\|@PID.5.1^EVERYMAN~@PID.5.2^ADAM~@PID.8^M\|...
+|SearchConfidenceThreshold | |NM |Indicates the minimum match confidence for candidates to be returned for the query. The value instructs the queried system to return no records (PID segments) for persons whose "match weight" on the lookup was lower than the user-defined value.
+| | | |Example: \|80\|
+|AlgorithmName | |ST |Identifies the specific algorithm the queried system should use.
+| | | |Example: \|MATCHWARE\|
+|AlgorithmVersion | |ST |Identifies the specific algorithm version the queried system should use.
+| | | |Example: \|1.2\|
+|AlgorithmDescription | |ST |Description of the algorithm the queried system should use.
+|WhatDomainsReturned | |CX |Components: <ID (ST)> ^ <check digit (ST)> ^ <code identifying the check digit scheme employed (ID)> ^ < assigning authority (HD)> ^ <identifier type code (IS)> ^ < assigning facility (HD)
+| | | |This parameter restricts the set of domains for which identifiers are returned in PID-3. If this is not specified, then identifiers for all known domains shall be returned. It does not restrict the search for persons.
+| | | |Example: ...\|^^^GOOD HEALTH HOSPITAL~^^^SOUTH LAB\|...
+| | | |Only the following components should be valued.
+|WhatDomainsReturned |Assigning Authority | |PID.3.4 must be valued.
+|WhatDomainsReturned |Identifier type code | |
+|===
+
+Following is an example of a Q22/K22 query/response pair of messages. First is the query:
+
+MSH|^~\&|CLINREG|WESTCLIN|HOSPMPI|HOSP|199912121135-0600||QBP^Q22^QBP_Q21|1|D|2.5
+
+QPD|Q22^Find Candidates^HL7nnn|111069|@PID.5.1^EVERYMAN~@PID.5.2^ADAM~ @PID.8^M|80|MATCHWARE|1.2||^^^GOOD HEALTH HOSPITAL~^^^SOUTH LAB|
+
+RCP|I|20^RD
+
+This query is asking for a list of persons matching the name ADAM EVERYMAN with the gender Male. Candidates with a match level above 80 using the algorithm Matchware version 1.2 should be returned. The returned records should include identifiers for both the assigning authorities GOOD HEALTH HOSPITAL and SOUTH LAB. The RCP segment specifies that the number of matches should be limited to 20. Here is a sample response:
+
+MSH|^~\&|HOSPMPI|HOSP|CLINREG|WESTCLIN|200712121135-0600||RSP^K22^RSP_K22|1|D|2.5.1|
+
+MSA|AA|8699|
+
+QAK|111069|OK|Q22^Find Candidates^HL7nnnn|3|
+
+QPD|Q22^Find Candidates^HL7nnn|111069|@PID.5.1^EVERYMAN~ @PID.5.2^ADAM~@PID.8^M|80|MATCHWARE|1.2||^^^GOOD HEALTH HOSPITAL~^^^SOUTH LAB|
+
+PID|||66785^^^GOOD HEALTH HOSPITAL~99999^^^SOUTH LAB||Everyman^Adam||19630423|M||C|C^^Madison^WI^99999|
+
+QRI|95||MATCHWARE 1.2|
+
+PID|||87443^^^GOOD HEALTH HOSPITAL~651189^^^SOUTH LAB||Everyman^Adam||19470606|M||C|555-555-2004^^Madison^WI^99999|
+
+QRI|90||MATCHWARE 1.2|
+
+PID|||43266^^^GOOD HEALTH HOSPITAL~81209^^^SOUTH LAB||Everyman^Adam||19901210|M||C|4444 Home Street^^Lodi^WI^99999|
+
+QRI|85||MATCHWARE 1.2|
+
+mailto:[mailto:]Three candidates were returned. Notice the 3 at the end of the QAK segment signifying the number of matches. Each has a PID and QRI segment, and the QRI segment in each case gives a confidence factor for each of the candidates
+

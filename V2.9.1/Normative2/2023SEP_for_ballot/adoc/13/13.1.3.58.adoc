@@ -1,0 +1,4 @@
+==== 13.1.3.58 Symbol: 
+
+*_In NCCLS LAB AUTOMATION Standard documents,_* a combination of bar-code characters, including start/stop characters, quiet zones, data elements, and check characters which form a complete scanning entity.
+

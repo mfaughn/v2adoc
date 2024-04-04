@@ -1,0 +1,6 @@
+==== 8.5.3.5 MFA-5 Primary Key Value - MFA (Varies) 01308
+
+Definition: This field uniquely identifies the record of the master file (identified in the MFI segment) for which the update status is being acknowledged (as defined by the field _MFN-4 - Record Level Error Return_). The data type of this field is defined by the value of _MFA-6 - Value Type - MFA_, and may take on the format of any of the HL7 data types defined in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70355[HL7 Table 0355 - Primary Key Value Type] in Chapter 2C, Code Tables. The PL data type is used only on location master transactions. Refer to Table 0607 - Primary Key Value - MFA in Chapter 2C for valid values.
+
+The repetition of the primary key permits the identification of an individual component of a complex record as the object of the record-level event code. This feature allows the Master Files protocol to be used for modifications of single components of complex records. If this field repeats, the field _MFA-6 - Primary Key Value Type - MFA_ must also repeat (with the same number of repetitions), and the data type of each repetition of _MFA-5 - Primary Key Value - MFA_ is specified by the corresponding repetition of _MFA-6 - Value Type - MFA_.
+

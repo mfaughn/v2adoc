@@ -1,0 +1,8 @@
+==== 7.6.1.2 Phase of a clinical trial:
+
+A treatment and/or observation interval of a clinical trial. A phase may represent an interval with a specific treatment regimen assigned randomly or otherwise, with each regimen of a progression of treatments, or with an evaluation component only. Generally, for each phase, there is an explicit patient management, evaluation, and data collection schedule. Each of these phases may have associated safety, outcome, and quality‑control variables. A simpler study design need not use the phase structures.
+
+The phase structure serves several purposes in the clinical trials messages. Other computer systems may need to know that the patient has begun a phase with a particular treatment regimen or diagnostic schedule, such as the pharmacy or order entry systems. When reporting study data, observations and variables often describe particular phase instances. For example, each course of treatment may have its own values for the same set of observations or variables. Phase instances may also have distinct data schedules that need to be linked to submitted data.
+
+Several examples follow with each line depicting a phase.
+

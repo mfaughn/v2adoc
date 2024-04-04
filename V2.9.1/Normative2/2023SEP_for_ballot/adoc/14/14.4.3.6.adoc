@@ -1,0 +1,4 @@
+==== 14.4.3.6 NST-6 Receive Character Count (NM) 01178
+
+Definition: This field contains the number of characters received.
+

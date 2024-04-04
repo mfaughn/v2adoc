@@ -1,0 +1,4 @@
+==== 8.8.17.9 PM1-9 Plan Effective Date (DT) 00437
+
+Definition: This field contains the date that the insurance goes into effect.
+

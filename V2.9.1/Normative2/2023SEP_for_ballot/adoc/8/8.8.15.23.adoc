@@ -1,0 +1,8 @@
+==== 8.8.15.23 OM7-23 Special Order Indicator (ID) 01499
+
+Definition: This field indicates whether or not the service (pharmaceutical) is a special order. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values.
+
+Y This is a special order.
+
+N This is not a special order
+

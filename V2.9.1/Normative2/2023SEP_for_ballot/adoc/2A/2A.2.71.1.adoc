@@ -1,0 +1,6 @@
+==== 2A.2.71.1 Comparator (ST) 
+
+Definition: Defined as greater than, less than, greater than or equal, less than or equal, equal, and not equal, respectively ( ">" or "<" or ">=" or "<=" or "=" or "<>").
+
+If this component is not valued, it defaults to equal ("=").
+

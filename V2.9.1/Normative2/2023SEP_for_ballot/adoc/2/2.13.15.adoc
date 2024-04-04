@@ -1,0 +1,41 @@
+=== 2.13.15 UAC - User Authentication Credential segment
+
+Definition: This optional segment provides user authentication credentials, a Kerberos Service Ticket or SAML assertion, to be used by the receiving system to obtain user identification data. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70615[_HL7 Table 0615 - User Authentication Credential Type Code_] in Chapter 2C, Code Tables. It is to be used in when the receiving application system requires the sending system to provide end-user identification for accountability or access control in interactive applications. Since user authentication implementations often limit the time period for validity of the session authentication credentials, this segment is not intended for use in non-interactive applications.
+
+It is possible that various user authentication credential standards' data mightbe communicated. Kerberos and SAML are two such standards. A user authentication credential is an encapsulated data (ED type) element, as defined by standards, with no HL7-relevant structure.
+
+*Note:* The UAC segment is defined for use within simple protocols, such as MLLP, that do not have user authentication semantics. Implementations that use WSDL/SOAP, or similar protocols, to envelope HL7 SHOULD employ the user authentication semantics and data structures available within the scope of those protocols rather than the UAC segment.
+
+If the receiving system accepts the user credentials in the UAC segment, no specific acknowledgment is required. However, if the receiving system detects an error while processing the UAC segment, its acknowledgment message SHALL report it to the sender via an MSA and ERR segment pair:
+
+• The ERR-3 (error code) field value is 207 to signify an application error
+
+• The ERR-7 (diagnostic information) field reports the specific error. Examples of possible errors are:
+
+• User credentials expected but not provided
+
+• User credentials invalid
+
+• User credentials expired
+
+• User credentials from an unknown or untrusted source
+
+• User unknown
+
+• User not allowed to create or access data on the receiving system.
+
+• User not allowed to initiate a processing function on the receiving system.
+
+When an MSA and ERR segment pair is reported to the sender, an application data response SHALL NOT occur. In such cases it is correct to assume that the sending application's user is not authorized to get the data.
+
+The processing rules for the ERR segment are outside of HL7's scope.
+
+HL7 Attribute Table – UAC - User Authentication Credential Segment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70615[0615] |02267 |User Authentication Credential Type Code
+|2 | | |ED |R | | |02268 |User Authentication Credential
+|===
+

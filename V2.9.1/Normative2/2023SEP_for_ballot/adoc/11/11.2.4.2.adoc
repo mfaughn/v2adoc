@@ -1,0 +1,4 @@
+==== 11.2.4.2 Clinical information: 
+
+Refers to the data contained in the patient record. The data may include such things as problem lists, lab results, current medications, family history, etc. For the purposes of this chapter, clinical information is limited to diagnoses (DG1& DRG), results reported (OBX/OBR), and allergies (AL1).
+

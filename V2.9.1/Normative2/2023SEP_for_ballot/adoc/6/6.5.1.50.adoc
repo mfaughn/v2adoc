@@ -1,0 +1,6 @@
+==== 6.5.1.50 FT1-50 DME Length of Medical Necessity Days (NM) 03502
+
+____
+Definition: This is the length of duration, in days, of medical necessity for the purchased or rental durable medical equipment service.
+____
+

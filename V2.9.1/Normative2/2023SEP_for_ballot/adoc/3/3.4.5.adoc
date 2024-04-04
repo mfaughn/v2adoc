@@ -1,0 +1,54 @@
+=== 3.4.5 NK1 ‑ Next of Kin / Associated Parties Segment
+
+The NK1 segment contains information about the patient's other related parties. Any associated parties may be identified. Utilizing _NK1-1 - set ID_, multiple NK1 segments can be sent to patient accounts.
+
+If a person or organization fulfills multiple contact roles, for example, a person is an emergency contact and a next of kin, it is recommended to send a NK1 segment for each contact role (field 7).
+
+[#NK1 .anchor]####HL7 Attribute Table - NK1 - Next of Kin / Associated Parties
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |R P/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |00190 |Set ID - NK1
+|2 | | |XPN |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70200[0200] |00191 |Name
+|3 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70063[0063] |00192 |Relationship
+|4 | | |XAD |O |Y | |00193 |Address
+|5 | | |XTN |W |Y | |00194 |Phone Number
+|6 | | |XTN |W |Y | |00195 |Business Phone Number
+|7 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70131[0131] |00196 |Contact Role
+|8 | | |DT |O | | |00197 |Start Date
+|9 | | |DT |O | | |00198 |End Date
+|10 | |60# |ST |O | | |00199 |Next of Kin / Associated Parties Job Title
+|11 | | |JCC |O | | |00200 |Next of Kin / Associated Parties Job Code/Class
+|12 | | |CX |O | | |00201 |Next of Kin / Associated Parties Employee Number
+|13 | | |XON |O |Y | |00202 |Organization Name - NK1
+|14 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70002[0002] |00119 |Marital Status
+|15 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70001[0001] |00111 |Administrative Sex
+|16 | | |DTM |O | | |00110 |Date/Time of Birth
+|17 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70223[0223] |00755 |Living Dependency
+|18 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70009[0009] |00145 |Ambulatory Status
+|19 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70171[0171] |00129 |Citizenship
+|20 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70296[0296] |00118 |Primary Language
+|21 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70220[0220] |00742 |Living Arrangement
+|22 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70215[0215] |00743 |Publicity Code
+|23 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00744 |Protection Indicator
+|24 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70231[0231] |00745 |Student Indicator
+|25 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70006[0006] |00120 |Religion
+|26 | | |XPN |O |Y | |00109 |Mother's Maiden Name
+|27 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70212[0212] |00739 |Nationality
+|28 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70189[0189] |00125 |Ethnic Group
+|29 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70222[0222] |00747 |Contact Reason
+|30 | | |XPN |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70200[0200] |00748 |Contact Person's Name
+|31 | | |XTN |W |Y | |00749 |Contact Person's Telephone Number
+|32 | | |XAD |O |Y | |00750 |Contact Person's Address
+|33 | | |CX |O |Y | |00751 |Next of Kin/Associated Party's Identifiers
+|34 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70311[0311] |00752 |Job Status
+|35 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70005[0005] |00113 |Race
+|36 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70295[0295] |00753 |Handicap
+|37 | |16# |ST |O | | |00754 |Contact Person Social Security Number
+|38 | |250# |ST |O | | |01905 |Next of Kin Birth Place
+|39 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70099[0099] |00146 |VIP Indicator
+|40 | | |XTN |O | | |02292 |Next of Kin Telecommunication Information
+|41 | | |XTN |O | | |02293 |Contact Person's Telecommunication Information
+|===
+

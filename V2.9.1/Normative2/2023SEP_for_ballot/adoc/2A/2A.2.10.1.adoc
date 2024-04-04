@@ -1,0 +1,6 @@
+==== 2A.2.10.1 Price (MO)
+
+Definition: The only required component; usually containing a decimal point.
+
+*Note*: Each component of the MO data type (Section _2A.2.41_, "_MO - money_") is a subcomponent here.
+

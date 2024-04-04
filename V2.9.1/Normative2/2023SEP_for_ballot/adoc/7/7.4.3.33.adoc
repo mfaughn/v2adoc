@@ -1,0 +1,4 @@
+==== 7.4.3.33 SPM-33 Culture Start Date/Time (DTM) 3485 
+
+Definition: The Culture Start date/time is the time that the specimen is plated, or inoculated to selective and differential growth mediums that are used in organism identification in microbiology. This is the start of differential diagnosis and is a clinically relevant date and time. The actual time that is recorded is based on when specimen is directly inoculated onto growth media and may correspond to the time the sample is logged in or received.
+

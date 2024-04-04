@@ -1,0 +1,14 @@
+=== 2.2.3 Acknowledgments: original mode
+
+____
+When the unsolicited update is sent from one system to another, this acknowledgment mode specifies that it be acknowledged at the application level. The reasoning is that it is not sufficient to know that the underlying communications system guaranteed delivery of the message. It is also necessary to know that the receiving application processed the data successfully at a logical application level.
+
+The acknowledgment MAY contain data of interest to the system that initiated the exchange. For example, if a patient care system has processed the trigger event *a lab test is ordered for a patient*, it MAY send an unsolicited update to a lab application identifying the patient, the test ordered, and various other information about the order. The ancillary system will acknowledge the order when it has processed it successfully. For some pairings of patient care and ancillary department systems the acknowledgment MAY also include the ancillary identification number that was assigned (HL7 does not require Order Entry and Results Reporting applications to interface in this manner, but it supports those that do).
+
+*Note*: [line-through]#Original mode acknowledgment was replaced by enhanced mode acknowledgment in version 2.2. Implementers SHALL always value MSH-15 and MSH-16# Original mode allows the sender to transmit and receive on a single communication channel.
+
+The HL7 Standard makes no functional interpretation of the requirement that a system commit the data in a message to its database before acknowledging it. All that is required is that the receiving system accept responsibility for the data, providing the same integrity test that it would apply to data from any source. To continue the prior example, the ancillary system MAY acknowledge the order after placing it in an input queue, expecting to fully process the order into its database at a future time. The only assumption is that the input queue is maintained at the same level of integrity as the database.
+
+Instances of messages are transient by nature, and can not be expected by transmitter and/or receiver to be persistent after acknowledgment.
+____
+

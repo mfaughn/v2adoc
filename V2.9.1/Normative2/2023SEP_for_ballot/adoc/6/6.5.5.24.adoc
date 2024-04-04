@@ -1,0 +1,4 @@
+==== 6.5.5.24 GT1-24 Guarantor Death Date and Time (DTM) 00775
+
+Definition: This field is used to indicate the date and time at which the guarantor's death occurred.
+

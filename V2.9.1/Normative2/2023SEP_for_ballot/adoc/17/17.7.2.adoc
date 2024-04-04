@@ -1,0 +1,49 @@
+=== 17.7.2 SLN/ACK - Notification of New Sterilization Lot (Event S34) 
+
+This message is sent from a filler application to notify other applications that a new sterilization lot has been created. The information provided in the SLT segment describes the new sterilization lot that has been created by the filler application.
+
+SLN^S34^SLR_S28: Notification of New Sterilization Lot
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|\{SLT} |Sterilization Lot | |17
+|===
+
+[width="100%",cols="19%,24%,6%,17%,17%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SLN^S34^SLR_S28 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^S34^ACK |- |ACK^S34^ACK
+|Application Ack |ACK^S34^ACK |- |- |ACK^S34^ACK |ACK^S34^ACK
+|===
+
+ACK^S34^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^S34^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S34^ACK
+|Application Ack |- |- |-
+|===
+

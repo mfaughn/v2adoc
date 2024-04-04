@@ -1,0 +1,4 @@
+=== 13.4.5 Transfer of Additional Information for Automated Processing
+
+Instruments requiring additional information for performing of automated processing based on automatic validation, such as Expected Date of Birth (Delivery Date), Menstrual Status, History of Medication Use, should consider using OBX segments and LOINC codes. For example, the LOINC code for Delivery Date is 11778-8, Menstrual status is 8678-5, History of Medication Use is 10160‑0.
+

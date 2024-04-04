@@ -1,0 +1,4 @@
+==== 9.2.2.5 Consent Effective Date/Time: 
+
+Not all consents take effect at the time the consent decision is made. They may not become effective for some time, or in certain circumstances they may even be retroactive. Use this field to record the effective time.
+

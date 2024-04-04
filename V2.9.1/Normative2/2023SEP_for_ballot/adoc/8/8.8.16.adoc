@@ -1,0 +1,24 @@
+=== 8.8.16 OMC - Supporting Clinical Information Segment
+
+The Technical Steward for the OMC segment is Orders and Observations.
+
+[#OMC .anchor]####HL7 Attribute Table – OMC – Supporting Clinical Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |4= |NM |O | | |00586 |Sequence Number - Test/Observation Master File
+|2 |1..1 | |ID |C(R/X) | |0206 |00763 |Segment Action Code
+|3 | | |EI |C(R/X) | | |00764 |Segment Unique Key
+|4 | | |CWE |R | |0664 |03444 |Clinical Information Request
+|5 | | |CWE |R |Y |0938 |03445 |Collection Event/Process Step
+|6 | | |CWE |R | |0939 |03446 |Communication Location
+|7 | | |ID |O | |0136 |03447 |Answer Required
+|8 | | |ST |O | | |03448 |Hint/Help Text
+|9 | | |ID |O | |0125 |03449 |Type of Answer
+|10 | | |ID |O | |0136 |03450 |Multiple Answers Allowed
+|11 | | |CWE |O |Y |0665 |03451 |Answer Choices
+|12 | | |NM |O | | |03452 |Character Limit
+|13 | | |NM |O | | |03453 |Number of Decimals
+|===
+

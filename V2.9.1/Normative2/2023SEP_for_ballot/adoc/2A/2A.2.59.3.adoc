@@ -1,0 +1,4 @@
+==== 2A.2.59.3 Money or Percentage Quantity 
+
+*Attention:* _The PTA.3 component was deprecated as of v2.5 and the detail was withdrawn and removed from the standard as of v 2.7._ Refer to link:#a.2.59.4-money-or-percentage-mop[_PTA.4_] instead.
+

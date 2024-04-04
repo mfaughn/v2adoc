@@ -1,0 +1,6 @@
+==== 16.4.9.3 IPR-3 Payer Cross Reference Identifier (EI) 02032
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Cross reference to Payer Product/Service Group Number or Payer Product/Service Line Item Number from original Invoice.
+

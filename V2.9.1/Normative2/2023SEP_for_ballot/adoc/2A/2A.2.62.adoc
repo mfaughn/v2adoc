@@ -1,0 +1,18 @@
+=== 2A.2.62 RCD - row column definition
+
+HL7 Component Table - RCD – Row Column Definition
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 |6..12 | |ST |O | |Segment Field Name | |2A.2.76
+|2 |2..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70440[0440] |HL7 Data Type | |2A.2.35
+|3 |1..5 | |NM |O | |Maximum Column Width | |2A.2.47
+|===
+
+*Definition:* This specifies the format of a column in terms of a segment field name, a data type, and a maximum length.
+
+Example: This defines a column containing the value of the "last name" component of _PID-5_, expressed as a ST data type with a maximum width of 20.
+
+|@PID.5.1^ST^20|
+

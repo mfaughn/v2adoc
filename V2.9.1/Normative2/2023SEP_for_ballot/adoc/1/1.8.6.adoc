@@ -1,0 +1,4 @@
+=== 1.8.6 Roles and Relationships
+
+HL7 2.x standards do not, in themselves, attempt to define or even support the implicit and explicit relationships between persons such as patients, physicians, providers, etc. It is possible that current data modeling efforts by HL7 and other standards developers will, in the future, result in HL7 assuming this responsibility.
+

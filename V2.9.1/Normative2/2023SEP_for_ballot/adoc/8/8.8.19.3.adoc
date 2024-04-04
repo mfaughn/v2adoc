@@ -1,0 +1,4 @@
+==== 8.8.19.3 DPS-3 Effective Date/Time (DTM) 00662
+
+Definition: An optional effective date/time can be included for the record-level action specified. It is the date/time the originating system expects that the event is to have been completed on the receiving system. If this field is not present, the effective date/time should default to the current date/time (when the message is received).
+

@@ -1,0 +1,6 @@
+==== 4.17.2.2 BUI-2 Blood Unit Identifier (EI) 03374
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The blood unit identifier is a unique identifier assigned to the particular blood unit in a container.
+

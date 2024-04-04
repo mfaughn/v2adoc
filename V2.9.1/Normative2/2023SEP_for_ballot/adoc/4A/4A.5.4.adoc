@@ -1,0 +1,20 @@
+=== 4A.5.4 RDS with FT1 segments example
+
+Example: Adam Everyman appears in the Pharmacy with a prescription for Veramil 120 mgm B.I.D. The prescription is filled and the $5 co-pay is collected. The following RDS message is generated:
+
+MSH|^&~\|Pharm|GenHosp|IE||2006052911150700||RDS^O13^RDS_O13||...<cr>
+
+PID|||444-33-3333^^^MPI&GenHosp&L^MR||Everyman^Adam||19600614|M||C|2222 Home St^^Anytown^US^12345||^^^^^555^5552004| ...<cr>
+
+ORC|RE||89968665||||||2006052910300700|||444-44-4444^HIPPOCRATES^HAROLD^^^^MD||^^^^^555^ 5551004|...<cr>
+
+RXE|1^BID^^20060529|^Verapamil|120||mg^milligram^FDB.MDDB||...<cr>
+
+RXD|1|00378112001^Verapamil Hydrochloride 120 mg TAB^NDC |200605291115-0700|100|||1331665|3|...<cr>
+
+RXR|PO|...<cr>
+
+FT1|1|||200605291115-0700||CO^Co-Pay^HL70017 |00378112001^Verapamil Hydrochloride 120 mg TAB^NDC |||1|5&USD^TP|...<cr>
+
+FT1|2|||200605291115-0700||PY^Payment^HL70017 |00378112001^Verapamil Hydrochloride 120 mg TAB^NDC |||1|5&USD|...<cr>
+

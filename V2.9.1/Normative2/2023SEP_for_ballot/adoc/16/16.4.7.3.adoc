@@ -1,0 +1,4 @@
+==== 16.4.7.3 ADJ-3 Adjustment Sequence Number (SI) 02005
+
+Definition: Unique sequence number for this adjustment – starts with 1, then 2, etc., for each unique adjustment for the Product/Service Line Item.
+

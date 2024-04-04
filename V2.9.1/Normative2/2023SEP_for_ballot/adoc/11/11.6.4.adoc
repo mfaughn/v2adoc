@@ -1,0 +1,4 @@
+=== 11.6.4 CCR/ACK – Modify Collaborative Care Referral (Event I17)
+
+This event triggers a message to be sent from one healthcare provider to another regarding changes to an existing Collaborative Care Referral. Changes may include additional instructions from the referring provider, additional clinical orders, additional clinical history, additional patient visits, additional medication history, or modifications to the problems, goals and/or pathways. Whilst the acknowledgment is a simple ACK message, the expectation is that the referred to provider(s) will send back a CCU – Asynchronous Collaborative Care Update at a later time to indicate acceptance or rejection of the modifications.
+

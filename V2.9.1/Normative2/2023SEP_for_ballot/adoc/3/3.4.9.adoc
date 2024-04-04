@@ -1,0 +1,13 @@
+=== 3.4.9 NPU - Bed Status Update Segment
+
+The NPU segment allows the updating of census (bed status) data without sending patient-specific data. An example might include changing the status of a bed from "housekeeping" to "unoccupied."
+
+[#NPU .anchor]####HL7 Attribute Table - NPU - Bed Status Update
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |PL |R | | |00209 |Bed Location
+|2 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70116[0116] |00170 |Bed Status
+|===
+

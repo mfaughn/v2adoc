@@ -1,0 +1,62 @@
+==== 7.4.4.10 PRT-10 Device (EI) 02348
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Identifier for the device participating. This may reflect an unstructured or a structured identifier such as FDA UDI, RFID, IEEE EUI-64 identifiers, or bar codes.
+
+Example: The device used to register the shipment at the waypoint.
+
+If this attribute repeats, all instances must represent the same device.
+
+Condition: At least one of the PRT-5 Person, PRT-8 Organization, PRT-9 Location, or PRT-10 Device or PRT-22 Device Type fields must be valued.
+
+If this field contains an FDA UDI, it shall contain the entire Human Readable Form of the UDI. For example, a GS1-based UDI would be represented as follows:
+
+____
+|(01)00643169001763(17)160712(21)21A11F4855^^2.16.840.1.113883.3.3719^ISO|
+____
+
+A HIBCC-based example would be represented as follows:
+
+____
+|+H123PARTNO1234567890120/$$420020216LOT123456789012345/SXYZ4567890123 45678/16D20130202C^^2.16.840.1.113883.3.3719^ISO
+____
+
+An ICCBBA-based example would be represented as follows:
+
+____
+|=/A9999XYZ100T0944=,000025=A99971312345600=>014032=}013032\T\,1000000000000XYZ123^^2.16.840.1.113883.3.3719^ISO|
+____
+
+Or for ICCBBA (for blood bags only) an example would be represented as follows:
+
+____
+|=)1TE123456A\T\)RZ12345678^^2.16.840.1.113883.3.3719^ISO|
+____
+
+The identifier root shall be the OID assigned to UDI. For example, for FDA UDIs the root shall be 2.16.840.1.113883.3.3719, and the extension shall be the Human Readable Form appropriate for the style of content. When captured as a simple string, the string shall be the Human Readable Form appropriate for the style of content. The content style can be determined from the leading characters of the content:
+
+____
+UDIs beginning with:
+
+‘(‘ are in the GS1 Human Readable style;
+
+‘0-9’ are a GS1 DI (containing only the DI value, no PI or GS1 AI);
+
+‘+‘ are in the HIBCC Human Readable style;
+
+‘=‘ or ‘&’ are in the ICCBBA Human Readable style.
+
+Note: If “&” is used in the UDI while one of the delimiters in MSH.2 includes “&” as well, it must be properly escaped per Chapter 2.7.
+____
+
+The exchange of UDI sub-elements in PRT-16 through PRT-21 is not required when the full UDI string is provided in PRT-10. Whether to include some or all these fields as well when PRT-10 is present with a UDI that the rules are subject to specific implementation guides that will have to consider the patient safety implications of potentially conflicting data.
+
+When a UDI is provided and sub-elements are also provided, then for those sub-elements that are valued, the content must match the content encoded in the UDI if it is encoded within the UDI.
+
+When communicating a UDI, the UDI may either be uniquely identifying an instance of a device, or a type of device. This can be asserted based on the inclusion or absence of a serial number in the Product Identifier section of the UDI. When the serial number is present, PRT-10 must be used, while if it is absent, PRT-22 must be used.
+
+*Caution:* The UDI may contain personally identifying information in the form of the device *serial number* which may be used to link to other information on a patient. Security and privacy consideration should be addressed, particularly when sending a UDI with a serial number, as that may inadvertently be able to identify a patient. Note: In the US realm that would be addressed by HIPAA.
+
+Note: PRT-10 Device is a repeating field. Additional device identifiers, such as an IEEE EUI-64 may also be contained in this field.
+

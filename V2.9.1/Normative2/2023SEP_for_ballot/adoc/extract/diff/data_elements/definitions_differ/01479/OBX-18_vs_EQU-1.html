@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+OBX-18_vs_EQU-1
+</h1>
+<hr>
+<h3>
+For 01479 there were 2 versions found.<br>This diff compares the version found in fields ["OBX-18", "OBX-18"] from sections ["7.4.2", nil], respectively<br>with the version found in fields ["EQU-1", "EQU-1"] from sections ["13.3.1", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:<strong>*_Retained for backwards compatibility as of v 2.7 only. </strong>This field i<strong>s now represented through the PRT segment._* This field identifie</strong>s the <strong>E</strong>quipment<strong> Instance (e.g., Analyzer, Analyzer module, group of Analyzers, etc.) responsible for the production of the observation. </strong>This is the identifier from an institution&#39;s master list of equipment<strong>, where the institution is specified by the _n</strong>amespace ID<strong>_ or if it is blank, then by the &quot;Producer&#39;s ID&quot; (OBX-15). It should be possible to retrieve from this master list the equipment type, serial number, etc., however it is not planned to transfer this information with every OBX. The repeating of this field allows for </strong>the <strong>hierarchical representation of the equipment (lowest level first), e.g., module of an instrument, instrument consisting of modules, cluster of multiple instruments, etc</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field i<strong>dentifie</strong>s the <strong>e</strong>quipment<strong>. </strong>This is the identifier from an institution&#39;s master list of equipment<strong>. The &lt;n</strong>amespace ID<strong>&gt; identifies </strong>the <strong>institution</strong>.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:01479,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:EI,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:<strong>*_Retained for backwards compatibility as of v 2.7 only. </strong>This field i<strong>s now represented through the PRT segment._* This field identifie</strong>s the <strong>E</strong>quipment<strong> Instance (e.g., Analyzer, Analyzer module, group of Analyzers, etc.) responsible for the production of the observation. </strong>This is the identifier from an institution&#39;s master list of equipment<strong>, where the institution is specified by the _n</strong>amespace ID<strong>_ or if it is blank, then by the &quot;Producer&#39;s ID&quot; (OBX-15). It should be possible to retrieve from this master list the equipment type, serial number, etc., however it is not planned to transfer this information with every OBX. The repeating of this field allows for </strong>the <strong>hierarchical representation of the equipment (lowest level first), e.g., module of an instrument, instrument consisting of modules, cluster of multiple instruments, etc</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field i<strong>dentifie</strong>s the <strong>e</strong>quipment<strong>. </strong>This is the identifier from an institution&#39;s master list of equipment<strong>. The &lt;n</strong>amespace ID<strong>&gt; identifies </strong>the <strong>institution</strong>.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

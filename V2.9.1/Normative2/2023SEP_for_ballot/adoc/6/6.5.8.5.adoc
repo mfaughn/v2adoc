@@ -1,0 +1,6 @@
+==== 6.5.8.5 IN3-5 Penalty (MOP) 00506
+
+Components: <Money or Percentage Indicator (ID)> ^ <Money or Percentage Quantity (NM)> ^ <Monetary Denomination (ID)>
+
+Definition: This field contains the penalty, in dollars or a percentage that will be assessed if the pre-certification is not performed.
+

@@ -1,0 +1,4 @@
+==== 13.3.4.8 INV-8 Current Quantity (NM) 01379
+
+Definition: This field is the current quantity, i.e., initial quantity minus what has been actually used.
+

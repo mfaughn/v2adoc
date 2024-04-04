@@ -1,0 +1,24 @@
+==== 12.2.5.3 Rule 3
+
+In dependent segments *ADD* is the action code to use to establish the initial relationship between parent-child objects. The receiving system must be ready to handle multiple adds of the same object. An example is a Problem List of three (3) problems which is being sent. Attached to these problems are three (3) goals. Problem A has Goals 1 and 2 attached to it. Problem B has the same Goal 2 and a new Goal 3 attached to it. All of these will have the *ADD* action code in the segment, and when Problem B is transmitted with Goals 2 and 3, Goal 2 will have been previously transmitted with Problem A. The message construct would look like this:
+
+MSH...
+
+PID...
+
+PRB (Problem A)
+
+GOL (Goal 1)
+
+GOL (Goal 2)
+
+PRB (Problem B)
+
+GOL (Goal 2)
+
+GOL (Goal 3)
+
+PRB (Problem C) (No attached goals)
+
+When two (or more) instances of the same problem or goal segment are present in a message both such segments must have identical values for all fields.
+

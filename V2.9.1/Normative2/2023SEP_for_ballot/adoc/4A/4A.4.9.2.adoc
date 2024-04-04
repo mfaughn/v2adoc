@@ -1,0 +1,4 @@
+==== 4A.4.9.2 CDO-2 Action Code (ID) 00816
+
+Definition: The Action Code indicates whether the cumulative dosage segment is intended to be added, deleted, updated, or did not change. If the field is not valued in any CDO segments for the order, the segments are considered to have been sent in snapshot mode. If some but not all CDO segments for the order do not have the action code valued, the default value is Add. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[_HL7 Table 0206 - Segment Action Code_] in Chapter 2C, Code Tables, for valid values.
+

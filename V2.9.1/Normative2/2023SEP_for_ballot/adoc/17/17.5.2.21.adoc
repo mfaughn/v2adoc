@@ -1,0 +1,6 @@
+==== 17.5.2.21 ITM-21 Approved to Buy Price (MO) 02204
+
+Components: <Quantity (NM)> ^ <Denomination (ID)>
+
+Definition: This field contains the dollar limit of this item that you can purchase within a user-defined time frame (e.g., one year).
+

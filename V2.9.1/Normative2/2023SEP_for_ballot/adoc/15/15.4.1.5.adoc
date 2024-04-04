@@ -1,0 +1,4 @@
+==== 15.4.1.5 AFF-5 Professional Affiliation Additional Information (ST) 01447
+
+Definition: This field contains miscellaneous additional information related to the staff member's membership in the professional organization.
+

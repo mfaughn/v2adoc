@@ -1,0 +1,62 @@
+=== 2A.2.87 XAD - extended address
+
+HL7 Component Table - XAD – Extended Address
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |SAD |O | |Street Address | |2A.2.68
+|2 | |120# |ST |O | |Other Designation | |2A.2.76
+|3 | |50# |ST |O | |City | |2A.2.76
+|4 | |50# |ST |O | |State or Province | |2A.2.76
+|5 | |12= |ST |O | |Zip or Postal Code | |2A.2.76
+|6 |3..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70399[0399] |Country | |2A.2.35
+|7 |1..3 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70190[0190] |Address Type | |2A.2.35
+|8 | |50# |ST |O | |Other Geographic Designation | |2A.2.76
+|9 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70289[0289] |County/Parish Code | |2A.2.36
+|10 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70288[0288] |Census Tract | |2A.2.36
+|11 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70465[0465] |Address Representation Code | |2A.2.35
+|12 | | | |W | |Address Validity Range |Withdrawn as of v2.7. |
+|13 | |8= |DTM |O | |Effective Date | |2A.2.22
+|14 | |8= |DTM |O | |Expiration Date | |2A.2.22
+|15 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70616[0616] |Expiration Reason | |2A.2.13
+|16 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |Temporary Indicator | |2A.2.35
+|17 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |Bad Address Indicator | |2A.2.35
+|18 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70617[0617] |Address Usage | |2A.2.35
+|19 | |199# |ST |O | |Addressee | |2A.2.76
+|20 | |199# |ST |O | |Comment | |2A.2.76
+|21 | |2= |NM |O | |Preference Order | |2A.2.47
+|22 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70618[0618] |Protection Code | |2A.2.13
+|23 | | |EI |O | |Address Identifier | |2A.2.25
+|===
+
+*Definition:* This data type specifies the address of a person, place or organization plus associated information.
+
+*Note:* Replaces the AD data type as of v2.3.
+
+Example of usage for US:
+
+|1000 Hospital Lane^Ste. 123^Ann Arbor ^MI^99999^USA^B^^WA^|
+
+This would be formatted for postal purposes as
+
+1000 Hospital Lane
+
+Ste. 123
+
+Ann Arbor MI 99999
+
+Example of usage for Australia:
+
+|14th Floor^1000 Hospital Lane^Sidney^QLD^9999|
+
+This would be formatted for postal purposes using the same rules as for the American example as
+
+14th Floor
+
+1000 Hospital Lane
+
+Sidney QLD 9999
+
+*International note:* Countries typically have a standard method of formatting addresses. This data type does not specify the formatting usages, only the components of a postal address.
+

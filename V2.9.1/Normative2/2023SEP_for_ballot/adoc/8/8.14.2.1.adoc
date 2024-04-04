@@ -1,0 +1,6 @@
+==== 8.14.2.1 CTR-1 Contract Identifier (EI) 02392
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The Contract Identifier is a unique code assigned to the contract by the manufacturer or distributor to identify the contract.
+

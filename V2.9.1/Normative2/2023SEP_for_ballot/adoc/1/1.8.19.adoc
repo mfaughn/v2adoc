@@ -1,0 +1,4 @@
+=== 1.8.19 Operations, Process and Other “Local” Support
+
+As stated in Section _1.8.2_, “_Protection of Healthcare Information_,” above, process and operations variations are a primary barrier to HL7 providing a complete solution. Serious attempts are being made to give HL7 the ability to support operations and process variability in a future revision. At this time, however, operations and process variability is a major reason why HL7 Version 2.x is implemented in a slightly different form at each and every site. This includes issues such as business and clinical practice rules, clinical and operation processes, staging and continuity of process steps, protocols, resource/utilization requirements, quality assurance requirements, cost management, comprehensive master file and code tables, etc.
+

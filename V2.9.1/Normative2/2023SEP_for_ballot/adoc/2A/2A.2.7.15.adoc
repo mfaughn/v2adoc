@@ -1,0 +1,4 @@
+==== 2A.2.7.15 Value Set OID (ST)
+
+Definition: This component contains the ISO Object Identifier (OID) to allow identification of the value set from which the value in _CWE.1_ is obtained. The value for this component is 2.16.840.1.113883.12.#### where "####" is to be replaced by the HL7 table number in the case of an HL7 defined or user defined table. For externally defined value sets, the OID registered in the HL7 OID registry SHALL be used. A value set may or need not be present irrespective of other fields.
+

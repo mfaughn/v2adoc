@@ -1,0 +1,4 @@
+==== 2.13.8.3 MSA-3 Text Message 00020
+
+*Attention: The _MSA-3_ was deprecated as of v 2.4* and the detail was withdrawn and removed from the standard as of v 2.7**. The reader is referred to the ERR segment. The ERR segment allows for richer descriptions of the erroneous conditions.**
+

@@ -1,0 +1,4 @@
+==== 2A.2.14.7 Effective Date (DT)
+
+Definition: The first date, if known, on which the identifier is valid and active.
+

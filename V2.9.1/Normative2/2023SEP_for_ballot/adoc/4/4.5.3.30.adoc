@@ -1,0 +1,4 @@
+==== 4.5.3.30 OBR-30 Transportation Mode (ID) 00262
+
+Definition: This field identifies how (or whether) to transport a patient, when applicable. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70124[HL7 Table 0124 – Transportation Mode] in Chapter 2C, Code Tables, for valid codes.
+

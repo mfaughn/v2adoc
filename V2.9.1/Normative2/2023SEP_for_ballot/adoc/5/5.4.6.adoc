@@ -1,0 +1,47 @@
+=== 5.4.6 QCN/ACK – cancel query/acknowledge message (Event J01)
+
+QCN^J01^QCN_J01: Cancel Query
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec Ref
+|MSH |Message Header | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|link:#QID[QID] |Query identification Segment | |5.5.3
+|===
+
+[width="100%",cols="20%,30%,25%,25%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|QCN^J01^QCN_J01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |AL |AL
+|Immediate Ack |- |- |ACK^J01^ACK
+|Application Ack |ACK^J01^ACK |ACK^J01^ACK |ACK^J01^ACK
+|===
+
+ACK^J01^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec Ref
+|MSH |Message Header | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|MSA |Message Acknowledgment | |2.15.8
+|[ ERR ] |Error | |2.15.5
+|===
+
+[width="100%",cols="21%,31%,24%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^J01^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |AL |AL
+|Immediate Ack |- |- |ACK^J01^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,151 @@
+==== 5.3.3.1 Query Profile template for query with tabular response
+
+Query Profile
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID (Query ID=Znn): |
+|Type: |
+|Query Name: |
+|Query Trigger (= MSH-9): |
+|Query Mode: |
+|Response Trigger (= MSH-9): |
+|Query Characteristics: |
+|Purpose: |
+|Response Characteristics: |
+|Based on Segment Pattern: |
+|===
+
+The message structure for QBP^Znn^QPB_Q13 can be found in 5.3.1.2. Use the QBP^Q13^QPB_Q13 Message structure.
+
+RTB^Znn^RTB_K13: Response Grammar: RTB Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec Ref
+|MSH |Message Header Segment | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|MSA |Message Acknowledgement | |2.15.8
+|[ ERR ] |Error | |2.15.5
+|link:#QAK[QAK] |Query Acknowledgement | |5.4.2
+|link:#QPD[QPD] |Query Parameter Definition | |5.5.4
+|[ |--- ROW_DEFINITION begin | |
+|link:#RDF[RDF] |Table Row Definition Segment | |5.5.6.6
+|[ \{ link:#RDT[RDT] } ] |Table Row Data Segment | |5.5.6
+|] |--- ROW_DEFINITION end | |
+|[ DSC ] |Continuation Pointer | |2.15.4
+|===
+
+[width="100%",cols="21%,31%,24%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|RTB^Znn^RTB_K13 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |AL |AL
+|Immediate Ack |- |- |ACK^Znn^ACK
+|Application Ack |- |- |-
+|===
+
+*QPD Input Parameter Specification*
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq (Query ID=Znn) |Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|1 |MessageQueryName | | |60 |CWE |R | | | | | |
+|2 |QueryTag | | |32 |ST |R | | | | | |
+|*3* |*InputItem . . .* | | | | | | | | | | |
+|===
+
+*QPD Input Parameter Field Description and Commentary*
+
+[width="100%",cols="20%,12%,9%,59%",options="header",]
+|===
+|Input Parameter (Query ID=Znn) |Comp. Name |DT |Description
+|*MessageQueryName* | |CWE |SHALL be valued *Znn^<query name>^HL7nnnn*.
+|*QueryTag* | |ST |Unique to each query message instance.
+|*InputItem1* | |DataType |
+| | | |Components: (if applicable)
+| | | |(Description)
+| | | |(Valuation note)
+| | | |
+| |*Component1* (if applicable) |DataType |(Valuation note)
+|===
+
+{empty}[The following table is used only for the Complex Expression (QSC) variant.]
+
+*Input Specification: Virtual Table*
+
+[width="99%",cols="19%,9%,3%,6%,8%,3%,6%,8%,8%,10%,11%,9%",options="header",]
+|===
+|ColName (Query ID=Znn) a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+| | | | | | | | | | | |
+|===
+
+{empty}[The following table is used only for the Complex Expression (QSC) variant.]
+
+*Virtual Table Field Description and Commentary*
+
+[width="100%",cols="19%,11%,6%,64%",options="header",]
+|===
+|ColName (Query ID=Znn) |Comp. Name |DT |Description
+| | | |
+|===
+
+{empty}[The following table is used only for the Query by Example variant.]
+
+*QBE Input Parameter Specification*
+
+[width="100%",cols="19%,18%,8%,6%,6%,7%,3%,3%,7%,5%,9%,9%",]
+|===
+|Segment Field Name (Query ID=Znn) |Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Service Identifier Code |Element Name
+| | | | | | | | | | | |
+|===
+
+{empty}[The following table is used only for the Query by Example (QBE) variant.]
+
+*QBE Input Parameter Field Description and Commentary*
+
+[width="100%",cols="17%,11%,8%,64%",]
+|===
+|Input Parameter (Query ID=Znn) |Comp. Name |DT |Description
+| | | |
+|===
+
+*RCP Response Control Parameter Field Description and Commentary*
+
+[width="100%",cols="18%,23%,11%,5%,5%,38%",options="header",]
+|===
+|Field Seq (Query ID=Znn) |Name |Com­po­nent Name |LEN |DT |Description
+| | | | | |
+|===
+
+*Output Specification and Commentary: Virtual Table*
+
+[width="99%",cols="19%,9%,3%,6%,8%,3%,6%,8%,8%,10%,11%,9%",options="header",]
+|===
+|ColName (Query ID=Znn) a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+| | | | | | | | | | | |
+|===
+

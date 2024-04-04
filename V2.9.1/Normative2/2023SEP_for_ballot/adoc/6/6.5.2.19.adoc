@@ -1,0 +1,4 @@
+==== 6.5.2.19 DG1-19 Attestation Date/Time (DTM) 00768
+
+Definition: This field contains the time stamp that indicates the date and time that the attestation was signed.
+

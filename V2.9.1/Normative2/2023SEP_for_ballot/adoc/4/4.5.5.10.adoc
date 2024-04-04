@@ -1,0 +1,6 @@
+==== 4.5.5.10 TQ2-10 Special Service Request Relationship (ID) 01657
+
+Definition: This defines an additional or alternate relationship between this service request and other service requests. Its primary intended use is for Pharmacy administration service requests, but it may be useful for other domains. See file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70506[HL7 Table 0506 – Service Request Relationship] in Chapter 2C, Code Tables, for allowed values.
+
+Conditional Rule: Either this field or TQ2-6 must be present.
+

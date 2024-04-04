@@ -1,0 +1,4 @@
+==== 6.5.7.45 IN2-45 Employment Stop Date (DT) 00783
+
+Definition: This field indicates the date on which the person's employment with a particular employer ended.
+

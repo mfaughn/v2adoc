@@ -1,0 +1,28 @@
+=== 17.9.1 DEV – Device Segment
+
+The Device segment identifies an instance or a type of a manufactured item that is used in the provision of healthcare without being substantially changed through that activity. The device may be a medical or non-medical device. Medical devices include durable (reusable) medical equipment, implantable devices, as well as disposable equipment used for diagnostic, treatment, and research for healthcare and public health. Non-medical devices may include items such as a machine, cellphone, computer, application, etc.
+
+HL7 Attribute Table – DEV – Device
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |2..2 | |ID |R | |0287 |02534 |Action Code
+|2 | | |EI |C | | |02457 |Unique Device Identifier
+|3 | | |CNE |C |Y |0961 |03483 |Device Type
+|4 | | |CNE |O |[line-through]#Y# |0962 |02501 |Device Status
+|5 | | |XON |O | | |01247 |Manufacturer/Distributor
+|6 | | |ST |O | | |01249 |Brand Name
+|7 | | |ST |O | | |01252 |Model Identifier
+|8 | | |ST |O | | |01253 |Catalogue Identifier
+|9 | | |EI |O | | |03476 |UDI Device Identifier
+|10 | | |ST |O | | |03479 |Device Lot Number
+|11 | | |ST |O | | |03480 |Device Serial Number
+|12 | | |DTM |O | | |03477 |Device Manufacture Date
+|13 | | |DTM |O | | |03478 |Device Expiry Date
+|14 | | |CWE |O |Y |0963 |02465 |Safety Characteristics
+|15 | | |EI |O | | |03481 |Device Donation Identification
+|16 | | |ST |O | | |02502 |Software Version Number
+|17 | | |CNE |O | |0795 |02459 |Implantation Status
+|===
+

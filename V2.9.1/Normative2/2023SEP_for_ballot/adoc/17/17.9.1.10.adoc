@@ -1,0 +1,6 @@
+==== 17.9.1.10 DEV-10 Device Lot Number (ST) 03479
+
+Definition: Alphanumeric string that identifies the device’s production lot number.
+
+Example: |123ABC|
+

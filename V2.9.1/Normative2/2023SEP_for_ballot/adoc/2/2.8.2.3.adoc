@@ -1,0 +1,4 @@
+==== 2.8.2.3 Original Mode flow chart
+
+image:extracted-media/media/image3.png[extracted-media/media/image3,width=624,height=595]
+

@@ -1,0 +1,4 @@
+==== *3.4.16.11* OH2-11 Average Days Worked per Week (NM) 03530
+
+Definition: This field asserts the average days worked per week for the job of a person recorded in this segment.
+

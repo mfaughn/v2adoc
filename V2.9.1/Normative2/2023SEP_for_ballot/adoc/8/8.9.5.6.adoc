@@ -1,0 +1,4 @@
+==== 8.9.5.6 LDP-6 Active/inactive Flag (ID) 00675
+
+Definition: This field indicates whether the entry for this location is currently an active, that is, valid, usable entry (disregarding whether it's waiting to be maintained by housekeeping). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70183[HL7 Table 0183 - Active/Inactive] in Chapter 2C, Code Tables, for valid values.
+

@@ -1,0 +1,13 @@
+== 5.11 OUTSTANDING ISSUES
+
+It is not clear that there is a good use case for the super segment pattern as described in the example in section _5.9.1.2.1_, "_Comprehensive pharmacy information Query Profile_."
+
+As currently written the usage and naming of segment groups is not clear:
+
+____
+{empty}1. Can a segment group name refer to more than one structure?
+
+{empty}2. Can the same structure have more than one segment group name?
+____
+
+This has implications for table 0391, the segment group table, which is an itemization of the segment group names.

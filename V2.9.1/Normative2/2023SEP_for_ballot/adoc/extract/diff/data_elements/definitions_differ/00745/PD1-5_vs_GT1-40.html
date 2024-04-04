@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+PD1-5_vs_GT1-40
+</h1>
+<hr>
+<h3>
+For 00745 there were 4 versions found.<br>This diff compares the version found in fields ["PD1-5", "PD1-5"] from sections ["3.4.11", nil], respectively<br>with the version found in fields ["GT1-40", "GT1-40"] from sections ["6.5.5", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This field indicates <strong>if the patient</strong> is currently a student<strong> or not</strong>, and whether the <strong>patient</strong> is a full-time or <strong>a </strong>part-time student. This field does not indicate the<strong> student&#39;s</strong> degree level (high school, college<strong>, elementary) or</strong> the student<strong>&#39;s</strong> field of study (accounting, engineering, etc.). Refer to _User-defined Table 0231<strong> </strong>- Student Status_ in <strong>c</strong>hapter 2C, for suggested values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field indicates <strong>whether the guarantor</strong> is currently a student, and whether the <strong>guarantor</strong> is a full-time or part-time student. This field does not indicate the degree level (high school, college<strong>) of</strong> the student<strong>, or his/her</strong> field of study (accounting, engineering, etc.). Refer to _User-defined Table 0231- Student Status_ in <strong>C</strong>hapter 2C, <strong>Code Tables, </strong>for suggested values.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00745,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:0231,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field indicates <strong>if the patient</strong> is currently a student<strong> or not</strong>, and whether the <strong>patient</strong> is a full-time or <strong>a </strong>part-time student. This field does not indicate the<strong> student&#39;s</strong> degree level (high school, college<strong>, elementary) or</strong> the student<strong>&#39;s</strong> field of study (accounting, engineering, etc.). Refer to _User-defined Table 0231<strong> </strong>- Student Status_ in <strong>c</strong>hapter 2C, for suggested values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field indicates <strong>whether the guarantor</strong> is currently a student, and whether the <strong>guarantor</strong> is a full-time or part-time student. This field does not indicate the degree level (high school, college<strong>) of</strong> the student<strong>, or his/her</strong> field of study (accounting, engineering, etc.). Refer to _User-defined Table 0231- Student Status_ in <strong>C</strong>hapter 2C, <strong>Code Tables, </strong>for suggested values.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,22 @@
+==== 12.2.4.1 Examples of action code usage
+
+A problem list and associated goals are generated in a Point of Care system. This transaction is broadcast through an interface engine that determines which systems in the organization require the event information and then forwards the messages appropriately. Each segment included in the original message contains the Action Code for *ADD* to signify an original message instance.
+
+{empty}h) Upon subsequent review, it is determined that a role segment designates the wrong person as the transcribing clerk for a problem. After the information is changed in the originating system, a new message is sent to provide synchronization. The message includes the original PRB segment with the PRB-1 Action Code for *UNCHANGED* (to identify the problem for which the role is being changed). This code signifies that the segment is included for the purposes of hierarchical linkage identification and that none of the information contained in it has been changed. The accompanying role segment sent would include the role *transcriber* in ROL-3 Role, the correct person in ROL-4 Role Person, and the value for *CORRECT* in ROL-2 Action Code.
+
+{empty}i) It is later decided that an additional goal must be added to a specific problem, and that an already existing goal that is currently supporting another problem should also be linked with this specific problem. The message would be constructed with the problem (PRB) segment for identification (the value for PRB-1 Action Code is *UNCHANGED*). The goal segment (GOL) for the additional goal would include GOL-1 Action Code for *ADD*. The goals already included with the problem list that need to be linked to this problem would have to be included on additional GOL segments with the GOL-1 Action Code for *LINK*. +
+ +
+Once data regarding a Diagnosis/Problem or a Goal have been communicated to other systems, there are occasions on which the data may have to be amended.
+
+{empty}j) New diagnoses/problems must be added to an individual's list. The Problem message is sent with the appropriate Problem Instance ID. All PRB segment(s) included in the message that contain the value for *ADD* in PRB-1 Action Code are processed as additions to the individual's problem list.
+
+{empty}k) New goals are added to the individual's record. The Goal message is sent with the GOL segments indicating the value for *ADD* as GOL-1 Action Code in each segment occurrence.
+
+{empty}l) Changes are made to the attributes of a goal. Examples include a change in the expected resolution date, a change in the life cycle status to reflect its successful conclusion, etc. The Goal message is sent with the appropriate GOL-4 Goal Instance ID. The GOL segments of the Goal message would include the value for *UPDATE* in GOL-1 Action Code.
+
+{empty}m) A new goal is attached to a problem already in the repository (e.g., the goal of "education on diabetes" for an individual diagnosed with "insulin-dependent diabetes"). A problem message would be sent with the PRB segment including the PRB-4 Problem Instance ID for the diabetes problem, and with the value *UNCHANGED* in PRB-1 Action Code. The attached GOL segment for the education goal would accompany the message and contain the value *ADD* in its GOL-1 Action Code field.
+
+{empty}n) A new diagnosis/problem is attached to a goal (e.g., a Goal is to "discharge an individual with intact skin." While the initial problem was "skin breakdown related to immobility," a new problem is "potential for skin breakdown related to draining wounds"). A Goal message would be sent with the GOL segment, including the GOL-4 Goal Instance ID for the discharge goal, and contain the value *UNCHANGED* in GOL-1 Action Code. The attached PRB segment identifying the new problem, "potential for skin breakdown related to draining wounds," would accompany this message and contain the value for *ADD* in PRB-1 Action Code.
+
+*Note:* If there is a requirement to modify information contained on a segment and unlink that same problem/goal, two segments must be transmitted (one for the modification and one for the unlink request).
+

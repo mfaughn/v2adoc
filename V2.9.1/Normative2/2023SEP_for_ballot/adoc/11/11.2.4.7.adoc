@@ -1,0 +1,4 @@
+==== 11.2.4.7 Healthcare provider: 
+
+Refers to a person licensed, certified or otherwise authorized or permitted by law to administer health care in the ordinary course of business or practice of a profession, including a healthcare facility.
+

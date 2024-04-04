@@ -1,0 +1,7 @@
+==== 4.5.1.37 ORC-37 Order Creation Date/Time (DTM) 03515
+
+Definition: This field represents the official date/time when the order was originally created; whether as an electronic order or as an initial paper requisition. This may also be known as Prescription Date/Time. This date/time is designed to preserve the creation date/time from initial order to final result, and for all stages in-between. (Acknowledgments, Updates, Cancels, Results etc.). When ORC-1 Order Control Code is “NW” for a new order, this date/time, if valued, is typically expected to be the same as ORC-9 Date/Time of Order Event. An example where the ORC-37, Order Creation Date/Time, is not the same as ORC-9, Date/Time of Order Event, while ORC-1, Order Control Code, is “NW” is when the order originally was and signed by a physician on paper (ORC-37), but not entered in a system until some time (ORC-9) thereafter.
+
+As different date/times can be considered the initiation of the order (the first person entering it or a subsequent step), or data is not available (e.g., a paper request without a date/time when it was created), the system where the order was first documented determines which date/time it reflects according to the organization's policies and would represent that in ORC-37. +
+When an order is resulted (ORC-1 = “RE”) the value in ORC-37 does not change from the value supplied in the original order.
+

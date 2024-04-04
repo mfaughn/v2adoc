@@ -1,0 +1,16 @@
+=== 8.11.3 CM1 - Clinical Study Phase Master Segment
+
+The Technical Steward for the CM1 segment is Orders and Observations.
+
+Each Clinical Study Phase Master (CM1) segment contains the information about one phase of a study identified in the preceding CM0. This is an optional structure to be used if the study has more than one treatment or evaluation phase within it. The identification of study phases that the patient enters are sent in the CSP segment: sequence 2. The CM1 segment describes the phase in general for the receiving system.
+
+[#CM1 .anchor]####HL7 Attribute Table - CM1 - Clinical Study Phase Master
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |01021 |Set ID - CM1
+|2 | | |CWE |R | | |01022 |Study Phase Identifier
+|3 | |300= |ST |R | | |01023 |Description of Study Phase
+|===
+

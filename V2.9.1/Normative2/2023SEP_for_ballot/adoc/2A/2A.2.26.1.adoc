@@ -1,0 +1,12 @@
+==== 2A.2.26.1 Placer Assigned Identifier (EI)
+
+Definition: Specifies an identifier assigned to an entity by the placer system.
+
+For example, the component might be used to convey the following:
+
+{empty}a) placer order number of the parent order.
+
+{empty}b) the specimen identifier as assigned by the placer.
+
+{empty}c) a location identifier assigned (or used by) the placer.
+

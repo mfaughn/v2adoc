@@ -1,0 +1,1 @@
+=== 4A.9.1 VXQ - query for vaccination record**Attention**: The original mode query, including QRD and QRF segments were retained for backward compatibility only as of v 2.4 and withdrawn as of v 2.7. The reader is therefore referred to Chapter 5, section 5.4, for the current query/response message structure.

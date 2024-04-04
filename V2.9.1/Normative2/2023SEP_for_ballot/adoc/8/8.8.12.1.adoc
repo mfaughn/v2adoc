@@ -1,0 +1,38 @@
+==== 8.8.12.1 OM4-1 Sequence Number - Test/Observation Master File (NM) 00586
+
+Definition: The OM4-1 contains a numeric value that indicates a unique set of OM1, OM2, OM3, and OM4 components; each OMn-1 in a set will have the same value as illustrated in the example below. Because the OM4 segment can repeat, but needs to have a unique number for use with OM4-17, the sequence number must be appended with a sequence number as shown in the second example below.
+
+*OM4-1 Sequence Number – Test/Observation Master File Example:*
+
+MSH|...<cr>
+
+// start MFE Test Begin group
+
+MFE|A|...<cr>
+
+OM1|1|...<cr>
+
+OM2|1|...<cr>
+
+OM3|1|...<cr>
+
+OM4|1|...<cr>
+
+// end MFE Test Begin group
+
+// start MFE_Test_Begin group
+
+MFE|A|...<cr>
+
+OM1|2|...<cr>
+
+OM2|2|...<cr>
+
+OM3|2|...<cr>
+
+OM4|2.1|...<cr>
+
+OM4|2.2|...<cr>
+
+//end MFE_Test_Begin group
+

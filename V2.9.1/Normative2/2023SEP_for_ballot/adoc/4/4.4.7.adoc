@@ -1,0 +1,12 @@
+=== 4.4.7 ORL – general laboratory order response message to any OML (Events O22 and O53)
+
+The function of this message is to respond to an OML message. An ORL message is the application acknowledgment to an OML message. See Chapter 2 for a description of the acknowledgment paradigm.
+
+Two message structures are available to acknowledge OML_O21:
+
+____
+• With patient segments
+
+• Optionally without patient segments
+____
+

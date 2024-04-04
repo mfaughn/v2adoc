@@ -1,0 +1,16 @@
+==== 7.10.1.13 Serious adverse product reaction:
+
+An adverse product reaction which:
+
+• is fatal (results in death)
+
+• is life threatening
+
+• requires hospitalization or prolongation of a hospitalization
+
+• results in persistent or significant disability/incapacity
+
+• results in a congenital anomaly/birth defect.
+
+Medical and scientific judgment should be exercised in deciding whether expedited reporting is appropriate in other situations, such as important medical events that may not be immediately life threatening or result in hospitalization but may jeopardize the patient or may require intervention to prevent one of the other outcomes listed in the definition above. These should also be considered serious.
+

@@ -1,0 +1,4 @@
+==== 14.4.2.7 NSC-7 New Fileserver (ST) 01194 
+
+Definition: This field contains a site-specific name for the new fileserver or file system used by this application.
+

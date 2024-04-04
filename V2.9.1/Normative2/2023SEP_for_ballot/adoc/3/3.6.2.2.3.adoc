@@ -1,0 +1,61 @@
+===== 3.6.2.2.3 A41 - merge account - patient account number (global)
+
+This event illustrates the concept of a global merge as defined in Section _3.6.2.1.9_, "_Global merge and move message construct versus repeating segment message constructs_."
+
+[width="100%",cols="54%,46%",]
+|===
+|A41 - Merge account information - patient account number |
+|Use Case - Eve Everywoman (patient identifier MR1) is a recurring outpatient at the Physical Therapy clinic at hospital XYZ with account number ACCT1. She has visited the clinic several times. When she arrives for therapy, a new registrar does not realize she already has an account and opens a new one with account number ACCT2. When the mistake is discovered, the two accounts are merged together, combining all visits under account ACCT1. |
+|Target: _PID-18 - Patient Account Number_ |
+|Source: _MRG-3 - Prior Patient Account Number_ |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A41^ADT_A39\|00000005\|P\|2.8\|<cr>
+
+EVN\|A41\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYWOMAN^EVE\|\|19501010\|M\|\|\|123 NORTH STREET^^NY^NY^10021\|\|(212)111-3333\|\|\|S\|\|ACCT1<cr>
+
+MRG\|MR1^^^XYZ\|\|ACCT2<cr>
+
+|
+|Before Merge |After Merge
+a|
+MR1
+
+ACCT1
+
+96124
+
+96126
+
+ACCT2
+
+96128
+
+96130
+
+a|
+MR1
+
+ACCT1
+
+96124
+
+96126
+
+96128
+
+96130
+
+a|
+Implementation considerations: This scenario exists when two accounts are established for the same patient.
+
+The PV1 segment is not valued since this event is really a merge at the _PID-18 - Patient Account Number_ level. All identifiers below the _PID-18 - Patient Account Number_ are combined under the surviving Patient Account Number.
+
+Since there could be a discrepancy in the demographic information between the two records, reconciliation may be required. Surviving and non-surviving demographic information is application and implementation specific. An A08 (update patient information) event should be sent and/or negotiated as necessary to provide for implementation and application-specific needs.
+
+|
+|===
+

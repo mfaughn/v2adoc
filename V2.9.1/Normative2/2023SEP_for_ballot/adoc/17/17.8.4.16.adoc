@@ -1,0 +1,4 @@
+==== 17.8.4.16 SCD-16 Cycle Complete Time (TM) 02119
+
+Definition: The time of day that the cycle completed.
+

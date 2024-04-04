@@ -1,0 +1,32 @@
+==== 5.9.3.2 Pharmacy example:
+
+The user wishes to know all the medications dispensed for the patient whose medical record number is "555444222111" for the period beginning 5/31/98 and ending 5/31/99. The following QBP message is generated:
+
+MSH|^~\&|PCR|Gen Hosp|PIMS||199811201400-0800||QBP^Q42^QBP_Q13|8699|P|2.8||||||||
+
+QPD|Q42^Tabular Dispense History^HL7nnn|Q0010|555444222111^^^MPI^MR| |19980531|19990531|
+
+RDF|3|PatientList^ST^20~PatientName^XPN^48~MedicationDispensed^ST^40~RXD.3^DTM^24
+
+RCP|I|999^RD|
+
+The pharmacy system identifies medical record number "555444222111" as belonging to Adam Everyman and locates 4 prescription dispenses meeting the criteria and returns the following RTB message:
+
+MSH|^~\&|PIMS|Gen Hosp|PCR||199811201400-0800||RTB^K42^RTB_K13|8858|P|2.8||||||||
+
+MSA|AA|8699|
+
+QAK|Q010|OK|Q42^Tabular Dispense History^HL7nnn|4
+
+QPD|Q42^Tabular Dispense History^HL7nnn|Q0010|555444222111^^^MPI^MR||19980531|19990531|
+
+RDF|7|PatientId^CX^20~PatientName^XPN^48~OrderControlCode^ID^2~ MedicationDispensed^CWE^100~DispenseDate^DTM^24~QuantityDispensed^NM^20~ OrderingProvider^XCN^120
+
+RDT|555444222111^^^MPI^MR|Everyman^Adam|RE|525440345^Verapamil Hydrochloride 120 mg TAB^NDC |199805291115-0700|100|77^Hippocrates^Harold^H^III^DR^MD
+
+RDT|555444222111^^^MPI^MR|Everyman^Adam|RE|00182196901^VERAPAMIL HCL ER TAB 180MG ER^NDC |19980821-0700|100|77^Hippocrates^Harold^H^III^DR^MD
+
+RDT|555444222111^^^MPI^MR|Everyman^Adam|RE|00172409660^BACLOFEN 10MG TABS^NDC |199809221415-0700|10|88^Seven^Henry^^^DR^MD
+
+RDT|555444222111^^^MPI^MR|Everyman^Adam|RE|00054384163^THEOPHYLLINE 80MG/15ML SOLN^NDC|199810121145-0700|10|99^Assigned^Amanda^^^DR^MD
+

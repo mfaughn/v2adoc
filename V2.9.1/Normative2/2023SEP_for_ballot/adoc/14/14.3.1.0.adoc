@@ -1,0 +1,4 @@
+==== 14.3.1.0 Acknowledgement Choreography
+
+None - Refer to Chapter 5 for generic query choreography.
+

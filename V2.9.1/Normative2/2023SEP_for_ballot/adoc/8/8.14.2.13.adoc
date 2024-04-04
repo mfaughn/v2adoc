@@ -1,0 +1,4 @@
+==== 8.14.2.13 CTR -13 Group Purchasing Organization (XON) 02404
+
+Definition: This field contains the identifier which identifies the GPO organization.
+

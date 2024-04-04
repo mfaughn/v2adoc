@@ -1,0 +1,4 @@
+==== 4.5.1.27 ORC-27 Filler's Expected Availability Date/Time (DTM) 01642
+
+Definition: This field specifies the date/time the Filler expects to complete the order, e.g., have the results available, the prescription ready, etc. This is a Filler assigned field and would typically only be sent from Filler to Placer on either application level acknowledgments or order status messages. (Could be delivered with result message, but would have little relevance at that time.)
+

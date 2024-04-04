@@ -1,0 +1,4 @@
+==== 7.12.1.11 PES-11 Event Report Timing/Type (ID) 01070
+
+Definition: This field contains the timing type of report as required by regulatory agency. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70234[_HL7 Table 0234 - Report Timing_] for valid values.
+

@@ -1,0 +1,4 @@
+==== 12.2.1.3 Role:
+
+A *role* refers to the function or responsibility assumed by a person in the context of a healthcare event. Role information documents a person's association with an identified healthcare activity. Examples include primary care provider, transcriptionist, reviewer, and consulting physician.
+

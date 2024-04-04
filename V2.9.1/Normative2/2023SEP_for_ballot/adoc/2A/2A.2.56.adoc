@@ -1,0 +1,37 @@
+=== 2A.2.56 PPN - performing person time stamp
+
+HL7 Component Table – PPN – Performing Person Time Stamp
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |15= |ST |O | |Person Identifier | |2A.2.76
+|2 | | |FN |O | |Family Name | |2A.2.30
+|3 | |30# |ST |O | |Given Name | |2A.2.76
+|4 | |30# |ST |O | |Second and Further Given Names or Initials Thereof | |2A.2.76
+|5 | |20# |ST |O | |Suffix (e.g., JR or III) | |2A.2.76
+|6 | |20# |ST |O | |Prefix (e.g., DR) | |2A.2.76
+|7 | | | |W | |Degree (e.g., MD) |Withdrawn as of v2.7 |2A.2.36
+|8 | | |CWE |W |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70297[0297] |Source Table |Withdrawn as of V2.9 |2A.2.36
+|9 | | |HD |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70363[0363] |Assigning Authority | |2A.2.33
+|10 |1..5 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70200[0200] |Name Type Code | |2A.2.35
+|11 | |4= |ST |O | |Identifier Check Digit | |2A.2.76
+|12 |3..3 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70061[0061] |Check Digit Scheme | |2A.2.35
+|13 |1..5 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70203[0203] |Identifier Type Code | |2A.2.35
+|14 | | |HD |O | |Assigning Facility | |2A.2.33
+|15 | | |DTM |O | |Date/Time Action Performed | |2A.2.22
+|16 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70465[0465] |Name Representation Code | |2A.2.35
+|17 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70448[0448] |Name Context | |2A.2.13
+|18 | | | |W | |Name Validity Range |withdrawn as of v2.7. |2A.2.20
+|19 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70444[0444] |Name Assembly Order | |2A.2.35
+|20 | | |DTM |O | |Effective Date | |2A.2.22
+|21 | | |DTM |O | |Expiration Date | |2A.2.22
+|22 | |199# |ST |O | |Professional Suffix | |2A.2.76
+|23 | | |CWE |O | |Assigning Jurisdiction | |2A.2.13
+|24 | | |CWE |O | |Assigning Agency or Department | |2A.2.13
+|25 | |4= |ST |O | |Security Check | |2.A.74
+|26 |3..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70904[0904] |Security Check Scheme | |2.A.35
+|===
+
+This data type is the equivalent of an XCN data type joined with a DTM data type. However, the XCN data type has been flattened to allow legal expression of its embedded complex data types HD, CWE and CWE.
+

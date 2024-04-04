@@ -1,0 +1,23 @@
+=== 16.4.8 PMT – Payment Information Segment 
+
+This segment contains information that describes a payment made by a Payer organization.
+
+HL7 Attribute Table – PMT – Payment Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |02018 |Payment/Remittance Advice Number
+|2 | | |DTM |R | | |02019 |Payment/Remittance Effective Date/Time
+|3 | | |DTM |R | | |02020 |Payment/Remittance Expiration Date/Time
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70570[0570] |02021 |Payment Method
+|5 | | |DTM |R | | |02022 |Payment/Remittance Date/Time
+|6 | | |CP |R | | |02023 |Payment/Remittance Amount
+|7 | | |EI |O | | |02024 |Check Number
+|8 | | |XON |O | | |02025 |Payee Bank Identification
+|9 | |4= |ST |O | | |02026 |Payee Transit Number
+|10 | | |CX |O | | |02027 |Payee Bank Account ID
+|11 | | |XON |R | | |02028 |Payment Organization
+|12 | |100= |ST |O | | |02029 |ESR-Code-Line
+|===
+

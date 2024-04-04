@@ -1,0 +1,6 @@
+==== 13.1.3.51 Service envelope:
+
+*_In NCCLS LAB AUTOMATION Standard documents_*, the space around the transportation system and instruments that may be accessed periodically for maintenance or repair of equipment.
+
+*Note:* A transportation system and analytic instruments should not have mutually impinging service envelopes.
+

@@ -1,0 +1,4 @@
+==== 16.4.7.8 ADJ-8 Adjustment Description (ST) 02010
+
+Definition: Description of adjustment, such as client instructions.
+

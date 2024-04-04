@@ -1,0 +1,4 @@
+==== 16.4.6.34 PSL-34 Number of TP's PP (NM) 01988
+
+Definition: Cost of the service "professional part" expressed in "points".
+

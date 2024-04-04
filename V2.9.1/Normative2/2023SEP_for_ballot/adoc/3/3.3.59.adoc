@@ -1,0 +1,115 @@
+=== 3.3.59 QBP/RSP - Allocate Identifiers (QBP) and Response (RSP) (Events Q24 and K24)
+
+This query/response is designed for interaction between a client system and an MPI (Master Person Index). The query consists of domains in which identifiers should be allocated. The response is new identifiers in those domains.
+
+This event is not meant to cause the creation of a new person record, or to bind identifiers to a particular person record. The events _A28 - Add person information_ and _A24 - Link patient information_ should be used for that purpose. This event is meant to simply reserve the use of identifiers.
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID: |Q24
+|Query Type: |Query
+|Query Name: |Allocate Identifiers
+|Query Trigger: |QBP^Q24^QBP_Q21
+|Query Mode: |
+|Response Trigger: |RSP^K24^RSP_K23
+|Query Characteristics |
+|Purpose: |Request that an MPI allocate an identifier for a given domain.
+|===
+
+QBP^Q24^QBP_Q21: Query By Parameter
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|QPD |Query Parameter Definition Segment | |5
+|RCP |Response Control Parameters | |5
+|[ DSC ] |Continuation Pointer | |2
+|===
+
+[width="100%",cols="18%,25%,4%,16%,18%,19%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|QBP^Q24^QBP_Q21 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^Q24^ACK |- |ACK^Q24^ACK
+|Application Ack |RSP^K24^RSP_K23 |- |- |RSP^K24^RSP_K23 |RSP^K24^RSP_K23
+|===
+
+RSP^K24^RSP_K23: Segment Pattern Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ ERR ] |Error | |2
+|QAK |Query Acknowledgment | |5
+|QPD |Query Parameter Definition Segment | |5
+|[ |--- QUERY_RESPONSE begin | |
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|] |--- QUERY_RESPONSE end | |
+|[ DSC ] |Continuation Pointer | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|RSP^K24^RSP_K23 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^K24^ACK
+|Application Ack |- |- |-
+|===
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq. |Field Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |LOINC or HL7 Code/Domain |Element Name
+|1 |DomainToAllocateIn | | | |CX |R |Y | | |PID-3 | |Patient Identifier
+|===
+
+[width="100%",cols="19%,11%,6%,64%",options="header",]
+|===
+|Input Parameter |Comp. Name |DT |Description
+|DomainToAllocateIn () | |CX |Components: <ID (ST)> ^ <check digit (ST)> ^ <code identifying the check digit scheme employed (ID)> ^ < assigning authority (HD)> ^ <identifier type code (IS)> ^ < assigning facility (HD)
+| | | |This parameter specifies in which domains to allocate identifiers.
+| | | |Example: ...\|^^^GOOD HEALTH HOSPITAL\|...
+| | | |Only the following components should be valued.
+|DomainToAllocateIn |Assigning Authority | |PID.3.4 must be valued.
+|DomainToAllocateIn |Identifier type code | |
+|===
+
+Following is an example of a Q24/K24 query/response pair of messages. First is the query:
+
+MSH|^~\&|CLINREG|WESTCLIN|HOSPMPI|HOSP|199912121135-0600||QBP^Q24^QBP_Q21|1|D|2.5
+
+QPD|Q24^Allocate Identifiers^HL7nnnn|111069|^^^WEST CLINIC~^^^SOUTH LAB|
+
+RCP||I|
+
+This query is asking for identifiers from WEST CLINIC and SOUTH LAB to be reserved and returned. Here is a sample response:
+
+MSH|^~\&|HOSPMPI|HOSP|CLINREG|WESTCLIN|199912121135-0600||RSP^K24^RSP_K23|1|D|2.5|
+
+MSA|AA|8699|
+
+QAK|111069|OK|Q24^Allocate Identifiers^HL7nnnn|1|
+
+QPD|A56^Allocate Identifiers^HL7nnn|111069|^^^WEST CLINIC~^^^SOUTH LAB|
+
+PID|||624335A^^^WEST CLINIC~564325^^^SOUTH LAB|
+
+*Note:* The PID segment returned does not include any person demographics as the identifiers are not yet "attached" to any person record. Presumably the querying system would eventually send back to the MPI an _A28 Add person information_ to create a person record for the identifiers or an _A24 Link patient information_ to link the identifiers to an existing person record.
+

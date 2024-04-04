@@ -1,0 +1,4 @@
+==== 13.3.4.16 INV-16 Manufacturer Lot Number (ST) 01387
+
+Definition: This field specifies the lot number assigned by the manufacturer during production of the substance.
+

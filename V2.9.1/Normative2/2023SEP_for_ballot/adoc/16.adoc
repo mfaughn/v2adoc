@@ -1,0 +1,2258 @@
+== 16.2 Purpose
+
+This document contains the HL7 messaging specifications to support Claims and Reimbursement (CR) for the electronic exchange of health invoice (claim) data. The document is intended for use by benefit group vendors, Third Party Administrators (TPA) and Payers who wish to develop software that is compliant with an international standard for the electronic exchange of claim data.
+
+The content of this document is not intended to be an alternative to or replacement for those ASC X12 standards mandated for use in this domain in the United States
+
+=== 16.2.1 Scope
+
+The scope of the Claims and Reimbursement informative document defines the HL7 messaging and technical standards for:
+
+• Electronic transmission of healthcare invoices, with supporting documents and reports, to authorized individuals and/or organizations;
+
+• Inclusion of diagnostic and preventative intervention codes with each healthcare invoice;
+
+• A query mechanism to allow authorized users to electronically inquire about information they have previously provided to a Payer;
+
+• Minimum data sets;
+
+• Minimum display and print standards; and
+
+• Minimum data storage.
+
+As used in this document the domain of Claims and Reimbursement excludes:
+
+• Payer and benefit group specific processing and implementation rules;
+
+• Jurisdictional specific processing and implementation rules;
+
+• Processes for the submission of supporting documentation by third parties to Payers.
+
+• Processes for the capture and processing of healthcare invoice data by a Provider;
+
+• Processes for the adjudication, payment and reconciliation of healthcare invoices by a Payer;
+
+• Referrals between Providers;
+
+• Electronic funds transfer (EFT) messages; and,
+
+• Implementation of the standard.
+
+== 16.3 Trigger Events and Message Definitions
+
+=== 16.3.1 EHC^E01 – Submit HealthCare Services Invoice (event E01) 
+
+This message is used to submit a HealthCare Services Invoice to a TPA/Payer for processing and payment. A HealthCare Services Invoice may have 1 or more Product/Service Line Items (detail lines), grouped as a Product/Service Group. Each Product/Service Line Item represents a specific fee item. Refer to the beginning of this section for more information on the structure of a HealthCare Services Invoice.
+
+This message can be used to submit a HealthCare Services Invoice or to resubmit a previously submitted HealthCare Services Invoice (in case it was not properly acknowledged the first time that it was submitted). This message cannot be used to update an Invoice (e.g., add or cancel Product/Service Line Items) or cancel a HealthCare Services Invoice. To cancel a HealthCare Services Invoice, use the EHC^E02 – Cancel HealthCare Services Invoice message. To update a HealthCare Services Invoice it must first be cancelled (see EHC^E02 – Cancel HealthCare Services Invoice) and then re–submitted using this message with new Invoice numbers.
+
+This message can also be used as a Pre-Determination message. This allows a Provider Application to submit a HealthCare Services Invoice to a Payer Application and run it through the Payer's edit and adjudication engine. The only difference between a Pre-Determination Invoice and a regular Invoice is the Payer will not pay the Pre-Determination Invoice. Setting the Invoice Control on IVC to "PD" identifies a Pre-Determination Invoice.
+
+Note that an EHC^E12 – Request Additional Information (pending) is a valid response for an EHC^E01 – Submit HealthCare Services Invoice. In this case, the interactions would be EHC^E01 -> EHC^E12 (pending).
+
+Processing Rules:
+
+{empty}1) Where multiple Payers can pay Invoices, they must be sent to Payers in the order identified as primary, secondary, tertiary, etc. Rules for determining primary, secondary, tertiary, etc. are not set in this document; these are set out by agencies in various jurisdictions. +
+In addition, an Invoice must only be sent to a subsequent Payer (e.g., secondary) once Edit/Adjudication results have been received from a prior Payer (e.g., primary).
+
+{empty}2) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application. +
+The Provider Invoice Number and Payer Invoice Number must be echoed on any subsequent interactions for the Invoice between the Provider Application and Payer Application.
+
+{empty}3) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+If the Payer Application accepts the Invoice, the Provider Application must store 2 tracking numbers for each Product/Service Line Item, if present in the message pair. The Payer Application must also store 2 tracking numbers for each Product/Service Line Item, if present in the message pair. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}4) Each Product/Service Line Item must reference Location Identification information, which is defined by the LOC segment. Location Identification information may be specified with the Invoice, Product/Service Group and/or Product/Service Line Item. +
+If specified with the Invoice Information, then the Location Identification information acts as a default for all Product/Service Line Items in the Invoice. +
+If specified with the Product/Service Group Information, then the Location Identification information acts as a default for all Product/Service Line Items in the Product/Service Group. +
+If specified with the Product/Service Line Item, then the Location Identification information supersedes (replaces) any defaults set by specifying Location Identification information with the Invoice or Product/Service Group. +
+Location Identification information must be specified with the Product/Service Line Item if it has not been defaulted for the Invoice or Product/Service Group.
+
+{empty}5) Some Payers require Provider Information to be included with an Invoice, which is defined by the ROL segment. In these situations, the ROL segment may be specified with the Invoice, Product/Service Group and/or Product/Service Line Item (note that the ROL segment also appears with Procedure Information, which is not covered by this processing rule). +
+If specified with the Invoice Information, then the Provider Information acts as a default for all Product/Service Line Items in the Invoice. +
+If specified with the Product/Service Group Information, then the Provider Information acts as a default for all Product/Service Line Items in the Product/Service Group. +
+If specified with the Product/Service Line Item, then the Provider information supersedes (replaces) any defaults set by specifying Provider information with the Invoice or Product/Service Group. +
+Provider Information, if required by the Payer, must be specified with the Product/Service Line Item if it has not been defaulted for the Invoice or Product/Service Group.
+
+{empty}6) If Authorization Information is entered (AUT segment), then either the Authorization Identifier on AUT or Name of Authorizer on AUT must be specified.
+
+{empty}7) The Billed Amount on PSG must be equal to the sum of all Product/Service Billed Amounts on PSL for all Product/Service Line Items for the particular Product/Service Group.
+
+{empty}8) Procedures: If a PR1 segment (procedure/service) is specified for a particular patient, then the Provider performing the Procedure must be specified (using the corresponding ROL segment) if different from the Primary Care Provider specified for the same Product/Service Line Item.
+
+{empty}9) The Product/Service Billed Amount on PSL must be equal to the Product/Service Gross Amount on PSL + sum of all Adjustment Amount on ADJ for all Provider Adjustments for the particular Product/Service Line Item. That is, the gross amount + any adjustments such as taxes, mark ups, dispensing fees, etc. must equal the billed amount. +
+The Product/Service Billed Amount on PSL should be the amount the Provider is billing and should include all adjustments and all unit cost multipliers.
+
+{empty}10) Product/Service Clarification Codes: Each Product/Service Line Item allows a number of clarification codes to be specified. These are specified as 2 fields: Product/Service Clarification Code Type and Product/Service Clarification Code Value. Both of these fields repeat within the PSL segment and must repeat the same number of times. For example, if 2 clarification codes are specified, then 2 repetitions of each field is required, the first repetition corresponding to the 1^st^ clarification code, the second repetition corresponding to the 2^nd^ clarification code.
+
+{empty}11) Re-submitting an Invoice: If an Invoice or component is resubmitted with corrections (this rule does not apply to Invoices re-submitted in whole, without modification, due to network problems, etc.), new Invoice, Product/Service Group and Product/Service Line Items must be specified (for the subsequent Invoice).
+
+{empty}12) A single group cannot have both multiple Patients and multiple Product/Service Line Items for the same Product/Service Group. In this situation, the multiple Patient and Product/Service Line Item must be split into multiple Product/Service Groups.
+
+EHC^E01^EHC_E01: Submit HealthCare Services Invoice
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- INVOICE_INFORMATION_SUBMIT begin | |
+|IVC |Invoice | |16
+|[ PYE ] |Payee Information | |16
+|[ \{ CTD } ] |Contact Data | |
+|[ AUT ] |Authorization Information | |
+|[ \{ LOC } ] |Location Identification | |8
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|\{ |--- PRODUCT_SERVICE_SECTION begin | |
+|PSS |Product/Service Section | |16
+|\{ |--- PRODUCT_SERVICE_GROUP begin | |
+|PSG |Product/Service Group | |16
+|[ \{ LOC } ] |Location Identification | |
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|[ \{ |--- PATIENT_INFO begin | |
+|PID |Person Identification | |3
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|*[\{ GSC }]* |*Sex Parameter for Clinical Use* | |*3*
+|[ \{ PRT } ] |Participation | |4
+|[ PV1 ] |Patient Visit | |3
+|[ PV2 ] |Patient Visit – Additional Info | |3
+|[ \{ ACC } ] |Accident | |
+|\{ |--- INSURANCE begin | |
+|IN1 |Insurance | |
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|[ IN2 ] |Insurance Additional Info | |
+|} |--- INSURANCE end | |
+|[ \{ |--- DIAGNOSIS begin | |
+|DG1 |Diagnosis | |
+|[ \{ NTE } ] |Notes and Comments | |
+|} ] |--- DIAGNOSIS end | |
+|[ \{ OBX } ] |Observation | |
+|[ \{ PRT } ] |Participation | |4
+|} ] |--- PATIENT_INFO end | |
+|\{ |--- PRODUCT_SERVICE_LINE_ITEM begin | |
+|PSL |Product/Service Line Item | |16
+|[\{ NTE }] |Notes and Comments | |
+|[\{ ADJ }] |Adjustment | |16
+|[ AUT ] |Authorization Information | |
+|[\{ LOC }] |Location Identification | |
+|[\{ PRT }] |Participation | |
+|[\{ ROL }] |Role |B |15
+|} |--- PRODUCT_SERVICE_LINE_ITEM end | |
+|[ \{ |--- PROCEDURE begin | |
+|PR1 |Procedures | |
+|[\{NTE}] |Notes and Comments | |
+|[\{PRT}] |Participation | |
+|[\{ROL}] |Role |B |
+|} ] |--- PROCEDURE end | |
+|[ \{ IPR } ] |Invoice Processing Results | |
+|} |--- PRODUCT_SERVICE_GROUP end | |
+|} |--- PRODUCT_SERVICE_SECTION end | |
+|> |--- INVOICE_INFORMATION_SUBMIT end | |
+|===
+
+[width="100%",cols="18%,26%,6%,16%,17%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E01^EHC_E01 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E01^ACK |- |ACK^E01^ACK
+|Application Ack |ACK^E01^ACK |- |- |ACK^E01^ACK |ACK^E01^ACK
+|===
+
+=== 16.3.2 EHC^E02 – Cancel HealthCare Services Invoice (event E02) 
+
+This message is used to cancel one HealthCare Services Invoices or one Product/Service Group in an Invoice or one Product/Service Line Item in an Invoice that have previously been submitted to a TPA/Payer for processing and payment. Invoice Control codes are used to indicate the specific action being requested of the Payer (CN for Cancel Invoice, CG for Cancel Product/Service Group and CI for Cancel Product/Service Line Item). An Invoice that is cancelled must be marked as cancel only and not purged from the Payer Application's database.
+
+The Payer may/may not be able to cancel the Invoice/Product/Service Line Item, and will indicate processing results in the response message. In some situations, the Payer has already paid the Product/Service Line Item, and therefore will hold a debit amount for the Payee until subsequent billing from the Payee utilizes the debit amount.
+
+This message cannot be used to cancel or remove ancillary information for an Invoice and/or Product/Service Line Item such as Authorization or Contact information or any referenced health documents.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) At least one NTE segment must be included with this message to describe the cancellation reason for each Product/Service Line Item. The NTE segment may be specified with the Invoice (following the IVC segment) and applies to all Product/Service Line Items for that Invoice. If not specified with the Invoice, then it must be specified for each Product/Service Line Item (following the PSL segment).
+
+{empty}4) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original Invoice (submitted via the EHC^E01 – Submit HealthCare Services Invoice message) for the specified Invoice being queried.
+
+{empty}5) Provider reference numbers and Payer reference numbers must exist on Payer Application's database and must point to the same Invoice, Product/Service Group or Product/Service Line Item, otherwise an error must be generated (mismatched Invoice and/or Product/Service Line Item).
+
+{empty}6) Product/Service Clarification Codes: Each Product/Service Line Item allows a number of clarification codes to be specified. These are specified as 2 fields: Product/Service Clarification Code Type and Product/Service Clarification Code Value. Both of these fields repeat within the PSL segment and must repeat the same number of times. For example, if 2 clarification codes are specified, then 2 repetitions of each field is required, the first repetition corresponding to the 1^st^ clarification code, the second repetition corresponding to the 2^nd^ clarification code.
+
+{empty}7) To cancel an Invoice, use Invoice Control Code on IVC of "CN". In addition, the following fields must be supplied and must match the original Invoice submitted: +
+HDR.Sending Organization +
+IVC.Provider Organization +
+IVC.Invoice Amount +
+IVC.Provider Invoice Number +
+IVC.Payer Invoice Number +
+PYE.Payee Identification List
+
+{empty}8) To cancel a Product/Service Group within an Invoice, use Invoice Control Code on IVC of "CG". In addition, the following fields must be supplied and must match the original Invoice submitted: +
+HDR.Sending Organization +
+IVC.Provider Organization +
+IVC.Invoice Amount +
+IVC.Provider Invoice Number +
+IVC.Payer Invoice Number +
+PYE.Payee Identification List +
+PSG.Provider Product/Service Group Number +
+PSG.Payer Product/Service Group Number
+
+{empty}9) To cancel a Product/Service Line Item within an Invoice, use Invoice Control Code on IVC of "CI". In addition, the following fields must be supplied and must match the original Invoice submitted: +
+HDR.Sending Organization +
+IVC.Provider Organization +
+IVC.Invoice Amount +
+IVC.Provider Invoice Number +
+IVC.Payer Invoice Number +
+PYE.Payee Identification List +
+PSG.Provider Product/Service Group Number +
+PSG.Payer Product/Service Group Number +
+PSL.Provider Product/Service Line Item Number +
+PSL.Payer Product/Service Line Item Number +
+PSL.Product/Service Code +
+PSL.Product/Service Effective Date +
+PSL.Billed Amount
+
+{empty}10) This message must not be used to cancel a Product/Service Line Item in a Product/Service Group which was submitted with Adjudicated as Group = "Y".
+
+EHC^E02^EHC_E02: Cancel HealthCare Services Invoice
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Secondary Header | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- INVOICE_INFORMATION_CANCEL begin | |
+|IVC |Invoice | |16
+|PYE |Payee Information | |16
+|[ \{ CTD } ] |Contact Data | |
+|[ \{ NTE } ] |Notes and Comments | |
+|[ \{ |--- PRODUCT_SERVICE_SECTION begin | |
+|PSS | | |
+|[ \{ |--- PSG begin | |
+|PSG |Product/Service Group | |
+|[ \{ PSL } ] |Product/Service Line Item | |
+|} ] |--- PSG end | |
+|} ] |--- PRODUCT_SERVICE_SECTION end | |
+|> |--- INVOICE_INFORMATION_CANCEL end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E02^EHC_E02 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E02^ACK |- |ACK^E02^ACK
+|Application Ack |ACK^E02^ACK |- |- |ACK^E02^ACK |ACK^E02^ACK
+|===
+
+=== 16.3.3 QBP^E03 – Query HealthCare Services Invoice Status (event E03) 
+
+This message is used to query the status of a HealthCare Services Invoice. There are 3 types of queries handled by this message: 1) a specific Invoice, 2) a specific Product/Service Group or 3) a specific Product/Service Line Item. If a Provider wants to obtain information on a group of invoices (e.g., submitted in a date range), each individual Invoice must be queried.
+
+This message may also be used to query an Invoice submitted at another Network Application ID and Network Facility ID, as long as sufficient identification information is provided to qualify the request and requestor. These are noted as Processing Rules for this message.
+
+Note that the response to this query has the same content as an EHC^E10 – Edit/Adjudication Results message.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) A unique query identifier (Query Tag on QPD) must be generated for each query. +
+Provider Invoice Number + Payer Invoice Number + Product/Service Line Item Number on input message must exist on Payer Application's database and must point to the same Product/Service Line Item, otherwise an error must be generated (mismatched Invoice and/or Product/Service Line Item).
+
+{empty}4) To query an Invoice, the following fields must be supplied and must match the original Invoice submitted: +
+QPD.Sending Organization +
+QPD.Provider Organization +
+QPD.Invoice Amount +
+QPD.Provider Invoice Number +
+QPD.Payer Invoice Number +
+QPD.Payee Identification List
+
+{empty}5) To query a Product/Service Group within an Invoice, the following fields must be supplied and must match the original Invoice submitted: +
+QPD.Sending Organization +
+QPD.Provider Organization +
+QPD.Invoice Amount +
+QPD.Provider Invoice Number +
+QPD.Payer Invoice Number +
+QPD.Payee Identification List +
+QPD.Provider Product/Service Group Number +
+QPD.Payer Product/Service Group Number
+
+{empty}6) To query a Product/Service Line Item within an Invoice, the following fields must be supplied and must match the original Invoice submitted: +
+QPD.Sending Organization +
+QPD.Provider Organization +
+QPD.Invoice Amount +
+QPD.Provider Invoice Number +
+QPD.Payer Invoice Number +
+QPD.Payee Identification List +
+QPD.Provider Product/Service Group Number +
+QPD.Payer Product/Service Group Number +
+QPD.Provider Product/Service Line Item Number +
+QPD.Payer Product/Service Line Item Number
+
+QBP^E03^QBP_E03: Query HealthCare Services Invoice
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Secondary Header | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- QUERY_INFORMATION begin | |
+|QPD |Query Parameter Definition | |5
+|RCP |Response Control Parameter | |5
+|> |--- QUERY_INFORMATION end | |
+|===
+
+[width="99%",cols="18%,24%,6%,16%,18%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|QBP^E03^QBP_E03 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E03^ACK |- |ACK^E03^ACK
+|Application Ack |RSP^E03^RSP_E03 |- |- |RSP^E03^RSP_E03 |RSP^E03^RSP_E03
+|===
+
+=== 16.3.4 RSP^E03 – HealthCare Services Invoice Status Query Response (event E03) 
+
+This message is used to respond to a QPB^E03 – Query HealthCare Services Invoice. It provides Invoice and invoice processing information to a Provider.
+
+A QBP^E03 – Query HealthCare Services Invoice can be used to query against an Invoice or a specific Product/Service Line Item in an Invoice. The same response message, RSP^E03 – HealthCare Services Invoice Query Response, is used for both types of query.
+
+Processing Rules:
+
+{empty}1) Provider Invoice Number + Payer Invoice Number + Product/Service Line Item Number on input message must exist on Payer Application's database and must point to the same Product/Service Line Item, otherwise an error must be generated (mismatched Invoice and/or Product/Service Line Item).
+
+{empty}2) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original Invoice (submitted via the EHC^E01 – Submit HealthCare Services Invoice message) for the specified Invoice being queried.
+
+{empty}3) A unique query identifier (Query Tag on QPD) must be generated for each query.
+
+RSP^E03^RSP_E03: HealthCare Services Invoice Query Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |2
+|[ \{ ERR } ] |Error | |2
+|< |--- QUERY_ACK_IPR begin | |
+|QAK |Query Acknowledgement | |
+|QPD |Query Parameter Definition | |
+|[ \{ IPR} ] |Invoice Processing Results | |16
+|> |--- QUERY_ACK_IPR end | |
+|===
+
+[width="100%",cols="23%,35%,10%,32%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|RSP^E03^RSP_E03 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^E03^ACK
+|Application Ack |- |- |-
+|===
+
+=== 16.3.5 EHC^E04 – Re-Assess HealthCare Services Invoice Request (event E04) 
+
+This message is used to submit a single Re-Assess HealthCare Services Invoice Request to a TPA/Payer for processing. The Re-Assess HealthCare Services Invoice Request is used by a Provider, to request review of a previously adjudicated HealthCare Services Invoice, with optional specification of a Product/Service Line Item within that Invoice. Note that the HealthCare Services Invoice need not necessarily be sent to a TPA/Payer using the EHC^E01 – Submit HealthCare Services Invoice: it may be manually submitted.
+
+Adjudication for a HealthCare Services Invoice may be re-assessed either because background information, such as a Provider's billing rate may have changed or if some of the adjudication rules have changed since original adjudication of the Invoice.
+
+This message cannot be used to change or delete information from the HealthCare Services Invoice. The only information allowed in this message are Provider Invoice Number and Payer Invoice Number, and optional notes to assist in the re-assessment by the TPA/Payer.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+EHC^E04^EHC_E04: Re-Assess HealthCare Services Invoice Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- REASSESSMENT_REQUEST_INFO begin | |
+|IVC |Invoice | |16
+|[ \{ NTE } ] |Notes and Comments | |
+|[ \{ |--- PRODUCT_SERVICE_SECTION begin | |
+|PSS |Product/Service Section | |16
+|[ \{ |--- PRODUCT_SERVICE_GROUP begin | |
+|PSG |Product/Service Group | |
+|[ \{ PSL } ] |Product/Service Line Item | |16
+|} ] |--- PRODUCT_SERVICE_GROUP end | |16
+|} ] |--- PRODUCT_SERVICE_SECTION end | |
+|> |--- REASSESSMENT_REQUEST_INFO end | |
+|===
+
+[width="100%",cols="19%,24%,6%,17%,17%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E04^EHC_E04 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E04^ACK |- |ACK^E04^ACK
+|Application Ack |ACK^E04^ACK |- |- |ACK^E04^ACK |ACK^E04^ACK
+|===
+
+=== 16.3.6 EHC^E10 – Edit/Adjudication Results (event E10) 
+
+This message is used to send edit and/or adjudication results for a HealthCare Services Invoice. Edit/Adjudication results are sent to the same Network Application ID that originated the Invoice, which was specified as the Sending Application on MSH on the original HealthCare Services Invoice.
+
+This message is returned to a Provider Application each time an EHC^E01 – Submit HealthCare Services Invoice message is successfully processed by a Payer Application. As a minimum, the EHC^E10 – Edit/Adjudication Results message will contain the Payer Applications' Invoice number (Payer Invoice Number on IVC), status codes for each Product/Service Line Item in the Invoice and optionally, a tracking number for the Payer Application (Payer Tracking Number on PSL).
+
+Note that an EHC^E12 – Request Additional Information (pending) is a valid response for an EHC^E01 – Submit HealthCare Services Invoice. In this case, the interactions would be EHC^E01 -> EHC^E12 (pending). If the Payer Application is able to process the Invoice on-line, the EHC^E10 – Edit/Adjudication Results message will contain the Invoice Processing Results portion completely filled out, indicating the results of the adjudication (e.g., paid as submitted, paid partial, etc.).
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) The EHC^E10 – Edit/Adjudication Results message must only report against one HealthCare Services Invoice within a message. In other words, each IPR in this message must have the same Provider Invoice Number on IVC and the same Payer Invoice Number for all repetitions of the IVC segment in this message.
+
+{empty}4) The Provider Invoice Number on IVC must be the same as the Provider Invoice Number on IVC as specified on the EHC^E01 input message. In other words, this message must be used to respond to the incoming EHC^E01 and not a previous EHC^E01 HealthCare Services Invoice. Only IPRs for the Invoice specified on the EHC^E01 may be included in the EHC^E10 response.
+
+EHC^E10^EHC_E10: Edit/Adjudication Results
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |2
+|[ \{ ERR } ] |Error | |2
+|\{ |--- INVOICE_PROCESSING_RESULTS_INFO begin | |
+|IPR |Invoice Processing Results | |16
+|[ \{ NTE } ] |Notes and Comments | |
+|PYE |Payee | |16
+|IN1 |Insurance | |3
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|[ IN2 ] |Insurance Additional Info | |
+|IVC |Invoice | |
+|\{ |PRODUCT_SERVICE_SECTION begin | |
+|PSS |Product/Service Section | |16
+|\{ |PRODUCT_SERVICE_GROUP begin | |
+|PSG |Product/Service Group | |16
+|\{ |--- PRODUCT_SERVICE_LINE_INFO begin | |
+|PSL |Product/Service Line Item | |16
+|[\{ ADJ }] |Adjustment | |
+|} |--- PRODUCT_SERVICE_LINE_INFO end | |
+|} |PRODUCT_SERVICE_GROUP end | |
+|} |PRODUCT_SERVICE_SECTION end | |
+|} |--- INVOICE_PROCESSING_RESULTS_INFO end | |
+|===
+
+[width="100%",cols="18%,24%,5%,16%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E10^EHC_E10 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E10^ACK |- |ACK^E10^ACK
+|Application Ack |ACK^E10^ACK |- |- |ACK^E10^ACK |ACK^E10^ACK
+|===
+
+=== 16.3.7 EHC^E12 – Request Additional Information (event E12) 
+
+A Payer or TPA uses this message to request additional information in support of an Invoice or a (Pre) Authorization Request. Normally, this request would be sent following receipt of an E01 or E20 message. However, it can also be sent following receipt of an E04 Re-Assess HealthCare Services Invoice Request. In this latter case the request for additional information still has as its object the original invoice (which is now under review) rather than the Re-assessment request per se.
+
+The E12 can only be used to initiate a request for information and cannot be used to modify, place on hold or cancel an earlier request. This message cannot be used to convey information on the status of a claim and/or adjudication results (i.e., cannot be used in place of an E10 Edit/Adjudication Results message).
+
+The scope of the request for additional information is defined through the inclusion of contextual data from the original Invoice or (Pre) Authorization Request. By specifying a particular Product/Service Group, patient and/or Product/Service Line item the requested information (e.g., a discharge narrative) is deemed to apply to those particular service events and not to any others which may have been part of the original Invoice or (Pre) Authorization Request.
+
+In terms of absolute limits the E12 request is restricted to a single Product/Service Group from the original Invoice or (Pre) Authorization Request. Thereafter, the context can be more narrowly defined by inclusion of patient and/or Product/Service Line item information from within the same Product/Service Group. Thus, if a particular P/S Line Item is included, the message recipient must interpret this to mean that the request is related to that one line item. If the P/S Line Item is excluded the request is related to any and all line items in the original Product/Service Group. Similarly for patients: identification of a particular patient restricts the request to that patient alone, whereas omission of patient information means that the request applies to any and all patients identified in the original Product/Service Group.
+
+The E12 message is restricted to zero or one patients and to zero or one Product/Service Line items. One consequence of these limits is that a Payer requiring information about a variety of patients or products/services from an original invoice may have to generate multiple (E12) requests.
+
+The E12 message requires the use of LOINC classification standard to describe the information being requested (as do the E13/14 response messages). The codified request can also be supplemented by free-form text if greater specificity is required.
+
+This message supports the use of pre-defined responses. That is, the sender specifies both the request as well as a range of possible answers for the recipient to choose from. This is an optional usage that is designed for real-time environments in which the Payer employs an adjudication engine to both solicit the additional information and manage the responses.
+
+Processing Rules:
+
+{empty}1) The Payer application must have already received an Invoice, (Pre) Authorization Request or Re-assessment request before a Request for Additional Information can be issued.
+
+{empty}2) The Payer Application must uniquely identify each request. The Payer Application specifies its unique Request number as the Placer Order Number in the OBR segment. The number is comprised of the Payer Application's NAID + a unique sequence number.
+
+{empty}3) Interpretative Rule: Patient Consent. If Patient Consent in the RFI segment is marked "Y" (Yes) the Payer is signifying possession of proof of patient consent for release of confidential information.
+
+{empty}4) This request message is restricted to zero or one patients. If information is required for multiple patients in an original invoice or (pre) authorization request, a separate message is required for each individual.
+
+{empty}5) Interpretative Rule: If the optional PID segment is omitted, the receiving system will interpret this to mean that the information request applies to any and all patients associated with the Product/Service Group in the original Invoice or (Pre) Authorization request. (See E01 message for rules governing the construction of Product/Service Groups.)
+
+{empty}6) The Provider Organization, as identified in the IVC segment is normally responsible for responding to the request for additional information. However, the sender may identify an alternate individual or department as responsible for responding to the Request for Additional Information using the CTD segment of the Information Request. In such a case the Kept for backwards compatibility only. PRT and ROL should not both be used. field must be set to "FL" = Filler.
+
+{empty}7) All data supplied in the IVC, PSG, and PID segments must be identical to that in the original invoice or (pre) authorization request.
+
+{empty}8) With the exception of "Payer Tracking Number" and "Product/Service Line Item Status" all data supplied in the PSL segment must be identical to that in the original invoice or (pre) authorization request.
+
+{empty}9) Interpretive Rule__:__ Inclusion of Product/Service Line item information implies that the request is directly related to the Product/Service described in PSL. Omitting this optional segment implies that the request is related to all product/service line items in the original Product/Service Group. (See E01 message for rules governing the construction of Product/Service Groups.)
+
+EHC^E12^EHC_E12: Request Additional Information
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|RFI |Request for Information | |
+|[ \{ CTD } ] |Contact Data | |
+|IVC |Invoice |Identifier |
+|PSS |Product/Service Section | |
+|PSG |Product/Service Group | |
+|[ PID ] |Person Identification | |
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|*[\{ GSC }]* |*Sex Parameter for Clinical Use* | |*3*
+|[ \{ PRT } ] |Participation | |4
+|[ \{ PSL } ] |Product/Service Line Item | |
+|\{ |--- REQUEST begin | |
+|[ CTD ] |Contact Data | |
+|OBR |Observation Request | |
+|[ \{ PRT } ] |Participation | |4
+|[ NTE ] |Notes and Comments | |
+|[ \{ OBX } ] |Observation Results | |
+|[ \{ PRT } ] |Participation | |4
+|} |--- REQUEST end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E12^EHC_E12 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E12^ACK |- |ACK^E12^ACK
+|Application Ack |ACK^E12^ACK |- |- |ACK^E12^ACK |ACK^E12^ACK
+|===
+
+=== 16.3.8 EHC^E13 – Additional Information Response (event E13) 
+
+This message is used by a Provider to immediately respond to an EHC^E12 Request for Additional Information, in other words an automated response. The EHC^E13 message cannot be sent unsolicited.
+
+The EHC^E13 message supports three types of response modalities:
+
+• Free-form ASCII text. This is generally brief, descriptive text that is formulated to be read by a human recipient.
+
+• Attachments. The primary content is a multimedia attachment containing the information that has been requested. Depending upon agreements between the Provider and Payer this attachment may contain human-readable information, codified data that can be manipulated by an application, or some combination of the two.
+
+• Pre-defined responses. The Payer has posed both a question and a range of possible answers that the responder chooses from when formulating the reply. The question and answers are codified so that they can be manipulated by an application.
+
+The structure of the EHC^E13 message closely follows that of the EHC^E12 request, which in turn is patterned on the Invoice or (Pre) Authorization which preceded the request for additional information. The hierarchical structural of the message indicates the context of the request for additional information and the data being supplied in the response. More specifically, the EHC^E12 request is formulated against a particular Product/Service Group (from the earlier Invoice or (Pre) Authorization Request) and may be further circumscribed by reference to a particular patient and/or Product/Service Line Item from within that Product/Service Group. The parameters set by the EHC^E12 request are re-iterated in the EHC^E13 response message so that the receiving system can interpret the return data in the appropriate context without necessarily having to refer to the original Invoice or (Pre) Authorization request.
+
+Parties to the Request for Additional Information and the Response:
+
+• The individual or organization that initiates the request for additional information is described as the "Placer". (Normally, this would be the individual in the Payer organization that has placed the Invoice or (Pre) Authorization Request in suspense pending the return of the additional information that is being requested.)
+
+• The individual or organization that is responsible for the information being sent in reply is described as the "Filler". (Normally, the Primary Care Provider would be responsible for supplying the requested information however, in some cases the Payer and/or Provider may stipulate some other party as the Filler.)
+
+• The individual or organization that the response is to be directed to is described as the "Payer Contact".
+
+The EHC^E13 message uses the LOINC classification standard to describe the information being sent. Local codes are also supported. The message allows the use of free-form text to supplement the coding schemes if greater specificity is required.
+
+The EHC^E13 message supports the use of attachments. All attachments must follow the HL7 Claim Attachments implementation guide for additional information to support a healthcare claim or encounter standard that is described in Health Level Seven (HL7) Version 2.4 Standard; Implementation Guide: _"Additional information message implementation guide, HL7 version 2.4 Standard, Release 1.0, NPRM Draft, December 11, 2001"._
+
+The EHC^E13 message supports the inclusion of multiple attachments, i.e., multiple instances of the ESDA, through repetition of the OBX segment. However, this use is NOT recommended. The ESDA specification permits multiple objects (documents, images etc.) to be imbedded in the attachment, so, when responding to a single OBR, a single OBX (with attached multi-part ESDA) should be the preferred method of returning the additional information.
+
+Processing Rules:
+
+{empty}1) The Provider Application must uniquely identify each request. The Provider Application specifies its unique Request number as the Filler Order Number in the OBR segment. The number itself is comprised of the Provider Application's NAID + a unique sequence number.
+
+{empty}2) The Person or organization supplying the additional information is described as the "Filler" and must be identified in the CTD segment of the Information Request. When another party is responsible for producing a particular piece of data (e.g., an external laboratory) that Person or organization is described in the OBX fields: "Producer's ID" and/or "Responsible Observer". +
+Usage: The Producer's ID field can be used to identify an external agency or organization that is responsible for the observation, e.g., a laboratory. The Responsible Observer field is used to describe the individual who either performed or verified the observation. +
+If these fields are null the receiving system assumes that the Filler produced the results.
+
+{empty}3) All data supplied in the IVC, PSG, PID and PSL segments must be identical to that in the EHC^E12 Request message.
+
+{empty}4) Interpretive Rule: the presence of the PSL segment in the message indicates that the information supplied in the response message is directly related to the Product/Service described in the PSL segment.
+
+{empty}5) Interpretive Rule: the presence of the PID segment in the message indicates that the information supplied in the response message is directly related to the Patient described in the PID segment.
+
+{empty}6) If the Placer has supplied a set of pre-defined responses (i.e., the EHC^E12 message contains one or more OBX segments) then Observe Results Status must be completed. Valid value is "F" - Final value (an Affirmative response). Only OBX segments containing an Observe Results Status = "F" are included in the message.
+
+{empty}7) When attaching multimedia documents: OBX.2 is set to "ED", the mime-encoded document (per ESDA specification) is inserted in OBX.5 and the TXA segment must be completed. The Unique Document Identifier in TXA must be identical to the Health Document Reference Identifier in the ESDA header.
+
+{empty}8) Informative Rule: Document Confidentiality Status on TXA. When this optional field is completed it indicates that the Payer is to restrict access to the attached document according to the Payer's established policies and/or in accordance with prior business agreements between the Provider and Payer.
+
+EHC^E13^EHC_E13: Additional Information Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |
+|[ \{ SFT } ] |Software | |
+|[ \{ UAC } ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |
+|[ \{ERR} ] |Error | |
+|RFI |Request for Information | |
+|\{ [ CTD ] } |Contact Data | |
+|IVC |Invoice | |
+|PSS |Product/Service Section | |
+|PSG |Product/Service Group | |
+|[ PID ] |Person Identification | |
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|*[\{ GSC }]* |*Sex Parameter for Clinical Use* | |*3*
+|[ \{ PRT } ] |Participation | |4
+|[ PSL ] |Product/Service Line Item | |
+|\{ |--- REQUEST begin | |
+|[ CTD ] |Contact Data | |
+|OBR |Observation Request | |
+|[ \{ PRT } ] |Participation | |4
+|[ NTE ] |Notes and Comments | |
+|\{ |--- RESPONSE begin | |
+|OBX |Observation Result | |
+|[ \{ PRT } ] |Participation | |4
+|[ NTE ] |Notes and Comments | |
+|[ TXA ] |Transcription Document Header | |
+|} |--- RESPONSE end | |
+|} |--- REQUEST end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E13^EHC_E13 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E13^ACK |- |ACK^E13^ACK
+|Application Ack |ACK^E13^ACK |- |- |ACK^E13^ACK |ACK^E13^ACK
+|===
+
+=== 16.3.9 EHC^E15 – Payment/Remittance Advice (event E15) 
+
+This message is used to send a payment/ remittance advice to a Payee for the payment of HealthCare Services Invoices and/or other adjustments. The Payment/Remittance Advice can be sent to the originating Provider Application (Network Application ID) or alternately to the Payee's Network Application ID, depending on how the Payee has been configured by the Payer. If a Payment/Remittance Advice is paid by check, it typically has a 1 to 1 correspondence with a check number. However, there are occasions when one check number covers multiple Payment/Remittance Advices. This message does not enforce a 1 to 1 relationship between check number and Payment/Remittance Advice. That is, the same check number (Check Number on PMT) can be used on multiple Payment/Remittance Advices.
+
+A Payment/Remittance Advice may not be generated if a Payee is a Person and not an organization (Payee Type on PYE = "PERS" or "PPER").
+
+Once an EHC^E15 message is prepared (which may be on a regular basis such as monthly or bi-weekly), it is either sent to the Provider Application (if the Provider Application is able to receive unsolicited results) or stored on a queue for the Provider Application. If left on a queue for the Provider Application, then the QBP^E99 message must be used by the Provider Application to poll the Payer Application for the EHC^E15.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent inter­actions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) The Payer Application must uniquely identify each Payment/Remittance Advice. The unique Payment/Remittance Advice identifier must be specified as Payment/Remittance Advice Number on PMT.
+
+{empty}4) At least one of Payment/Remittance Detail Information or Adjustment(s) to Payee block must be specified with this message (see EHC^E15 – Message Summary for details) to describe the details of the Payment/Remittance Advice.
+
+{empty}5) The Payment/Remittance Amount on PMT must equal to the sum of all Adjudicated/Paid Amount for all IPR segments PLUS the sum of all Adjudication/Paid Amounts for all ADJ segments in the Payment/Re­mittance Advice, excluding information adjustment types (Adjustment Category on ADJ = "IN").
+
+EHC^E15^EHC_E15: Payment/Remittance Advice
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- PAYMENT_REMITTANCE_HEADER_INFO begin | |
+|PMT |Payment Information | |16
+|PYE |Payee Information | |16
+|> |--- PAYMENT_REMITTANCE_HEADER_INFO end | |
+|[ \{ |--- PAYMENT_REMITTANCE_DETAIL_INFO begin | |
+|IPR |Invoice Processing Results | |
+|IVC |Invoice | |
+|\{ |--- PRODUCT_SERVICE_SECTION begin | |
+|PSS |Product/Service Section | |
+|\{ |--- PRODUCT_SERVICE_GROUP begin | |
+|PSG |Product/Service Group | |
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |
+|[\{ ADJ }] |Adjustment | |
+|} |--- PSL_ITEM_INFO end | |
+|} |--- PRODUCT_SERVICE_GROUP end | |
+|} |--- PRODUCT_SERVICE_SECTION end | |
+|} ] |--- PAYMENT_REMITTANCE_DETAIL_INFO end | |
+|[ \{ |--- ADJUSTMENT_PAYEE begin | |
+|ADJ |Adjustment | |
+|[ PRT ] |Participation | |
+|[ ROL ] |Role |B |
+|} ] |--- ADJUSTMENT_PAYEE end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E15^EHC_E15 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E15^ACK |- |ACK^E15^ACK
+|Application Ack |ACK^E15^ACK |- |- |ACK^E15^ACK |ACK^E15^ACK
+|===
+
+=== 16.3.10 EHC^E20 – Submit Authorization Request (event E20) 
+
+This message is used to submit a single Authorization Request to a TPA/Payer for authorization (for payment). An Authorization Request is made for one or more patients and may include 1 or more Product/Service Line Items (detail lines), each of which represents a specific, billable item or Payer allowed Treatment Plan.
+
+If the Authorization is approved, then the Payer Application will return either an Authorization Number (Authorization Identifier on AUT) or individual who has authorized the Authorization Request (Name of Authorizer on AUT). The Authorization Number is not the same number as the Authorization Request Number; the latter indicates the number used to identify the request for authorization. The presence of the AUT segment in the EHC^E24 – Authorization Request Response message implies authorization. However, the Authorization may be restricted, which is described as Payer Adjustments.
+
+This message can be used to submit an Authorization Request or to resubmit an Authorization Request (in case it was not properly acknowledged the first time that it was submitted). This message cannot be used to update an Authorization Request (e.g., add or cancel Product/Service Line Items) or cancel an Authorization Request. To cancel an Authorization Request, use the EHC^E21 – Cancel Authorization Request message. To update an Authorization it must first be cancelled (see EHC^E21 – Cancel Authorization Request) and then re–submitted using this message with new Provider control numbers.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Authorization Request, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Authorization Request, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+If the Authorization Request is successfully accepted by the Payer Application, the Provider Application must store up to 2 tracking numbers for each Product/Service Line Item, if present in the message pair. The Payer Application must also store up to 2 tracking numbers for each Product/Service Line Item, if present in the message pair. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) This message can contain only one Authorization Request, directed to a single Payer Organization, with multiple patients and multiple insurance policies for each patient. If there are multiple insurance policies and/or Payers identified for authorization, the EHC^E20 – Submit Authorization Request message must be sent to each TPA/Payer.
+
+{empty}4) Location Identification information, defined by the LOC segment, may be specified with the Authorization Request (header) or Product/Service Line Item. +
+If specified with the Authorization Request (header), then the Location Identification information acts as a default for all Product/Service Line Items in the Authorization Request. +
+If specified with the Product/Service Line Item, then the Location Identification information supersedes (replaces) any defaults set by specifying Location Identification information with the Authorization Request (header).
+
+{empty}5) Some Payers require Provider information to be included with an Authorization Request, which is defined by the ROL segment. In these situations, the ROL segment may be specified with the Authorization Request (header) and/or Product/Service Line Item. +
+If specified with the Authorization Request (header), then the Provider Information acts as a default for all Product/Service Line Items in the Authorization Request. +
+If specified with the Product/Service Line Item, then the Provider Information supersedes (replaces) any defaults set by specifying Provider information with the Authorization Request (header). +
+Provider Information, if required by the Payer, must be specified with the Product/Service Line Item if it has not been defaulted for the Authorization Request (header).
+
+{empty}6) Product/Service Clarification Codes: Each Product/Service Line Item allows a number of clarification codes to be specified. These are specified as 2 fields: Product/Service Clarification Code Type and Product/Service Clarification Code Value. Both of these fields repeat within the PSL segment and must repeat the same number of times. For example, if 2 clarification codes are specified, then 2 repetitions of each field is required, the first repetition corresponding to the 1^st^ clarification code, the second repetition corresponding to the 2^nd^ clarification code.
+
+EHC^E20^EHC_E20: Submit Authorization Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- AUTHORIZATION_REQUEST begin | |
+|IVC |Invoice Header | |16
+|\{ CTD } |Contact Data | |
+|[ \{ LOC } ] |Location Identification | |
+|[ \{ ROL } ] |Provider Identification | |
+|\{ |--- PAT_INFO begin | |
+|PID |Person Identification | |
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|*[\{ GSC }]* |*Sex Parameter for Clinical Use* | |*3*
+|[ \{ PRT } ] |Participation | |4
+|[ \{ ACC } ] |Accident | |
+|\{ |--- INSURANCE begin | |
+|IN1 |Insurance | |
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|[ IN2 ] |Insurance Additional Info | |
+|} |--- INSURANCE end | |
+|[\{ |--- DIAGNOSIS begin | |
+|DG1 |Diagnosis | |
+|[\{ NTE }] |Notes and Comments | |
+|}] |--- DIAGNOSIS end | |
+|[ \{ OBX } ] |Observation | |
+|[ \{ PRT ] } |Participation | |4
+|} |--- PAT_INFO end | |
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |
+|[ \{ NTE } ] |Notes and Comments | |
+|[ \{ ADJ } ] |Adjustment | |
+|[ \{ LOC } ] |Location Identification | |
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |
+|} |--- PSL_ITEM_INFO end | |
+|> |--- AUTHORIZATION_REQUEST end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E20^EHC_E20 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E20^ACK |- |ACK^E20^ACK
+|Application Ack |ACK^E20^ACK |- |- |ACK^E20^ACK |ACK^E20^ACK
+|===
+
+=== 16.3.11 EHC^E21 – Cancel Authorization Request (event E21) 
+
+This message is used to cancel an Authorization Request, as a result of a previously submitted EHC^E20 – Submit Authorization Request message.
+
+This message can be used to cancel the entire Authorization Request, or an individual Product/Service Line Item within an Authorization Request.
+
+This message cannot be used to update ancillary information in an Authorization that has been submitted to a Payer. The original request must be cancelled, and a new Authorization Request submitted to the Payer.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Authorization Request, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Authorization Request, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) An Authorization Request can be cancelled regardless of its status with the Payer (i.e., whether approved, denied, pending or status unknown).
+
+{empty}4) At least one NTE segment must be included with this message to describe the cancellation reason for each Product/Service Line Item. The NTE segment may be specified with the (Pr) Authorization Request (following the IVC segment) and applies to all Product/Service Line Items for that Authorization Request. If not specified with the Invoice, then it must be specified for each Product/Service Line Item (following the PSL segment).
+
+{empty}5) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original request (submitted via the EHC^E20 – Submit Authorization Request message).
+
+{empty}6) Provider reference numbers must exist on Payer Application's database and must point to the same Invoice, Product/Service Group or Product/Service Line Item; otherwise, an error must be generated (mismatched Invoice and/or Product/Service Line Item).
+
+EHC^E21^EHC_E21: Cancel Authorization Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- AUTHORIZATION_REQUEST begin | |
+|IVC |Invoice Header | |16
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |16
+|[ \{ NTE } ] |Notes and Comments | |
+|[ AUT ] |Authorization | |16
+|} |--- PSL_ITEM_INFO end | |
+|> |--- AUTHORIZATION_REQUEST end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E21^EHC_E21 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E21^ACK |- |ACK^E21^ACK
+|Application Ack |ACK^E21^ACK |- |- |ACK^E21^ACK |ACK^E21^ACK
+|===
+
+=== 16.3.12 QBP^E22 – Query Authorization Request Status (event E22) 
+
+This message is used to query the status of an Authorization Request. There are 2 types of queries handled by this message: 1) a specific Authorization Request or 2) a specific Product/Service Line Item. If a Provider wants to obtain information on a group of Authorization Requests (e.g., submitted in a date range), each individual Authorization Request must be queried.
+
+Note: The response to this query has the same content as an EHC^E24 – Authorization Response message.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Authorization Request, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Authorization Request, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) A unique query identifier (Query Tag on QPD) must be generated for each query.
+
+{empty}4) Selection criteria for one of the 2 supported methods must be entered as below:
+
+____
+Query for a specific Authorization Request:
+____
+
+• Sending Application on MSH.
+
+• Sending Organization from original Authorization Request (Sending Organization on QPD).
+
+• Provider Organization from original Authorization Request (Provider Organization on QPD).
+
+• Payer Organization from original Authorization Request (Payer Organization on QPD).
+
+• Provider Invoice Number on QPD.
+
+• Payer Invoice Number on QPD.
+
+____
+Query for a specific Product/Service Line Item - same as Query for a specific Authorization Request PLUS:
+____
+
+• Product/Service Line Item (Product/Service Line Item Number on QPD).
+
+{empty}5) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original Authorization Request (submitted via the EHC^E20 – Submit Authorization Request message).
+
+{empty}6) Provider Invoice Number + Payer Invoice Number + Product/Service Line Item Number on input message must exist on Payer Application's database and must point to the same Product/Service Line Item, otherwise an error must be generated (mismatched Authorization Request and/or Product/Service Line Item).
+
+QBP^E22^QBP_E22: Query Authorization Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- QUERY begin | |
+|QPD |Query Parameter Definition | |5
+|RCP |Response Control Parameter | |5
+|> |--- QUERY end | |
+|===
+
+[width="99%",cols="18%,24%,6%,16%,18%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|QBP^E22^QBP_E22 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E22^ACK |- |ACK^E22^ACK
+|Application Ack |RSP^E22^RSP_E22 |- |- |RSP^E22^RSP_E03 |RSP^E22^RSP_E22
+|===
+
+=== 16.3.13 RSP^E22 – Authorization Request Status Query Response (event E22) 
+
+This message is used to respond to a QPB^E22 – Query Authorization Request Status. It provides Authorization status information to a Provider.
+
+A QBP^E22 – Query Authorization Request Status can be used to query against a Authorization Request or a specific Product/Service Line Item in a Authorization Request. The same response message, RSP^E22 – Authorization Request Query Response, is used for both types of query.
+
+Processing Rules:
+
+{empty}1) Provider Invoice Number + Payer Invoice Number + Product/Service Line Item Number on input message must exist on Payer Application's database and must point to the same Product/Service Line Item; otherwise, an error must be generated (mismatched Authorization Request and/or Product/Service Line Item).
+
+{empty}2) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original Authorization Request (submitted via the EHC^E20 – Submit Authorization Request message) for the specified Authorization Request being queried.
+
+{empty}3) A unique query identifier (Query Tag on QPD) must be generated for each query.
+
+RSP^E22^RSP_E22: Authorization Request Query Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |2
+|[ \{ ERR } ] |Error | |2
+|< |--- QUERY_ACK begin | |
+|QAK |Query Acknowledgement | |
+|QPD |Query Parameter Definition | |
+|[ |--- AUTHORIZATION_INFO begin | |
+|IVC |Invoice | |
+|PSG |Product/Service Group | |
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |
+|} |--- PSL_ITEM_INFO end | |
+|] |--- AUTHORIZATION_INFO end | |
+|> |--- QUERY_ACK end | |
+|===
+
+[width="100%",cols="23%,35%,10%,32%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|RSP^E22^RSP_E22 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^E22^ACK
+|Application Ack |- |- |-
+|===
+
+=== 16.3.14 EHC^E24 – Authorization Response (event E24) 
+
+This message is used to send results of an Authorization Request to a Provider Application. Authorization results are sent to the same Network Application ID that originated the Authorization Request, which was specified as the Sending Application on MSH on the original Authorization Request.
+
+If the Payer Application is able to process the Authorization Request on-line, the EHC^E24 – Authorization Response message will contain the results of the authorization (e.g., approved, not approved).
+
+If the Payer Application is *not* able to process the Authorization Request on-line, it creates an EHC^E24 – Authorization Response message once it has processed the Authorization Request (which may be the next day following receipt of the EHC^E20). Once prepared, the EHC^E24 is either sent to the Provider Application (if the Provider Application is able to receive unsolicited results) or stored on a queue for the Provider Application. If left on a queue for the Provider Application, then the QBP^E99 message must be used by the Provider Application to poll the Payer Application for the EHC^E24. If the Authorization is approved, then the Payer Application will return either an Authorization Number (Authorization Identifier on AUT) or individual who has authorized the Authorization Request (Name of Authorizer on AUT). The presence of the AUT segment in the EHC^E24 – Authorization Request Response message implies authorization has been granted. However, the Authorization may be restricted. Restrictions are specified under Payer Adjustments.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Authorization Request, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Authorization Request, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) The presence of the AUT segment in the EHC^E24 – Authorization Response message indicates the Payer's approval of the Authorization Request (with or without Payer Adjustments).
+
+{empty}4) If the AUT segment is specified, then either the Authorization Identifier on AUT or Name of Authorizer on AUT must be specified.
+
+{empty}5) The Provider Invoice Number on IVC must be the same as the Provider Invoice Number on IVC as specified on the EHC^E20 input message. In other words, this message must be used to respond to the incoming EHC^E20 and not a previous EHC^E20 Authorization Request.
+
+EHC^E24^EHC_E24: Authorization Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |
+|[ \{ SFT } ] |Software | |
+|[ \{ UAC } ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |
+|[ \{ ERR } ] |Error | |
+|< |--- AUTHORIZATION_RESPONSE_INFO begin | |
+|IVC |Invoice | |
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |
+|[ AUT ] |Authorization | |
+|[\{ ADJ }] |Adjustment | |
+|} |--- PSL_ITEM_INFO end | |
+|> |--- AUTHORIZATION_RESPONSE_INFO end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E24^EHC_E24 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E24^ACK |- |ACK^E24^ACK
+|Application Ack |ACK^E24^ACK |- |- |ACK^E24^ACK |ACK^E24^ACK
+|===
+
+=== 16.3.15 EHC^E30 – Submit Health Document related to Authorization Request (event E30) 
+
+Not yet defined.
+
+=== 16.3.16 EHC^E31 – Cancel Health Document related to Authorization Request (event E31) 
+
+Not yet defined.
+
+== 16.4 Message Segments
+
+=== 16.4.1 RFI – Request for Information segment
+
+HL7 Attribute Table – RFI – Request for Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |Element Name
+|1 | | |DTM |R | | |01910 |Request Date
+|2 | | |DTM |R | | |01911 |Response Due Date
+|3 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01912 |Patient Consent
+|4 | | |DTM |O | | |01913 |Date Additional Information Was Submitted
+|===
+
+==== 16.4.1.0 RFI field definitions
+
+==== 16.4.1.1 RFI-1 Request Date (DTM) 01910
+
+Definition:
+
+==== 16.4.1.2 RFI-2 Response Due Date (DTM) 01911
+
+Definition: The latest date by which the additional information is to be returned to requestor.
+
+==== 16.4.1.3 RFI-3 Patient Consent (ID) 01912
+
+Definition: Code indicating if the Payer has obtained patient consent for release of information (1) – Optional. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/No Indicator_] for suggested values.
+
+==== 16.4.1.4 RFI-4 Date Additional Information Was Submitted (DTM) 01913
+
+Definition: The date on which the information was assembled for transmission to the Payer. Not necessarily the same as the message date.
+
+=== 16.4.2 IVC – Invoice Segment
+
+The Invoice segment is used for HealthCare Services Invoices and contains header style information for an invoice including invoice numbers, Provider Organization and Payer Organization identification.
+
+HL7 Attribute Table – IVC – Invoice Segment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01914 |Provider Invoice Number
+|2 | | |EI |O | | |01915 |Payer Invoice Number
+|3 | | |EI |O | | |01916 |Contract/Agreement Number
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70553[0553] |01917 |Invoice Control
+|5 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70554[0554] |01918 |Invoice Reason
+|6 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70555[0555] |01919 |Invoice Type
+|7 | | |DTM |R | | |01920 |Invoice Date/Time
+|8 | | |CP |R | | |01921 |Invoice Amount
+|9 | |80= |ST |O | | |01922 |Payment Terms
+|10 | | |XON |R | | |01923 |Provider Organization
+|11 | | |XON |R | | |01924 |Payer Organization
+|12 | | |XCN |O | | |01925 |Attention
+|13 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01926 |Last Invoice Indicator
+|14 | | |DTM |O | | |01927 |Invoice Booking Period
+|15 | |250= |ST |O | | |01928 |Origin
+|16 | | |CP |O | | |01929 |Invoice Fixed Amount
+|17 | | |CP |O | | |01930 |Special Costs
+|18 | | |CP |O | | |01931 |Amount for Doctors Treatment
+|19 | | |XCN |O | | |01932 |Responsible Physician
+|20 | | |CX |O | | |01933 |Cost Center
+|21 | | |CP |O | | |01934 |Invoice Prepaid Amount
+|22 | | |CP |O | | |01935 |Total Invoice Amount without Prepaid Amount
+|23 | | |CP |C | | |01936 |Total-Amount of VAT
+|24 | |1..5 |NM |O |Y | |01937 |VAT-Rates applied
+|25 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70556[0556] |01938 |Benefit Group
+|26 | |20= |ST |O | | |02038 |Provider Tax ID
+|27 | |20= |ST |O | | |02039 |Payer Tax ID
+|28 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70572[0572] |02040 |Provider Tax Status
+|29 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70572[0572] |02041 |Payer Tax Status
+|30 | |20= |ST |O | | |02042 |Sales Tax ID
+|===
+
+==== 16.4.2.0 IVC field definitions
+
+==== 16.4.2.1 IVC-1 Provider Invoice Number (EI) 01914
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Invoice Number assigned by the Provider Application.
+
+==== 16.4.2.2 IVC-2 Payer Invoice Number (EI) 01915
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Invoice Number assigned by the Payer Application.
+
+==== 16.4.2.3 IVC-3 Contract/Agreement Number (EI) 01916
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Contract/agreement number issued by Payer which must be specified in some circumstances by the Provider.
+
+==== 16.4.2.4 IVC-4 Invoice Control (CWE) 01917
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code indicating what action is being performed by this message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70553[_User-defined Table 0553 – Invoice Control Code_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.2.5 IVC-5 Invoice Reason (CWE) 01918
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code describing reason for this Invoice. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70554[_User-defined Table 0554 – Invoice Reason Codes_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.2.6 IVC-6 Invoice Type (CWE) 01919
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code indicating the type of Invoice. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70555[_User-defined Table 0555 – Invoice Type_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.2.7 IVC-7 Invoice Date/Time (DTM) 01920
+
+Definition: Date Invoice was created.
+
+==== 16.4.2.8 IVC-8 Invoice Amount (CP) 01921
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Sum total of Product/Service Billed Amount on PSL for all Product/Service Line Items for this Invoice.
+
+==== 16.4.2.9 IVC-9 Payment Terms (ST) 01922
+
+Definition: Terms for Payer payment of Invoice (e.g., 24% net 30 days).
+
+==== 16.4.2.10 IVC-10 Provider Organization (XON) 01923
+
+Components: <Organization Name (ST)> ^ <Organization Name Type Code (CWE)> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Organization Identifier (ST)>
+
+Subcomponents for Organization Name Type Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: Business organization that is responsible for the invoice (e.g., Provider organization, clinic organization).
+
+==== 16.4.2.11 IVC-11 Payer Organization (XON) 01924
+
+Components: <Organization Name (ST)> ^ <Organization Name Type Code (CWE)> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Organization Identifier (ST)>
+
+Subcomponents for Organization Name Type Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: The business organization that is designated as Payer for this Invoice. This Payer may be the primary, secondary, tertiary Payer, depending on Insurance Information specified in the Invoice
+
+==== 16.4.2.12 IVC-12 Attention (XCN) 01925
+
+Components: <Person Identifier (ST)> ^ <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <DEPRECATED-Source Table (CWE)> ^ <Assigning Authority (HD)> ^ <Name Type Code (ID)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Source Table (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Attention to individual in Payer Organization who needs to review this Invoice.
+
+==== 16.4.2.13 IVC-13 Last Invoice Indicator (ID) 01926
+
+Definition: Can be set to indicate that this is the last Invoice for a particular Case, Claim and/or Encounter (1). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/No Indicator_] for suggested values.
+
+==== 16.4.2.14 IVC-14 Invoice Booking Period (DTM) 01927
+
+Definition: Period in which the invoice must be booked.
+
+==== 16.4.2.15 IVC-15 Origin (ST) 01928
+
+Definition: Responsible Person for this specific invoice. For more structured output use CTD-Segment instead.
+
+==== 16.4.2.16 IVC-16 Invoice Fixed Amount (CP) 01929
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Fixed Amount for this invoice.
+
+==== 16.4.2.17 IVC-17 Special Costs (CP) 01930
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Special costs for this invoice.
+
+==== 16.4.2.18 IVC-18 Amount for Doctors Treatment (CP) 01931
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Special amount for doctor's treatment.
+
+==== 16.4.2.19 IVC-19 Responsible Physician (XCN) 01932
+
+Components: <Person Identifier (ST)> ^ <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <DEPRECATED-Source Table (CWE)> ^ <Assigning Authority (HD)> ^ <Name Type Code (ID)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Source Table (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Doctor who is responsible for this invoice.
+
+==== 16.4.2.20 IVC-20 Cost Center (CX) 01933
+
+Components: <ID Number (ST)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Effective Date (DT)> ^ <Expiration Date (DT)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Cost centers are organizational units or activities that provide goods and services. In this context, it would be the department which delivered the Service/Product Line Item, e.g., Radiology, Emergency Room.
+
+==== 16.4.2.21 IVC-21 Invoice Prepaid Amount (CP) 01934
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Deposit paid to the service Provider prior to admission
+
+==== 16.4.2.22 IVC-22 Total Invoice Amount without Prepaid Amount (CP) 01935
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Total amount of Invoice without the prepaid deposit (IV-8 minus IVC-21).
+
+==== 16.4.2.23 IVC-23 Total-Amount of VAT (CP) 01936
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Total Amount of VAT included in the Total Invoice Amount (IVC-8)
+
+==== 16.4.2.24 IVC-24 VAT-Rates applied (NM) 01937
+
+Definition: Applied VAT Rates on Invoice. Multiple VAT-rates may be applied according to the type of service
+
+==== 16.4.2.25 IVC-25 Benefit group (CWE) 01938
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code indicating the Benefit group. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70556[_User-defined Table 0556 – Benefit Group_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.2.26 IVC-26 Provider Tax ID (ST) 02038
+
+Definition: The Tax ID of the Provider (general Tax identification number or VAT number).
+
+==== 16.4.2.27 IVC-27 Payer Tax ID (ST) 02039
+
+Definition: The Tax ID of the Payer (general Tax identification number or VAT number)
+
+==== 16.4.2.28 IVC-28 Provider Tax Status (CWE) 02040
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code indicating the tax status of the provider. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70572[_User-defined Table 0572 – Tax status_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.2.29 IVC-29 Payer Tax Status (CWE) 02041
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code indicating the tax status of the payer. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70572[_User-defined Table 0572 – Tax status_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.2.30 IVC-30 Sales Tax ID (ST) 02042
+
+Definition: The Tax ID specific to Sales Tax
+
+=== 16.4.3 PYE – Payee Information Segment
+
+This segment is used to define payee information.
+
+HL7 Attribute Table – PYE – Payee Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |01939 |Set ID – PYE
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70557[0557] |01940 |Payee Type
+|3 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70558[0558] |01941 |Payee Relationship to Invoice (Patient)
+|4 | | |XON |C |Y/5 | |01942 |Payee Identification List
+|5 | | |XPN |C |Y/4 | |01943 |Payee Person Name
+|6 | | |XAD |C |Y/4 | |01944 |Payee Address
+|7 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70570[0570] |01945 |Payment Method
+|===
+
+==== 16.4.3.0 PYE field definitions
+
+==== 16.4.3.1 PYE-1 Set ID – PYE (SI) 01939
+
+Definition: Sequence Number.
+
+==== 16.4.3.2 PYE-2 Payee Type (CWE) 01940
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Type of Payee (e.g., Organization, Person). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70557[_User-defined Table 0557 – Payee Type_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.3.3 PYE-3 Payee Relationship to Invoice (Patient) (CWE) 01941
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Conditional or empty: if Payee Type in list ("PERS", "PPER"), then Required, else Not Permitted.
+
+For Person Payee Types, the relationship to Invoice. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70558[_User-defined Table 0558 – Payee Relationship to Invoice_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.3.4 PYE-4 Payee Identification List (XON) 01942
+
+Components: <Organization Name (ST)> ^ <Organization Name Type Code (CWE)> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Organization Identifier (ST)>
+
+Subcomponents for Organization Name Type Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: Conditional or empty: if Payee Type in list ("PPER", "ORG"), then Required, else Not Permitted.
+
+Payee or Business Arrangement identification information; up to 5; defined by Payer/Provider agreement.
+
+==== 16.4.3.5 PYE-5 Payee Person Name (XPN) 01943
+
+Components: <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <Name Type Code (ID)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Called By (ST)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Conditional or empty: if Payee Type = ("PERS", "PPER), then Required, else Not Permitted.
+
+Individual's name; may be a patient's name or other individual.
+
+==== 16.4.3.6 PYE-6 Payee Address (XAD) 01944
+
+Components: <Street Address (SAD)> ^ <Other Designation (ST)> ^ <City (ST)> ^ <State or Province (ST)> ^ <Zip or Postal Code (ST)> ^ <Country (ID)> ^ <Address Type (ID)> ^ <Other Geographic Designation (ST)> ^ <County/Parish Code (CWE)> ^ <Census Tract (CWE)> ^ <Address Representation Code (ID)> ^ <WITHDRAWN Constituent> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Expiration Reason (CWE)> ^ <Temporary Indicator (ID)> ^ <Bad Address Indicator (ID)> ^ <Address Usage (ID)> ^ <Addressee (ST)> ^ <Comment (ST)> ^ <Preference Order (NM)> ^ <Protection Code (CWE)> ^ <Address Identifier (EI)>
+
+Subcomponents for Street Address (SAD): <Street or Mailing Address (ST)> & <Street Name (ST)> & <Dwelling Number (ST)>
+
+Subcomponents for County/Parish Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Census Tract (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Expiration Reason (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Protection Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Address Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: Conditional or empty: if Payee Type = ("PERS", "PPER), then Required, else Not Permitted.
+
+Address for payee. If not specified, then Payer will use address on file for this Payee, if applicable. If Payee is an individual, then this address can be used to send a check.
+
+==== 16.4.3.7 PYE-7 Payment Method (CWE) 01945
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: For Payee organizations that have more than one payment method.
+
+If for individual, then we may also need to indicate EFT, bank info, etc.
+
+Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70570[_User-defined Table 0570 – Payment Method Code_] in Chapter 2C, Code Tables, for suggested values.
+
+=== 16.4.4 PSS – Product/Service Section Segment
+
+The Product/Service Section segment is used to form a logical grouping of Product/Service Group segments, Patients and Response Summaries for a particular Invoice.
+
+HL7 Attribute Table – PSS – Product/Service Section
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01946 |Provider Product/Service Section Number
+|2 | | |EI |O | | |01947 |Payer Product/Service Section Number
+|3 |1..4 | |SI |R | | |01948 |Product/Service Section Sequence Number
+|4 | | |CP |R | | |01949 |Billed Amount
+|5 | |254# |ST |R | | |02043 |Section Description or Heading
+|===
+
+==== 16.4.4.0 PSS field definitions
+
+==== 16.4.4.1 PSS-1 Provider Product/Service Section Number (EI) 01946
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Section Number assigned by the Provider Application.
+
+==== 16.4.4.2 PSS-2 Payer Product/Service Section Number (EI) 01947
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Section Number assigned by the Payer Application.
+
+==== 16.4.4.3 PSS-3 Product/Service Section Sequence Number (SI) 01948
+
+Definition: Unique sequence number for the Product/Service Section (3) – starts with 1, then 2, etc. for each unique Product/Service Section in this Invoice.
+
+==== 16.4.4.4 PSS-4 Billed Amount (CP) 01949
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Sum of all Product/Service Billed Amounts for all Product/Service Line Items for this Product/Service Section.
+
+==== 16.4.4.5 PSS-5 Section Description or Heading (ST) 02043
+
+Definition: Section description or heading.
+
+=== 16.4.5 PSG – Product/Service Group Segment
+
+The Product/Service Group segment is used to form a logical grouping of Product/Service Line Items, Patients and Response Summaries for a particular Invoice. For example, a Product/Service Group can be used to group all Product/Service Line Items that must be adjudicated as a group in order to be paid.
+
+HL7 Attribute Table – PSG – Product/Service Group
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01950 |Provider Product/Service Group Number
+|2 | | |EI |O | | |01951 |Payer Product/Service Group Number
+|3 |1..4 | |SI |R | | |01952 |Product/Service Group Sequence Number
+|4 |1..1 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01953 |Adjudicate as Group
+|5 | | |CP |R | | |01954 |Product/Service Group Billed Amount
+|6 | |254# |ST |R | | |02044 |Product/Service Group Description
+|===
+
+==== 16.4.5.0 PSG field definitions
+
+==== 16.4.5.1 PSG-1 Provider Product/Service Group Number (EI) 01950
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Group Number assigned by the Provider Application.
+
+==== 16.4.5.2 PSG-2 Payer Product/Service Group Number (EI) 01951
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Group Number assigned by the Payer Application
+
+==== 16.4.5.3 PSG-3 Product/Service Group Sequence Number (SI) 01952
+
+Definition: Unique sequence number for the Product/Service Group (3) – starts with 1, then 2, etc. for each unique Product/Service Group in this Invoice.
+
+==== 16.4.5.4 PSG-4 Adjudicate as Group (ID) 01953
+
+Definition: Adjudicate all Product/Service Line Items together as a group (IPRs will be reported against the Product/Service Group). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/No Indicator_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.5.5 PSG-5 Product/Service Group Billed Amount (CP) 01954
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Sum of all Product/Service Billed Amounts for all Product/Service Line Items for this Product/Service Group.
+
+==== 16.4.5.6 PSG-6 Product/Service Group Description (ST) 02044
+
+Definition: Product/Service Group description or heading
+
+=== 16.4.6 PSL – Product/Service Line Item Segment
+
+The Product/Service Line Item segment is used to identify individual product/service items that typically are aggregated into an Invoice. Each instance of a Product/Service Line Item corresponds to a unique product delivered or service rendered.
+
+HL7 Attribute Table – PSL – Product/Service Line Item
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01955 |Provider Product/Service Line Item Number
+|2 | | |EI |O | | |01956 |Payer Product/Service Line Item Number
+|3 |1..4 | |SI |R | | |01957 |Product/Service Line Item Sequence Number
+|4 | | |EI |O | | |01958 |Provider Tracking ID
+|5 | | |EI |O | | |01959 |Payer Tracking ID
+|6 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70559[0559] |01960 |Product/Service Line Item Status
+|7 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70879[0879] |01961 |Product/Service Code
+|8 | | |CWE |O |Y/5 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70880[0880] |01962 |Product/Service Code Modifier
+|9 | |80# |ST |O | | |01963 |Product/Service Code Description
+|10 | | |DTM |C | | |01964 |Product/Service Effective Date
+|11 | | |DTM |O | | |01965 |Product/Service Expiration Date
+|12 | | |CQ |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70560[0560] |01966 |Product/Service Quantity
+|13 | | |CP |C | | |01967 |Product/Service Unit Cost
+|14 | |10# |NM |C | | |01968 |Number of Items per Unit
+|15 | | |CP |C | | |01969 |Product/Service Gross Amount
+|16 | | |CP |C | | |01970 |Product/Service Billed Amount
+|17 | | |CWE |O |Y/20 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70561[0561] |01971 |Product/Service Clarification Code Type
+|18 | |40= |ST |O |Y/20 | |01972 |Product/Service Clarification Code Value
+|19 | | |EI |O |Y/5 | |01973 |Health Document Reference Identifier
+|20 | | |CWE |O |Y/20 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70562[0562] |01974 |Processing Consideration Code
+|21 |1..4 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[0532] |01975 |Restricted Disclosure Indicator
+|22 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70879[0879] |01976 |Related Product/Service Code Indicator
+|23 | | |CP |O | | |01977 |Product/Service Amount for Physician
+|24 | |5# |NM |O | | |01978 |Product/Service Cost Factor
+|25 | | |CX |O | | |01933 |Cost Center
+|26 | | |DR |O | | |01980 |Billing Period
+|27 | |5= |NM |O | | |01981 |Days without Billing
+|28 |1..4 | |NM |O | | |01982 |Session-No
+|29 | | |XCN |O | | |01983 |Executing Physician ID
+|30 | | |XCN |O | | |01984 |Responsible Physician ID
+|31 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70881[0881] |01985 |Role Executing Physician
+|32 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70882[0882] |01986 |Medical Role Executing Physician
+|33 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70894[0894] |01987 |Side of body
+|34 | |6# |NM |O | | |01988 |Number of TP's PP
+|35 | | |CP |O | | |01989 |TP-Value PP
+|36 | |4# |NM |O | | |01990 |Internal Scaling Factor PP
+|37 | |4# |NM |O | | |01991 |External Scaling Factor PP
+|38 | | |CP |O | | |01992 |Amount PP
+|39 | |6# |NM |O | | |01993 |Number of TP's Technical Part
+|40 | | |CP |O | | |01994 |TP-Value Technical Part
+|41 | |4# |NM |O | | |01995 |Internal Scaling Factor Technical Part
+|42 | |4# |NM |O | | |01996 |External Scaling Factor Technical Part
+|43 | | |CP |O | | |01997 |Amount Technical Part
+|44 | | |CP |O | | |01998 |Total Amount Professional Part + Technical Part
+|45 | |3= |NM |O | | |01999 |VAT-Rate
+|46 |1..20 | |ID |O | | |02000 |Main-Service
+|47 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |02001 |Validation
+|48 | |255= |ST |O | | |02002 |Comment
+|===
+
+==== 16.4.6.0 PSL field definitions
+
+==== 16.4.6.1 PSL-1 Provider Product/Service Line Item Number (EI) 01955
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Line Item Number assigned by the Provider Application.
+
+==== 16.4.6.2 PSL-2 Payer Product/Service Line Item Number (EI) 01956
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Line Item Number assigned by the Payer Application.
+
+==== 16.4.6.3 PSL-3 Product/Service Line Item Sequence Number (SI) 01957
+
+Definition: Unique sequence number for the Product/Service Line Item – starts with 1, then 2, etc. for each unique Product/Service Line Item in this Invoice.
+
+==== 16.4.6.4 PSL-4 Provider Tracking ID (EI) 01958
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Identifier for this Product/Service Line Item assigned by the Provider Application. This will be echoed on all interactions between participants for this Product/Service Line Item.
+
+==== 16.4.6.5 PSL-5 Payer Tracking ID (EI) 01959
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Identifier for this Product/Service Line Item assigned by the Payer Application. This will be echoed on all interactions between participants for this Product/Service Line Item.
+
+==== 16.4.6.6 PSL-6 Product/Service Line Item Status (CWE) 01960
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Processing status for the Product/Service Code. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70559[_User-defined Table 0559 – Product/Service Status_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.7 PSL-7 Product/Service Code (CWE) 01961
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code describing the service that was delivered/received. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70879[_User-defined Table 0879 – Product/Service Code_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.8 PSL-8 Product/Service Code Modifier (CWE) 01962
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Additional optional modifier(s) for the Product/Service Code (e.g., after hours – evening, after hours – weekend); repeats up to 5 times. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70880[_User-defined Table 0880 – Product/Service Code Modifier_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.9 PSL-9 Product/Service Code Description (ST) 01963
+
+Definition: Text describing Product/Service Code in PSL.
+
+==== 16.4.6.10 PSL-10 Product/Service Effective Date (DTM) 01964
+
+Definition: [ Start ] Date/Time product/service was delivered/received.
+
+==== 16.4.6.11 PSL-11 Product/Service Expiration Date (DTM) 01965
+
+Definition: [ End ] Date/Time product/service was delivered/received. If specified, must be greater than or equal to Product/Service Effective Date.
+
+==== 16.4.6.12 PSL-12 Product/Service Quantity (CQ) 01966
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Amount that has been negotiated for this Product/Service Code on PSL between a Provider and Payer for each unit. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70560[_User-defined Table 0560 – Quantity Units_] in Chapter 2C, Code Tables, for valid values.
+
+==== 16.4.6.13 PSL-13 Product/Service Unit Cost (CP) 01967
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the cost per unit either in monetary amount or in points.
+
+Examples:
+
+____
+{empty}1. Qty * cost/unit = gross amount
+
+{empty}2. Qty * cost/unit * factor = gross amount
+
+{empty}3. Qty * cost/point * factor * points = gross amount
+____
+
+==== 16.4.6.14 PSL-14 Number of Items per Unit (NM) 01968
+
+Definition: Number of items in each unit – for Services, this should be set to 1.
+
+==== 16.4.6.15 PSL-15 Product/Service Gross Amount (CP) 01969
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: = Product/Service Quantity * Product/Service Unit Cost
+
+==== 16.4.6.16 PSL-16 Product/Service Billed Amount (CP) 01970
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Amount that is being billed for this Product/Service Code on PSL, = Product/Service Gross Amount + sum of all Product/Service Adjustments on ADJ for this Product/Service Line Item.
+
+\= Product/Service Gross Amount + sum of all Product/Service Adjustments on ADJ
+
+==== 16.4.6.17 PSL-17 Product/Service Clarification Code Type (CWE) 01971
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Additional codes describing the Product/Service Code on PSL – examples are Northern Allowance, Data Center Numbers, Sequence Numbers; repeats with Product/Service Clarification Code Value. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70561[_User-defined Table 0561 – Product/Services Clarification Codes_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.18 PSL-18 Product/Service Clarification Code Value (ST) 01972
+
+Definition: Actual value for Product/Service Clarification Code Type (40) – examples are "Y", "N" for Northern Allowance, an actual number for a Data Center Number; repeats with Product/Service Clarification Code Type.
+
+Repeats with Product/Service Clarification Code Type.
+
+==== 16.4.6.19 PSL-19 Health Document Reference Identifier (EI) 01973
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Health Documents (electronic or paper) that support this Product/Service Line Item. This includes such health documents as forms used to register a claim with a Payer, reports, medical images, etc.
+
+==== 16.4.6.20 PSL-20 Processing Consideration Code (CWE) 01974
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Codes indicating special processing requested of Payer for this Product/Service Line Item (e.g., hold until paper supporting documentation is received by Payer). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70562[_User-defined Table 0562 – Processing Consideration Codes_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.21 PSL-21 Restricted Disclosure Indicator (ID) 01975
+
+Definition: Set to "Yes" if information on this invoice should be treated with increased confidentiality/security. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[_User-defined Table 0532 – Expanded Yes/No Indicator_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.22 PSL-22 Related Product/Service Code Indicator (CWE) 01976
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Two Product /Service Line Items (PSL-7) may be in a relation to each other. One could be an addition to another. In this case this field contains the Code of PSL-7 of the "master" Product/Service Line Item. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70879[_User-defined Table 0879 – Product/Service Code_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.23 PSL-23 Product/Service Amount for Physician (CP) 01977
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Monetary Amount of product/service item which is for the physician.
+
+==== 16.4.6.24 PSL-24 Product/Service Cost Factor (NM) 01978
+
+Definition: Factor to increase the billed amount.
+
+==== 16.4.6.25 PSL-25 Cost Center (CX) 01933
+
+Components: <ID Number (ST)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Effective Date (DT)> ^ <Expiration Date (DT)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Cost centers are organizational units or activities that provide goods and services. In this context, it would be the department which delivered the Service/Product Line Item, e.g., Radiology, Emergency Room.
+
+==== 16.4.6.26 PSL-26 Billing Period (DR) 01980
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: Begin and end of billing period.
+
+==== 16.4.6.27 PSL-27 Days without Billing (NM) 01981
+
+Definition: Number of Days for which no invoice is created.
+
+==== 16.4.6.28 PSL-28 Session-No (NM) 01982
+
+Definition: Several line items may be grouped to a session.
+
+==== 16.4.6.29 PSL-29 Executing Physician ID (XCN) 01983
+
+Components: <Person Identifier (ST)> ^ <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <DEPRECATED-Source Table (CWE)> ^ <Assigning Authority (HD)> ^ <Name Type Code (ID)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Source Table (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: ID of the physician who is providing the Service, e.g., executing the radiology-exam (EAN ID = European Article Numbering).
+
+==== 16.4.6.30 PSL-30 Responsible Physician ID (XCN) 01984
+
+Components: <Person Identifier (ST)> ^ <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <DEPRECATED-Source Table (CWE)> ^ <Assigning Authority (HD)> ^ <Name Type Code (ID)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Source Table (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: ID of the physician who is responsible for the Service.
+
+==== 16.4.6.31 PSL-31 Role Executing Physician (CWE) 01985
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Account role of the physician, for example only billing for the professional part, the technical part or both. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70881[_User-defined Table 0881 – Role Executing Physician_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.32 PSL-32 Medical Role Executing Physician (CWE) 01986
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: The role of the Physician ("self-employed" or "employed"). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70882[_User-defined Table 0882 – Medical Role Executing Physician_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.33 PSL-33 Side of body (CWE) 01987
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Left / right. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70894[_User-defined Table 0894 – Side of Body_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.34 PSL-34 Number of TP's PP (NM) 01988
+
+Definition: Cost of the service "professional part" expressed in "points".
+
+==== 16.4.6.35 PSL-35 TP-Value PP (CP) 01989
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Monetary Value of one "point" for the professional part of the service.
+
+==== 16.4.6.36 PSL-36 Internal Scaling Factor PP (NM) 01990
+
+Definition: Internal Scaling Factor for the amount of the professional part of the service.
+
+==== 16.4.6.37 PSL-37 External Scaling Factor PP (NM) 01991
+
+Definition: External Scaling Factor for the amount of the professional part of the service.
+
+==== 16.4.6.38 PSL-38 Amount PP (CP) 01992
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Total Amount for the professional part of this service.
+
+==== 16.4.6.39 PSL-39 Number of TP's Technical Part (NM) 01993
+
+Definition: Cost of the service (Technical Part) expressed in "points".
+
+==== 16.4.6.40 PSL-40 TP-Value Technical Part (CP) 01994
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Monetary Value of one "point" for the technical part of the service.
+
+==== 16.4.6.41 PSL-41 Internal Scaling Factor Technical Part (NM) 01995
+
+Definition: Internal Scaling Factor for the amount of the technical part of the service.
+
+==== 16.4.6.42 PSL-42 External Scaling Factor Technical Part (NM) 01996
+
+Definition: External Scaling Factor for the amount of the technical part of the service.
+
+==== 16.4.6.43 PSL-43 Amount Technical Part (CP) 01997
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Total Amount for the technical part of this service.
+
+==== 16.4.6.44 PSL-44 Total Amount Professional Part + Technical Part (CP) 01998
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Total Amount of the cost of this service (Professional plus technical part)
+
+==== 16.4.6.45 PSL-45 VAT-Rate (NM) 01999
+
+Definition: VAT–Rate Applied on the total amount of this service.
+
+==== 16.4.6.46 PSL-46 Main-Service (ID) 02000
+
+Definition: Main service.
+
+==== 16.4.6.47 PSL-47 Validation (ID) 02001
+
+Definition: Service line item has passed an approved validator software (yes/no). For reason see PSL-48. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/No Indicator_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.6.48 PSL-48 Comment (ST) 02002
+
+Definition: Reason why the service line item has not passed the validator software.
+
+=== 16.4.7 ADJ – Adjustment Segment
+
+This segment describes Provider and/or Payer adjustments to a Product/Service Line Item or Response Summary. These include surcharges such as tax, dispensing fees and mark ups.
+
+X12 REF: Similar to CAS segment, with a few new fields.
+
+HL7 Attribute Table – ADJ – Adjustment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |02003 |Provider Adjustment Number
+|2 | | |EI |R | | |02004 |Payer Adjustment Number
+|3 |1..4 | |SI |R | | |02005 |Adjustment Sequence Number
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70564[0564] |02006 |Adjustment Category
+|5 | | |CP |O |Y/5 | |02007 |Adjustment Amount
+|6 | | |CQ |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70560[0560] |02008 |Adjustment Quantity
+|7 | | |CWE |C |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70565[0565] |02009 |Adjustment Reason PA
+|8 | |250# |ST |O | | |02010 |Adjustment Description
+|9 | |16= |NM |O | | |02011 |Original Value
+|10 | |16= |NM |O | | |02012 |Substitute Value
+|11 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70569[0569] |02013 |Adjustment Action
+|12 | | |EI |O | | |02014 |Provider Adjustment Number Cross Reference
+|13 | | |EI |O | | |02015 |Provider Product/Service Line Item Number Cross Reference
+|14 | | |DTM |R | | |02016 |Adjustment Date
+|15 | | |XON |O | | |02017 |Responsible Organization
+|===
+
+==== 16.4.7.0 ADJ field definitions
+
+==== 16.4.7.1 ADJ-1 Provider Adjustment Number (EI) 02003
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Adjustment Number assigned by the Provider Application.
+
+==== 16.4.7.2 ADJ-2 Payer Adjustment Number (EI) 02004
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Adjustment Number assigned by the Payer Application.
+
+==== 16.4.7.3 ADJ-3 Adjustment Sequence Number (SI) 02005
+
+Definition: Unique sequence number for this adjustment – starts with 1, then 2, etc., for each unique adjustment for the Product/Service Line Item.
+
+==== 16.4.7.4 ADJ-4 Adjustment Category (CWE) 02006
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Indicates the category of adjustment and is used to assist in determining which table is used for Adjustment Reason. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70564[_User-defined Table 0564 – Adjustment Category Code_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.7.5 ADJ-5 Adjustment Amount (CP) 02007
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Adjustment amount, such as taxes, deductibles, previously paid amount.
+
+==== 16.4.7.6 ADJ-6 Adjustment Quantity (CQ) 02008
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Adjustment quantity.
+
+X12 REF: table 673 Quantity Qualifier. New values from X12 673 can be added as required. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70560[_User-defined Table 0560 – Quantity Units_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.7.7 ADJ-7 Adjustment Reason PA (CWE) 02009
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Reason for this adjustment. Codes used to explain a Provider adjustment to a Product/Service Group or Product/Service Line Item by a Provider. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70565[_User-defined Table 0565 – Provider Adjustment Reason Code_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.7.8 ADJ-8 Adjustment Description (ST) 02010
+
+Definition: Description of adjustment, such as client instructions.
+
+==== 16.4.7.9 ADJ-9 Original Value (NM) 02011
+
+Definition: Original value of data item noted in this adjustment.
+
+==== 16.4.7.10 ADJ-10 Substitute Value (NM) 02012
+
+Definition: Substituted value of data item noted in this adjustment.
+
+==== 16.4.7.11 ADJ-11 Adjustment Action (CWE) 02013
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Action requested of party that receives this adjustment. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70569[_User-defined Table 0569 – Adjustment Action_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.7.12 ADJ-12 Provider Adjustment Number Cross Reference (EI) 02014
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Provider Adjustment Number assigned by the Provider Application that is referenced by this Payer Adjustment.
+
+==== 16.4.7.13 ADJ-13 Provider Product/Service Line Item Number Cross Reference (EI) 02015
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Provider Product/Service Line Item Number assigned by the Provider Application that is referenced by this Payer Adjustment; used for groups with multiple line items that need to be singled out by a Payer Adjustment.
+
+==== 16.4.7.14 ADJ-14 Adjustment Date (DTM) 02016
+
+Definition: Date/Time adjustment was made. May also be synonymous with Adjudication Date.
+
+==== 16.4.7.15 ADJ-15 Responsible Organization (XON) 02017
+
+Components: <Organization Name (ST)> ^ <Organization Name Type Code (CWE)> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Organization Identifier (ST)>
+
+Subcomponents for Organization Name Type Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: Business organization that is responsible for the adjustment (e.g., Payer organization); can be used for a Payment/Remittance Advice for 1 Payee from multiple Payers.
+
+=== 16.4.8 PMT – Payment Information Segment 
+
+This segment contains information that describes a payment made by a Payer organization.
+
+HL7 Attribute Table – PMT – Payment Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |02018 |Payment/Remittance Advice Number
+|2 | | |DTM |R | | |02019 |Payment/Remittance Effective Date/Time
+|3 | | |DTM |R | | |02020 |Payment/Remittance Expiration Date/Time
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70570[0570] |02021 |Payment Method
+|5 | | |DTM |R | | |02022 |Payment/Remittance Date/Time
+|6 | | |CP |R | | |02023 |Payment/Remittance Amount
+|7 | | |EI |O | | |02024 |Check Number
+|8 | | |XON |O | | |02025 |Payee Bank Identification
+|9 | |4= |ST |O | | |02026 |Payee Transit Number
+|10 | | |CX |O | | |02027 |Payee Bank Account ID
+|11 | | |XON |R | | |02028 |Payment Organization
+|12 | |100= |ST |O | | |02029 |ESR-Code-Line
+|===
+
+==== 16.4.8.0 PMT field definitions
+
+==== 16.4.8.1 PMT-1 Payment/Remittance Advice Number (EI) 02018
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Payment/Remittance Advice number for the sending Network Application ID.
+
+==== 16.4.8.2 PMT-2 Payment/Remittance Effective Date/Time (DTM) 02019
+
+Definition: [ Start ] Date/Time for this Payment/Remittance Advice.
+
+==== 16.4.8.3 PMT-3 Payment/Remittance Expiration Date/Time (DTM) 02020
+
+Definition: [ End ] Date/Time for this Payment/Remittance Advice.
+
+==== 16.4.8.4 PMT-4 Payment Method (CWE) 02021
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Code identifying the method for the movement of payment. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70570[_User-defined Table 0570 – Payment Method Code_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 16.4.8.5 PMT-5 Payment/Remittance Date/Time (DTM) 02022
+
+Definition: Date Payment/Remittance Advice was paid, which might not be the same as Date/Time of Message on MSH.
+
+==== 16.4.8.6 PMT-6 Payment/Remittance Amount (CP) 02023
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Sum total of all Product/Service Paid Amount on PSL for this Payment/Remittance Advice, net of any Adjustments to Payee.
+
+==== 16.4.8.7 PMT-7 Check Number (EI) 02024
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique check number from the Payer's application system.
+
+==== 16.4.8.8 PMT-8 Payee Bank Identification (XON) 02025
+
+Components: <Organization Name (ST)> ^ <Organization Name Type Code (CWE)> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Organization Identifier (ST)>
+
+Subcomponents for Organization Name Type Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: Identification of Payee's financial contact, e.g., name of the bank .
+
+==== 16.4.8.9 PMT-9 Payee Transit Number (ST) 02026
+
+Definition: Personal ID of the payee used in financial transaction.
+
+==== 16.4.8.10 PMT-10 Payee Bank Account ID (CX) 02027
+
+Components: <ID Number (ST)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Effective Date (DT)> ^ <Expiration Date (DT)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Id of Payee's Bank account.
+
+==== 16.4.8.11 PMT-11 Payment Organization (XON) 02028
+
+Components: <Organization Name (ST)> ^ <Organization Name Type Code (CWE)> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Organization Identifier (ST)>
+
+Subcomponents for Organization Name Type Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: Organization identifier that made the Payment/Remittance Advice; could be a Payer, Insurance Company, TPA, Drug Company.
+
+==== 16.4.8.12 PMT-12 ESR-Code-Line (ST) 02029
+
+Definition: Invoice Reference used with electronic banking methods.
+
+=== 16.4.9 IPR – Invoice Processing Results Segment
+
+The Invoice Processing Results (IPR) segment provides summary information about an adjudicated Product/Service Group or Product/Service Line Item.
+
+HL7 Attribute Table – IPR – Invoice Processing Results
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |02030 |IPR Identifier
+|2 | | |EI |R | | |02031 |Provider Cross Reference Identifier
+|3 | | |EI |R | | |02032 |Payer Cross Reference Identifier
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70571[0571] |02033 |IPR Status
+|5 | | |DTM |R | | |02034 |IPR Date/Time
+|6 | | |CP |O | | |02035 |Adjudicated/Paid Amount
+|7 | | |DTM |O | | |02036 |Expected Payment Date/Time
+|8 | |10= |ST |R | | |02037 |IPR Checksum
+|===
+
+==== 16.4.9.0 IPR field definitions
+
+==== 16.4.9.1 IPR-1 IPR Identifier (EI) 02030
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique IPR Number assigned by the Payer Application.
+
+==== 16.4.9.2 IPR-2 Provider Cross Reference Identifier (EI) 02031
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Cross reference to Provider Product/Service Group Number or Provider Product/Service Line Item Number from original Invoice.
+
+==== 16.4.9.3 IPR-3 Payer Cross Reference Identifier (EI) 02032
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Cross reference to Payer Product/Service Group Number or Payer Product/Service Line Item Number from original Invoice.
+
+==== 16.4.9.4 IPR-4 IPR Status (CWE) 02033
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Processing status for the Product/Service Group (if Adjudicate as Group = "Y") or Product/Service Line Item. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70571[_User-defined Table 0571 – Invoice Processing Results Status_] in Chapter 2C, Code Tables, for suggested values.
+
+The referenced status codes represent status codes for an IPR (Invoice Processing Result).
+
+==== 16.4.9.5 IPR-5 IPR Date/Time (DTM) 02034
+
+Definition: Date/Time IPR was created.
+
+==== 16.4.9.6 IPR-6 Adjudicated/Paid Amount (CP) 02035
+
+Components: <Price (MO)> ^ <Price Type (ID)> ^ <From Value (NM)> ^ <To Value (NM)> ^ <Range Units (CWE)> ^ <Range Type (ID)>
+
+Subcomponents for Price (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Range Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Adjudicated Amount for the Product/Service Group or Product/Service Line Item, which could be 0 = sum of all Payer adjustments (Adjustment Amount on ADJ).
+
+==== 16.4.9.7 IPR-7 Expected Payment Date/Time (DTM) 02036
+
+Definition: Date payment is expected for this IPR.
+
+==== 16.4.9.8 IPR-8 IPR Checksum (ST) 02037
+
+Definition: Conditional, if Status = "Accepted", then Required, else Not Permitted.
+
+The field contains a checksum generated by the first Payer (referenced by Payer Organization in the IVC Segment) to ensure that the contents of IPR have not been altered before sending to subsequent Payers.
+
+== 16.5 Outstanding Issues
+
+The following items are being discussed in the Financial Management committee for addition to future versions of HL7:
+
+Events E10 (Edit/Adjudication Response), E24 (Authorization Response) and E12 (Request Additional Information) assume that the Payer application is able to process the requests on-line. Future versions of the Standard would include provisions for deferred responses where the Payer responds to the request once it has processed the request offline. In this use case, the Payer would either send the response as unsolicited results, or store the responses on a queue for the Provider application. If left on a queue for the Provider application, then the QVR^Q17^QVR_Q17 (Query for previous events) message might be used by the Provider application to poll the Payer application.

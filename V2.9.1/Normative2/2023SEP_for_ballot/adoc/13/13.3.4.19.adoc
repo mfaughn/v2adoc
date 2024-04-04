@@ -1,0 +1,10 @@
+==== 13.3.4.19 INV-19 On Board Stability Time (CQ) 01626
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the duration of time that the calibration/usability of the substance is stable. The duration is used to calculate the date/time when this calibration is no longer valid by adding this "On board stability time" (INV-19) to the "First used date / time" (INV-13).
+
+The 1^st^ component defines the time quantity and the 2^nd^ component the time units (see file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70255[_HL7 Table 0255 – Duration Categories_]). Recommended accuracy is "minutes", "hours" and "days".
+

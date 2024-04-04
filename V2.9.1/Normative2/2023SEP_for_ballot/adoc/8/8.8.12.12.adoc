@@ -1,0 +1,4 @@
+==== 8.8.12.12 OM4-12 Specimen Requirements (TX) 00652
+
+Definition: This field contains the other requirements for specimen delivery and special handling (e.g., delivery within one hour, iced).
+

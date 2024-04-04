@@ -1,0 +1,4 @@
+==== 4.14.3.9 BTX-9 BP Amount (NM) 01743
+
+Definition: This field contains the amount (volume) associated with each blood component or commercial product. When included in this segment, it may be used to indicate the volume of the blood component or product that was actually transfused.
+

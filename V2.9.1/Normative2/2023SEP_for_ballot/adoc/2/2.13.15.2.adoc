@@ -1,0 +1,8 @@
+==== 2.13.15.2 UAC-2 User Authentication Credential (ED) 02268
+
+Components: <Source Application (HD)> ^ <Type of Data (ID)> ^ <Data Subtype (ID)> ^ <Encoding (ID)> ^ <Data (TX)>
+
+Subcomponents for Source Application (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This is user credential data as supplied by the sender's operating platform. The content and structure of this is defined by other standards and contain no HL7-relevant data.
+

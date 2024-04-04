@@ -1,0 +1,48 @@
+=== 5.3.2 Formal specification of the Query Profile
+
+The Query Profile contains the following information:
+
+Query Profile ID: The unique identifier applying to this query's Query Profile. This value is transmitted as the first component of _QPD-1-Message query name_. For sites implementing the Conformance SIG's Implementation Guide, this value shall also be transmitted in _MSH-21-Query Profile ID_.
+
+Formal Query Name: identifies a unique query or publication, e.g., PharmacyDispenseHistory.
+
+Query Trigger: identifies the trigger event for the query. Note that more than one Query Profile may map to the same generic trigger event (Q10 through Q15). If a non-generic trigger event is used, it should correspond to exactly one Query Profile.
+
+The use of Q for HL7-standard query trigger events is conventional; another letter may be used if the supply of Q triggers is exhausted.
+
+The assignment of a trigger event, while mandatory, is intended to facilitate processing rather than to identify a query uniquely. A query is uniquely identified by the value transmitted in _QPD-1-Message query name_. This value SHALL be the same in both the query and response messages, even though the trigger event for the query differs from the trigger event for the response.
+
+Response Trigger: identifies the unique trigger event for the response. Note that more than one Query Profile may map to the same generic trigger event (K10 through K15). If a non-generic trigger event is used, it should correspond to exactly one Query Profile.
+
+The use of K for HL7-standard response trigger events is conventional; another letter may be used if the supply of K triggers is exhausted.
+
+Query Priority: Specifies if the query is immediate, deferred or selectable.
+
+Query Characteristics: Narrative describing general feature of the query.
+
+Purpose: Describes intent of query.
+
+Query Grammar: defines the logical structure of what can be sent by the Client. The structure of this part of the Query Profile is very similar in appearance to a message syntax.
+
+Response Grammar: defines the logical structure of what can be returned by the Server. The structure of this part of the Query Profile is very similar in appearance to a message syntax with two additional columns: Comment and Support Indicator.
+
+Data Model: the logical structure of the information that can be queried. It can be thought of as a set of rows or a list of items having the same format as the Virtual Table structure described in the next section. This works for both tabular and segment pattern queries. A display query can be considered as orthogonal to the tabular and segment pattern queries and follows the same input structure. This is not always included in the Query Profile.
+
+Input Parameter Field Specification and Commentary: Cites the allowable parameters that can be passed to the recipient. The structure of this part of the Query Profile is very similar in appearance to an HL7 Segment Attribute Table with several additional columns: ColName, Key/Search, Sort, MatchOp, SegmentFieldName, and Service Identifier Code.
+
+A QPD Input Parameters table and corresponding explanation table is always provided. These tables discuss all the fields of the QPD segment, including _QPD-1-Message query name_ and _QPD-2-Query tag_. If the query is a Query by Example, additional input parameters and explanation tables are provided for all the fields that may be populated in the example segments.
+
+Response Control: Specifies execution date and time, restrictions on amount of data, and query modality. This is not always included in the Query Profile.
+
+Output Specification and Commentary: Used for tabular and display response. For the tabular response, it specifies the column names that will be returned. The structure of this part of the Query Profile is very similar in appearance to an Attribute Table with several additional columns: ColName, Key/Search, Sort, MatchOp, SegmentFieldName, and Service Identifier Code. For the display response, it describes the format of the data that will be returned.
+
+Note that in the case of an HL7-defined query, a specific section of the HL7 standard will define a Query Profile. The existence of a standard Query Profile for any given query does *not* mean that a system SHALL implement this particular query to be conformant to the HL7 Standard. However, systems that do implement the query SHALL follow the specifications as given in the Query Profile.
+
+Sites that wish to offer queries not specified by the Standard may create their own Query Profiles. By contrast to an HL7-standard query, in the case of a site defined query, the Query Profile is written by the Server, and is available to the analysts and programmers of the Client system to enable them to know the exact behavior of the Server.
+
+Although the Query Profile was a new construct with version 2.4, it may also be used with the previous generation queries.
+
+Input Parameter Specification and Input Field Description and Commentary are always included for the QPD segment. When the Query by Example variant is used, they are provided for the QBE as well. An Output Specification and Commentary showing a Virtual Table is provided for queries that accommodate a tabular response.
+
+For Query Profiles published in the HL7 Standard, each table includes the Query Profile ID in parentheses in the upper left-hand cell. This allows the table to be imported automatically into the HL7 database.
+

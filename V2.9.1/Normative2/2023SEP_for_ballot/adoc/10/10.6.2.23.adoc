@@ -1,0 +1,8 @@
+==== 10.6.2.23 SCH-23 Parent Placer Appointment ID (EI) 00881
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field relates a child to its parent, when a parent-child relationship exists. It contains the placer application's permanent identifier for the parent of the appointment request. This is a composite field.
+
+The first component is a string that identifies the parent appointment request. It is assigned by the placer application, and identifies an appointment request uniquely among all such requests from a particular requesting application.
+

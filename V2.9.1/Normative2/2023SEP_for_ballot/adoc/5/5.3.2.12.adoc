@@ -1,0 +1,22 @@
+==== 5.3.2.12 Virtual table field description and commentary
+
+The Virtual Table Field Description and Commentary provides a more detailed description of each of the fields listed in the Virtual Table.
+
+*Virtual Table Field Description and Commentary*
+
+[width="100%",cols="19%,11%,6%,64%",options="header",]
+|===
+|ColName (Query ID=Znn) |Comp. Name |DT |Description
+| | | |
+|===
+
+*ColName*: The name used to identify the column, or field, in the complex expression.
+
+*Comp. Name*: When the *ColName* is of a composite data type (e.g., XPN), this is the name of an individual component of the column. Only those components that may be valued should be listed.
+
+When specifying a field in the complex expression, both the *ColName* and *Comp. Name* attributes should be sent if only a single component is being identified. For instance, *PatientList.ID* would specify the ID component of the *PatientList* field.
+
+*DT*: The data type of the field or component.
+
+*Description*: A narrative description of the field or component and how it is to be used.
+

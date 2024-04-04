@@ -1,0 +1,14 @@
+== 15.2 PURPOSE
+
+The Personnel Management transactions set provides for the transmission of new or updated administration information about individual healthcare practitioners and supporting staff members. Since many systems (e.g., security, scheduling, orders, etc.), must be able to closely monitor changes in certain information regarding individual healthcare practitioners, the Personnel Management transaction set is used to clearly identify these events. For example, it is important to a Security System to be aware of when a staff member was hired or specific role has been terminated. Prior to Version 2.4, master file updates were the only method to update this information. However, when any of these changes are reported as master file update notifications, it is not obvious which of the data has been changed, and is cumbersome to process efficiently. It should be noted that Personnel Management functions that do not affect healthcare administration (e.g., benefits) are not addressed in this chapter.
+
+Generally, information is entered into a Personnel Management system and passed to other systems requiring individual healthcare practitioner data either in the form of an unsolicited update or a response to a record-oriented query.
+
+This document defines the transactions that occur at the application layer (the seventh level of the ISO-OSI models), that is, the abstract messages. The examples included in this chapter were constructed using the HL7 Encoding Rules, Trigger Events and Messages.
+
+Each trigger event is documented below, along with the applicable form of the message exchange. The notation used to describe the sequence, optionality, and repetition of segments is described in Chapter 2, section 2.12, "Chapter Formats for Defining HL7 Messages."
+
+The trigger events that follow are served by the unsolicited Personnel Management update (PMU) and General Acknowledgment (ACK) response.
+
+The information that is included in any of these trigger event transactions can be more than the minimum necessary to communicate that event. Any of the fields occurring in the segments listed for the message can be used. A few or many fields can be used as agreed upon during implementation. However, please note, that when the contents of a field change for a field that is not necessarily related to the trigger event, it is a matter for implementation negotiation as to whether the receiving systems can capture this changed data.
+

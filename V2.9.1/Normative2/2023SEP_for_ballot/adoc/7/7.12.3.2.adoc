@@ -1,0 +1,4 @@
+==== 7.12.3.2 PCR-2 Generic Product (IS) 01099
+
+Definition: This field indicates whether the product used was a generic or a branded product. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70249[_User-defined Table 0249 – Generic Product_] for suggested values.
+

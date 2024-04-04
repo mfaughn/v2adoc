@@ -1,0 +1,4 @@
+== 4.3 Quantity/Timing (TQ) Data Type Definition
+
+*Note:* With version 2.5, the definition and narrative for the TQ – Quantity/Timing data type has been moved to Chapter 2, Section 2.A.81. This section retained in v2.6 and later to maintain consistent section numbering for reference from other chapters.
+

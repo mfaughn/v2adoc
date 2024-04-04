@@ -1,0 +1,12 @@
+=== 5.6.2 Query cancellation
+
+Canceling a query is equivalent to canceling an order in that it is asking the discontinuation of a request for which a response may already be on its way. In the case of an interactive query, a cancellation request is a courtesy on the part of the Client, but not strictly required. How long the query will stay open is an implementation issue.
+
+Although the effect to the Client is the same as if it had not sent any message (no further query data is received), receipt of this message by the Server enables it to discard any unsent continuation data that might be queued.
+
+MSH|^~\&|||||||QCN^Jnn^QCN_J01|...
+
+QID|Q001|Q99^SomeQuery^0003|...
+
+...
+

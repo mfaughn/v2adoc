@@ -1,0 +1,10 @@
+==== 7.4.2.28 OBX-28 Local Process Control (CWE) 03309
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This element contains information intended to be used for locally defined processing, particularly process control/status type information. It is defined as repeating and as a CWE data type to provide flexibility. The specific use may be specified in a message profile or implementation guide (see Chapter 2.B), or use may be specified by local agreement internally within an organization.
+
+For example, a laboratory information system might use this element to convey an internal status during processing before the result is communicated outside the organization, such as revision previously reported, revision report pending.
+
+See file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70915[_User-Defined Table 0915 – Process Control Code_] in Chapter 2C, Code Tables, for a list of suggested values.
+

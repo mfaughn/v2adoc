@@ -1,0 +1,4 @@
+==== 15.4.2.19 CER-19 Jurisdiction Country (ID) 01875
+
+Definition: This field contains the country for which the qualification is valid. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70399[_External Table 0399 – Country Code_] for valid values.
+

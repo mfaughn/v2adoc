@@ -1,0 +1,4 @@
+==== 10.6.7.1 AIP-1 Set ID - AIP (SI) 00906
+
+Definition: This field contains a number that uniquely identifies the information represented by this segment in this transaction for the purposes of addition, change or deletion.
+

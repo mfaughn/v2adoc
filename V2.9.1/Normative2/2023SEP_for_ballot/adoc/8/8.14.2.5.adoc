@@ -1,0 +1,4 @@
+==== 8.14.2.5 CTR -5 Expiration Date (DTM) 02396
+
+Definition: Definition: The Expiration Date is the date that the contract becomes unavailable to purchase from.
+

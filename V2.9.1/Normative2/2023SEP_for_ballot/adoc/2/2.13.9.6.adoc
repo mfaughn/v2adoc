@@ -1,0 +1,8 @@
+==== 2.13.9.6 MSH-6 Receiving Facility (HD) 00006
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the receiving application among multiple identical instances of the application running on behalf of different organizations. file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70362[_User-defined Table 0362 - Facilit__y_] in Chapter 2C, Code Tables, is used as the HL7 identifier for the user-defined table of values for the first component. Entirely site‑defined.
+
+*Note*: By site agreement, implementers MAY continue to use file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70300[_User-defined Table 0300 – Namespace ID_] in Chapter 2C, Code Tables, for the first component.
+

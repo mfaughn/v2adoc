@@ -1,0 +1,8 @@
+==== 4A.4.6.12 RXG-12 Needs Human Review (ID) 00307
+
+Definition: Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/No Indicator_] for valid values. The values have the following meaning for this field:
+
+Y Yes - Indicates that a warning is present. The application receiving the dispense order needs to warn the person dispensing/administering the drug or treatment to pay attention to the text in _RXG-13-Special administration instructions_.
+
+N No - Indicates no warning is present. This is the equivalent default (null) value.
+

@@ -1,0 +1,10 @@
+=== 13.5.11 Automated Equipment Test Code Settings Request
+
+The chemistry analyzer 0001 queries the LAS for configuration parameters of the Glucose test.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |TCR^U11^TCU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+TCC|15074-8^GLUCOSE|GLU-HK^CHEMISTRYANALYZER<cr>
+

@@ -1,0 +1,4 @@
+==== 6.5.10.6 UB1-6 Co‑insurance Days 00535
+
+*Attention: _UB1-6 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6._*
+

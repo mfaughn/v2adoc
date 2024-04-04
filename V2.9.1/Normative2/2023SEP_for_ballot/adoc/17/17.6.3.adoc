@@ -1,0 +1,71 @@
+=== 17.6.3 STI/ACK/STS - Request Item (Event S30)
+
+A request item is sent by the placer application to the filler application to request the ID and description of an item to be sterilized or decontaminated. If it is successful, the filler application returns an application acknowledgment (if requested under the enhanced acknowledgment mode, or if the original acknowledgment mode is in use).
+
+STI^S30^SLR_S28: Sterilization Item Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|\{SLT} |Sterilization Lot | |17
+|===
+
+[width="100%",cols="19%,23%,6%,15%,18%,19%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|STI^S30^SLR_S28 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^S30^ACK |- |ACK^S30^ACK
+|Application Ack |STS^S30^SLR_S28 |- |- |STS^S30^SLR_S28 |STS^S30^SLR_S28
+|===
+
+ACK^S30^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^S30^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S30^ACK
+|Application Ack |- |- |-
+|===
+
+STS^S30^SLR_S28: Sterilization Item Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|\{SLT} |Sterilization Lot | |17
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|STS^S30^SLR_S28 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S30^ACK
+|Application Ack |- |- |-
+|===
+

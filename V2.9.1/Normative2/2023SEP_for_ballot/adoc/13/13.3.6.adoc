@@ -1,0 +1,14 @@
+=== 13.3.6 ECR - Equipment Command Response Segment 
+
+The equipment command response segment contains the receiving component's response to the previously received command.
+
+HL7 Attribute Table – ECR[#ECR .anchor]#### – Equipment Command Response
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70387[0387] |01395 |Command Response
+|2 | | |DTM |R | | |01396 |Date/Time Completed
+|3 | | |TX |O |Y | |01397 |Command Response Parameters
+|===
+

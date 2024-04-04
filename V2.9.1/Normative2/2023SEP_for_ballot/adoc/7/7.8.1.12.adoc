@@ -1,0 +1,6 @@
+==== 7.8.1.12 CSR-12 Randomized Study Arm (CWE) 01046
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains codes that must be developed by users. The blind treatment assignment may be communicated as a dummy text: *^blind* or if a coded treatment assignment must also be communicated**: 1^blind^local_code**. If more than one randomization occurs, the second and third repetitions will correspond to the second and third repetitions of _CSR-11 Study Randomization Date/Time_, if they exist. Refer to Table 0591 - Randomized Study Arm in Chapter 2C for valid values.
+

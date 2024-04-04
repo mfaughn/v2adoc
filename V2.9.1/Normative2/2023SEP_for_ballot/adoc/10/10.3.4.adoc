@@ -1,0 +1,6 @@
+=== 10.3.4 Request Appointment Cancellation (Event S04)
+
+The request appointment cancellation trigger event is sent by the placer application to the filler application to request that an existing appointment be canceled. A cancel event is used to stop a valid appointment from occurring. For example, if a patient scheduled for an exam cancels his/her appointment, then a request to cancel the appointment is sent. If it is successful, an application acknowledgment is returned, optionally containing an SCH segment and related detail segments describing the canceled appointment.
+
+This trigger event can be used to cancel a parent appointment, in which none of the children of the appointment have either begun or have been completed. Any child appointments that exist on the filler and placer applications should be considered canceled. If one or more child appointments have begun or have been completed, then this trigger event should not be used. Instead, the S05 (request appointment discontinuation) event should be used.
+

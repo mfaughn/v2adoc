@@ -1,0 +1,4 @@
+==== 6.5.11.1 UB2-1 Set ID ‑ UB2 (SI) 00553
+
+Definition: This field contains the number that identifies this transaction. For the first occurrence of the segment the sequence number shall be 1, for the second occurrence it shall be 2, etc.
+

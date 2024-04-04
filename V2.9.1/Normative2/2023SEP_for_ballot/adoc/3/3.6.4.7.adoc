@@ -1,0 +1,6 @@
+==== *3.6.4.7* MPI assigns identifier, person exists on MPI
+
+In the next set of three scenarios, it is assumed that a third party (ID Manager) creates identifiers for the client system, and for these examples the MPI fulfills this role. The QBP/RSP queries support this service.
+
+image:extracted-media/media/image8.emf[extracted-media/media/image8,width=624,height=304]
+

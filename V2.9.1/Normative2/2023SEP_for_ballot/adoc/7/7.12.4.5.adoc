@@ -1,0 +1,4 @@
+==== 7.12.4.5 PSH-5 Report Interval End Date (DTM) 01237
+
+Definition: This field contains the date which marks the inclusive end of the time interval covered by the current report.
+

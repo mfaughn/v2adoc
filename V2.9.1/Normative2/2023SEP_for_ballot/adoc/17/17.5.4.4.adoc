@@ -1,0 +1,6 @@
+==== 17.5.4.4 VND-4 Vendor Catalog Number (EI) 02219
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the catalog number assigned to the item by a purchasing vendor.
+

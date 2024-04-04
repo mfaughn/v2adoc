@@ -1,0 +1,4 @@
+==== 2.13.9.13 MSH-13 Sequence Number (NM) 00013
+
+Definition: A non‑delete indicator value in this field implies that the sequence number protocol is in use. This numeric field is incremented by one for each subsequent value.
+

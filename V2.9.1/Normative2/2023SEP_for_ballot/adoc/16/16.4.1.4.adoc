@@ -1,0 +1,4 @@
+==== 16.4.1.4 RFI-4 Date Additional Information Was Submitted (DTM) 01913
+
+Definition: The date on which the information was assembled for transmission to the Payer. Not necessarily the same as the message date.
+

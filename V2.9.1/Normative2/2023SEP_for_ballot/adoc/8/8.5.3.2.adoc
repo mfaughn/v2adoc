@@ -1,0 +1,4 @@
+==== 8.5.3.2 MFA-2 MFN Control ID (ST) 00665
+
+Definition: This field contains a number or other identifier that uniquely identifies this change to this record from the point of view of the originating system. This field uniquely identifies the particular record (identified by the MFE segment) being acknowledged by this MFA segment. When returned to the originating system via the MFA segment, this field allows the target system to precisely identify which change to this record is being acknowledged. It is only required if _MFI-6 - Response Level Code_ requires responses at the record level (any value other than NE).
+

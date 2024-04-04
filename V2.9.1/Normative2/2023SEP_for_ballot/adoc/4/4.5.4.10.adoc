@@ -1,0 +1,8 @@
+==== 4.5.4.10 TQ1-10 Condition Text (TX) 01636
+
+Definition: This is a free text field that describes the conditions under which the drug is to be given. For example, "PRN pain," or "to keep blood pressure below 110."
+
+The presence of text in this field should be taken to mean that human review is needed to determine the how and/or when this drug should be given.
+
+For complex codified conditions see the TQ2 segment below.
+

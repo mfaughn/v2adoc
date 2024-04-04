@@ -1,0 +1,4 @@
+==== 4A.4.7.22 RXA-22 System Entry Date/Time (DTM) 01225
+
+Definition: Date/time the administration information was entered into the source system. This field is used to detect instances where treatment administration information is inadvertently entered multiple times by providing a unique identification field. Under usual circumstances, this field would be provided automatically by the computer system rather than being entered by a person.
+

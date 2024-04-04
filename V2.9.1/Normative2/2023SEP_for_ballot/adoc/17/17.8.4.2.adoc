@@ -1,0 +1,4 @@
+==== 17.8.4.2 SCD-2 Cycle Count (NM) 02105
+
+Definition: The number of cycles that have been completed.
+

@@ -1,0 +1,4 @@
+==== 13.3.7.2 NDS-2 Notification Date/Time (DTM) 01399
+
+Definition: This field is the date/time of the notifications.
+

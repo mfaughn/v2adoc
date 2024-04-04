@@ -1,0 +1,10 @@
+==== 13.3.1.1 EQU-1 Equipment Instance Identifier (EI) 01479
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the equipment. This is the identifier from an institution's master list of equipment. The <namespace ID> identifies the institution.
+
+The Equipment Instance Identifier shall be unique, meaning that the “Entity Identifier” component shall be unique within the Namespace ID that should accommodate hierarchical representation of equipment (recursive hierarchy like in "Russian dolls", e.g., a sub-module embedded in a module assembled in a system being a member of a cluster).
+
+If this attribute repeats, all instances must represent the same device.
+

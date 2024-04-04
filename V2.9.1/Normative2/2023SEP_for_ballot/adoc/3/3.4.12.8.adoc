@@ -1,0 +1,4 @@
+==== *3.4.12.8* DB1-8 Disability Unable to Work Date (DT) 01290
+
+Definition: This field specifies the first date in the date span that the patient is unable to work due to disability.
+

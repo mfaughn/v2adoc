@@ -1,0 +1,18 @@
+=== 2A.2.4 CCP - channel calibration parameters 
+
+*Attention: Retained for backward compatibility only in version 2.7.* This is used only in the CD Channel Definition data type, which has been retained for backward compatibility only in v2.7.
+
+HL7 Component Table – CCP - Channel Calibration Parameters
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |6# |NM |O | |Channel Calibration Sensitivity Correction Factor | |2A.2.47
+|2 | |6# |NM |O | |Channel Calibration Baseline | |2A.2.47
+|3 | |6# |NM |O | |Channel Calibration Time Skew | |2A.2.47
+|===
+
+Definition: This data type identifies the corrections to channel sensitivity, the baseline, and the channel time skew when transmitting waveform results.
+
+*Note:* Replaces the CM data type used in 7.14.1.5 OBX-5.3 where OBX-5 Observation value (*) is data type CD as of v 2.5.
+

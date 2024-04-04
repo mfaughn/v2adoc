@@ -1,0 +1,6 @@
+==== *3.6.4.9* MPI assigns identifier, person exists on neither system
+
+In this scenario, the person does not exist on either system. The message flow is similar to _3.6.4.7_, "_MPI assigns identifier, person exists on MPI_"; however, there is no need for the _Q21/K21Get person Demographics_ query as a double-check for the user since the person does not exist on the MPI. Also, after the person is registered and the identifier assigned, an _A28 Add Person Information_ is sent to the MPI to have it add the person to its database and assign an enterprise identifier.
+
+image:extracted-media/media/image10.wmf[extracted-media/media/image10]
+

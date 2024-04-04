@@ -1,0 +1,4 @@
+==== 4.17.1.30 DON-30 Number of Tubes Collected (NM) 03369
+
+Definition: The number of samples collected during the donation which will be used for subsequent testing.
+

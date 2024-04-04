@@ -1,0 +1,19 @@
+=== 17.8.1 SCP – Sterilizer Configuration Segment
+
+The sterilization configuration segment contains information specific to configuration of a sterilizer or washer for processing sterilization or decontamination loads.
+
+HL7 Attribute Table - SCP - Sterilizer Configuration (Anti-Microbial Devices)
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O/C |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |2= |NM |O | | |02087 |Number Of Decontamination/Sterilization Devices
+|2 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70651[0651] |02088 |Labor Calculation Type
+|3 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70653[0653] |02089 |Date Format
+|4 | | |EI |O | | |02090 |Device Number
+|5 | |999= |ST |O | | |02279 |Device Name
+|6 | |2= |ST |O | | |02091 |Device Model Name
+|7 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70657[0657] |02092 |Device Type
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70659[0659] |02093 |Lot Control
+|===
+

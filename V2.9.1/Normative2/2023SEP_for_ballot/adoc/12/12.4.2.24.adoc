@@ -1,0 +1,4 @@
+==== 12.4.2.24 PRB-24 Family/Significant Other Awareness of Problem/Prognosis (ST) 00859
+
+Definition: This field indicates the individual's family or significant other's comprehension of the actual problem/prognosis.
+

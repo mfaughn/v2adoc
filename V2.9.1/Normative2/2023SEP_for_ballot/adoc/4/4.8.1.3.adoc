@@ -1,0 +1,12 @@
+==== 4.8.1.3 ODS-3 Diet, Supplement, or Preference Code (CWE) 00271
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the identifier of the ordered item for a patient; it is equivalent to OBR-4-universal service ID in function. Since ODS is a repeating segment, multiple entities get multiple segments. Refer to Table 0628 - Diet, Supplement, or Preference Code in Chapter 2C for valid values.
+
+Example:
+
+|^REG|, |023^^99FD6|, |^NOLACT|, |^TUBEFD|, and |011^HIPRO100^99FD1~123^LOFAT20^99FD1|
+
+In the case where this segment requests a diet supplement, i.e., ODS-1-type = S, this attribute specifies a particular item or class of items. If institutional codes for patient food preferences (P) have been codified, they are also expressed as coded segments; otherwise, the information is passed as a text string in the fourth component of the ODS segment, described below.
+

@@ -1,0 +1,6 @@
+=== 3.3.18 ADT/ACK - Merge Patient Information (Event A18)
+
+*The Original Mode Query was maintained for backward compatibility as of v2.3.1 and was withdrawn as of v2.7.* The reader is referred to sections 3.3.40 – (event A40 - merge patient-patient identifier list), 3.3.41 (event A41 - merge account-patient account number) and 3.3.42 (event A42 - merge visit-visit number) for the current query/response message structure.
+
+See section link:#merging-patientperson-information[_3.6.2_], "_link:#merging-patientperson-information[Merging patient/person information],_" for a discussion of issues related to implementing patient merge events.
+

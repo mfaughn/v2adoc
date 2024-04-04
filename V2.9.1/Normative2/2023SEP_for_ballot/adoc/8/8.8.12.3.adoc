@@ -1,0 +1,4 @@
+==== 8.8.12.3 OM4-3 Container Description (TX) 00643
+
+Definition: This field contains the physical appearance, including color of tube tops, shape, and material composition (e.g., red-top glass tube). Note that the color is not necessarily a unique identifier of the additive and/or use of the tube. This is especially true for black and some blue tube tops, as can be seen above. Color is included here for user convenience. This field repeats to accommodate all the possible specimen that will be allowed. If a container is preferred, only that container should be messaged here with the alternate containers messaged in a repeat OM4 segment.
+

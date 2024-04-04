@@ -1,0 +1,4 @@
+==== 2A.2.87.3 City (ST)
+
+Definition: This component specifies the city, or district or place where the addressee is located depending upon the national convention for formatting addresses for postal usage.
+

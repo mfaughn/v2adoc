@@ -1,0 +1,4 @@
+==== *3.4.3.40* PV1-40 Bed Status 00170
+
+Definition: *The PV1-40 field was retained for backward compatibility only as of v 2.3, and the field withdrawn as of v 2.7*. The information is now held in the fifth component of the PL datatype in PV1-3.
+

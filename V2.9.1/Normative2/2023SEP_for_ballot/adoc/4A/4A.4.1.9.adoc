@@ -1,0 +1,4 @@
+==== 4A.4.1.9 RXO-9 Allow Substitutions (ID) 00300
+
+Definition: Coded values indicate whether substitutions are allowed, and, if yes, what type of substitutions. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70161[_HL7 Table 0161 – Allow Substitution_] in Chapter 2C, Code Tables, for valid codes.
+

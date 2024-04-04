@@ -1,0 +1,4 @@
+=== 11.5.3 REF/RRI - Modify Patient Referral (Event I13)
+
+This event triggers a message to be sent from one healthcare provider to another regarding changes to an existing referral. Changes in a referral may include additional instructions from the referring provider, additional clinical information, and even additional information on patient demographics.
+

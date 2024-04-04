@@ -1,0 +1,8 @@
+==== 13.1.3.14 Character:
+
+*1)* The smallest abstract element of a writing system or script.
+
+*Note:* A character refers to an abstract idea rather than to a specific shape.
+
+*2)* A code element.
+

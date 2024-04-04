@@ -1,0 +1,8 @@
+==== 4.8.2.1 ODT-1 Tray Type (CWE) 00273
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field defines the type of dietary tray. Refer To file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70160[HL7 Table 0160 - Tray Type] in Chapter 2C, Code Tables, for valid entries.
+
+Tray specifications are useful for early and late tray delivery in cases where a patient undergoes a procedure during normal feeding times. Tray specifications can also be used for guest trays, no trays, and messages. The value MSG means the ODT segment does not specify the type of tray but provides additional information about an existing tray. This information is found in ODT-3-text instruction.
+

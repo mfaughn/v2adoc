@@ -1,0 +1,19 @@
+=== 2A.2.25 EI - entity identifier
+
+HL7 Component Table - EI – Entity Identifier
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |199= |ST |O | |Entity Identifier | |2A.2.76
+|2 | |20= |IS |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70363[0363] |Namespace ID | |2A.2.36
+|3 | |199= |ST |C | |Universal ID | |2A.2.76
+|4 |1..6 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70301[0301] |Universal ID Type | |2A.2.35
+|===
+
+*Definition:* The entity identifier defines a given entity within a specified series of identifiers.
+
+The EI is appropriate for, but not limited to, machine or software generated identifiers. The generated identifier goes in the first component. The remaining components, 2 through 4, are known as the assigning authority; they identify the machine/system responsible for generating the identifier in component 1.
+
+The specified series, the assigning authority, is defined by components 2 through 4. The assigning authority is of the hierarchic designator (HD) data type, but it is defined as three separate components in the EI data type, rather than as a single component as would normally be the case. This is in order to maintain backward compatibility with the EI’s use as a component in several existing data fields. Otherwise, the components 2 through 4 are as defined in Section _2A.2.33_, "_HD - hierarchic designator_". Hierarchic designators (HD) are unique across a given HL7 implementation.
+

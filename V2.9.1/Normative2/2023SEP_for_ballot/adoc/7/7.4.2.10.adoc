@@ -1,0 +1,6 @@
+==== 7.4.2.10 OBX-10 Nature of abnormal test (ID) 00578
+
+Definition: This field contains the nature of the abnormal test. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70080[_HL7 Table 0080 - Nature of abnormal testing_] for valid values. As many of the codes as apply may be included, separated by repeat delimiters. For example, normal values based on age, sex, and race would be codes as "A~S~R".
+
+The constraints on the use of the codes in this table must be consistent with those defined in the PID segment, specifically _PID-35-Species Code_, _PID-36-Breed Code_ and _PID-37-Strain_.
+

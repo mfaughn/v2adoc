@@ -1,0 +1,53 @@
+=== 4A.4.1 RXO - Pharmacy/Treatment Order Segment
+
+This is the "master" pharmacy/treatment order segment. It contains order data not specific to components or additives. Unlike the OBR, it does not contain status fields or other data that are results-only.
+
+It can be used for any type of pharmacy order, including inpatient (unit dose and compound unit dose), outpatient, IVs, and hyperalimentation IVs (nutritional IVs), as well as other non-pharmacy treatments, e.g., respiratory therapy, oxygen, and many nursing treatments.
+
+In addition to the pharmaceutical/treatment information, this segment contains additional data such as provider and text comments.
+
+A quantity/timing field is not needed in the RXO segment. The ORC segment contains the requested _ORC-7-quantity/timing_ of the original order which does not change as the order is encoded, dispensed, or administered.
+
+HL7 Attribute Table – RXO – Pharmacy/Treatment Order
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70747[0747] |00292 |Requested Give Code
+|2 | | |NM |C | | |00293 |Requested Give Amount - Minimum
+|3 | | |NM |O | | |00294 |Requested Give Amount - Maximum
+|4 | | |CWE |C | |0748 |00295 |Requested Give Units
+|5 | | |CWE |C | |0750 |00296 |Requested Dosage Form
+|6 | | |CWE |O |Y |0751 |00297 |Provider's Pharmacy/Treatment Instructions
+|7 | | |CWE |O |Y |0752 |00298 |Provider's Administration Instructions
+|8 | | | |W | | |00299 |Deliver-To Location
+|9 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70161[0161] |00300 |Allow Substitutions
+|10 | | |CWE |O | |0753 |00301 |Requested Dispense Code
+|11 | | |NM |O | | |00302 |Requested Dispense Amount
+|12 | | |CWE |O | |0754 |00303 |Requested Dispense Units
+|13 | |3= |NM |O | | |00304 |Number Of Refills
+|14 | | | |W | | |00305 |Ordering Provider's DEA Number
+|15 | | |XCN |C |Y | |00306 |Pharmacist/Treatment Supplier's Verifier ID
+|16 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00307 |Needs Human Review
+|17 | |20= |ST |C | | |00308 |Requested Give Per (Time Unit)
+|18 | | |NM |O | | |01121 |Requested Give Strength
+|19 | | |CWE |O | |0756 |01122 |Requested Give Strength Units
+|20 | | |CWE |O |Y |0758 |01123 |Indication
+|21 | |6= |ST |O | | |01218 |Requested Give Rate Amount
+|22 | | |CWE |O | |0760 |01219 |Requested Give Rate Units
+|23 | | |CQ |O | | |00329 |Total Daily Dose
+|24 | | |CWE |O |Y |0762 |01476 |Supplementary Code
+|25 | |5# |NM |O | | |01666 |Requested Drug Strength Volume
+|26 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70764[0764] |01667 |Requested Drug Strength Volume Units
+|27 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70480[0480] |01668 |Pharmacy Order Type
+|28 | | |NM |O | | |01669 |Dispensing Interval
+|29 | | |EI |O | | |02149 |Medication Instance Identifier
+|30 | | |EI |O | | |02150 |Segment Instance Identifier
+|31 | | |CNE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70725[0725] |02151 |Mood Code
+|32 | | |CWE |B | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70765[0765] |01681 |Dispensing Pharmacy
+|33 | | |XAD |B | | |01682 |Dispensing Pharmacy Address
+|34 | | |PL |O | | |01683 |Deliver-to Patient Location
+|35 | | |XAD |O | | |01684 |Deliver-to Address
+|36 | | |XTN |O |Y | |02309 |Pharmacy Phone Number
+|===
+

@@ -1,0 +1,4 @@
+==== 2A.2.91.5 Country Code (SNM)
+
+Definition: The numeric code assigned by the http://www.wordiq.com/definition/International_Telecommunication_Union[International Telecommunication Union] in standard http://www.wordiq.com/definition/E.164[E.164] to access telephone services in another country. For example, "+1" is the country code for the United States, "+49" is the code for Germany.
+

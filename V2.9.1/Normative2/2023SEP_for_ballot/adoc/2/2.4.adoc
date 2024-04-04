@@ -1,0 +1,6 @@
+== 2.4 Message Framework
+
+____
+This section defines the constituents of messages and provides the methodology for defining abstract messages that are used in later chapters. Message construction rules can be found in section 2.4.5.
+____
+

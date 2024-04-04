@@ -1,0 +1,4 @@
+==== 11.8.1.22 RF1-22 Source Date (DTM) 03409
+
+Definition: The source date allows a user to capture the date the person was contacted regarding the specific referral.
+

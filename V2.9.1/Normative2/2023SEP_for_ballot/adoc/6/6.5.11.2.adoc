@@ -1,0 +1,4 @@
+==== 6.5.11.2 UB2-2 Co-Insurance Days (9) (ST) 00554
+
+Definition: This field contains the number of inpatient days exceeding defined benefit coverage. In the US, this corresponds to Uniform Billing form locator 9. This field is defined by CMS or other regulatory agencies.
+

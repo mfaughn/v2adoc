@@ -1,0 +1,37 @@
+=== 6.5.2 DG1 - Diagnosis Segment
+
+The DG1 segment contains patient diagnosis information of various types, for example, admitting, primary, etc. The DG1 segment is used to send multiple diagnoses (for example, for medical records encoding). It is also used when the link:++#ft1-19-diagnosis-code---ft1-cwe-00371++[_FT1-19 - Diagnosis Code - FT1_] does not provide sufficient information for a billing system. This diagnosis coding should be distinguished from the clinical problem segment used by caregivers to manage the patient (see Chapter 12, Patient Care). Coding methodologies are also defined.
+
+[#DG1 .anchor]####HL7 Attribute Table - DG1 - Diagnosis
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C_LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |00375 |Set ID - DG1
+|2 | | | |W | | |00376 |Diagnosis Coding Method
+|3 | | |CWE |R | |file:///E:\V2\V29_CH02C_Tables.docx#HL70051[0051] |00377 |Diagnosis Code - DG1
+|4 | | | |W | | |00378 |Diagnosis Description
+|5 | | |DTM |O | | |00379 |Diagnosis Date/Time
+|6 | | |CWE |R | |file:///E:\V2\V29_CH02C_Tables.docx#HL70052[0052] |00380 |Diagnosis Type
+|7 | | | |W | |file:///E:\V2\V29_CH02C_Tables.docx#HL70118[0118] |00381 |Major Diagnostic Category
+|8 | | | |W | | |00382 |Diagnostic Related Group
+|9 | | | |W | | |00383 |DRG Approval Indicator
+|10 | | | |W | | |00384 |DRG Grouper Review Code
+|11 | | | |W | | |00385 |Outlier Type
+|12 | | | |W | | |00386 |Outlier Days
+|13 | | | |W | | |00387 |Outlier Cost
+|14 | | | |W | | |00388 |Grouper Version And Type
+|15 | |2= |NM |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70359[0359] |00389 |Diagnosis Priority
+|16 | | |XCN |O |Y | |00390 |Diagnosing Clinician
+|17 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70228[0228] |00766 |Diagnosis Classification
+|18 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00767 |Confidential Indicator
+|19 | | |DTM |O | | |00768 |Attestation Date/Time
+|20 | | |EI |C | | |01850 |Diagnosis Identifier
+|21 |1..1 | |ID |C | |file:///E:\V2\V29_CH02C_Tables.docx#HL70206[0206] |01894 |Diagnosis Action Code
+|22 | | |EI |C | | |02152 |Parent Diagnosis
+|23 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70728[0728] |02153 |DRG CCL Value Code
+|24 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |02154 |DRG Grouping Usage
+|25 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70731[0731] |02155 |DRG Diagnosis Determination Status
+|26 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70895[0895] |02288 |Present On Admission (POA) Indicator
+|===
+

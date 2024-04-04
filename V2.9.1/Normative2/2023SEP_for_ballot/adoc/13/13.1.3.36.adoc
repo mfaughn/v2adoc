@@ -1,0 +1,6 @@
+==== 13.1.3.36 Open-container sampling//Open-tube sampling: 
+
+The action of aspirating a sample from a specimen container from which the closure has previously been removed.
+
+*Note:* The sample probe contacts the surface of the specimen without other physical barriers.
+

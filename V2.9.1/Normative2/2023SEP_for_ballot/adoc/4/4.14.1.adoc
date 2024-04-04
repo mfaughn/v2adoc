@@ -1,0 +1,45 @@
+=== 4.14.1 BPO – Blood Product Order Segment
+
+Blood product order messages require additional information that is not available in other standard HL7 order messages. Blood product order messages need to contain accompanying details regarding the blood product component, such as special processing requirements (e.g., irradiation and leukoreduction) and the amount of the blood product to be administered.
+
+The following table presents various use cases surrounding blood product orders.
+
+[width="100%",cols="35%,25%,12%,18%,10%",options="header",]
+|===
+|Universal Service ID [ISBT-128 Product Code] |Blood Product Processing Requirements |Quantity |Blood Product Amount |Units
+|002^Red Blood Cells |Leukoreduced |2 | |Ml
+|002^Red Blood Cells |Leukoreduced |1 |60 |Ml
+|002^Red Blood Cells |Irradiated |2 |15 |Ml
+|002^Red Blood Cells |Leukoreduced |1 | |
+|020^Platelets a|
+Leukoreduced
+
+Irradiated
+
+|6 | |
+|024^ Apheresis Platelets |Irradiated |1 | |
+|002^Red Blood Cells | |1 | |
+|Factor VIII | |2 |910 |IU
+|===
+
+HL7 Attribute Table – BPO – Blood product order
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |1..4 | |SI |R | | |01700 |Set ID – BPO
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70575[0575] |01701 |BP Universal Service Identifier
+|3 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70508[0508] |01702 |BP Processing Requirements
+|4 | |5= |NM |R | | |01703 |BP Quantity
+|5 | |5= |NM |O | | |01704 |BP Amount
+|6 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70576[0576] |01705 |BP Units
+|7 | | |DTM |O | | |01706 |BP Intended Use Date/Time
+|8 | | |PL |O | | |01707 |BP Intended Dispense From Location
+|9 | | |XAD |O | | |01708 |BP Intended Dispense From Address
+|10 | | |DTM |O | | |01709 |BP Requested Dispense Date/Time
+|11 | | |PL |O | | |01710 |BP Requested Dispense To Location
+|12 | | |XAD |O | | |01711 |BP Requested Dispense To Address
+|13 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70509[0509] |01712 |BP Indication for Use
+|14 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01713 |BP Informed Consent Indicator
+|===
+

@@ -1,0 +1,26 @@
+=== 2.10.8 Message representation
+
+For each trigger event the messages that are exchanged when the trigger event occurs are defined using the HL7 abstract message syntax as follows:
+
+Each message is defined in special notation that lists the segment IDs in the order they would appear in the message. Braces, \{ . . . }, indicate one or more repetitions of the enclosed group of segments. Of course, the group MAY contain only a single segment. Brackets, [ . . . ], show that the enclosed group of segments is optional. If a group of segments is optional and MAY repeat it SHALL be enclosed in brackets and braces, [\{...}].
+
+*Note:* [\{...}] and \{[...]} are equivalent.
+
+Whenever braces or brackets enclose more than one segment ID a special stylistic convention is used to help the reader understand the hierarchy of repetition. For example, the first segment ID appears on the same line as the brace, two columns to the right. The subsequent segment IDs appear under the first. The closing brace appears on a line of its own in the same column as the opening brace. This convention is an optional convenience to the user. If there is conflict between its use and the braces that appear in a message schematic, the braces define the actual grouping of segments that is permitted.
+
+A choice of one segment from a group of segments is indicated by using angle brackets to delimit the group and vertical bar delimiters between the several segments.
+
+Example: The following example allows a choice of segments :
+
+<ABC | DEF | GHI | JKL >
+
+Example: The following example allows a choice of segments and/or segment groups. (see Figure 2-5 Hypothetical schematic message)
+
+The first choice is a repeating group consisting of an ABC segment followed by optionally repeating NTE segments.
+
+The second choice is the DEF segment.
+
+The third choice is a group with a required GHI segment followed by an optionally repeating group containing a PRT segment followed by an optionally repeating NTE segment.
+
+<\{ABC [\{NTE}] } |DEF | GHI [\{PRT [\{NTE}] }] >
+

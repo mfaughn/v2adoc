@@ -1,0 +1,4 @@
+==== 2A.2.48.1 Low Value (NM)
+
+Definition: The number specifying the lower limit or boundary of the range.
+

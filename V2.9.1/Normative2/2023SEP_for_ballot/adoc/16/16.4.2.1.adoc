@@ -1,0 +1,6 @@
+==== 16.4.2.1 IVC-1 Provider Invoice Number (EI) 01914
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Invoice Number assigned by the Provider Application.
+

@@ -1,0 +1,4 @@
+==== *3.4.2.1* PID-1 Set ID ‑ PID (SI) 00104
+
+Definition: This field contains the number that identifies this transaction. For the first occurrence of the segment, the sequence number shall be one, for the second occurrence, the sequence number shall be two, etc.
+

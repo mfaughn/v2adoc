@@ -1,0 +1,4 @@
+==== 13.3.4.9 INV-9 Available Quantity (NM) 01380
+
+Definition: This field is the available quantity of substance. This is the current quantity minus any planned consumption (e.g., tests that are planned).
+

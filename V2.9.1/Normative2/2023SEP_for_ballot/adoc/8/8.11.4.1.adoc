@@ -1,0 +1,4 @@
+==== 8.11.4.1 CM2-1 Set ID - CM2 (SI) 01024
+
+Definition: This field contains a number that uniquely identifies this transaction for the purpose of adding, changing, or deleting the transaction. For those messages that permit segments to repeat, the Set ID field is used to identify the repetitions.
+

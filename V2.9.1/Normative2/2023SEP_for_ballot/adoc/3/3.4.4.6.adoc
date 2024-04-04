@@ -1,0 +1,4 @@
+==== *3.4.4.6* PV2-6 Patient Valuables Location (ST) 00186
+
+Definition: This field indicates the location of the patient's valuables.
+

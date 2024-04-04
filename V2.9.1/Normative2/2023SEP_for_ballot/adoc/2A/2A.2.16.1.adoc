@@ -1,0 +1,4 @@
+==== 2A.2.16.1 Date (DTM)
+
+Definition: Specifies the date when a staff member became active or inactive.
+

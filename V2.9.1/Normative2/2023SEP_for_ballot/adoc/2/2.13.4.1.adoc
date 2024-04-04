@@ -1,0 +1,4 @@
+==== 2.13.4.1 DSC-1 Continuation Pointer (ST) 00014
+
+Definition: This field contains the continuation pointer. In an initial query, this field is not present. If the responder returns a value of delete indicator or not present, then there is no more data to fulfill any future continuation requests. For use with continuations of unsolicited messages, see chapter 5 and section _2.9.2_, "_Continuation messages and segments_." Note that continuation protocols work with both display- and record-oriented messages.
+

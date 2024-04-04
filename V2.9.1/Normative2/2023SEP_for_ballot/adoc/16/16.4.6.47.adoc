@@ -1,0 +1,4 @@
+==== 16.4.6.47 PSL-47 Validation (ID) 02001
+
+Definition: Service line item has passed an approved validator software (yes/no). For reason see PSL-48. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/No Indicator_] in Chapter 2C, Code Tables, for suggested values.
+

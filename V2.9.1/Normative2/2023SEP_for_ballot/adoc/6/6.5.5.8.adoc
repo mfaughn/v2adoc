@@ -1,0 +1,4 @@
+==== 6.5.5.8 GT1-8 Guarantor Date/Time of Birth (DTM) 00412
+
+Definition: This field contains the guarantor's date of birth.
+

@@ -1,0 +1,6 @@
+==== 8.5.2.6 MFE-6 Entered Date/Time (DTM) 00661
+
+____
+Definition: This field contains the date and time of the last change of the record.
+____
+

@@ -1,0 +1,48 @@
+=== 4.13.7 BRT – Blood Product Transfusion/Disposition Acknowledgment (Event O32)
+
+BRT^O32^BRT_O32: Description
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ARV}] |Access Restrictions | |3
+|[\{ ERR }] |Error | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for Response Header) | |2
+|[ |--- RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{PRT}] |Participation | |7
+|[\{ ARV }] |For backwards compatbility only as of V2.9. |B |3
+|] |--- PATIENT end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[\{PRT}] |Participation | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|[ BPO ] |Blood Product Order | |4
+|[\{ BTX }] |Blood Product Transfusion/Disposition Status | |4
+|}] |--- ORDER end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="100%",cols="28%,37%,11%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|BRT^O32^BRT_O32 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O32^ACK |- |ACK^B32^ACK
+|Application Ack |- |- |-
+|===
+
+____
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+____
+

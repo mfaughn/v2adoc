@@ -1,0 +1,4 @@
+==== 6.5.6.29 IN1-29 Verification Date/Time (DTM) 00454
+
+Definition: This field contains the date/time that the healthcare provider verified that the patient has the indicated benefits.
+

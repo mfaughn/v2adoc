@@ -1,0 +1,25 @@
+=== 2A.2.84 VR - value range
+
+HL7 Component Table - VR – Value Range
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |6= |ST |O | |First Data Code Value | |2A.2.76
+|2 | |6= |ST |O | |Last Data Code Value | |2A.2.76
+|===
+
+*Definition:* This data type contains the lower bound value and upper bound values that constitute a range. Either or both components may be populated.
+
+*Note:* Replaces the CM data type used in 5.10.5.3.11 QRD-11 as of v 2.5.
+
+The VR differs from the Numeric Range (NR) data type only in that the values are not restricted to numbers. If the range is not numeric, the set must be orderable in some intuitive way such as alpha or the order must be defined in the field where the data type is used.
+
+Example 1:
+
+|+^+++|
+
+Example 2: Colors of the rainbow
+
+|violet^red|
+

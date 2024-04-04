@@ -1,0 +1,4 @@
+==== 6.5.7.17 IN2-17 Military Retire Date (DT) 00488
+
+Definition: This field is defined by CMS or other regulatory agencies.
+

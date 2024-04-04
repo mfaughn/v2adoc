@@ -1,0 +1,83 @@
+=== 3.3.2 ADT/ACK - Transfer a Patient (Event A02)
+
+An A02 event is issued as a result of the patient changing his or her assigned physical location.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. When other important fields change, it is recommended that the A08 (update patient information) event be used in addition. If the transfer function of your Patient Administration system allows demographics to change at the same time as the transfer (for example an address change), we recommend (but do not require) sending two messages (an A02 followed by an A08). This A02 event can be used with admitted and non-admitted patients.
+
+The new patient location should appear in _PV1-3 - Assigned Patient Location_ while the old patient location should appear in _PV1-6 - Prior Patient Location_. For example, an A02 event can be used to notify: laboratory, radiology, pathology that the patient has changed location and test results should be redirected; pharmacy that drugs should be redirected for the patient; dietary that the meals should be delivered to a different location; the clinical repository that a transfer has taken place for the Electronic Medical Record.
+
+If the patient is going to a temporary location (such as the O/R, X-RAY, LIMBO, the HALLWAY) it is recommended that the A09 (patient departing-tracking) and A10 (patient arriving-tracking) events be used instead of A02. It is recommended that A02 be used only for a real change in the census bed in the Patient Administration system.
+
+The ROL segment has been deprecated and retained for backwards compatiblity purposes only as of v 2.9. The reader is referred to the PRT segment instead.
+
+The PRT – Participation Information Segment is used in this message to communicate providers not specified elsewhere. Person level providers with an ongoing relationship are reported in the PRT segment following the PID/PD1 segments. Providers corresponding to the PV1 data are reported in the PRT segment following the PV1/PV2 segments. Providers related to a specific procedure are reported in the PRT segment following the PR1 segment. Providers related to a specific insurance are reported in the PRT segment following the IN1/IN2/IN3 segments. To communicate the begin- and end-date of the provider, use the _–PRT-11 - Begin Date/Time_ and the _–PRT-12 - End Date/Time_ in the PRT segment, with the applicable _PRT-4 – Role of Participation_. Refer to Chapter 7 for the definition of the PRT segment.
+
+ADT^A02^ADT_A02: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:++#arv---access-restrictions-segment++[ARV] }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:\l[PID] |Patient Identification | |3
+|[ link:#_Hlt479197572[PD1] ] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[\{ link:++#oh1---person-employment-status-segment++[OH1] }] |Employment Status | |3
+|[\{ link:++#oh2---past-or-present-job-segment++[OH2] }] |Past or Present Job | |3
+|[ link:++#oh3---usual-work-segment++[OH3] ] |Usual Work | |3
+|[\{ link:++#oh4---combat-zone-work-segment++[OH4] }] |Combat Zone Work | |3
+|[\{ link:++#arv---access-restrictions-segment++[ARV] }] |Access Restrictions |B |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|link:#_Hlt476040270[PV1] |Patient Visit | |3
+|[ link:#PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|[\{ link:++#arv---access-restrictions-segment++[ARV] }] |Access Restrictions |B |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|[\{ link:\l[DB1] }] |Disability Information | |3
+|[\{ |--- OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{ PRT }] |Participation | |7
+|}] |--- OBSERVATION end | |
+|[ link:#_Hlt479197793[PDA] ] |Patient Death and Autopsy | |3
+|===
+
+[width="100%",cols="22%,22%,6%,17%,17%,16%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A02^ADT_A02 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A02^ACK |- |ACK^A02^ACK
+|Application Ack |ADT^A02^ADT_A02 |- |- |ACK^A02^ACK |ACK^A02^ACK
+|===
+
+ACK^A02^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="25%,34%,8%,33%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A02^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A02^ACK
+|Application Ack |- |- |-
+|===
+

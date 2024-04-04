@@ -1,0 +1,4 @@
+==== 6.5.16.14 GP2-14 Pay Rate per Service Unit (NM) 01621
+
+Definition: This field contains the calculated rate, or multiplying factor, for each service unit for the line item.
+

@@ -1,0 +1,60 @@
+=== 4.16.15 DPR - Donation Procedure (Event O48)
+
+This message contains information from the blood unit collection procedure from the donor.
+
+DPR^O48^DPR_O48: Donation Procedure Message
+
+[width="100%",cols="27%,48%,,12%,1%,12%",options="header",]
+|===
+|Segments |Description |Status | | |Chapter
+|MSH |Message Header | | | |2
+|[\{ARV}] |Access Restrictions | | | |3
+|[\{SFT}] |Software Segment | | | |2
+|[ UAC ] |User Authentication Credential | | | |2
+|[ |--- DONOR begin | | | |
+|PID |Patient Identification Segment | | | |3
+|[ PD1 ] |Additional Demographics | | | |3
+|[\{ PRT }] |Participation | | |7 |
+|[\{ |--- DONOR_OBSERVATIONS begin | | | |
+|OBX |Donor Observations | | | |7
+|[\{ PRT }] |Participation | | |7 |
+|}] |--- DONOR_OBSERVATIONS end | | | |
+|[\{ NTE }] |Notes and Comments (for Donor) | | | |2
+|[\{ AL1 }] |Allergy Information | | | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B | | |3
+|[ |--- DONOR_REGISTRATION begin | | | |
+|PV1 |Patient Visit (Donor Registration) | | | |3
+|[\{ PRT }] |Participation | | |7 |
+|[\{ NTE }] |Notes and Comments (for Donor Registration) | | | |2
+|] |--- DONOR_REGISTRATION end | | | |
+|] |--- DONOR end | | | |
+|\{ |--- DONATION_ORDER begin | | | |
+|OBR |Observation | | | |7
+|[\{ PRT }] |Participation | | |7 |
+|[\{NTE}] |Notes and Comments | | | |2
+|} |--- DONATION_ORDER end | | | |
+|[ |--- DONATION begin | | | |
+|DON |Donation | | | |4
+|[\{ |--- DONATION_OBSERVATIONS begin | | | |
+|OBX |Donation Observation (Adverse Reactions, Associations, etc.) | | | |
+|[\{ PRT }] |Participation | | |7 |
+|}] |--- DONATION_OBSERVATIONS end | | | |
+|[\{ NTE }] |Notes and Comments (for Donation) | | | |2
+|[ |--- BLOOD_UNIT begin | | | |
+|[\{BUI}] |Blood Unit Information | | | |4
+|[\{NTE}] |Notes and Comments (for Blood Unit) | | | |2
+|] |--- BLOOD_UNIT end | | | |
+|] |--- DONATION end | | | |
+|===
+
+[width="100%",cols="22%,27%,7%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|DPR^O48^DPR_O48 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O48^ACK
+|Application Ack |ACK^O48^ACK |- |ACK^O48^ACK |ACK^O48^ACK
+|===
+

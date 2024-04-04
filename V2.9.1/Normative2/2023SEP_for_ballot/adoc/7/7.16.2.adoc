@@ -1,0 +1,23 @@
+=== 7.16.2 SHP - Shipment Segment 
+
+The intent of this segment is to describe the information associated with the transportation of the shipment.
+
+HL7 Attribute Table – SHP – Shipment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |EI |R |N | |02317 |Shipment ID
+|2 | | |EI |O |Y | |02318 |Internal Shipment ID
+|3 | | |CWE |O |N |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70905[0905] |02319 |Shipment Status
+|4 | | |DTM |R |N | |02320 |Shipment Status Date/Time
+|5 | | |TX |O |N | |02321 |Shipment Status Reason
+|6 | | |CWE |O |N |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70906[0906] |02322 |Shipment Priority
+|7 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70907[0907] |02323 |Shipment Confidentiality
+|8 | |4= |NM |O |N | |02324 |Number of Packages in Shipment
+|9 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70544[0544] |02325 |Shipment Condition
+|10 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70376[0376] |02326 |Shipment Handling Code
+|11 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70489[0489] |02327 |Shipment Risk Code
+|12 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00816 |Action Code
+|===
+

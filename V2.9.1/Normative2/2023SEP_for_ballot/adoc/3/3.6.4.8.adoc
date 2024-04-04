@@ -1,0 +1,4 @@
+==== *3.6.4.8* MPI assigns identifier, person exists on both systems
+
+is scenario is identical to the scenario in 3.5.4.2 Client system assigns identifier, person exists on both systems.
+

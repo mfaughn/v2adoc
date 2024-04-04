@@ -1,0 +1,6 @@
+==== 6.5.9.13 ACC-13 Accident Identifier (EI) 03338
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the identifier of the accident report assigned by a jurisdiction that is required in the insurance accident claim.
+

@@ -1,0 +1,4 @@
+==== *3.4.17.7* OH3-7 Entered Date (DT) 03542
+
+Definition: This field records the date that the information was entered into the patient record.
+

@@ -1,0 +1,51 @@
+=== 13.2.1 ESU/ACK - Automated Equipment Status Update (Event U01)
+
+This message is used to send information about the status of a device or equipment from one application to another (e.g., automated device to a Laboratory Automation System). The status update can be sent unsolicited or as a response to the trigger "Automated Equipment Status Request."
+
+ESU^U01^ESU_U01: Equipment Status Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|link:#EQU[EQU] |Equipment Detail | |13
+|\{ [link:#ISD[ISD] ] } |Interaction Status Detail | |13
+|[ROL] |Role Detail |B |12
+|===
+
+[width="100%",cols="19%,23%,10%,16%,16%,16%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|ESU^U01^ESU_U01 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U01^ACK |- |ACK^U01^ACK
+|Application Ack |ACK^U01^ACK |- |- |ACK^U01^ACK |ACK^U01^ACK
+|===
+
+ACK^U01^ACK: General Acknowledgement
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Errorfootnote:[This error segment indicates the fields that caused a transaction to be rejected.] | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U01^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U01^ACK
+|Application Ack |- |- |-
+|===
+

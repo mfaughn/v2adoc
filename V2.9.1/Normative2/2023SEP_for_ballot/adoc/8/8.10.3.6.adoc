@@ -1,0 +1,4 @@
+==== 8.10.3.6 PRC-6 Formula (ST) 00999
+
+Definition: This field contains the mathematical formula to apply to _PRC-5 - Price_ in order to compute total price. The syntax of this formula must conform to Arden Syntax rules.
+

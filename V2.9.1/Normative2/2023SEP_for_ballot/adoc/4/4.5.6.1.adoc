@@ -1,0 +1,50 @@
+==== 4.5.6.1 IPC-1 Accession Identifier (EI) 01330
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: A workflow-management IDIS generated number that identifies the Filler Order for an Imaging Service (Imaging Service Request). This identifier corresponds one-to-one to the Order Filler number but is used in internal tracking of the work by the IDIS and in communication between IDIS within the department. It also has specific requirements to assure its compatibility with DICOM. It is a case of the Entity Identifier data type (section 2.A.28). Its first component is a string that identifies the Imaging Service Request. A limit of sixteen (16) characters is required to allow compatibility with DICOM. See DICOM Standard Part 3 for further details on DICOM Attribute (0008,0050) that conveys information identical to the component one of this field.
+
+An IDIS that performs functions of the workflow management for a department may accept a single Placer Order that gives rise to one or more Filler Orders-Imaging Service Requests. For example, an IDIS may receive an order for an X-ray examination of the patient daily at 8 am for the next three days. For the purposes of fulfilling the Placer Order, it will identify each of the daily exams either as a separate Filler Order or parts of a single Filler Order. Correspondingly, it will assign one or more Filler Order numbers associated with the order. For each of the Filler Order numbers, it will assign a unique Accession Number.
+
+Each of the Imaging Service Requests may contain one or more Requested Procedures that it will identify with the Requested Procedure ID. The Requested Procedure is the most granular unit of work that may lead to the creation of the procedure report. Each procedure report contributes to the results for the order. In the example mentioned above, each of the daily examinations will require a separate diagnostic report, hence each of them will be treated as a separate Requested Procedure. Depending on the treatment of the order by the IDIS, it will either link all Requested Procedures to a single Filler Order-Imaging Service Request, or link each Requested Procedure to its own Imaging Service Request. Exact type of requested procedure is conveyed by the coded values in OBR-44 Procedure Code and OBR-45 Procedure Code modifier for each procedure. Note that in case of multiple Requested Procedures corresponding to one order, each procedure may have different code.
+
+To support communication with the instances of equipment in a department (acquisition modalities), IDIS will also generate the Study Instance UID, a globally unique identifier for each Requested Procedure. This identifier will be used by acquisition modalities to identify all generated images and other DICOM objects related to this Requested Procedure. Note that, unlike the Study Instance UID, the Requested Procedure ID must only be unique within the scope of the encompassing Imaging Service Request identified by an Accession Number.
+
+Each of the Requested Procedures may be further broken down by the IDIS into the Scheduled Procedure Steps based on the timing and equipment requirements. Each step is identified with the Scheduled Procedure Step ID. A single Procedure Step may only be performed on a single type and instance of the equipment. Thus, while the Requested Procedure may identify multi-modality examination (such as ones common in Nuclear Medicine), a single Procedure Step shall correspond to the operations performed on a single modality.
+
+The example of the hierarchy of Imaging Service Request, Requested Procedure and Scheduled Procedure Step is depicted in a figure 4-6. Identifiers of the entities are represented by the field names stated in square brackets.
+
+Figure 4-6. Hierarchy of Imaging Service Request, Requested Procedure and Scheduled Procedure Step
+
+image:extracted-media/media/image2.wmf[extracted-media/media/image2]
+
+The full hierarchy constitutes the context that will be shared between all IDIS within a department in a course of order fulfillment.
+
+Each OMI message shall convey information about Requested Procedure(s) pertaining to one order. A pair of Segments ORC/OBR shall correspond to each requested procedure. If the Requested Procedure is comprised of multiple Procedure Steps, multiple IPC segments shall be included for each ORC/OBR pair in the message. Value of the IPC-1 field shall be identical in all IPC segments.
+
+Considering the preceding example of X-ray examinations on subsequent days with two different steps identified for the last Requested Procedure and examinations to be performed at the site, "RADIOLOGY", the communication of the information using OMI message may look like the following:
+
+MSH|...<cr>
+
+PID|...<cr>
+
+ORC|NW|...<cr>
+
+OBR|1|X1234^HIS|R578^RIS|56782^X-Ray Chest|...|XPA^X-Ray Chest PA|...<cr>
+
+IPC|A345^RIS|P1234^RIS|1.2.840.1234567890.3456786.1^RIS|SPS1^RIS|CR|SXPA^Chest PA||RADIOLOGY|<cr>
+
+ORC|NW|...<cr>
+
+OBR|2|X1234^HIS|R578^RIS|56782^X-Ray Chest|...|XPA^X-Ray Chest PA|...<cr>
+
+IPC|A345^RIS|P1235^RIS|1.2.840.1234567890.3456786.2^RIS|SPS1^RIS|CR|SXPA^Chest PA||RADIOLOGY|<cr>
+
+ORC|NW|...<cr>
+
+OBR|3|X1234^HIS|R578^RIS|56782^X-Ray Chest|...|XPALAT^X-Ray Chest PA and Lateral|...<cr>
+
+IPC|A345^RIS|P1236^RIS|1.2.840.1234567890.3456786.3^RIS|SPS1^RIS|CR|SXPA^Chest PA||RADIOLOGY|<cr>
+
+IPC|A345^RIS|P1236^RIS|1.2.840.1234567890.3456786.3^RIS|SPS2^RIS|CR|SXLAT^Chest Lat||RADIOLOGY|<cr>
+

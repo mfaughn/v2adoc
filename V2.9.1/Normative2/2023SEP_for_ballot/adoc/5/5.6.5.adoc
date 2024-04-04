@@ -1,0 +1,46 @@
+=== 5.6.5 Query error response
+
+A query/response error can occur at 3 levels:
+
+Communication failure (broken connection, timeout)
+
+Malformed message (message reject)
+
+Malformed query (application error)
+
+If the application receiving the query detects an error while processing the query, the preferred method of response is to return an Application Error (AE) or Application Reject (AR) condition in the _MSA-1-Acknowledgement code_ of the applicable query response message. Further description of the error code is to be included in _ERR-1-Error code and location_. Note that _MSA-6-Error condition_ is retained for backward compatibility for those applications not using the ERR segment. Thus far, this method is consistent with the methods used elsewhere for reporting errors in acknowledgement messages, irrespective of the type of message being acknowledged. In addition, because this is a query response, it is important to include the QAK segment because it specifies the query tag that will identify the particular query instance that was in error. This is of particular importance where a query response may span more than one message.
+
+In summary, use the ERR segment to describe the error if the message fails because of
+
+a malformed message
+
+a malformed query – problem with query tag, problems with parameters
+
+The ERR segment supersedes _QAK-2-Query response status_.
+
+There are 3 common situations that can arise in a query error response:
+
+*Situation 1: Malformed Message*
+
+The query message itself is bad. The parser does not get to the actual query content. Something is wrong with the envelope, i.e., the message is malformed.
+
+The only response is a negative ACK message containing the MSH, MSA and the ERR. That is, the Server creates an ACK message with AR in _MSA-1-Acknowledgement code_ in the above sentence. The dialogue is ended.
+
+*Situation 2: Malformed Query*
+
+The query message got to the Server and is legitimate, but the Server cannot process the query for some reason, i.e., the query is malformed.
+
+The Response message indicates a negative acknowledgement and shows the problem in the ERR. The response message contains the MSH, MSA, ERR, QAK and the query defining segment if available. That is, the Server creates an ACK message with AE in _MSA-1-Acknowledgement code_ in the above sentence. The rest of the message is absent.
+
+Note that the continuation (DSC) segment is not sent or, if it is, its continuation pointer field (_DSC-1-Continuation pointer_) is null.
+
+*Note:* The use of AE (application error) and AR (application reject) codes in _QAK-2-Query response status_ has been deprecated in favor of the ERR segment.
+
+*Situation 3: No data found*
+
+The query is well formed, but there is no data to be returned by the query. This is not strictly an error condition. This example clarifies the protocol to be followed.
+
+The Response message contains MSH, MSA, QAK, and query defining segment. The QAK would indicate "no records found". The rest of the message is absent, i.e., no blank rows or segments are sent.
+
+*Note:* If the responding application successfully processes the query, but is unable to find any qualifying data, this is not an error condition. The responding application returns an Application Accept (AA) in the MSA segment of the query response message, but does not return any data segments (DSP, RDT, or iterations of the items that are counted in hit counts). The continuation (DSC) segment is not sent or, if it is, its continuation pointer field (_DSC-1- Continuation pointer_) is null. If the QAK segment is being used, the field _QAK-2-Query response_ status is valued with NF (no data found, no errors).
+

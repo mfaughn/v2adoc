@@ -1,0 +1,4 @@
+==== 10.2.5.3 Block
+
+An indication that a slot or a set of slots is unavailable for reasons other than booking an appointment.
+

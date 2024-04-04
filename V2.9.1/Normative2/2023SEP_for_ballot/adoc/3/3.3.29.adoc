@@ -1,0 +1,64 @@
+=== 3.3.29 ADT/ACK - Delete Person Information (Event A29)
+
+An A29 event can be used to delete all demographic information related to a given person. This event "undoes" an A28 (add person information) event. The information from the A28 event is deleted. This event is used, for example, when adding the information was performed in error, or when another record already exists for the person, or when one wants to purge the person from the database. When this event occurs, all visit and account level data for this person is also purged.
+
+To maintain backward compatibility with previous releases, the PV1 segment is required. However, a "pseudo-optional" PV1 can be achieved by valuing _PV1-2 - Patient Class_ to N - not applicable.
+
+ADT^A29^ADT_A21: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|link:#_Hlt476040270[PV1] |Patient Visit | |3
+|[ link:#PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|[\{ link:#_Hlt479197568[DB1] }] |Disability Information | |3
+|[\{ |--- OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{ PRT }] |Participation | |7
+|}] |--- OBSERVATION end | |
+|===
+
+[width="100%",cols="18%,26%,4%,16%,18%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A29^ADT_A21 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A29^ACK |- |ACK^A29^ACK
+|Application Ack |ADT^A29^ADT_A21 |- |- |ACK^A29^ACK |ACK^A29^ACK
+|===
+
+ACK^A29^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="22%,38%,9%,31%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A29^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A29^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,4 @@
+==== 17.4.2.2 Cycle - Sterilization
+
+A define sequence of operational events designed to achieve sterilization which are carried out in a sealed chamber.
+

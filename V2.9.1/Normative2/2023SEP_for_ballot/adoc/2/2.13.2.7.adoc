@@ -1,0 +1,4 @@
+==== 2.13.2.7 BHS-7 Batch Creation Date/Time (DTM) 00087
+
+Definition: This field contains the date/time that the sending system created the message. If the time zone is specified, it will be used throughout the message as the default time zone.
+

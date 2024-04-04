@@ -1,0 +1,40 @@
+===== 3.6.2.2.12 A50 - change visit number 
+
+[width="100%",cols="54%,46%",]
+|===
+|A50 - Change visit number |
+|Use Case - Patients are automatically assigned a visit number by hospital XYZ's Patient Administration system at check-in. However, when the Patient Administration system is down, the admitting clerk manually assigns visit numbers from a pool of downtime numbers. ADAM EVERYMAN (patient ID MR1) was manually assigned downtime visit number VISIT1. When the Patient Administration system came back up, the admitting clerk accidentally entered the wrong visit number, VISIT2, into the system. When the problem was later discovered, the visit number was changed from VISIT2 to VISIT1. |
+|Target: _PV1-19 - Visit Number_ |
+|Source: _MRG-5 - Prior Visit Number_ |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A50^ADT_A50\|00000006\|P\|2.8\|<cr>
+
+EVN\|A50\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYMAN^ADAM\|\|19501010\|M\|\|\|123 SOUTH STREET^^NY^NY^10021\|\|(212)111-2222\|\|\|S\|CAT\|ACCT1<cr>
+
+MRG\|MR1^^^XYZ\|\|ACCT1\|\|VISIT2<cr>
+
+PV1\|1\|O\|\|3\|\|\|99^BROWN^JERRY\|\|\|ONC\|\|\|\|1\|\|VIP\|99^BROWN^JERRY\|O/P\|VISIT1...<cr>
+
+|
+|Before Change |After Change
+a|
+MR1
+
+ACCT1
+
+VISIT2
+
+a|
+MR1
+
+ACCT1
+
+VISIT1
+
+|Implementation considerations: None. |
+|===
+

@@ -1,0 +1,10 @@
+==== 4.5.3.23 OBR-23 Charge to Practice (MOC) 00256
+
+Components: <Monetary Amount (MO)> ^ <Charge Code (CWE)>
+
+Subcomponents for Monetary Amount (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Subcomponents for Charge Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the charge to the ordering entity for the studies performed when applicable. The first component is a dollar amount when known by the filler. The second is a charge code when known by the filler (results only).
+

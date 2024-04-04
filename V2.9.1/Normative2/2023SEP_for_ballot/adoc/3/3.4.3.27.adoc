@@ -1,0 +1,4 @@
+==== *3.4.3.27* PV1-27 Contract Period (NM) 00157
+
+Definition: This field specifies the duration of the contract for user-defined periods.
+

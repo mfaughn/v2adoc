@@ -1,0 +1,4 @@
+==== 8.10.2.3 CDM-3 Charge Description Short (ST) 00984
+
+Definition: This field contains the text abbreviations or code that is associated with this CDM entry.
+

@@ -1,0 +1,6 @@
+==== 7.8.4.1 CTI-1 Sponsor Study ID (EI) 01011
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the universal identifier for the clinical trial. The coding system is as described in _CSR-1 Sponsor Study ID_.
+

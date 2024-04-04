@@ -1,0 +1,14 @@
+==== 4.14.3.2 BTX-2 BC Donation ID (EI) 01736
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The donation ID is the unique identification number assigned to a blood donation. The Donation ID depends upon the bar code labeling system used for the component. There are currently two blood component labeling standards: _ABC CODABAR_ and _ISBT 128_. The preferred labeling system is _ISBT 128_. If using _ISBT 128,_ the Donation ID is an internationally unique identifier consisting of the following 13 characters:
+
+Country Code & Collection Facility - 5 characters
+
+Donation Year - 2 characters
+
+Serial Number - 6 characters
+
+This is required for blood components and is not applicable for commercial product messages.
+

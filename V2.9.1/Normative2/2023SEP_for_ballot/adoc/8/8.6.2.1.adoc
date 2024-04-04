@@ -1,0 +1,30 @@
+==== 8.6.2.1 Example message
+
+The initiating system constructs an MFN^M14 message. In this example, the message contains site-defined "Z" segments. The following message is sent to the responding system:
+
+MSH|^~\&|HL7REG|UH|HL7LAB|CH|200106290544||MFN^M14^MFN_Z99|MSGID001|P|2.9
+
+MFI|HL70006^RELIGION^HL70175||UPD|||AL
+
+MFE|MAD|6772331|200106290500|BUD^Buddhist^HL70006|CWE
+
+ZL7|BUD^Buddhist^HL70006|3
+
+MFE|MAD|6772332|200106290500|BOT^Buddhist: Other^HL70006|CWE
+
+ZL7|BOT^Buddhist: Other^HL70006|4
+
+The responder receives the message and performs necessary validation on the message. In this example, it determines the message just received is acceptable for processing. The following MFK^M14 message is constructed by the responder and sent to the initiating system to indicate acknowledgment of the MFN^M14 message:
+
+MSH|^~\&|HL7LAB|CH|HL7REG|UH|200106290545||MFK^M14^MFK_M01|MSGID99001|P|2.9
+
+MSA|AA|MSGID001
+
+MFI|HL70006^RELIGION^HL70175||UPD|||AL
+
+MFA|MAD|6772331|200106290545|S|BUD^Buddhist^HL70006|CWE
+
+MFA|MAD|6772332|200106290545|S|BOT^Buddhist: Other^HL70006|CWE
+
+Note that _MSA-1 - Acknowledgment Code_ contains 'AA' to indicate the message was received and processed successfully. This value could also have been 'AE' or 'AR' to indicate the message was received but not processed successfully. _MSA-2 - Message Control ID_ contains the value from _MSH-10 - Message Control ID_ in the initiating MFN^M14 message (MSGID001) to link the acknowledgment response to the initiating message.
+

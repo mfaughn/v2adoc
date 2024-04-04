@@ -1,0 +1,4 @@
+=== 10.3.1 Request New Appointment Booking (Event S01)
+
+A placer application sends a transaction with this trigger event to a filler application to request that a new appointment be booked. If it is successful, the filler application returns an application acknowledgment (if requested under the enhanced acknowledgment mode, or if the original acknowledgment mode is in use). The acknowledegment may optionally contain an SCH segment and related detail segments describing the actual appointment that was booked.
+

@@ -1,0 +1,54 @@
+=== 4A.3.17 RRE - Pharmacy/Treatment Refill Authorization Request Acknowledgment (Event O26)
+
+RRE^O26^RRE_O12: Pharmacy/Treatment Refill Authorization Request Acknowledgment Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for Header) | |2
+|[ |--- RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{ PRT }] |Participation | |7
+|[\{ NTE }] |Notes and Comments (for PID) | |2
+|] |--- PATIENT end | |
+|\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[\{PRT}] |Participation (for ORC) | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|[ |--- ENCODING begin | |
+|RXE |Pharmacy/Treatment Encoded Order | |4A
+|[\{PRT}] |Participation (for RXE) | |7
+|[\{ NTE }] |Notes and Comments (for RXE) | |2
+|\{ |--- TIMING_ENCODED begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|} |--- TIMING_ENCODED end | |
+|\{ RXR } |Pharmacy/Treatment Route | |4A
+|[\{ RXC }] |Pharmacy/Treatment Component | |4A
+|] |--- ENCODING end | |
+|} |--- ORDER end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="100%",cols="28%,39%,9%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|RRE^O26^RRE_O12 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O26^ACK |- |ACK^O26^ACK
+|Application Ack |- |- |-
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+

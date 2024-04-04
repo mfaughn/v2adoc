@@ -1,0 +1,4 @@
+==== 7.2.3.4 Observation:
+
+A measurement of a single variable or a single value derived logically and/or algebraically from other measured or derived values. A test result, a diastolic blood pressure, and a single chest X-ray impression are examples of observations. In certain circumstances, tracings and images may be treated by HL7 as individual observations and sent as a single OBX. These include waveform data described in section _7.15_, "_Waveform – Trigger Events & Message Definitions_," and encapsulated data aggregates using the ED data type described in Chapter 2A, section 2.A.24, "ED - encapsulated data," (which can represent actual images, audio data, etc.).
+

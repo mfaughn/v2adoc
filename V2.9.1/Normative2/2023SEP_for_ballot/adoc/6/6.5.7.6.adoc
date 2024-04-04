@@ -1,0 +1,4 @@
+==== 6.5.7.6 IN2-6 Medicare Health Ins Card Number (ST) 00477
+
+Definition: This field contains the Medicare Health Insurance Number (HIN), defined by CMS or other regulatory agencies.
+

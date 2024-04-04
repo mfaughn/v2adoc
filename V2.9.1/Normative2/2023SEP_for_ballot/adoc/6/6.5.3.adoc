@@ -1,0 +1,44 @@
+=== 6.5.3 DRG - Diagnosis Related Group Segment
+
+The DRG segment contains diagnoses-related grouping information of various types. The DRG segment is used to send the DRG information, for example, for billing and medical records encoding.
+
+[#DRG .anchor]####HL7 Attribute Table - DRG - Diagnosis Related Group
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CNE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70055[0055] |00382 |Diagnostic Related Group
+|2 | | |DTM |O | | |00769 |DRG Assigned Date/Time
+|3 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00383 |DRG Approval Indicator
+|4 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70056[0056] |00384 |DRG Grouper Review Code
+|5 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70083[0083] |00385 |Outlier Type
+|6 | |3= |NM |O | | |00386 |Outlier Days
+|7 | | |CP |O | | |00387 |Outlier Cost
+|8 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70229[0229] |00770 |DRG Payor
+|9 | | |CP |O | | |00771 |Outlier Reimbursement
+|10 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00767 |Confidential Indicator
+|11 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70415[0415] |01500 |DRG Transfer Type
+|12 | | |XPN |O | | |02156 |Name of Coder
+|13 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70734[0734] |02157 |Grouper Status
+|14 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70728[0728] |02158 |PCCL Value Code
+|15 | |5# |NM |O | | |02159 |Effective Weight
+|16 | | |MO |O | | |02160 |Monetary Amount
+|17 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70739[0739] |02161 |Status Patient
+|18 | |100# |ST |O | | |02162 |Grouper Software Name
+|19 | |100# |ST |O | | |02282 |Grouper Software Version
+|20 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70742[0742] |02163 |Status Financial Calculation
+|21 | | |MO |O | | |02164 |Relative Discount/Surcharge
+|22 | | |MO |O | | |02165 |Basic Charge
+|23 | | |MO |O | | |02166 |Total Charge
+|24 | | |MO |O | | |02167 |Discount/Surcharge
+|25 | |5= |NM |O | | |02168 |Calculated Days
+|26 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70749[0749] |02169 |Status Gender
+|27 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70749[0749] |02170 |Status Age
+|28 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70749[0749] |02171 |Status Length of Stay
+|29 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70749[0749] |02172 |Status Same Day Flag
+|30 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70749[0749] |02173 |Status Separation Mode
+|31 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70755[0755] |02174 |Status Weight at Birth
+|32 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70757[0757] |02175 |Status Respiration Minutes
+|33 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70759[0759] |02176 |Status Admission
+|===
+

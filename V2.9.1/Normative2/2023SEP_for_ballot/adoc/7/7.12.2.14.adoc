@@ -1,0 +1,4 @@
+==== 7.12.2.14 PEO-14 Event Description from Original Reporter (FT) 01086
+
+Definition: This field contains a summary narrative text description of the event provided by the original reporter. Note that laboratory results can be encoded as OBX segments rather then including them in the narrative.
+

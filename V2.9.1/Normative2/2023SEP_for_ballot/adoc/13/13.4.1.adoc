@@ -1,0 +1,4 @@
+=== 13.4.1 Other Required Original HL7 Messages
+
+The transaction for synchronization of system clocks must be supported by all equipment as receiver. The master (sender) of the time is either the LAS computer or the LIS.
+

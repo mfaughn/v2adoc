@@ -1,0 +1,71 @@
+=== 3.3.17 ADT/ACK - Swap Patients (Event A17)
+
+The A17 is used when it is decided that two patients will exchange beds. The patient ID and visit data are repeated for the two patients changing places. See section link:#swapping-a-patient[_3.6.1_], "_link:#swapping-a-patient[Swapping a patient],_" for a discussion of issues related to implementing this trigger event. When other important fields change, it is recommended that the A08 (update patient information) event be used in addition.
+
+ADT^A17^ADT_A17: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient (1) Identification | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|link:#_Hlt476040270[PV1] |Patient (1) Visit | |3
+|[ link:#PV2[PV2] ] |Patient (1) Visit - Additional Info. | |3
+|[\{ link:#_Hlt479197568[DB1] }] |Disability Information | |3
+|[\{ |--- OBSERVATION_RESULT_1 begin | |
+|OBX |Observation/Result (1) | |7
+|[\{ PRT }} |Participation | |7
+|}] |--- OBSERVATION_RESULT_1 end | |
+|link:#_Hlt479197644[PID] |Patient (2) Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|link:#_Hlt476040270[PV1] |Patient (2) Visit | |3
+|[ link:#PV2[PV2] ] |Patient (2) Visit - Additional Info. | |3
+|[\{ link:#_Hlt479197568[DB1] }] |Disability Information | |3
+|[\{ |--- OBSERVATION_RESULT_2 begin | |
+|OBX |Observation/Result (2) | |7
+|[\{ PRT }] |Participation | |7
+|}] |--- OBSERVATION_RESULT_2 end | |
+|===
+
+[width="100%",cols="19%,25%,5%,17%,17%,17%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A17^ADT_A17 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A17^ACK |- |ACK^A17^ACK
+|Application Ack |ADT^A17^ADT_A17 |- |- |ACK^A17^ACK |ACK^A17^ACK
+|===
+
+ACK^A17^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="25%,37%,9%,29%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A17^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A17^ACK
+|Application Ack |- |- |-
+|===
+

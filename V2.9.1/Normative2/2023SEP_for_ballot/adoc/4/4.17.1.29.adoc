@@ -1,0 +1,4 @@
+==== 4.17.1.29 DON-29 Final Review Date/Time (DTM) 03368
+
+Definition: The date and time a final review of all documentation and labeling of the blood material is completed.
+

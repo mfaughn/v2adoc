@@ -1,0 +1,4 @@
+==== 2A.2.42.1 Monetary Amount (MO)
+
+Definition: The amount and denomination of money associated with the charge code.
+

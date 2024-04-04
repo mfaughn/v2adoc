@@ -1,0 +1,4 @@
+== 13.5 Example Messages 
+
+This sub-chapter contains examples to messages defined in the chapter 13. Examples for other messages using segments defined in the chapter 13 are published in corresponding chapters, e.g., for laboratory orders in chapter 4 and for laboratory observations in chapter 7.
+

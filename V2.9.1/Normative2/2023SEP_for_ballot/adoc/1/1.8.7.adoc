@@ -1,0 +1,4 @@
+=== 1.8.7 Accountability, Audit Trails and Assigned Responsibility
+
+HL7 Version 2.x standards do not attempt to define typical transaction processing features such as audit trails. A feature such as an audit trail may well be needed to successfully implement both a robust and security-auditable environment. This feature could also support verifying that a given action is performed by individuals who are also responsible. A user may decide that these features are necessary in their integrated environment.
+

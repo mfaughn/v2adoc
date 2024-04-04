@@ -1,0 +1,127 @@
+=== 16.3.1 EHC^E01 – Submit HealthCare Services Invoice (event E01) 
+
+This message is used to submit a HealthCare Services Invoice to a TPA/Payer for processing and payment. A HealthCare Services Invoice may have 1 or more Product/Service Line Items (detail lines), grouped as a Product/Service Group. Each Product/Service Line Item represents a specific fee item. Refer to the beginning of this section for more information on the structure of a HealthCare Services Invoice.
+
+This message can be used to submit a HealthCare Services Invoice or to resubmit a previously submitted HealthCare Services Invoice (in case it was not properly acknowledged the first time that it was submitted). This message cannot be used to update an Invoice (e.g., add or cancel Product/Service Line Items) or cancel a HealthCare Services Invoice. To cancel a HealthCare Services Invoice, use the EHC^E02 – Cancel HealthCare Services Invoice message. To update a HealthCare Services Invoice it must first be cancelled (see EHC^E02 – Cancel HealthCare Services Invoice) and then re–submitted using this message with new Invoice numbers.
+
+This message can also be used as a Pre-Determination message. This allows a Provider Application to submit a HealthCare Services Invoice to a Payer Application and run it through the Payer's edit and adjudication engine. The only difference between a Pre-Determination Invoice and a regular Invoice is the Payer will not pay the Pre-Determination Invoice. Setting the Invoice Control on IVC to "PD" identifies a Pre-Determination Invoice.
+
+Note that an EHC^E12 – Request Additional Information (pending) is a valid response for an EHC^E01 – Submit HealthCare Services Invoice. In this case, the interactions would be EHC^E01 -> EHC^E12 (pending).
+
+Processing Rules:
+
+{empty}1) Where multiple Payers can pay Invoices, they must be sent to Payers in the order identified as primary, secondary, tertiary, etc. Rules for determining primary, secondary, tertiary, etc. are not set in this document; these are set out by agencies in various jurisdictions. +
+In addition, an Invoice must only be sent to a subsequent Payer (e.g., secondary) once Edit/Adjudication results have been received from a prior Payer (e.g., primary).
+
+{empty}2) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application. +
+The Provider Invoice Number and Payer Invoice Number must be echoed on any subsequent interactions for the Invoice between the Provider Application and Payer Application.
+
+{empty}3) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+If the Payer Application accepts the Invoice, the Provider Application must store 2 tracking numbers for each Product/Service Line Item, if present in the message pair. The Payer Application must also store 2 tracking numbers for each Product/Service Line Item, if present in the message pair. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}4) Each Product/Service Line Item must reference Location Identification information, which is defined by the LOC segment. Location Identification information may be specified with the Invoice, Product/Service Group and/or Product/Service Line Item. +
+If specified with the Invoice Information, then the Location Identification information acts as a default for all Product/Service Line Items in the Invoice. +
+If specified with the Product/Service Group Information, then the Location Identification information acts as a default for all Product/Service Line Items in the Product/Service Group. +
+If specified with the Product/Service Line Item, then the Location Identification information supersedes (replaces) any defaults set by specifying Location Identification information with the Invoice or Product/Service Group. +
+Location Identification information must be specified with the Product/Service Line Item if it has not been defaulted for the Invoice or Product/Service Group.
+
+{empty}5) Some Payers require Provider Information to be included with an Invoice, which is defined by the ROL segment. In these situations, the ROL segment may be specified with the Invoice, Product/Service Group and/or Product/Service Line Item (note that the ROL segment also appears with Procedure Information, which is not covered by this processing rule). +
+If specified with the Invoice Information, then the Provider Information acts as a default for all Product/Service Line Items in the Invoice. +
+If specified with the Product/Service Group Information, then the Provider Information acts as a default for all Product/Service Line Items in the Product/Service Group. +
+If specified with the Product/Service Line Item, then the Provider information supersedes (replaces) any defaults set by specifying Provider information with the Invoice or Product/Service Group. +
+Provider Information, if required by the Payer, must be specified with the Product/Service Line Item if it has not been defaulted for the Invoice or Product/Service Group.
+
+{empty}6) If Authorization Information is entered (AUT segment), then either the Authorization Identifier on AUT or Name of Authorizer on AUT must be specified.
+
+{empty}7) The Billed Amount on PSG must be equal to the sum of all Product/Service Billed Amounts on PSL for all Product/Service Line Items for the particular Product/Service Group.
+
+{empty}8) Procedures: If a PR1 segment (procedure/service) is specified for a particular patient, then the Provider performing the Procedure must be specified (using the corresponding ROL segment) if different from the Primary Care Provider specified for the same Product/Service Line Item.
+
+{empty}9) The Product/Service Billed Amount on PSL must be equal to the Product/Service Gross Amount on PSL + sum of all Adjustment Amount on ADJ for all Provider Adjustments for the particular Product/Service Line Item. That is, the gross amount + any adjustments such as taxes, mark ups, dispensing fees, etc. must equal the billed amount. +
+The Product/Service Billed Amount on PSL should be the amount the Provider is billing and should include all adjustments and all unit cost multipliers.
+
+{empty}10) Product/Service Clarification Codes: Each Product/Service Line Item allows a number of clarification codes to be specified. These are specified as 2 fields: Product/Service Clarification Code Type and Product/Service Clarification Code Value. Both of these fields repeat within the PSL segment and must repeat the same number of times. For example, if 2 clarification codes are specified, then 2 repetitions of each field is required, the first repetition corresponding to the 1^st^ clarification code, the second repetition corresponding to the 2^nd^ clarification code.
+
+{empty}11) Re-submitting an Invoice: If an Invoice or component is resubmitted with corrections (this rule does not apply to Invoices re-submitted in whole, without modification, due to network problems, etc.), new Invoice, Product/Service Group and Product/Service Line Items must be specified (for the subsequent Invoice).
+
+{empty}12) A single group cannot have both multiple Patients and multiple Product/Service Line Items for the same Product/Service Group. In this situation, the multiple Patient and Product/Service Line Item must be split into multiple Product/Service Groups.
+
+EHC^E01^EHC_E01: Submit HealthCare Services Invoice
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- INVOICE_INFORMATION_SUBMIT begin | |
+|IVC |Invoice | |16
+|[ PYE ] |Payee Information | |16
+|[ \{ CTD } ] |Contact Data | |
+|[ AUT ] |Authorization Information | |
+|[ \{ LOC } ] |Location Identification | |8
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|\{ |--- PRODUCT_SERVICE_SECTION begin | |
+|PSS |Product/Service Section | |16
+|\{ |--- PRODUCT_SERVICE_GROUP begin | |
+|PSG |Product/Service Group | |16
+|[ \{ LOC } ] |Location Identification | |
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|[ \{ |--- PATIENT_INFO begin | |
+|PID |Person Identification | |3
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|*[\{ GSC }]* |*Sex Parameter for Clinical Use* | |*3*
+|[ \{ PRT } ] |Participation | |4
+|[ PV1 ] |Patient Visit | |3
+|[ PV2 ] |Patient Visit – Additional Info | |3
+|[ \{ ACC } ] |Accident | |
+|\{ |--- INSURANCE begin | |
+|IN1 |Insurance | |
+|*[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }]* |*Person Gender and Sex* | |*3*
+|*[\{ GSR }]* |*Recorded Gender and Sex* | |*3*
+|[ IN2 ] |Insurance Additional Info | |
+|} |--- INSURANCE end | |
+|[ \{ |--- DIAGNOSIS begin | |
+|DG1 |Diagnosis | |
+|[ \{ NTE } ] |Notes and Comments | |
+|} ] |--- DIAGNOSIS end | |
+|[ \{ OBX } ] |Observation | |
+|[ \{ PRT } ] |Participation | |4
+|} ] |--- PATIENT_INFO end | |
+|\{ |--- PRODUCT_SERVICE_LINE_ITEM begin | |
+|PSL |Product/Service Line Item | |16
+|[\{ NTE }] |Notes and Comments | |
+|[\{ ADJ }] |Adjustment | |16
+|[ AUT ] |Authorization Information | |
+|[\{ LOC }] |Location Identification | |
+|[\{ PRT }] |Participation | |
+|[\{ ROL }] |Role |B |15
+|} |--- PRODUCT_SERVICE_LINE_ITEM end | |
+|[ \{ |--- PROCEDURE begin | |
+|PR1 |Procedures | |
+|[\{NTE}] |Notes and Comments | |
+|[\{PRT}] |Participation | |
+|[\{ROL}] |Role |B |
+|} ] |--- PROCEDURE end | |
+|[ \{ IPR } ] |Invoice Processing Results | |
+|} |--- PRODUCT_SERVICE_GROUP end | |
+|} |--- PRODUCT_SERVICE_SECTION end | |
+|> |--- INVOICE_INFORMATION_SUBMIT end | |
+|===
+
+[width="100%",cols="18%,26%,6%,16%,17%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E01^EHC_E01 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E01^ACK |- |ACK^E01^ACK
+|Application Ack |ACK^E01^ACK |- |- |ACK^E01^ACK |ACK^E01^ACK
+|===
+

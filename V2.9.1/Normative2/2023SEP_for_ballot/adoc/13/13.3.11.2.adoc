@@ -1,0 +1,4 @@
+==== 13.3.11.2 SID-2 Substance Lot Number (ST) 01129
+
+Definition: This field specifies the lot number assigned by the manufacturer during production of the substance.
+

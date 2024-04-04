@@ -1,0 +1,30 @@
+=== 4.14.3 BTX – Blood Product Transfusion/Disposition Segment
+
+HL7 Attribute Table – BTX – Blood Product Transfusion/Disposition
+
+[width="99%",cols="14%,,7%,,5%,,6%,,5%,,6%,,7%,,7%,1%,42%,",options="header",]
+|===
+|SEQ |LEN  |C.LEN |DT  |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME |
+|1   |1..4 |      |SI  |R   |     |     |01735 |Set ID – BTX |
+|2   |     |      |EI  |C   |     |     |01736 |BC Donation ID |
+|3   |     |      |CNE |C   |     |0582 |01737 |BC Component |
+|4   |     |      |CNE |C   |     |0583 |01738 |BC Blood Group |
+|5   |     |      |CWE |C   |     |0512 |01739 |CP Commercial Product |
+|6   |     |      |XON |C   |     |     |01740 |CP Manufacturer |
+|7   |     |      |EI  |C   |     |     |01741 |CP Lot Number |
+|8   |     |5=    |NM  |R   |     |     |01742 |BP Quantity |
+|9   |     |5=    |NM  |O   |     |     |01743 |BP Amount |
+|10  |     |      |CWE |O   |     |0584 |01744 |BP Units |
+|11  |     |      |CWE |R   |     |0513 |01745 |BP Transfusion/Disposition Status |
+|12  |1..1 |      |ID  |R   |     |0511 |01746 |BP Message Status |
+|13  |     |      |DTM |R   |     |     |01747 |BP Date/Time of Status |
+|14  |     |      |XCN |O   |     |     |01748 |BP Transfusion Administrator |
+|15  |     |      |XCN |O   |     |     |01749 |BP Transfusion Verifier |
+|16  |     |      |DTM |O   |     |     |01750 |BP Transfusion Start Date/Time of Status |
+|17  |     |      |DTM |O   |     |     |01751 |BP Transfusion End Date/Time of Status |
+|18  |     |      |CWE |O   |Y    |0514 |01752 |BP Adverse Reaction Type |
+|19  |     |      |CWE |O   |     |0515 |01753 |BP Transfusion Interrupted Reason |
+|20  |     |      |EI  |O   |     |     |03391 |BP Unique ID |
+|21  |1..1 |      |ID  |O   |     |0206 |00816 |Action Code |
+|===
+

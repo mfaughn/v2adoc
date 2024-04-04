@@ -1,0 +1,4 @@
+==== 2A.2.23.2 Number of Days (NM)
+
+Definition: Specifies the number of days for which the certification is valid.
+

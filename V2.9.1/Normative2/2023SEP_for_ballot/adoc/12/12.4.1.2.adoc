@@ -1,0 +1,4 @@
+==== 12.4.1.2 GOL-2 Action Date/Time (DTM) 00817
+
+Definition: This field contains the date/time that the operation represented by the action code was performed.
+

@@ -1,0 +1,6 @@
+==== *3.4.18.6* OH4-6 Combat Zone Unique Identifier (EI) 02449
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal Identifier (ST)> ^ <Universal Identifier Type (ID)>
+
+Definition: This field contains a value the uniquely identifies a single combat zone for a person.
+

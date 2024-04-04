@@ -1,0 +1,6 @@
+==== 11.2.2.1 Application roles
+
+This Standard assumes that there are four roles that an application can take on: a referring or referred-by provider application role, a referred-to provider application role, a querying application role, and an auxiliary application role. These application roles define the interactions an application will have with other applications in the messaging environment. In many environments, any single application may take on more than one application role.
+
+This Standard's definition of application roles does not intend to define or limit the functionality of specific products developed by vendors of such applications. Instead, this information is provided to help define the model used to develop this Standard, and to provide an unambiguous way for applications to communicate with each other.
+

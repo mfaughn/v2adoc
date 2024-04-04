@@ -1,0 +1,12 @@
+== 7.11 Product Experience - Trigger Events And Message Definitions
+
+The message header segment will care one of three event types at _MSH-9-message type_.
+
+[width="100%",cols="16%,84%",options="header",]
+|===
+|Event |Description
+|P07 |PEX - Unsolicited initial individual product experience report
+|P08 |PEX - Unsolicited update individual product experience report
+|P09 |SUR - Summary product experience report
+|===
+

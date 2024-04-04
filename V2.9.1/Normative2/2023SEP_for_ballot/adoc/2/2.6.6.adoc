@@ -1,0 +1,6 @@
+=== 2.6.6 Hexadecimal
+
+____
+When the hexadecimal escape sequence (\Xdddd...\) is used the X SHALL be followed by 1 or more pairs of hexadecimal digits (0, 1, . . . , 9, A, . . . , F). Consecutive pairs of the hexadecimal digits represent 8-bit binary values. The interpretation of the data is entirely left to an agreement between the sending and receiving applications that is beyond the scope of this Standard.
+____
+

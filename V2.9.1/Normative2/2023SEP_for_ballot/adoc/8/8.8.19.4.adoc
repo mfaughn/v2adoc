@@ -1,0 +1,4 @@
+==== 8.8.19.4 DPS-4 Expiration Date/Time (DTM) 03473
+
+Definition: An optional expiration date/time can be included for the record-level action specified. It is the date/time the originating system expects that the event is to have been completed on the receiving system.
+

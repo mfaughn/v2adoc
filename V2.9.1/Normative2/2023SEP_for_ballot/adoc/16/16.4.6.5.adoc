@@ -1,0 +1,6 @@
+==== 16.4.6.5 PSL-5 Payer Tracking ID (EI) 01959
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Identifier for this Product/Service Line Item assigned by the Payer Application. This will be echoed on all interactions between participants for this Product/Service Line Item.
+

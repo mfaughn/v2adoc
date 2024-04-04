@@ -1,0 +1,4 @@
+==== 6.5.3.25 DRG-25 Calculated Days (NM) 02168
+
+Definition: This field contains the number of days, for which a surcharge/discount has been determined. The addition/reduction is indicated by _DRG-17 - Status Patient_.
+

@@ -1,0 +1,12 @@
+===== 3.6.2.1.3 Move
+
+A "move" involves transferring one or more datasets (identified by a subordinate identifier) from one superior identifier at the next hierarchical level to another superior identifier at the next hierarchical level, while all identifiers involved retain their original value. An exception to retaining the original identifier value may occur if any of the subordinate source identifiers already exist under the target superior identifier. In this case the identifier value may have to be renumbered in order to be uniquely identified under the target superior identifier. (Refer to section _3.6.2.2.8_, "link:#_A45_-_move_visit information - visi[_A45 - Move visit information_]" for an illustration of this.)
+
+A move event signals that a patient, account, or visit has been moved from one person, patient, or account, respectively, to another. All records at a subordinate level are also moved. For example, an A43 (move patient information - patient identifier list) event would be sent to signal that a medical records administrator has moved a medical record attached to an incorrect person to a correct person. The following figure graphically depicts the move event:
+
+____
+image:extracted-media/media/image3.wmf[extracted-media/media/image3,width=576,height=174]
+____
+
+*Note*: The move event implies that all data related to the incorrect source ID and its subordinate IDs (specified in the MRG segment) will be moved to the correct target ID (specified in the PID or PV1 segment). Specifying each subordinate ID in repeating PID/MRG/PV1 sets is optional but not recommended.
+

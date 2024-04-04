@@ -1,0 +1,6 @@
+==== 2.13.2.9 BHS-9 Batch Name/ID/Type (ST) 00089
+
+Definition: This field can be used by the application processing the batch. It can have extra components if needed.
+
+*Note:* the text regarding "extra components" has been retained for backward compatibilityas of V2.5, but it is not currently an accepted format for the ST data type.
+

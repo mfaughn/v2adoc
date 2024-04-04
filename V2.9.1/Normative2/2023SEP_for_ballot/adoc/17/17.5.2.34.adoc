@@ -1,0 +1,4 @@
+==== 17.5.2.34 ITM-34 Contract Date (DR) 02415
+
+Definition: The date that the contract becomes effective (Range Start Date/Time) and when it expires (Range End Date/Time) for the item specified in ITM-1. The effective date is the date that the contract becomes available to purchase this item. The expiration date is the date that the contract becomes unavailable to purchase this item.
+

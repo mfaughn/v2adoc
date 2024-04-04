@@ -1,0 +1,4 @@
+==== 11.8.1.25 RF1-25 Action Code (ID) 03412
+
+Definition: This field defines the action to be taken for this referral. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[_HL7 Table 0206 - Segment Action Code_] in Chapter 2, Code Tables, for valid values. When this field is valued, the AUT segment is not in "snapshot mode", rather in "action mode".
+

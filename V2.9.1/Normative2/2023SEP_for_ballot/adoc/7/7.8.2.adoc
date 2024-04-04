@@ -1,0 +1,15 @@
+=== 7.8.2 CSP - Clinical Study Phase Segment 
+
+The CSP segment contains information on a patient's status for a particular phase of the study. This segment is optional and is useful when a study has different evaluation intervals within it. (See section _7.8.1_, "_HL7 Attribute Table – CSR – Clinical Study Registration_," and section _7.6.1.2_, "_Phase of a clinical trial:_.") The CSP segment is implemented on a study‑specific basis for messaging purposes. The fact that the patient has entered a phase of the study that represents a certain treatment approach may need to be messaged to other systems, like pharmacy, nursing, or order entry. It is also important to sponsors and data management centers for tracking patient progress through the study and monitoring the data schedule defined for each phase. It may subsume OBR and OBX segments that follow it to indicate that these data describe the phase.
+
+HL7 Attribute Table – CSP[#CSP .anchor]#### – Clinical Study Phase
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |R | |0587 |01022 |Study Phase Identifier
+|2 | | |DTM |R | | |01052 |Date/time Study Phase Began
+|3 | | |DTM |O | | |01053 |Date/time Study Phase Ended
+|4 | | |CWE |C | |0588 |01054 |Study Phase Evaluability
+|===
+

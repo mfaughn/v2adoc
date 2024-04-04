@@ -1,0 +1,4 @@
+==== 6.5.6.34 IN1-34 Delay Before L.R. Day (NM) 00459
+
+Definition: This field indicates the delay before lifetime reserve days.
+

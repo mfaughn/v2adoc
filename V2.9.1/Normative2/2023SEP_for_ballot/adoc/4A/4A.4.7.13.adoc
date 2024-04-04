@@ -1,0 +1,4 @@
+==== 4A.4.7.13 RXA-13 Administered Strength (NM) 01134
+
+Definition: Use when _RXA-5-Administered Code_ does not specify the strength. This is the numeric part of the strength, used in combination with _RXA-14-Administered Strength Units_.
+

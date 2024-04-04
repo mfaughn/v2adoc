@@ -1,0 +1,22 @@
+==== 5.3.2.8 QBE input parameter specification
+
+In the Query by Example variant, discussed below in section _5.9.7_, "_ +
+Query by example (QBP) / tabular response (RTB_)," the Query Profile may specify that the client may use fields within actual message segments, such as the PID segment, to transmit parameter information. Where this is permitted, the Query Profile includes a "QBE Input Parameter Specification" table to specify which fields may be used to transmit the parameters.
+
+*QBE Input Parameter Specification*
+
+[width="99%",cols="13%,14%,9%,3%,6%,7%,5%,5%,8%,6%,12%,12%",options="header",]
+|===
+|Segment Field Name (Query ID=Z99) |Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Service Identifier Code |Element Name
+| | | | | | | | | | | |
+|===
+
+Fields are indicated by their actual Segment Field Name, which specifies both segment and position. Except for this distinguishing feature, the remaining columns in this table are identical in meaning to their counterparts in the "_QPD input parameter specification_" in section _5.3.2.6_ above.
+
+Each row of the QBE Input Parameter Specification specifies one field that may be used to transmit user parameters within the example segment(s).
+

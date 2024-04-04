@@ -1,0 +1,4 @@
+==== 13.3.4.14 INV-14 On Board Stability Duration 01385
+
+*_Attention: As of v2.5 this field was retained for backward compatibility only and withdrawn and removed as of v2.7._* The TQ data type was deprecated; see Chapter 2A, section 2.A.81.
+

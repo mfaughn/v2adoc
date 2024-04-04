@@ -1,0 +1,4 @@
+==== 15.4.2.7 CER-7 Granting Country (ID) 01862
+
+Definition: ID of the country granting the certificate. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70399[_External Table 0399 – Country Code_] for valid values.
+

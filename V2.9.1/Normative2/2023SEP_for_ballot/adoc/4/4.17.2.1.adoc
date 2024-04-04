@@ -1,0 +1,4 @@
+==== 4.17.2.1 BUI-1 Set ID (SI) 03373
+
+Definition: This field contains a sequence number. When multiple BUI segments are included in the same segment group, this number differentiates between them.
+

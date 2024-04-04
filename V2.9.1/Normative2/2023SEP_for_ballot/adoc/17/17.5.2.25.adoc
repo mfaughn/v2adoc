@@ -1,0 +1,6 @@
+==== 17.5.2.25 ITM–25 Item Set Identifier (EI) 02208
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The Item Set Identifier is a unique code assigned to the material item by the Item Inventory Master catalog software application to identify the item set.
+

@@ -1,0 +1,4 @@
+==== 6.5.6.24 IN1-24 Notice of Admission Date (DT) 00449
+
+Definition: If a notice is required, this field indicates the date that it was sent.
+

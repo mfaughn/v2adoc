@@ -1,0 +1,4 @@
+==== 7.12.6.2 FAC-2 Facility Type (ID) 01263
+
+Definition: This field contains the type of facility. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70331[_HL7 Table 0331 - Facility Type_] for valid values.
+

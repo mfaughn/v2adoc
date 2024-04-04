@@ -1,0 +1,6 @@
+==== 2.13.6.5 FHS-5 File Receiving Application (HD) 00071
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field has the same definition as the corresponding field in the MSH segment.
+

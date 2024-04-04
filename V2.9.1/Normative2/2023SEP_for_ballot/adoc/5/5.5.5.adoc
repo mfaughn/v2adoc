@@ -1,0 +1,16 @@
+=== 5.5.5 QRI – Query Response Instance segment 
+
+The QRI segment is used to indicate the weight match for a returned record (where the responding system employs a numeric algorithm) and/or the match reason code (where the responding system uses rules or other match options).
+
+Examples of the use of this segment appear in Chapter 3, "Patient Administration," section 3.3.57, "Find Candidates and Response."
+
+HL7 Attribute Table – QRI – Query Response Instance
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |10# |NM |O | | |01436 |Candidate Confidence
+|2 |2..2 | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70392[0392] |01437 |Match Reason Code
+|3 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70393[0393] |01438 |Algorithm Descriptor
+|===
+

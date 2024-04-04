@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+AIS-6_vs_AIG-10
+</h1>
+<hr>
+<h3>
+For 00892 there were 4 versions found.<br>This diff compares the version found in fields ["AIS-6", "AIS-6"] from sections ["10.6.4", nil], respectively<br>with the version found in fields ["AIG-10", "AIG-10"] from sections ["10.6.5", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains a code describing the units of time used for expressing <strong>the st</strong>art <strong>d</strong>ate/<strong>t</strong>ime <strong>o</strong>ffset. This field should be valued according to the recommendations in Chapters 2 and 7. If this field is not valued, the ISO base unit of seconds (code &quot;_s_&quot;) will be assumed. Refer to Chapter 7, Figures 7-6 through 7-9, for a list of ISO and ANS<strong>I</strong>+ unit codes.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains a code describing the units of time used for expressing <strong>_AIG-9-St</strong>art <strong>D</strong>ate/<strong>T</strong>ime <strong>O</strong>ffset<strong>_</strong>. This field should be valued according to the recommendations <strong>made </strong>in Chapters 2 and 7. If this field is not valued, the ISO base unit of seconds (code &quot;_s_&quot;) will be assumed. Refer to Chapter 7, Figures 7-6 through 7-9, for a list of ISO<strong>+</strong> and ANS+ unit codes.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00892,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CNE,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains a code describing the units of time used for expressing <strong>the st</strong>art <strong>d</strong>ate/<strong>t</strong>ime <strong>o</strong>ffset. This field should be valued according to the recommendations in Chapters 2 and 7. If this field is not valued, the ISO base unit of seconds (code &quot;_s_&quot;) will be assumed. Refer to Chapter 7, Figures 7-6 through 7-9, for a list of ISO and ANS<strong>I</strong>+ unit codes.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains a code describing the units of time used for expressing <strong>_AIG-9-St</strong>art <strong>D</strong>ate/<strong>T</strong>ime <strong>O</strong>ffset<strong>_</strong>. This field should be valued according to the recommendations <strong>made </strong>in Chapters 2 and 7. If this field is not valued, the ISO base unit of seconds (code &quot;_s_&quot;) will be assumed. Refer to Chapter 7, Figures 7-6 through 7-9, for a list of ISO<strong>+</strong> and ANS+ unit codes.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+==== 11.8.1.9 RF1-9 Process Date (DTM) 01145
+
+Definition: This field contains the date on which the referral originated. It is used in cases of retroactive approval.
+

@@ -1,0 +1,6 @@
+==== 17.8.3.1 SDD-1 Lot Number (EI) 02098
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: A unique number associated with an instance of a sterilization/decontamination cycle assigned by the instrument-tracking system.
+

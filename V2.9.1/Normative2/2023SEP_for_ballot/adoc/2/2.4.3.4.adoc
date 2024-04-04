@@ -1,0 +1,6 @@
+==== 2.4.3.4 Conformance Length
+
+____
+Definition: If applicable, the conformance length that applies to the field or component. For full discussion, consult section 2.5.5
+____
+

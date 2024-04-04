@@ -1,0 +1,29 @@
+=== 3.4.20 GSR – Recorded Gender and Sex Segment
+
+____
+The recorded sex and gender is to be used to differentiate existing sex or gender data. This element is used for existing 'sex' or 'gender' elements in a document or record when the intent and meaning is unclear. An individual may have zero to many such attributes. For example, the individual’s birth certificate information, passport information, driver’s license information and national identity document information may all be present. Sex assigned at birth (SAAB), while very common and considered essential in some jurisdictions, is considered a recorded sex and gender entry.
+
+Documenting the recorded gender or sex is an important aspect of transgender and gender-diverse care as an individual’s identity documents may be updated at different rates or for different reasons. For instance, a trans woman may be able to update her driver’s license to ‘F’ but her state might not allow changing a value on her birth certificate, which may still read ‘M’.
+
+The HL7 base specification does not proscribe if/how a system maintains an audit trail of changes to the data represented in the GSR segment. Depending on system design and workflow needs, it may be necessary to retain the recorded gender and sex history for an individual.
+
+The use of the GSR segment is not restricted to use with a patient alone. Other individuals represented in a message (e.g. a next of kin) may also have recorded gender and sex values.
+
+HL7 Attribute Table – GSR – Recorded Gender and Sex
+____
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |SI |R | | |03543 |Set ID
+|2 |1..1 | |ID |R | |0206 |00816 |Action Code
+|3 | | |EI |C | | |02515 |GSR Instance Identifier
+|4 | | |CWE |R | |0001 |02516 |Recorded Gender or Sex
+|5 | | |CWE |O | |0824 |02517 |Source Document Field Label
+|6 | | |CWE |O | |0826 |02519 |Source Document Type for Recorded Sex or Gender
+|7 | | |CWE |O | |0827 |02520 |Source Document Jurisdiction for Recorded Sex or Gender
+|8 | | |DTM |O | | |02521 |Acquisition Date
+|9 | | |DR |O | | |02522 |Validity Period
+|10 | | |TX |O | | |02523 |Comment
+|===
+

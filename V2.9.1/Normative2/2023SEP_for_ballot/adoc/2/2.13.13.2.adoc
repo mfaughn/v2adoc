@@ -1,0 +1,4 @@
+==== 2.13.13.2 SGH-2 Segment Group Name (ST) 03390
+
+Definition: This field contains the name of the segment group.
+

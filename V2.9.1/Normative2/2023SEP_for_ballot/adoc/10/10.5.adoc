@@ -1,0 +1,6 @@
+== 10.5 QUERY TRANSACTIONS AND TRIGGER EVENTS
+
+Query transactions are the messages and trigger events used between querying applications and filler applications. In Version 2.4 of the Standard, there are several types of queries available. Original mode display-oriented and record-oriented queries are compatible with the queries defined in previous versions of the Standard. New enhanced mode queries include an Embedded Query Language (EQQ), a Virtual Table Query (VQQ), a Stored Procedure Request (SPQ), and an Event Replay Query. Original mode display-oriented queries now have an Enhanced Display Response (EDR) available in Version 2.3. Descriptions and definitions of these query types are found in Chapter 5, section 5.10.4, "Query Trigger Events and Message Definitions."
+
+As the discussion of application roles has indicated above, any one application can have more than one application role. If it is important that applications in your messaging environment that fulfill either the placer or auxiliary application roles be able to query information actively from a filler application's schedule(s), then they must also support the role of a querying application.
+

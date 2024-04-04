@@ -1,0 +1,4 @@
+==== 6.5.1.10 FT1-10 Transaction Quantity (NM) 00364
+
+Definition: This field contains the quantity of items associated with this transaction.
+

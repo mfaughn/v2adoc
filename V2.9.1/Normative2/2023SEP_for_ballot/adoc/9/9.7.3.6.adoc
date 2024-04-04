@@ -1,0 +1,4 @@
+==== 9.7.3.6 TXA-6 Origination Date/Time (DTM) 00919
+
+Definition: This field contains the date and time the document was created (i.e., dictated, recorded, etc.).
+

@@ -1,0 +1,4 @@
+==== 4A.4.4.1 RXE-1 Quantity/Timing
+
+Attention: The RXE-1 field was retained for backward compatibilty only as of v 2.5 and the detail was withdrawn and removed from the standard as of v 2.7.
+

@@ -1,0 +1,17 @@
+=== 13.3.1 EQU - Equipment Detail Segment 
+
+The equipment detail segment contains the data necessary to identify and maintain the equipment that is being used throughout the Laboratory Automation System.
+
+HL7 Attribute Table – EQU[#EQU .anchor]#### – Equipment Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |EI |R |Y | |01479 |Equipment Instance Identifier
+|2 | | |DTM |R | | |01322 |Event Date/Time
+|3 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70365[0365] |01323 |Equipment State
+|4 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70366[0366] |01324 |Local/Remote Control State
+|5 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70367[0367] |01325 |Alert Level
+|6 | | |DTM |O | | |03487 |Expected date/time of the next status change
+|===
+

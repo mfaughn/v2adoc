@@ -1,0 +1,4 @@
+==== *3.4.7.24* IAM-24 Initially Recorded Date/Time (DTM) 02297
+
+Definition: The date and time that this allergy entry was created by the _IAM-23 Created by Person_.
+

@@ -1,0 +1,10 @@
+==== 7.4.4.1 PRT-1 Participation Instance ID (EI) 02379
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a unique identifier of the specific participation record.
+
+In the case of waypoints tracked for a shipment, it identifies the waypoint.
+
+Condition: The identifier is required when known, but there are times we may only know a name but do not have an identifier.
+

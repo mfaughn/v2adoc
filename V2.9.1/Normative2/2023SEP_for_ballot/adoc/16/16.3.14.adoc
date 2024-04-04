@@ -1,0 +1,53 @@
+=== 16.3.14 EHC^E24 – Authorization Response (event E24) 
+
+This message is used to send results of an Authorization Request to a Provider Application. Authorization results are sent to the same Network Application ID that originated the Authorization Request, which was specified as the Sending Application on MSH on the original Authorization Request.
+
+If the Payer Application is able to process the Authorization Request on-line, the EHC^E24 – Authorization Response message will contain the results of the authorization (e.g., approved, not approved).
+
+If the Payer Application is *not* able to process the Authorization Request on-line, it creates an EHC^E24 – Authorization Response message once it has processed the Authorization Request (which may be the next day following receipt of the EHC^E20). Once prepared, the EHC^E24 is either sent to the Provider Application (if the Provider Application is able to receive unsolicited results) or stored on a queue for the Provider Application. If left on a queue for the Provider Application, then the QBP^E99 message must be used by the Provider Application to poll the Payer Application for the EHC^E24. If the Authorization is approved, then the Payer Application will return either an Authorization Number (Authorization Identifier on AUT) or individual who has authorized the Authorization Request (Name of Authorizer on AUT). The presence of the AUT segment in the EHC^E24 – Authorization Request Response message implies authorization has been granted. However, the Authorization may be restricted. Restrictions are specified under Payer Adjustments.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Authorization Request, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Authorization Request, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) The presence of the AUT segment in the EHC^E24 – Authorization Response message indicates the Payer's approval of the Authorization Request (with or without Payer Adjustments).
+
+{empty}4) If the AUT segment is specified, then either the Authorization Identifier on AUT or Name of Authorizer on AUT must be specified.
+
+{empty}5) The Provider Invoice Number on IVC must be the same as the Provider Invoice Number on IVC as specified on the EHC^E20 input message. In other words, this message must be used to respond to the incoming EHC^E20 and not a previous EHC^E20 Authorization Request.
+
+EHC^E24^EHC_E24: Authorization Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |
+|[ \{ SFT } ] |Software | |
+|[ \{ UAC } ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |
+|[ \{ ERR } ] |Error | |
+|< |--- AUTHORIZATION_RESPONSE_INFO begin | |
+|IVC |Invoice | |
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |
+|[ AUT ] |Authorization | |
+|[\{ ADJ }] |Adjustment | |
+|} |--- PSL_ITEM_INFO end | |
+|> |--- AUTHORIZATION_RESPONSE_INFO end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E24^EHC_E24 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E24^ACK |- |ACK^E24^ACK
+|Application Ack |ACK^E24^ACK |- |- |ACK^E24^ACK |ACK^E24^ACK
+|===
+

@@ -1,0 +1,53 @@
+==== 4.4.7.2 Patient Segments Optional
+
+ORL^O53^ORL_O53: General Laboratory Order Acknowledgment Message (Patient Optional)
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ARV]] |Access Restrictions | |3
+|[\{ERR}] |Error | |2
+|[\{SFT}] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{NTE}] |Notes and Comments (for Header) | |2
+|[ |--- RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{PRT}] |Participation (for Patient) | |7
+|] |--- PATIENT end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[\{PRT}] |Participation (for Common Order) | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|[ |--- OBSERVATION_REQUEST begin | |
+|OBR |Observation Request | |4
+|[\{PRT}] |Participation (for Observation Request) | |7
+|[\{ |--- SPECIMEN begin | |
+|SPM |Specimen | |7
+|[\{SAC}] |Specimen Container Details | |13
+|}] |--- SPECIMEN end | |
+|] |--- OBSERVATION_REQUEST end | |
+|}] |--- ORDER end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="99%",cols="27%,33%,16%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ORL^O53^ORL_O53 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O53^ACK |- |ACK^O53^ACK
+|Application Ack |- |- |-
+|===
+
+____
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+____
+

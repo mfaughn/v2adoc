@@ -1,0 +1,6 @@
+==== 8.8.16.12 OMC-12 Character Limit (NM) 03452
+
+Definition: Total number of characters allowed. Required for numeric and (long) text answers.
+
+The field is valued only if OMC-9 is valued 'NM', 'SN', 'ST", 'TX', or 'FT'.
+

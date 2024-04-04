@@ -1,0 +1,2505 @@
+== 13.1 Background and Introduction
+
+=== 13.1.1 Background
+
+Clinical laboratory automation involves the integration or interfacing of automated or robotic transport systems, analytical instruments, and pre- or post-analytical process equipment such as automated centrifuges and aliquoters, decappers, recappers, sorters, and specimen storage and retrieval systems. In addition to the electrical and mechanical interfaces of these various components, the computers that control these devices or instruments must also be interfaced to each other and/or the Laboratory Information System (LIS).
+
+The types of information communicated between these systems include process control and status information for each device or analyzer, each specimen, specimen container, and container carrier, information and detailed data related to patients, orders, and results, and information related to specimen flow algorithms and automated decision making. This wide array of communicated information is essential for a Laboratory Automation System (LAS) to control the various processes and to ensure that each specimen or aliquot has the correct tests performed in the proper sequence.
+
+As of 1999 there are already more than 200 clinical laboratories in the world with "total laboratory automation" systems and hundreds more with a lesser level of automation – generally workcells or modular automation systems. The development of prospective standards for these aspects of clinical laboratory automation will facilitate the inter-operability of the systems being developed by the various players in lab automation – the vendors of analytical instruments, LIS systems, automation systems and components and their laboratory customers.
+
+In the early 1990's an ad hoc task force, Clinical Testing Automation Standards Steering Committee (CTASSC), began to meet at the annual meetings of the International Conference on Automation and Robotics (ICAR) and the American Association for Clinical Chemistry (AACC). In 1996, CTASSC approached NCCLS,footnote:[NCCLS, 940 West Valley Road, Suite 1400, Wayne, PA 19087; www.nccls.org] a globally-recognized, consensus standards organization that has developed more than 125 clinical laboratory standards and related products since it was founded in 1968, about taking on a project for clinical laboratory automation. NCCLS agreed to sponsor this project which was separately funded via a direct solicitation of the vendors in lab automation, instruments, LIS systems, and automation customers. It was organized as a "fast track" project to develop prospective standards to guide future developments in laboratory automation. With the oversight of an Area Committee on Automation, five separate subcommittees have worked since 1997 to develop a series of prospective standards for:
+
+• Specimen containers and carriers
+
+• Bar codes for specimen container identification
+
+• Communications
+
+• System operational requirements and characteristics
+
+• Electromechanical interfaces
+
+Approved level standards for all five of these areas were published by NCCLS.
+
+=== 13.1.2 Introduction
+
+This chapter specifies HL7 triggers, messages, and segments required for implementation of clinical laboratory automation communication interfaces. It was developed jointly by the HL7 Laboratory Automation Special Interest Group and the NCCLS Subcommittee on Communications with Automated Systems. This chapter, by agreement between HL7 and NCCLS, is also published in its entirety as part of the NCCLS Approved Level standard:
+
+• AUTO3, "Laboratory Automation: Communications with Automated Clinical Laboratory Systems, Instruments, Devices, and Information Systems, © NCCLS" footnote:[(NCCLS. _Laboratory Automation: Communications With Automated Clinical Laboratory Systems, Instruments, Devices, and Information Systems_; Approved Standard - NCCLS Document AUTO3-A [ISBN 1-56238-361-2}. NCCLS, 940 West Valley Road, Suite 1400, Wayne, PA 19087-1898 USA, 2000). www.nccls.org]
+
+This document contains other chapters to enable a vendor to successfully implement all of the elements essential to meet the standard.
+
+The other related NCCLS clinical laboratory automation standards are:
+
+• AUTO1: "Laboratory Automation: Specimen Container / Specimen Carrier", © NCCLS.
+
+• AUTO2: "Laboratory Automation: Bar Codes for Specimen Container Identification", © NCCLS.
+
+• AUTO4: "Laboratory Automation: Systems Operational Requirements, Characteristics, and Information Elements", © NCCLS.
+
+• AUTO5: "Laboratory Automation: Electromechanical Interfaces", © NCCLS.
+
+The reader is referred to any or all of these NCCLS standards, particularly AUTO3 and AUTO4, for detailed information on the communications requirements in clinical laboratory automation applications.
+
+The control model proposed in this standard is an extension of the model described in LECIS:
+
+• ASTM E1989-98. Laboratory Equipment Control Interface Specification (LECIS). American Society for Testing and Materials; 1998.
+
+=== 13.1.3 Glossary
+
+The terminology found in ANSI X3.182‑1990footnote:[ANSI Standard X3.182-1990. Bar Code Print Quality Guidelines. New York, NY: American National Standards Institute; 1995] shall be used where applicable. Other computer-related technical terms used in this document can be found in ASTM Terminology E 1013footnote:[ASTM E1013-93. Standard Terminology Relating to Computerized Systems. West Conshohocken, PA: American Society for Testing and Materials; 1993], IEEE 100footnote:[IEEE 100. Dictionary of Electrical and Electronics Terms. Institute of Electrical and Electronics Engineers, Inc.; 1996], IEEE 610footnote:[IEEE 610. Glossary of Computer Languages. Institute of Electrical and Electronics Engineers, Inc.; 1993], and ANSI X3.172.footnote:[ANSI X3.172-1996. Information Technology – American National Standards Dictionary of Information Technology (ANSDIT). New York, NY: American National Standards Institute; 1996]
+
+==== 13.1.1.1 Accession Identifier (also accession number): 
+
+A numeric (or alphanumeric) identifier assigned by the LIS for a test order. Depending on the particular LIS a patient's test orders for a single encounter may use one or more accession identifiers and each accession identifier may encompass one or more tests and one or more specimens and/or specimen containers. However, accession identifiers are unique within each patient encounter. The Accession identifier may not be equal to the Placer or Filler Order Numbers, because of uniqueness requirement.
+
+==== 13.1.3.0 Additive:
+
+As used here, refers to a substance generally a chemical that has been added to a specimen collection tube or container to prevent degradation of one or more constituents of the specimen.
+
+==== 13.1.3.1 Aliquot: 
+
+*_In Quantitative Analysis,_* a sample comprising a known fraction or measured portion of the whole; *2)* *_In NCCLS LAB AUTOMATION Standard documents_*, a portion of a specimen placed in a separate container to facilitate concurrent testing or to hold in reserve for future use.
+
+*Notes:* a) The portion of the specimen is typically removed from the original specimen after initial processing, such as centrifugation, to obtain serum or plasma samples, and is considered to be chemically identical to all other subdivisions of an original sample of serum, plasma, urine, CSF, etc.;
+
+{empty}b) It may be necessary to identify the aliquot as an individual specimen distinct from the original specimen in a collection container labeled with a unique identifier that may be linked to or associated with the primary collection container.
+
+==== 13.1.3.2 Analyzer: 
+
+An instrument and/or specimen processing and handling device that performs measurements on patient specimens of quantitative, clinically relevant analytes.
+
+*Note:* A portion of a patient's specimen is consumed in the analytic process.
+
+==== 13.1.3.3 Automated: 
+
+A characterization applied when all analytical processes, including sample and reagent uptake, sample/reagent interaction, chemical/biological analysis, result calculation, and result readout are mechanized.
+
+==== 13.1.3.4 Automated instrument: 
+
+A laboratory instrument that may or may not be connected to a laboratory information system (LIS), hospital information system (HIS), and/or laboratory automation system (LAS), which performs measurements on a patient's sample;
+
+*Note:* These instruments may have specific hardware and/or software modifications that allow interfacing to a laboratory automation system.
+
+==== 13.1.3.5 Automation system: 
+
+An automation system refers to a variety of possible systems that can include some of the following types: automated instruments, laboratory information systems (LIS), laboratory automation systems (LAS), hospital information systems (HIS), and front-end processing devices.
+
+==== 13.1.3.6 Bar code: 
+
+An array of parallel rectangular bars and spaces that creates a symbology representing a number or alphanumeric identifier.
+
+==== 13.1.3.7 Bar length: 
+
+The length of the bars in the bar code.
+
+==== 13.1.3.8 Barrier: 
+
+See Separator
+
+==== 13.1.3.9 Barrier Delta: 
+
+Identifies the distance from the Point of Reference to the separator material (barrier) within the container. This distance may be provided by the LAS to the instrument and/or specimen processing/handling device to facilitate the insertion of a sampling probe into the specimen without touching the separator. See the Point of reference definition or in NCCLS standard AUTO5 _Laboratory Automation: Electromechanical Interfaces_.
+
+==== 13.1.3.10 Bottom of cap: 
+
+The farthest point from the top of the container/test tube that the cap reaches.
+
+*Note:* This point may be inside the tube.
+
+==== 13.1.3.11 Bottom of container//Bottom of tube: 
+
+The portion of the container/test tube farthest from the cap (see *Point of reference*).
+
+==== 13.1.3.12 Bottom of tube:
+
+See Bottom of container.
+
+==== 13.1.3.13 Carrier: 
+
+See Specimen carrier.
+
+==== 13.1.3.14 Character:
+
+*1)* The smallest abstract element of a writing system or script.
+
+*Note:* A character refers to an abstract idea rather than to a specific shape.
+
+*2)* A code element.
+
+==== 13.1.3.15 Clinical laboratory automation: 
+
+The integration of laboratory personnel and preanalytical, analytical, and postanalytical processes and information systems.
+
+==== 13.1.3.16 Clinical laboratory automation systems:
+
+An assemblage of components that mechanically and electronically transfers, analyzes, and processes information and material related to clinical diagnostic testing of patient specimens, controls, calibrators, standards, and images.
+
+==== 13.1.3.17 Closed-container sampling//Closed-tube sampling:
+
+The action of aspirating a sample from a container/tube with the closure in place, requiring the sample probe to pierce the closure of the container/sample container.
+
+==== 13.1.3.18 Closed-tube sampling: 
+
+See Closed-container sampling.
+
+==== 13.1.3.19 Container//Tube//Test Tube:
+
+See Specimen container.
+
+==== 13.1.3.20 Container Identifier 
+
+A numeric (or alphanumeric) identifier provided by the LIS or LAS to uniquely identify each specimen container or aliquot container. The _NCCLS LAB AUTOMATION STANDARD_ requires a unique identifier for each container introduced into the LAS or leaving the LAS.
+
+==== 13.1.3.21 Cycle time components:
+
+The identified time segments of the process of moving from one sample to the next, including: presentation of specimen along transportation system to docking site at instrument; identification/recognition that the correct specimen is in place; either direct aspiration from specimen container by probe, or transfer of specimen container to instrument, aspiration, and return of specimen container to specimen carrier/transportation system; departure of completed specimen container; movement into position of next specimen container.
+
+==== 13.1.3.22 Decapping:
+
+The removal of a closure from a specimen container.
+
+==== 13.1.3.23 Delimiter: 
+
+A symbol used to separate items in a list.
+
+==== 13.1.3.24 Directions of the specimen, Transportation system, Instrument or Specimen processing and handling device interfaces:
+
+The orthogonal axes.
+
+*Note:* a) These axes are demonstrated in Figure 13-1.
+
+image:extracted-media/media/image1.wmf[extracted-media/media/image1]
+
+Figure 13-1. Physical Frame of Reference in a Three-Dimensional Space (X-Y-Z)
+
+X–direction, _n -_ The direction that a specimen travels along a transportation system.
+
+*Note*: b) Specimens would move along the X dimension as, for example, in transportation from station to station in a laboratory (see Figure 13-2.)
+
+image:extracted-media/media/image2.wmf[extracted-media/media/image2]
+
+Figure 13-2. X Direction
+
+Y–direction, _n -_ The horizontal direction perpendicular to specimen travel along a transportation system;
+
+*Note:* c) Specimens could move in the Y dimension away from a transport system to be placed onto an instrument for analysis (see Figure 13-3). The sample probe would move in the Y dimension as it moves out from the instrument or specimen processing and handling device to a position directly over the specimen container.
+
+image:extracted-media/media/image3.wmf[extracted-media/media/image3]
+
+Figure 13-3. Y Direction
+
+Z–direction, _n_ - The vertical dimension;
+
+*Notes:* d) Specimens could be lifted in the Z dimension off a transport system for transfer between locations;
+
+{empty}e) The center line of a container should be controlled, so it is in the Z dimension; a specimen centering device would be referenced to the Z dimension; a sample probe would follow the Z dimension as it moves downward into a specimen container to aspirate serum, blood, etc. for analysis (see Figure 13-4);
+
+{empty}f) Rotation about the Z dimension may be used to locate and read the bar-code label on a specimen container or to assess the quality of a specimen in terms of turbidity, hemolysis, icterus, etc.
+
+image:extracted-media/media/image4.wmf[extracted-media/media/image4]
+
+Figure 13-4. Z Direction
+
+==== 13.1.3.25 Directions of the sample, Transportation system, Instrument or Specimen processing handling device and interfaces 
+
+See Directions of the specimen, etc.
+
+==== 13.1.3.26 Direct track sampling:
+
+The process in which aspiration of a sample occurs directly from the specimen container while it is on the transportation system, whereby the instrument probe extends to reach the specimen container on the transportation system;
+
+*Note:* This process requires agreement between the transportation system and the instrument and specimen processing and handling devices regarding point of reference (POR) to guide movement of the probe to the specimen.
+
+==== 13.1.3.27 Docking site: 
+
+*1)* The location of the physical interface between two components of a system; **2) _In NCCLS LAB AUTOMATION Standard documents, _**the interface between the transportation system and the instrument and/or the specimen processing and handling devices where the specimen container arrives for sampling to occur.
+
+==== 13.1.3.28 Flection: 
+
+The point at which the vertical (straight) walls of the specimen container bend to form the base.
+
+==== 13.1.3.29 Interaction:
+
+A standard exchange of messages between two instances of equipment that synchronizes the execution of one or more commands. State models are used describe the standard interactions.
+
+==== 13.1.3.30 Label:
+
+*1)* The display of written, printed, or graphic matter upon the immediate container of any article; *2) _In NCCLS LAB AUTOMATION Standard documents_*, the paper and attached adhesive coating on which the bar code and other human readable information is printed.
+
+==== 13.1.3.31 Laboratory automation system (LAS): 
+
+A system of information and hardware technology that allows the operation of the clinical laboratory process without significant operator intervention;
+
+*Note:* Typical functionality includes information system control of the instruments through direct LAS interfacing, including any technology that manipulates the specimen (i.e., centrifuge); transportation of the specimen; result evaluation, repeat testing, reflex testing; and quality assessment and results reporting.
+
+==== 13.1.3.32 Laboratory equipment control interface specification (LECIS): 
+
+A high-level protocol that defines message content for standard behaviors or interactions for remote control of analytical instruments and devices (ASTM E 1989-98).
+
+==== 13.1.3.33 Laboratory information system (LIS): 
+
+The information system that is responsible for management of data regarding patient specimen identification, tests requested, results reported, quality control testing, and other aspects of sample analysis.
+
+*Notes:* a) The LIS interfaces directly with the LAS to communicate patient, visit, container, test orders, specimen status, and results about specific testing to be done;
+
+{empty}b) Instrument or specimen processing and handling devices may be interfaced with the LIS or the LAS to direct specific testing and to retrieve results for reporting;
+
+{empty}c) The LIS is frequently also interfaced to a clinical information system for use by physicians and other medical personnel.
+
+==== 13.1.3.34 LECIS: 
+
+Acronym for Laboratory Equipment Control Interface Specification, (ASTM E 1989-98).
+
+==== 13.1.3.35 Location: 
+
+A physical place within the laboratory, with a unique identifier (e.g., refrigerator shelf number, instrument buffer ID, track identifier).
+
+==== 13.1.3.36 Open-container sampling//Open-tube sampling: 
+
+The action of aspirating a sample from a specimen container from which the closure has previously been removed.
+
+*Note:* The sample probe contacts the surface of the specimen without other physical barriers.
+
+==== 13.1.3.37 Open-tube sampling: 
+
+See Open-container sampling.
+
+==== 13.1.3.38 Pitch:
+
+The center distance between two specimen containers in a carrier or between two sequential specimen container carriers.
+
+==== 13.1.3.39 Point of reference//Point in space, (POR): 
+
+The intersection of the xy plane and an infinite line in the 'z' direction.
+
+*Note:* The POR is the reference from which all positioning and alignment of specimen containers are measured.
+
+==== 13.1.3.40 Process instruments:
+
+*_In NCCLS LAB AUTOMATION Standard documents_*, components of an automated laboratory comprising the automated devices that perform a multitude of pre- and postanalytical tasks, and perform nonanalytical tasks on specimens, containers, carriers, and similar processes.
+
+==== 13.1.3.41 Quiet zone:
+
+*_In NCCLS LAB AUTOMATION documents_*, the white \{blank} space on a bar code immediately preceding the first bar and immediately following the last bar.
+
+==== 13.1.3.42 Recap: 
+
+To replace the closure on a specimen container; either with the original closure or with a new replacement closure.
+
+==== 13.1.3.43 Robotic arm: 
+
+A device capable of moving a specimen container, specimen carrier, or another object in the X, Y, and Z directions.
+
+*Note:* Unless this device is an integral part of the LAS system, it is considered an instrument for the purpose of this proposed standard.
+
+==== 13.1.3.44 Sample//(Specimen):
+
+*1)* A small part of anything ... intended to show the quality, style, or nature of the whole; *2)* *_In NCCLS LAB AUTOMATION Standard documents_*, a portion or aliquot withdrawn from a container for the actual test;
+
+*Notes:* In NCCLS LAB AUTOMATION Standard documents,
+
+{empty}a) samples are typically not placed in containers that will have to be uniquely identified, but may go directly into the instrument or specimen processing and handling device test stream or may be placed in sample cups unique to the instrument or specimen processing and handling device;
+
+{empty}b) the ID of the specimen is typically assured by computer linkage of the pipetting or aspiration step to the ID of the container from which it was obtained, or by a separate numbering system for the sample cups that is internal to the analytical instrument or specimen processing and handling device.
+
+==== 13.1.3.45 Sample carrier:
+
+See Specimen carrier.
+
+==== 13.1.3.46 Sample container: 
+
+See Specimen collection container.
+
+==== 13.1.3.47 Sample-positioning system: 
+
+See Specimen-positioning system.
+
+==== 13.1.3.48 Sample probe:
+
+See Specimen probe.
+
+==== 13.1.3.49 Separator: 
+
+A material such as a gel which is contained in blood collection tubes to facilitate separation of blood cells from blood serum by creating a physical "barrier" between them.
+
+==== 13.1.3.50 Serum/Plasma Separator: 
+
+See Separator.
+
+==== 13.1.3.51 Service envelope:
+
+*_In NCCLS LAB AUTOMATION Standard documents_*, the space around the transportation system and instruments that may be accessed periodically for maintenance or repair of equipment.
+
+*Note:* A transportation system and analytic instruments should not have mutually impinging service envelopes.
+
+==== 13.1.3.52 Specimen: 
+
+The discrete portion of a body fluid or tissue taken for examination, study, or analysis of one or more quantities or characteristics, to determine the character of the whole.
+
+*Note:* The substance may still be referred to as a specimen if it has been processed from the obtained specimen; thus, examples of specimens include whole blood and serum or plasma prepared from whole blood; saliva; cerebrospinal fluid; feces; urine; fingernail clippings; hair clippings; tissue samples, even if embedded in a paraffin block; etc.
+
+==== 13.1.3.53 Specimen carrier//Sample carrier//Carrier: 
+
+A device that holds the specimen container.
+
+*Note:* The specimen carrier interfaces mechanically with the transportation system to move the specimen from location to location, and may carry one specimen container or many specimen containers. (See Figure 13-5.)
+
+==== 13.1.3.54 Specimen collection container//Specimen container//Sample container//Container: 
+
+The tube that holds a patient specimen.
+
+*Note:* The container typically consists of a glass or plastic closed-end tube with a removable closure on the opposite end. (See Figure 13-5.)
+
+image:extracted-media/media/image5.wmf[extracted-media/media/image5]
+
+Figure 13-5: Relationship among Specimen Container, Specimen Carrier, Tray, and Locations.
+
+==== 13.1.3.55 Specimen-positioning system//Sample-positioning system (SPS): 
+
+A device to position a specimen container within acceptable tolerances of a POR.
+
+==== 13.1.3.56 Specimen probe//Sample probe:
+
+A part of an instrument or specimen processing and handling device that aspirates fluid from a specimen and delivers it to the instrument for analysis.
+
+*Note:* The sample probe can also be called sample proboscis, nozzle, needle, or sampling mechanism.
+
+==== 13.1.3.57 Stay clear zone: 
+
+*_In NCCLS LAB AUTOMATION Standard documents,_* the area between the instrument or specimen processing and handling device and the automation hardware that must remain clear of any physical device, ensuring that there is adequate access by the user or service person to either system.
+
+==== 13.1.3.58 Symbol: 
+
+*_In NCCLS LAB AUTOMATION Standard documents,_* a combination of bar-code characters, including start/stop characters, quiet zones, data elements, and check characters which form a complete scanning entity.
+
+==== 13.1.3.59 Test mnemonics: 
+
+Short, understandable contractions for test names.
+
+==== 13.1.3.60 Top of container//Top of tube: 
+
+The open end of the container/test tube, closest to the cap.
+
+==== 13.1.3.61 Top of tube: 
+
+See Top of container.
+
+==== 13.1.3.62 Tray: 
+
+A holder for one or more carriers (optional). (See Figure 13-5.)
+
+==== 13.1.3.63 X–direction: 
+
+See Directions.
+
+==== 13.1.3.64 Y–direction: 
+
+See Directions.
+
+==== 13.1.3.65 Z–direction: 
+
+See Directions.
+
+== 13.2 Trigger Events and Message Definitions
+
+Each trigger event is listed below, along with the application form of the message exchange. The notation used to describe the sequence, optionality and repetition of segments is described in Chapter 2.
+
+The notation used to describe the sequence, the optionality, and the repetition of segments is described in Chapter 2 under "Format for Defining Abstract Message."
+
+All the ACK messages are varieties of the 'general acknowledgement' message defined in Chapter 2, section 2.13.1. The only difference is the event code.
+
+The "Equipment Notification" message (EAN/ACK event U09) is used to send information about the occurrence of an event. An event does not necessarily cause a state transition. The "Status Update" message (EAU/ACK event U01) is used to transfer information about the current status. This status can be the result of one or more events that led to the state transition. Example: The event of a "warning level of a consumable being reached" (e.g., 10% left) does not cause a state transition, because the system can remain "In operation". This results in an EAN/ACK message. An event "container transport jammed" causes the state transition to "Emergency stop". This results in both EAN/ACK and EAU/ACK messages.
+
+For the transfer of laboratory automation orders and results refer to 4.4.6 OML - laboratory order message (event O21) instead of ORM and 7.3.2 OUL – unsolicited laboratory observation message (event O20) instead of ORU.
+
+=== 13.2.1 ESU/ACK - Automated Equipment Status Update (Event U01)
+
+This message is used to send information about the status of a device or equipment from one application to another (e.g., automated device to a Laboratory Automation System). The status update can be sent unsolicited or as a response to the trigger "Automated Equipment Status Request."
+
+ESU^U01^ESU_U01: Equipment Status Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|link:#EQU[EQU] |Equipment Detail | |13
+|\{ [link:#ISD[ISD] ] } |Interaction Status Detail | |13
+|[ROL] |Role Detail |B |12
+|===
+
+[width="100%",cols="19%,23%,10%,16%,16%,16%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|ESU^U01^ESU_U01 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U01^ACK |- |ACK^U01^ACK
+|Application Ack |ACK^U01^ACK |- |- |ACK^U01^ACK |ACK^U01^ACK
+|===
+
+ACK^U01^ACK: General Acknowledgement
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Errorfootnote:[This error segment indicates the fields that caused a transaction to be rejected.] | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U01^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U01^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.2 ESR/ACK - Automated Equipment Status Request (Event U02)
+
+This message is used to request information about a device's or piece of equipment's status from one application to another (e.g., Laboratory Automation System to automated equipment). The equipment identified in the EQU segment should respond with its status using the "Automated Equipment Status Update."
+
+ESR^U02^ESR_U02: Equipment Status Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="15%,24%,8%,15%,19%,19%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|ESR^U02^ESR_U02 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U02^ACK |- |ACK^U02^ACK
+|Application Ack |ESU^U01^ESU_U01 |- |- |ESU^U01^ESU_U01 |ESU^U01^ESU_U01
+|===
+
+ACK^U02^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U02^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U02^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.3 SSU/ACK - Specimen Status Update (Event U03)
+
+This message is used to send information concerning the location and status of specimens from one application to another (e.g., automated equipment to a Laboratory Automation System). The OBX segments attached to the SAC should be used for transfer of information not included in the SAC segment, but relevant for automating processing (e.g., additional characteristics of the specimen container). The NTE segments attached to the SAC should be used for transfer of descriptive information not included in the SAC segment, but relevant for the users (e.g., aliquot groups for an aliquot sample container).
+
+SSU^U03^SSU_U03: Specimen Status Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|\{ [ OBX ] } | |Additional specimen container characteristics | | | |7 |
+|\{ [ NTE ] } | |Additional specimen container information | | | |2 |
+|\{ [ PRT ] } | |Participation for OBX | | | |7 |
+|[ \{ | |--- SPECIMEN begin | | | | |
+|SPM | |Specimen | | | |7 |
+|\{ [ OBX ] } | |Specimen related observation | | | |7 |
+|\{ [ PRT ] } | |Participation for OBX | | | |7 |
+|} ] | |--- SPECIMEN end | | | | |
+|} | |--- SPECIMEN_CONTAINER end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="99%",cols="18%,23%,5%,16%,19%,19%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SSU^U03^SSU_U03 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U03^ACK |- |ACK^U03^ACK
+|Application Ack |ACK^U03^ACK |- |- |ACK^U03^ACK |ACK^U03^ACK
+|===
+
+ACK^U03^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U03^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U03^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.4 SSR/ACK - Specimen Status Request (Event U04)
+
+This message is used to request information concerning the location and status of specimens from one application to another (e.g., Laboratory Automation System to automated equipment). The request can be addressed for a specific container, a specific carrier, a specific tray or a specific location, depending on the arguments set in the SAC segment. The equipment specified in the EQU segment should respond with the "Specimen Status Update."
+
+SSR^U04^SSR_U04: Specimen Status Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|\{ [ SPM ] } | |Specimen | | | |7 |
+|} | |--- SPECIMEN_CONTAINER end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,23%,5%,16%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SSR^U04^SSR_U04 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U04^ACK |- |ACK^U04^ACK
+|Application Ack |SSU^U03^SSU_U03 |- |- |SSU^U03^SSU_U03 |SSU^U03^SSU_U03
+|===
+
+ACK^U04^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U04^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U04^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.5 INU/ACK – Automated Equipment Inventory Update (Event U05)
+
+This message is used to send information about inventory items from one application to another (e.g., automated Equipment to a Laboratory Automation System).
+
+INU^U05^INU_U05: Inventory Update Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ link:#INV[INV] } | |Inventory Detail | | | |13 |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,25%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|INU^U05^INU_U05 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U05^ACK |- |ACK^U05^ACK
+|Application Ack |ACK^U05^ACK |- |- |ACK^U05^ACK |ACK^U05^ACK
+|===
+
+ACK^U05^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U05^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U05^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.6 INR/ACK – Automated Equipment Inventory Request (Event U06)
+
+This message is used to request information about inventory items from one application to another (e.g., Laboratory Automation System to automated equipment). The equipment specified in the EQU segment should respond with the information about inventory item requested in the INV segment (or all items).
+
+INR^U06^INR_U06: Inventory Request Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ link:#INV[INV] } | |Inventory Detail | | | |13 |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,23%,5%,16%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|INR^U06^INR_U06 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U06^ACK |- |ACK^U06^ACK
+|Application Ack |INU^U05^INU_U05 |- |- |INU^U05^INU_U05 |INU^U05^INU_U05
+|===
+
+ACK^U06^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U06^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U06^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.7 EAC/ACK – Automated Equipment Command (Event U07)
+
+This message is used to send equipment commands from one application to another (e.g., a Laboratory Automation System to automated Equipment). The OBR segments attached to the SAC should be used for transfer of information about tests assigned to a specific aliquot in the aliquoting command (not included in the SAC segment, but relevant for automating processing).
+
+The repeatability of the DST segment should be used for multiple destinations in sequence and the remark may be used as additional information, e.g. for destination dependent bar code labels for the secondary (aliquot) containers.
+
+The repeatability of the Specimen Container block enables sending commands for Pooling specimen (multiple sources) from a Primary Specimen. Command for multiple aliquots requires specific Command group for each aliquot.
+
+EAC^U07^EAC_U07: Equipment Command Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- COMMAND begin | | | | |
+|link:#ECD[ECD] | |Equipment Command Detail | | | |13 |
+|[ TQ1 ] | |Timing/quantity | | | |4 |
+|[ \{ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|[\{ | |---ORDER_FOR_SPECIMEN_CONTAINER begin | | | | |
+|[\{ OBR }] | |Specimen container info. on requested test | | | |4 |
+|[\{ PRT }] | |Participation (for requested test) | | | |7 |
+|}] | |---ORDER_FOR_SPECIMEN_CONTAINER end | | | | |
+|[\{ SPM }] | |Specimen | | | |7 |
+|[\{ link:#dst-transport-destination-segment[DST] }] | |Transport destination | | | |13 |
+|} ] | |--- SPECIMEN_CONTAINER end | | | | |
+|[ link:#CNS[CNS] ] | |Clear Notification | | | |13 |
+|} | |--- COMMAND end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,24%,5%,16%,18%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EAC^U07^EAC_U07 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U07^ACK |- |ACK^U07^ACK
+|Application Ack |EAR^U08^EAR_U08 |- |- |EAR^U08^EAR_U08 |EAR^U08^EAR_U08
+|===
+
+ACK^U07^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U07^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U07^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.8 EAR/ACK – Automated Equipment Response (Event U08)
+
+This message is used to send equipment responses to previously issued commands from one application to another (e.g., automated Equipment to a Laboratory Automation System).
+
+EAR^U08^EAR_U08: Equipment Command Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- COMMAND_RESPONSE begin | | | | |
+|link:#ECD[ECD] | |Equipment Command Detail | | | |13 |
+|[ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|\{ [ SPM ] } | |Specimen | | | |7 |
+|] | |--- SPECIMEN_CONTAINER end | | | | |
+|link:#ECR[ECR] | |Equipment Command Response | | | |13 |
+|} | |--- COMMAND_RESPONSE end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="18%,23%,10%,16%,17%,16%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EAR^U08^EAR_U08 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U08^ACK |- |ACK^U08^ACK
+|Application Ack |ACK^U08^ACK |- |- |ACK^U08^ACK |ACK^U08^ACK
+|===
+
+ACK^U08^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U08^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U08^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.9 EAN/ACK - Automated Equipment Notification (Event U09)
+
+This message is used to send equipment notifications from one application to another (e.g., alerts sent by automated equipment to a Laboratory Automation System).
+
+EAN^U09^EAN_U09: Equipment Status Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- NOTIFICATION begin | | | | |
+|link:#NDS[NDS] | |Notification Detail | | | |13 |
+|[ NTE ] | |Notification Note | | | |2 |
+|} | |--- NOTIFICATION end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="18%,23%,5%,15%,18%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EAN^U09^EAN_U09 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U09^ACK |- |ACK^U09^ACK
+|Application Ack |ACK^U09^ACK |- |- |ACK^U09^ACK |ACK^U09^ACK
+|===
+
+ACK^U09^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U09^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U09^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.10 TCU/ACK - Automated Equipment Test Code Settings Update (Event U10)
+
+This message is used to send information concerning test codes and parameters from one application to another (e.g., automated equipment to a Laboratory Automation System). This message transfers the current snapshot of the test parameters of the sending system. The sent parameter sets are supposed to replace the parameter sets existing at the receiver of this message before the trigger (there is no selective "Add" or "Delete").
+
+TCU^U10^TCU_U10: Test Code Settings Update
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- TEST_CONFIGURATION begin | | | | |
+|[ SPM ] | |Specimen | | | |7 |
+|\{ link:#TCC[TCC] } | |Test Code Configuration | | | |13 |
+|} | |--- TEST_CONFIGURATION end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="99%",cols="18%,23%,7%,16%,19%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|TCU^U10^TCU_U10 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U10^ACK |- |ACK^U10^ACK
+|Application Ack |ACK^U10^ACK |- |- |ACK^U10^ACK |ACK^U10^ACK
+|===
+
+ACK^U10^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U10^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U10^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.11 TCR/ACK - Automated Equipment Test Code Settings Request (Event U11)
+
+This message is used to request information concerning test codes from one application to another (e.g., Laboratory Automation System to automated equipment).
+
+TCR^U11^TCU_U10: Test Code Settings Request
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- TEST_CONFIGURATION begin | | | | |
+|[ SPM ] | |Specimen | | | |7 |
+|\{ link:#TCC[TCC] } | |Test Code Configuration | | | |13 |
+|} | |--- TEST_CONFIGURATION end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="18%,23%,5%,16%,19%,19%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|TCR^U11^TCU_U10 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U11^ACK |- |ACK^U11^ACK
+|Application Ack |TCU^U10^TCU_U10 |- |- |TCU^U10^TCU_U10 |TCU^U10^TCU_U10
+|===
+
+ACK^U11^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U11^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U11^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.12 LSU/ACK - Automated Equipment Log/Service Update (Event U12)
+
+This message is used to send log and/or service events from one application to another (e.g., automated equipment to Laboratory Automation System).
+
+LSU^U12^LSU_U12: Equipment Log/Service Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ link:#EQP[EQP] } | |Equipment Log/Service | | | |13 |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,26%,5%,16%,17%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|LSU^U12^LSU_U12 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U12^ACK |- |ACK^U12^ACK
+|Application Ack |ACK^U12^ACK |- |- |ACK^U12^ACK |ACK^U12^ACK
+|===
+
+ACK^U12^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U12^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U12^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.13 LSR/ACK - Automated Equipment Log/Service Request (Event U13)
+
+This message is used to request log and/or service events from one application to another (e.g., Laboratory Automation System to automated equipment).
+
+LSR^U13^LSU_U12: Equipment Log/Service Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ link:#EQP[EQP] } | |Equipment Log/Service | | | |13 |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,23%,5%,16%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|LSR^U13^LSU_U12 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U13^ACK |- |ACK^U13^ACK
+|Application Ack |LSU^U12^LSU_U12 |- |- |LSU^U12^LSU_U12 |LSU^U12^LSU_U12
+|===
+
+ACK^U13^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U13^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U13^ACK
+|Application Ack |- |- |-
+|===
+
+=== 13.2.14 INR/ACK – Automated Equipment Inventory Request (Event U14)
+
+____
+This message is used to request information about inventory items from one application to another (e.g., Laboratory Automation System to automated equipment). The equipment specified in the EQU segment should respond with the information about inventory item requested in the INV segment (or all items).
+
+Compared to INR^U06, it declares INV as optional and does not require fields INV-1 and INV-2 there. In that way, it supports queries for all inventory items without filtering on any attributes.
+____
+
+INR^U14^INR_U14: Inventory Request Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|link:#EQU[EQU] |Equipment Detail | |13
+|[\{ link:#INV[INV] }] |Inventory Detail | |13
+|===
+
+[width="100%",cols="18%,23%,5%,16%,19%,19%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|INR^U14^INR_U14 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U14^ACK |- |ACK^U14^ACK
+|Application Ack |INU^U05^INU_U05 |- |- |INU^U05^INU_U05 |INU^U05^INU_U05
+|===
+
+ACK^U14^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U14^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U14^ACK
+|Application Ack |- |- |-
+|===
+
+== 13.3 Message Segments
+
+The following section identifies the message segments proposed for incorporation in this standard, and will be submitted for incorporation or reference in other HL7 and NCCLS standard documents. Valid entries are presented in an Attribute Table for each segment.
+
+=== 13.3.1 EQU - Equipment Detail Segment 
+
+The equipment detail segment contains the data necessary to identify and maintain the equipment that is being used throughout the Laboratory Automation System.
+
+HL7 Attribute Table – EQU[#EQU .anchor]#### – Equipment Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |EI |R |Y | |01479 |Equipment Instance Identifier
+|2 | | |DTM |R | | |01322 |Event Date/Time
+|3 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70365[0365] |01323 |Equipment State
+|4 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70366[0366] |01324 |Local/Remote Control State
+|5 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70367[0367] |01325 |Alert Level
+|6 | | |DTM |O | | |03487 |Expected date/time of the next status change
+|===
+
+==== 13.3.1.0 EQU Field Definitions
+
+==== 13.3.1.1 EQU-1 Equipment Instance Identifier (EI) 01479
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the equipment. This is the identifier from an institution's master list of equipment. The <namespace ID> identifies the institution.
+
+The Equipment Instance Identifier shall be unique, meaning that the “Entity Identifier” component shall be unique within the Namespace ID that should accommodate hierarchical representation of equipment (recursive hierarchy like in "Russian dolls", e.g., a sub-module embedded in a module assembled in a system being a member of a cluster).
+
+If this attribute repeats, all instances must represent the same device.
+
+==== 13.3.1.2 EQU-2 Event Date/Time (DTM) 01322
+
+Definition: This field is the date/time that the event (e.g., state transition, issuing of command, finishing of command execution) occurred.
+
+==== 13.3.1.3 EQU-3 Equipment State (CWE) 01323
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the status that the equipment was in at the time that the transaction was initiated. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70365[_HL7 Table 0365 – Equipment State_] in Chapter 2C, Code Tables, for valid values. The Equipment State is required in the ESU message and is optional otherwise.
+
+==== 13.3.1.4 EQU-4 Local/Remote Control State (CWE) 01324
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the current state of control associated with the equipment. An equipment can either work autonomously ('Local' control state) or it can be controlled by another system, e.g., LAS computer ('Remote' control state). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70366[_HL7 Table 0366 – Local/Remote Control State_] in Chapter 2C, Code Tables, for valid values.
+
+==== 13.3.1.5 EQU-5 Alert Level (CWE) 01325
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the highest level of the alert state (e.g., highest alert severity) that is associated with the indicated equipment (e.g., processing event, inventory event, QC event). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70367[_HL7 Table 0367 – Alert Level_] in Chapter 2C, Code Tables, for valid values.
+
+==== 13.3.1.6 EQU-6 Expected Date/Time of the Next Status Change (DTM) 03487
+
+Definition: This field is the predicted date/time of the next equipment status change (e.g. from “maintenance” back to “normal operation”).
+
+=== 13.3.2 ISD – Interaction Status Detail Segment
+
+The interaction detail segment contains information about the status of specific interaction (e.g., processing — see section Glossary) on the specific equipment.
+
+HL7 Attribute Table – ISD[#ISD .anchor]#### – Interaction Status Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |NM |R | | |01326 |Reference Interaction Number
+|2 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70368[0368] |01327 |Interaction Type Identifier
+|3 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70387[0387] |01328 |Interaction Active State
+|===
+
+==== 13.3.2.0 ISD Field Definitions
+
+==== 13.3.2.1 ISD-1 Reference Interaction Number (NM) 01326
+
+Definition: This number uniquely identifies the interaction. If the interaction is performed as the result of a previous command, then the Reference Command Number should be used. (See _13.3.5.1_, "_ECD-1 Reference Command Number (NM) 01390_.")
+
+==== 13.3.2.2 ISD-2 Interaction Type Identifier (CWE) 01327
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field specifies the type of interaction. If the interaction is performed as the result of a previous command, then the interaction type as specified in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70368[_User-defined Table 0368 - Remote Control command_] should be used.
+
+==== 13.3.2.3 ISD-3 Interaction Active State (CWE) 01328
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field transfers the state of the interaction. If the interaction is performed as the result of a previous command, then the interaction state should be one of the Command Responses (Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70387[_User-defined Table 0387 – Command Response_]). If the interaction is not performed as a result of a command (e.g., periodically time triggered automatic maintenance) then this state is interaction specific, and should refer to either the LECIS state transitions for interactions or a user or equipment specific table.
+
+=== 13.3.3 SAC – Specimen Container Detail Segment 
+
+The container detail segment is the data necessary to maintain the containers that are being used throughout the Laboratory Automation System.
+
+The specimens in many laboratories are transported and processed in containers (e.g., sample tubes). When SPM and SAC are used in the same message, then the conceptually duplicate attributes will be valued only in the SPM. This applies to _SAC-6 Specimen Source_, _SAC-27 Additives_, and _SAC-43 Special Handling Considerations_.
+
+HL7 Attribute Table – SAC[#SAC .anchor]#### – Specimen Container detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |EI |O | | |01329 |External Accession Identifier
+|2 | | |EI |O | | |01330 |Accession Identifier
+|3 | | |EI |C | | |01331 |Container Identifier
+|4 | | |EI |C | | |01332 |Primary (Parent) Container Identifier
+|5 | | |EI |O | | |01333 |Equipment Container Identifier
+|6 | | | |W | | |00249 |Specimen Source
+|7 | | |DTM |O | | |01334 |Registration Date/Time
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70370[0370] |01335 |Container Status
+|9 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70378[0378] |01336 |Carrier Type
+|10 | | |EI |O | | |01337 |Carrier Identifier
+|11 | | |NA |O | | |01338 |Position in Carrier
+|12 | | |CWE |O | |E:\\V2\\v2.9 final Nov from Frank\\V29_CH02C_Tables.docx#HL70379[0379] |01339 |Tray Type – SAC
+|13 | | |EI |O | | |01340 |Tray Identifier
+|14 | | |NA |O | | |01341 |Position in Tray
+|15 | | |CWE |O |Y |0774 |01342 |Location
+|16 | |10# |NM |O | | |01343 |Container Height
+|17 | |10# |NM |O | | |01344 |Container Diameter
+|18 | |10# |NM |O | | |01345 |Barrier Delta
+|19 | |10# |NM |O | | |01346 |Bottom Delta
+|20 | | |CWE |O | |0775 |01347 |Container Height/Diameter/Delta Units
+|21 | |10# |NM |O | | |00644 |Container Volume
+|22 | |10# |NM |O | | |01349 |Available Specimen Volume
+|23 | |10# |NM |O | | |01350 |Initial Specimen Volume
+|24 | | |CWE |O | |0777 |01351 |Volume Units
+|25 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70380[0380] |01352 |Separator Type
+|26 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70381[0381] |01353 |Cap Type
+|27 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70371[0371] |00647 |Additive
+|28 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70372[0372] |01355 |Specimen Component
+|29 | | |SN |O | | |01356 |Dilution Factor
+|30 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70373[0373] |01357 |Treatment
+|31 | | |SN |O | | |01358 |Temperature
+|32 | |10# |NM |O | | |01359 |Hemolysis Index
+|33 | | |CWE |O | |0779 |01360 |Hemolysis Index Units
+|34 | |10# |NM |O | | |01361 |Lipemia Index
+|35 | | |CWE |O | |0780 |01362 |Lipemia Index Units
+|36 | |10# |NM |O | | |01363 |Icterus Index
+|37 | | |CWE |O | |0781 |01364 |Icterus Index Units
+|38 | |10# |NM |O | | |01365 |Fibrin Index
+|39 | | |CWE |O | |0782 |01366 |Fibrin Index Units
+|40 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70374[0374] |01367 |System Induced Contaminants
+|41 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70382[0382] |01368 |Drug Interference
+|42 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70375[0375] |01369 |Artificial Blood
+|43 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70376[0376] |01370 |Special Handling Code
+|44 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70377[0377] |01371 |Other Environmental Factors
+|45 | | |CQ |O | | |02496 |Container Length
+|46 | | |CQ |O | | |02497 |Container Width
+|47 | | |CWE |O | |0967 |02498 |Container Form
+|48 | | |CWE |O | |0968 |02499 |Container Material
+|49 | | |CWE |O | |0969 |02500 |Container Common Name
+|===
+
+==== 13.3.3.0 SAC Field Definitions
+
+==== 13.3.3.1 SAC-1 External Accession Identifier (EI) 01329
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the laboratory accession (see section _Glossary_). This identifier is assigned by the external laboratory information system.
+
+Example: If laboratory A sends a specimen to laboratory B, then within laboratory B this field contains accession identifier of lab A.
+
+==== 13.3.3.2 SAC-2 Accession Identifier (EI) 01330
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the laboratory accession (see section _13.1.3_, "_Glossary_"). This identifier is assigned by the information system of the laboratory performing the tests.
+
+An accession identifier can refer to more than one container. A Container Identifier (see below) is a Unique Identifier for that container.
+
+==== 13.3.3.3 SAC-3 Container Identifier (EI) 01331
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the container. This field is the container's unique identifier assigned by the corresponding equipment. A container may contain the primary (original) specimen or an aliquot (secondary sample) of that specimen. For primary sample this field contains Primary Container ID; for bar-coded aliquot samples this field contains Aliquot Container ID; for non-bar-coded aliquot samples (e.g., microtiter plate) this field is empty.[multiblock footnote omitted]
+
+The NCCLS standard requires a unique identifier for each container introduced into the Laboratory Automation System. The combination of the fields: Primary Container ID, Container ID, Carrier ID / Position, Tray ID / Position must identify the container uniquely within the LAS. The naturally best solution is unique machine-readable ID attached to the container (which of course is sufficient to ensure the uniqueness of the fields' combination). A bar code that symbolizes this ID should meet the proposed standard NCCLS AUTO2 (_Laboratory Automation: Bar Codes for Specimen Container Identification)._
+
+==== 13.3.3.4 SAC-4 Primary (Parent) Container Identifier (EI) 01332
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: If this field is filled in, it identifies the primary container from which this specimen came. For primary samples this field is empty; for aliquot samples this field should contain the identifier of primary container.
+
+==== 13.3.3.5 SAC-5 Equipment Container Identifier (EI) 01333
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the container in a particular device (e.g., one container in a carousel or rack of containers within an analyzer, analyzer specific bar code mapping, etc.).
+
+==== 13.3.3.6 SAC-6 Specimen Source 00249
+
+*_Attention: This field was deprecated and retained for backward compatibilityonly as of v2.5 and withdrawn and removed as of v2.7._*
+
+==== 13.3.3.7 SAC-7 Registration Date/Time (DTM) 01334
+
+Definition: This field is the date/time that the container was last registered with the "automated system," e.g., reading of a container bar code by a device.
+
+==== 13.3.3.8 SAC-8 Container Status (CWE) 01335
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the status of the unique container in which the specimen resides at the time that the transaction was initiated. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70370[_HL7 Table 0370 - Container Status_] in Chapter 2C, Code Tables, for valid values. The equipment specific container status should be sent as _<alternate identifier>_ as needed.
+
+The container states are relevant for the exchange of information among devices (within the LAS). Not all of them are relevant for information transfer between the LAS and the LIS.
+
+==== 13.3.3.9 SAC-9 Carrier Type (CWE) 01336
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the type of the carrier (see section _13.1.3_, "_Glossary_"). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70378[_User-defined Table 0378 – Carrier Type_] in Chapter 2C, Code Tables, for suggested values. Because the geometry can be different, the carrier type should, if possible, express the number of positions in the carrier.
+
+The definition assumes hierarchical nesting using the following phrases: container is located in a carrier; carrier is located in a tray.
+
+==== 13.3.3.10 SAC-10 Carrier Identifier (EI) 01337
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the carrier. It is the ID (e.g., number or bar code) of the carrier where the container (e.g., tube) is located.
+
+Example: A carrier could be a rack with single or multiple specimen containers. A carrier is usually used for automated specimen transport. Multiple carriers can be stacked in a tray, which is then used for manual or automatic transport.
+
+==== 13.3.3.11 SAC-11 Position in Carrier (NA) 01338
+
+Components: <Value1 (NM)> ^ <Value2 (NM)> ^ <Value3 (NM)> ^ <Value4 (NM)> ^ < ()>
+
+Definition: This field identifies the position of the container in the carrier (e.g., 1...3...). The sub-components allow, if necessary, to transfer multiple axis information, e.g., 2-dimensional carrier (X^Y).
+
+==== 13.3.3.12 SAC-12 Tray Type - SAC (CWE) 01339
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the type of the tray (see section _13.1.3_, "_Glossary_"). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70379[_User-defined Table 0379 – Tray Type_] in chapter 2C for suggested values. Because the geometry can be different, the tray type should if possible express the number of positions in the tray.
+
+The definition assumes hierarchical nesting using the following phrases: container is located in a carrier, carrier is located in a tray.
+
+==== 13.3.3.13 SAC-13 Tray Identifier (EI) 01340
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the tray identifier (e.g., a number of a tray or a bar code on the tray) where the container carrier is located.
+
+==== 13.3.3.14 SAC-14 Position in Tray (NA) 01341
+
+Components: <Value1 (NM)> ^ <Value2 (NM)> ^ <Value3 (NM)> ^ <Value4 (NM)> ^ < ()>
+
+Definition: This field identifies the position of the carrier in the tray. The sub-components allow, if necessary, to transfer multiple axis information, e.g., 2-dimensional tray (X^Y).
+
+==== 13.3.3.15 SAC-15 Location (CWE) 01342
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the physical location that the specimen was at the time that the transaction was initiated. The location description can vary with the LAS. For example, it can be an X,Y,Z coordinate in a storage system; a refrigerator number and drawer number where the container-carrier-tray is located; or it can be the name of the institution and the laboratory which owns the container currently. The repeating of this field allows for hierarchical representation of location (lowest level first), e.g., shelf number, refrigerator storage id, lab name, institution name, etc. Refer to Table 0774 - Location in Chapter 2C for valid values.
+
+==== 13.3.3.16 SAC-16 Container Height (NM) 01343
+
+Definition: This field identifies the height of the container in units specified below.
+
+*Note:* If the container type is categorized (FBT (false-bottom-tube), Cup, etc.), the specific codes should be transferred in the SPM-27 field “Container Type”. If the container is characterized by dimensions and other characteristics this information should be transferred as specific values in the SAC segment (fields: SAC-16 through SAC-21, or SAC-45 to SAC-48).
+
+==== 13.3.3.17 SAC-17 Container Diameter (NM) 01344
+
+Definition: This field identifies the outside diameter of the container in units specified below. For non-cylindrical containers SAC-45 Container Length and SAC-46 Container Width may be used instead of SAC-17 Container Diameter.
+
+==== 13.3.3.18 SAC-18 Barrier Delta (NM) 01345
+
+Definition: This field identifies the distance from the Point of Reference to the separator material (barrier) within the container in units specified below. This distance may be provided by the LAS to the instrument and/or specimen processing/handling device to facilitate the insertion of a sampling probe into the specimen without touching the separator. Refer to Point Of Reference definition in section _Glossary_ or in NCCLS standard AUTO5 _Laboratory Automation: Electromechanical Interfaces_.
+
+==== 13.3.3.19 SAC-19 Bottom Delta (NM) 01346
+
+Definition: This field identifies the distance from the Point of Reference to the outside bottom of the container in units specified below. Refer to Point Of Reference definition in section _13.1.3_, "_Glossary_," or in NCCLS standard AUTO5 _Laboratory Automation: Electromechanical Interfaces_.
+
+==== 13.3.3.20 SAC-20 Container Height/Diameter/Delta Units (CWE) 01347
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the unit identifier that is being used to describe the diameter, height and deltas of the container. If the units are ISO+ units, they should be recorded as single case abbreviations. If the units are ANS+ or L (local), the units and the source code table must be recorded, except that in this case, component delimiters should be replaced by subcomponent delimiters. The default unit is millimeters (mm), which should be assumed if no units are reported. Refer to Table 0775 - Container Height/Diameter/Delta Units in Chapter 2C for valid values.
+
+==== 13.3.3.21 SAC-21 Container Volume (NM) 00644
+
+Definition: This field indicates the capacity of the container in the units specified below.
+
+==== 13.3.3.22 SAC-22 Available Specimen Volume (NM) 01349
+
+Definition: This field identifies the current specimen volume available for use in this container in the units specified below.
+
+==== 13.3.3.23 SAC-23 Initial Specimen Volume (NM) 01350
+
+Definition: This field identifies the volume of the specimen initially filled in this container in the units specified below.
+
+==== 13.3.3.24 SAC-24 Volume Units (CWE) 01351
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the unit identifier that is being used to describe the volume of the container. If the units are ISO+ units, they should be recorded as single case abbreviations. The default unit is milliliters (ml), which should be assumed if no units are reported. Refer to Table 0777 - Volume Units in Chapter 2C for valid values.
+
+==== 13.3.3.25 SAC-25 Separator Type (CWE) 01352
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the type of the separator that is being used (e.g., gel separator in the container – not to be confused with the communication separators). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70380[_User-defined Table 0380 – SeparatorType_] in Chapter 2C, Code Tables, for suggested values. It is recommended that the first table entry be "NO" meaning "No Separator."
+
+==== 13.3.3.26 SAC-26 Cap Type (CWE) 01353
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the type of cap that is to be used with this container for decapping, piercing or other mechanisms. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70381[_User-defined Table 0381 – Cap Type_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 13.3.3.27 SAC-27 Additive (CWE) 00647
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies any additives introduced to the specimen before or at the time of collection. These additives may be introduced in order to preserve, maintain or enhance the particular nature or component of the specimen. It is a repetitive field. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70371[_HL7 Table 0371 – Additive/Preservative_] for valid values. 'The value set can be extended with user specific values.
+
+When the SPM (Specimen) segment is sent together with the SAC segment the additive attribute value from the SPM segment can be included in this field of the SAC.
+
+==== 13.3.3.28 SAC-28 Specimen Component (CWE) 01355
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the specimen component, e.g., supernatant, sediment, etc. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70372[_User-defined Table 0372 – Specimen Component_] in Chapter 2C, Code Tables, for valid values. This table's values are taken from _NCCLS AUTO4_. The value set can be extended with user specific values.
+
+==== 13.3.3.29 SAC-29 Dilution Factor (SN) 01356
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field identifies the factor of dilution already performed on the specimen. The equipment entity that changes the dilution is responsible for sending this information to other equipment. If the endogenous content of the test (analyte) in the diluent is required for the calculation of the test (analyte) concentration, then the test (analyte) specific values should be exchanged between the systems via Master Files or other means.
+
+Examples of use:
+
+|^1^:^5| - means dilution 1 to 5, i.e., 1 part sample, 4 parts diluent
+
+|^1^+| - sample is diluted, but the factor is unknown
+
+|^1^:^1| - not diluted sample
+
+|| - dilution not changed
+
+==== 13.3.3.30 SAC-30 Treatment (CWE) 01357
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the specimen treatment performed during lab processing. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70373[_User-defined Table 03__73 – Treatment_] in chapter 2C for valid values. This table's values are taken from _NCCLS AUTO4_. The value set can be extended with user specific values.
+
+==== 13.3.3.31 SAC-31 Temperature (SN) 01358
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field identifies the specimen temperature in degrees Celsius [°C] at the time of the transaction specified in the EQU segment.
+
+==== 13.3.3.32 SAC-32 Hemolysis Index (NM) 01359
+
+Definition: This field is the index identifier that is being used to describe the Hemolysis Index of the specimen.
+
+==== 13.3.3.33 SAC-33 Hemolysis Index Units (CWE) 01360
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the unit's identifier that is being used to describe the Hemolysis Index of the specimen. It is recommended to use g/L. (The transmission of the index values is added here instead of the original use of the OBX segments, because the frequency of the transfer of the specimen details justifies use of more efficient mechanism.) Refer to Table 0779 - Hemolysis Index Units in Chapter 2C for valid values.
+
+If this field is null, the recommended value is assumed.
+
+==== 13.3.3.34 SAC-34 Lipemia Index (NM) 01361
+
+Definition: This field is the index identifier that is being used to describe the Lipemia Index of the specimen. It is recommended to use the optical turbidity at 600 nm (in absorbance units).
+
+==== 13.3.3.35 SAC-35 Lipemia Index Units (CWE) 01362
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the unit's identifier that is being used to describe the Lipemia Index of the specimen. Refer to Table 0780 - Lipemia Index Units in Chapter 2C for valid values.
+
+If this field is null, the recommended value is assumed.
+
+==== 13.3.3.36 SAC-36 Icterus Index (NM) 01363
+
+Definition: This field is the index identifier that is being used to describe the Icterus Index of the specimen.
+
+==== 13.3.3.37 SAC-37 Icterus Index Units (CWE) 01364
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the unit's identifier that is being used to describe the Icterus Index of the specimen. It is recommended to use mMol/L of bilirubin. Refer to Table 0781 - Icterus Index Units in Chapter 2C for valid values.
+
+If this field is null, the recommended value is assumed.
+
+==== 13.3.3.38 SAC-38 Fibrin Index (NM) 01365
+
+Definition: This field is the index identifier that is being used to describe the Fibrin Index of the specimen. In the case of only differentiating between Absent and Present, we recommend using 0 and 1 respectively and send the field Fibrin Index Units null.
+
+==== 13.3.3.39 SAC-39 Fibrin Index Units (CWE) 01366
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the unit's identifier that is being used to describe the Fibrin Index of the specimen. Refer to Table 0782 - Fibrin Index Units in Chapter 2C for valid values.
+
+==== 13.3.3.40 SAC-40 System Induced Contaminants (CWE) 01367
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field describes the specimen contaminant identifier that is associated with the specimen in this container. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70374[_User-defined Table 0374 – System Induced Contaminants_] in Chapter 2C, Code Tables, for valid values. This table's values are taken from _NCCLS AUTO4_. The value set can be extended with user specific values.
+
+==== 13.3.3.41 SAC-41 Drug Interference (CWE) 01368
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field describes the drug interference identifier that is associated with the specimen. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70382[_User-defined Table 0382 – Drug Interference_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 13.3.3.42 SAC-42 Artificial Blood (CWE) 01369
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field describes the artificial blood identifier that is associated with the specimen. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70375[_User-defined Table 0375 – Artificial Blood_] in Chapter 2C, Code Tables, for valid values. This table's values are taken from _NCCLS AUTO4_. The value set can be extended with user specific values.
+
+==== 13.3.3.43 SAC-43 Special Handling Code (CWE) 01370
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field describes any special handling considerations that are associated with the specimen in the specific container (e.g., centrifugation). This describes how the specimen needs to be stored during collection, in transit, and upon receipt. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70376[_User-defined Table 0376 – Special Handling Code_] in Chapter 2C, Code Tables, for valid values. 'The value set can be extended with user specific values.
+
+==== 13.3.3.44 SAC-44 Other Environmental Factors (CWE) 01371
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field describes other environmental factors that are associated with the specimen in a specific container, e.g., atmospheric exposure. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70377[_User-defined Table 0377 – Other Environmental Factors_] in Chapter 2C, Code Tables, for valid values. This table's values are taken from _NCCLS AUTO4_. The value set can be extended with user specific values.
+
+==== 13.3.3.45 SAC-45 Container Length (CQ) 02496
+
+Components: <Quantity (NM)>^<Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field describes the longest horizontal measurement of the container, for non-cylindrical containers. For cylindrical containers SAC-17 Container Diameter may be used instead of SAC-45 Container Length and SAC-46 Container Width.
+
+==== 13.3.3.46 SAC-46 Container Width (CQ) 02497
+
+Components: <Quantity (NM)>^<Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field desrcibes the distance from side to side, measuring across the object at right angles to the length, for non-cylindrical containers. For cylindrical containers SAC-17 Container Diameter may be used instead of SAC-45 Container Length and SAC-46 Container Width.
+
+==== 13.3.3.47 SAC-47 Container Form (CWE) 02498
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the coded representation of the format or type of the container (e.g. tube/vial, jar, bag, block, slide, etc.). Refer to User-Defined Table 0967 for suggested values.
+
+==== 13.3.3.48 SAC-48 Container Material (CWE) 02499
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the coded representation of the material composition (i.e. physical substance) of the container and may be considered to modify for further describe SAC-47 (Container Form). It may also indicate a virtual container in the cases of digitized specimens (e.g. scans obtained by whole slide imaging techniques, etc.). Refer to User-Defined Table 0968 for suggested values.
+
+==== 13.3.3.49 SAC-49 Container Common Name (CWE) 02500
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is a coded representation of the way the container type is commonly referenced in an organization, in order to aid in ensuring the appropriate container is used. Examples include “Red Top” (for tubes/vials), “Wet Mount” (for slides), etc. Frequently these values will be locally defined and meaning may vary by supplier. Refer to User-Defined Table 0969 for suggested values.
+
+In many cases this is a shorthand way to express a combination of other container attributes, for example the combination of SAC-47 (Container Form) of “Tube/vial” + SAC-48 (Container Material) of “Glass” + SAC-27 (Additive) of “EDTA” may be referenced commonly in an organization as a “Lavender Top”.
+
+=== 13.3.4 INV – Inventory Detail Segment 
+
+The inventory detail segment is the data necessary to track the inventory of substances (e.g. reagent, tips, waste) and equipment state indicators (a special type of non-material inventory items) on equipment.
+
+image:extracted-media/media/image6.wmf[extracted-media/media/image6]
+
+Figure 13-6. Information on the Types of Measures on a Container
+
+HL7 Attribute Table – INV[#INV .anchor]#### – Inventory Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70451[0451] |01372 |Substance Identifier
+|2 | | |CWE |C |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70383[0383] |01373 |Substance Status
+|3 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70384[0384] |01374 |Substance Type
+|4 | | |CWE |O | |0599 |01532 |Inventory Container Identifier
+|5 | | |CWE |O | |0600 |01376 |Container Carrier Identifier
+|6 | | |CWE |O | |0601 |01377 |Position on Carrier
+|7 | |10# |NM |O | | |01378 |Initial Quantity
+|8 | |10# |NM |O | | |01379 |Current Quantity
+|9 | |10# |NM |O | | |01380 |Available Quantity
+|10 | |10# |NM |O | | |01381 |Consumption Quantity
+|11 | | |CWE |O | |0602 |01382 |Quantity Units
+|12 | | |DTM |O | | |01383 |Expiration Date/Time
+|13 | | |DTM |O | | |01384 |First Used Date/Time
+|14 | | | |W | | |01385 |On Board Stability Duration
+|15 | | |CWE |O |Y |0603 |01386 |Test/Fluid Identifier(s)
+|16 | |200= |ST |O | | |01387 |Manufacturer Lot Number
+|17 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70385[0385] |00286 |Manufacturer Identifier
+|18 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70386[0386] |01389 |Supplier Identifier
+|19 | | |CQ |O | | |01626 |On Board Stability Time
+|20 | | |CQ |O | | |01896 |Target Value
+|21 | | |CWE |C | |0942 |03488 |Equipment State Indicator Type Code
+|22 | | |CQ |C | | |03489 |Equipment State Indicator Value
+|===
+
+==== 13.3.4.0 INV Field Definitions
+
+==== 13.3.4.1 INV-1 Substance Identifier (CWE) 01372
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Unique identifier for the substance that is in inventory. This is a manufacturer-specific identifier. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70451[_User-defined Table 0451 – Substance Identifier_] in Chapter 2C, Code Tables, for suggested values.
+
+____
+This field is conditional. It is optional in queries INR^U14 and required in all other messages. Absence of this field in a query means that the result shall be not filtered on inventory item ID.
+____
+
+==== 13.3.4.2 INV-2 Substance Status (CWE) 01373
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: The status of the inventoried item. The status indicates the current status of the substance. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70383[_HL7 Table 0383 – Substance Status_] in Chapter 2C, Code Tables, for suggested values.
+
+____
+This field is conditional. It is optional in queries INR^U14 and required in all other messages. Absence of this field in a query means that the result shall be not filtered on inventory item status.
+____
+
+==== 13.3.4.3 INV-3 Substance Type (CWE) 01374
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: The type of substance. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70384[_HL7 Table 0384 – Substance Type_] in chapter 2C for suggested values.
+
+==== 13.3.4.4 INV-4 Inventory Container Identifier (CWE) 01532
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Identifies the inventory container, e.g., unique identifier of a specific package instance of a specific substance. This is a manufacturer-specific identifier.Refer to Table 0599 - Inventory Container Identifier in Chapter 2C for valid values.
+
+==== 13.3.4.5 INV-5 Container Carrier Identifier (CWE) 01376
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This is the carrier used to transport the substance containers (e.g., a removable rotor with reagent bottles). Refer to Table 0600 - Container Carrier Identifier in Chapter 2C for valid values.
+
+==== 13.3.4.6 INV-6 Position on Carrier (CWE) 01377
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Identifies the position (e.g., index) on the carrier. Refer to Table 0601 - Position on Carrier in Chapter 2C for valid values.
+
+==== 13.3.4.7 INV-7 Initial Quantity (NM) 01378
+
+Definition: This field identifies the initial quantity of the substance in inventory.
+
+==== 13.3.4.8 INV-8 Current Quantity (NM) 01379
+
+Definition: This field is the current quantity, i.e., initial quantity minus what has been actually used.
+
+==== 13.3.4.9 INV-9 Available Quantity (NM) 01380
+
+Definition: This field is the available quantity of substance. This is the current quantity minus any planned consumption (e.g., tests that are planned).
+
+==== 13.3.4.10 INV-10 Consumption Quantity (NM) 01381
+
+Definition: This field is the consumption that is used each time the equipment uses this substance.
+
+==== 13.3.4.11 INV-11 Quantity Units (CWE) 01382
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the units of measure of the available quantity. If the units are ISO+ units, they should be recorded as single case abbreviations. If the units are ANS+ or L (local), the units and the source code table must be recorded, except that in this case, component delimiters should be replaced by sub-component delimiters. For example, "l" indicates liters, whereas pt&&ANS+ indicates pints (ANSI units). The default unit is milliliters (ml), which should be assumed if no units are reported. Refer to Table 0602 - Quantity Units in Chapter 2C for valid values.
+
+==== 13.3.4.12 INV-12 Expiration Date/Time (DTM) 01383
+
+Definition: This field is the expiration date/time of the substance.
+
+==== 13.3.4.13 INV-13 First Used Date/Time (DTM) 01384
+
+Definition: This field is the time and date when the substance was first used. This date and time can be necessary to determine the stability of the substance. The meaning of the "first used" element depends on the substance. In certain cases it means the time when the substance was put on board of the instrument or prepared (mixed), without actually using it in the analysis.
+
+==== 13.3.4.14 INV-14 On Board Stability Duration 01385
+
+*_Attention: As of v2.5 this field was retained for backward compatibility only and withdrawn and removed as of v2.7._* The TQ data type was deprecated; see Chapter 2A, section 2.A.81.
+
+==== 13.3.4.15 INV-15 Test/Fluid Identifier(s) (CWE) 01386
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the list of tests and body fluids that relate or correspond to this inventory item . This is a repeating field. An empty field means that this inventory item is not test specific, i.e., it applies to all tests. Refer to Table 0603 - Test/Fluid Identifier(s) in Chapter 2C for valid values.
+
+==== 13.3.4.16 INV-16 Manufacturer Lot Number (ST) 01387
+
+Definition: This field specifies the lot number assigned by the manufacturer during production of the substance.
+
+==== 13.3.4.17 INV-17 Manufacturer Identifier (CWE) 00286
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the manufacturer of this substance. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70385[_User-defined Table 0385 – Manufacturer Identifier_] in Chapter 2C, Code Tables, for suggested values. Relevant external code systems may be used, e.g., HIBCC Manufacturers Labeler ID Code (LIC), UPC, NDC, etc.
+
+==== 13.3.4.18 INV-18 Supplier Identifier (CWE) 01389
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the supplier of this substance. Refer to _file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70386[User-defined Table 0386 – Supplier Identifie]r_ in Chapter 2C, Code Tables, for suggested values.
+
+==== 13.3.4.19 INV-19 On Board Stability Time (CQ) 01626
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the duration of time that the calibration/usability of the substance is stable. The duration is used to calculate the date/time when this calibration is no longer valid by adding this "On board stability time" (INV-19) to the "First used date / time" (INV-13).
+
+The 1^st^ component defines the time quantity and the 2^nd^ component the time units (see file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70255[_HL7 Table 0255 – Duration Categories_]). Recommended accuracy is "minutes", "hours" and "days".
+
+==== 13.3.4.20 INV-20 Target Value (CQ) 01896
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the target analytical value for a particular test for a specific lot of a manufactured material. Target values for QC purposes are usually selected for their relevance to a reference (normal) range or to a clinically significant decision level.
+
+The 1^st^ component defines the value and the 2^nd^ component the measurement units.
+
+==== 13.3.4.21 INV-21 Equipment State Indicator Type Code (CWE) 03488
+
+____
+<Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: The type code of an equipment state indicator. Refer to _HL7 Table 0942 – Equipment State Indicator Type Code_ in Chapter 2C, Code Tables, for suggested values.
+
+Due to its dynamic nature, an equipment state indicator is considered to be a [non-material] inventory item. Its value usually can be derived from the material inventory — in that way, a state indicator differs from static configuration parameters and master data stored on the equipment.
+
+This field is conditional. It is optional when INV‑3 “Substance Type” is not populated and prohibited otherwise.
+____
+
+==== 13.3.4.22 INV-22 Equipment State Indicator Value (CQ) 03489
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+____
+Definition: The numeric value of the equipment state indicator specified in INV-21. The 1^st^ component defines the number and the 2^nd^ component the units of measurement.
+
+This field is conditional. It is optional when INV‑21 “Equipment State Indicator Type Code” is populated and prohibited otherwise.
+____
+
+=== 13.3.5 ECD - Equipment Command Segment 
+
+The equipment command segment contains the information required to notify the receiving component what is to happen.
+
+HL7 Attribute Table – ECD[#ECD .anchor]#### – Equipment Command
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | |10= |NM |R | | |01390 |Reference Command Number
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70368[0368] |01391 |Remote Control Command
+|3 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01392 |Response Required
+|4 | | | |W | | |01393 |Requested Completion Time
+|5 | | |TX |O |Y | |01394 |Parameters
+|===
+
+==== 13.3.5.0 ECD Field Definitions
+
+==== 13.3.5.1 ECD-1 Reference Command Number (NM) 01390
+
+Definition: This field contains the unique identifier for this particular command that should be used by the various components for future referral to this command. It is similar to the concept of _MSH-10 Message Control ID_, but at the equipment command/response level. This number is generated by the originator of this command.
+
+==== 13.3.5.2 ECD-2 Remote Control Command (CWE) 01391
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the command that the component is to initiate. Refer to _file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70368[User-defined Table 0368 – Remote Control Comman]d_ in Chapter 2C, Code Tables, for valid values. Refer to LECIS standard for details.
+
+==== 13.3.5.3 ECD-3 Response Required (ID) 01392
+
+Definition: This field identifies the mode of synchronization that is to be used in relation to the execution of the command. "Y" (Yes) means that the response is required immediately after execution; "N" (No) response is not required at all. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/no Indicator_] for valid values.
+
+==== 13.3.5.4 ECD-4 Requested Completion Time 01393
+
+*_Attention: As of version 2.5 this fieldwas retained for backward compatibility only and withdrawn as of v2.7._* The TQ data type was deprecated; see Chapter 2A, section 2.A.81. Instead use the "Explicit time" (TQ1-4) or "Relative Time and Units" (TQ1-5) fields of the TQ1 segment in a message using ECD segment.
+
+==== 13.3.5.5 ECD-5 Parameters (TX) 01394
+
+Definition: This field identifies the parameters of the command (if they are not included in a separate segment(s)).
+
+*Note:* Elements of this segment (or other elements not defined here) may be required for certain vendor-specific equipment such as centrifuges, aliquoters, sorters, uncappers, recappers, automated storage units, etc.
+
+=== 13.3.6 ECR - Equipment Command Response Segment 
+
+The equipment command response segment contains the receiving component's response to the previously received command.
+
+HL7 Attribute Table – ECR[#ECR .anchor]#### – Equipment Command Response
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70387[0387] |01395 |Command Response
+|2 | | |DTM |R | | |01396 |Date/Time Completed
+|3 | | |TX |O |Y | |01397 |Command Response Parameters
+|===
+
+==== 13.3.6.0 ECR Field Definitions
+
+==== 13.3.6.1 ECR-1 Command Response (CWE) 01395
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the response of the previously issued command. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70387[_User-defined Table 0387 – Command Response_] in Chapter 2C, Code Tables, for valid values.
+
+==== 13.3.6.2 ECR-2 Date/Time Completed (DTM) 01396
+
+Definition: This field contains the date and time that the receiving component completed the requested command.
+
+==== 13.3.6.3 ECR-3 Command Response Parameters (TX) 01397
+
+Definition: This field identifies any associated parameters that relate to the returned response command message.
+
+=== 13.3.7 NDS - Notification Detail Segment
+
+The equipment notification detail segment is the data necessary to maintain an adequate audit trail as well as notifications of events, (e.g., alarms that have occurred on a particular piece of equipment.
+
+HL7 Attribute Table – NDS[#NDS .anchor]#### – Notification Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | |10= |NM |R | | |01398 |Notification Reference Number
+|2 | | |DTM |R | | |01399 |Notification Date/Time
+|3 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70367[0367] |01400 |Notification Alert Severity
+|4 | | |CWE |R | |0610 |01401 |Notification Code
+|===
+
+==== 13.3.7.0 NDS Field Definitions
+
+==== 13.3.7.1 NDS-1 Notification Reference Number (NM) 01398
+
+Definition: This field contains a unique sequential reference number that may be used by various components to refer to this transaction. This number is generated by the originator of this notification.
+
+==== 13.3.7.2 NDS-2 Notification Date/Time (DTM) 01399
+
+Definition: This field is the date/time of the notifications.
+
+==== 13.3.7.3 NDS-3 Notification Alert Severity (CWE) 01400
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: The severity of the specific notification. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70367[_HL7 Table 0367 – Alert Level_] in Chapter 2C, Code Tables, for valid entries.
+
+==== 13.3.7.4 NDS-4 Notification Code (CWE) 01401
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains information about the type of notification being sent. These are manufacturer and equipment specific error or status codes, e.g., AQN0123 – aliquoting error – clot detected. Refer to Table 0610 - Notification Code in Chapter 2C for valid values.
+
+=== 13.3.8 CNS – Clear Notification Segment 
+
+The clear equipment notification segment contains the data necessary to allow the receiving equipment to clear any associated notifications.
+
+HL7 Attribute Table – CNS[#CNS .anchor]#### – Clear Notification
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | |10= |NM |O | | |01402 |Starting Notification Reference Number
+|2 | |10= |NM |O | | |01403 |Ending Notification Reference Number
+|3 | | |DTM |O | | |01404 |Starting Notification Date/Time
+|4 | | |DTM |O | | |01405 |Ending Notification Date/Time
+|5 | | |CWE |O | |0585 |01406 |Starting Notification Code
+|6 | | |CWE |O | |0586 |01407 |Ending Notification Code
+|===
+
+==== 13.3.8.0 CNS Field Definitions
+
+==== 13.3.8.1 CNS-1 Starting Notification Reference Number (NM) 01402
+
+Definition: This field contains the starting notification reference number that is to be cleared.
+
+==== 13.3.8.2 CNS-2 Ending Notification Reference Number (NM) 01403
+
+Definition: This field contains the ending notification reference number that is to be cleared. If empty, then only notification with Starting Notification Reference Number will be cleared.
+
+==== 13.3.8.3 CNS-3 Starting Notification Date/Time (DTM) 01404
+
+Definition: This field is the starting date/time of the notifications to be cleared. If this field is empty but Ending Notification Date/Time is filled, then all notifications before Ending Notification Date/Time will be cleared.
+
+==== 13.3.8.4 CNS-4 Ending Notification Date/Time (DTM) 01405
+
+Definition: This field is the ending date/time of the notifications to be cleared. If this field is empty but Starting Notification Date/Time is filled, then all notifications after Starting Notification Date/Time will be cleared.
+
+==== 13.3.8.5 CNS-5 Starting Notification Code (CWE) 01406
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the starting notification code that is to be cleared (see _13.3.7.4_, "_NDS-4 Notification Code (CWE) 01401_").Refer to Table 0585 - Starting Notification Code in Chapter 2C for valid values.
+
+==== 13.3.8.6 CNS-6 Ending Notification Code (CWE) 01407
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the ending notification code that is to be cleared (see _13.3.7.4_, "_NDS-4 Notification Code (CWE) 01401_"). If empty, then only notification with Starting Notification Code will be cleared. Refer to Table 0586 - Ending Notification Code in Chapter 2C for valid values.
+
+=== 13.3.9 TCC - Test Code Configuration Segment 
+
+The test (e.g., analyte) code configuration segment is the data necessary to maintain and transmit information concerning the test entity codes that are being used throughout the "automated system."
+
+HL7 Attribute Table – TCC[#TCC .anchor]#### – Test Code Configuration
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |0787 |00238 |Universal Service Identifier
+|2 | | |EI |R | | |01408 |Equipment Test Application Identifier
+|3 | | | |W | | |00249 |Specimen Source
+|4 | | |SN |O | | |01410 |Auto-Dilution Factor Default
+|5 | | |SN |O | | |01411 |Rerun Dilution Factor Default
+|6 | | |SN |O | | |01412 |Pre-Dilution Factor Default
+|7 | | |SN |O | | |01413 |Endogenous Content of Pre-Dilution Diluent
+|8 | |10# |NM |O | | |01414 |Inventory Limits Warning Level
+|9 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01415 |Automatic Rerun Allowed
+|10 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01416 |Automatic Repeat Allowed
+|11 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01417 |Automatic Reflex Allowed
+|12 | | |SN |O | | |01418 |Equipment Dynamic Range
+|13 | | |CWE |O | |0788 |00574 |Units
+|14 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70388[0388] |01419 |Processing Type
+|15 |705 | |CWE |O | | |03313 |Test Criticality
+|===
+
+==== 13.3.9.0 TCC Field Definitions
+
+==== 13.3.9.1 TCC-1 Universal Service Identifier (CWE) 00238
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the test code that information is being transmitted about. The alternate elements represent the test code identifier that has been assigned by the manufacturer to this particular test code. Refer to Table 0787 - Universal Service Identifier in Chapter 2C for valid values.
+
+==== 13.3.9.2 TCC-2 Equipment Test Application Identifier (EI) 01408
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the test application code assigned by the manufacturer of the equipment or reagents and associated with performing of the particular test specified by the Universal Test Identifier.
+
+==== 13.3.9.3 TCC-3 Specimen Source 00249 
+
+*_Attention: As of version 2.5 this field was deprecated and retained for backward compatibility only and withdrawn as of v2.7._*
+
+==== 13.3.9.4 TCC-4 Auto-Dilution Factor Default (SN) 01410
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field is the value that is to be used as the default factor for automatically diluting a specimen by an instrument for this particular test code. (See examples in definition of _13.3.3.29_, "_SAC-29 Dilution Factor_ (SN) 01356" in, "Specimen Container Detail Segment.")
+
+==== 13.3.9.5 TCC-5 Rerun Dilution Factor Default (SN) 01411
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field is the value that is to be used as the default factor for automatically diluting a specimen in case of rerun for this particular test code.
+
+==== 13.3.9.6 TCC-6 Pre-Dilution Factor Default (SN) 01412
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field is the value that is to be used as the default factor for a specimen that is delivered to the laboratory automation system as pre-diluted for this particular test code.
+
+==== 13.3.9.7 TCC-7 Endogenous Content of Pre-Dilution Diluent (SN) 01413
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field represents a baseline value for the measured test that is inherently contained in the diluent. In the calculation of the actual result for the measured test, this baseline value is normally considered.
+
+==== 13.3.9.8 TCC-8 Inventory Limits Warning Level (NM) 01414
+
+Definition: This field is the value that is to be used as the threshold for initiating inventory warning-level messages.
+
+==== 13.3.9.9 TCC-9 Automatic Rerun Allowed (ID) 01415
+
+Definition: This field identifies whether or not automatic reruns are to be initiated on specimens for this particular test code. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 -Yes/no Indicator_] for valid values.
+
+==== 13.3.9.10 TCC-10 Automatic Repeat Allowed (ID) 01416
+
+Definition: This field identifies whether or not automatic repeat testing is to be initiated on specimens for this particular test code. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 -Yes/no Indicator_] for valid values.
+
+==== 13.3.9.11 TCC-11 Automatic Reflex Allowed (ID) 01417
+
+Definition: This field identifies whether or not automatic or manual reflex testing is to be initiated on specimens for this particular test code. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 -Yes/no Indicator_] for valid values.
+
+==== 13.3.9.12 TCC-12 Equipment Dynamic Range (SN) 01418
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This is the range over which the equipment can produce results.
+
+==== 13.3.9.13 TCC-13 Units (CWE) 00574
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the units that have a data type of CWE. The default coding system for the units codes consists of the ISO+ abbreviation for a single case unit (ISO 2955‑83) plus extensions, that do not collide with ISO abbreviations (see Chapter 7, section 7.4.2.6). We designate this coding system as ISO+. Both the ISO unit's abbreviations and the extensions are defined in Chapter 7, section 7.4.2.6.2 and listed in Figure 7-9. The ISO+ abbreviations are the codes for the default coding system. Consequently, when ISO+ units are being used, only ISO+ abbreviations need be sent, and the contents of the units field will be backward compatible to HL7 Version 2.1. For more information on this field see reference Chapter 7, section 7.4.2.6.
+
+These units apply to fields "Endogenous content of pre-dilution diluent" and "Equipment dynamic range".
+
+Refer to Table 0788 - Units in Chapter 2C for valid values.
+
+==== 13.3.9.14 TCC-14 Processing Type (CWE) 01419
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the processing type that applies to this test code. If this attribute is omitted, then regular production is the default. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70388[_HL7 Table 0388 – Processing Type_] in Chapter 2C, Code Tables, for valid values.
+
+==== 13.3.9.15 TCC-15 Test Criticality (CWE) 03313
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the test the Test Criticality. The values in this field are used for decisions, which tests should be performed, in case of, e.g., insufficient specimen volume. +
+The data type is CWE because its meaning is a coded value. However, in order to make the processing decisions easy the content can be a sequential number of the test sorted according to the criticality assigned by the lab. The lower numbers are more critical than higher numbers.
+
+=== 13.3.10 TCD - Test Code Detail Segment 
+
+The test code detail segment contains the data necessary to perform operations or calculations, or execute decisions by the laboratory automation system, and which are not supported by the original HL7 segments related to orders (ORC, OBR). For detail of use see messages of laboratory orders and observations in chapters 4 and 7.
+
+HL7 Attribute Table – TCD – Test Code Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |0789 |00238 |Universal Service Identifier
+|2 | | |SN |O | | |01420 |Auto-Dilution Factor
+|3 | | |SN |O | | |01421 |Rerun Dilution Factor
+|4 | | |SN |O | | |01422 |Pre-Dilution Factor
+|5 | | |SN |O | | |01413 |Endogenous Content of Pre-Dilution Diluent
+|6 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01416 |Automatic Repeat Allowed
+|7 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01424 |Reflex Allowed
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70389[0389] |01425 |Analyte Repeat Status
+|*9* | | |*CQ* |*O* | | |*03490* |*Specimen Consumption Quantity*
+|*10* | | |*NM* |*O* | | |*03493* |*Pool Size*
+|*11* | | |*CWE* |*O* | |*0945* |*03494* |*Auto-Dilution Type*
+|===
+
+==== 13.3.10.0 TCD Field Definitions
+
+==== 13.3.10.1 TCD-1 Universal Service Identifier (CWE) 00238
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the test code that information is being transmitted about. Refer to Table 0789 - Universal Service Identifier in Chapter 2C for valid values.
+
+==== 13.3.10.2 TCD-2 Auto-Dilution Factor (SN) 01420
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field is the value that is to be used as the factor for automatically diluting a particular specimen by an instrument for this particular test code. (See examples in definition of _13.3.3.29_, "_SAC-29 Dilution Factor_ (SN) 01356," in the "Specimen Container Detail Segment.")
+
+==== 13.3.10.3 TCD-3 Rerun Dilution Factor (SN) 01421
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field is the value that is to be used as the factor for automatically diluting a particular specimen in case of rerun for this particular test code.
+
+==== 13.3.10.4 TCD-4 Pre-Dilution Factor (SN) 01422
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field is the value that is to be used as the factor for a particular specimen that is delivered to the automated system as pre-diluted for this particular test code.
+
+==== 13.3.10.5 TCD-5 Endogenous Content of Pre-Dilution Diluent (SN) 01413
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field represents the rest concentration of the measured test in the diluent. It is the value that is to be used for calculation of the concentration of pre-diluted specimens for this particular test code.
+
+==== 13.3.10.6 TCD-6 Automatic Repeat Allowed (ID) 01416
+
+Definition: This field identifies whether or not automatic repeats are to be initiated for this particular specimen for this particular test code. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 -Yes/no Indicator_] for valid values.
+
+==== 13.3.10.7 TCD-7 Reflex Allowed (ID) 01424
+
+Definition: This field identifies whether or not automatic or manual reflex testing is to be initiated for this particular specimen. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 -Yes/no Indicator_] for valid values.
+
+==== 13.3.10.8 TCD-8 Analyte Repeat Status (CWE) 01425
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the repeat status for the analyte/result (e.g., original, rerun, repeat, reflex). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70389[_HL7 Table 0389 – Analyte Repeat Status_] in Chapter 2C, Code Tables, for valid values.
+
+For purpose of this chapter we assume the following:
+
+• Repeated test without dilution — performed usually to confirm correctness of results (e.g., in case of results flagged as "Panic" or mechanical failures).
+
+• Repeated test with dilution — performed usually in the case the original result exceeded the measurement range (technical limits).
+
+• Reflex test — this test is performed as the consequence of rules triggered based on other test result(s).
+
+==== 13.3.10.9 TCD-9 Specimen Consumption Quantity (CQ) 03490 
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: The specimen consumption quantity determines how much of the specimen shall be consumed in each run of the test. For some types of equipment, observation accuracy depends on this parameter.
+
+==== 13.3.10.10 TCD-10 Pool Size (NM) 03493
+
+Definition: In order submission messages, this field defines the maximal size of the pool where the given specimen may be combined into. In result submission messages, this field defines the actual size of such pool.
+
+==== 13.3.10.11 TCD-11 Auto-Dilution Type (CWE) 03494
+
+Definition: This field contains a vendor-defined code of the auto-dilution factor pre‑configured on the instrument, which can be used instead of TCD‑2 “Auto-Dilution Factor”. Refer to _User-defined Table 0945– Auto Dilution Type_ in Chapter 2C, Code Tables, for suggested values.
+
+If both TCD‑2 “Auto-Dilution Factor” and TCD‑11 “Auto-Dilution Type” are populated, they shall not contradict each other.
+
+=== 13.3.11 SID – Substance Identifier Segment 
+
+The Substance Identifier segment contains data necessary to identify the substance (e.g., reagents) used in the production of analytical test results. The combination of these fields must uniquely identify the substance, i.e., depending on the manufacturer all or some fields are required (this is the reason the optionality is 'C' (conditional)). If the analysis requires multiple substances, this segment is repeated for each substance. The segment(s) should be attached to the TCD segment.
+
+Another purpose of this segment is to transfer the control manufacturer, lot, etc., information for control specimens. In this case the SID segment should be attached to the SAC segment describing the container with the control specimen.
+
+HL7 Attribute Table – SID – Substance Identifier
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |C | |0783 |01426 |Application/Method Identifier
+|2 | |20= |ST |C | | |01129 |Substance Lot Number
+|3 | |200= |ST |C | | |01428 |Substance Container Identifier
+|4 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70385[0385] |01429 |Substance Manufacturer Identifier
+|===
+
+==== 13.3.11.0 SID Field Definitions
+
+==== 13.3.11.1 SID-1 Application/Method Identifier (CWE) 01426
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the application/method used for the analysis. Refer to Table 0783 - Application/Method Identifier in Chapter 2C for valid values.
+
+Example: GLUCOSE is an orderable test. GLUCOSE can be analyzed using various applications/methods, which have manufacturer specific identifiers.
+
+==== 13.3.11.2 SID-2 Substance Lot Number (ST) 01129
+
+Definition: This field specifies the lot number assigned by the manufacturer during production of the substance.
+
+==== 13.3.11.3 SID-3 Substance Container Identifier (ST) 01428
+
+Definition: This field specifies the container assigned by the manufacturer during production of the substance. This identifier should be unique within specific lot of specific application / method.
+
+==== 13.3.11.4 SID-4 Substance Manufacturer Identifier (CWE) 01429
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the manufacturer of this substance. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70385[_User-defined Table 0385 - Manufacturer Identifier_] in Chapter 2C, Code Tables, for suggested values.
+
+=== 13.3.12 EQP - Equipment Log/Service Segment 
+
+The equipment log/service segment is the data necessary to maintain an adequate audit trail of events that have occurred on a particular piece of equipment.
+
+HL7 Attribute Table – EQP[#EQP .anchor]#### – Equipment/log Service
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70450[0450] |01430 |Event type
+|2 | |20= |ST |O | | |01431 |File Name
+|3 | | |DTM |R | | |01202 |Start Date/Time
+|4 | | |DTM |O | | |01432 |End Date/Time
+|5 | | |FT |R | | |01433 |Transaction Data
+|===
+
+==== 13.3.12.0 EQP Field Definitions
+
+==== 13.3.12.1 EQP-1 Event Type (CWE) 01430
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the type of event of the message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70450[HL7 Table 0450 – Event Type] in Chapter 2C, Code Tables, for valid values.
+
+==== 13.3.12.2 EQP-2 File Name (ST) 01431
+
+Definition: This field is the physical file name that is being used to store information about the transmitted log and/or service event.
+
+==== 13.3.12.3 EQP-3 Start Date/Time (DTM) 01202
+
+Definition: This field is the date/time that the event started.
+
+==== 13.3.12.4 EQP-4 End Date/Time (DTM) 01432
+
+Definition: This field is the date/time that the event was completed.
+
+==== 13.3.12.5 EQP-5 Transaction Data (FT) 01433
+
+Definition: This field is the data that the log and/or service event was about and is to be logged.
+
+=== 13.3.13 DST – Transport Destination Segment
+
+The Transport Destination segment contains information relevant for transport of the specimen container to specific destination on the specific equipment. This segment should be used in conjunction with the TT, AF, and AT commands of the ECD segment used in the EAC message.
+
+HL7 Attribute Table –DST – Transport Destination
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |link:#HL70368[0943] |03491 |Destination
+|2 | | |CWE |O |Y |link:#HL70368[0944] |03492 |Route
+|===
+
+==== 13.3.13.0 DST Field Definitions
+
+==== 13.3.13.1 DST-1 Destination (CWE) 03491
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the destination for transport of a specific container. Refer to User-defined Table _0943 –_ _Transport Destination_ in Chapter 2C, Code Tables; there are no suggested values.
+
+==== 13.3.13.2 DST-2 Route (CWE) 03492
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the route for transport of a specific container. . Refer to _User-defined Table 0944 – Transport Route_ in Chapter 2C, Code Tables; there are no suggested values.
+
+Each repetion indicates the device to which the sample needs to be moved along the route.
+
+== 13.4 Notes regarding usage
+
+=== 13.4.1 Other Required Original HL7 Messages
+
+The transaction for synchronization of system clocks must be supported by all equipment as receiver. The master (sender) of the time is either the LAS computer or the LIS.
+
+=== 13.4.2 Transfer of Laboratory Test Orders and Results
+
+For the transfer of laboratory automation orders and results refer to 4.2.6 OML - laboratory order message (event O21) instead of ORM and 7.2.2 ORL – unsolicited laboratory observation message (event O20) instead of ORU.
+
+=== 13.4.3 Transfer of QC Results
+
+Use _SPM-11 Specimen Role_, or _SAC-6 Specimen Source_, or the 7th component of _OBR-15 Specimen Source_ or _SAC-6 Specimen Source_ to indicate that this is a control specimen. Use _SAC-3 Container Identifier_ for the identification of a control specimen container. The SID segment appended to this SAC segment specifies the manufacturer, lot identifiers, etc. for the control specimen.
+
+The identification of the instrument performing the QC measurement, should be transferred with the _OBX-18 Equipment Instance Identifier_), the measurement data/time with the _OBX-19 Date/Time of the Analysis_.
+
+=== 13.4.4 Query for Order Information – Triggers for Download of Test Orders
+
+There is no specific query for laboratory order information. Instead, the order information should be downloaded to the LAS either unsolicited (based on LIS internal triggers such as Sample Collected or Order Entered) or after an implicit trigger such as Sample Status Update – sample identified by the LAS.
+
+=== 13.4.5 Transfer of Additional Information for Automated Processing
+
+Instruments requiring additional information for performing of automated processing based on automatic validation, such as Expected Date of Birth (Delivery Date), Menstrual Status, History of Medication Use, should consider using OBX segments and LOINC codes. For example, the LOINC code for Delivery Date is 11778-8, Menstrual status is 8678-5, History of Medication Use is 10160‑0.
+
+=== 13.4.6 Working With Non-Substance Inventory Items
+
+This section provides examples of INV segments related to reporting and querying values of equipment state indicators (special non-material inventory items).
+
+*Example 1: Reporting that all tests are available (in INU^U05):*
+
+INV|NONE^^HL70451|OK^^HL70383|||||||||||||||||||TA^^HL70942
+
+*Example 2: Reporting that tests with LOINC codes 1492-8 and 1496-8 are available (in INU^U05):*
+
+INV|NONE^^HL70451|OK^^HL70383|||||||||||||1492-8^^LN~1496-8^^LN||||||TA^^HL70942
+
+*Example 3: Reporting that the current instrument processing capacity is 42 % (in INU^U05):*
+
+INV|NONE^^HL70451|OK^^HL70383|||||||||||||||||||IC^^HL70942|42^%&&UCUM
+
+*Example 4: Reporting that an output specimen buffer “Buffer1” is full (in INU^U05):*
+
+INV|BufferId1^^HL70451|OK^^HL70383|||||||||||||||||||OB^^HL70942|100^%&&UCUM
+
+*Example 5: Reporting that an emergency input specimen buffer “Buffer2” is empty (in INU^U05):*
+
+INV|BufferId2^^HL70451|OK^^HL70383|||||||||||||||||||EB^^HL70942|0^%&&UCUM
+
+*Example 6: Querying the current instrument processing capacity (in INR^U14):*
+
+INV|||||||||||||||||||||IC^^HL70942
+
+*Example 7: Querying the current capacity of all regular specimen input buffers (in INR^U14):*
+
+INV|||||||||||||||||||||IB^^HL70942
+
+*Example 8: Querying the current capacity of the regular specimen input buffer “Buffer3” (in INR^U14):*
+
+INV|Buffer3^^HL70451||||||||||||||||||||IB^^HL70942
+
+== 13.5 Example Messages 
+
+This sub-chapter contains examples to messages defined in the chapter 13. Examples for other messages using segments defined in the chapter 13 are published in corresponding chapters, e.g., for laboratory orders in chapter 4 and for laboratory observations in chapter 7.
+
+=== 13.5.1 Automated Equipment Status Update
+
+The chemistry analyzer 0001 was powered up directly by the operator (local control) and correctly performed the initialization process. This information is sent by the analyzer to the LAS.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |ESU^U01^ESU|MSG00001|P|2.8|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038|PU^POWERED_UP|L^LOCAL|N^NORMAL<cr>
+
+ISD|123456789|IN^INIT|OK<cr>
+
+=== 13.5.2 Automated Equipment Status Request
+
+The LAS queries the chemistry analyzer 0001 for status information.
+
+MSH|^~\&|LASPROG|LASSYS|INSTPROG|AUTINST|19980630080040|SECURITY |ESR^U02^ESR|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+=== 13.5.3 Specimen Status Update 
+
+The chemistry analyzer 0001 recognized an aliquot container (id=092321A) with blood. This container is in a position 1 of carrier type R5 (id=120) and is located in the input buffer 1.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |SSU^U03^SSU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+SAC|991912376^EXTLAB|01039421^THISLAB|092321A^LAS|092321^LAS||BLD^BLOOD |19980620080037|I^IDENTIFIED|R5^5_HOLE_RACK|120|1||||BUF1^INPUT BUFFER 1<cr>
+
+A pre-analytical instrument 0001 performed aliquoting and sorting operation. +
+(See Fig. 13-5 for visualization of positions and locations) +
+The carrier (id=2002) with primary/parent container (id=12345) at position 2 was transported in the location: output buffer 1, into position 4 of the output tray (id=A1203). +
+The aliquot container (id=12345A) was sorted into the manual transportable carrier (id=045), in row 3, column 2. This carrier is located in the sorter bed at location 4.
+
+MSH|^~\&|PREANPROG|AUTPREAN|LASPROG|LASSYS|19980630080040|SECURITY |SSU^U03^SSU|MSG00002|P|2.9|<cr>
+
+EQU|0001^AQS|19980630080043<cr>
+
+SAC|991912376^EXTLAB|01039421^THISLAB|12345^LAS||||19980620080039|R^COMPLETED |R3^3_HOLE_RACK|2002|1|OT^OUTPUTTRAY|A1203^AQSTRAY|4|OB1^OUTPUTBUFFER<cr>
+
+SAC|991912376^EXTLAB|01039421^THISLAB|12345A^LAS|12345^LAS|||19980620080039 |R^COMPLETED|R14^14_HOLE_RACK|045|3^2||||AQSBED||||||2|0.5||ml<cr>
+
+=== 13.5.4 Specimen Status Request
+
+The chemistry analyzer 0001 queries the LAS for status of specimen/container (id=092321A).
+
+MSH|^~\&|LASPROG|LASSYS|INSTPROG|AUTINST|19980630080040|SECURITY |SSR^U04^SSR|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+SAC|991912376^EXTLAB|01039421^THISLAB|092321A^LAS||||199806200823<cr>
+
+=== 13.5.5 Automated Equipment Inventory Update
+
+The chemistry analyzer 0001 sends to the LAS the status of a TSH reagent (id=MF01239) in bottle (id=12345).
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |INU^U05^INU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+INV|MF01239^REAGENT1|OK^OK_STATUS|SR^SINGLE_TEST_REAGENT |12345^BOTTLE_NUM|||||190||ML|20000101||^^D60|TSH|A12345678|PROD1<cr>
+
+=== 13.5.6 Automated Equipment Inventory Request
+
+The LAS queries the chemistry analyzer 0001 for status of all packages of the substance (id=MF01239).
+
+MSH|^~\&|LASPROG|LASSYS|INSTPROG|AUTINST|19980630080040|SECURITY |INR^U06^INR|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+INV|MF01239^REAGENT1|OK^OK_STATUS<cr>
+
+=== 13.5.7 Automated Equipment Command
+
+The LAS sends command of "Clearing Notification" to the chemistry analyzer 0001.
+
+MSH|^~\&|LASPROG|LASSYS|INSTPROG|AUTINST|19980630080040|SECURITY |EAC^U07^EAC|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+ECD|89421|CN^CLEAR NOTIFICATION|Y^YES<cr>
+
+CNS|1209|1500|199806010800|199806300800<cr>
+
+=== 13.5.8 Automated Equipment Response
+
+The chemistry analyzer confirms completion of the execution of the initialization command.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |EAR^U08^EAR|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+ECD|89421|IN^INIT|Y^YES<cr>
+
+ECR|OK^COMMAND_COMPLETE|19980630080035<cr>
+
+=== 13.5.9 Automated Equipment Notification
+
+The chemistry analyzer sends a notification (warning) about drift in the detection unit.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |EAN^U09^EAN|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+NDS|8923|199806300800|W^WARNING^|DU001^DETECTIO UNIT DRIFT<cr>
+
+=== 13.5.10 Automated Equipment Test Code Settings Update
+
+The LAS send update of configuration parameters for Glucose test.
+
+MSH|^~\&|LASPROG|LASSYS|INSTPROG|AUTINST|19980630080040|SECURITY |TCU^U10^TCU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+TCC|15074-8^GLUCOSE|GLU-HK^CHEMISTRYANALYZER|SER^SERUM|10|10|0|0|500| Y^YES|Y^YES|N^NO |^2^‑^400|mg/dL|P<cr>
+
+=== 13.5.11 Automated Equipment Test Code Settings Request
+
+The chemistry analyzer 0001 queries the LAS for configuration parameters of the Glucose test.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |TCR^U11^TCU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+TCC|15074-8^GLUCOSE|GLU-HK^CHEMISTRYANALYZER<cr>
+
+=== 13.5.12 Automated Equipment Log/Service Update
+
+The chemistry analyzer 0001 sends 1 record from the event log to the LAS.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |LSU^U12^LSU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+EQP|LOG^LOG_EVENT||199806300755|199806300800|I976 Instrument Initialization<cr>
+
+=== 13.5.13 Automated Equipment Log/Service Request
+
+The LAS queries chemistry analyzer for log file of events occurring between 7am and 8am on 30^th^ June 1998.
+
+MSH|^~\&|LASPROG|LASSYS|INSTPROG|AUTINST|19980630080040|SECURITY |LSR^U13^LSU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+EQP|LOG^LOG_EVENT||199806300700|199806300800<cr>
+
+== 13.6 Outstanding Issues
+
+The element definition for TCC-15 Test Criticality in section 13.4.9.15 proposes an ambigous use of the CWE data type in. Currently the element definition indicates that a CWE data type is used; however, the definition also advises that the element can be populated with "a sequential number of the test sorted according to the criticality assigned by the lab". In general practice, the CWE data type references a table of assigned values, recognizing that those values are often assigned by the user. It is expected that the definition for this element will be reviewed and revised with the next release.

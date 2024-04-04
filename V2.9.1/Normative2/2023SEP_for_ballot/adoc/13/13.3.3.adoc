@@ -1,0 +1,62 @@
+=== 13.3.3 SAC – Specimen Container Detail Segment 
+
+The container detail segment is the data necessary to maintain the containers that are being used throughout the Laboratory Automation System.
+
+The specimens in many laboratories are transported and processed in containers (e.g., sample tubes). When SPM and SAC are used in the same message, then the conceptually duplicate attributes will be valued only in the SPM. This applies to _SAC-6 Specimen Source_, _SAC-27 Additives_, and _SAC-43 Special Handling Considerations_.
+
+HL7 Attribute Table – SAC[#SAC .anchor]#### – Specimen Container detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |EI |O | | |01329 |External Accession Identifier
+|2 | | |EI |O | | |01330 |Accession Identifier
+|3 | | |EI |C | | |01331 |Container Identifier
+|4 | | |EI |C | | |01332 |Primary (Parent) Container Identifier
+|5 | | |EI |O | | |01333 |Equipment Container Identifier
+|6 | | | |W | | |00249 |Specimen Source
+|7 | | |DTM |O | | |01334 |Registration Date/Time
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70370[0370] |01335 |Container Status
+|9 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70378[0378] |01336 |Carrier Type
+|10 | | |EI |O | | |01337 |Carrier Identifier
+|11 | | |NA |O | | |01338 |Position in Carrier
+|12 | | |CWE |O | |E:\\V2\\v2.9 final Nov from Frank\\V29_CH02C_Tables.docx#HL70379[0379] |01339 |Tray Type – SAC
+|13 | | |EI |O | | |01340 |Tray Identifier
+|14 | | |NA |O | | |01341 |Position in Tray
+|15 | | |CWE |O |Y |0774 |01342 |Location
+|16 | |10# |NM |O | | |01343 |Container Height
+|17 | |10# |NM |O | | |01344 |Container Diameter
+|18 | |10# |NM |O | | |01345 |Barrier Delta
+|19 | |10# |NM |O | | |01346 |Bottom Delta
+|20 | | |CWE |O | |0775 |01347 |Container Height/Diameter/Delta Units
+|21 | |10# |NM |O | | |00644 |Container Volume
+|22 | |10# |NM |O | | |01349 |Available Specimen Volume
+|23 | |10# |NM |O | | |01350 |Initial Specimen Volume
+|24 | | |CWE |O | |0777 |01351 |Volume Units
+|25 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70380[0380] |01352 |Separator Type
+|26 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70381[0381] |01353 |Cap Type
+|27 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70371[0371] |00647 |Additive
+|28 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70372[0372] |01355 |Specimen Component
+|29 | | |SN |O | | |01356 |Dilution Factor
+|30 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70373[0373] |01357 |Treatment
+|31 | | |SN |O | | |01358 |Temperature
+|32 | |10# |NM |O | | |01359 |Hemolysis Index
+|33 | | |CWE |O | |0779 |01360 |Hemolysis Index Units
+|34 | |10# |NM |O | | |01361 |Lipemia Index
+|35 | | |CWE |O | |0780 |01362 |Lipemia Index Units
+|36 | |10# |NM |O | | |01363 |Icterus Index
+|37 | | |CWE |O | |0781 |01364 |Icterus Index Units
+|38 | |10# |NM |O | | |01365 |Fibrin Index
+|39 | | |CWE |O | |0782 |01366 |Fibrin Index Units
+|40 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70374[0374] |01367 |System Induced Contaminants
+|41 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70382[0382] |01368 |Drug Interference
+|42 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70375[0375] |01369 |Artificial Blood
+|43 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70376[0376] |01370 |Special Handling Code
+|44 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70377[0377] |01371 |Other Environmental Factors
+|45 | | |CQ |O | | |02496 |Container Length
+|46 | | |CQ |O | | |02497 |Container Width
+|47 | | |CWE |O | |0967 |02498 |Container Form
+|48 | | |CWE |O | |0968 |02499 |Container Material
+|49 | | |CWE |O | |0969 |02500 |Container Common Name
+|===
+

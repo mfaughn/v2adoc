@@ -1,0 +1,6 @@
+==== 6.5.1.51 FT1-51 DME Rental Price (MO) 03503
+
+____
+Definition: This is the rental price of the durable medical equipment.
+____
+

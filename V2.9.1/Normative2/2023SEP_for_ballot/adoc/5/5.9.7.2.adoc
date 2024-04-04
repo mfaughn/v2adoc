@@ -1,0 +1,105 @@
+==== 5.9.7.2 MPI Query Profile – Non query by example version
+
+Query Profile
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID (Query ID=Z75): |Z75
+|Type: |Query
+|Query Name: |Tabular Patient List
+|Query Trigger (= MSH-9): |QBP^Z75^QBP_Q13
+|Query Mode: |Both
+|Response Trigger (= MSH-9): |RTB^Z76^RTB_K13
+|Query Characteristics: |Patient identifier and matching algorithm requirements are passed via the input parameters. Output columns are chosen from a Virtual Table.
+|Purpose: |To find patient records that closely (as specified by the Client) match a set of input criteria using a specified algorithm.
+|Response Characteristics: |Response returns requested columns from the Virtual Table. If no columns were requested, all columns are returned.
+|Based on Segment Pattern: |
+|===
+
+The message structure for QBP^Z75^QPB_Q13 can be found in 5.3.1.2. Use the QBP^Q13^QPB_Q13 Message structure.
+
+RTB^Z76^RTB_K13: Response Grammar: Who Am I
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec Ref
+|MSH |Message Header | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|MSA |Message Acknowledgement | |2.15.8
+|[ERR] |Error | |2.15.5
+|link:#QAK[QAK] |Query Acknowledgement | |5.5.2
+|link:#QPD[QPD] |Query Parameter Definition | |5.5.4
+|[ |--- ROW_DEFINITION begin | |
+|link:#RDF[RDF] |Table Row Definition Segment | |5.5.7
+|[\{ link:#RDT[RDT] }] |Table Row Data Segment | |5.5.8
+|] |--- ROW_DEFINITION end | |
+|[ DSC ] |Continuation Pointer | |2.15.4
+|===
+
+*QPD Input Parameter Specification*
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq (Query ID=Z75) |Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element
+|1 |MessageQueryName | | |60 |CWE |R | | | | | |Message Query Name
+|2 |QueryTag | | |32 |ST |R | | | | | |Query Tag
+|3 |Algorithm | | |*48* |*ST* | | | | | | |Algorithm
+|4 |ConfidenceLevel | | |8 |NM | | | | | | |Confidence Level
+|5 |PatientName |S | |48 |XPN | | | | |PID.5 | |PID-5-Patient Name
+|6 |DOB |S | |24 |DTM | | | | |PID.7 | |PID-7-Date/Time of Birth
+|7 |Sex |S | |1 |CWE | | | | |PID.8 | |PID-8-Sex
+|===
+
+*QPD Input Parameter Field Description and Commentary*
+
+[width="100%",cols="20%,11%,6%,63%",options="header",]
+|===
+|Input Parameter (Query ID=Z75) |Comp. Name |DT |Description
+|MessageQueryName | |CWE |SHALL be valued *Z75^Tabular Patient List^HL7nnnn*.
+|QueryTag | |ST |Unique to each query message instance.
+|Algorithm | |ST |The name of the search algorithm that is used to look up the parameter values specified in the PID segment.
+|ConfidenceLevel | |NM |The degree of accuracy that the search algorithm must achieve in order to score a 'hit'.
+|PatientName | |XPN |Name of the patient. May be specified in full or in part.
+|DOB | |DTM |Date and time of the patient's birth. Year, month, and day SHALL be specified; time is optional.
+|Sex | |CWE |Administrative gender of the patient.
+|===
+
+*RCP Response Control Parameter Field Description and Commentary*
+
+[width="100%",cols="13%,25%,13%,6%,7%,36%",options="header",]
+|===
+|Field Seq (Query ID=Z75) |Name |Com­po­nent Name |LEN |DT |Description
+|1 |Query Priority | |1 |ID |(*D*)eferred or (*I*)mmediate. Default is *I*.
+|2 |Quantity Limited Request | |10 |CQ |
+| | |Quantity | |NM |Number of units (specified by the following component) that will be returned in each increment of the response. If no value is given, the entire response will be returned in a single increment.
+| | |Units | |CWE |**CH**aracters, **LI**nes, **P**a**G**es, or **R**ecor**D**s. Default is *LI*.
+|3 |Response Modality | |60 |CWE |**R**eal time or **B**atch. Default is *R*.
+|6 |Sort-by Field | |256 |SRT |
+| | |Sort-by Field | |ST |Segment field name of an output column by which the response may be sorted. SHALL contain a *Y* in the Sort column of the output specification table.
+| | |Sequencing | |ID |As specified in HL7 Table 0397- Sequencing. Default is **A**scending.
+|===
+
+*Output Specification and Commentary: Virtual Table*
+
+[width="99%",cols="19%,9%,3%,6%,8%,3%,6%,8%,8%,10%,11%,9%",options="header",]
+|===
+|ColName (Query ID=Z75) a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|PatientList |*S* |*Y* |*20* |*CX* |*O* | | | |PID.3 | |PID-3 Patient Identifier List
+|PatientName | | |48 |XPN | | | | |PID.5 | |PID-5 Patient Name
+|MothersMaidenName | | |48 |XPN | | | | |PID.6 | |PID-6 Mother's Maiden Name
+|DOB | | |24 |DTM | | | | |PID.7 | |PID-7 Date/Time of Birth
+|Sex | | |1 |CWE | | | | |PID.8 | |PID-8 Sex
+|Race | | |80 |CWE | | | | |PID.10 | |PID-10 Race
+|===
+

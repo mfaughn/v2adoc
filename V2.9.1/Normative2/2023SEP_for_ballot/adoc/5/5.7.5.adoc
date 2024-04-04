@@ -1,0 +1,16 @@
+=== 5.7.5 Canceling a subscription
+
+Canceling a subscription is analogous to canceling a query. See sections 5.4.6 and 0.
+
+The template would be as follows:
+
+MSH|^~\&|||||||QSX^Jnn^QSX_J01|
+
+QID...
+
+To cancel the subscription cited in the previous section, CommunityWest would send a cancel message with event code J99:
+
+MSH|^~\&|CPR|COMWEST|PS^LAB||||QSX^J99^QSX_J01|
+
+QID|Q0044|Q99^ORU_Subscription^HL70003|
+

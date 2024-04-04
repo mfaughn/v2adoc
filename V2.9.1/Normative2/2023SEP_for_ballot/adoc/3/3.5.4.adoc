@@ -1,0 +1,32 @@
+=== 3.5.4 Change an outpatient to an inpatient - event A06
+
+MSH|^~\&|REGADT|MCM|IFENG||200701110025||ADT^A06^ADT_A06|000001|P|2.8||||<cr>
+
+EVN|A06|200701100250||01||200701102300<cr>
+
+PID|||191919^^^GOOD HEALTH HOSPITAL^MR^FAC1~11111^^^USSSA^SS|253763|MASSIE^JAMES^A||19560129|M|||2222 HOME STREET^^ISHPEMING^MI^49849^""^||555-555-2004|555-555-2004||S|C|10199925^^^GOOD HEALTH HOSPITAL^AN|371-66-9256||<cr>
+
+NK1|1|MASSIE^ELLEN|SPOUSE|2222 HOME STREET^^ISHPEMING^MI^49849^""^|555) 555 2004|555-555-5001~555-555-5001|EC1^FIRST EMERGENCY CONTACT<cr>
+
+NK1|2|MASSIE^MARYLOU|MOTHER|300 ZOBERLEIN^^ISHPEMING^MI^49849^""^|555) 555 2004|555-555-5001~555-555-5001|EC2^SECOND EMERGENCY CONTACT<cr>
+
+NK1|3<cr>
+
+NK1|4|||6666 WORKER LOOP^^ISHPEMING^MI^49849^""^||(900)545-1200|EM^EMPLOYER|19940605||PROGRAMMER|||WORK IS FUN, INC.<cr>
+
+PV1||I|6N^1234^A^GOOD HEALTH HOSPITAL||||0100^SENDER,SAM|0148^ATTEND^AARON^A||SUR|||||||0148^SENDER,SAM|S|1400|A|||||||||||||||||||GOOD HEALTH HOSPITAL|||||199501102300|<cr>
+
+OBX||ST|1010.1^BODY WEIGHT||62|kg|||||F<cr>
+
+OBX||ST|1010.1^HEIGHT||190|cm|||||F<cr>
+
+DG1|1|19||BIOPSY||00<cr>
+
+GT1|1||EVERYMAN^ADAM^A||2222 HOME STREET^^ISHPEMING^MI^49849^""^|444-33 3333|555-555-2004||||SE^SELF|444-33 3333||||AUTO CLINIC|2222 HOME STREET^^ISHPEMING^MI^49849^""|555-555-2004<cr>
+
+IN1|0|0|UA1|UARE INSURED, INC.|8888 INSURERS CIRCLE^^ISHPEMING^M149849^""^||555-555-3015|90||||||50 OK<cr>
+
+IN1|2|""|""<cr>
+
+Patient Adam A. Everyman was later converted to an inpatient on January 10^th^, 2007 at 2300 to recover from the operation. The change from outpatient to inpatient was recorded on the MCM system on January 11, 2007 at 0020. He was assigned to room 1234, bed A on unit 6N. When Patient Adam A. Everyman was converted to an inpatient on January 10^th^, 2007 at 2300, his hospital service changed to SUR. His attending doctor and admitting doctors changed to Dr Sam Sender. As a result of the conversion, his account number changed from 10199923 to 10199925
+

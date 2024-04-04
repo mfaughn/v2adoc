@@ -1,0 +1,6 @@
+==== 16.4.7.2 ADJ-2 Payer Adjustment Number (EI) 02004
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Adjustment Number assigned by the Payer Application.
+

@@ -1,0 +1,64 @@
+=== 3.3.37 ADT/ACK - Unlink Patient Information (Event A37)
+
+The A37 event unlinks two patient identifiers.
+
+ADT^A37^ADT_A37: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient (1) Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[ link:#_Hlt476040270[PV1] ] |Patient (1) Visit | |3
+|[\{ link:#_Hlt479197568[DB1] }] |Disability Information | |3
+|link:#_Hlt479197644[PID] |Patient (2) Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[ link:#_Hlt476040270[PV1] ] |Patient (2) Visit | |3
+|[\{ link:#_Hlt479197568[DB1] }] |Disability Information | |3
+|===
+
+[width="100%",cols="20%,23%,5%,17%,17%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A37^ADT_A37 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A37^ACK |- |ACK^A37^ACK
+|Application Ack |ACK^A37^ACK |- |- |ACK^A37^ACK |ACK^A37^ACK
+|===
+
+ACK^A37^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A37^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A37^ACK
+|Application Ack |- |- |-
+|===
+

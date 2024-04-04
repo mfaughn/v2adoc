@@ -1,0 +1,6 @@
+==== 17.5.5.11 PKG-11 Vendor Catalog Number (EI) 02428
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the vendor catalog number of the item UM sent in sequence 3 (Default Order Unit of Measure).
+

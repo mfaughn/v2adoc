@@ -1,0 +1,4 @@
+==== 10.2.5.2 Auxiliary Application
+
+An auxiliary application neither exerts control over, nor requests changes to a schedule. It is only concerned with gathering information about a particular schedule. It can be considered an "interested third-party," in that it is interested in any changes to a particular schedule, but has no interest in changing it or controlling it in any way. It may gather information passively or actively. An auxiliary application passively collects information by receiving unsolicited updates from a filler application.
+

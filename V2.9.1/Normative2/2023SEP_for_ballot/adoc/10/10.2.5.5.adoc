@@ -1,0 +1,4 @@
+==== 10.2.5.5 Child Appointment
+
+A child appointment is an appointment subordinate to another appointment (called a parent appointment). For example, a single instance of an appointment in a group of recurring appointments is a child to the group. Child appointments can themselves be parent appointments. For example, if a battery of appointments is scheduled, then the atomic units of the battery are children to the battery request. If the battery is scheduled as a repeating appointment, then each instance of the battery of appointments (parent to each of the atomic units) is a child to the original repeating request.
+

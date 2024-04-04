@@ -1,0 +1,6 @@
+==== 13.3.3.13 SAC-13 Tray Identifier (EI) 01340
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the tray identifier (e.g., a number of a tray or a bar code on the tray) where the container carrier is located.
+

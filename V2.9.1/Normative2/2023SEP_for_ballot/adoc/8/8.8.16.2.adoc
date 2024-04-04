@@ -1,0 +1,8 @@
+==== 8.8.16.2 OMC-2 Segment Action Code (ID) 00763
+
+Definition:  This field indicates whether this repetition of the segment is being added, changed or deleted.  When using dynamic update mode (See Chapter 2, Section 2.23.4.2, "Action code/unique identifier mode update definition.")  OMC-2 and OMC-3 Segment Unique Key are used to establish the "unique key" and to determine the data subject to the action. Refer to HL7 Table 0206 – Segment action code for valid values.
+
+If the transaction uses dynamic/action code messaging, the field must be valued. 
+
+Condition Predicate: Required if OMC-3 is valued.
+

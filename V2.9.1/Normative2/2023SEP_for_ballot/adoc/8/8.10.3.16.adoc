@@ -1,0 +1,4 @@
+==== 8.10.3.16 PRC-16 Active/Inactive Flag (ID) 00675
+
+Definition: This indicates whether this is a usable CDM entry. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70183[HL7 Table 0183 - Active/Inactive] in Chapter 2C, Code Tables, for valid values.
+

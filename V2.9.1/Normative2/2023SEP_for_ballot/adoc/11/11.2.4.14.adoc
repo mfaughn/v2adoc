@@ -1,0 +1,4 @@
+==== 11.2.4.14 Specialist:
+
+Means a provider of services which are beyond the capabilities or resources of the primary care provider. A specialist is also known as a specialty care provider who provides services at the request of a primary care provider or another specialty care provider.
+

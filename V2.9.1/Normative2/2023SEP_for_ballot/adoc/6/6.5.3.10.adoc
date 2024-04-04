@@ -1,0 +1,8 @@
+==== 6.5.3.10 DRG-10 Confidential Indicator (ID) 00767
+
+Definition: This field indicates if the DRG contains a confidential diagnosis. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y the DRG contains a confidential diagnosis
+
+N the DRG does not contain a confidential diagnosis
+

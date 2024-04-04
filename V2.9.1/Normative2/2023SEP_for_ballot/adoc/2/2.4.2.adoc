@@ -1,0 +1,57 @@
+=== 2.4.2 Segments and segment groups
+
+____
+A *segment* is a logical grouping of data fields. Segments of a message MAY be required or optional. They MAY occur only once in a message or they MAY be allowed to repeat. Each segment is given a name. For example, the ADT message MAY contain the following segments: Message Header (MSH), Event Type (EVN), Patient ID (PID), and Patient Visit (PV1).
+
+Each segment is identified by a unique three-character code known as the Segment ID. Although the actual segments are defined in various chapters, the ID codes assigned to the various segments are listed in Appendix A.
+
+All segment ID codes beginning with the letter *Z* are reserved for locally defined segments. Z Codes SHALL NOT be defined within the HL7 Standard.
+
+Two or more segments MAY be organized as a logical unit called a segment group. A segment group MAY be required or optional and might or might not repeat. As of v 2.5, the first segment in a newly defined segment group will be required to help ensure that unparsable messages will not be inadvertently defined. This required first segment is known as the anchor segment.
+
+A segment group is assigned a name that represents a permanent identifier that SHALLNOT be changed.
+
+A named segment X MAY occur more than once in an abstract message syntax. This differs from repetition described earlier in this section. When this occurs, the following rules SHALL be adhered to:
+
+If, within an abstract message syntax, a named segment X appears in two individual or group locations, and
+____
+
+{empty}a) Either appearance is optional or repeating in an individual location or,
+
+{empty}b) either appearance is optional or repeating in a group location
+
+____
+then, the occurrences of segment X SHALL be separated by at least one required segment of a different name so that no ambiguity can exist as to the individual or group location of any occurrence of segment X in a message instance.
+
+Examples of proper segment grouping
+____
+
+[width="99%",cols="33%,35%,32%",]
+|===
+|Example 1 |Example 2 |Example 3
+|\{ SEG 1} |[ SEG1 ] |SEG1
+|SEG2 |\{ |[ SEG2 ]
+|[ SEG1 ] |SEG2 |SEG3
+| |[ SEG1 ] |\{ SEG1 }
+| |} |
+|===
+
+____
+Examples of unparsable segment grouping
+____
+
+[width="100%",cols="26%,26%,24%,24%",]
+|===
+|Example 1 |Example 2 |Example 3 |Example 4
+|\{ SEG 1} |\{ SEG1 } |[ SEG1 ] |\{ SEG1 }
+|[ SEG1 ] |[ SEG2 ] |\{ |[ SEG2
+| |SEG1 |[ SEG2 ] |SEG3 ]
+| | |SEG1 |SEG1
+| | |SEG3 |
+| | |} |
+|===
+
+____
+In each of these examples it is not possible to tell which part of the message SEG1 belongs.
+____
+

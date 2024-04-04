@@ -1,0 +1,17 @@
+=== 13.3.11 SID – Substance Identifier Segment 
+
+The Substance Identifier segment contains data necessary to identify the substance (e.g., reagents) used in the production of analytical test results. The combination of these fields must uniquely identify the substance, i.e., depending on the manufacturer all or some fields are required (this is the reason the optionality is 'C' (conditional)). If the analysis requires multiple substances, this segment is repeated for each substance. The segment(s) should be attached to the TCD segment.
+
+Another purpose of this segment is to transfer the control manufacturer, lot, etc., information for control specimens. In this case the SID segment should be attached to the SAC segment describing the container with the control specimen.
+
+HL7 Attribute Table – SID – Substance Identifier
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |C | |0783 |01426 |Application/Method Identifier
+|2 | |20= |ST |C | | |01129 |Substance Lot Number
+|3 | |200= |ST |C | | |01428 |Substance Container Identifier
+|4 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70385[0385] |01429 |Substance Manufacturer Identifier
+|===
+

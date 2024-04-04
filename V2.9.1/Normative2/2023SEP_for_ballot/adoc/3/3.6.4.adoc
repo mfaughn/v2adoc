@@ -1,0 +1,4 @@
+=== 3.6.4 MPI Integration - an introduction
+
+The purpose of this section is to provide some insight into how HL7 committees have approached the area of MPI integration, as well as to provide concrete examples of how the integration could be done using messages in Version 2.4 and later.
+

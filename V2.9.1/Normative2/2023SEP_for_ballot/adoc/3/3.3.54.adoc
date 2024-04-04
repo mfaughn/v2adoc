@@ -1,0 +1,69 @@
+=== 3.3.54 ADT/ACK - Change Attending Doctor (Event A54)
+
+An A54 event is issued as a result of a change in the attending doctor responsible for the treatment of a patient.
+
+When other important fields change, it is recommended that the A08 (update patient information) event be used in addition.
+
+The new attending doctor of the patient should appear in the _PV1-7 - Attending Doctor_. For example, an A54 event can be used to notify the billing system that doctors' fees should be billed to the new doctor starting from the timestamp in the message.
+
+The ROL - Role Segment was used in this message to communicate providers not specified elsewhere. As of v2.9, this has been deprecated in preference to the PRT segment as a more robust and flexible method of conveying participation. Hereafter, instructions for the PRT segment should apply, using the PRT segment. Person level providers with an ongoing relationship are reported in the PRT segment following the PID/PD1 segments. Providers corresponding to the PV1 data are reported in the PRT segment following the PV1/PV2 segments. Providers related to a specific procedure are reported in the PRT segment following the PR1 segment. Providers related to a specific insurance are reported in the PRT segment following the IN1/IN2/IN3 segments.
+
+To communicate the begin and end date of the attending, referring, or admitting doctor, use the _PRT-11 - Begin Date/Time_ and the _PRT-12 - End Date/time_ in the PRT segment, with the applicable _PRT-4 – Role of Participation_. Refer to Chapter 7 for the definition of the PRT segment. Use "UP" in _PRT-2 - Action Code_.
+
+ADT^A54^ADT_A54: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[ link:#_Hlt479197572[PD1] ] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|link:#_Hlt476040270[PV1] |Patient Visit | |3
+|[ link:#PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|===
+
+[width="100%",cols="19%,24%,5%,17%,17%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A54^ADT_A54 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A54^ACK |- |ACK^A54^ACK
+|Application Ack |ADT^A54^ADT_A54 |- |- |ACK^A54^ACK |ACK^A54^ACK
+|===
+
+ACK^A54^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="21%,37%,10%,32%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A54^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A54^ACK
+|Application Ack |- |- |-
+|===
+

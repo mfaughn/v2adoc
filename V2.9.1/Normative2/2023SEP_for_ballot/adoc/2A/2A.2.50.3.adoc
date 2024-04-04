@@ -1,0 +1,4 @@
+==== 2A.2.50.3 Sequence (NM)
+
+Definition: The Sequence component indicates the sequence within the group as defined in OG-2.
+

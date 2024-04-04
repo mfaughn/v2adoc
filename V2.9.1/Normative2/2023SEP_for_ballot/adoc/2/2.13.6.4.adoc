@@ -1,0 +1,6 @@
+==== 2.13.6.4 FHS-4 File Sending Facility (HD) 00070
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field has the same definition as the corresponding field in the MSH segment.
+

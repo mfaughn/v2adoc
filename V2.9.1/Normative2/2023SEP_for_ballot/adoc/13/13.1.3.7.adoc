@@ -1,0 +1,4 @@
+==== 13.1.3.7 Bar length: 
+
+The length of the bars in the bar code.
+

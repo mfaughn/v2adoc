@@ -1,0 +1,36 @@
+==== 4.2.2.7 Order Number: 
+
+An identifier that uniquely identifies an order as represented by an ORC segment and its matching order detail segment. Although traditionally called an order number, the identifier is not required to be all digits, it may contain alpha as well as numeric characters.
+
+Examples:
+
+Example 1
+
+[width="100%",cols="26%,25%,25%,24%",options="header",]
+|===
+| |Order Number |Group Number |Parent
+|Parent Order |111 | |
+|Bag One |123 |1 |111
+|Bag Two |234 |1 |111
+|Bag Three |345 |1 |111
+|===
+
+Example 2
+
+[width="100%",cols="34%,33%,33%",options="header",]
+|===
+| |Order Number |Group Number
+|Med One |123 |99 (script number)
+|Med Two |456 |99 (script number)
+|===
+
+Example 3
+
+[width="100%",cols="33%,31%,36%",options="header",]
+|===
+| |Order Number |Group Number
+|CBC |987 |88 (requisition number)
+|Glucose |654 |88 (requisition number)
+|Electrolytes |321 |88 (requisition number)
+|===
+

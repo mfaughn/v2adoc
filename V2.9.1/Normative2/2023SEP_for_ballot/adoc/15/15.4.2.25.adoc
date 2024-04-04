@@ -1,0 +1,4 @@
+==== 15.4.2.25 CER-25 Activation Date (DTM) 01878
+
+Definition: This field contains the date/time when the certificate became or will become active.
+

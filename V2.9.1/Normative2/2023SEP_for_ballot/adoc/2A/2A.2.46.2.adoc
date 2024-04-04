@@ -1,0 +1,4 @@
+==== 2A.2.46.2 Start Date/Time (DTM)
+
+Definition: This component specifies the starting date and time for when the person is performing the service.
+

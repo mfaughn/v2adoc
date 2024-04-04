@@ -1,0 +1,4 @@
+==== 9.2.1.3 Composite document:
+
+A document which consists of an original document and one or more addenda.
+

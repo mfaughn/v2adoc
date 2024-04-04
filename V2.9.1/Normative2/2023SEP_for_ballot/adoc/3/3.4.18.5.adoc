@@ -1,0 +1,4 @@
+==== *3.4.18.5* Definition: This field asserts when the combat zone duty ended. If combat zone duty is current, Combat Zone End Date should be empty. OH4-5 Entered Date (DT) 03524
+
+Definition: This field records the date that the information was entered into the patient record.
+

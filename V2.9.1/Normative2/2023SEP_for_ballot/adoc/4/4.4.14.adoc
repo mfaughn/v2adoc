@@ -1,0 +1,96 @@
+=== 4.4.14 OMI – Imaging Order Message (Event O23)
+
+This message is used in communication between the information systems involved in the fulfillment of the request directed to the imaging department, such as a Radiology Information System (RIS) and a Picture Archiving and Communication System (PACS). For the purpose of the following discussion these systems will be identified as Imaging Department Information Systems (IDIS). Information contained in the Imaging Procedure Control (IPC) segment allows multiple IDIS to share the context of Imaging Studies (collections of images acquired, processed, stored, and interpreted) in Image Management tasks.
+
+The order for the imaging service is communicated between the Order Placer (such as an Order Entry system) and the Order Filler (such as an RIS). In the imaging department environment, the Order Filler also identifies the set of procedures (studies) and sub-procedures (procedure steps) that have to be performed in the process of fulfilling the order. Each sub-procedure is performed using a single device (station). The Order Filler identifies the type of device and either a specific device or group of devices (for example, by geographic location) one of which is to be used in performing the procedure step. Thus, the system performs an aspect of workflow management in the department.
+
+Another information system in the department may be managing storage and distribution of the images within the department as well as providing them to the enterprise. This system will have to operate within the same context as the system managing the workflow. This context includes identifiers, content of the order, and details of procedures and procedure steps that have to be performed to fulfill that particular order.
+
+When one wants to convey with the detailed order message a supporting document, such as a CDA, one can transmit that document using the OBX associated with the ORC/OBR(s) using OBX-11 = "O" Order Detail Description Only, using either OBX-2 = "ED" or "RP".
+
+It is expected that the OMI message will typically be used in communication between IDIS as depicted in figure 4-1.
+
+Figure 4-1 – Use of OMI message
+
+image:extracted-media/media/image1.wmf[extracted-media/media/image1]
+
+The Device segment (DEV) provides additional device information for a device referenced in one or more of the PRT segments in the message (using PRT-10 Participation Device to match DEV-2 Unique Device Identifier or PRT-22 Participation Device Type using DEV-3 Device Type).
+
+OMI^O23^OMI_O23: Imaging Order Message
+
+[width="100%",cols="34%,46%,1%,9%,,10%,",options="header",]
+|===
+|Segments |Description | |Status |Chapter | |
+|MSH |Message Header | | |2 | |
+|[\{ARV}] |Access Restrictions | | |3 | |
+|[\{ SFT }] |Software | | |2 | |
+|[ UAC ] |User Authentication Credential | | |2 | |
+|[\{ NTE }] |Notes and Comments (for Header) | | |2 | |
+|[ |--- PATIENT begin | | | | |
+|PID |Patient Identification | | |3 | |
+|[PD1] |Additional Demographics | | |3 | |
+|[\{GSP}] |Person Gender and Sex | | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | | |3 |
+|[\{PRT}] |Participation (for Patient) | | |7 | |
+|[ |--- OCCUPATIONAL_DATA_FOR_HEALTH begin | | | | |
+|[\{OH1}] |Employment Status | | |3 | |
+|[\{OH2}] |Past or Present Job | | |3 | |
+|[OH3] |Usual Work | | |3 | |
+|[\{OH4}] |Combat Zone Work | | |3 | |
+|] |--- OCCUPATIONAL_DATA_FOR_HEALTH end | | | | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. | |B |3 | |
+|[\{ NTE }] |Notes and Comments (for Patient ID) | | |2 | |
+|[ |--- PATIENT_VISIT begin | | | | |
+|PV1 |Patient Visit | | |3 | |
+|[ PV2 ] |Patient Visit- Additional Info | | |3 | |
+|[\{PRT}] |Participation (for Patient Visit) | | |7 | |
+|] |--- PATIENT_VISIT end | | | | |
+|[\{ |--- INSURANCE begin | | | | |
+|IN1 |Insurance | | |6 | |
+|[ IN2 ] |Insurance Additional Information | | |6 | |
+|[ IN3 ] |Insurance Additional Information, Certification | | |6 | |
+|}] |--- INSURANCE end | | | | |
+|[ GT1 ] |Guarantor | | |6 | |
+|[\{ AL1 }] |Allergy Information | | |3 | |
+|] |--- PATIENT end | | | | |
+|\{ |--- ORDER begin | | | | |
+|ORC |Common Order | | |4 | |
+|[\{PRT}] |Participation | | |7 | |
+|[\{ |--- TIMING begin | | | | |
+|TQ1 |Timing/Quantity | | |4 | |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | | |4 | |
+|}] |--- TIMING end | | | | |
+|OBR |Observation | | |4 | |
+|[\{ NTE }] |Notes and Comments (for Detail) | | |2 | |
+|[\{PRT}] |Participation (for Order) | | |7 | |
+|[ CTD ] |Contact Data | | |11 | |
+|[\{ DG1 }] |Diagnosis | | |6 | |
+|[REL} |Relationship (for Observation) | | |12 | |
+|[\{ |--- OBSERVATION begin | | | | |
+|OBX |Observation/Result | | |7 | |
+|[\{PRT}] |Participation (for Observation) | | |7 | |
+|[\{ NTE }] |Notes and Comments (for Results) | | |2 | |
+|}] |--- OBSERVATION end | | | | |
+|\{ IPC } |Imaging Procedure Control | | |4 | |
+|} |--- ORDER end | | | | |
+|[\{ |--- DEVICE begin | | | | |
+|DEV |Device (for Participation) | | | |17 |
+|[\{OBX}] |Observation/Result | | | |7 |
+|}] |--- DEVICE end | | | | |
+|===
+
+[width="100%",cols="20%,24%,12%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|OMI^O23^OMI_O23 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O23^ACK
+|Application Ack |ORI^O24^ORI_O24 or +
+OSU^O52^OSU_O52 |- |ORI^O24^ORI_O24 or +
+OSU^O52^OSU_O52 |ORI^O24^ORI_O24 or +
+OSU^O52^OSU_O52
+|===
+

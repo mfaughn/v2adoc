@@ -1,0 +1,8 @@
+==== 6.5.15.2 GP1-2 Revenue Code (CWE) 01600
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is the same as UB92 Form Locator 42 "Revenue Code". Refer to E:\\V2\\V29_CH02C_Tables.docx#HL70456[_User-__defined Table 0456 - Revenue Code_] in Chapter 2C, Code Tables, for suggested values. This field identifies revenue codes that are not linked to a HCPCS/CPT code. It is used for claiming for non-medical services such as telephone, TV or cafeteria charges, etc. There can be many per visit or claim. This field is defined by CMS or other regulatory agencies.
+
+There can also be a revenue code linked to a HCPCS/CPT code. These are found in link:#gp2-1-revenue-code-cwe-01600[_GP2-1 - Revenue Code_]. Refer to UB92 specifications.
+

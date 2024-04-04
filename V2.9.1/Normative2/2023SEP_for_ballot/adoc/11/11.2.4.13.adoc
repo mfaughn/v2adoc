@@ -1,0 +1,4 @@
+==== 11.2.4.13 Referred-to-provider: 
+
+Typically indicates a specialty care provider who provides services at the request of a primary care provider or another specialty care provider.
+

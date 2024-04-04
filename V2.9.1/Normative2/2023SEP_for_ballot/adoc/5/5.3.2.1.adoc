@@ -1,0 +1,14 @@
+==== 5.3.2.1 Steps for developing a Query Profile
+
+____
+{empty}1) Before composing the Query Profile, express the query in ordinary English sentences.
+
+{empty}2) Transform the query into a mathematical or pseudo-language statement. A syntax such as SQL provides a useful mechanism.
+
+{empty}3) From the pseudo-statement, extract the parameters and the operations upon the parameters.
+
+{empty}4) Advertise the parameters in the Query Profile.
+
+{empty}5) Within the Query Profile, explain the operations that will be performed upon the parameters: relational conjunctions, equality/inequality, etc. Use examples to aid the user in understanding how the query might be invoked in specific instances.
+____
+

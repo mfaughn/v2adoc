@@ -1,0 +1,6 @@
+==== 4.17.1.31 DON-31 Donation Sample Identifier (EI) 03370
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The sample identifier for the sample collected during a donation for the purpose of testing. This is a field for sample or specimen identifiers.
+

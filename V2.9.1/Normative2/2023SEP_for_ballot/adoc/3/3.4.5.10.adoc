@@ -1,0 +1,4 @@
+==== *3.4.5.10* NK1-10 Next of Kin / Associated Parties Job Title (ST) 00199
+
+Definition: This field contains the title of the next of kin/associated parties at their place of employment. However, if the contact role is the patient's employer, this field contains the job title of the patient at their place of employment.
+

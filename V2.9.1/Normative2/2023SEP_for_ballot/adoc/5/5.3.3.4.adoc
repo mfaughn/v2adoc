@@ -1,0 +1,76 @@
+==== 5.3.3.4 Query Profile table summaries
+
+The following table lists the tables that are to be included in each Query Profile. The differences arise both from the query variant used and the response type provided.
+
+[width="100%",cols="17%,14%,49%,20%",]
+|===
+|Response Type |Query Variant |Table Included |Section Reference
+|Display |None (QPD) |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar for display response |5.3.2.5
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |RCP input parameter field description and commentary |5.3.2.10
+|Display |QBE |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar for display response |5.3.2.5
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |QBE input parameter specification |5.3.2.8
+| | |QBE input parameter field description and commentary |5.3.2.9
+| | |RCP input parameter field description and commentary |5.3.2.10
+|Display |QSC |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar for display response |5.3.2.5
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |Input specification: virtual table |5.3.2.11
+| | |Virtual table field description and commentary |5.3.2.12
+|Tabular |None (QPD) |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar |5.3.2.4
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |RCP input parameter field description and commentary |5.3.2.10
+| | |Output specification for tabular response |5.3.2.13
+|Tabular |QBE |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar |5.3.2.4
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |QBE input parameter specification |5.3.2.8
+| | |QBE input parameter field description and commentary |5.3.2.9
+| | |RCP input parameter field description and commentary |5.3.2.10
+| | |Output specification for tabular response |5.3.2.13
+|Tabular |QSC |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar |5.3.2.4
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |Input/output specification: virtual table |5.3.2.11
+| | |Virtual table field description and commentary |5.3.2.12
+| | |RCP input parameter field description and commentary |5.3.2.10
+|Segment pattern |None (QPD) |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar |5.3.2.4
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |RCP input parameter field description and commentary |5.3.2.10
+|Segment pattern |QBE |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar |5.3.2.4
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |QBE input parameter specification |5.3.2.8
+| | |QBE input parameter field description and commentary |5.3.2.9
+| | |RCP input parameter field description and commentary |5.3.2.10
+|Segment pattern |QSC |Query Profile introduction |5.3.2.2
+| | |Query grammar |5.3.2.3
+| | |Response grammar |5.3.2.4
+| | |QPD input parameter specification |5.3.2.6
+| | |QPD input parameter field description and commentary |5.3.2.7
+| | |Input specification: virtual table |5.3.2.11
+| | |Virtual table field description and commentary |5.3.2.12
+| | |RCP input parameter field description and commentary |5.3.2.10
+|===
+

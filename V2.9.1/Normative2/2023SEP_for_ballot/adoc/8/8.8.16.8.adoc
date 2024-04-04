@@ -1,0 +1,4 @@
+==== 8.8.16.8 OMC-8 Hint/Help Text (ST) 03448
+
+Definition: This field gives guidance to the provider on how to answer the question.
+

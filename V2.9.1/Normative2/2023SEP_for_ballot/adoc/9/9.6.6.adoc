@@ -1,0 +1,76 @@
+=== 9.6.6 MDM/ACK - Document Addendum Notification and Content (Event T06)
+
+This is a notification of an addendum to a document with the accompanying content.
+
+*Scenario:* Author dictates additional information as an addendum to a previously transcribed document. A new document is transcribed. This addendum has its own new unique document ID that is linked to the original document via the parent ID. Addendum document notification is transmitted, along with the document content. This creates a composite document.
+
+MDM^T06^MDM_T02: Document Addendum Notification & Content
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type |B, v2.5 |3
+|PID |Patient Identification | |3
+|[ \{ GSP } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ \{ GSC } ] |Sex Parameter for Clinical Use | |3
+|[ \{ PRT } ] |Participation | |7
+|PV1 |Patient Visit | |3
+|[ \{ PRT } ] |Participation Segment | |7
+|[\{ |--- COMMON_ORDER begin | |
+|ORC |Common order segment | |4
+|[ \{ PRT } ] |Participation | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|OBR |Observation request segment | |4
+|[ \{ PRT } ] |Participation | |7
+|[\{ NTE }] |Notes and comments about the OBR | |2
+|}] |--- COMMON_ORDER end | |
+|link:#TXA[TXA] |Document Notification | |9
+|[\{CON}] |Consent Segment | |9
+|\{ | | |
+|link:#OBX[OBX] |Observation/Result (one or more required) | |7
+|[ \{ PRT } ] |Participation | |7
+|[\{ NTE }] |Notes and comments about the OBX | |2
+|} | | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MDM^T06^MDM_T02 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |ACK^T06^ACK |- |ACK^T06^ACK |- |ACK^T06^ACK
+|Application Ack |- |- |- |ACK^T06^ACK |ACK^T06^ACK
+|===
+
+ACK^T06^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:#SFT[SFT] }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ link:#ERR[ERR] }] |Error Information | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^T06^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^T06^ACK |- |ACK^T06^ACK
+|Application Ack |- |- |-
+|===
+

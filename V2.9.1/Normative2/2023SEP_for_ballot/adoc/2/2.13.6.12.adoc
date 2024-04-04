@@ -1,0 +1,4 @@
+==== 2.13.6.12 FHS-12 Reference File Control ID (ST) 00078
+
+Definition: This field contains the value of FHS-11-file control ID when this file was originally transmitted. Not present if this file is being transmitted for the first time.
+

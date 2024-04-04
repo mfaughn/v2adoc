@@ -1,0 +1,6 @@
+==== 2.13.6.6 FHS-6 File Receiving Facility (HD) 00072
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field has the same definition as the corresponding field in the MSH segment.
+

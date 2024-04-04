@@ -1,0 +1,15 @@
+=== 3.5.9 Update adverse reaction info - unique identifier is provided - event A60 (where unique identifier is provided)
+
+MSH|^~\&|ADT|CA.SCA|IE|200701310815-0800|200702010101||ADT^A60^ADT_A60|6757498734|P|2.8|
+
+EVN||200701310815-0800
+
+PID|||987654321098||EVERYWOMAN^EVE^E||19530406|F
+
+PV1||O
+
+PV2||||||||200701310800-0800
+
+IAM|1|DA|^Penicillin|SV^^HL70128|^rash on back|A^^HL70323|12345||AL^^HL70436| +
+19990127||200301311015|NUCLEAR^NEVILLE^H|^Husband||C^^HL70438|MLEE^ATTEND^AARON^A^^^MD||
+

@@ -1,0 +1,4 @@
+==== 6.5.3.19 DRG-19 Grouper Software Version (ST) 02282
+
+Definition: This field contains the version information of the software used for grouping.
+

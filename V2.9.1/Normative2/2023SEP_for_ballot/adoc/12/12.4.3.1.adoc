@@ -1,0 +1,4 @@
+==== 12.4.3.1 PTH-1 Action Code (ID) 02534
+
+Definition: This field reveals the intent of the message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[_HL7 Table 0287 – Problem/Goal Action Code_] in Chapter 2C, Code Tables, for valid values.
+

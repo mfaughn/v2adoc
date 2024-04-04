@@ -1,0 +1,4 @@
+==== 7.4.1.21 OBR-21 Filler Field 2 (ST) 00254
+
+Definition: This field is similar to filler field #1.
+

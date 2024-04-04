@@ -1,0 +1,4 @@
+=== 4A.6.2 RDE:
+
+The pharmacy/treatment application may send the RDE, the Pharmacy/Treatment Encoded Order message, a fully encoded order to the Nursing application, Ordering application, and/or other system applications as appropriate at the site.
+

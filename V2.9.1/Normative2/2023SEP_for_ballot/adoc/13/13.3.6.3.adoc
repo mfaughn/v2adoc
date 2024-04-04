@@ -1,0 +1,4 @@
+==== 13.3.6.3 ECR-3 Command Response Parameters (TX) 01397
+
+Definition: This field identifies any associated parameters that relate to the returned response command message.
+

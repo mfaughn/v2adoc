@@ -1,0 +1,23 @@
+=== 2A.2.49 OCD - occurrence code and date
+
+HL7 Component Table - OCD – Occurrence Code and Date
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |CNE |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70350[0350] |Occurrence Code | |2A.2.8
+|2 | |8= |DT |R | |Occurrence Date | |2A.2.21
+|===
+
+Definition: The code and associated date defining a significant event relating to a bill that may affect payer processing.
+
+*Note:* Replaces the CM data type used in sections 6.5.10.10 UB1-16 and 6.5.11.7 UB2-7, as of v 2.5.
+
+This data type carries data defined by CMS or other regulatory agencies. It corresponds to UB82 Fields 28‑32 and UB92 fields 32a, 32b, 33a, 33b, 34a, 34b, 35a, and 35b. Refer to a UB specification for additional information.
+
+Use Case: A Medicare beneficiary was confined in hospital from January 1, 1992 to January 10, 1992, however, his Medicare Part A benefits were exhausted as of January 8, 1992, and he was not entitled to Part B benefits. Therefore, Form Locator 32 should contain code 23 and the date 010892.
+
+Example:
+
+|23&Benefits Exhausted&NUBC^19920108|
+

@@ -1,0 +1,6 @@
+==== 2A.2.13.4 Alternate Identifier (ST)
+
+Definition: A sequence of characters that uniquely identifies an alternate code. Analogous to _CWE.1- Identifier_.
+
+*Usage Notes:* The Alternate Identifier is used to represent the local or user seen code as described. If present, it obeys the same rules of use and interpretation as described for component 1. If both are present, the identifiers in component 4 and component 1 should have exactly the same meaning, i.e., they should be exact synonyms.
+

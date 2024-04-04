@@ -1,0 +1,176 @@
+=== 2.16.4 Message fragmentation
+
+This summarizes the methodology for splitting a single logical HL7 message among two or more actual HL7 messages. The actual specifications for this, the segment definitions of the ADD and DSC segments, and examples are in Section _2.9.2_, "_Continuation messages and segments_".
+
+Continuing of messages is a generic methodology that can be used for all HL7 message types. It can be used to split based on segment boundaries, on field boundaries, and to split a single field among several messages. It utilizes two specific segments, ADD and DSC, as well as a field in the message header, MSH-14 Continuation Pointer.
+
+When a message is continued, a unique continuation value is used. This same value will appear in MSH-14 and DSC-1 as appropriate for a single pair of messages. This allows messages to be "chained together".
+
+Here are two examples of ways to create continuation pointers for fragmented messages. The only absolute requirement is that when the sending application values the continuation pointer, the receiving application can appropriately reconstruct the message.
+
+Sitecode-interfaceapplicationcode-date-sequentialcounterwithindate
+
+This will guarantee uniqueness of this field.
+
+e.g., BWH-LDS-19990331-27 for the 27^th^ large message to be created on March 31, within the Discharge Summary interfaces at BWH
+
+An alternative method of valuing the continuation pointer:
+
+Sitecode-interfaceapplicationcode-medicalrecordnumber-datetime
+
+e.g. MGH-PCIS-1234567-19980331121314 for a message created on March 31, at 12:13:14pm for patient medical record number 1234567, within the PCIS interfaces at MGH
+
+Sending Application Note: In the ADD segment, a trailing field delimiter, i.e., the vertical bar character, after the final field, has explicit meaning. The sending application SHOULD NOT include a trailing field delimiter for the last field in the ADD segment unless it has completely valued the entire field from the message being continued.
+
+Receiving Application Note: The receiving application will need to be concerned with a single segment and a single field being continued.
+
+Receiving a message with an empty ADD segment followed by a DSC segment is the notification that the segment preceding the ADD is being continued in a subsequent message. Note that the continuing message might not be the next one received! The receiver must match up the continuation pointer value from MSH-14 of subsequent messages to the DSC-1 continuation pointer value of the prior message. Also if the continuing message contains an ADD segment, the receiver SHOULD continue appending to the fields from the segment being continued with values from the ADD segment. For example, if OBX-5 is being continued, the continuation will appear in ADD-1 of the continuing message. If there were a value for OBX-13 of the original message, that would appear in ADD-9 of the continuing message, assuming that the remainder of the OBX segment fit into the single ADD segment.
+
+Question: if continuing a message after the completion of a complete segment, SHOULD the continuing message have an empty ADD segment or not? Answer: No. This means that a continuing message need not have an ADD segment, if the continued message was split on a segment boundary.
+
+Notation conventions: items within angle brackets are comments and not intended to represent a portion of an actual message. For example, <this is a comment>.
+
+Note the multiple continuation pointer values, one for each pair of physical messages.
+
+*Message 1*
+
+MSH|...|<field-13>||...
+
+PID|...
+
+ORC|...
+
+OBR|...
+
+OBX|1|FT|^Discharge Summary|1|This is the first sentence of a long
+
+message. This is the second sentence of a long message.
+
+<snip>
+
+This is the 967th sentence of "
+
+ADD|
+
+DSC|BWH-LDS-19990405-6|
+
+*Message 2*
+
+MSH|...|<field-13>|BWH-LDS-19990405-6|
+
+ADD|a long message. This is the 968th sentence of a long message.
+
+<snip>
+
+This is the 1001st line of
+
+<there SHOULD be no trailing field delimiter after the last field in this ADD segment>
+
+DSC|BWH-LDS-19990405-7|
+
+*Message 3*
+
+MSH|...|<field-13>|BWH-LDS-19990405-7|
+
+ADD|a long message. This is the 1002nd sentence of a long message. <snip> This is the final sentence of this long message!|||||F||199707211325|
+
+DG1|...
+
+<end of message>
+
+The following examples discuss an unsolicited transmission of an observation message, ORU^R01.
+
+The expected result values in OBX-5 Observation Value, for reports (e.g., autopsy, pathology) MAY exceed the message length restrictions of one or more interfaces.
+
+Thus the OBX-5 Observation Value data element will be split into more than one message.
+
+Here's an example intended to illustrate the interpretation of Chapter 2 and 7. It reflects a single logical message broken up into three distinct messages.
+
+Example 1, a single field being split across three messages
+
+Message #1: ---------------------------------------------------------------
+
+*Note*: MSH-14, continuation pointer, is empty.
+
+MSH|...|<field-13>||...
+
+PID|...
+
+ORC|...
+
+OBR|...
+
+OBX|1|FT|^Discharge Summary|1|This is the first sentence of a long
+
+message. This is the second sentence of a long message.
+
+<snip>
+
+This is the 967^th^ sentence of "
+
+ADD|
+
+DSC|<continuation-pointer-value-1>|F
+
+Message #2: --------------------------------------------------------------
+
+Note: MSH-14, continuation pointer, is valued with the same value as in DSC-1, continuation pointer from the message this is continuing, in this case Message #1.
+
+MSH|...|<field-13>|<continuation-pointer-value-1>|
+
+ADD|a long message. This is the 968th sentence of a long message.
+
+<snip>
+
+This is the 1001st line of
+
+<there SHOULD be no trailing field delimiter after the last field in this ADD segment>
+
+DSC|<continuation-pointer-value-2>|F
+
+Message #3: ---------------------------------------------------------------
+
+Note: MSH-14, continuation pointer, is valued with the same value as in DSC-1, continuation pointer from the message this is continuing, in this case Message #1.
+
+MSH|...|<field-13>|<continuation-pointer-value-2>|
+
+ADD|a long message. This is the 1002nd sentence of a long message. <snip> This is the final sentence of this long message!|||||F||199707211325|
+
+<remaining segments after the big OBX from the original message go here, after the ADD segment>
+
+PR1|...
+
+DG1|...
+
+Example 2, a single message being split across two messages, but on segment boundaries
+
+Message #1: ---------------------------------------------------------------
+
+*Note:* MSH-14, continuation pointer, is empty.
+
+MSH|...|<field-13>||...
+
+PID|...
+
+ORC|...
+
+OBR|...
+
+OBX|1|FT|^Discharge Summary|1|This is the first sentence of a long
+
+message. This is the final sentence of this long discharge summary!|||||F||199707211325|
+
+DSC|<continuation-pointer-value-3>|F
+
+Message #2: --------------------------------------------------------------
+
+*Note:* MSH-14 Continuation Pointer, is valued with the same value as in DSC-1, continuation pointer from the message this is continuing, in this case Message #1.
+
+Note that no ADD segment is necessary, since a segment is not being split across two messages.
+
+MSH|...|<field-13>|<continuation-pointer-value-3>|
+
+PR1|...
+
+DG1|...
+

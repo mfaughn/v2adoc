@@ -1,0 +1,4 @@
+==== 4A.4.6.32 RXG-32 Dispense Amount (NM) 03316
+
+Definition: This field contains the amount to be dispensed as encoded by the pharmacy or treatment supplier.
+

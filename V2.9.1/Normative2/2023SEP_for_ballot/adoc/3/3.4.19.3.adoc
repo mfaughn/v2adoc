@@ -1,0 +1,6 @@
+==== *3.4.19.3* GSP-3 GSP Instance Identifier (EI) 02510
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (ST)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the value that uniquely identifies a single GSP declaration for an individual. This field is conditionally required when the Action Code in GSP-2 indicates data is not being sent in Snapshot Mode (valued “S”).
+

@@ -1,0 +1,4 @@
+=== 10.3.3 Request Appointment Modification (Event S03)
+
+This message transmits a request for modification of an existing appointment to a filler application. This trigger event is used to request the modification of information on an existing appointment, outside of the need to reschedule, cancel, discontinue or delete the appointment, or to add, modify, cancel, discontinue, or delete services and/or resources on the appointment. This trigger event should only be used for appointments that have not been completed, or for parent appointments whose children have not been completed. If it is successful, an application acknowledgment is returned, optionally containing an SCH segment and related detail segments describing the new information for the modified appointment.
+

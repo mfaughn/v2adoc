@@ -1,0 +1,6 @@
+==== 4.17.2.11 BUI-11 Transport Temperature (NR) 03383
+
+Components: <Low Value (NM)> ^ <High Value (NM)>
+
+Definition: The temperature range between which the blood unit must be kept during transport.
+

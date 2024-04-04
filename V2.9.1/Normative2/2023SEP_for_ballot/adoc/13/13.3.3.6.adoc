@@ -1,0 +1,4 @@
+==== 13.3.3.6 SAC-6 Specimen Source 00249
+
+*_Attention: This field was deprecated and retained for backward compatibilityonly as of v2.5 and withdrawn and removed as of v2.7._*
+

@@ -1,0 +1,10 @@
+==== 4A.5.3.3 Valuing the Dispense Package Size Unit 
+
+If the package given to the patient is 2, 4 ounce bottles with a strength of 100/5ml, but the cough suppressant is stocked in 1 gallon bottles, then the field contains 1 gallon.
+
+RXD||||8|ounce^^ISO|||||||||||20|mg/ml|||||1|gal^gallon^ISO|...<cr>
+
+If one were to dispense Mevacor 100 tablets with a strength of 20 mg/tablet, and the package from the manufacturer is a 60 tablet package, then the fields reflect 60 tablets (the size of the package stocked by the pharmacy).
+
+RXD||||100|tab^^FDB|||||||||||20|mg|||||60|tab|...<cr>
+

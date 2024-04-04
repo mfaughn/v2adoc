@@ -1,0 +1,303 @@
+=== 7.17.1 Common ISO Derived Units & ISO+ Extensions
+
+Figure 7-10. Common ISO derived units and ISO+ extensions
+
+[width="100%",cols="20%,80%",options="header",]
+|===
+|Code/Abbr. |Name
+|/(arb_u) |*1 / arbitrary unit
+|/iu |*1 / international unit
+|/kg |*1 / kilogram
+|/L |1 / liter
+|1/mL |*1 / milliliter
+|10.L/min |*10 x liter / minute
+|10.L /(min.m2) |*10 x (liter / minute) / meter^2^ = liter / (minute × meter^2^)
+|10*3/mm3 |*10^3^ / cubic millimeter (e.g., white blood cell count)
+|10*3/L |*10^3^ / Liter
+|10*3/mL |*10^3^ / milliliter
+|10*6/mm3 |*10^6^ / millimeter^3^
+|10*6/L |*10^6^ / Liter
+|10*6/mL |*10^6^ / milliliter
+|10*9/mm3 |*10^9^ / millimeter^3^
+|10*9/L |*10^9^ / Liter
+|10*9/mL |*10^9^ / milliliter
+|10*12/L |*10^12^ / Liter
+|10*3(rbc) |*1000 red blood cells^†^
+|a/m |Ampere per meter
+|(arb_u) |*Arbitrary unit
+|bar |Bar (pressure; 1 bar = 100 kilopascals)
+|/min |Beats or Other Events Per Minute
+|bq |Becquerel
+|(bdsk_u) |*Bodansky Units
+|(bsa) |*Body surface area
+|(cal) |*Calorie
+|1 |*Catalytic Fraction
+|/L |Cells / Liter
+|cm |Centimeter
+|cm_h20 |* Centimeters of water =H~2~0 (pressure)
+|cm_h20.s/L |Centimeters H~2~0 / (liter / second) = (centimeters H~2~0 × second) / liter (e.g., mean pulmonary resistance)
+|cm_h20/(s.m) |(Centimeters H~2~0 / second) / meter = centimeters H~2~0 / (second × meter) (e.g., pulmonary pressure time product)
+|(cfu) |*Colony Forming Units
+|m3/s |Cubic meter per second
+|d |Day
+|db |Decibels
+|dba |*Decibels a Scale
+|cel |Degrees Celsius
+|deg |Degrees of Angle
+|(drop) |Drop
+|10.un.s/cm5 |Dyne × Second / centimeter^5^ (1 dyne = 10 micronewton = 10 un) (e.g., systemic vascular resistance)
+|10.un.s/(cm5.m2) |((Dyne × second) / centimeter^5^) / meter^2^ = (Dyne × second) / (centimeter^5^ × meter^2^) (1 dyne = 10 micronewton = 10 un) (e.g., systemic vascular resistance/body surface area)
+|ev |Electron volts (1 electron volt = 160.217 zeptojoules)
+|eq |Equivalent
+|f |Farad (capacitance)
+|fg |Femtogram
+|fL |Femtoliter
+|fmol |Femtomole
+|/mL |*Fibers / milliliter
+|g |Gram
+|~g/d~ |*Gram / Day
+|g/dL |Gram / Deciliter
+|g/hr |Gram / Hour
+|g/(8.hr) |*Gram / 8 Hour Shift
+|g/kg |Gram / Kilogram (e.g., mass dose of medication per body weight)
+|g/(kg.d) |(Gram / Kilogram) / Day = gram / (kilogram × day) (e.g., mass dose of medication per body weight per day)
+|g/(kg.hr) |(Gram / Kilogram) / Hour = gram / (kilogram × hour) (e.g., mass dose of medication per body weight per hour)
+|g/(8.kg.hr) |(Gram / Kilogram) /8 Hour Shift = gram / (kilogram × 8 hour shift) (e.g., mass dose of medication per body weight per 8 hour shift)
+|g/(kg.min) |(Gram / Kilogram) / Minute = gram / (kilogram × minute~)~ (e.g., mass dose of medication per body weight per minute)
+|g/L |Gram / Liter
+|g/m2 |Gram / Meter^2^ (e.g., mass does of medication per body surface area)
+|g/min |Gram / Minute
+|g.m/(hb) |Gram × meter / heart beat (e.g., ventricular stroke work)
+|g.m/((hb).m2) a|
+(Gram × meter/ heartbeat) / meter^2^ = (gram × meter) / (heartbeat × meter^2^)
+
+(e.g., ventricular stroke work/body surface area, ventricular stroke work index)
+
+|g(creat) |*Gram creatinine
+|g(hgb) |*Gram hemoglobin
+|g.m |Gram meter
+|g(tot_nit) |*Gram total nitrogen
+|g(tot_prot) |*Gram total protein
+|g(wet_tis) |*Gram wet weight tissue
+|gy |Grey (absorbed radiation dose)
+|hL |Hectaliter = 10^2^ liter
+|h |Henry
+|in |Inches
+|in_hg |Inches of Mercury (=Hg)
+|iu |*International Unit
+|iu/d |*International Unit / Day
+|iu/hr |*International Unit / Hour
+|iu/kg |International Unit / Kilogram
+|iu/L |*International Unit / Liter
+|iu/mL |*International Unit / Milliliter
+|iu/min |*International Unit / Minute
+|j/L |Joule/liter (e.g., work of breathing)
+|kat |*Katal
+|kat/kg |*Katal / Kilogram
+|kat/L |*Katal / Liter
+|k/watt |Kelvin per watt
+|(kcal) |Kilocalorie (1 kcal = 6.693 kilojoule)
+|(kcal)/d |*Kilocalorie / Day
+|(kcal)/hr |*Kilocalorie / Hour
+|(kcal)/(8.hr) |*Kilocalorie / 8 Hours Shift
+|kg |Kilogram
+|kg(body_wt) |* kilogram body weight
+|kg/m3 |Kilogram per cubic meter
+|kh/h |Kilogram per hour
+|kg/L |Kilogram / liter
+|kg/min |Kilogram per minute
+|kg/mol |Kilogram / mole
+|kg/s |Kilogram / second
+|kg/(s.m2) |(Kilogram / second)/ meter^2^ = kilogram / (second × meter^2^)
+|kg/ms |Kilogram per square meter
+|kg.m/s |Kilogram meter per second
+|kpa |Kilopascal (1 mmHg = 0.1333 kilopascals)
+|ks |Kilosecond
+|(ka_u) |King-Armstrong Unit
+|(knk_u) |*Kunkel Units
+|L |Liter
+|L/d |*Liter / Day
+|L/hr |Liter / hour
+|L/(8.hr) |*Liter / 8 hour shift
+|L/kg |Liter / kilogram
+|L/min |Liter / minute
+|L/(min.m2) a|
+(Liter / minute) / meter^2^ = liter / (minute × meter^2^)
+
+(e.g., cardiac output/body surface area = cardiac index)
+
+|L/s |Liter / second (e.g., peak expiratory flow)
+|L.s |Liter / second / second^2^ = liter × second
+|lm |Lumen
+|lm/m2 |Lumen / Meter^2^
+|(mclg_u) |*MacLagan Units
+|mas |Megasecond
+|m |Meter
+|m2 |Meter^2^ (e.g., body surface area)
+|m/s |Meter / Second
+|m/s2 |Meter / Second^2^
+|ueq |*Microequivalents
+|ug |Microgram
+|ug/d |Microgram / Day
+|ug/dL |Microgram / Deciliter
+|ug/g |Microgram / Gram
+|ug/hr |*Microgram / Hour
+|ug(8hr) |Microgram / 8 Hour Shift
+|ug/kg |Microgram / Kilogram
+|ug/(kg.d) |(Microgram / Kilogram) /Day = microgram / (kilogram × day) (e.g., mass dose of medication per patient body weight per day)
+|ug/(kg.hr) |(Microgram / Kilogram) / Hour = microgram / (kilogram × hours) (e.g., mass dose of medication per patient body weight per hour)
+|ug/(8.hr.kg) a|
+(Microgram / Kilogram) / 8 hour shift = microgram / (kilogram × 8 hour shift)
+
+(e.g., mass dose of medication per patient body weight per 8 hour shift)
+
+|ug/(kg.min) a|
+(Microgram / Kilogram) / Minute = microgram / (kilogram × minute)
+
+(e.g., mass dose of medication per patient body weight per minute)
+
+|ug/L |Microgram / Liter
+|ug/m2 |Microgram / Meter^2^ (e.g., mass dose of medication per patient body surface area)
+|ug/min |Microgram / Minute
+|uiu |*Micro international unit
+|ukat |*Microkatel
+|um |Micrometer (Micron)
+|umol |Micromole
+|umol/d |Micromole / Day
+|umol/L |Micromole / Liter
+|umol/min |Micromole / Minute
+|us |Microsecond
+|uv |Microvolt
+|mbar |Millibar (1 millibar = 100 pascals)
+|mbar.s/L |Millibar / (liter / second) =(millibar × second) / liter (e.g., expiratory resistance)
+|meq |*Milliequivalent
+|meq/d |*Milliequivalent / Day
+|meq/hr |*Milliequivalent / Hour
+|meq/(8.hr) |Milliequivalent / 8 Hour Shift
+|meq/kg |Milliequivalent / Kilogram (e.g., dose of medication in milliequivalents per patient body weight)
+|meq/(kg.d) |(Milliequivalents / Kilogram) / Day = milliequivalents / (kilogram × day) (e.g., dose of medication in milliequivalents per patient body weight per day)
+|meq/(kg.hr) |(Milliequivalents / Kilogram) / Hour = milliequivalents / (kilogram × hour) (e.g., dose of medication in milliequivalents per patient body weight per hour)
+|meq/(8.hr.kg) |(Milliequivalents / Kilogram) / 8 Hour Shift = milliequivalents / (kilogram × 8 hour shift) (e.g., dose of medication in milliequivalents per patient body weight per 8 hour shift)
+|meq/(kg.min) |(Milliequivalents / Kilogram) / Minute = milliequivalents / (kilogram × minute) (e.g., dose of medication in milliequivalents per patient body weight per minute)
+|meq/L |Milliequivalent / Liter
+| |Milliequivalent / Meter^2^ (e.g., dose of medication in milliequivalents per patient body surface area)
+|meq/min |Milliequivalent / Minute
+|mg |Milligram
+|mg/m3 |Milligram / Meter^3^
+|mg/d |Milligram / Day
+|mg/dL |Milligram / Deciliter
+|mg/hr |Milligram / Hour
+|mg/(8.hr) |Milligram / 8 Hour shift
+|mg/kg |Milligram / Kilogram
+|mg/(kg.d) |(Milligram / Kilogram) / Day = milligram / (kilogram × day) (e.g., mass dose of medication per patient body weight per day)
+|mg/(kg.hr) |(Milligram / Kilogram) / Hour = milligram/ (kilogram × hour) (e.g., mass dose of medication per patient body weight per hour)
+|mg/(8.hr.kg) |(Milligram / Kilogram) /8 Hour Shift = milligram / (kilogram × 8 hour shift) (e.g., mass dose of medication per patient body weight per 8 hour shift)
+|mg/(kg.min) |(Milligram / Kilogram) / Minute = milligram / (kilogram × minute) (e.g., mass dose of medication per patient body weight per hour)
+|mg/L |Milligram / Liter
+|mg/m2 |Milligram / Meter^2^ (e.g., mass dose of medication per patient body surface area)
+|mg/min |Milligram / Minute
+|mL |Milliliter
+|mL/cm_h20 |Milliliter / Centimeters of Water (H~2~0) (e.g., dynamic lung compliance)
+|mL/d |*Milliliter / Day
+|mL/(hb) |Milliliter / Heart Beat (e.g., stroke volume)
+|mL/((hb).m2) |(Milliliter / Heart Beat) / Meter^2^ = Milliliter / (Heart Beat × Meter^2^) (e.g., ventricular stroke volume index)
+|mL/hr |*Milliliter / Hour
+|mL/(8.hr) |*Milliliter / 8 Hour Shift
+|mL/kg |Milliliter / Kilogram (e.g., volume dose of medication or treatment per patient body weight)
+|mL/(kg.d) |(Milliliter / Kilogram) / Day = milliliter / (kilogram × day) (e.g., volume dose of medication or treatment per patient body weight per day)
+|mL/(kg.hr) |(Milliliter / Kilogram) / Hour = milliliter / (kilogram × hour) (e.g., volume dose of medication or treatment per patient body weight per hour)
+|mL/(8.hr.kg) |(Milliliter / Kilogram) / 8 Hour Shift = milliliter / (kilogram × 8 hour shift) (e.g., volume dose of medication or treatment per body weight per 8 hour shift)
+|mL/(kg.min) |(Milliliter / Kilogram) / Minute = milliliter / (kilogram × minute) (e.g., volume dose of medication or treatment per patient body weight per minute)
+|mL/m2 |Milliliter / Meter^2^ (e.g., volume of medication or other treatment per patient body surface area)
+|mL/mbar |Milliliter / Millibar (e.g., dynamic lung compliance)
+|mL/min |Milliliter / Minute
+|mL/(min.m2) |(Milliliter / Minute) / Meter^2^ = milliliter / (minute × meter^2^) (e.g., milliliters of prescribed infusion per body surface area; oxygen consumption index)
+|mL/s |Milliliter / Second
+|mm |Millimeter
+|mm(hg) |*Millimeter (HG) (1 mm Hg = 133.322 kilopascals)
+|mm/hr |Millimeter/ Hour
+|mmol/kg |Millimole / Kilogram (e.g., molar dose of medication per patient body weight)
+|mmol/(kg.d) |(Millimole / Kilogram) / Day = millimole / (kilogram × day) (e.g., molar dose of medication per patient body weight per day)
+|mmol/(kg.hr) |(Millimole / Kilogram) / Hour = millimole / (kilogram × hour) (e.g., molar dose of medication per patient body weight per hour)
+|mmol/(8.hr.kg) |(Millimole / Kilogram) / 8 Hour Shift = millimole / (kilogram × 8 hour shift) (e.g., molar dose of medication per patient body weight per 8 hour shift)
+|mmol/(kg.min) |(Millimole / Kilogram) / Minute = millimole / (kilogram × minute) (e.g., molar dose of medication per patient body weight per minute)
+|mmol/L |Millimole / Liter
+|mmol/hr |Millimole / Hour
+|mmol/(8hr) |Millimole / 8 Hour Shift
+|mmol/min |Millimole / Minute
+|mmol/m2 |Millimole / Meter^2^ (e.g., molar dose of medication per patient body surface area)
+|mosm/L |*Milliosmole / Liter
+|ms |Milliseconds
+|mv |Millivolts
+|miu/mL |*Milliunit / Milliliter
+|mol/m3 |Mole per cubic meter
+|mol/kg |Mole / Kilogram
+|mol/(kg.s) |(Mole / Kilogram) / Second = mole / (kilogram × second)
+|mol/L |Mole / Liter
+|mol/s |Mole / Second
+|ng |Nanogram
+|ng/d |Nanogram / Day
+|ng/hr |*Nanogram / Hour
+|ng/(8.hr) |Nanogram / 8 Hour shift
+|ng/L |Nanogram / Liter
+|ng/kg |Nanogram / Kilogram (e.g., mass dose of medication per patient body weight)
+|ng/(kg.d) |(Nanogram / Kilogram) / Day = nanogram / (kilogram × day) (e.g., mass dose of medication per patient body weight per day)
+|ng/(kg.hr) |(Nanogram / Kilogram) / Hour = nanogram / (kilogram × hour) (e.g., mass dose of medication per patient body weight per hour)
+|ng/(8.hr.kg) |(Nanogram / Kilogram) / 8 Hour Shift = nanogram / (kilogram × 8 hour shift) (e.g., mass dose of medication per patient body weight per 8 hour shift)
+|ng/(kg.min) |(Nanogram / Kilogram) / Minute = nanogram / (kilogram × minute) (e.g., mass dose of medication per patient body weight per minute)
+|ng/m2 |Nanogram / Meter^2^ (e.g., mass dose of medication per patient body surface area)
+|ng/mL |Nanogram / Milliliter
+|ng/min |*Nanogram / Minute
+|ng/s |*Nanogram / Second
+|nkat |*Nanokatel
+|nm |Nanometer
+|nmol/s |Nanomole / Second
+|ns |Nanosecond
+|n |Newton (force)
+|n.s |Newton second
+|(od) |*O.D. (optical density)
+|ohm |Ohm (electrical resistance)
+|ohm.m |Ohm meter
+|osmol |Osmole
+|osmol/kg |Osmole per kilogram
+|osmol/L |Osmole per liter
+|/m3 |*Particles / Meter^3^
+|/L |*Particles / Liter
+|/(tot) |*Particles / Total Count
+|(ppb) |*Parts Per Billion
+|(ppm) |*Parts Per Million
+|(ppth) |Parts per thousand
+|(ppt) |Parts per trillion (10^12)
+|pal |Pascal (pressure)
+|/(hpf) |*Per High Power Field
+|(ph) |*pH
+|pa |Picoampere
+|pg |Picogram
+|pg/L |Picogram / Liter
+|pg/mL |Picogram / Milliliter
+|pkat |*Picokatel
+|pm |Picometer
+|pmol |*Picomole
+|ps |Picosecond
+|pt |Picotesla
+|(pu) |*P.U.
+|% |Percent
+|dm2/s2 |Rem (roentgen equivalent man) = 10^-2^ meter^2^ / second^2^ = decimeter^2^ / second^2^ Dose of ionizing radiation equivalent to 1 rad of x-ray or gamma ray) [From Dorland's Medical Dictionary]
+|sec |Seconds of arc
+|sie |Siemens (electrical conductance)
+|sv |Sievert
+|m2/s |Square meter / second
+|cm2/s |Square centimeter / second
+|t |Tesla (magnetic flux density)
+|(td_u) |Todd Unit
+|v |Volt (electric potential difference)
+|1 |Volume Fraction
+|wb |Weber (magnetic flux)
+a|
+*Starred items are not genuine ISO, but do not conflict.
+
+†This approach to units is discouraged by IUPAC. We leave them solely for backward compatibility
+
+|
+|===
+

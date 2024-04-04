@@ -1,0 +1,42 @@
+=== 10.7.3 Request and Receive New Appointment with Repeating Interval - Event S01
+
+The patient has been seen by his specialist, Dr. Specialize, and requires treatment by a physical therapist, Seth Stretcher. Dr. Specialize's office requests a one-hour appointment each day for the next five days. Mr. Stretcher's office responds to the request with an appointment at 9:30 AM on June 20th through June 24th, 2007.
+
+MSH|^~\&|SPECIALIZE|EWHIN|STRETCHER|EWHIN|200706190800||SRM^S01^SRM_S01|03432SPECIALIZE|P|2.8|||AL|AL||<cr>
+
+ARQ|20070347^SCH001|||||047^Referral||NORMAL|060|min|200706200930||Q1D|D5|00335^Specialize^Sara^S^^^MD||||A3423^Person^Entered||||<cr>
+
+PID||4875439|484848||Everyman^Adam^A^^| |19401121|M|Alias||2222 Home Street^Jay^WA^99021||555-2003|||M||444-33-3333||||||||||<cr>
+
+DG1|001|I9|833.00|Closed dislocation wrist|200706190700|||||||||||||<cr>
+
+RGS|001|<cr>
+
+AIP|001|064^STRETCHER^SETH|097^PHYSICAL THERAPIST|||||||NO|<cr>
+
+AIL|001|103^NORTH OFFICE|002^CLINIC|||||||NO|<cr>
+
+MSH|^~\&|SPECIALIZE|EWHIN|SMITH|EWHIN|200706190802||ACK|546644STRETCHER|P|2.8||||||<cr>
+
+MSA|CA|03432SPECIALIZE||||<cr>
+
+MSH|^~\&|STRETCHER|EWHIN|SPECIALIZE|EWHIN|200706190810||SRR^S01^SRR_S01|0654544JONES|P|2.8||||||<cr>
+
+MSA|AA|03432SSPECIALIZE||||<cr>
+
+SCH|2007037^SCH001|2007297^SCH100|||||047^Referral|NORMAL|| ||0335^Contact^Carrie^C^^^||||064^By^Entered|||||BOOKED<cr>
+
+TQ1|||Q1D||5^D|60^M|200706200930|200706240930||||||<cr>
+
+PID||4875439|484848||Everyman^Adam^A^^||19401121|M|Alias||2222 Home Street^Jay^WA^99021||555-2003|||M|||444-33-3333|||||||||||<cr>
+
+RGS|001|<cr>
+
+AIP|001|064^STRETCHER^SETH|097^PHYSICAL THERAPIST|||||||NO|BOOKED<cr>
+
+AIL|001|103^NORTH OFFICE|002^CLINIC|||||||NO|BOOKED<cr>
+
+MSH|^~\&|SPECIALIZE|EWHIN|STRETCHER|EWHIN|200706190800||ACK|045742SPECIALIZE|P|2.8||||||<cr>
+
+MSA|CA|0654544JONES||||<cr>
+

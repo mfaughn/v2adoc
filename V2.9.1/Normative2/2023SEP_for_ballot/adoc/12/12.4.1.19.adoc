@@ -1,0 +1,4 @@
+==== 12.4.1.19 GOL-19 Goal Life Cycle Status Date/Time (DTM) 00835
+
+Definition: This field contains the effective date/time of the current goal life cycle status.
+

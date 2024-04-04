@@ -1,0 +1,4 @@
+==== 9.2.1.7 Obsolete:
+
+An availability status in which a document has been replaced by a document which contains revised content.
+

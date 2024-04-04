@@ -1,0 +1,4 @@
+==== 9.7.3.25 TXA-25 Document Title (ST) 03301
+
+Definition: This field supports the identification of the document title. When communicating the meta information without the document contents you may submit the document title as well.
+

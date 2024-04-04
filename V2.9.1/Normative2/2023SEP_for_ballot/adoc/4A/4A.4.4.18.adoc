@@ -1,0 +1,4 @@
+==== 4A.4.4.18 RXE-18 D/T of Most Recent Refill or Dose Dispensed (DTM) 00328
+
+Definition: Date/time of the most recent refill or dose dispensed.
+

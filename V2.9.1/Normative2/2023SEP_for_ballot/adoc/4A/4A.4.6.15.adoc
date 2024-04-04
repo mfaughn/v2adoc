@@ -1,0 +1,4 @@
+==== 4A.4.6.15 RXG-15 Give Rate Amount (ST) 00332
+
+Definition: This field contains the amount (number) of substance/treatment to be administered.
+

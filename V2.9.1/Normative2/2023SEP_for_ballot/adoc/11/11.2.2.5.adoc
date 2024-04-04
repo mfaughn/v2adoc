@@ -1,0 +1,8 @@
+==== 11.2.2.5 The auxiliary application role
+
+Like querying applications, an auxiliary application neither exerts control over nor requests changes to a referral or a referred patient. They, too, are only concerned with gathering information about a particular referral. An auxiliary application is considered an "interested third‑party," in that it is interested in any changes to a particular referral or referred patient, but has no interest in changing it or controlling it in any way. An auxiliary application passively collects information by receiving unsolicited updates from a provider application.
+
+The analog of an auxiliary application in a non‑automated environment might be any person receiving reports containing referral information. For example, an insurance company may need information about the activities a patient experiences during specific referral encounters. Primary care providers may need to forward information regarding all referred patients to a payor organization.
+
+In turn, a primary care provider may have the ability to track electronically a patient's medical record. The provider would then be very interested in receiving any information regarding a patient referred to a specialist.
+

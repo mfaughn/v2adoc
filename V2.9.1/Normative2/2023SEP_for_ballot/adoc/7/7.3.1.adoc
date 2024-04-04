@@ -1,0 +1,141 @@
+=== 7.3.1 ORU – Unsolicited Observation Message (Event R01) 
+
+The ORU message is for transmitting observational results, including lab, clinical or other observations, to other systems.. The OUL message is designed to accommodate the laboratory processes of laboratory automation systems.
+
+With the segment (OBX) defined in this chapter, and the OBR defined in Chapter 4, one can construct almost any clinical report as a multi-level hierarchy, with the PID segment defined in Chapter 3 at the upper level, an order record (OBR) at the next level with one or more observation records (OBX), followed by the specimen information (SPM) and one or more observations (OBX) directly associated with the specimen.
+
+One result segment (OBX) is transmitted for each component of a diagnostic report, such as an EKG or obstetrical ultrasound or electrolyte battery.
+
+The CTD segment in this trigger is used to transmit temporary patient contact details specific to this order.
+
+The Device segment (DEV) provides additional device information for a device referenced in one or more of the PRT segments in the message (using PRT-10 Participation Device to match DEV-2 Unique Device Identifier or PRT-22 Participation Device Type using DEV-3 Device Type).
+
+ORU^R01^ORU_R01: Observation Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ ARV}] |Access Restrictions | |3 | |
+|[\{ SFT }] |Software Segment | |2 | |
+|[UAC] |User Authentication Credential | |2 | |
+|\{ |--- PATIENT_RESULT begin | | | |
+|[ |--- PATIENT begin | | | |
+|PID |Patient Identification | |3 | |
+|[PD1] |Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient) | |7 | |
+|[\{link:#OH1[OH1]}] |Employment Status | |3 | |
+|[\{link:#OH2[OH2]}] |Past or Present Job | |3 | |
+|[link:#OH3[OH3]] |Usual Work | |3 | |
+|[\{link:#OH4[OH4]}] |Combat Zone Work | |3 | |
+|[\{NTE}] |Notes and Comments | |2 | |
+|[\{ |--- NEXT_OF_KIN begin | | | |
+|NK1 |Next of Kin/Associated Parties | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{link:#OH2[OH2]}] |Past or Present Job | |3 | |
+|[link:#OH3[OH3]] |Usual Work | |3 | |
+|}] |--- NEXT_OF_KIN end | | | |
+|[\{ARV}] |For backwards compatibility only as of V2.9 |B |3 | |
+|[\{ |--- PATIENT_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation (for Patient ID) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|}] |--- PATIENT_OBSERVATION end | | | |
+|[ |--- VISIT begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[PV2] |Patient Visit - Additional Info | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient Visit) | |7 | |
+|] |--- VISIT end | | | |
+|[\{ |--- INSURANCE begin | | | |
+|IN1 |Insurance | |6 | |
+|[IN2] |Insurance Additional Information | |6 | |
+|[IN3] |Insurance Additional Information, Certification | |6 | |
+|}] |--- INSURANCE end | | | |
+|] |--- PATIENT end | | | |
+|\{ |--- ORDER_OBSERVATION begin | | | |
+|[ |--- COMMON_ORDER begin | | | |
+|ORC |Order common | |4 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Observation) | |7 | |
+|[ |--- ORDER_DOCUMENT begin | | | |
+|OBX |Observation containing Document | |7 | |
+|[\{PRT}] |Participation | |7 | |
+|TXA |Transcription Document Header | |9 | |
+|] |--- ORDER_DOCUMENT end | | | |
+|] |--- COMMON_ORDER end | | | |
+|link:#OBR[OBR] |Observations Request | |7 | |
+|[\{NTE}] |Notes and comments | |2 | |
+|[\{ |--- OBSERVATION_PARTICIPATION begin | | | |
+|link:#prt-participation-information-segment[PRT] |Participation (for Observation) | |7 | |
+|[\{DEV}] |Device | |17 | |
+|}] |--- OBSERVATION_PARTICIPATION end | | | |
+|[\{ |--- TIMING_QTY begin | | | |
+|TQ1 |Timing/Quantity | |4 | |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 | |
+|}] |--- TIMING_QTY end | | | |
+|[CTD] |Contact Data | |11 | |
+|[\{ |--- OBSERVATION begin | | | |
+|link:#OBX[OBX] |Observation related to OBR | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|\{[NTE]} |Notes and comments | |2 | |
+|}] |--- OBSERVATION end | | | |
+|[\{FT1}] |Financial Transaction | |6 | |
+|\{[link:#CTI[CTI]]} |Clinical Trial Identification | |7 | |
+|[\{ |--- SPECIMEN begin | | | |
+|link:#SPM[SPM] |Specimen | | | |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | | |
+|link:#OBX[OBX] |Observation (for Patient ID) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|}] |--- SPECIMEN_OBSERVATION end | | | |
+|}] |--- SPECIMEN end | | | |
+|} |--- ORDER_OBSERVATION end | | | |
+|[\{ |--- DEVICE begin | | | |
+|DEV |Device (for Participation) | |17 | |
+|[\{OBX}] |Observation/Result | |7 | |
+|}] |--- DEVICE end | | | |
+|} |--- PATIENT_RESULT end | | | |
+|[DSC] |Continuation Pointer | |2 | |
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|ORU^R01^ORU_R01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^R01^ACK
+|Application Ack |ACK^R01^ACK |- |ACK^R01^ACK |ACK^R01^ACK
+|===
+
+*Note:* The ORC is permitted but not required in this message. Any information that could be included in either the ORC or the OBR must be included in the OBR on reporting. Notice also that the ORU (and the QRY) messages accommodate reports about many patients.
+
+Many report headers (OBR) may be sent beneath each patient segment, with many separate observation segments (OBX) related to the order / observation request beneath each OBR. OBX segments that are related to specimens immediately follow the SPM segments. Note segments (NTE) may be inserted at different locations in the message. The note segment applies to the entity that immediately precedes it, i.e., the patient if it follows the PID segment, the observation request if it follows the OBR segment, and the individual result if it follows the OBX segment.
+
+ACK^R01^ACK: Observation Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message header | |2
+|[\{ SFT }] |Software segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="26%,35%,12%,27%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^R01^ACK | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^R01^ACK
+|Application Ack |- |- |-
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+

@@ -1,0 +1,4 @@
+==== 14.4.3.5 NST-5 Statistics End (DTM) 01177
+
+Definition: This field contains the date/time stamp of the end of the statistics collection period reported in fields 6‑15 of this segment. It is strongly recommended that this value include seconds.
+

@@ -1,0 +1,20 @@
+=== 3.4.13 PDA - Patient Death and Autopsy Segment
+
+This segment carries information on a patient's death and possible autopsy.
+
+[#_Hlt479197793 .anchor]####HL7 Attribute Table - PDA - Patient Death and Autopsy
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |O |Y | |01574 |Death Cause Code
+|2 | | |PL |O | | |01575 |Death Location
+|3 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01576 |Death Certified Indicator
+|4 | | |DTM |O | | |01577 |Death Certificate Signed Date/Time
+|5 | | |XCN |O | | |01578 |Death Certified By
+|6 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01579 |Autopsy Indicator
+|7 | | |DR |O | | |01580 |Autopsy Start and End Date/Time
+|8 | | |XCN |O | | |01581 |Autopsy Performed By
+|9 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01582 |Coroner Indicator
+|===
+

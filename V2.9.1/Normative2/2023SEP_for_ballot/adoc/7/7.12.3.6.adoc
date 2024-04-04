@@ -1,0 +1,4 @@
+==== 7.12.3.6 PCR-6 Product Expiration Date (DTM) 01103
+
+Definition: This field contains the expiration date indicated on the product packaging.
+

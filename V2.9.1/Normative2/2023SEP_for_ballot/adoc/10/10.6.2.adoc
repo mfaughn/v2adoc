@@ -1,0 +1,39 @@
+=== 10.6.2 SCH - Schedule Activity Information Segment
+
+The SCH segment contains general information about the scheduled appointment.
+
+HL7 Attribute Table - SCH [#SCH .anchor]##– Scheduling Activity Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |C | | |00860 |Placer Appointment ID
+|2 | | |EI |C | | |00861 |Filler Appointment ID
+|3 | |5= |NM |C | | |00862 |Occurrence Number
+|4 | | |EI |O | | |00218 |Placer Order Group Number
+|5 | | |CWE |O | | |00864 |Schedule ID
+|6 | | |CWE |R | | |00883 |Event Reason
+|7 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70276[0276] |00866 |Appointment Reason
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70277[0277] |00867 |Appointment Type
+|9 | | | |W | | |00868 |Appointment Duration
+|10 | | |CNE |B | | |00869 |Appointment Duration Units
+|11 | | | |W | | |00884 |Appointment Timing Quantity
+|12 | | |XCN |O |Y | |00874 |Placer Contact Person
+|13 | | |XTN |O | | |00875 |Placer Contact Phone Number
+|14 | | |XAD |O |Y | |00876 |Placer Contact Address
+|15 | | |PL |O | | |00877 |Placer Contact Location
+|16 | | |XCN |R |Y | |00885 |Filler Contact Person
+|17 | | |XTN |O | | |00886 |Filler Contact Phone Number
+|18 | | |XAD |O |Y | |00887 |Filler Contact Address
+|19 | | |PL |O | | |00888 |Filler Contact Location
+|20 | | |XCN |R |Y | |00878 |Entered by Person
+|21 | | |XTN |O |Y | |00879 |Entered by Phone Number
+|22 | | |PL |O | | |00880 |Entered by Location
+|23 | | |EI |O | | |00881 |Parent Placer Appointment ID
+|24 | | |EI |C | | |00882 |Parent Filler Appointment ID
+|25 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70278[0278] |00889 |Filler Status Code
+|26 | | |EI |C |Y | |00216 |Placer Order Number
+|27 | | |EI |C |Y | |00217 |Filler Order Number
+|28 | | |EIP |O | | |03547 |Alternate Placer Order Group Number
+|===
+

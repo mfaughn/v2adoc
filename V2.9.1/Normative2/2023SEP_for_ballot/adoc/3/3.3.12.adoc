@@ -1,0 +1,66 @@
+=== 3.3.12 ADT/ACK - Cancel Transfer (Event A12)
+
+The A12 event is sent when an A02 (transfer a patient) event is cancelled, either because of erroneous entry of the A02 event or because of a decision not to transfer the patient after all. _PV1-3 - Assigned Patient Location_ must show the location of the patient prior to the original transfer.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. When other important fields change, it is recommended that the A08 (update patient information) even be used in addition.
+
+*Attention: The DG1 segment was retained for backward compatibility only as of v2.4 and was withdrawn and removed from this message structure as of v2.7.*
+
+ADT^A12^ADT_A12: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:++#arv---access-restrictions-segment++[ARV] }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[ link:#_Hlt479197572[PD1] ] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|link:#_Hlt476040270[PV1] |Patient Visit | |3
+|[ link:#PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|[\{ link:#_Hlt479197568[DB1] }] |Disability Information | |3
+|[\{ |--- OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{ PRT }] |Participation | |
+|}] |--- OBSERVATION end | |
+|===
+
+[width="100%",cols="18%,19%,4%,17%,21%,21%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A12^ADT_A12 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A12^ACK |- |ACK^A12^ACK
+|Application Ack |ADT^A12^ADT_A12 |- |- |ACK^A12^ACK |ACK^A12^ACK
+|===
+
+ACK^A12^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,36%,10%,31%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A12^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A12^ACK
+|Application Ack |- |- |-
+|===
+

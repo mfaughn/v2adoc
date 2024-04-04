@@ -1,0 +1,4 @@
+=== 3.3.30 ADT/ACK - Merge Person Information (Event A30)
+
+*Attention: The Merge Person Information event was maintained for backward compatibility only as of v2.3.1 and withdrawn as of v2.7.* From V 2.3.1 onwards, the reader is referred to the A40 (merge patient-patient identifier list) event to be used to merge patient information for a current episode.
+

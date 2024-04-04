@@ -1,0 +1,10 @@
+=== 13.5.9 Automated Equipment Notification
+
+The chemistry analyzer sends a notification (warning) about drift in the detection unit.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |EAN^U09^EAN|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+NDS|8923|199806300800|W^WARNING^|DU001^DETECTIO UNIT DRIFT<cr>
+

@@ -1,0 +1,19 @@
+=== 8.9.4 LRL - Location Relationship Segment
+
+The Technical Steward for the LRL segment is Patient Administration.
+
+The LRL segment is used to identify one location's relationship to another location, the nearest lab, pharmacy, etc.
+
+[#LRL .anchor]####HL7 Attribute Table - LRL - Location Relationship
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |PL |R | | |00943 |Primary Key Value - LRL
+|2 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00763 |Segment Action Code
+|3 | | |EI |O | | |00764 |Segment Unique Key
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70325[0325] |01277 |Location Relationship ID
+|5 | | |XON |C |Y | |01301 |Organizational Location Relationship Value
+|6 | | |PL |C | | |01292 |Patient Location Relationship Value
+|===
+

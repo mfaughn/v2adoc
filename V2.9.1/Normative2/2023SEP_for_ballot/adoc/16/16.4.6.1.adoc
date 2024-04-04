@@ -1,0 +1,6 @@
+==== 16.4.6.1 PSL-1 Provider Product/Service Line Item Number (EI) 01955
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Line Item Number assigned by the Provider Application.
+

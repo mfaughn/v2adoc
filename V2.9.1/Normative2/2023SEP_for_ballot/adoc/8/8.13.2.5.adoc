@@ -1,0 +1,4 @@
+==== 8.13.2.5 DMI-5 Relative Weight (NM) 02233
+
+Definition: Each DRG has its own relative weight (cost weight) which is calculated (defined) by official institutions. This value is the basis for calculating other values, e.g., the effective weight.
+

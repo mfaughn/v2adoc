@@ -1,0 +1,76 @@
+=== 11.3.2 RQI/RPL - Request/Receipt of Patient Selection Display List (Event I02) 
+
+This trigger event occurs when the inquirer specifies a request for a name lookup listing. Generally, this request is used by the responder when insufficient data is on hand for a positive match. In this case, the requester may ask for a list of possible candidates from which to make a selection. This event code is also used by the responder to signify that the return information contains a list of information rather than information specific to a single patient.
+
+RQI^I02^RQI_I01: Request Patient Information
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:#SFT[SFT] }] |Software segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|\{ |--- PROVIDER begin | |
+|link:\l[PRD] |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|PID |Patient Identification | |3
+|[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[\{ |--- NEXT_OF_KIN begin | |
+|file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[NK1] |Next of Kin / Associated Parties | |3
+|[\{ file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[GSP] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|}] |--- NEXT_OF_KIN end | |
+|[ |--- GUARANTOR_INSURANCE begin | |
+|[\{GT1}] |Guarantor | |6
+|\{ |--- INSURANCE begin | |
+|IN1 |Insurance | |6
+|[IN2] |Insurance Additional Info | |6
+|[IN3] |Insurance Add'l Info - Cert | |6
+|} |--- INSURANCE end | |
+|] |--- GUARANTOR_INSURANCE end | |
+|[\{NTE}] |Notes and Comments | |2
+|===
+
+[width="100%",cols="21%,31%,24%,24%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|RQI^I02^RQI_I01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |AL |AL
+|Immediate Ack |- |- |ACK^I02^ACK
+|Application Ack |RPL^I02^RPL_I02 |RPL^I02^RPL_I02 |RPL^I02^RPL_I02
+|===
+
+RPL^I02^RPL_I02: Return Patient Display List
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:#SFT[SFT] }] |Software segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |3
+|\{ |--- PROVIDER begin | |
+|PRD |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|[\{NTE}] |Notes and Comments | |2
+|[\{DSP}] |Display Data | |5
+|[ DSC ] |Continuation Pointer | |2
+|===
+
+[width="100%",cols="24%,37%,10%,29%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|RPL^I02^RPL_I02 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^I02^ACK
+|Application Ack |- |- |-
+|===
+

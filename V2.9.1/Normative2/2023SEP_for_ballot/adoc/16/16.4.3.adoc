@@ -1,0 +1,18 @@
+=== 16.4.3 PYE – Payee Information Segment
+
+This segment is used to define payee information.
+
+HL7 Attribute Table – PYE – Payee Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |01939 |Set ID – PYE
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70557[0557] |01940 |Payee Type
+|3 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70558[0558] |01941 |Payee Relationship to Invoice (Patient)
+|4 | | |XON |C |Y/5 | |01942 |Payee Identification List
+|5 | | |XPN |C |Y/4 | |01943 |Payee Person Name
+|6 | | |XAD |C |Y/4 | |01944 |Payee Address
+|7 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70570[0570] |01945 |Payment Method
+|===
+

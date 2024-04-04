@@ -1,0 +1,6 @@
+==== 16.4.8.1 PMT-1 Payment/Remittance Advice Number (EI) 02018
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Payment/Remittance Advice number for the sending Network Application ID.
+

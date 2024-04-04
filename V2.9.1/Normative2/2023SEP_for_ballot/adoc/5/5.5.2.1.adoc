@@ -1,0 +1,4 @@
+==== 5.5.2.1 QAK-1 Query Tag (ST) 00696 
+
+Definition: This field may be valued by the initiating system to identify the query, and may be used to match response messages to the originating query. If it is valued, the responding system is required to echo it back as the first field in the query acknowledgment segment (QAK). This field differs from _MSA-2-message control ID_ in that its value remains constant for each message (i.e., all continuation messages) associated with the query, whereas _MSA-2-Message control ID_ may vary with each continuation message, since it is associated with each individual message, not the query as a whole. _QAK-1-Query tag_ is not conditional on the presence of the _QRD-1-Query ID_ field in the original mode queries; in the original mode queries _QAK-1-Query tag_ is not used.
+

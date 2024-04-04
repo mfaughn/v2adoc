@@ -1,0 +1,14 @@
+=== 4.8.2 ODT ‑ diet tray instructions segment
+
+This segment addresses tray instructions. These are independent of diet codes, supplements, and preferences and therefore get separate order numbers.
+
+HL7 Attribute Table – ODT – Diet Tray Instructions
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/ # |TBL # |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70160[0160] |00273 |Tray Type
+|2 | | |CWE |O |Y/10 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70629[0629] |00270 |Service Period
+|3 | |80# |ST |O | | |00272 |Text Instruction
+|===
+

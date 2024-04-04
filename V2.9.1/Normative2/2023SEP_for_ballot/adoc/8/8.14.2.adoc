@@ -1,0 +1,32 @@
+=== 8.14.2 CTR – Contract Master Outbound Segment
+
+Definition: The Contract Master File is a message which will send MedSurg supply item contracts from a supplier to a Materials Management Information system (MMIS) or from an MMIS to other systems which place orders for the supply items. The main purpose of this integration point is to assign the contract price to the supply items (in the MMIS Item
+
+HL7 Attribute Table – CTR – Contract Master Outbound
+
+[width="100%",cols="10%,7%,7%,7%,7%,7%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |02392 |Contract Identifier
+|2 | |999# |ST |O | | |02393 |Contract Description
+|3 | | |CWE |O | |0536 |02394 |Contract Status
+|4 | | |DTM |R | | |02395 |Effective Date
+|5 | | |DTM |R | | |02396 |Expiration Date
+|6 | | |XPN |O | | |02397 |Contract Owner Name
+|7 | | |XPN |O | | |02398 |Contract Originator Name
+|8 | | |CWE |R | |0946 |02399 |Supplier Type
+|9 | | |CWE |O | |0965 |02400 |Contract Type
+|10 | | |CNE |O | |0532 |02401 |Free On Board Freight Terms
+|11 | | |DTM |O | | |02402 |Price Protection Date
+|12 | | |CNE |O | |0532 |02403 |Fixed Price Contract Indicator
+|13 | | |XON |O | | |02404 |Group Purchasing Organization
+|14 | | |MOP |O | | |02405 |Maximum Markup
+|15 | | |MOP |O | | |02406 |Actual Markup
+|16 | | |XON |C |Y | |02407 |Corporation
+|17 | | |XON |O | | |02408 |Parent of Corporation
+|18 | | |CWE |O | |0966 |02409 |Pricing Tier Level
+|19 | | |ST |O | | |02410 |Contract Priority
+|20 | | |CWE |O | |0947 |02411 |Class of Trade
+|21 | | |EI |O | | |02412 |Associated Contract ID
+|===
+

@@ -1,0 +1,75 @@
+=== 3.3.61 ADT/ACK - Change Consulting Doctor (Event A61)
+
+An A61 event is used as a result of a change in the consulting physician(s) for the treatment of a patient.
+
+When other important fields change, it is recommended that the A08 (update patient information) event be used in addition. If the Patient Administration system allows demographics to change at the same time (for example an address change), two messages (an A61 followed by an A08) should be sent.
+
+The new consulting doctor(s) of the patient should appear in the _PV1-9 - Consulting Doctor_ and may appear in a role segment per new consulting physician.
+
+If a consulting doctor stops being consulting doctor for this patient-visit, the end date/time can be sent in the _PRT-12 - End Date/Time_.
+
+For example, an A61 event can be used to notify the billing system that doctors' fees for being a consulting doctor, should be billed to the new doctor(s) starting from the timestamp in the message.
+
+It is recommended that field _EVN-6 - Event Occurred_ contains the date/time the event actually occurred to the patient.
+
+The ROL segment has been deprecated and retained for backwards compatiblity purposes only as of v 2.9. The reader is referred to the PRT segment instead.
+
+The PRT – Participation Information Segment is used in this message to communicate providers not specified elsewhere. Person level providers with an ongoing relationship are reported in the PRT segment following the PID/PD1 segments. Providers corresponding to the PV1 data are reported in the PRT segment following the PV1/PV2 segments. Providers related to a specific procedure are reported in the PRT segment following the PR1 segment. Providers related to a specific insurance are reported in the PRT segment following the IN1/IN2/IN3 segments. To communicate the begin- and end-date of the provider, use the _PRT-11 - Participation Begin Date/Time_ and the _PRT-12 - Participation End Date/Time_ in the PRT segment, with the applicable _PRT-4 - PArticipation_. Refer to Chapter 7 for the definition of the PRT segment.
+
+ADT^A61^ADT_A61: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|PID |Patient Identification | |3
+|[ PD1 ] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|PV1 |Patient Visit | |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|[ PV2 ] |Patient Visit - Additional Info. | |3
+|===
+
+[width="100%",cols="18%,25%,5%,17%,18%,17%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A61^ADT_A61 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A61^ACK |- |ACK^A61^ACK
+|Application Ack |ADT^A61^ADT_A61 |- |- |ACK^A61^ACK |ACK^A61^ACK
+|===
+
+ACK^A61^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="22%,38%,9%,31%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A61^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A61^ACK
+|Application Ack |- |- |-
+|===
+

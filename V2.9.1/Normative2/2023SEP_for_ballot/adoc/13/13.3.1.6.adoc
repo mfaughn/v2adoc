@@ -1,0 +1,4 @@
+==== 13.3.1.6 EQU-6 Expected Date/Time of the Next Status Change (DTM) 03487
+
+Definition: This field is the predicted date/time of the next equipment status change (e.g. from “maintenance” back to “normal operation”).
+

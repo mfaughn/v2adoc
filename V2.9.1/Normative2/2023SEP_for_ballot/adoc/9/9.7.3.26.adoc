@@ -1,0 +1,4 @@
+==== 9.7.3.26 TXA-26 Agreed Due Date/Time (DTM) 03302
+
+Definition: This field contains the date and time the document is or will be due back to the original author or dictator from the transcriptionist.
+

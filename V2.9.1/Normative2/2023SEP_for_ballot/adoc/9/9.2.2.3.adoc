@@ -1,0 +1,4 @@
+==== 9.2.2.3 Consent Disclosure Level: 
+
+Identifies whether the subject was provided with information on the full background information on the procedure the subject is giving consent to; i.e., has all information needed for 'informed' consent been provided.
+

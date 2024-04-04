@@ -1,0 +1,118 @@
+=== 7.3.15 ORU – Unsolicited Patient-Device Association Observation Message (Event R43)
+
+The R43 trigger event is used for observation reports that indicate the association of one patient to one or more health care devices. This includes both patient-device association as well as disassociation when a device is removed from active use with a patient. Other messages may be utilized for this purpose (e.g., ADT); however, this message was chosen given the general use of ORU-style messages to communicate device data, including unique device identifiers (e.g., PRT-10 and UDI components), and the possible need to include additional device data such as hardware / software configuration. The R43 trigger provides indication of the specialized usage of this message. Note that OBX-3 Observation Identifier, PRT-4 Participation, and OBX-11 Observation Result Status represent the purpose of the association of the device and the status of that association as further defined through the appropriate implementation guides and/or profiles.
+
+Use cases that this message supports include:
+
+____
+• Simple patient-device association where a system that integrates a bar code or RFID reader is used to capture patient and device identifiers at the point of care and then communicate those to other devices and systems that process device data associated with the same patient.
+
+• When one or more devices are no longer associated with a patient, this message can be used to communicate this change of status
+
+• Systems may not only perform the identifier acquisition from patients and devices, but may also authenticate the identifiers and support cross-referencing (e.g., when there are multiple patient identifiers)
+____
+
+In the latter use case, this message can be used to establish a “source of truth” for patient-device associations. There are many systems in and supportive of the point of care that make associations between patients and health care devices, all of which need to be coordinated to ensure there are no mis-matches between information sources and the patients to which they are associated.
+
+The message shall identify a patient with optional location information, and one or more device observations, each including a unique device identifier along with an indication of whether the device is being associated or disassociated with the specified patient. In addition, a single observation can be specified to disassociate all devices for a given patient.
+
+ORU^R43^ORU_R01: Observation Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ARV}] |Access Restrictions | |3 | |
+|[\{ SFT }] |Software Segment | |2 | |
+|[UAC] |User Authentication Credential | |2 | |
+|\{ |--- PATIENT_RESULT begin | | | |
+|[ |--- PATIENT begin | | | |
+|PID |Patient Identification | |3 | |
+|[PD1] |Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient) | |7 | |
+|[\{link:#OH1[OH1]}] |Employment Status | |3 | |
+|[\{link:#OH2[OH2]}] |Past or Present Job | |3 | |
+|[link:#OH3[OH3]] |Usual Work | |3 | |
+|[\{link:#OH4[OH4]}] |Combat Zone Work | |3 | |
+|[\{NTE}] |Notes and Comments | |2 | |
+|[\{ |--- NEXT_OF_KIN begin | | | |
+|NK1 |Next of Kin/Associated Parties | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{OH2}] |Past or Present Job | |3 | |
+|[OH3] |Usual Work | |3 | |
+|}] |--- NEXT_OF_KIN end | | | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 | |
+|[\{ |--- PATIENT_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation (for Patient ID) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|}] |--- PATIENT_OBSERVATION end | | | |
+|[ |--- VISIT begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[PV2] |Patient Visit – Additional Info | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient Visit) | |7 | |
+|] |--- VISIT end | | | |
+|[\{ |--- INSURANCE begin | | | |
+|IN1 |Insurance | |6 | |
+|[IN2] |Insurance Additional Information | |6 | |
+|[IN3] |Insurance Additional Information, Certification | |6 | |
+|}] |--- INSURANCE end | | | |
+|] |--- PATIENT end | | | |
+|\{ |--- ORDER_OBSERVATION begin | | | |
+|[ |--- COMMON_ORDER begin | | | |
+|ORC |Order common | |4 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Observation) | |7 | |
+|[ |--- ORDER_DOCUMENT begin | | | |
+|OBX |Observation containing Document | |7 | |
+|[\{PRT}] |Participation | |7 | |
+|TXA |Transcription Document Header | |9 | |
+|] |--- ORDER_DOCUMENT end | | | |
+|] |--- COMMON_ORDER end | | | |
+|link:#OBR[OBR] |Observations Request | |7 | |
+|\{[NTE]} |Notes and comments | |2 | |
+|[\{ |--- OBSERVATION_PARTICIPATION begin | | | |
+|link:#prt-participation-information-segment[PRT] |Participation (for Observation) | |7 | |
+|[\{DEV}] |Device | |17 | |
+|}] |--- OBSERVATION_PARTICIPATION end | | | |
+|[\{ |--- TIMING_QTY begin | | | |
+|TQ1 |Timing/Quantity | |4 | |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 | |
+|}] |--- TIMING_QTY end | | | |
+|[CTD] |Contact Data | |11 | |
+|[\{ |--- OBSERVATION begin | | | |
+|link:#OBX[OBX] |Observation related to OBR | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|\{[NTE]} |Notes and comments | |2 | |
+|}] |--- OBSERVATION end | | | |
+|[\{FT1}] |Financial Transaction | |6 | |
+|[\{link:#CTI[CTI]}] |Clinical Trial Identification | |7 | |
+|[\{ |--- SPECIMEN begin | | | |
+|SPM |Specimen | |17 | |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | | |
+|OBX |Observation (for Patient ID) | |7 | |
+|[\{PRT}] |Participation (Observation Participation) | |7 | |
+|}] |--- SPECIMEN_OBSERVATION end | | | |
+|}] |--- SPECIMEN end | | | |
+|} |--- ORDER_OBSERVATION end | | | |
+|[\{ |--- DEVICE begin | | | |
+|DEV |Device (for Participation) | |17 | |
+|[\{OBX}] |Observation/Result | |7 | |
+|}] |--- DEVICE end | | | |
+|} |--- PATIENT_RESULT end | | | |
+|[DSC] |Continuation Pointer | |2 | |
+|===
+
+[width="99%",cols="20%,27%,13%,18%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|ORU^R43^ORU_R01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^R43^ACK
+|Application Ack |ACK^R43^ACK |- |ACK^R43^ACK |ACK^R43^ACK
+|===
+

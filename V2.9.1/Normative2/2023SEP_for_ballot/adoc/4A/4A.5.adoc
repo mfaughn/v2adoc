@@ -1,0 +1,4 @@
+== 4A.5 Pharmacy/Treatment Message Examples 
+
+The purpose of this section is to show how certain specific situations would be handled using the pharmacy/treatment protocol. The ellipses represent uncompleted details. The symbol // precedes comments for clarification.
+

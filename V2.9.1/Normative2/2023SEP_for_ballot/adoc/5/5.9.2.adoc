@@ -1,0 +1,2 @@
+=== 5.9.2 Query using QSC variant / segment pattern response examples
+

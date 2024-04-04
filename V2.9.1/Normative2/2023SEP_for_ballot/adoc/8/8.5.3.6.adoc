@@ -1,0 +1,4 @@
+==== 8.5.3.6 MFA-6 Primary Key Value Type - MFA (ID) 01320 
+
+Definition: This field contains the HL7 data type of _MFA-5 - Primary Key Value - MFA_. The valid HL7 data types are listed in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70355[HL7 Table 0355 - Primary Key Value Type] in Chapter 2C, Code Tables.
+

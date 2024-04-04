@@ -1,0 +1,4 @@
+==== 7.4.1.19 OBR-19 Placer Field 2 (ST) 00252
+
+Definition: This field is similar to placer field #1.
+

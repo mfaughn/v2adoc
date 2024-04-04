@@ -1,0 +1,10 @@
+=== 3.6.3 Patient record links
+
+Linking two or more patients does not require the actual merging of patient information as discussed in Section link:#merging-patientperson-information[_3.6.2_], "link:#merging-patientperson-information[_Merging patient/person information_];" following a link trigger event, sets of affected patient data records should remain distinct. However, because of differences in database architectures, there may be system-dependent limitations or restrictions regarding the linking of one or more patients that must be negotiated.
+
+There are multiple approaches for implementing Master Patient Indexes. It is useful for the purpose of MPI mediation to support two types of linkage. Explicit linkage requires a message declaring a link has been made between multiple identifiers. Implicit linkage is performed when a receiving system infers the linkage from the presence of multiple identifiers present in _PID-3 - Patient Identifier List_.
+
+In an MPI setting, the A24 -link patient information message is preferred for transmitting an explicit link of identifiers whether they are in the same or different assigning authorities. The A37 unlink patient information message is preferred for transmitting the explicit unlinking of identifiers.
+
+Implicit linkage of identifiers, sometimes called passive linking, has been implemented using various messages. An acknowledged method is inclusion of multiple identifiers in _PID-3 - Patient Identifier List_, which the receiving system implicitly links. An MPI or application that makes such an implicit linkage can generate an A24 - link patient information message to explicitly notify another system of this action.
+

@@ -1,0 +1,6 @@
+==== 16.4.9.2 IPR-2 Provider Cross Reference Identifier (EI) 02031
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Cross reference to Provider Product/Service Group Number or Provider Product/Service Line Item Number from original Invoice.
+

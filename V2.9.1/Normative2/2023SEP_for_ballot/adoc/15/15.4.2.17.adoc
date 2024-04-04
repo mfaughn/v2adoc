@@ -1,0 +1,4 @@
+==== 15.4.2.17 CER-17 Basic Constraint (ID) 01871
+
+Definition: The Basic Constraints extension contains a boolean used to specify whether or not the subject can act as a CA (certificate authority), using the certified key to sign certificates.
+

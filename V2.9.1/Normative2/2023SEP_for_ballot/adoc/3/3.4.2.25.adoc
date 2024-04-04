@@ -1,0 +1,4 @@
+==== *3.4.2.25* PID-25 Birth Order (NM) 00128
+
+Definition: When a patient was part of a multiple birth, a value (number) indicating the patient's birth order is entered in this field.
+

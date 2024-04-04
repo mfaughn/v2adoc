@@ -1,0 +1,4 @@
+==== 4A.4.7.20 RXA-20 Completion Status (ID) 01223
+
+Definition: Status of treatment administration event. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70322[_HL7 Table 0322 - Completion Status_] in Chapter 2C, Code Tables, for valid values.
+

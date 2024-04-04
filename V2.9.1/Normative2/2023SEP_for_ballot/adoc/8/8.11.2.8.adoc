@@ -1,0 +1,4 @@
+==== 8.11.2.8 CM0-8 Last Accrual Date (DT) 01017
+
+Definition: This field contains the status information on the patient registration activity for quality control and operations purposes.
+

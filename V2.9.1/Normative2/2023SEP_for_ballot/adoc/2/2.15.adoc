@@ -1,0 +1,2 @@
+== 2.15 Miscellaneous HL7 tables used across all chapters
+

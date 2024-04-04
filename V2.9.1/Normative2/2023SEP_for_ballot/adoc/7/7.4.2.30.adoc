@@ -1,0 +1,4 @@
+==== 7.4.2.30 OBX-30 Observation Sub-Type (ID) 03475
+
+Definition: The result sub-type provides further classification of OBX-29 Observation Type. This may aid in the grouping of OBX-segments. See file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70937[_HL7-defined Table 0937 – Observation Sub-Type_] in Chapter 2C, Code Tables, for a set of valid values.
+

@@ -1,0 +1,4 @@
+===== 9.2.1.4.6 Legally Authenticated:
+
+A completion status in which a document or entry has been signed manually or electronically by the individual who is legally responsible for that document or entry. This is the most mature state in the workflow progression.
+

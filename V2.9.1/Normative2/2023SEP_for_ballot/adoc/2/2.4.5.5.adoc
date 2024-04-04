@@ -1,0 +1,65 @@
+==== 2.4.5.5 Implications for Implementers
+
+____
+In an ideal world, the standard would be able to determine the maximum length for a value with authority, and all implementations would be able to handle the maximum length. However neither of these are true, and so this specification defines both normative maximum length, conformance length, and whether a value MAY be truncated. This following table summarises how these various parameters interact, provides an example of each combination, and outlines the implications for implementations. The second data type listed refers to the underlying data type the cited one is based upon.
+____
+
+[width="100%",cols="11%,7%,6%,7%,69%",options="header",]
+|===
+|ID/DT |Child DT |LEN |C.LEN |Implication
+|CX.5 | |2..5 | a|
+CX.5 MAY contain a number of fixed values, all of which have a length between 2 and 5. Other values are not allowed.
+
+Truncation is not allowed.
+
+| |ID |1.. |15= |The conformance length is 15 – applications SHALL be able to properly handle all values, which includes the range of allowed lengths for this component.
+|ED.3 | | |32 a|
+ED.3 is one of the few examples where an ID value is taken from an externally derived code system (IANA mime types in this case).
+
+The conformance length is 32: applications SHALL be able to handle mime types up to a length of 32. Applications can choose to handle more if desired.
+
+| |ID |1.. |15= |Since truncation is not allowed, applications SHALL respond with an error if the length of a mime type exceeds the length it can handle without truncation.
+|CWE.1 | | |20= a|
+If populated, the value SHALL be at least one character. There is no upper limit to the number of characters that are allowed, since this specification cannot apply a limit to the external code systems that CWE is provided to support. In particular, Snomed-CT (post-coordinated) expressions MAY be provided in the coding identifier component.
+
+However this specification does not impose the requirement to support arbitrarily long values in this very common component. Instead, applications SHALL support codesystem identifiers up to 20 characters long.
+
+| |ST |1.. | a|
+Since the identifier is useless if truncated, truncation SHALL NOT be allowed.
+
+Application designers SHOULD consider the range of possible values and how they are handled. If the application imposes a maximum limit, this SHOULD be published in the application conformance profile.
+
+|FN.1 | | |50# a|
+FN.1 contains a surname. This specification is not in a position to impose an upper normative limit on the length of all surnames in the world.
+
+However our collective experience shows that values longer than 50 are rarely encountered, so applications SHALL be able to handle values up to the length of 50 without truncation.
+
+| |ST |1.. | |Applications MAY choose to truncate values longer than 50 characters. If applications do this, the truncation pattern SHOULD be followed in order to reduce the risks of downstream handling of the data following truncation.
+|XAD.5 | | |12= a|
+XAD.5 is postal/zip code. This specification is not able to impose a normative limit on the size of postal codes around the world, but our collective experience is that 12 covers all the currently known postal systems.
+
+Because postal code is used as an identifier in postal delivery systems, it is not appropriate to truncate the value.
+
+| |ST |1.. | |
+|XPN.12 | | | |XPN.12 specifies the date that a person name became applicable. By default, this field allows a highly precise date including milliseconds and a time zone. Applications are not required to implement this level of precision; they MAY truncate the value to a the day containing the specified time interval.
+| |DTM |4..24 |8# |
+|CWE.16 | |4..24 |8= |CWE.16 specifies the date that a value set was published. In some contexts, the publication date of a value set MAY be identified by a date precise to at least hours and minutes in order to allow multiple releases in a single day.
+| |DTM |4..24 |8# a|
+However this is an unusual use case; nearly all value sets only identify their publication date to the nearest day.
+
+For this reason applications are only required to handle value sets specified to the particular day. However, since the publication date identifies a particular version of the value set, applications are not allowed to truncate the publication date. This specification recommends but does not require that applications support a full date time for this value.
+
+Note that the base DTM type default conformance length is that all applications are required to be able to store a full day, and are allowed to truncate dates to this length. These rules MAY be overridden where DTM is used.
+
+|NTE.1 | | | |NTE.1 is the segment Id. The segment id MAY have any value between 1 and 9999. Applications are required to handle all these values.
+| |SI |1..4 |4= |
+|SN.2 | | | |SN.2 is a numerical value from a structured numeric presented in decimal form. It has a normative length of 16.
+| |NM |1..16 | |The NM data type defines its own truncation pattern driven by the semantics of numbers. The truncation character SHALL NOT be used. While there is no conformance length specified, the truncation rules for the NM data type SHALL always be followed; the application SHALL reject the instance if it is unable to conform to these rules.
+|ED.5 | | | a|
+ED.5 is text data of arbitrary length. This specification does not apply either a normative length or a conformance length. This does not mean that applications are not required to handle data of infinite length. Applications MAY choose to define limits on the length of data handled in their conformance profiles.
+
+Note that the length of data handled can depend on the type of the data.
+
+| |TX | | |
+|===
+

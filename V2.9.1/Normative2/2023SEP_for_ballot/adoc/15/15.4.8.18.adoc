@@ -1,0 +1,4 @@
+==== 15.4.8.18 STF-18 Job Title (ST) 00785
+
+Definition: This field contains a descriptive name of the staff member's occupation (e.g., Sr. Systems Analyst, Sr. Accountant).
+

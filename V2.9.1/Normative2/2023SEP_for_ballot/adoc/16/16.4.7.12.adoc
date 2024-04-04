@@ -1,0 +1,6 @@
+==== 16.4.7.12 ADJ-12 Provider Adjustment Number Cross Reference (EI) 02014
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Provider Adjustment Number assigned by the Provider Application that is referenced by this Payer Adjustment.
+

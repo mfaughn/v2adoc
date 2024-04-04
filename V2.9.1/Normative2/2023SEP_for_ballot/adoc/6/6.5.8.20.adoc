@@ -1,0 +1,18 @@
+==== 6.5.8.20 IN3-20 Pre-Certification Requirement (ICD) 00521
+
+Components: <Certification Patient Type (CWE)> ^ <Certification Required (ID)> ^ <Date/Time Certification Required (DTM)>
+
+Subcomponents for Certification Patient Type (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates whether pre-certification is required for particular patient types, and the time window for obtaining the certification. The following components of this field are defined as follows:
+
+• pre-certification required refers to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+____
+Y pre-certification required
+
+N no pre-certification required
+____
+
+• pre-certification window is the date/time by which the pre-certification must be obtained.
+

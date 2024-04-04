@@ -1,0 +1,6 @@
+==== 17.8.3.2 SDD-2 Device Number (EI) 02099
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The number of the device (e.g., 01 VAC).
+

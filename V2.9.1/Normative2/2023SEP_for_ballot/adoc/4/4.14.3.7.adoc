@@ -1,0 +1,8 @@
+==== 4.14.3.7 BTX-7 CP Lot Number (EI) 01741
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the lot number for blood derivatives or commercially supplied items used as accessories to transfusion.
+
+This field is required for commercial blood products and is not applicable for blood component messages.
+

@@ -1,0 +1,61 @@
+=== 13.2.3 SSU/ACK - Specimen Status Update (Event U03)
+
+This message is used to send information concerning the location and status of specimens from one application to another (e.g., automated equipment to a Laboratory Automation System). The OBX segments attached to the SAC should be used for transfer of information not included in the SAC segment, but relevant for automating processing (e.g., additional characteristics of the specimen container). The NTE segments attached to the SAC should be used for transfer of descriptive information not included in the SAC segment, but relevant for the users (e.g., aliquot groups for an aliquot sample container).
+
+SSU^U03^SSU_U03: Specimen Status Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|\{ [ OBX ] } | |Additional specimen container characteristics | | | |7 |
+|\{ [ NTE ] } | |Additional specimen container information | | | |2 |
+|\{ [ PRT ] } | |Participation for OBX | | | |7 |
+|[ \{ | |--- SPECIMEN begin | | | | |
+|SPM | |Specimen | | | |7 |
+|\{ [ OBX ] } | |Specimen related observation | | | |7 |
+|\{ [ PRT ] } | |Participation for OBX | | | |7 |
+|} ] | |--- SPECIMEN end | | | | |
+|} | |--- SPECIMEN_CONTAINER end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="99%",cols="18%,23%,5%,16%,19%,19%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SSU^U03^SSU_U03 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U03^ACK |- |ACK^U03^ACK
+|Application Ack |ACK^U03^ACK |- |- |ACK^U03^ACK |ACK^U03^ACK
+|===
+
+ACK^U03^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U03^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U03^ACK
+|Application Ack |- |- |-
+|===
+

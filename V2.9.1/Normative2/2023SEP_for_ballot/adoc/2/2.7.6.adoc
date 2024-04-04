@@ -1,0 +1,16 @@
+=== 2.7.6 Technical correction rules
+
+Technical corrections MAY be applied between versions on a case-by-case basis. These corrections SHALL be published on the HL7 website. The following meet criteria for technical correction:
+
+{empty}a) Spelling correction
+
+{empty}b) Incorrect section reference
+
+{empty}c) Transcription error in an imported external table
+
+{empty}d) Correction of an inconsistency between a segment attribute table and the field narrative
+
+{empty}e) Erroneous examples
+
+{empty}f) Erroneous/misleading descriptions
+

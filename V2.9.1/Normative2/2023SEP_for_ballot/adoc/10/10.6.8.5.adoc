@@ -1,0 +1,14 @@
+==== 10.6.8.5 APR-5 Filler Override Criteria (SCV) 00912
+
+Components: <Parameter Class (CWE)> ^ <Parameter Value (ST)>
+
+Subcomponents for Parameter Class (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is used to communicate override parameters to the filler application. These override parameters allow placer applications to override specific features of filler applications such as conflict checking. It is assumed that the placer and filler applications will pass enough information to determine whether the requestor is allowed to override such features. This chapter does not provide any security or permission information.
+
+The first component of this field is a code identifying the parameter being passed to the filler application. The second component is the actual data value for that parameter.
+
+Refer to Section _10.6.8.1_, "_APR-1 Time Selection Criteria (SCV) 00908_," for an example illustrating how this mechanism works within an interface.
+
+The valid set of parameters should be determined by the placer and filler applications during implementation of the interface.
+

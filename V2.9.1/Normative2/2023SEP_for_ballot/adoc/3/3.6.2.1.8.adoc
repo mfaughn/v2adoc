@@ -1,0 +1,38 @@
+===== 3.6.2.1.8 Identifier type / assigning authority relationship
+
+As stated earlier, the uniqueness of the identifiers included in a message can be determined by the combination of identifier type (t) and assigning authority (a). It is assumed that both sending system and receiving system can inspect both of these qualifiers as a message is constructed or processed. This method is used to determine the "tightly coupled" relationship between the identifiers. The implementation of this relationship exists between the _PID-3 - Patient Identifier List_ and the _MRG-1 - Prior Patient Identifier List_. In other words, elements "B^t2^a1", "C^t3^a1", "D^t4^a1", "A^t1^a1", "E^t5^a1", and "F^t6^a1" in the first list would be associated with elements "X^t1^a1", "Y^t2^a1", and "Z^t3^a1 in the second list. This scenario could be expressed as follows:
+
+List~1~ = \{B^t2^a1,C^t3^a1,D^t4^a1,A^t1^a1,E^t5^a1,F^t6^a1}
+
+List~2~ = \{X^t1^a1,Y^t2^a1,Z^t3^a1}
+
+[width="100%",cols="100%",]
+|===
+|*B^t2^a1 : Y^t2^a1*
+|*C^t3^a1 : Z^t3^a1*
+|*D^t4^a1 :*
+|*A^t1^a1 : X^t1^a1*
+|*E^t5^a1 :*
+|*F^t6^a1 :*
+|===
+
+In this scenario, the three elements which do not have corresponding identifier type and assigning authority "D^t4^a1", "E^t5^a1", and "F^t6^a1" are not affected and their value remains the same as if no association had been made.
+
+A second scenario may arise which deserves mention. In the case of identifier type and assigning authority definition, the elements "A^t1^a1", "B^t2^a1", and "C^t3^a1" in the first list would be associated with elements "X^t4^a1", "Y^t2^a1", "Z^t3^a1", "Q^t1^a1", "R^t5^a1", and "S^t6^a1" in the second list. No consideration is made to the order of the identifiers; it is the identifier type and assigning authority of the corresponding elements which controls the association process. This scenario could be expressed as follows:
+
+List~1~ = \{A^t1^a1,B^t2^a1,C^t3^a1}
+
+List~2~ = \{X^t4^a1,Y^t2^a1,Z^t3^a1, Q^t1^a1,R^t5^a1,S^t6^a1}
+
+[width="100%",cols="100%",]
+|===
+|*A^t1^a1 : Q^t1^a1*
+|*B^t2^a1 : Y^t2^a1*
+|*C^t3^a1 : Z^t3^a1*
+|*: X^t4^a1*
+|*: R^t5^a1*
+|*: S^t6^a1*
+|===
+
+In the second scenario, the three elements which do not have corresponding identifier type and assigning authority "X^t4^a1", "R^t5^a1", and "S^t6^a1" are not affected and their value remains the same as if no association had been made.
+

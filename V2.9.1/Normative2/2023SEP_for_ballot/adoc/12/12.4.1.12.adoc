@@ -1,0 +1,4 @@
+==== 12.4.1.12 GOL-12 Current Goal Review Date/Time (DTM) 00828
+
+Definition: This field contains the date/time of the current review of the goal.
+

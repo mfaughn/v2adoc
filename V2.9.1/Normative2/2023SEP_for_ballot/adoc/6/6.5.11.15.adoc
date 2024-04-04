@@ -1,0 +1,4 @@
+==== 6.5.11.15 UB2-15 UB92 Locator 57 (national) (ST) 00567
+
+Definition: Defined by Uniform Billing CMS specification.
+

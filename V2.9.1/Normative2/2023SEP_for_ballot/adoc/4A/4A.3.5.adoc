@@ -1,0 +1,4 @@
+=== 4A.3.5 RDE/RRE - pharmacy/treatment encoded order message (O01/O02)
+
+*_Attention: The use of RDE with the trigger of O01 and RRE with the trigger O02 is maintained for backward compatibility as of v 2.4 and is withdrawn as of v 2.7._ _Refer to RDE with trigger O11 and RRE with trigger O12 instead._*
+

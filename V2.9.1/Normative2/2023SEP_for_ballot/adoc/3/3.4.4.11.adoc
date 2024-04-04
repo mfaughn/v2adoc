@@ -1,0 +1,4 @@
+==== *3.4.4.11* PV2-11 Actual Length of Inpatient Stay (NM) 00712
+
+Definition: This field contains the actual days of inpatient stays. The actual length of the inpatient stay may not be calculated from the admission and discharge dates because of possible leaves of absence.
+

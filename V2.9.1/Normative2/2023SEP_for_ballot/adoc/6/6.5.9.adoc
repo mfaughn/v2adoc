@@ -1,0 +1,24 @@
+=== 6.5.9 ACC ‑ Accident Segment
+
+The ACC segment contains patient information relative to an accident in which the patient has been involved.
+
+[#ACC .anchor]####HL7 Attribute Table _-_ ACC - Accident
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |DTM |O | | |00527 |Accident Date/Time
+|2 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70050[0050] |00528 |Accident Code
+|3 | |25# |ST |O | | |00529 |Accident Location
+|4 | | |CWE |B | |file:///E:\V2\V29_CH02C_Tables.docx#HL70347[0347] |00812 |Auto Accident State
+|5 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00813 |Accident Job Related Indicator
+|6 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00814 |Accident Death Indicator
+|7 | | |XCN |O | | |00224 |Entered By
+|8 | |1000= |ST |O | | |01503 |Accident Description
+|9 | |80= |ST |O | | |01504 |Brought In By
+|10 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |01505 |Police Notified Indicator
+|11 | | |XAD |O | | |01853 |Accident Address
+|12 | |3# |NM |O | | |02374 |Degree of patient liability
+|13 | | |EI |O |Y | |03338 |Accident Identifier
+|===
+

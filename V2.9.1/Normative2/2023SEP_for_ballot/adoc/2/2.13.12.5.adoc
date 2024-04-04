@@ -1,0 +1,8 @@
+==== 2.13.12.5 SFT-5 Software Product Information (TX) 01838
+
+Definition: Software identification information that can be supplied by a software vendor with their transaction. Might include configuration settings, etc.
+
+This field would contain any additional information an application provides with the transaction it has submitted. This information could be used for diagnostic purposes and provides greater flexibility in identifying a piece of software. Possibilities include setup or configuration parameter information.
+
+This field SHOULD NOT be sent unless performing diagnostics.
+

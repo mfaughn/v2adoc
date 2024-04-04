@@ -1,0 +1,6 @@
+==== 17.8.4.35 SCD–35 Dilution Factor (SN) 01356
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: The dilution ratio of peracetic acid to water.
+

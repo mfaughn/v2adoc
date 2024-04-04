@@ -1,0 +1,4 @@
+==== 4A.4.8.3 RXV-3 Bolus Dose Amount (NM) 03320
+
+Definition: This field contains the ordered bolus amount. For example, if the ordered bolus is 50 mg, this field contains the value of 50.
+

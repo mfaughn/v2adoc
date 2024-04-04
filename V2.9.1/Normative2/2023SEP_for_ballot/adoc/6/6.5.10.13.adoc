@@ -1,0 +1,4 @@
+==== 6.5.10.13 UB1-13 PSRO/UR Approval Indicator 00542
+
+*Attention: _UB1-13 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6._*
+

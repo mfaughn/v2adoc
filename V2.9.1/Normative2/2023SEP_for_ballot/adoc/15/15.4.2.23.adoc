@@ -1,0 +1,4 @@
+==== 15.4.2.23 CER-23 Granting Date (DTM) 01876
+
+Definition: This field contains the date when the certificate was granted.
+

@@ -1,0 +1,8 @@
+==== 15.4.8.23 STF-23 Copy Auto Ins (ID) 01229
+
+Definition: This field contains an indicator for whether the institution has on file a copy of the staff member's auto insurance, especially for use when staff is a driver for the institution. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y indicates that the institution has a copy on file
+
+N indicates that the institution does not have a copy on file
+

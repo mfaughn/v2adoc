@@ -1,0 +1,4 @@
+==== 8.10.2.4 CDM-4 Charge Description Long (ST) 00985
+
+Definition: This field contains the full text description of this CDM entry.
+

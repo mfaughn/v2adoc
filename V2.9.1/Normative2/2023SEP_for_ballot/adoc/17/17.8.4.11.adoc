@@ -1,0 +1,4 @@
+==== 17.8.4.11 SCD-11 Cycle Start Date/Time (DTM) 02114
+
+Definition: The date and time that the cycle started.
+

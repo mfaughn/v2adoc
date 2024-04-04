@@ -1,0 +1,12 @@
+=== 2.4.3 Fields
+
+____
+Definition: A field is a string of characters. Fields for use within HL7 segments are defined by HL7. A comprehensive data dictionary of all HL7 fields is provided in Appendix A.
+
+Refer to section link:#protocol-for-interpreting-repeating-fields-in-an-update-message[_2.10.5_], "link:#protocol-for-interpreting-repeating-fields-in-an-update-message[_Protocol for interpreting repeating segments or segment groups in an update Message_]" for information on updating records in a database.
+
+Version control rules regarding fields can be found in section _2.7_, "_Version compatibility definition_".
+
+Local extension rules regarding fields can be found in section _2.10_, "_Local Extension_".
+____
+

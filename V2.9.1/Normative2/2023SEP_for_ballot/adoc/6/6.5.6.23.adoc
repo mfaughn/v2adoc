@@ -1,0 +1,8 @@
+==== 6.5.6.23 IN1-23 Notice of Admission Flag (ID) 00448
+
+Definition: This field indicates whether the insurance company requires a written notice of admission from the healthcare provider. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y written notice of admission required
+
+N no notice required
+

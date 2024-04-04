@@ -1,0 +1,4 @@
+==== 2A.2.61.3 Value (ST)
+
+Definition: The value to which the field will be compared.
+

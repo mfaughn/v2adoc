@@ -1,0 +1,25 @@
+=== 10.6.5 AIG - Appointment Information - General Resource Segment
+
+The AIG segment contains information about various kinds of resources (other than those with specifically defined segments in this chapter) that can be scheduled. Resources included in a transaction using this segment are assumed to be controlled by a schedule on a schedule filler application. Resources not controlled by a schedule are not identified on a schedule request using this segment. Resources described by this segment are general kinds of resources, such as equipment, that are identified with a simple identification code.
+
+HL7 Attribute Table - AIG[#AIG .anchor]#### - Appointment Information – General Resource
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |00896 |Set ID - AIG
+|2 |1..1 | |ID |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00763 |Segment Action Code
+|3 | | |CWE |C | | |00897 |Resource ID
+|4 | | |CWE |R | | |00898 |Resource Type
+|5 | | |CWE |O |Y | |00899 |Resource Group
+|6 | |5# |NM |O | | |00900 |Resource Quantity
+|7 | | |CNE |O | | |00901 |Resource Quantity Units
+|8 | | |DTM |C | | |01202 |Start Date/Time
+|9 | | |NM |C | | |00891 |Start Date/Time Offset
+|10 | | |CNE |C | | |00892 |Start Date/Time Offset Units
+|11 | | |NM |O | | |00893 |Duration
+|12 | | |CNE |O | | |00894 |Duration Units
+|13 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70279[0279] |00895 |Allow Substitution Code
+|14 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70278[0278] |00889 |Filler Status Code
+|===
+

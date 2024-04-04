@@ -1,0 +1,4 @@
+=== 3.3.19 QRY/ADR - Patient Query (Event A19)
+
+*The Original Mode Query was maintained for backward compatibility as of v2.4 and was withdrawn as of v2.7.* The reader is referred to chapter 5, section 5.4, for the current query/response message structure.
+

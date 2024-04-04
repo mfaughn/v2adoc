@@ -1,0 +1,4 @@
+==== 4.11.2.3 RQ1-3 Manufacturer's Catalog (ST) 00287
+
+Definition: This field is the manufacturer's catalog number or code for this item. This field is conditional because either RQ1-2-manufacturer ID and RQ1-3-manufacturer's catalog or RQ1-4-vendor ID and RQ1-5-vendor catalog must be valued.
+

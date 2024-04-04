@@ -1,0 +1,158 @@
+=== 6.4.3 DFT/ACK - Post Detail Financial Transactions (Event P03)
+
+The Detail Financial Transaction (DFT) message is used to describe a finan­cial transaction transmitted between systems, that is, to the billing system for ancillary charges, ADT to billing system for patient deposits, etc.
+
+Use case for Post Detail Financial Transaction with related Order:
+
+This information can originate in many ways. For instance, a detailed financial transaction for an ancillary charge is sent to a billing system that also tracks the transaction(s) in relation to their order via placer order number or wishes to post these transactions with the additional order information. Therefore a service reaches a state where a detailed financial transaction is created and interfaced to other systems along with optional associated order information. If the message contains multiple transactions for the same order, such as a test service and venipuncture charge on the same order, the ordering information is entered in the Order segment construct that precedes the FT1 segments. If a message contains multiple transactions for disparate orders for the same account each FT1 segment construct may contain the order related information specific to that transaction within the message.
+
+If the common order information is sent, the Order Control Code should reflect the current state of the common order and is not intended to initiate any order related triggers on the receiving application. For example if observations are included along with common order information the order control code would indicate 'RE' as observations to follow.
+
+If common order information is sent related to the entire message or a specific financial transaction, the required Order Control Code should reflect the current state of the common order and is not intended to initiate any order related triggers on the receiving application. For example if observations are included along with common order information the order control code would indicate 'RE' as observations to follow.
+
+If order detail information is sent related to the entire message or a specific financial transaction, the required fields for that detail segment must accompany that information.
+
+DFT^P03^DFT_P03: Detail Financial Transaction
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|PID |Patient Identification | |3
+|[ PD1 ] |Additional Demographics | |3
+|[ \{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ \{ GSC } ] |Sex Parameter for Clinical Use | |3
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |*Role* |*B* |15
+|[ |--- VISIT begin | |
+|[ PV1 ] |Patient Visit | |3
+|[ PV2 ] |Patient Visit - Additional Info | |3
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |*Role* |*B* |15
+|] |--- VISIT end | |
+|[ \{ DB1 } ] |Disability Information | |3
+|[ \{footnote:[If included here, the order level data is global across all FT1 segments. The ORC, TQ1, TQ2, OBR, NTE, OBX, and NTE segments are not required in the P03 since this is a financial message.] |--- COMMON[.underline]#_#ORDER begin | |
+|ORC |Common Order (across all FT1s) | |4
+|[ \{ PRT } ] |Participation | |4
+|[ \{ |--- TIMING[.underline]#_#QUANTITY begin | |
+|TQ1 |Timing/Quantity | |4
+|[ \{ TQ2 } ] |Timing/Quantity Order Sequence | |4
+|} ] |--- TIMING[.underline]#_#QUANTITY end | |
+|[ |--- ORDER begin | |
+|OBR |Order Detail Segment | |4
+|[ \{ PRT } ] |Participation | |4
+|[ \{ NTE } ] |Notes and Comments (on Order Detail) | |2
+|] |--- ORDER end | |
+|[ \{ |--- OBSERVATION begin | |
+|OBX |Observations / Result | |7
+|[ \{ PRT } ] |Participation | |4
+|[ \{ NTE } ] |Notes and Comments (on Result) | |2
+|} ] |--- OBSERVATION end | |
+|} ] |--- COMMON[.underline]#_#ORDER end | |
+|\{ |--- FINANCIAL begin | |
+|link:#FT1[FT1] |Financial Transaction | |6
+|\{ [ PRT ] } |Participation | |
+|\{ [ ROL ] } |Role |B |
+|\{ [ NTE ] } |Notes and Comments (on line item - FT1 - above) | |2
+|[ \{ |--- FINANCIAL[.underline]#_#PROCEDURE begin | |
+|link:#PR1[PR1] |Procedure | |6
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|} ] |--- FINANCIAL[.underline]#_#PROCEDURE end | |
+|[ \{ |--- FINANCIAL_OBSERVATION_STANDALONE begin | |
+|OBX |Observation | |
+|[ \{ PRT } ] |Participation | |
+|[ \{ NTE } ] |Notes and Comment (on Result) | |
+|} ] |--- FINANCIAL_OBSERVATION_STANDALONE end | |
+|[ \{ |--- FINANCIAL_ORDER_STANDALONE begin | |
+|OBR |Order Detail Segment | |
+|[ \{ PRT } ] |Participation | |
+|[ \{ NTE } ] |Notes and Comment (on Result) | |
+|[ \{ |--- FINANCIAL_OBSERVATION begin | |
+|OBX |Observation | |
+|[ \{ PRT } ] |Participation | |
+|[ \{ NTE } ] |Notes and Comment (on Result) | |
+|} ] |--- FINANCIAL_OBSERVATION end | |
+|} ] |--- FINANCIAL_ORDER_STANDALONE end | |
+|[ \{footnote:[If included here, the order level data is specific to the FT1 in whose hierarchy it is embedded. The ORC, TQ1, TQ2, OBR, NTE, OBX, and NTE segments are not required in the P03 since this is a financial message.] |--- FINANCIAL_COMMON_ORDER begin | |
+|ORC |Common Order (specific to above FT1) | |4
+|[ \{ PRT } ] |Participation | |4
+|[ \{ |--- FINANCIAL[.underline]#_#TIMING[.underline]#_#QUANTITY begin | |
+|TQ1 |Timing/Quantity | |4
+|[ \{ TQ2 } ] |Timing/Quantity Order Sequence | |4
+|} ] |--- FINANCIAL_TIMING_QUANTITY end | |
+|[ |--- FINANCIAL[.underline]#_#ORDER begin | |
+|OBR |Order Detail Segment | |4
+|[ \{ PRT } ] |Participation | |4
+|[ \{ NTE } ] |Notes and Comments (on Order Detail) | |2
+|] |--- FINANCIAL[.underline]#_#ORDER end | |
+|[ \{ |--- FINANCIAL[.underline]#_#OBSERVATION begin | |
+|OBX |Observations / Result | |7
+|[ \{ PRT } ] |Participation | |4
+|[ \{ NTE } ] |Notes and Comments (on Result) | |2
+|} ] |--- FINANCIAL[.underline]#_#OBSERVATION end | |
+|}] |--- FINANCIAL[.underline]#_#COMMON_ORDER end | |
+|} |--- FINANCIAL end | |
+|[ \{ |--- DIAGNOSIS begin | |
+|link:#DG1[DG1] |Diagnosis (global across all FT1s) | |6
+|} ]footnote:[If included here, this diagnosis data is global across all FT1s.] |--- DIAGNOSIS end | |
+|[ link:#DRG[DRG] ] |Diagnosis Related Group | |6
+|[ \{ link:#GT1[GT1] } ]footnote:[If included here, this guarantor data is global across all FT1s.] |Guarantor (global across all FT1s) | |6
+|[ \{footnote:[If included here, this insurance data is global across all FT1s.] |--- INSURANCE begin | |
+|link:#IN1[IN1] |Insurance (global across all FT1s) | |6
+|[ \{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ link:#IN2[IN2] ] |Insurance - Additional Info. | |6
+|[ \{ link:#IN3[IN3] } ] |Insurance - Add'l Info. - Cert. | |6
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|} ] |--- INSURANCE end | |
+|[ link:#ACC[ACC] ] |Accident Information | |6
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|DFT^P03^DFT_P03 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^P03^ACK |- |ACK^P03^ACK
+|Application Ack |ACK^P03^ACK |- |- |ACK^P03^ACK |ACK^P03^ACK
+|===
+
+*Note*: The ROL segment is optionally included after the PD1 to transmit information for patient level primary care providers, after the PV2 for additional information on the physicians whose information is sent there (i.e., Attending Doctor, Referring Doctor, Consulting Doctor), and within the insurance construct to transmit information for insurance level primary care providers.
+
+*Note:* There is an information overlap between the FT1, DG1 and PR1 segments. If diagnosis information is sent in an FT1 segment, it should be consistent with the information contained in any DG1 segments present within its hierarchy. Since the procedure code field within the FT1 does not repeat, if procedure information is sent on an FT1 it is recommended that the single occurrence of the code in FT1 equates to the primary procedure (_PR1-14 - Procedure Priority_ code value 1).
+
+*Note:* The extra set of DG1/DRG/GT1/IN1/IN2/IN3/ROL segments added in V2.4 have been withdrawn as a technical correction
+
+ACK^P03^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="24%,37%,10%,29%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^P03^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^P03^ACK
+|Application Ack |- |- |-
+|===
+
+The error segment indicates the fields that caused a transaction to be rejected.
+

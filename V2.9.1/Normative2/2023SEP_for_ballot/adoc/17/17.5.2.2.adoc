@@ -1,0 +1,4 @@
+==== 17.5.2.2 ITM-2 Item Description (ST) 02274
+
+Definition: The Item Description is a description of the material item identified in ITM-1.
+

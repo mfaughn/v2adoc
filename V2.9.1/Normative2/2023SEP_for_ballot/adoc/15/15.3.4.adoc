@@ -1,0 +1,54 @@
+=== 15.3.4 PMU/ACK – Activate Practicing Person (Event B04)
+
+An event B04 signals that a staff member is available for work (e.g., schedules can be created) and has a relationship with the institution. This message applies to STF-7.
+
+PMU^B04^PMU_B04: Activate Practicing Person Message
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|link:#_Hlt489344064[STF] |Staff | |15.4.8
+|[ \{ link:#PRA[PRA] } ] |Practitioner | |15.4.6
+|[ \{ link:#ORG[ORG] } ] |Organization | |15.4.5
+|===
+
+[width="99%",cols="21%,29%,11%,18%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|PMU^B04^PMU_B04 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^B04^ACK
+|Application Ack |ACK^B04^ACK |- |ACK^B04^ACK |ACK^B04^ACK
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 in the Application Acknowledgement message SHALL always be set to NE (Never).
+
+ACK^B04^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^B04^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^B04^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,44 @@
+==== 10.6.1.11 ARQ-11 Requested Start Date/Time Range (DR) 00870
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This field contains the date and time that the appointment is requested to begin, in the form of a date/time range. The first component contains the earliest date and time that the appointment may be scheduled to begin. The second component contains the latest date and time that the appointment may be scheduled to begin.
+
+The DTM (time stamp) data type allows for two components: the time stamp, and a degree of precision. If used, the degree of precision should be separated from the time stamp by a subcomponent delimiter.
+
+If only the range start date/time has been provided, then the range end date/time is assumed to be infinity. Using this scenario is equivalent to requesting the next available slot on/after a particular date and time. If only the range end date/time has been provided, then the range start date/time is assumed to be immediate. Using this scenario is equivalent to requesting the appointment start some time between the current date and time, and the specified range end date/time. Requesting an appointment when the range start and range end date/time are the same is equivalent to requesting a specific slot on a schedule. If this field is unvalued, then the filler application will assume that the next available slot should be scheduled, using the institution's processing rules for scheduling appointments.
+
+This field may repeat. Repetitions of this field are used to construct a list of acceptable ranges. Repetitions of this field are connected with a logical OR to construct this list. This procedure allows applications to provide multiple preferences for the scheduling of appointments. Applications should take steps to ensure that nonsensical ranges are not indicated in this field (for example, redundant ranges).
+
+Examples:
+
+Schedule the appointment to begin at some time between 8:00AM on Tuesday, May 17th, 1994 and 12:00PM on Friday, May 20th, 1994 local time:
+
+...|199405170800^199405201200|...
+
+Schedule the appointment in the next available slot on/after 6:00AM on Monday, April 25th, 1994 local time:
+
+...|199405250600^|...
+
+Note: The field value ...|199405250600|... is equivalent to making the above request, according to the HL7 rules for processing fields.
+
+Schedule the appointment in the next available slot on/*[.underline]#before#* 6:00AM on Monday, April 25th, 1994 local time:
+
+...|^199405250600|...
+
+Schedule the appointment in the next available slot:
+
+...||...
+
+Schedule the appointment to begin on any weekday during the two weeks beginning Monday, April 4th, 1994. In this example, the degree of precision (sub)component of the time stamp is used to indicate that the date/time ranges refer to the institution's standard operating day:
+
+...|199404040000&D^199404080000&D~199404110000&D^199404150000&D|...
+
+Schedule the appointment in the next available slot that does not occur during the May 1994 HL7 Working Group Meeting:
+
+...|^199405161600~199405230800^|...
+
+Schedule the appointment to begin on/before 4:00PM on Thursday, December 23rd, 1993, or any weekday between Monday, December 27th, and Thursday, December 30th, or on/after 8:00AM on Monday, January 3rd, 1994:
+
+...|^199312231600~199312270000&D^199312300000&D~199401030800^|...
+

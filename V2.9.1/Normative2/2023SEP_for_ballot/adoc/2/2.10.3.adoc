@@ -1,0 +1,80 @@
+=== 2.10.3 Segment groups
+
+{empty}a) The practice of turning a single segment or segments into a segment group locally *SHALL NOT be* allowed within an HL7 event. It will have a negative impact on XML and any component-based encoding schemes. Note that HL7, on other hand, can do this.
+
+{empty}b) A segment group MAY NOT be ungrouped locally.
+
+For example, if there is an HL7 group as follows:
+
+\{
+
+ABC
+
+[DEF
+
+{empty}[GHI]]
+
+}
+
+one cannot change it in a local implementation to be as follows:
+
+\{[ABC]}
+
+{empty}[DEF]
+
+{empty}[GHI]
+
+Example 2:
+
+If the original definition was:
+
+GROUP1 ::= ABC, GROUP2?
+
+GROUP2 ::= DEF, GHI?
+
+and someone wished to constrain the segments in GROUP2 to be mandatory
+
+(i.e., the HL7 grammar would look like:
+
+\{[
+
+ABC
+
+DEF
+
+{empty}[GHI]
+
+]}
+
+Their message instance would need to still look like:
+
+<GROUP1>
+
+<ABC/>
+
+<GROUP2>
+
+<DEF/>
+
+<GHI/>
+
+</GROUP2>
+
+</GROUP1>
+
+It would be an error if they instead sent it as:
+
+<GROUP1>
+
+<ABC/>
+
+<DEF/>
+
+<GHI/>
+
+</GROUP1>
+
+{empty}c) A segment group MAY repeat locally. The 1^st^ repetition needs to mean what it does in HL7
+
+{empty}d) The practice of incorporating a Z segment into a segment group locally *is* allowed.
+

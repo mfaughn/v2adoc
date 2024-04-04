@@ -1,0 +1,4 @@
+==== 7.12.5.8 PDC-8 Other Identifier (ST) 01254
+
+Definition: This field contains any other identifier used to for the product.
+

@@ -1,0 +1,14 @@
+==== 8.8.10.8 OM2-8 Absolute Range for Ordinal and Continuous Observations (RFR) 00633
+
+Components: <Numeric Range (NR)> ^ < Sex (CWE)> ^ <Age Range (NR)> ^ <Gestational Age Range (NR)> ^ <Species (ST)> ^ <Race/subspecies (ST)> ^ <Conditions (TX)>
+
+Subcomponents for Numeric Range (NR): <Low Value (NM)> & <High Value (NM)>
+
+Subcomponents for Sex (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Age Range (NR): <Low Value (NM)> & <High Value (NM)>
+
+Subcomponents for Gestational Age Range (NR): <Low Value (NM)> & <High Value (NM)>
+
+Definition: This field applies only to single tests/observations with a nature code of A or C (see _OM1-18 - Nature of Service/Test/Observation_). It defines the range of possible results. Results outside this range are not possible. The field should be recorded in the same format as the normal and critical ranges.
+

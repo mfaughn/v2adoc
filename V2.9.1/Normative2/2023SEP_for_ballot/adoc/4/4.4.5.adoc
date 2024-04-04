@@ -1,0 +1,61 @@
+=== 4.4.5 ORG – general clinical order acknowledgement message (event O20) 
+
+The function of this message is to respond to an OMG message. An ORG message is the application acknowledgment to an OMG message. See Chapter 2 for a description of the acknowledgment paradigm.
+
+In ORG the PID and ORC segments are optional, particularly in case of an error response. However, ORC segments are always required in ORG when the OBR is present. For example, a response ORG might include only the MSH and MSA.
+
+The function (e.g., cancel, new order) of both OMG and ORG messages is determined by the value in ORC-1-order control. (See the table of order control values for a complete list.)
+
+ORG^O20^ORG_O20: General Clinical Order Acknowledgment Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ARV}] |Access Restrictions | |3
+|[\{ERR}] |Error | |2
+|[\{SFT}] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{NTE}] |Notes and Comments (for Header) | |2
+|[ |--- RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{NTE}] |Notes and Comments (for Patient ID) | |2
+|[\{PRT}] |Participation (for Patient) | |7
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3
+|] |--- PATIENT end | |
+|\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[\{PRT}] |Participation | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|[ |--- OBSERVATION_GROUP begin | |
+|OBR |Observation | |4
+|[\{PRT}] |Participation (for Order) | |7
+|[\{NTE}] |Notes and Comments (for Detail) | |2
+|] |--- OBSERVATION_GROUP end | |
+|[\{CTI}] |Clinical Trial Identification | |7
+|[\{ |--- SPECIMEN begin | |
+|SPM |Specimen | |7
+|[\{SAC}] |Specimen Container Details | |13
+|}] |--- SPECIMEN end | |
+|} |--- ORDER end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="99%",cols="28%,37%,11%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ORG^O20^ORG_O20 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O20^ACK |- |ACK^O20^ACK
+|Application Ack |- |- |-
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+

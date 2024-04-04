@@ -1,0 +1,4 @@
+==== 6.5.7.46 IN2-46 Job Title (ST) 00785
+
+Definition: This field contains a descriptive name for the insured's occupation (for example, Sr. Systems Analyst, Sr. Accountant).
+

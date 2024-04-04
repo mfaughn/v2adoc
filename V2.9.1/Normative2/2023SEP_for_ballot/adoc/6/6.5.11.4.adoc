@@ -1,0 +1,4 @@
+==== 6.5.11.4 UB2-4 Covered Days (7) (ST) 00556
+
+Definition: This field contains Uniform Billing field 7. This field is defined by CMS or other regulatory agencies.
+

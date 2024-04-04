@@ -1,0 +1,559 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+3.3.1_vs_3.3.4
+</h1>
+<hr>
+<h3>
+For ADT_A01 there were 3 versions found.  This diff compares the version found in sections ["3.3.1", "3.3.8", "3.3.1", "3.3.8"] with the version found in sections ["3.3.4", "3.3.4"]
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;IAM&quot;,</span></li>
+    <li class="del"><del><span class="symbol">-</span>        &quot;name&quot;: &quot;Patient Advers<strong>e</strong> Reaction Information&quot;,</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>        &quot;name&quot;: &quot;Patient Advers Reaction Information&quot;,</ins></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>{</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>  &quot;code&quot;: &quot;ADT_A01&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>  &quot;withdrawn&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>  &quot;segments&quot;: [</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;MSH&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Message Header&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;ARV&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Access Restrictions&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;SFT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Software Segment&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;UAC&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;User Authentication Credential&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;EVN&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Event Type&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;PID&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Patient Identification&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;PD1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Additional Demographics&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;GSP&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Person Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;GSR&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Recorded Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;GSC&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Sex Parameter for Clinical Use&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;OH1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Employment Status&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;OH2&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Past or Present Job&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;OH3&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Usual Work&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;OH4&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Combat Zone Work&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;ARV&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Access Restrictions&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;ROL&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Role&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;PRT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Participation&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment_sequence&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;NEXT_OF_KIN&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;segments&quot;: [</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;NK1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Next of Kin / Associated Parties&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;GSP&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Person Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;GSR&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Recorded Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;OH2&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Past or Present Job&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;OH3&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Usual Work&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        ]</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;PV1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Patient Visit&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;PV2&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Patient Visit - Additional Info.&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;ARV&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Access Restrictions&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;ROL&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Role&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;PRT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Participation&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;DB1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Disability Information&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment_sequence&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;OBSERVATION&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;segments&quot;: [</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;OBX&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Observation/Result&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;PRT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Participation&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        ]</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;AL1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Allergy Information&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;IAM&quot;,</span></li>
+    <li class="del"><del><span class="symbol">-</span>        &quot;name&quot;: &quot;Patient Advers<strong>e</strong> Reaction Information&quot;,</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>        &quot;name&quot;: &quot;Patient Advers Reaction Information&quot;,</ins></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;DG1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Diagnosis Information&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;DRG&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Diagnosis Related Group&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment_sequence&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;PROCEDURE&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;segments&quot;: [</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;PR1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Procedures&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;ROL&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Role&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;PRT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Participation&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        ]</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;GT1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Guarantor&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;GSP&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Person Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;GSR&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Recorded Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment_sequence&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;INSURANCE&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;segments&quot;: [</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;IN1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Insurance&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;IN2&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Insurance Additional Info.&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;IN3&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Insurance Additional Info - Cert.&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;GSP&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Person Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;GSR&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Recorded Gender and Sex&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;ROL&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Role&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;code&quot;: &quot;PRT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;Participation&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment_sequence&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;AUTHORIZATION&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;segments&quot;: [</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;code&quot;: &quot;AUT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;name&quot;: &quot;Authorization Record&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;code&quot;: &quot;PRT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;name&quot;: &quot;Participation&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              ]</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            &quot;segment_sequence&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;name&quot;: &quot;REFERRAL&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;optional&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              &quot;segments&quot;: [</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;code&quot;: &quot;RF1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;name&quot;: &quot;Referral Information&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;optional&quot;: false</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;code&quot;: &quot;PRT&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;name&quot;: &quot;Participation&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;repeat&quot;: true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                    &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                  }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>                }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>              ]</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>            }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>          }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        ]</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;ACC&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Accident Information&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;UB1&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Universal Bill Information&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;UB2&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Universal Bill 92 Information&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    },</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      &quot;segment&quot;: {</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;code&quot;: &quot;PDA&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;name&quot;: &quot;Patient Death and Autopsy&quot;,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;repeat&quot;: false,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>        &quot;optional&quot;: true</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>      }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>    }</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>  ]</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>}</span></li>
+  </ul>
+</div>
+
+</body>
+</html>

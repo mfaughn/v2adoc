@@ -1,0 +1,10 @@
+==== 4A.4.4.5 RXE-5 Give Units (CWE) 00320
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the units for the give amount as encoded by the pharmacy or treatment (e.g., respiratory therapy) application. Refer to Table 0715 - Give Units in Chapter 2C for valid values.
+
+*Note:* These units can be a "compound quantity"; i.e., the units may contain the word "per." For example, micrograms per KG (micg/kg) is an acceptable value, which means that the units are micrograms per KG (of body weight).
+
+A table of standard units that contains compound units is needed. Until such a table is agreed on, a user-defined table is needed for each site.
+

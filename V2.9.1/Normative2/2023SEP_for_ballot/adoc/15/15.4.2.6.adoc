@@ -1,0 +1,8 @@
+==== 15.4.2.6 CER-6 Signature (ED) 01861
+
+Components: <Source Application (HD)> ^ <Type of Data (ID)> ^ <Data Subtype (ID)> ^ <Encoding (ID)> ^ <Data (TX)>
+
+Subcomponents for Source Application (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: Digital Signature of the certifying authority. The Digital Signature includes a seal concept and is verifiable.
+

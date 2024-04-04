@@ -1,0 +1,77 @@
+=== 17.6.5 SMD/ACK/SMS - Request Anti-Microbial Device Cycle Data (Event S32) 
+
+This trigger event is sent by the placer application to the filler application to request anti-microbial device cycle data created during the decontamination/sterilization of medical supplies. In the context of this message segment, the term 'device' refers to a sterilizer or a washer. Sterilizers perform a sterilization process and washers perform a decontamination process.
+
+SMD^S32^SDR_S32: Anti-Microbial Device Cycle Data Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|< |--- ANTI-MICROBIAL_DEVICE_CYCLE_DATA begin | |
+|SDD |Sterilization Device | |17
+|[\{SCD}] |Sterilization Cycle | |17
+|> |--- ANTI-MICROBIAL_DEVICE_CYCLE_DATA end | |
+|===
+
+[width="100%",cols="18%,19%,6%,17%,19%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SMD^S32^SDR_S32 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^S32^ACK |- |ACK^S32^ACK
+|Application Ack |SMS^S32^SDR_S32 |- |- |SMS^S32^SDR_S32 |SMS^S32^SDR_S32
+|===
+
+ACK^S32^ACK: Anti-Microbial Device Cycle Data Request Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^S32^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S32^ACK
+|Application Ack |- |- |-
+|===
+
+SMS^S32^SDR_S32: Anti-Microbial Device Cycle Data Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|< |--- ANTI-MICROBIAL_DEVICE_CYCLE_DATA begin | |
+|SDD |Sterilization Device | |17
+|[\{SCD}] |Sterilization Cycle | |17
+|> |--- ANTI-MICROBIAL_DEVICE_CYCLE_DATA end | |
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|SMS^S32^SDR_S32 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S32^ACK
+|Application Ack |- |- |-
+|===
+

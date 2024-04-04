@@ -1,0 +1,8 @@
+==== 15.4.5.11 ORG-11 Board Approval Indicator (ID) 01467
+
+Definition: This field contains an indicator for whether this practice specialty requires board approval. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] for valid values.
+
+Y this practice specialty requires board approval
+
+N this practice specialty does not require board approval
+

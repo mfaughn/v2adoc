@@ -1,0 +1,4 @@
+=== 1.8.13 Ensuring and Tracking Data Source Authentication and Non-alterability
+
+While HL7 Version 2.x standards do support an electronic signature for chart completion transactions, they do not, in general, support an electronic signature that is also tied to relevant applications to insure the authentication of the source or arbitrary health data and a prohibition against the alteration of data that has been electronically signed.
+

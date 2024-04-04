@@ -1,0 +1,4 @@
+=== 1.8.4 Enforcement of Organizational Security and Access Control Policies
+
+HL7 Version 2.x standards do not provide for the enforcement of a provider organization’s security and access control policies. There are no messages specifically defined, at this time, that affect the movement of data based on an organization’s security and access control policies in conjunction with message content information that identifies the users of the message data and the organization’s policies for that user’s authorization to access that data. In the U.S., systems implementers may want to reference relevant ASTM standards and IOM recommendations on this topic. For links to related HL7 Version 2.x segments see 1.8.2.
+

@@ -1,0 +1,6 @@
+==== 13.1.3.43 Robotic arm: 
+
+A device capable of moving a specimen container, specimen carrier, or another object in the X, Y, and Z directions.
+
+*Note:* Unless this device is an integral part of the LAS system, it is considered an instrument for the purpose of this proposed standard.
+

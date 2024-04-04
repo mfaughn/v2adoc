@@ -1,0 +1,25 @@
+==== 10.2.1.1 Schedules
+
+A _schedule_ controls the dates and times available for the performance of a service and/or the use of a resource. One schedule applies to one service or resource, since each service or resource can be reserved independently of the others. (If two or more services, people, locations, or things cannot be reserved independently of one another, they are considered to be one activity or resource.) A schedule consists of slots of time during which the controlled service or resource is potentially available for performance or use. Slots are categorized as open, booked, or blocked. An open slot on a schedule indicates that the service or resource is available for performance or use during that period of time. A booked slot indicates that the service or resource is not available during the time period, because an appointment has been scheduled. A blocked slot indicates that a service or resource is unavailable for reasons other than a scheduled appointment.
+
+The real-world, non-automated analog of the schedule described above is a standard appointment book. These books are generally organized with rows of time slots, during which a service or resource is available. The following figure illustrates an excerpt from such an appointment book.
+
+Figure 10-1. An example excerpt from an appointment book
+
+[width="100%",cols="17%,3%,21%,5%,16%,3%,16%,3%,16%",]
+|===
+| | |*Date:* | |May 17, 1994 | | | |
+| |*Room A* | |*Room B* | |*Room C* | |*Room D* |
+|*8:00 am* | |Pat: A Everyman | | | | | |
+|*:15   * | |Dr.: Specialize | | | |Closed for | |
+|*:30   * | |Physical | |Pat: A Everyman | |Remodeling | |
+|*:45   * | |Exam | |Dr.: Stretcher | | | |
+|*9:00 am* | |Pat: E Everywoman | |Allergy | | | |Pat: A Everyman
+|*:15   * | |Dr.: Specialize | |Scratch Test | | | |Dr.: Stretcher
+|*:30   * | |Follow-up | | | | | |
+|===
+
+Each cell in the figure above represents a slot on a schedule. Different shading patterns represent booked and blocked slots. Information identifying the appointments scheduled in booked slots is written in the appointment book. Similarly, explanations are written into the book when resources are blocked. Those cells with no shading and comments represent open slots.
+
+As in the figure above, appointment books commonly contain more than one column. This format allows the scheduling of more than one resource or activity within the same book. This chapter defines a schedule as an entity controlling the availability of only one resource or service for a given period of time. Given that definition, each column in the above excerpt from the appointment book represents a separate schedule for a separate resource.
+

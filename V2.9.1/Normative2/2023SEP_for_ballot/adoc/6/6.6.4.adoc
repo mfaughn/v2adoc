@@ -1,0 +1,13 @@
+=== 6.6.4 Update patient accounts - update diagnosis and DRG information
+
+MSH|^~\&|UREV||PATB||19930908135030||BAR^P05^BAR_P05|MSG0018|P|2.8<cr>
+
+EVN|P05|19930908135030
+
+PID|||125976||EVERYMAN^ADAM^J|||||||||||||125976011<cr>
+
+DG1|001|I9|1550|MAL NEO LIVER, PRIMARY|19880501103005|F<cr>
+
+DRG|203|19880501103010|Y||D|5<cr>
+
+The DG1 segment contains the information that the patient was diagnosed on May 1 as having a malignancy of the hepatobiliary system or pancreas (ICD9 code 1550). In the DRG segment, the patient has been assigned a Diagnostic Related Group (DRG) of 203 (corresponding to the ICD9 code of 1550). Also, the patient has been approved for an additional five days (five-day outlier).

@@ -1,0 +1,38 @@
+==== *3.4.19.7* GSP-7 Comment (TX) 02514
+
+Definition: This field contains a free text comment pertaining to the value conveyed in GSP-5.
+
+As an example, consider an individual who identified as male as of January 1 2021 and used he/him/his pronouns until July 1 2021 when the individual began to also identify as non-binary and adopt the they/them/theirs pronouns. If the individual had encounters with a provider in March and October, the following segments would represent the Person Gender and Sex information known at those times.
+
+Message generated in March:
+
+GSP|1|S||76691-5^Gender identity^LN|446151000124109^Identifies as male gender^SCT|20210101
+
+GSP|2|S||90778-2^Personal pronouns – Reported^LN|LA29518-0^he/him/his/his/himself^LN|20210101
+
+GSP|3|S||76690-7^Sexual orientation^LN|42035005^Bisexual^SCT|20210101
+
+Message generated in October where the entire individual’s history is conveyed:
+
+GSP|1|S||76691-5^Gender identity^LN|446151000124109^Identifies as male gender^SCT|20210101
+
+GSP|2|S||76691-5^Gender identity^LN|33791000087105^Identifies as nonbinary gender^SCT|20210701
+
+GSP|3|S||90778-2^Personal pronouns – Reported^LN|LA29518-0^he/him/his/his/himself^LN|20210101^20210630
+
+GSP|4|S||90778-2^Personal pronouns – Reported^LN|LA29520-6^they/them/their/theirs/themselves^LN|20210701
+
+GSP|5|S||76690-7^Sexual orientation^LN|42035005^Bisexual^SCT|20210101
+
+OR
+
+Message generated in October where only the individual’s current valid values are being conveyed
+
+GSP|1|S||76691-5^Gender identity^LN|446151000124109^Identifies as male gender^SCT|20210101
+
+GSP|2|S||76691-5^Gender identity^LN|33791000087105^Identifies as nonbinary gender^SCT|20210701
+
+GSP|3|S||90778-2^Personal pronouns – Reported^LN|LA29520-6^they/them/their/theirs/themselves^LN|20210701
+
+GSP|4|S||76690-7^Sexual orientation^LN|42035005^Bisexual^SCT|20210101
+

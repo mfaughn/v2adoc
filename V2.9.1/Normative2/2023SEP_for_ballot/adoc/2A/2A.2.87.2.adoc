@@ -1,0 +1,4 @@
+==== 2A.2.87.2 Other Designation (ST)
+
+Definition: This component contains the second line of address. In US usage, it qualifies address. Examples: Suite 555 or Fourth Floor. When referencing an institution, this component specifies the street address.
+

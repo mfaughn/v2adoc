@@ -1,0 +1,4 @@
+==== 7.12.2.24 PEO-24 Primary Observer Aware Date/Time (DTM) 01096
+
+Definition: This field identifies the date/time the primary observer became aware of event.
+

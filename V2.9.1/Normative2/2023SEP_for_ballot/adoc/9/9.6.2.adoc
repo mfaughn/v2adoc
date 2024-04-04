@@ -1,0 +1,78 @@
+=== 9.6.2 MDM/ACK - Original Document Notification and Content (Event T02) 
+
+This is a notification of the creation of a document with the accompanying content.
+
+*Scenario A:* Dictation is transcribed and the chart tracking system is notified that the document exists and requires authentication. The content of the document is transmitted along with the notification.
+
+*Scenario B:* A provider orders a series of three X-rays. The radiologist's dictation is transcribed in a single document, which covers all three orders. Multiple placer numbers are used to identify each of the orders within the single document message. The notification and document content are transmitted.
+
+MDM^T02^MDM_T02: Original Document Notification & Content
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type |B, v2.5 |3
+|PID |Patient Identification | |3
+|[ \{ GSP } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ \{ GSC } ] |Sex Parameter for Clinical Use | |3
+|[ \{ PRT } ] |Participation | |7
+|PV1 |Patient Visit | |3
+|[ \{ PRT } ] |Participation Segment | |7
+|[\{ |--- COMMON_ORDER begin | |
+|ORC |Common order segment | |4
+|[\{ PRT }] |Participation | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|OBR |Observation request segment | |4
+|[\{ PRT }] |Participation | |7
+|[\{ NTE }] |Notes and comments about the observation (OBR) | |2
+|}] |--- COMMON_ORDER end | |
+|link:#TXA[TXA] |Document Notification | |9
+|[\{CON}] |Consent Segment | |9
+|\{ | | |
+|link:#OBX[OBX] |Observation/Result (one or more required) | |7
+|[\{ PRT }] |Participation | |7
+|[\{ NTE }] |Notes and comments about the observation (OBX) | |2
+|} | | |
+|===
+
+[width="100%",cols="18%,25%,6%,17%,17%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MDM^T02^MDM_T02 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |ACK^T02^ACK |- |ACK^T02^ACK |- |ACK^T02^ACK
+|Application Ack |- |- |- |ACK^T02^ACK |ACK^T02^ACK
+|===
+
+ACK^T02^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:#SFT[SFT] }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ link:#ERR[ERR] }] |Error Information | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^T02^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^T02^ACK |- |ACK^T02^ACK
+|Application Ack |- |- |-
+|===
+

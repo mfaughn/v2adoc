@@ -1,0 +1,16 @@
+=== 8.8.13 OM5 - Observation Batteries (Sets) Segment
+
+The Technical Steward for the OM5 segment is Orders and Observations.
+
+This segment contains the information about batteries and supersets (a nature code of F, P or S, as described in _OM1-18 - Nature of Service/Test/Observation_).
+
+[#OM5 .anchor]####HL7 Attribute Table - OM5 - Observation Batteries (Sets)
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |4= |NM |O | | |00586 |Sequence Number - Test/Observation Master File
+|2 | | |CWE |O |Y |0662 |00655 |Test/Observations Included Within an Ordered Test Battery
+|3 | | |ST |O | | |00656 |Observation ID Suffixes
+|===
+

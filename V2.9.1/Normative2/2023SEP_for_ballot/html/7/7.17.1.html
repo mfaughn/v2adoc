@@ -1,0 +1,1584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>7.17.1 Common ISO Derived Units &amp; ISO+ Extensions</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_7_17_1_common_iso_derived_units_iso_extensions">7.17.1 Common ISO Derived Units &amp; ISO+ Extensions</h3>
+<div class="paragraph">
+<p>Figure 7-10. Common ISO derived units and ISO+ extensions</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 20%;">
+<col style="width: 80%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Code/Abbr.</th>
+<th class="tableblock halign-left valign-top">Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/(arb_u)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*1 / arbitrary unit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/iu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*1 / international unit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*1 / kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1 / liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*1 / milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.L/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10 x liter / minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.L /(min.m2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10 x (liter / minute) / meter<sup>2</sup> = liter / (minute × meter<sup>2</sup>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*3/mm3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>3</sup> / cubic millimeter (e.g., white blood cell count)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*3/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>3</sup> / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*3/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>3</sup> / milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*6/mm3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>6</sup> / millimeter<sup>3</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*6/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>6</sup> / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*6/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>6</sup> / milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*9/mm3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>9</sup> / millimeter<sup>3</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*9/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>9</sup> / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*9/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>9</sup> / milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*12/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*10<sup>12</sup> / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10*3(rbc)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*1000 red blood cells<sup>†</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">a/m</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ampere per meter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(arb_u)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Arbitrary unit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Bar (pressure; 1 bar = 100 kilopascals)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Beats or Other Events Per Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">bq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Becquerel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(bdsk_u)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Bodansky Units</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(bsa)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Body surface area</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(cal)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Calorie</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Catalytic Fraction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cells / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Centimeter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cm_h20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* Centimeters of water =H<sub>2</sub>0 (pressure)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cm_h20.s/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Centimeters H<sub>2</sub>0 / (liter / second) = (centimeters H<sub>2</sub>0 × second) / liter (e.g., mean pulmonary resistance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cm_h20/(s.m)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Centimeters H<sub>2</sub>0 / second) / meter = centimeters H<sub>2</sub>0 / (second × meter) (e.g., pulmonary pressure time product)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(cfu)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Colony Forming Units</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m3/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Cubic meter per second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">db</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Decibels</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dba</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Decibels a Scale</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cel</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Degrees Celsius</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">deg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Degrees of Angle</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(drop)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Drop</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.un.s/cm5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Dyne × Second / centimeter<sup>5</sup> (1 dyne = 10 micronewton = 10 un) (e.g., systemic vascular resistance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10.un.s/(cm5.m2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">((Dyne × second) / centimeter<sup>5</sup>) / meter<sup>2</sup> = (Dyne × second) / (centimeter<sup>5</sup> × meter<sup>2</sup>) (1 dyne = 10 micronewton = 10 un) (e.g., systemic vascular resistance/body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ev</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Electron volts (1 electron volt = 160.217 zeptojoules)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">eq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Equivalent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">f</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Farad (capacitance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Femtogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Femtoliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fmol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Femtomole</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Fibers / milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><sub>g/d</sub></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Gram / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/dL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram / Deciliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/(8.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Gram / 8 Hour Shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram / Kilogram (e.g., mass dose of medication per body weight)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/(kg.d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Gram / Kilogram) / Day = gram / (kilogram × day) (e.g., mass dose of medication per body weight per day)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/(kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Gram / Kilogram) / Hour = gram / (kilogram × hour) (e.g., mass dose of medication per body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/(8.kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Gram / Kilogram) /8 Hour Shift = gram / (kilogram × 8 hour shift) (e.g., mass dose of medication per body weight per 8 hour shift)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/(kg.min)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Gram / Kilogram) / Minute = gram / (kilogram × minute<sub>)</sub> (e.g., mass dose of medication per body weight per minute)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram / Meter<sup>2</sup> (e.g., mass does of medication per body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g.m/(hb)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram × meter / heart beat (e.g., ventricular stroke work)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g.m/((hb).m2)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>(Gram × meter/ heartbeat) / meter<sup>2</sup> = (gram × meter) / (heartbeat × meter<sup>2</sup>)</p>
+</div>
+<div class="paragraph">
+<p>(e.g., ventricular stroke work/body surface area, ventricular stroke work index)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g(creat)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Gram creatinine</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g(hgb)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Gram hemoglobin</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g.m</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gram meter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g(tot_nit)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Gram total nitrogen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g(tot_prot)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Gram total protein</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">g(wet_tis)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Gram wet weight tissue</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">gy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Grey (absorbed radiation dose)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">hL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Hectaliter = 10<sup>2</sup> liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Henry</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inches</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">in_hg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Inches of Mercury (=Hg)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*International Unit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iu/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*International Unit / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iu/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*International Unit / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iu/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">International Unit / Kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iu/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*International Unit / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iu/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*International Unit / Milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">iu/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*International Unit / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">j/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Joule/liter (e.g., work of breathing)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Katal</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kat/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Katal / Kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kat/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Katal / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">k/watt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kelvin per watt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(kcal)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilocalorie (1 kcal = 6.693 kilojoule)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(kcal)/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Kilocalorie / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(kcal)/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Kilocalorie / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(kcal)/(8.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Kilocalorie / 8 Hours Shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg(body_wt)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">* kilogram body weight</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg/m3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram per cubic meter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kh/h</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram per hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram / liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram per minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg/mol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram / mole</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram / second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg/(s.m2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Kilogram / second)/ meter<sup>2</sup> = kilogram / (second × meter<sup>2</sup>)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg/ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram per square meter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kg.m/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilogram meter per second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">kpa</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilopascal (1 mmHg = 0.1333 kilopascals)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ks</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Kilosecond</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(ka_u)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">King-Armstrong Unit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(knk_u)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Kunkel Units</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Liter / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liter / hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L/(8.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Liter / 8 hour shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liter / kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liter / minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L/(min.m2)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>(Liter / minute) / meter<sup>2</sup> = liter / (minute × meter<sup>2</sup>)</p>
+</div>
+<div class="paragraph">
+<p>(e.g., cardiac output/body surface area = cardiac index)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liter / second (e.g., peak expiratory flow)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">L.s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Liter / second / second<sup>2</sup> = liter × second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lumen</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">lm/m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Lumen / Meter<sup>2</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(mclg_u)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*MacLagan Units</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mas</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Megasecond</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meter<sup>2</sup> (e.g., body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meter / Second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m/s2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Meter / Second<sup>2</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ueq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Microequivalents</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/dL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / Deciliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/g</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / Gram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Microgram / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug(8hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / 8 Hour Shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / Kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/(kg.d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Microgram / Kilogram) /Day = microgram / (kilogram × day) (e.g., mass dose of medication per patient body weight per day)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/(kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Microgram / Kilogram) / Hour = microgram / (kilogram × hours) (e.g., mass dose of medication per patient body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/(8.hr.kg)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>(Microgram / Kilogram) / 8 hour shift = microgram / (kilogram × 8 hour shift)</p>
+</div>
+<div class="paragraph">
+<p>(e.g., mass dose of medication per patient body weight per 8 hour shift)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/(kg.min)</p></td>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>(Microgram / Kilogram) / Minute = microgram / (kilogram × minute)</p>
+</div>
+<div class="paragraph">
+<p>(e.g., mass dose of medication per patient body weight per minute)</p>
+</div></div></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / Meter<sup>2</sup> (e.g., mass dose of medication per patient body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ug/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microgram / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uiu</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Micro international unit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ukat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Microkatel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">um</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micrometer (Micron)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">umol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micromole</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">umol/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micromole / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">umol/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micromole / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">umol/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Micromole / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">us</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microsecond</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Microvolt</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millibar (1 millibar = 100 pascals)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mbar.s/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millibar / (liter / second) =(millibar × second) / liter (e.g., expiratory resistance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliequivalent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliequivalent / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliequivalent / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/(8.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliequivalent / 8 Hour Shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliequivalent / Kilogram (e.g., dose of medication in milliequivalents per patient body weight)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/(kg.d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliequivalents / Kilogram) / Day = milliequivalents / (kilogram × day) (e.g., dose of medication in milliequivalents per patient body weight per day)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/(kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliequivalents / Kilogram) / Hour = milliequivalents / (kilogram × hour) (e.g., dose of medication in milliequivalents per patient body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/(8.hr.kg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliequivalents / Kilogram) / 8 Hour Shift = milliequivalents / (kilogram × 8 hour shift) (e.g., dose of medication in milliequivalents per patient body weight per 8 hour shift)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/(kg.min)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliequivalents / Kilogram) / Minute = milliequivalents / (kilogram × minute) (e.g., dose of medication in milliequivalents per patient body weight per minute)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliequivalent / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliequivalent / Meter<sup>2</sup> (e.g., dose of medication in milliequivalents per patient body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">meq/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliequivalent / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/m3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Meter<sup>3</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/dL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Deciliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/(8.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / 8 Hour shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/(kg.d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milligram / Kilogram) / Day = milligram / (kilogram × day) (e.g., mass dose of medication per patient body weight per day)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/(kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milligram / Kilogram) / Hour = milligram/ (kilogram × hour) (e.g., mass dose of medication per patient body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/(8.hr.kg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milligram / Kilogram) /8 Hour Shift = milligram / (kilogram × 8 hour shift) (e.g., mass dose of medication per patient body weight per 8 hour shift)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/(kg.min)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milligram / Kilogram) / Minute = milligram / (kilogram × minute) (e.g., mass dose of medication per patient body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Meter<sup>2</sup> (e.g., mass dose of medication per patient body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mg/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milligram / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/cm_h20</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter / Centimeters of Water (H<sub>2</sub>0) (e.g., dynamic lung compliance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliliter / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/(hb)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter / Heart Beat (e.g., stroke volume)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/((hb).m2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliliter / Heart Beat) / Meter<sup>2</sup> = Milliliter / (Heart Beat × Meter<sup>2</sup>) (e.g., ventricular stroke volume index)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliliter / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/(8.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliliter / 8 Hour Shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter / Kilogram (e.g., volume dose of medication or treatment per patient body weight)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/(kg.d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliliter / Kilogram) / Day = milliliter / (kilogram × day) (e.g., volume dose of medication or treatment per patient body weight per day)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/(kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliliter / Kilogram) / Hour = milliliter / (kilogram × hour) (e.g., volume dose of medication or treatment per patient body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/(8.hr.kg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliliter / Kilogram) / 8 Hour Shift = milliliter / (kilogram × 8 hour shift) (e.g., volume dose of medication or treatment per body weight per 8 hour shift)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/(kg.min)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliliter / Kilogram) / Minute = milliliter / (kilogram × minute) (e.g., volume dose of medication or treatment per patient body weight per minute)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter / Meter<sup>2</sup> (e.g., volume of medication or other treatment per patient body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/mbar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter / Millibar (e.g., dynamic lung compliance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/(min.m2)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Milliliter / Minute) / Meter<sup>2</sup> = milliliter / (minute × meter<sup>2</sup>) (e.g., milliliters of prescribed infusion per body surface area; oxygen consumption index)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mL/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliliter / Second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimeter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mm(hg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Millimeter (HG) (1 mm Hg = 133.322 kilopascals)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mm/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimeter/ Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimole / Kilogram (e.g., molar dose of medication per patient body weight)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/(kg.d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Millimole / Kilogram) / Day = millimole / (kilogram × day) (e.g., molar dose of medication per patient body weight per day)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/(kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Millimole / Kilogram) / Hour = millimole / (kilogram × hour) (e.g., molar dose of medication per patient body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/(8.hr.kg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Millimole / Kilogram) / 8 Hour Shift = millimole / (kilogram × 8 hour shift) (e.g., molar dose of medication per patient body weight per 8 hour shift)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/(kg.min)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Millimole / Kilogram) / Minute = millimole / (kilogram × minute) (e.g., molar dose of medication per patient body weight per minute)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimole / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimole / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/(8hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimole / 8 Hour Shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimole / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mmol/m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millimole / Meter<sup>2</sup> (e.g., molar dose of medication per patient body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mosm/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliosmole / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ms</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Milliseconds</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Millivolts</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">miu/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Milliunit / Milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mol/m3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mole per cubic meter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mol/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mole / Kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mol/(kg.s)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Mole / Kilogram) / Second = mole / (kilogram × second)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mol/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mole / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">mol/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mole / Second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/d</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanogram / Day</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/hr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Nanogram / Hour</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/(8.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanogram / 8 Hour shift</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanogram / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanogram / Kilogram (e.g., mass dose of medication per patient body weight)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/(kg.d)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Nanogram / Kilogram) / Day = nanogram / (kilogram × day) (e.g., mass dose of medication per patient body weight per day)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/(kg.hr)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Nanogram / Kilogram) / Hour = nanogram / (kilogram × hour) (e.g., mass dose of medication per patient body weight per hour)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/(8.hr.kg)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Nanogram / Kilogram) / 8 Hour Shift = nanogram / (kilogram × 8 hour shift) (e.g., mass dose of medication per patient body weight per 8 hour shift)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/(kg.min)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(Nanogram / Kilogram) / Minute = nanogram / (kilogram × minute) (e.g., mass dose of medication per patient body weight per minute)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/m2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanogram / Meter<sup>2</sup> (e.g., mass dose of medication per patient body surface area)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanogram / Milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/min</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Nanogram / Minute</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ng/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Nanogram / Second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nkat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Nanokatel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanometer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">nmol/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanomole / Second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ns</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Nanosecond</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Newton (force)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">n.s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Newton second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(od)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*O.D. (optical density)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ohm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ohm (electrical resistance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ohm.m</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Ohm meter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">osmol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Osmole</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">osmol/kg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Osmole per kilogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">osmol/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Osmole per liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/m3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Particles / Meter<sup>3</sup></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Particles / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/(tot)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Particles / Total Count</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(ppb)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Parts Per Billion</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(ppm)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Parts Per Million</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(ppth)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parts per thousand</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(ppt)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Parts per trillion (10^12)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Pascal (pressure)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/(hpf)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Per High Power Field</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(ph)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*pH</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pa</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picoampere</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picogram</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pg/L</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picogram / Liter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pg/mL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picogram / Milliliter</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pkat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Picokatel</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picometer</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pmol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*Picomole</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ps</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picosecond</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">pt</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Picotesla</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(pu)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">*P.U.</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">%</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Percent</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">dm2/s2</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Rem (roentgen equivalent man) = 10<sup>-2</sup> meter<sup>2</sup> / second<sup>2</sup> = decimeter<sup>2</sup> / second<sup>2</sup> Dose of ionizing radiation equivalent to 1 rad of x-ray or gamma ray) [From Dorland&#8217;s Medical Dictionary]</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sec</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Seconds of arc</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sie</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Siemens (electrical conductance)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">sv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Sievert</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">m2/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Square meter / second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cm2/s</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Square centimeter / second</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">t</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Tesla (magnetic flux density)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">(td_u)</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Todd Unit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">v</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volt (electric potential difference)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Volume Fraction</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">wb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Weber (magnetic flux)</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p>*Starred items are not genuine ISO, but do not conflict.</p>
+</div>
+<div class="paragraph">
+<p>†This approach to units is discouraged by IUPAC. We leave them solely for backward compatibility</p>
+</div></div></td>
+<td class="tableblock halign-left valign-top"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-10-04 13:24:26 -0600
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,4 @@
+==== 17.3.1.0 Item Master Catalog
+
+The _item master catalog_ provides a catalog of supplies used for ordering to replenish inventory at supply locations, for general usage in a healthcare facility for scheduled appointments, surgery, and to provide identifiers for instrument-tracking used for the sterilization process. The catalog consists of numerous attributes related to a supply item. Supply items and associated attributes can be specific to a domain such as Inventory, Scheduling, Pharmacy, and Sterilization.
+

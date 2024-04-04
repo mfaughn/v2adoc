@@ -1,0 +1,4 @@
+==== 6.5.11.13 UB2-13 UB92 Locator 49 (national) (ST) 00565
+
+Definition: This field is defined by CMS or other regulatory agencies. This field may repeat up to twenty-three times.
+

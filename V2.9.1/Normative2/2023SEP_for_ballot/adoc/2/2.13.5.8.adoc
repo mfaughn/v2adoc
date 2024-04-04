@@ -1,0 +1,10 @@
+==== 2.13.5.8 ERR-8 User Message (TX) 01818
+
+Definition: The text message to be displayed to the application user.
+
+Example:
+
+|This program is having trouble communicating with another system. Please contact the help desk.|
+
+This differs from the actual error code and could provide more diagnostic information.
+

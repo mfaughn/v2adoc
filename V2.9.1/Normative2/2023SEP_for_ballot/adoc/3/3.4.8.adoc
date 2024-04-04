@@ -1,0 +1,15 @@
+=== 3.4.8 IAR - Allergy Reaction Segment
+
+The IAR segment is used to transmit a single reaction and information associated with this single reaction occurrence for a particular patient allergy (IAM – patient adverse reaction).
+
+HL7 Attribute Table – IAR – allergy reaction
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |R | | |03296 |Allergy Reaction Code
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70128[0128] |03297 |Allergy Severity Code
+|3 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70436[0436] |03298 |Sensitivity to Causative Agent Code
+|4 | |250= |ST |O | | |03299 |Management
+|===
+

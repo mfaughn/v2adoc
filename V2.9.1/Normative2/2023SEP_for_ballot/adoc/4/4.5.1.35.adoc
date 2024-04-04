@@ -1,0 +1,6 @@
+==== 4.5.1.35 ORC-35 Action Code (ID) 00816
+
+Definition: This field reveals the intent of the message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[HL7 Table 0206 - Segment Action Code] for valid values.
+
+The action code can only be used when either ORC-2 and/or ORC 3 is valued with a unique identifier in accordance with Chapter 2, Section 2.10.4.2.
+

@@ -1,0 +1,6 @@
+==== 4.5.4.7 TQ1-7 Start Date/Time (DTM) 01633
+
+Definition: This field may be specified by the requester, in which case it indicates the earliest date/time at which the services should be started. In many cases, however, the start date/time will be implied or will be defined by other fields in the service request record (e.g., urgency ‑ STAT). In such a case, this field will be empty.
+
+The filling service will often record a value in this field after receipt of the service request, however, and compute an end time on the basis of the start date/time for the filling service's internal use.
+

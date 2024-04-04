@@ -1,0 +1,16 @@
+=== 15.4.1 AFF - Professional Affiliation Segment 
+
+The AFF segment adds detailed information regarding professional affiliations with which the staff member identified by the STF segment is/was associated.
+
+[#AFF .anchor]####HL7 Attribute Table – AFF – Professional Affiliation
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |01427 |Set ID – AFF
+|2 | | |XON |R | | |01444 |Professional Organization
+|3 | | |XAD |O | | |01445 |Professional Organization Address
+|4 | | |DR |O |Y | |01446 |Professional Organization Affiliation Date Range
+|5 | |60= |ST |O | | |01447 |Professional Affiliation Additional Information
+|===
+

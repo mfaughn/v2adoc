@@ -1,0 +1,4 @@
+==== *3.4.13.4* PDA-4 Death Certificate Signed Date/Time (DTM) 01577
+
+Definition: This field is valued with the date and time the death certificate was signed.
+

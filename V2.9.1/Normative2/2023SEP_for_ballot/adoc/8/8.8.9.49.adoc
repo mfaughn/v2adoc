@@ -1,0 +1,4 @@
+==== 8.8.9.49 OM1-49 Diagnostic Serv Sect ID (ID) 00257
+
+Definition: This field is the section of the diagnostic service where the observation was performed. If the study was performed by an outside service, the identification of that service should be recorded here. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70074[HL7 Table 0074 – Diagnostic Service Section ID] in Chapter 2C, Code Tables, for valid entries. Same as OBR-24.
+

@@ -1,0 +1,4 @@
+==== 7.12.3.18 PCR-18 Date Product Returned to Manufacturer (DTM) 01115
+
+Definition: If the product was returned to the manufacturer, this field contains the date it was returned.
+

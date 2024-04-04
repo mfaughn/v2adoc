@@ -1,0 +1,32 @@
+=== 5.6.4 Batch message as a query response
+
+The HL7 query also can be used to query for a batch in the following manner:
+
+{empty}a) Use the value B of _RCP-3-Response modality_ to specify a batch response.
+
+*Note:* If using old style query mode, the value BB or BL of _QRD-5-Deferred response type_ may be used to specify a batch response. The query will be acknowledged with a general acknowledgment as in the Deferred Access example above
+
+{empty}b) In addition, insert into the batch file the query defining and RCP segments as follows:
+
+[width="100%",cols="24%,76%",]
+|===
+|[FHS] |(file header segment)
+|\{ |
+|[BHS] |(batch header segment)
+|QPD |Query defining segment Note: if using old style query mode, the QRD and QRF segments may be used.
+|[RCP] |
+|\{ |
+|MSH |(one or more HL7 messages)
+|.... |
+|.... |
+|.... |
+|} |
+|[BTS] |(batch trailer segment)
+|} |
+|[FTS] |(file trailer segment)
+|===
+
+{empty}c) The acknowledgment of a batch is described in Chapter 2.
+
+{empty}d) The Query Profile should stipulate if the batch modality is supported.
+

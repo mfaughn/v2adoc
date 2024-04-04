@@ -1,0 +1,4 @@
+==== 7.12.2.12 PEO-12 Patient Outcome (ID) 01084
+
+When an event specific outcome is not available, the patient outcome element may be used to represent the patient's overall outcome if that information is known. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70241[_HL7 Table 0241 - Patient Outcome_] for valid values.
+

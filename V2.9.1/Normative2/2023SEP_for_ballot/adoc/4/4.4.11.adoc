@@ -1,0 +1,12 @@
+=== 4.4.11 ORL – Laboratory order response message to a single container of a specimen OML(Event O36 and O55)
+
+The function of this message is to respond to an OML message where the original trigger event produced an OML with the Specimen Group segment above the ORC. An ORL message is the application acknowledgment to an OML message. See Chapter 2 for a description of the acknowledgment paradigm.
+
+Two message structures are available to acknowledge OML_O36:
+
+____
+• With patient segments
+
+• Optionally without patient segments
+____
+

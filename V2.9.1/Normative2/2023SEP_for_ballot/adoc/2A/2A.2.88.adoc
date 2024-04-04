@@ -1,0 +1,52 @@
+=== 2A.2.88 XCN - extended composite ID number and name for persons
+
+HL7 Component Table - XCN – Extended Composite ID Number and Name for Persons
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |15= |ST |C | |Person Identifier | |2A.2.76
+|2 | | |FN |C | |Family Name | |2A.2.30
+|3 | |30# |ST |O | |Given Name | |2A.2.76
+|4 | |30# |ST |O | |Second and Further Given Names or Initials Thereof | |2A.2.76
+|5 | |20# |ST |O | |Suffix (e.g., JR or III) | |2A.2.76
+|6 | |20# |ST |O | |Prefix (e.g., DR) | |2A.2.76
+|7 | | | |W | |Degree (e.g., MD) |withdrawn as of v2.7 |2A.2.36
+|8 | | |CWE |B |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70297[0297] |Source Table | |2A.2.36
+|9 | | |HD |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70363[0363] |Assigning Authority | |2A.2.33
+|10 |1..5 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70200[0200] |Name Type Code | |2A.2.35
+|11 |1..4 | |ST |O | |Identifier Check Digit | |2A.2.76
+|12 |3..3 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70061[0061] |Check Digit Scheme | |2A.2.35
+|13 |2..5 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70203[0203] |Identifier Type Code | |2A.2.35
+|14 | | |HD |O | |Assigning Facility | |2A.2.33
+|15 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70465[0465] |Name Representation Code | |2A.2.35
+|16 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70448[0448] |Name Context | |2A.2.13
+|17 | | | |W | |Name Validity Range |withdrawn as of v2.7 |2A.2.20
+|18 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70444[0444] |Name Assembly Order | |2A.2.35
+|19 | |8= |DTM |O | |Effective Date | |2A.2.22
+|20 | |8= |DTM |O | |Expiration Date | |2A.2.22
+|21 | |199# |ST |O | |Professional Suffix | |2A.2.76
+|22 | | |CWE |C | |Assigning Jurisdiction | |2A.2.13
+|23 | | |CWE |C | |Assigning Agency or Department | |2A.2.13
+|24 | |4= |ST |O | |Security Check | |2.A.74
+|25 |3..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70904[0904] |Security Check Scheme | |2.A.35
+|===
+
+*Note:* Replaces CN data type as of v 2.3.
+
+This data type is used extensively appearing in the PV1, ORC, RXO, RXE, OBR and SCH segments, as well as others, where there is a need to specify the ID number and name of a person.
+
+Example without assigning authority and assigning facility:
+
+|1234567^Everyman^Adam^A^III^DR^^ADT01^^L^4^M11^MR|
+
+Examples with assigning authority and assigning facility:
+
+Dr. Harold Hippocrates’ provider ID was assigned by the Provider Master and was first issued at Good Health Hospital within the Community Health and Hospitals System. Since IS table values (first component of the HD) were not used for assigning authority and assigning facility, components 2 and 3 of the HD data type are populated and demoted to sub-components as follows:
+
+12188^Hippocrates^Harold^H^IV^Dr^^^&Provider Master.Community Health and Hospitals&L^L^9^M10^DN^&Good Health Hospital.Community Health and Hospitals&L^A
+
+Ludwig van Beethoven's medical record number was assigned by the Master Patient Index and was first issued at Fairview Hospital within the University Hospitals System.
+
+10535^van Beethoven&van^Ludwig^A^III^Dr^^^&MPI.Community Health and Hospitals&L^L^3^M10^MR^& Good Health Hospital.Community Health and Hospitals&L^A
+

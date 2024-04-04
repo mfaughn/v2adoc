@@ -1,0 +1,8 @@
+==== 8.8.16.10 OMC-10 Multiple Answers Allowed (ID) 03450
+
+Definition: This field indicates if multiple answers are allowed, which may impact EHR system display and selection functionality. Refer to _HL7 Table 0136 – Yes/no Indicator_ for valid values.
+
+Y Multiple Answers Allowed
+
+N Single Answer only Allowed
+

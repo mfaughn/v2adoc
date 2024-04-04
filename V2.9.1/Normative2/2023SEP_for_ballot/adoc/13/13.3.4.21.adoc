@@ -1,0 +1,12 @@
+==== 13.3.4.21 INV-21 Equipment State Indicator Type Code (CWE) 03488
+
+____
+<Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: The type code of an equipment state indicator. Refer to _HL7 Table 0942 – Equipment State Indicator Type Code_ in Chapter 2C, Code Tables, for suggested values.
+
+Due to its dynamic nature, an equipment state indicator is considered to be a [non-material] inventory item. Its value usually can be derived from the material inventory — in that way, a state indicator differs from static configuration parameters and master data stored on the equipment.
+
+This field is conditional. It is optional when INV‑3 “Substance Type” is not populated and prohibited otherwise.
+____
+

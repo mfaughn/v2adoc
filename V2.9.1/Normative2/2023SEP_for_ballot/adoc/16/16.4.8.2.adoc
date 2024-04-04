@@ -1,0 +1,4 @@
+==== 16.4.8.2 PMT-2 Payment/Remittance Effective Date/Time (DTM) 02019
+
+Definition: [ Start ] Date/Time for this Payment/Remittance Advice.
+

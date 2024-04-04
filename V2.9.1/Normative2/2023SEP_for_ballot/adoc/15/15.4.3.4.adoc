@@ -1,0 +1,6 @@
+==== 15.4.3.4 EDU-4 Academic Degree Program Participation Date Range (DR) 01450
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This field contains the date range during which the staff member participated in the academic degree program.
+

@@ -1,0 +1,12 @@
+==== 8.8.17.23 PM1-23 Policy Number Pattern (ST) 03466
+
+Definition: This field contains the policy number pattern. This describes what the policy number should look like. There will likely be multiple patterns to identify the Policy number. It is recommended that Edit patterns are a sequence of the characters ‘A’ for alpha, ‘N’ for numeric, ‘X’ for alphanumeric, ‘B’ for blank, and ‘*’ for wildcard. Digits positionally refer to the two-character edit pattern list in the corresponding list field.
+
+Edit pattern lists are a sequence characters to respresent the format and size of the Policy Number.
+
+____
+Example 1: The policy number has 3 numbers, 1 blank, 5 numbers and it would be defined in a Pattern as NNNBNNNNN
+
+Example 2: The policy number has 2 numerics, 2 characters for state, 1 blank 5 Alphanumerics and would be represented as NNCCBXXXXX
+____
+

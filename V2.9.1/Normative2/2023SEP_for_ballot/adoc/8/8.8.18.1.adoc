@@ -1,0 +1,4 @@
+==== 8.8.18.1 MCP-1 Set ID – MCP (SI) 03468
+
+Definition: _MCP-1 - set ID - MCP_ contains the number that identifies this transaction. For the first occurrence the sequence number shall be 1, for the second occurrence it shall be 2, etc. The Set ID in the MCP segment is used to uniquely identify the segment. There are likely multiple instances of Universal Service Identifier, Diagnosis and Procedure code.
+

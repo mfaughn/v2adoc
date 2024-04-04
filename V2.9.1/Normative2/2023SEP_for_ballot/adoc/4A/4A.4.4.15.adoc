@@ -1,0 +1,4 @@
+==== 4A.4.4.15 RXE-15 Prescription Number (ST) 00325
+
+Definition: This field contains the prescription number as assigned by the pharmacy or treatment application. Equivalent in uniqueness to the pharmacy/treatment filler order number. At some sites, this may be the pharmacy or treatment system (internal) sequential form. At other sites, this may be an external form. This is a required field in RXE when used in pharmacy/treatment messages, but it is not required when used in product experience messages (see Chapter 7).
+

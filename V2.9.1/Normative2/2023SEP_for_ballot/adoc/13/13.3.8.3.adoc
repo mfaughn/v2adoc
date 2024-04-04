@@ -1,0 +1,4 @@
+==== 13.3.8.3 CNS-3 Starting Notification Date/Time (DTM) 01404
+
+Definition: This field is the starting date/time of the notifications to be cleared. If this field is empty but Ending Notification Date/Time is filled, then all notifications before Ending Notification Date/Time will be cleared.
+

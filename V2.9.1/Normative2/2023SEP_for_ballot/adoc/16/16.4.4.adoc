@@ -1,0 +1,16 @@
+=== 16.4.4 PSS – Product/Service Section Segment
+
+The Product/Service Section segment is used to form a logical grouping of Product/Service Group segments, Patients and Response Summaries for a particular Invoice.
+
+HL7 Attribute Table – PSS – Product/Service Section
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01946 |Provider Product/Service Section Number
+|2 | | |EI |O | | |01947 |Payer Product/Service Section Number
+|3 |1..4 | |SI |R | | |01948 |Product/Service Section Sequence Number
+|4 | | |CP |R | | |01949 |Billed Amount
+|5 | |254# |ST |R | | |02043 |Section Description or Heading
+|===
+

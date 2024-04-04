@@ -1,0 +1,4 @@
+==== 17.5.2.37 ITM-37 Class of Trade (ST) 02418
+
+Definition: This field contains the class of trade if identified at the item level.
+

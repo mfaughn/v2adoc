@@ -1,0 +1,4 @@
+== 7.15 Waveform – Trigger Events & Message Definitions
+
+*Retained for backwards compatibility only in v 2.7 and withdrawm as of v2.9. Implementers are encouraged to use other V2 guidance (e.g., IHE's PCD profile) or V3 as it expands its use cases in this space, while using older V2 versions until that point.*
+

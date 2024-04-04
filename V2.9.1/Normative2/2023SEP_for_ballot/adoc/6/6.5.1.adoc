@@ -1,0 +1,67 @@
+=== 6.5.1 FT1 - Financial Transaction Segment
+
+The FT1 segment contains the detail data necessary to post charges, payments, adjustments, etc., to patient accounting records.
+
+[#FT1 .anchor]####HL7 Attribute Table - FT1 - Financial Transaction
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |O | | |00355 |Set ID ‑ FT1
+|2 |1..12 | |CX |O | | |00356 |Transaction ID
+|3 |1..10 | |ST |O | | |00357 |Transaction Batch ID
+|4 | | |DR |R | | |00358 |Transaction Date
+|5 | | |DTM |O | | |00359 |Transaction Posting Date
+|6 | | |CWE |R | |file:///E:\V2\V29_CH02C_Tables.docx#HL70017[0017] |00360 |Transaction Type
+|7 | | |CWE |R | |file:///E:\V2\V29_CH02C_Tables.docx#HL70132[0132] |00361 |Transaction Code
+|8 | | | |W | | |00362 |Transaction Description
+|9 | | | |W | | |00363 |Transaction Description ‑ Alt
+|10 | |6= |NM |O | | |00364 |Transaction Quantity
+|11 | | |CP |O | | |00365 |Transaction Amount ‑ Extended
+|12 | | |CP |O | | |00366 |Transaction Amount ‑ Unit
+|13 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70049[0049] |00367 |Department Code
+|14 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70072[0072] |00368 |Health Plan ID
+|15 | | |CP |O | | |00369 |Insurance Amount
+|16 | | |PL |O | | |00133 |Assigned Patient Location
+|17 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70024[0024] |00370 |Fee Schedule
+|18 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70018[0018] |00148 |Patient Type
+|19 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70051[0051] |00371 |Diagnosis Code - FT1
+|20 | | |XCN |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70084[0084] |00372 |Performed By Code
+|21 | | |XCN |O |Y | |00373 |Ordered By Code
+|22 | | |CP |O | | |00374 |Unit Cost
+|23 | | |EI |O | | |00217 |Filler Order Number
+|24 | | |XCN |O |Y | |00765 |Entered By Code
+|25 | | |CNE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70088[0088] |00393 |Procedure Code
+|26 | | |CNE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70340[0340] |01316 |Procedure Code Modifier
+|27 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70339[0339] |01310 |Advanced Beneficiary Notice Code
+|28 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70476[0476] |01646 |Medically Necessary Duplicate Procedure Reason
+|29 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70549[0549] |01845 |NDC Code
+|30 | | |CX |O | | |01846 |Payment Reference ID
+|31 |1..4 | |SI |O |Y | |01847 |Transaction Reference Key
+|32 | | |XON |O |Y | |02361 |Performing Facility
+|33 | | |XON |O | | |02362 |Ordering Facility
+|34 | | |CWE |O | | |02363 |Item Number
+|35 | |20= |ST |O | | |02364 |Model Number
+|36 | | |CWE |O |Y | |02365 |Special Processing Code
+|37 | | |CWE |O | | |02366 |Clinic Code
+|38 | | |CX |O | | |02367 |Referral Number
+|39 | | |CX |O | | |02368 |Authorization Number
+|40 | | |CWE |O | | |02369 |Service Provider Taxonomy Code
+|41 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70456[0456] |01600 |Revenue Code
+|42 | | |ST |O | | |00325 |Prescription Number
+|43 | | |CQ |O | | |02370 |NDC Qty and UOM
+|44 | | |CWE |O | | |03496 |DME Certificate of Medical Necessity Transmission Code
+|45 | | |CWE |O | | |03497 |DME Certification Type Code
+|46 | | |NM |O | | |03498 |DME Duration Value
+|47 | | |DT |O | | |03499 |DME Certification Revision Date
+|48 | | |DT |O | | |03500 |DME Initial Certification Date
+|49 | | |DT |O | | |03501 |DME Last Certification Date
+|50 | | |NM |O | | |03502 |DME Length of Medical Necessity Days
+|51 | | |MO |O | | |03503 |DME Rental Price
+|52 | | |MO |O | | |03504 |DME Purchase Price
+|53 | | |CWE |O | | |03505 |DME Frequency Code
+|54 | | |ID |O | | |03506 |DME Certification Condition Indicator
+|55 | | |CWE |O |Y/2 | |03507 |DME Condition Indicator Code
+|56 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70964[0964] |03508 |Service Reason Code
+|===
+

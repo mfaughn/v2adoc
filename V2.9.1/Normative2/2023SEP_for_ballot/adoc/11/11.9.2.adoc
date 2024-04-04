@@ -1,0 +1,36 @@
+=== 11.9.2 RQA Message Using an I08 Event with an Immediate Response
+
+When the attending physician decides to refer the patient for treatment to another healthcare provider, pre-authorization may be required by the payor. In the following RQA example, Dr. Blake is requesting the appropriate pre-authorization from H.C Payor Insurance Company for a colonoscopy on Adam Everyman. The request includes the diagnosis, in case it is a factor in the approval decision. As shown below, the immediate response indicates approval of the request that was made on 01/10/94 and that expires on 05/10/94. In actuality, most payors require some human intervention in the pre-authorization process and would probably not respond immediately.
+
+MSH|^~\&|HIPPOCRATESMD|EWHIN|MSC|EWHIN|19940110105307||RQA^I08|HIPPOCRATESMD7898|P|2.9|||NE|AL<cr>
+
+PRD|RP|HIPPOCRATES^HAROLD^^^DR^MD|1001 HEALTHCARE DRIVE^^ANN ARBOR^MI^99999| ^^^HIPPOCRATESMD&EWHIN^^^^^HIPPOCRATES MEDICAL CENTER|HIPPOCRATESMD7899<cr>
+
+PRD|RT|HIIC||^^^MSC&EWHIN^^^^^H.C.PAYOR INSURANCE COMPANY<cr>
+
+PID|||HL71001111111111^9^M10||EVERYMAN^ADAM^A||19600309||||||||||||444-33-3333<cr>
+
+IN1|1|PPO|HC02|HCIC (MI State Code)|5555 INSURERS CIRCLE^^ANN ARBOR^MI^99999^USA|CHRISTOPHER CLERK|(855)555‑1234|(555)555-3002||||19901101||||EVERYMAN^ADAM^A|1|19600309|2222 HOME STREET^^ANN ARBOR^MI^99999^USA |||||||||||||||||444333555||||||01|M<cr>
+
+DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0<cr>
+
+PR1|1|C4|45378|Colonoscopy|19940110105309|00<cr>
+
+MSH|^~\&|MSC|EWHIN|HIPPOCRATESMD|EWHIN|19940110154812||RPA^I08|MSC2112|P|2.9|||ER|ER<cr>
+
+MSA|AA|HIPPOCRATESMD7888<cr>
+
+PRD|RP|HIPPOCRATES^HAROLD^^^DR^MD|1001 HEALTHCARE DRIVE^^ANN ARBOR^MI^99999| ^^^ HIPPOCRATESMD &EWHIN^^^^^HIPPOCRATES MEDICAL CENTER| HIPPOCRATESMD7899<cr>
+
+PRD|RT|HIIC||^^^MSC&EWHIN^^^^^H.C.PAYOR INSURANCE COMPANY<cr>
+
+PID|||HL71001111111111^9^M10||EVERYMAN^ADAM^A||19600301|||||||||||| HL71001111111111<cr>
+
+IN1|1|PPO|HC02|HCIC (MI State Code)|5555 INSURERS CIRCLE^^ANN ARBOR^MI^99999^USA|CHRISTOPHER CLERK|(855)555‑1234|(555)555-3002||||19901101||||EVERYMAN^ADAM^A|1|19600309|2222 HOME STREET^^ANN ARBOR^MI^99999^USA|||||||||||||||||444555333||||||01|M<cr>
+
+DG1|1|I9|569.0|RECTAL POLYP|19940106103500|0<cr>
+
+PR1|1|C4|45378|Colonoscopy|19940110105309|00<cr>
+
+AUT|PPO|HC02|HIIC (MI State Code)|19940110|19940510|HL71001111111111|175|1<cr>
+

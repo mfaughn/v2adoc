@@ -1,0 +1,6 @@
+==== 8.4.3.1 MFN use notes
+
+The master file record identified by the MFE segment is contained in Z-segments immediately following the MFE segment, and is denoted by "..." in the MFN abstract message definition given above. This record may be either a flat record contained in a single segment, or a complex record needing more than a single segment to carry its data and (usually hierarchical) structure.
+
+The definition of this transaction and the associated abstract message structure code (as defined in _MSH-9 - Message Type_, denoted by MFN_Znn above) are subject to site negotiation. Refer to Chapter 2, section 2.17, "Local Extension" for additional information on 'Z' abstract message structure code definition.
+

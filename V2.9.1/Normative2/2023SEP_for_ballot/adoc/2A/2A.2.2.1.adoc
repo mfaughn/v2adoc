@@ -1,0 +1,4 @@
+==== 2A.2.2.1 Authorization Number (ST)
+
+Definition: Identifier assigned to the authorization.
+

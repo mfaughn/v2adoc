@@ -1,0 +1,174 @@
+===== 5.9.2.1.1 Associated dispense information Query Profile
+
+Note that the following Query Profile contains many more input parameters. The user is allowed to populate as many of these as desired.
+
+Query Profile
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID (Query ID=Z87): |Z87
+|Type: |Query
+|Query Name: |Dispense Information
+|Query Trigger (= MSH-9): |QBP^Z87^QBP_Q11
+|Query Mode: |Both
+|Response Trigger (= MSH-9): |RSP^Z88^RSP_Z88
+|Query Characteristics: |Selection criteria are chosen from a Virtual Table. May specify patient, medication, and a date range.
+|Purpose: |To retrieve patient pharmacy dispense history information from the Server.
+|Response Characteristics: |Sorted by Medication Dispensed unless otherwise specified in *SortControl.*
+|Based on Segment Pattern: |RDS_O01
+|===
+
+QBP^Z87^QBP_Q11: Query Grammar: QBS Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec. Ref
+|MSH |Message Header Segment | |2.15.9
+|[\{ARV}] |Access Restriction | |3
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|link:#QPD[QPD] |Query Parameter Definition | |5.5.4
+|[ |--- QBP begin | |
+|[...] |Optional query by example segments | |
+|] |--- QBP end | |
+|link:#RCP[RCP] |Response Control Parameter | |5.5.6
+|[ DSC ] |Continuation Pointer | |2.15.4
+|===
+
+RSP^Z88^RSP_Z88: Response Grammar: Pharmacy Information Comprehensive
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec. Ref
+|MSH |Message Header | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|MSA |Message Acknowledgement | |2.15.8
+|[ERR] |Error | |2.15.5
+|link:#QAK[QAK] |Query Acknowledgement | |5.5.2
+|link:#QPD[QPD] |Query Parameter Definition | |5.5.4
+|link:#RCP[RCP] |Response Control Parameter | |5.5.6
+|\{ |--- QUERY_RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3.4.2
+|[PD1] |Additional Demographics | |3.4.10
+|[\{NTE}] |Notes and Comments (for PID) | |2.15.10
+|[ |--- ALLERGY begin | |
+|\{AL1} |Allergy Information | |3.4.5
+|[ |--- VISIT begin | |
+|PV1 |Patient Visit | |3.4.3
+|[PV2] |Patient Visit – Additional Info | |3.4.4
+|] |--- VISIT begin | |
+|] |--- ALLERGY end | |
+|] |--- PATIENT end | |
+|\{ |--- COMMON_ORDER begin | |
+|ORC |Common Order | |4.5.1
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4.5.4
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4.5.5
+|}] |--- TIMING end | |
+|[ |--- ORDER_DETAIL begin | |
+|RXO |Pharmacy/Treatment Order | |4.8.2
+|[\{NTE}] |Notes and Comments (for RXO) | |2.15.10
+|\{RXR} |Pharmacy/Treatment Route | |4.14.2
+|[ |--- COMPONENT begin | |
+|\{RXC} |Pharmacy/Treatment Component | |4.14.3
+|[\{NTE}] |Notes and Comments (for RXC) | |2.15.10
+|] |--- COMPONENT end | |
+|] |--- ORDER_DETAIL end | |
+|[ |--- ORDER_ENCODED begin | |
+|RXE |Pharmacy/Treatment Encoded Order | |4.8.7
+|[\{ |--- TIMING_ENCODED begin | |
+|TQ1 |Timing/Quantity | |4.5.4
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4.5.5
+|}] |--- TIMING_ENCODED end | |
+|\{RXR} |Pharmacy/Treatment Route | |4.14.2
+|[\{RXC}] |Pharmacy/Treatment Component | |4.14.3
+|] |--- ORDER_ENCODED end | |
+|RXD |Pharmacy/Treatment Dispense | |4.8.10
+|\{RXR} |Pharmacy/Treatment Route | |4.14.2
+|[\{RXC}] |Pharmacy/Treatment Component | |4.14.3
+|\{ |--- OBSERVATION begin | |
+|[OBX] |Results | |7.4.2
+|[\{NTE}] |Notes and Comments (for OBX) | |2.15.10
+|} |--- OBSERVATION end | |
+|} |--- COMMON_ORDER end | |
+|} |--- QUERY_RESPONSE end | |
+|DSC |Continuation Pointer | |2.15.4
+|===
+
+*QPD Input Parameter Specification*
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq (Query ID=Z87) |Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|1 |MessageQueryName | | |60 |CWE |R | | | | | |
+|2 |QueryTag | | |32 |ST |R | | | | | |
+|3 |SelectionCriteria | | |*255* |*ST* |*R* |*Y* | | | | |
+|===
+
+*QPD Input Parameter Field Description and Commentary*
+
+[width="100%",cols="21%,11%,6%,62%",options="header",]
+|===
+|Input Parameter (Query ID=Z87) |Comp. Name |DT |Description
+|MessageQueryName | |CWE |SHALL be valued *Z87^Dispense Information^HL7nnnn*.
+|QueryTag | |ST |Unique to each query message instance.
+|SelectionCriteria | |ST |A query expression whose operands are derived from the 'ColName' column in the 'Input Specification: Virtual Table' given below.
+|===
+
+*Input Specification: Virtual Table*
+
+[width="100%",cols="23%,7%,5%,5%,6%,5%,5%,7%,6%,9%,9%,13%",options="header",]
+|===
+|ColName (Query ID=Z87) a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|PatientList |S |Y |20 |CX |O | | | |PID.3 | |PID-3: Patient Identifier List
+|PatientName | | |48 |XPN | | | | |PID.5 | |PID-5 Patient Name
+|OrderControlCode |S | |2 |ID | | | |0119 |ORC.1 | |ORC-1 Order Control
+|MedicationDispensed |S |Y |100 |CWE | | | | |RXD.2 | |RXD-2 Dispense/Give Code
+|DispenseDate |S | |26 |DTM | | | | |RXD.3 | |RXD-2 Date/Time Dispensed
+|QuantityDispensed |L | |20 |NM | | | | |RXD.4 | |RXD-4 Actual Dispense Amount
+|OrderingProvider |S | |120 |XCN | | | | |ORC.12 | |ORC-12 Ordering Provider
+|===
+
+*Virtual Table Field Description and Commentary*
+
+[width="100%",cols="21%,11%,6%,62%",options="header",]
+|===
+|ColName (Query ID=Z87) |Comp. Name |DT |Description
+|PatientList | |CX |The combination of values for _PatientList.ID, and PatientList.AssigningAuthority,_ are intended to identify a unique entry on the PATIENT_MASTER table. The _PatientList.IdentifierTypeCode_ is useful for further filtering or to supply uniqueness in the event that the assigning authority may have more than one coding system. (The PATIENT_MASTER table contains a constraint that prevents multiple patients from being identified by the same combination of field values.) This PATIENT_MASTER entry will be searched against on the PHARMACY_DISPENSE_TRANSACTION table to retrieve the rows fulfilling the query conditions.
+| | | |If this field is not valued, all values for this field are considered to be a match.
+| | | |If one PID.3 is specified, only 1 segment pattern will be returned
+| |*ID* |ID |If this field, PID.3.1, is not valued, all values for this field are considered to be a match.
+| |*Assigning Authority* |HD |If this field, PID.3.4, is not valued, all values for this field are considered to be a match.
+| |*Identifier type code* |IS |If this field, PID.3.5, is not valued, all values for this field are considered to be a match.
+|OrderControlCode | |ID |If this field, ORC.1, is not valued, all values for this field are considered to be a match.
+|MedicationDispensed | |CWE |If this field, RXD.2, is not valued, all values for this field are considered to be a match.
+|DispenseDate | |DTM |If this field, RXD.3, is not valued, all values for this field are considered to be a match.
+|QuantityDispensed | |NM |If this field, RXD.4, is not valued, all values for this field are considered to be a match.
+|OrderingProvider | |XCN |If this field, ORC.12, is not valued, all values for this field are considered to be a match.
+|===
+
+*RCP Response Control Parameter Field Description and Commentary*
+
+[width="100%",cols="13%,27%,11%,7%,7%,35%",options="header",]
+|===
+|Field Seq (Query ID=Z87) |Name |Com­po­nent Name |LEN |DT |Description
+|1 |Query Priority | |1 |ID |(*D*)eferred or (*I*)mmediate. Default is *I*.
+|2 |Quantity Limited Request | |10 |CQ |
+| | |Quantity | |NM |Number of units (specified by the following component) that will be returned in each increment of the response. If no value is given, the entire response will be returned in a single increment.
+| | |Units | |CWE |**CH**aracters, **LI**nes, **P**a**G**es, or **R**ecor**D**s. Default is *LI*.
+|3 |Response Modality | |60 |CWE |**R**eal time or **B**atch. Default is *R*.
+|7 |Segment group inclusion | |256 |ID |What segment group(s) are to be included. If this field is not valued, all segment groups will be included.
+|===
+

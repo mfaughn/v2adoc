@@ -1,0 +1,4 @@
+==== 16.4.2.9 IVC-9 Payment Terms (ST) 01922
+
+Definition: Terms for Payer payment of Invoice (e.g., 24% net 30 days).
+

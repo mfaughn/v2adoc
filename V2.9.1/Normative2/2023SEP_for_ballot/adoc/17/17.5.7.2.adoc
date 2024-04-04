@@ -1,0 +1,6 @@
+==== 17.5.7.2 IVT-2 Inventory Location Identifier (EI) 02063
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the code identifying an inventory supply location that stocks or purchases this item.
+

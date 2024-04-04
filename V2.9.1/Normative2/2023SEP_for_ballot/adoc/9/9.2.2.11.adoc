@@ -1,0 +1,4 @@
+==== 9.2.2.11 Consent Status: 
+
+Consent can be pending (subject hasn't been asked yet), given, refused, revoked or even completely bypassed. Consent Status identifies what the status of a subject's consent is (or was at a given point in time).
+

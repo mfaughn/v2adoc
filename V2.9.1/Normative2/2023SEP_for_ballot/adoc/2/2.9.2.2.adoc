@@ -1,0 +1,74 @@
+==== 2.9.2.2 Segment fragmentation across messages
+
+If the last segment of a fragment itself needs to be broken, then the following idiomatic use of ADD SHALL apply.
+
+{empty}a) the segment being continued (call it ANY for this example) is ended at an arbitrary character position and terminated with the standard segment terminator (carriage return).
+
+{empty}b) the following segment is the ADD segment. It will contain no characters other than "ADD". (The lack of characters signals the receiver that ANY will be continued.)
+
+{empty}c) The second following segment will be the DSC, used as described above in Section _2.9.2.1_, "_Segment fragmentation/continuation using the DSC segment_".
+
+{empty}d) The first segment of the following fragment will be an ADD segment. The characters of this ADD segment are logically part of the ANY segment of the previous fragment.
+
+For example
+
+MSH|...|2.4|
+
+ANY|12
+
+ADD
+
+DSC|JR97
+
+--------- (fragment 2)
+
+MSH|...|2.4|JR97
+
+ADD|345
+
+is logically the same as
+
+MSH|...|2.4
+
+ANY|12345
+
+{empty}e) transaction flow for a continued unsolicited message with a continued segment.
+
+First unsolicited message and acknowledgment:
+
+[width="100%",cols="29%,71%",]
+|===
+|MSH |
+|URD |
+|[ URS ] |
+|\{DSP} |(last DSP is incomplete)
+|ADD |(contains no fields)
+|DSC |(Continuation segment)
+|===
+
+[width="100%",cols="29%,71%",]
+|===
+|MSH |(General acknowledgment)
+|MSA |
+|[ \{ ERR } ] |
+|===
+
+Second unsolicited message and acknowledgment:
+
+[width="100%",cols="29%,71%",]
+|===
+|MSH |(contains continuation pointer from DSC segment of prior message)
+|ADD |(contains remainder of data from continued DSP segment from prior message)
+|\{DSP} |
+|===
+
+*Note*: This second message could itself be continued with a second DSC and (if needed) a second ADD segment prior to it.
+
+[width="100%",cols="30%,70%",]
+|===
+|MSH |(General acknowledgment)
+|[ \{ SFT } ] |
+|MSA |
+|[ \{ ERR } ] |
+|===
+

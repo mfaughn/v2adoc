@@ -1,0 +1,18 @@
+==== 1.7.5.2 Other application protocols
+
+The Working Group has given considerable attention to the relationship of the HL7 Standard and other protocols. A considerable liaison effort is underway. This is described below:
+
+{empty}a) [.underline]#ACR/NEMA DICOM.# The HL7 Working Group maintains an on‑going liaison with the ACR/NEMA DICOM working group. HL7 and ACR/NEMA DICOM are both members of ANSI’s HITSP.
+
+{empty}b) [.underline]#ASC X12 Standards for Electronic Document Interchange.# ASC X12 is a family of standards that provides both general and specific descriptions for data interchange within a number of industries. The HL7 Version 2 Encoding Rules are modeled on the X12 standards, although there are differences. The HL7 Standard needs to accommodate online exchange of individual transactions on LANs. This difference, along with certain applications issues, is responsible for the variance from X12. X12 has recently decided to follow the UN/EDIFACT encoding rules for all X12 standards produced in 1995 or later. X12N transactions that facilitate the transfer of healthcare claims and remittance information as well as benefit coordination, enrollment and verification are enjoying dramatically increased use. HL7 has elected to assume that all new business transactions between institutions regarding the interchange of claims, benefits, or other financial information are the responsibility of ASC X12N, the insurance subcommittee of X12. +
+ +
+In 2005, HL7 and X12 signed an update to a long-standing agreement between the organizations to create and extend comprehensive standards in the healthcare community.
+
+{empty}c) [.underline]#ASTM 1238.94 Laboratory Data Reporting.# An active liaison effort between the ASTM committee and the Working Group has resulted in minor changes in the ASTM specification to enhance compatibility, changes in the HL7 Version 2.9 control specifications to enhance compatibility, and the development of the entire Ancillary Data Reporting chapter, developed jointly by the committees and built on the ASTM Standards. This liaison has extended to the point where both groups now have the permission to freely use the contents of each others' standards efforts “in whole” within their own published standards. +
+ +
+Some distinctions are more in the terminology chosen than the actual message content. For example, the ASTM “sub‑field delimiter” is generally used to separate repetitions of homogenous values. It is called a “repetition separator” in HL7 Version 2.9. HL7 and ASTM are both members of ANSI’s HITSP.
+
+{empty}d) [.underline]#IEEE P1157 (“MEDIX”).# The MEDIX committee has defined an application-level protocol similar in scope to HL7 but built strictly on the ISO protocol stack, up to and including the Remote Operation Service Element (ROSE). HL7 varies from this approach by the decision not to depend on ROSE nor use the ASN.1 BER syntax notation. Despite the difference in approaches, the HL7 Working Group has regular liaison with the MEDIX committee. The Working Group has devised a format for the HL7 Standard that is relatively independent of the encoding rules chosen and easily translated into the ASN.1 notation. The transactions defined in this manner should be directly transferable to the MEDIX effort, and transaction messages encoded using the HL7 scheme should be translatable to transactions encoded using the BER. This should facilitate the creation of gateways between the HL7 and future environments.
+
+HL7, IEEE, NCPDP and X12 are ANSI-approved standards developers.
+

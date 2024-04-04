@@ -1,0 +1,6 @@
+=== 13.4.3 Transfer of QC Results
+
+Use _SPM-11 Specimen Role_, or _SAC-6 Specimen Source_, or the 7th component of _OBR-15 Specimen Source_ or _SAC-6 Specimen Source_ to indicate that this is a control specimen. Use _SAC-3 Container Identifier_ for the identification of a control specimen container. The SID segment appended to this SAC segment specifies the manufacturer, lot identifiers, etc. for the control specimen.
+
+The identification of the instrument performing the QC measurement, should be transferred with the _OBX-18 Equipment Instance Identifier_), the measurement data/time with the _OBX-19 Date/Time of the Analysis_.
+

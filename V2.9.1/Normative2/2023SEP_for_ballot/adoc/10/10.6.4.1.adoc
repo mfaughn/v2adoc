@@ -1,0 +1,4 @@
+==== 10.6.4.1 AIS-1 Set ID - AIS (SI) 00890
+
+Definition: This field contains a number that uniquely identifies the information represented by this segment in this transaction for the purposes of addition, change or deletion.
+

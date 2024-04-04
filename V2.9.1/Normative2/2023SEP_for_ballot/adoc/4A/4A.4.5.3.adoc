@@ -1,0 +1,4 @@
+==== 4A.4.5.3 RXD-3 Date/Time Dispensed (DTM) 00336
+
+Definition: This field indicates when the pharmaceutical/treatment is dispensed from the pharmacy or treatment supplier. Use the time stamp format.
+

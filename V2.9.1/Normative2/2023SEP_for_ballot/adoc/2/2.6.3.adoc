@@ -1,0 +1,40 @@
+=== 2.6.3 Escape sequences supporting multiple character sets
+
+____
+The following HL7 escape sequences are defined to support multiple character sets for fields, components and sub-components that are defined as data types FT, ST, and TX. They allow HL7 parsers to use escape codes (defined in the standards used below), without breaking, and without being non-conformant to the HL7 escape paradigm defined in this section.
+
+\Cxxyy\ single-byte character set escape sequence with two hexadecimal values, xx and yy, that indicate the escape sequence defined for one of the character repertoires supported for the current message (i.e., ISO-IR xxx).
+
+\Mxxyyzz\ multi-byte character set escape sequence with three hexadecimal values, xx, yy and zz. zz is optional.
+
+Common character set escape sequences include the following which are defined in the standards mentioned:
+
+Single-byte character sets:
+____
+
+[width="100%",cols="32%,68%",]
+|===
+|\C2842\ |ISO-IR6 G0 (ISO 646 : ASCII)
+|\C2D41\ |ISO-IR100 (ISO 8859 : Latin Alphabet 1)
+|\C2D42\ |ISO-IR101 (ISO 8859 : Latin Alphabet 2)
+|\C2D43\ |ISO-IR109 (ISO 8859 : Latin Alphabet 3)
+|\C2D44\ |ISO-IR110 (ISO 8859 : Latin Alphabet 4)
+|\C2D4C\ |ISO-IR144 (ISO 8859 : Cyrillic)
+|\C2D47\ |ISO-IR127 (ISO 8859 : Arabic)
+|\C2D46\ |ISO-IR126 (ISO 8859 : Greek)
+|\C2D48\ |ISO-IR138 (ISO 8859 : Hebrew)
+|\C2D4D\ |ISO-IR148 (ISO 8859 : Latin Alphabet 5)
+|\C284A\ |ISO-IR14 (JIS X 0201 -1976: Romaji)
+|\C2949\ |ISO-IR13 (JIS X 0201 : Katakana)
+|===
+
+____
+Multi-byte codes:
+____
+
+[width="100%",cols="31%,69%",]
+|===
+|\M2442\ |ISO-IR87 (JIS X 0208 : Kanji, hiragana and katakana)
+|\M242844\ |ISO-IR159 (JIS X 0212 : Supplementary Kanji)
+|===
+

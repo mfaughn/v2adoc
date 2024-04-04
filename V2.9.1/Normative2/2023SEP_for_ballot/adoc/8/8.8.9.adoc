@@ -1,0 +1,72 @@
+=== 8.8.9 OM1 - General Segment (Fields That Apply to Most Observations)
+
+The Technical Steward for the OM1 segment is Orders and Observations.
+
+The OM1 segment contains the attributes that apply to the definition of most observations. This segment also contains the field attributes that specify what additional segments might also be defined for this observation.
+
+[#OM1 .anchor]####HL7 Attribute Table - OM1 - General Segment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |4= |NM |R | | |00586 |Sequence Number - Test/Observation Master File
+|2 | | |CWE |R | |0630 |00587 |Producer's Service/Test/Observation ID
+|3 |2..3 | |ID |O |Y |0125 |00588 |Permitted Data Types
+|4 |1..1 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00589 |Specimen Required
+|5 | | |CWE |R | |0631 |00590 |Producer ID
+|6 | |200# |TX |O | | |00591 |Observation Description
+|7 | | |CWE |O |Y |0632 |00592 |Other Service/Test/Observation IDs for the Observation
+|8 | |200# |ST |B |Y | |00593 |Other Names
+|9 | |30# |ST |O | | |00594 |Preferred Report Name for the Observation
+|10 |1..8 | |ST |O | | |00595 |Preferred Short Name or Mnemonic for the Observation
+|11 | |200= |ST |O | | |00596 |Preferred Long Name for the Observation
+|12 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00597 |Orderability
+|13 | | |CWE |O |Y |0633 |00598 |Identity of Instrument Used to Perform this Study
+|14 | | |CWE |O |Y |0635 |00599 |Coded Representation of Method
+|15 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |00600 |Portable Device Indicator
+|16 | | |CWE |B |Y |0636 |00601 |Observation Producing Department/Section
+|17 | | |XTN |B | | |00602 |Telephone Number of Section
+|18 |1..1 | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70174[0174] |00603 |Nature of Service/Test/Observation
+|19 | | |CWE |O | |0637 |00604 |Report Subheader
+|20 | |20= |ST |O | | |00605 |Report Display Order
+|21 | | |DTM |O | | |00606 |Date/Time Stamp for Any Change in Definition for the Observation
+|22 | | |DTM |O | | |00607 |Effective Date/Time of Change
+|23 | | |NM |B | | |00608 |Typical Turn-Around Time
+|24 | | |NM |O | | |00609 |Processing Time
+|25 |1..1 | |ID |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70168[0168] |00610 |Processing Priority
+|26 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70169[0169] |00611 |Reporting Priority
+|27 | | |CWE |B |Y |0638 |00612 |Outside Site(s) Where Observation May Be Performed
+|28 | | |XAD |B |Y | |00613 |Address of Outside Site(s)
+|29 | | |XTN |B | | |00614 |Phone Number of Outside Site
+|30 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70177[0177] |00615 |Confidentiality Code
+|31 | | |CWE |B |Y |0639 |00616 |Observations Required to Interpret this Observation
+|32 | | |TX |O | | |00617 |Interpretation of Observations
+|33 | | |CWE |O |Y |0640 |00618 |Contraindications to Observations
+|34 | | |CWE |O |Y |0641 |00619 |Reflex Tests/Observations
+|35 | | |TX |O |Y | |00620 |Rules that Trigger Reflex Testing
+|36 | | |CWE |O |Y |0643 |00621 |Fixed Canned Message
+|37 | |200= |TX |O |Y | |00622 |Patient Preparation
+|38 | | |CWE |O | |0644 |00623 |Procedure Medication
+|39 | |200= |TX |O | | |00624 |Factors that may Affect the Observation
+|40 | |60= |ST |O |Y | |00625 |Service/Test/Observation Performance Schedule
+|41 | | |TX |O | | |00626 |Description of Test Methods
+|42 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70254[0254] |00937 |Kind of Quantity Observed
+|43 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70255[0255] |00938 |Point Versus Interval
+|44 | |200= |TX |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70256[0256]/ file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70257[0257] |00939 |Challenge Information
+|45 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70258[0258] |00940 |Relationship Modifier
+|46 | | |CWE |O | |0645 |00941 |Target Anatomic Site Of Test
+|47 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70910[0910] |00942 |Modality of Imaging Measurement
+|48 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70919[0919] |03310 |Exclusive Test
+|49 |2..3 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70074[0074] |00257 |Diagnostic Serv Sect ID
+|50 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70446[0661] |01539 |Taxonomic Classification Code
+|51 |200 | |ST |O |Y | |03399 |Other Names
+|52 | | |CWE |O |Y |0646 |03433 |Replacement Producer's Service/Test/Observation ID
+|53 | | |TX |O |Y | |03434 |Prior Resuts Instructions
+|54 | | |TX |O | | |03435 |Special Instructions
+|55 | | |CWE |O |Y | |03436 |Test Category
+|56 | | |CWE |O | |0647 |03437 |Observation/Identifier associated with Producer’s Service/Test/Observation ID
+|57 | | |CQ |O | | |03438 |Typical Turn-Around Time
+|58 | | |CWE |O |Y |0001/ 0828 |03439 |Gender Restriction
+|59 | | |NR |O |Y | |03440 |Age Restriction
+|===
+

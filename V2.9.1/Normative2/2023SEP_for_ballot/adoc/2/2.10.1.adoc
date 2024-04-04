@@ -1,0 +1,16 @@
+=== 2.10.1 Messages
+
+Messages MAY be locally extended as follows:
+
+{empty}a) Users MAY develop local Z messages to cover areas not already covered by existing HL7 messages. These SHOULD be composed of HL7 segments where possible.
+
+{empty}b) A local Z message MAY consist entirely of Z segments except that it SHALL begin with a MSH segment.
+
+{empty}c) A local Z Acknowledgment message SHALL begin with an MSH segment followed by an MSA segment, an optional SFT segment and a conditional ERR segment.
+
+{empty}d) Users MAY develop Z segments and add them to Z messages.
+
+{empty}e) Users MAY develop Z segments and add them to HL7 messages. The trigger event MAY remain the same if the intent of the message has remained unchanged.
+
+{empty}f) The practice of adding additional HL7 segments, like NTE, to existing HL7 messages locally is ill-advised. HL7 MAY move or change the segment in a future release; this will render the message unparsible.
+

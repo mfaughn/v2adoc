@@ -1,0 +1,4 @@
+==== 6.5.5.28 GT1-28 Guarantor Household Size (NM) 00779
+
+Definition: This field specifies the number of people living at the guarantor's primary residence.
+

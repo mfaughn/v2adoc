@@ -1,0 +1,10 @@
+=== 2.16.2 General acknowledgment, error return
+
+The *AR* code in MSA indicates that the application rejected the message for functional reasons. The optional ERR segment includes here that the 16th field of the PID segment with the SET ID value of 1 had an error which was defined by the locally-established code X3L. The optional text message UNKNOWN COUNTY CODE in the link is designed to help programmers and support personnel while reviewing message logs.
+
+MSH|^~\&|LAB|767543|ADT|767543|199003141304-0500||ACK^A08^ACK |XX3657|P|2.9<cr>
+
+MSA|AR|ZZ9380| <cr>
+
+ERR| |PID^1^11^^9|103|E<cr>
+

@@ -1,0 +1,12 @@
+=== 5.5.8 RDT – Table Row Data segment
+
+The RDT segment contains the row data of the tabular data response message (TBR).
+
+HL7 Attribute Table – RDT[#RDT .anchor]#### – Table Row Data
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1-n |. | |varies |R | | |00703 |Column Value
+|===
+

@@ -1,0 +1,54 @@
+=== 15.3.3 PMU/ACK – Delete Personnel Record (Event B03)
+
+An event B03 signals to delete the record with the healthcare administration information about an individual healthcare practitioner to correct erroneous entries.
+
+The EVN segment is used to indicate the effective or planned date.
+
+PMU^B03^PMU_B03: Delete Personnel Record Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|link:#_Hlt489344064[STF] |Staff | |15.4.8
+|===
+
+[width="100%",cols="21%,28%,8%,20%,23%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|PMU^B03^PMU_B03 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^B03^ACK
+|Application Ack |ACK^B03^ACK |- |ACK^B03^ACK |ACK^B03^ACK
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 in the Application Acknowledgement message SHALL always be set to NE (Never).
+
+ACK^B03^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^B03^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^B03^ACK
+|Application Ack |- |- |-
+|===
+

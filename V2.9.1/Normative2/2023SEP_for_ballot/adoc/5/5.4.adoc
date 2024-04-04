@@ -1,0 +1,38 @@
+== 5.4 QUERY/RESPONSE MESSAGE PAIRS
+
+The query recommended for use in v 2.4 and later is the Query by Parameter (QBP). The query/response message pairs that follow in this section supersede the previous generation of original mode and enhanced queries that are described in sections _5.10.2_, "_Original mode queries_," and, in v 2.6 and preceding, 5.10.3, "Originally Mode Deferred Access," and 5.10.4, "Other Query/Response Message Segments."
+
+All queries SHALL have a Query Name. The Query Name field, which is a CWE data type, uniquely identifies a Query Profile.
+
+The QBP allows for several variants in defining the selection criteria.
+
+The first variant, the Query by (Simple) Parameter, is to declare a sequence of one to many HL7 fields. Each of these fields will retain its data type as defined in the original HL7 usage. Each field corresponds to a parameter in the Query Profile.
+
+*Note:* It is the responsibility of the Server to declare explicitly the purpose of the query, the meaning of each of the query parameters, and the relationships among the parameters. These declarations are made in the Query Profile.
+
+A second variant, the Query by Example, allows the specification of parameters within actual HL7 segments other than the QPD. For example, the Query Profile might permit the use of the PID segment to transmit specific patient identification parameters. Each such parameter is specified in *the QBE Input Parameter Specification* and *QBE Input Parameter Field Description and Commentary* tables.
+
+The third variant uses a single QPD parameter in the form of a complex query selection expression. This field with its QSC data type allows the defining segment to be broader in scope and allows any field in the target data to be selected and filtered unless constrained through the Query Profile. It explicitly states any relational operators such as AND and OR. It is intended to support a wide range of combinations of parameters.
+
+The difference in how parameters are passed in each of these three variants is as follows:
+
+Query by Simple Parameter passes each client value to the Server positionally using only the third and successive fields of the QPD segment.
+
+Query by Example passes parameters using HL7 segments, such as PID, that are defined in the endpoint application chapters. The third and successive fields of the QPD segment also may be used in this variant.
+
+In the QSC Selection Criteria variant, the parameter values are all contained within a single complex query selection expression that is passed in QPD-3.
+
+Each generic query has a specific message syntax, a unique trigger event, and a unique message structure. Each generic response also has a specific message syntax, a unique trigger event, and a unique message structure.
+
+There are three generic message structures, each of which accommodates the specific detail needed in each of the three response types.
+
+The QBP_Q11 structure supports a Segment Pattern Response and contains the MSH, QPD, RCP, and DSC segments. Its default trigger event is Q11. A standard or site-defined query may use this trigger event or may specify a unique trigger event value in its Query Profile. If a unique trigger event value is chosen for a site-defined query, that value SHALL begin with Z.
+
+The QBP_Q13 structure supports a Tabular Response and contains the MSH, RCP, RDF, and DSC segments. Its default trigger event is Q13. A standard or site-defined query may use this trigger event or may specify a unique trigger event value in its Query Profile. If a unique trigger event value is chosen for a site-defined query, that value SHALL begin with Z.
+
+The QBP_Q15 structure supports a Display Response and contains the MSH, QPD, RCP, and DSC segments. Its default trigger event is Q15. A standard or site-defined query may use this trigger event or may specify a unique trigger event value in its Query Profile. If a unique trigger event value is chosen for a site-defined query, that value SHALL begin with Z.
+
+The new queries support both immediate and deferred response. This information is carried in the RCP segment along with the execution date and time.
+
+The query definition segment is echoed back in the response. This is particularly important in a continuation situation. Otherwise, the sender might conceivably have to manage a queue of queries.
+

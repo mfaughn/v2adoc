@@ -1,0 +1,4 @@
+==== 6.5.9.1 ACC-1 Accident Date/Time (DTM) 00527
+
+Definition: This field contains the date/time of the accident.
+

@@ -1,0 +1,36 @@
+=== 7.12.3 PCR - Possible Causal Relationship Segment
+
+The PCR segment is used to communicate a potential or suspected relationship between a product (drug or device) or test and an event with detrimental effect on a patient. This segment identifies a potential causal relationship between the product identified in this segment and the event identified in the PEO segment.
+
+More than one PCR segment can be included in the message if more than one product is possibly causally related to the event.
+
+HL7 Attribute Table – PCR[#PCR .anchor]#### – Possible Causal Relationship
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/ # |TBL # |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |0670 |01098 |Implicated Product
+|2 | |1= |IS |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70249[0249] |01099 |Generic Product
+|3 | | |CWE |O | |0671 |01100 |Product Class
+|4 | | |CQ |O | | |01101 |Total Duration Of Therapy
+|5 | | |DTM |O | | |01102 |Product Manufacture Date
+|6 | | |DTM |O | | |01103 |Product Expiration Date
+|7 | | |DTM |O | | |01104 |Product Implantation Date
+|8 | | |DTM |O | | |01105 |Product Explantation Date
+|9 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70244[0244] |01106 |Single Use Device
+|10 | | |CWE |O | |0672 |01107 |Indication For Product Use
+|11 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70245[0245] |01108 |Product Problem
+|12 | |199= |ST |O |Y/3 | |01109 |Product Serial/Lot Number
+|13 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70246[0246] |01110 |Product Available For Inspection
+|14 | | |CWE |O | |0673 |01111 |Product Evaluation Performed
+|15 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70247[0247] |01112 |Product Evaluation Status
+|16 | | |CWE |O | |0674 |01113 |Product Evaluation Results
+|17 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70248[0248] |01114 |Evaluated Product Source
+|18 | | |DTM |O | | |01115 |Date Product Returned To Manufacturer
+|19 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70242[0242] |01116 |Device Operator Qualifications
+|20 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70250[0250] |01117 |Relatedness Assessment
+|21 |1..2 | |ID |O |Y/6 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70251[0251] |01118 |Action Taken In Response To The Event
+|22 |2..2 | |ID |O |Y/6 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70252[0252] |01119 |Event Causality Observations
+|23 |1..1 | |ID |O |Y/3 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70253[0253] |01120 |Indirect Exposure Mechanism
+|===
+

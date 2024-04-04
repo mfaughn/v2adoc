@@ -1,0 +1,4 @@
+=== 11.4.4 RQA/RPA - Request for Resubmission of an Authorization (Event I10)
+
+If a previously submitted request for treatment authorization is rejected or canceled, this event could trigger a resubmission message for a referenced authorization. For example, the payor may have rejected a request until additional clinical information is sent to support the authorization request.
+

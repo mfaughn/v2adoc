@@ -1,0 +1,15 @@
+=== 17.5.3 STZ - Sterilization Parameter Segment 
+
+The STZ segment contains sterilization-specific attributes of a supply item.
+
+HL7 Attribute Table - STZ – Sterilization Parameter
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70806[0806] |02213 |Sterilization Type
+|2 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70702[0702] |02214 |Sterilization Cycle
+|3 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70809[0809] |02215 |Maintenance Cycle
+|4 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70811[0811] |02216 |Maintenance Type
+|===
+

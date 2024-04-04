@@ -1,0 +1,125 @@
+===== 5.9.4.1.1 QBP/RTB dispense history Query Profile using QSC variant
+
+Note that this Query Profile includes no separate Output Description and Commentary. In the QBP/RTB combination using the QSC variant, the selection criteria in _QPD-3-user parameters_ and the desired return data in _RDF-2-column description_ are constructed from the same Virtual Table, which appears in the Input Specification.
+
+Query Profile
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID (Query ID=Z95): |Z95
+|Type: |Query
+|Query Name: |Tabular Dispense History
+|Query Trigger (= MSH-9): |QBP^Z95^QBP_Q13
+|Query Mode: |Both
+|Response Trigger (= MSH-9): |RTB^Z96^RTB_K13
+|Query Characteristics: |Selection criteria are chosen from a Virtual Table. May specify patient, medication, and a date range.
+|Purpose: |To retrieve patient pharmacy dispense history information from the Server.
+|Response Characteristics: a|
+Columns from the *Virtual Table* listed in the Input/Output Specification are specified for output in the RDF segment.
+
+*If no columns are specified in the RDF segment, all columns will be returned.*
+
+Response is sorted by Medication Dispensed unless otherwise specified in *SortControl.*
+
+|Based on Segment Pattern: |
+|===
+
+The message structure for QBP^Z95^QPB_Q13 can be found in 5.3.1.2. Use the QBP^Q13^QPB_Q13 Message structure.
+
+RTB^Z96^RTB_K13: Response Grammar: Who Am I
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec Ref
+|MSH |Message Header | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|MSA |Message Acknowledgement | |2.15.8
+|[ERR] |Error | |2.15.5
+|link:#QAK[QAK] |Query Acknowledgement | |5.5.2
+|link:#QPD[QPD] |Query Parameter Definition | |5.5.4
+|[ |--- ROW_DEFINITION begin | |
+|link:#RDF[RDF] |Table Row Definition Segment | |5.5.7
+|[\{ link:#RDT[RDT] }] |Table Row Data Segment | |5.5.8
+|] |--- ROW_DEFINITION end | |
+|[ DSC ] |Continuation Pointer | |2.15.4
+|===
+
+*QPD Input Parameter Specification*
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq (Query ID=Z95) |Field Description a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|1 |MessageQueryName | | |60 |CWE |R | | | | | |
+|2 |QueryTag | | |32 |ST |R | | | | | |
+|3 |SelectionCriteria | | |*255* |*ST* |*R* |*Y* | | | | |
+|===
+
+*QPD Input Parameter Field Description and Commentary*
+
+[width="100%",cols="20%,11%,6%,63%",options="header",]
+|===
+|Input Parameter (Query ID=Z95) |Comp. Name |DT |Description
+|MessageQueryName | |CWE |SHALL be valued *Z95^Tabular Dispense History^HL7nnnn*.
+|QueryTag | |ST |Unique to each query message instance.
+|SelectionCriteria | |ST |A query expression whose operands are derived from the 'ColName' column in the 'Input/Output Specification: Virtual Table' given below.
+|===
+
+*Input/Output Specification: Virtual Table*
+
+[width="99%",cols="19%,9%,3%,6%,8%,3%,6%,8%,8%,10%,11%,9%",options="header",]
+|===
+|ColName (Query ID=Z95) a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|PatientList |S |Y |20 |CX |O | | | |PID.3 | |PID-3 Patient Identifier List
+|PatientName | | |48 |XPN | | | | |PID.5 | |PID-5 Patient Name
+|OrderControlCode |S | |2 |ID | | | |0119 |ORC.1 | |ORC-1 Order Control
+|MedicationDispensed |S |Y |100 |CWE | | | | |RXD.2 | |RXD-2 Dispense/Give Code
+|DispenseDate |S | |24 |DTM | | | | |RXD.3 | |RXD-2 Date/Time Dispensed
+|QuantityDispensed |L | |20 |NM | | | | |RXD.4 | |RXD-4 Actual Dispense Amount
+|OrderingProvider |S | |120 |XCN | | | | |ORC.12 | |ORC-12 Ordering Provider
+|===
+
+*Virtual Table Field Description and Commentary*
+
+[width="100%",cols="22%,10%,6%,62%",options="header",]
+|===
+|ColName (Query ID=Z95) |Comp. Name |DT |Description
+|*PatientList* | |CX |The combination of values for _PatientList.ID, and PatientList.AssigningAuthority,_ are intended to identify a unique entry on the PATIENT_MASTER table. The _PatientList.IdentifierTypeCode_ is useful for further filtering or to supply uniqueness in the event that the assigning authority may have more than one coding system. (The PATIENT_MASTER table contains a constraint that prevents multiple patients from being identified by the same combination of field values.) This PATIENT_MASTER entry will be searched against on the PHARMACY_DISPENSE_TRANSACTION table to retrieve the rows fulfilling the query conditions.
+| | | |If this field is not valued, all values for this field are considered to be a match.
+| | | |If one PID.3 is specified, only 1 segment pattern will be returned.
+| |*ID* |ID |If this field, PID.3.1, is not valued, all values for this field are considered to be a match.
+| |*Assigning Authority* |HD |If this field, PID.3.4, is not valued, all values for this field are considered to be a match.
+| |*Identifier type code* |CWE |If this field, PID.3.5, is not valued, all values for this field are considered to be a match.
+|*PatientName* | |XPN |If this field, PID.5, is not valued, all values for this field are considered to be a match.
+|*OrderControlCode* | |ID |If this field, ORC.1, is not valued, all values for this field are considered to be a match.
+|*MedicationDispensed* | |CWE |If this field, RXD.2, is not valued, all values for this field are considered to be a match.
+|*DispenseDate* | |DTM |If this field, RXD.3, is not valued, all values for this field are considered to be a match.
+|*QuantityDispensed* | |NM |If this field, RXD.4, is not valued, all values for this field are considered to be a match.
+|*OrderingProvider* | |XCN |If this field, ORC.12, is not valued, all values for this field are considered to be a match.
+|===
+
+*RCP Response Control Parameter Field Description and Commentary*
+
+[width="100%",cols="13%,25%,14%,7%,7%,34%",options="header",]
+|===
+|Field Seq (Query ID=Z95) |Name |Com­po­nent Name |LEN |DT |Description
+|1 |Query Priority | |1 |ID |(*D*)eferred or (*I*)mmediate. Default is *I*.
+|2 |Quantity Limited Request | |10 |CQ |
+| | |Quantity | |NM |Number of units (specified by the following component) that will be returned in each increment of the response. If no value is given, the entire response will be returned in a single increment.
+| | |Units | |CWE |**CH**aracters, **LI**nes, **P**a**G**es, or **R**ecor**D**s. Default is *LI*.
+|3 |Response Modality | |60 |CWE |**R**eal time or **B**atch. Default is *R*.
+|6 |Sort-by Field | |256 |SRT |
+| | |Sort-by Field | |ST |Segment field name of an output column by which the response may be sorted. SHALL contain a *Y* in the Sort column of the output specification table.
+| | |Sequencing | |ID |As specified in HL7 Table 0397- Sequencing. Default is **A**scending.
+|===
+

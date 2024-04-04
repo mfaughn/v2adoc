@@ -1,0 +1,6 @@
+==== 4A.4.3.8 RXC-8 Component Drug Strength Volume (NM) 01671
+
+Definition: This numeric field defines the volume measurement in which the drug strength concentration is contained. For example, Acetaminophen 120 MG/5ML Elixir means that 120 MG of the drug is in a solution with a volume of 5, which would be encoded in RXC-5, RXC-6, RXC-8 and RXC-9 as
+
+RXC|||||120|mg^^ISO||5|ml^^ISO ...<cr>
+

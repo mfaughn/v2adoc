@@ -1,0 +1,4 @@
+==== 8.10.3.11 PRC-11 Effective Start Date (DTM) 01004
+
+Definition: This field contains the date/time when this CDM entry becomes effective.
+

@@ -1,0 +1,4 @@
+==== 10.6.1.14 ARQ-14 Repeating Interval Duration (ST) 00873
+
+Definition: This field indicates how long the appointment repetitions should continue, once they have begun. The default setting indicates that the appointment should occur once. If the Interval Duration is defined as indefinitely repeating, the repetition of this appointment can only be stopped by using a discontinue event.
+

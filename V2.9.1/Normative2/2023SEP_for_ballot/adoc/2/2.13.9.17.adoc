@@ -1,0 +1,6 @@
+==== 2.13.9.17 MSH-17 Country Code (ID) 00017
+
+Definition: This field contains the country of origin for the message. It will be used primarily to specify default elements, such as currency denominations. The values to be used are those of ISO 3166,.footnote:[Available from ISO 1 Rue de Varembe, Case Postale 56, CH 1211, Geneve, Switzerland]. The ISO 3166 table has three separate forms of the country code: HL7 specifies that the 3-character (alphabetic) form be used for the country code.
+
+Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70399[_External Table 0399 - Country Code_] in Chapter 2C, Code Tables, for the 3-character codes as defined by ISO 3166-1.
+

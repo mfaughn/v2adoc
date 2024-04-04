@@ -1,0 +1,4 @@
+==== 7.8.1.9 CSR-9 Date/Time Patient Study Consent Signed (DTM) 01043
+
+Definition: This field contains the consent form signing date is collected to provide a checkpoint that the consent form was obtained. Since many trials involve unapproved drugs and other treatment modalities, the consent form is highly important to document and store. This field is required for the patient registration trigger event (C01). The time component is optional.
+

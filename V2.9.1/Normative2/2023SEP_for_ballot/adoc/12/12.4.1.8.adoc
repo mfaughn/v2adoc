@@ -1,0 +1,4 @@
+==== 12.4.1.8 GOL-8 Expected Goal Achieve Date/Time (DTM) 00824
+
+Definition: This field contains the projected date/time for achieving the stated goal.
+

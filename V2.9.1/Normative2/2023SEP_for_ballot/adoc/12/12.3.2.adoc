@@ -1,0 +1,114 @@
+=== 12.3.2 PPR/ACK - Patient Problem Message (Events PC1, PC2, PC3) 
+
+The patient problem message is used to send problems from one application to another (e.g., a point of care system to a clinical repository). Many of the segments associated with this event are optional. This optionality allows systems in need of this information to set up transactions that fulfill their requirements.
+
+PPR^PC1-PC3^PPR_PC1: Patient Problem Message
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|PID |Patient Identification | |3
+|[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|\{ |--- PROVIDER begin | |
+|link:#PRD[PRD] |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|[ |--- PATIENT_VISIT begin | |
+|PV1 |Patient Visit | |3
+|[PV2] |Patient Visit | |3
+|] |--- PATIENT_VISIT end | |
+|\{ |--- PROBLEM begin | |
+|link:#PRB[PRB] |Detail Problem | |12
+|[\{NTE}] |Notes & Comments (Problem Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Problem) | |12
+|[\{ |--- PROBLEM_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Problem) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PROBLEM_PARTICIPATION end | |
+|[\{ |--- PATHWAY begin | |
+|link:#PTH[PTH] |Detail Pathway | |12
+|[\{link:#VAR[VAR]}] |Variance (Pathway) | |12
+|}] |--- PATHWAY end | |
+|[\{ |--- PROBLEM_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |2
+|}] |--- PROBLEM_OBSERVATION end | |
+|[\{ |--- GOAL begin | |
+|link:#GOL[GOL] |Detail Goal | |12
+|[\{NTE}] |Notes & Comments (Goal Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Goal) | |12
+|[\{ |--- GOAL_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Goal) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- GOAL_PARTICIPATION end | |
+|[\{ |--- GOAL_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |2
+|}] |--- GOAL_OBSERVATION end | |
+|}] |--- GOAL end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[ |--- ORDER_DETAIL begin | |
+|< |--- CHOICE begin | |
+|OBR |Order Detail Segment | |4
+|\| | | |
+|Hxx |etc. | |
+|> |--- CHOICE end | |
+|[\{NTE}] |Notes & Comments (Order Detail Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Order) | |12
+|[\{ |--- ORDER_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Observation/Result) | |12
+|}] |--- ORDER_OBSERVATION end | |
+|] |--- ORDER_DETAIL end | |
+|}] |--- ORDER end | |
+|} |--- PROBLEM end | |
+|===
+
+[width="100%",cols="18%,23%,5%,19%,14%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|PPR^PC1-PC3^PPR_PC1 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^PC1-PC3^ACK |- |ACK^PC1-PC3^ACK
+|Application Ack |ACK^PC1-PC3^ACK |- |- |ACK^PC1-PC3^ACK |ACK^PC1-PC3^ACK
+|===
+
+ACK^PC1-PC3^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^PC1-PC3^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^PC1-PC3^ACK
+|Application Ack |- |- |-
+|===
+
+This error segment indicates the fields that caused a transaction to be rejected.
+

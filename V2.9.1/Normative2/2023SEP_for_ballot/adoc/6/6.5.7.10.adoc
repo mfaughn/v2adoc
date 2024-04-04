@@ -1,0 +1,4 @@
+==== 6.5.7.10 IN2-10 Military ID Number (ST) 00481
+
+Definition: This field contains the military ID number, defined by CMS or other regulatory agencies, which uniquely identifies a patient's military policy.
+

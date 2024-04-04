@@ -1,0 +1,8 @@
+==== 4.5.5.9 TQ2-9 Cyclic Group Maximum Number of Repeats (NM) 01656
+
+Definition: The maximum number of repeats for a cyclic group.
+
+The total number of repeats is constrained by the end date/time of the last repeat or the end date/time of the parent, whichever is first. For example, if the total number or repeats is valued at 10 and the group has already repeated 5 times, the current order will not be repeated again if either the current order, or the prior order in the cycle, has reached its end date/time.
+
+This field is meaningful only when TQ2-2 Sequence/Results Flag is valued with 'C'. However, even in this case this field is optional.
+

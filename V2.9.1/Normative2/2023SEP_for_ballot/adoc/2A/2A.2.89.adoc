@@ -1,0 +1,33 @@
+=== 2A.2.89 XON - extended composite name and identification number for organizations
+
+HL7 Component Table - XON – Extended Composite Name and Identification Number for Organizations
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |50# |ST |O | |Organization Name | |2A.2.76
+|2 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70204[0204] |Organization Name Type Code | |2A.2.36
+|3 | | | |W | |ID Number |Withdrawn as of v 2.7. |
+|4 | | | |W | |Identifier Check Digit |Withdrawn as of v 2.7. |
+|5 | | | |W | |Check Digit Scheme |Withdrawn as of v 2.7. |
+|6 | | |HD |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70363[0363] |Assigning Authority | |2A.2.33
+|7 |2..5 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70203[0203] |Identifier Type Code | |2A.2.35
+|8 | | |HD |O | |Assigning Facility | |2A.2.33
+|9 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70465[0465] |Name Representation Code | |2A.2.35
+|10 | | |ST |O | |Organization Identifier | |2A.2.76
+|===
+
+This data type is used in fields (e.g., PV2-23, NK1-13, PD1-3, OBR-44) to specify the name and ID number of an organization.
+
+Example 1:
+
+The ID for Good Health Hospital was assigned by the Community Health and Hospitals enterprise’s Hospital Master and was first issued at the Central Offices.
+
+Good Health Hospital^L^716^9^M10^&Hospital Master.Community Health and Hospitals&L^XX^&Central Offices.Community Health and Hospitals&L^A
+
+Example 2:
+
+Good Health Hospital has another ID that was issued by CMS. Assigning Authority, CMS, values only the first HD component, an IS data type and assigning facility is not relevant. This information might be transmitted accordingly:
+
+Good Health Hospital^L^4544^3^M10^CMS^XX^^A
+

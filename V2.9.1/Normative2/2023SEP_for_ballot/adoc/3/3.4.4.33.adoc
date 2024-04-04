@@ -1,0 +1,4 @@
+==== *3.4.4.33* PV2-33 Expected Surgery Date and Time (DTM) 00734
+
+Definition: This field contains the date and time on which the surgery is expected to occur.
+

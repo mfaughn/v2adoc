@@ -1,0 +1,46 @@
+==== 2.9.3.1 HL7 batch file structure 
+
+The structure of an HL7 batch file is given by the following (using the HL7 abstract message syntax)
+
+[width="100%",cols="30%,70%",]
+|===
+|[FHS] |(file header segment)
+|[\{ARV}] |Access Restrictions
+|\{ |--- BATCH begin
+|[BHS] |(batch header segment)
+|[\{ARV}] |Access Restrictions
+|\{ [ |--- MESSAGE begin
+|MSH |(zero or more HL7 messages)
+|.... |
+|.... |
+|.... |
+|] } |--- MESSAGE end
+|[BTS] |(batch trailer segment)
+|} |--- Batch end
+|[FTS] |(file trailer segment)
+|===
+
+Notes:
+
+The sequence numbering protocol has a natural application in batch transfers. See the discussion of batch acknowledgments that follows.
+
+Although a batch will usually consist of a single type of message, there is nothing in the definition that restricts a batch to only one message type.
+
+The HL7 file and batch header and trailer segments are defined in exactly the same manner as the HL7 message segments. Hence the HL7 message construction rules of Sections _2.4.5_ and _2.5_, can be used to encode and decode HL7 batch files.
+
+There are only two cases in which an HL7 batch file MAY contain zero HL7 messages:
+
+{empty}a) a batch containing zero HL7 messages MAY be sent to meet a requirement for periodic submission of batches when there are no messages to send.
+
+{empty}b) a batch containing zero negative acknowledgment messages MAY be sent to indicate that all the HL7 messages contained in the batch being acknowledged are implicitly acknowledged. See Section _2.9.3.3_, "_Acknowledging batches_."
+
+To better understand, why security labels MAY be applicable to batch files, we provide the following use case:
+
+Some HIEs (likely a majority of US HIEs) push ADTs to HIE participants authorized to receive these under HIPAA. Some consider payers to be authorized to receive ADTs under HIPAA (despite the fact that ADTs are for treatment purposes and should likely only be going to providers.)
+
+If 1..*of the ADTs included in 1..* BSH within a FSH contains an ADT with security label indicating that this information is not to be disclosed to payer X based on patient right under HIPAA to restrict because the patient paid for services in full out of pocket, then the HIE SHOULD NOT automatically send the entire FSH to the payers it would otherwise send it to,
+
+The HIE would need to parse the FSH to find the 1..* BSH with security label = do not disclose to payer X. It could then send any of the other BSH on to payers as usual.
+
+It would then parse the 1..* BSH with security label = do not disclose to payer X to find the 1..*MSH with the security label = do not disclose to payer X, and then send those MSH to the payers besides payer X.
+

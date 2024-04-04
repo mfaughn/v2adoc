@@ -1,0 +1,43 @@
+== 5.2 INTRODUCTION
+
+This chapter defines the rules that apply to queries and to their responses. It also defines the unsolicited display messages because their message syntax is query-like in nature.
+
+Version 2.4 of the standard introduced new models for query and response messages. The layout of this chapter is structured such that all information pertaining to those newly defined query/response message pairs, including auxiliary protocols, appears in sections 5.2–5.9 and the previously defined queries appear in section 5.10. Outstanding issues appear in the final section, 5.11.
+
+[width="100%",cols="75%,25%",options="header",]
+|===
+|Topic |Section Reference
+|Introduction |5.2
+|Query/Response Model |5.2.1
+|Evolution of the Query Standard |5.2.2
+|Query Development Methodology |5.2.3
+|Response Formats |5.2.4
+|Query Specification Formats |5.2.5
+|Summary Chart of Query/Response Pairs |5.2.6
+|Query/Response Profile |0
+|Query/Response Message Pairs |5.3.3.4
+|Query/Response Message Segments |0
+|Auxiliary Query Protocols |5.6
+|Publish and Subscribe |5.7
+|Query Implementation Considerations |5.8
+|Query/Response Message Examples |5.9
+|Superseded Query/Response Trigger Events and Message Pairs |5.10
+|Display Messages |5.10.1
+|Original Mode Queries |5.10.2
+|Outstanding Issues |5.11
+|===
+
+The Standard embraces the most common queries that are likely to occur. These are defined by the functional chapters. The following represents typical examples of queries supported by the Standard:
+
+{empty}a) data regarding a single patient, e.g., send all lab results for patient #123456
+
+{empty}b) data regarding multiple patients, e.g., send the list of patients whose attending physician is Dr. #123
+
+{empty}c) data that is not patient related, e.g., send the age specific normal values for serum protein.
+
+{empty}d) data within a specified time range, e.g., send all serum glucose results, reported between January 1, 1998 through December 31, 1999, for patient #123456.
+
+The variety of potential queries is almost unlimited. There was no attempt here to define a Standard that would cover every possible query. Chapter 5 discusses general ways query/response pairs are structured. Functional chapters discuss specific query/response pairs required for their needs. The technical committees responsible for functionally-specific chapters define detailed content of the query/response segment patterns within those chapters.
+
+In particular, there is no implication that a specific system SHALL support generalized queries or Conformance Statements to comply with the Standard. Rather, these transactions provide a format, or a set of tools to support queries to the extent desired by the institution. The resources available and local policies will influence the type of queries that MAY BE implemented.
+

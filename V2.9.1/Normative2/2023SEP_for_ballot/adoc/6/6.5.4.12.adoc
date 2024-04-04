@@ -1,0 +1,4 @@
+==== 6.5.4.12 PR1-12 Procedure Practitioner 00402
+
+*Attention: _PR1-12 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6._*
+

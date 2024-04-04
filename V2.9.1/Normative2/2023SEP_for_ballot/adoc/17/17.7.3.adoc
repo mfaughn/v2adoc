@@ -1,0 +1,49 @@
+=== 17.7.3 SLN/ACK - Notification of Sterilization Lot Deletion (Event S35) 
+
+This message is sent from a filler application to notify other applications that a sterilization lot has been deleted. The information provided in the SLT segment describes the sterilization lot that has been deleted by the filler application.
+
+SLN^S35^SLR_S28: Notification of Sterilization Lot Deletion
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|\{SLT} |Sterilization Lot | |17
+|===
+
+[width="100%",cols="20%,25%,6%,16%,17%,16%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SLN^S35^SLR_S28 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^S35^ACK |- |ACK^S35^ACK
+|Application Ack |ACK^S35^ACK |- |- |ACK^S35^ACK |ACK^S35^ACK
+|===
+
+ACK^S35^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^S35^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S35^ACK
+|Application Ack |- |- |-
+|===
+

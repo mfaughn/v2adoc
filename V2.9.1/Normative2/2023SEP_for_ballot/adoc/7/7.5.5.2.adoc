@@ -1,0 +1,10 @@
+==== 7.5.5.2 Susceptibility battery/report representation
+
+Each antimicrobial should be reported as a separate (OBX) observation where the Observation ID is a code for the antimicrobial. (OBXs for non-antimicrobials observations and related information may be present in the same battery.)
+
+MIC and disk diffusion (Kirby Bauer) susceptibility results can be combined in the same OBX segment. An OBX can contain a MIC value (in _OBX-5 Observation Value_ (results)) and _OBX-8 Interpretation Codes_ that indicates whether the organism is sensitive, resistant, or intermediate (see file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70078[_HL7 Table 0078 - Interpretation Codes_] under abnormal flag fields).
+
+Or, an OBX can contain a disk diffusion result string (e.g., *sensitive*) in the Observation Results field and the disk diffusion interpretation in _OBX-8 Interpretation Codes_ (e.g., *S*).
+
+A susceptibility battery may only contain results corresponding to a single organism that has been previously reported in a culture battery.
+

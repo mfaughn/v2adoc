@@ -1,0 +1,97 @@
+=== 4A.3.26 RCV - Pharmacy/Treatment Dispense Message (Event O59)
+
+The RCV message may be created to communicate the reception of items. This message supports reception of items to fill an existing order or orders, or to stock refills. In the most common case, the RCV messages would be routed to the dispensing system that issued the RDS message. The RDS message informs of the items that have been sent, while the RCV informs about the effectively received items (thus supporting any change in quantities, status,e tc., derived from transport or from a mismatch between the actually sent items and the content of the RDS).
+
+In typical cases, the RCV^O59 message is an “echo” of one RDS^O13, but this is not forcibly so: Since the shipment and reception are asynchronous events, and considering variants in delivery, it is expected that one RCV^OYY message is issued for each confirmation of a reception, independently of whether there was one shipment or several shipments.
+
+The RXD segment carries the dispense data for a given reception of the received items.
+
+The FT1 segment is optional and repeating in order to accommodate multiple charge, benefit and pricing situations. When a message of type RCV is used, the FT1 may be included in the RCV message. If the RCV^O59 message is not used by the implementation, then the RDS may contain the FT1 segment.
+
+RCV^O59^RCV_O59: Pharmacy/Treatment Dispense Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for Header) | |2
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[PD1] |Additional Demographics | |3
+|[\{PRT}] |Participation (for Additional Demographics) | |7
+|[\{ NTE }] |Notes and Comments (for PID) | |2
+|[\{ AL1 }] |Allergy Information | |2
+|[ |--- PATIENT_VISIT begin | |
+|PV1 |Patient Visit | |3
+|[ PV2 ] |Patient Visit – Additional Info | |3
+|[\{PRT}] |Participation (for Patient Visit) | |7
+|] |--- PATIENT_VISIT end | |
+|] |--- PATIENT end | |
+|\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|[ |--- ORDER_DETAIL begin | |
+|RXO |Pharmacy /Treatment Order | |4
+|[ |--- ORDER_DETAIL_SUPPLEMENT begin | |
+|\{ NTE } |Notes and Comments (for RXO) | |2
+|\{ RXR } |Pharmacy/Treatment Route | |4
+|[\{ |--- COMPONENT begin | |
+|RXC |Pharmacy/Treatment Component | |4
+|[\{ NTE }] |Notes and Comments (for each RXC) | |2
+|}] |--- COMPONENT end | |
+|] |--- ORDER_DETAIL_SUPPLEMENT end | |
+|] |--- ORDER_DETAIL end | |
+|[\{PRT}] |Participation (for Order) | |7
+|[ |--- ENCODING begin | |
+|RXE |Pharmacy/Treatment Encoded Order | |4
+|[\{PRT}] |Participation (for Order Encoding) | |7
+|[\{ NTE }] |Notes and Comments (for RXE) | |2
+|\{ |--- TIMING_ENCODED begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|} |--- TIMING_ENCODED end | |
+|\{ RXR } |Pharmacy/Treatment Route | |4
+|[\{ RXC }] |Pharmacy/Treatment Component | |4
+|] |--- ENCODING end | |
+|RXD |Pharmacy/Treatment Dispense | |4
+|[\{PRT}] |Participation (for Treatment Dispense) | |7
+|[\{ NTE }] |Notes and Comments (for RXD) | |2
+|\{ RXR } |Pharmacy/Treatment Route | |4
+|[\{ RXC }] |Pharmacy/Treatment Component | |4
+|[\{ |--- OBSERVATION begin | |
+|OBX |Results | |7
+|[\{PRT}] |Participation (for Observation) | |7
+|[\{ NTE }] |Notes and Comments (for OBX) | |2
+|}] |--- OBSERVATION end | |
+|[\{ FT1 }] |Financial Transaction segment | |6
+|} |--- ORDER end | |
+|===
+
+*Note:* The NTE segment(s) following the PD1 segment are intended to communicate notes and comments relative to the patient.
+
+The NTE segment(s) following the RXO segment are intended to communicate notes and comments relative to the pharmacy/treatment order.
+
+The NTE segment(s) following the RXE segment are intended to communicate notes and comments relative to the encoded order.
+
+The NTE segment(s) following the RXD segment are intended to communicate notes and comments relative to the dispense event.
+
+The NTE segment(s) following the RXC segment are intended to communicate notes and comments relative to the component(s).
+
+The NTE segment following the OBX segment is intended to communicate notes and comments relative to the results.
+
+[width="100%",cols="22%,27%,5%,23%,23%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|RCV^O59^RCV_O59 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O59^ACK
+|Application Ack |RRD^O14^RRD_O14 |- |RRD^O14^RRD_O14 |RRD^O14^RRD_O14
+|===
+

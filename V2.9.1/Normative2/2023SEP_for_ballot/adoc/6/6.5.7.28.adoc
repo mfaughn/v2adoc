@@ -1,0 +1,12 @@
+==== 6.5.7.28 IN2-28 Room Coverage Type/Amount (RMC) 00499
+
+Components: <Room Type (CWE)> ^ <Amount Type (CWE)> ^ <WITHDRAWN Constituent> ^ <Money or Percentage (MOP)>
+
+Subcomponents for Room Type (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Amount Type (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Money or Percentage (MOP): <Money or Percentage Indicator (ID)> & <Money or Percentage Quantity (NM)> & <Monetary Denomination (ID)>
+
+Definition: Use this field instead of link:#in1-40-room-rate-semiprivate-00465[_IN1-40 - Room Rate - Semi-Private_] and link:#in1-41-room-rate-private-00466[_IN1-41 - Room Rate - Private_]. This field contains room type (e.g., private, semi-private), amount type (e.g., limit, percentage) and amount covered by the insurance.
+

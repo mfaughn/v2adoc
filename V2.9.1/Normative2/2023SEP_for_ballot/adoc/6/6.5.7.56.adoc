@@ -1,0 +1,4 @@
+==== 6.5.7.56 IN2-56 Relationship to the Patient Stop Date (DT) 00796
+
+Definition: This field indicates the date after which the relationship (defined in link:#in1-17-insureds-relationship-to-patient-cwe-00442[_IN1-17 - Insured's Relationship to Patient_]) is no longer effective.
+

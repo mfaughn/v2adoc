@@ -1,0 +1,4 @@
+==== 13.1.3.57 Stay clear zone: 
+
+*_In NCCLS LAB AUTOMATION Standard documents,_* the area between the instrument or specimen processing and handling device and the automation hardware that must remain clear of any physical device, ensuring that there is adequate access by the user or service person to either system.
+

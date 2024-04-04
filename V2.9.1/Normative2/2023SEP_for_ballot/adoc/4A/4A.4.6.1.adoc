@@ -1,0 +1,6 @@
+==== 4A.4.6.1 RXG-1 Give Sub-ID Counter (NM) 00342
+
+Definition: Use if this RXG segment carries information about a single administration. This field must contain a unique number for the placer order number. This field along with the placer order number provides a unique reference to the specific scheduled give date/time transmitted by the pharmacy/treatment supplier for this order.
+
+If the RXG segment carries information about multiple administrations, this field's value is zero (0), since in this case a one-to-one matching with the RXA segment is ambiguous.
+

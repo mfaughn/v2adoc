@@ -1,0 +1,4 @@
+==== 13.3.9.8 TCC-8 Inventory Limits Warning Level (NM) 01414
+
+Definition: This field is the value that is to be used as the threshold for initiating inventory warning-level messages.
+

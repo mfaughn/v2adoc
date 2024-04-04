@@ -1,0 +1,4 @@
+=== 10.4.5 Notification of Appointment Discontinuation (Event S16)
+
+A notification of appointment discontinuation is sent by the filler application to notify other applications that an appointment in progress has been stopped, or that the remaining occurrences of a parent appointment will not occur. If none of the child appointments of a parent appointment have taken place, then a cancel trigger event should be sent instead.
+

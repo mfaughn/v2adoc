@@ -1,0 +1,4 @@
+==== 16.4.8.12 PMT-12 ESR-Code-Line (ST) 02029
+
+Definition: Invoice Reference used with electronic banking methods.
+

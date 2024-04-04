@@ -1,0 +1,12 @@
+=== 7.10.2 References
+
+Gabrielli ER. Standard specification for drug therapy documentation. ASTM Committee E31.12 July (1993).
+
+Kessler DA. Introducing MEDWatch. JAMA 269: 2765-2768(1993).
+
+Kurata JH, Overhage JM, Gabrielli E, Jones JK. International Data Standards for Hospital-based Drug Surveillance. M.D. Computing 12(1) 50-57 (1995).
+
+Moore N, Montera d, Coulson R, DeAbajo F, Kreft-Jais C, Biron A, Monteaugudo J. The single case format: proposal for a structured message for the telematic transmission of information on individual case reports in pharmacovigilance. Pharmacoepidemiology and Drug Safety 3: 157-162 (1994)
+
+Thompson WL. A modest proposal for enhancing the safety and effectiveness of use of human drugs, biologics and devices and animal health products with human health implications through cost-effective health informatics tools supporting a global database of safety reports as a joint ICH E2, M1 and M2 initiative. Private communication. March (1995)
+

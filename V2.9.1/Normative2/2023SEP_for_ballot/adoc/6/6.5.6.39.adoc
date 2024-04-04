@@ -1,0 +1,4 @@
+==== 6.5.6.39 IN1-39 Policy Limit ‑ Days (NM) 00464
+
+Definition: This field contains the maximum number of days that the insurance policy will cover.
+

@@ -1,0 +1,4 @@
+==== 2A.2.14.8 Expiration Date (DT)
+
+Definition: The last date, if known, on which the identifier is valid and active.
+

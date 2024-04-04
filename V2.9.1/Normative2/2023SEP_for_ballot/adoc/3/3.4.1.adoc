@@ -1,0 +1,18 @@
+=== 3.4.1 EVN ‑ Event Type Segment
+
+The EVN segment is used to communicate necessary trigger event information to receiving applications. Valid event types for all chapters are contained in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70003[_HL7 Table 0003 - Event Type_].
+
+HL7 Attribute Table - EVN[#EVN .anchor]#### – Event Type
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | | |W | | |00099 |Event Type Code
+|2 | | |DTM |R | | |00100 |Recorded Date/Time
+|3 | | |DTM |O | | |00101 |Date/Time Planned Event
+|4 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70062[0062] |00102 |Event Reason Code
+|5 | | |XCN |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70188[0188] |00103 |Operator ID
+|6 | | |DTM |O | | |01278 |Event Occurred
+|7 | | |HD |O | | |01534 |Event Facility
+|===
+

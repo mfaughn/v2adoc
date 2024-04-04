@@ -1,0 +1,4 @@
+==== 4.5.1.17 ORC-17 Entering Organization (CWE) 00231
+
+Definition: *_This field was retained for backward compatibility only as of v 2.7 and the detail was withdrawn and removed from the standard as of v 2.9._* The reader is referred to the PRT segment described in Chapter 7. Refer to Table 0666 - Entering Organization in Chapter 2C for valid values.
+

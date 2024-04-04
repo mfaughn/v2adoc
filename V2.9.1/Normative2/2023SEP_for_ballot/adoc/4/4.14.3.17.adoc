@@ -1,0 +1,4 @@
+==== 4.14.3.17 BTX-17 BP Transfusion End Date/Time of Status (DTM) 01751
+
+Definition: This field indicates the date and time that the transfusion of the blood component or commercial product was completed or stopped.
+

@@ -1,0 +1,4 @@
+==== 7.12.4.11 PSH-11 Quantity in Use Method (ID) 01243
+
+Definition: This field contains the method used for measuring the quantity in use. An explanation of the method used for estimation can be included in _PSH-12-quantity in use comment_. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70329[_HL7 Table 0329 - Quantity Method_] for valid values.
+

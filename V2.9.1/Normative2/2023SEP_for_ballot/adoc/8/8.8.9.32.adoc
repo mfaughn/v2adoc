@@ -1,0 +1,4 @@
+==== 8.8.9.32 OM1-32 Interpretation of Observations (TX) 00617
+
+Definition: This field contains the clinical information about interpreting test results. Examples are the conditions (drugs) that may cause false abnormals, and the information about the sensitivity and specificity of the test for diagnoses.
+

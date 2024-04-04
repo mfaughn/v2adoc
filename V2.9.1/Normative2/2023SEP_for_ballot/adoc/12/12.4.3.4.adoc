@@ -1,0 +1,4 @@
+==== 12.4.3.4 PTH-4 Pathway Established Date/Time (DTM) 01209
+
+Definition: This field contains the identification of the event time for the current pathway record.
+

@@ -1,0 +1,6 @@
+==== *3.4.20.9* GSR-9 Validity Period (DR) 02522
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This field asserts the time period during which the recorded gender or sex value in GSR-4 applies to the individual. May be just a Start Date/Time for values which are still valid.
+

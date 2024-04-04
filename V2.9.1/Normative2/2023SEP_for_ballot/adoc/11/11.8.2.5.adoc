@@ -1,0 +1,4 @@
+==== 11.8.2.5 AUT-5 Authorization Expiration Date (DTM) 01150
+
+Definition: This field contains the expiration date after which the authorization to treat will no longer be in effect from the perspective of the coverage plan.
+

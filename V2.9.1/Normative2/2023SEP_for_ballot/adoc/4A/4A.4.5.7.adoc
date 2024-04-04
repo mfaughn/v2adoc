@@ -1,0 +1,4 @@
+==== 4A.4.5.7 RXD-7 Prescription Number (ST) 00325
+
+Definition: This field is equivalent in uniqueness to the pharmacy/treatment supplier filler order number. At some sites, this may be the pharmacy/treatment supplier (internal) sequential form. At other sites, this may be an external number.
+

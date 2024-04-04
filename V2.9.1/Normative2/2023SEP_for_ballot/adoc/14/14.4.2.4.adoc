@@ -1,0 +1,8 @@
+==== 14.4.2.4 NSC-4 Current Application (HD) 01191 
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a site-specific name used to identify the "current" application process for interfacing with lower level protocols. To be used in conjunction with the sending/receiving system and facility values in the MSH. Entirely site-defined. file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70361[_User-defined Table 0361-Sending/Receiving Application_] is used as the user-defined table of values for the first component.
+
+*Note:* By site agreement, implementors may continue to use file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70300[_User-defined Table 0300 – Namespace ID_] for the first component.
+

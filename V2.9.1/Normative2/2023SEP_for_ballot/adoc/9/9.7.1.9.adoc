@@ -1,0 +1,4 @@
+==== 9.7.1.9 CON-9 Consenter-imposed Limitations (FT) 01784
+
+Definition: Describes any restrictions or limitations placed on their consent by the subject.
+

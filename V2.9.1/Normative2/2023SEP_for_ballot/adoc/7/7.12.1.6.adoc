@@ -1,0 +1,4 @@
+==== 7.12.1.6 PES-6 Sender Sequence Number (NM) 01065
+
+Definition: This field contains sequentially assigned integer values which distinguish messages which share the same sender event identification element. 0 for initial report, 1 for second, and so on.
+

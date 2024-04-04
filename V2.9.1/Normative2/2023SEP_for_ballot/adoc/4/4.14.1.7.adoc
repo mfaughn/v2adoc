@@ -1,0 +1,6 @@
+==== 4.14.1.7 BPO-7 BP Intended Use Date/Time (DTM) 01706
+
+Definition: This field specifies the date/time that the placer intends to use the blood product that is being ordered.
+
+This is the time when the placer expects the product to be available within the transfusion service. For example, the product should be available for use, but not dispensed, on this date/time.
+

@@ -1,0 +1,6 @@
+==== 12.2.5.5 Rule 5
+
+The Problem, Goal, and Pathway messages integrate order segments as a method for establishing causal linkages. Linkages or relationships between orders, problems, goals, and pathways can therefore be presented in the Patient Care messages.
+
+Orders referenced in Patient Care messages are used for linkage purposes only. Initiation and status changes to orders are accomplished by using dedicated messages defined in the Order Entry Chapter.
+

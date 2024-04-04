@@ -1,0 +1,4 @@
+==== 17.8.1.1 SCP-1 Number of Decontamination/Sterilization Devices (NM) 02087
+
+Definition: The number of decontamination/sterilization devices recognized by the instrument-tracking system. The decontamination/sterilization device(s) would configure itself based on the data in this message.
+

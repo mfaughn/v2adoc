@@ -1,0 +1,4 @@
+==== 6.5.11.14 UB2-14 UB92 Locator 56 (state) (ST) 00566
+
+Definition: This field may repeat up to five times.
+

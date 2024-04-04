@@ -1,0 +1,64 @@
+=== 8.8.3 MFN/MFK - Master File Notification - Test/Observation (Numeric) (Event M08)
+
+MFN^M08^MFN_M08: Master File Notification - Test/Observation (Numeric)
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|\{ |--- MF_TEST_NUMERIC begin | |
+|link:#MFE[MFE] |Master File Entry | |8
+|link:#OM1[OM1] |General Segment (Fields That Apply to Most Observations) | |8
+|[\{ link:#OMC[[.underline]#OMC#] }] |Supporting Clinical Information | |8
+|[\{ PRT }] |Participation | |4
+|[ link:#_Hlt480772502[OM2] ] |Numeric Observation Segment | |8
+|[ link:#OM3[OM3] ] |Categorical Service/Test/Observation Segment | |8
+|[\{link:#OM4[OM4]}] |Observations that Require Specimens | |8
+|} |--- MF_TEST_NUMERIC end | |
+|===
+
+[width="100%",cols="17%,21%,4%,16%,21%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M08^MFN_M08 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M08^ACK |- |ACK^M08^ACK
+|Application Ack |MFK^M08^MFK_M01 |- |- |MFK^M08^MFK_M01 |MFK^M08^MFK_M01
+|===
+
+MFK^M08^MFK_M01: Master File Application Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK segment | |8
+|===
+
+*Note:* The MFK message is used for an application acknowledgment in either the original or enhanced acknowledgment modes.
+
+*Note:* _MFI-1 -_ Master _File Identifier_ = OMA for numeric observations.
+
+*Note:* A service/test/observation definition may have both an OM2 (numeric) and OM3 (categorical) segment included in case the value may be either numeric and/or categorical.
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M08^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^M08^ACK
+|Application Ack |- |- |-
+|===
+

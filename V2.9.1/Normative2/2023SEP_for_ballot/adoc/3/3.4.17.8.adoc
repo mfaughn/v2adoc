@@ -1,0 +1,6 @@
+==== *3.4.17.8* OH3-8 Work Unique Identifier (EI) 02446
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal Identifier (ST)> ^ <Universal Identifier Type (ID)>
+
+Definition: This field contains a value the uniquely identifies a single work for a person.
+

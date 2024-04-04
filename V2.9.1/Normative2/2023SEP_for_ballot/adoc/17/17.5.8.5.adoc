@@ -1,0 +1,4 @@
+==== 17.5.8.5 ILT-5 Inventory Received Quantity (NM) 01805
+
+Definition: This field contains the quantity of this inventory item that was received on the date specific in _ILT-4 Inventory Received Date_ field.
+

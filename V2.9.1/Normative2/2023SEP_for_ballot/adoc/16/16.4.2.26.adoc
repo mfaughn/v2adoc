@@ -1,0 +1,4 @@
+==== 16.4.2.26 IVC-26 Provider Tax ID (ST) 02038
+
+Definition: The Tax ID of the Provider (general Tax identification number or VAT number).
+

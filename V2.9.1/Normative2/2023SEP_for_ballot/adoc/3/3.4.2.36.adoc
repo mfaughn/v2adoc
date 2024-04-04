@@ -1,0 +1,16 @@
+==== *3.4.2.36* PID-36 Breed Code (CWE) 01540
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: *From v 2.8 onward, this field has been retained for backward compatibility only.* The specific breed of animal. This field, unlike Species and Strain is specific to animals and cannot be generally used for all living organisms. SNOMED is the recommended coding system. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70447[_User-defined Table 0447 - Breed Code_] in Chapter 2C, Code Tables, for suggested values.
+
+Conditionality Rule: This field must be valued if _PID-37 - Strain_ is valued.
+
+For example, (showing primary and alternative coding systems, using locally defined "American Kennel Club" nomenclature):
+
+...|L-80733^ Staffordshire bull terrier^SNM3^^American Staffordshire Terrier^99AKC|...
+
+...|L-80900^Weimaraner^SNM3|...
+
+...|L-80439^Peruvian Paso Horse^SNM3|...
+

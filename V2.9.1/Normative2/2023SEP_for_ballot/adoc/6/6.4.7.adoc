@@ -1,0 +1,62 @@
+=== 6.4.7 BAR/ACK - Transmit Ambulatory Payment Classification (APC) Groups (Event P10)
+
+The P10 event is used to communicate Ambulatory Payment Classification (APC) grouping. The grouping can be estimated or actual, based on the APC status indictor in GP1-1. This information is mandated in the USA by the Centers for Medicare and Medicaid Services (CMS) for reimbursement of outpatient services. The PID and PV1 segments are included for identification purposes only. When other patient or visit related fields change, use the A08 (update patient information) event.
+
+BAR^P10^BAR_P10: Transmit Ambulatory Payment Classification (APC) groups
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|PID |Patient Identification | |3
+|[ \{ PRT } ] |Participation | |4
+|PV1 |Patient Visit | |3
+|[ \{ |--- DIAGNOSIS begin | |
+|DG1 |Diagnosis | |6
+|} ] |--- DIAGNOSIS end | |
+|link:#_Hlt479102398[GP1] |Grouping/Reimbursement - Visit | |6
+|[ \{ |--- PROCEDURE begin | |
+|link:#PR1[PR1] |Procedures | |6
+|[ link:#GP2[GP2] ] |Grouping/reimbursement - Procedure | |6
+|} ] |--- PROCEDURE end | |
+|===
+
+[width="100%",cols="18%,25%,6%,16%,17%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|BAR^P10^BAR_P10 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^P10^ACK |- |ACK^P10^ACK
+|Application Ack |ACK^P10^ACK |- |- |ACK^P10^ACK |ACK^P10^ACK
+|===
+
+ACK^P10^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="24%,37%,10%,29%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^P10^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^P10^ACK
+|Application Ack |- |- |-
+|===
+
+The error segment indicates the fields that caused a transaction to be rejected.
+

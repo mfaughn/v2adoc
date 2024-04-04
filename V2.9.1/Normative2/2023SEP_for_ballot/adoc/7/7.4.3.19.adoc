@@ -1,0 +1,4 @@
+==== 7.4.3.19 SPM-19 Specimen Expiration Date/Time (DTM) 01904 
+
+Definition: This field is the date and time the specimen can no longer be used for the purpose implied by the order. For example, in the Blood Banking environment the specimen can no longer be used for pre-transfusion compatibility testing. The specimen segment will include a _SPM-21-Specimen Reject Reason_ of 'EX' indicating 'Expired' for message instances created after this date and time.
+

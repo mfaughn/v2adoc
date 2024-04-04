@@ -1,0 +1,4 @@
+==== 13.1.3.30 Label:
+
+*1)* The display of written, printed, or graphic matter upon the immediate container of any article; *2) _In NCCLS LAB AUTOMATION Standard documents_*, the paper and attached adhesive coating on which the bar code and other human readable information is printed.
+

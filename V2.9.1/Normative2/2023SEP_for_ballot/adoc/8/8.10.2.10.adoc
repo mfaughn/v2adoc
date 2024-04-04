@@ -1,0 +1,4 @@
+==== 8.10.2.10 CDM-10 Resource Load (NM) 00991
+
+Definition: This field contains the Relative Value Unit (RVU) minutes and ATS, a factor related to CPT4 coding and to pricing structure for physical billing.
+

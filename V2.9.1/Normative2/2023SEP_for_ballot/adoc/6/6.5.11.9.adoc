@@ -1,0 +1,6 @@
+==== 6.5.11.9 UB2-9 UB92 Locator 2 (state) (ST) 00561
+
+Definition: This field contains an occurrence span code and an associated date. This field can repeat up to two times to represent/contain Uniform Billing form locators 36a and 36b. This field is defined by CMS or other regulatory agencies.
+
+Definition: The value in this field may repeat up to two times.
+

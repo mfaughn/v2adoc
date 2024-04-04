@@ -1,0 +1,4 @@
+==== 7.4.3.13 SPM-13 Grouped Specimen Count (NM) 01763 
+
+Definition: This field refers to the number of individual specimens of a particular type represented by this instance of a specimen. The use of this field is restricted to specimens upon which all specimen related attributes are identical. This field would only be valued if SPM-11 Specimen Role has the value "G" or “L”.
+

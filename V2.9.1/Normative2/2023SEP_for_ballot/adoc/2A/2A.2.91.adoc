@@ -1,0 +1,94 @@
+=== 2A.2.91 XTN - extended telecommunication number
+
+HL7 Component Table - XTN – Extended Telecommunication Number
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | | |W | |Telephone Number | |2A.2.76
+|2 |3..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70201[0201] |Telecommunication Use Code | |2A.2.35
+|3 |2..8 | |ID |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70202[0202] |Telecommunication Equipment Type | |2A.2.35
+|4 | |199= |ST |C | |Communication Address | |2A.2.76
+|5 | |3= |SNM |O | |Country Code | |2A.2.47
+|6 | |3= |SNM |O | |Area/City Code | |2A.2.47
+|7 | |9= |SNM |C | |Local Number | |2A.2.47
+|8 | |5= |SNM |C | |Extension | |2A.2.47
+|9 | |199# |ST |O | |Any Text | |2A.2.76
+|10 | |4= |ST |O | |Extension Prefix | |2A.2.76
+|11 | |6= |ST |O | |Speed Dial Code | |2A.2.76
+|12 | |199# |ST |C | |Unformatted Telephone Number | |2A.2.76
+|13 | | |DTM |O | |Effective Start Date | |2A.2.22
+|14 | | |DTM |O | |Expiration Date | |2A.2.22
+|15 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70868[0868] |Expiration Reason | |2A.2.13
+|16 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70618[0618] |Protection Code | |2A.2.13
+|17 | | |EI |O | |Shared Telecommunication Identifier | |2A.2.25
+|18 | |2= |NM |O | |Preference Order | |2A.2.47
+|===
+
+Example 1: A Work fax number
+
+^WPN^FX^^^734^6777777
+
+Example 2: Telephone number with extension
+
+^WPN^PH^^^734^6777777^1
+
+Example 2: Telephone number with internal code. In this example, assume that a corporation's telephone system supports a full external telephone number (area code and telephone number). It also supports internal dialing standards that assign a code to each facility and an extension to each telephone (which happens to be the last 4 digits of the external telephone number, by convention).
+
+So, if the Los Angeles facility were assigned code 333, and if the "outside" telephone number at the LA office is (626) 555-1234, the components would be:
+
+[width="100%",cols="42%,58%",options="header",]
+|===
+|Component |Value
+|area/city code |626
+|phone number |555-1234
+|extension |1234
+|extension prefix |333
+|===
+
+The field would be transmitted as follows:
+
+^WPN^PH^^^626^5551234^1234^333
+
+Example 3: speed dial. In this example, assume that a corporation's telephone system supports speed dialing numbers. For example, suppose that a corporation has a contract with a travel agency, whose external number is 1-610-555-1234. Since it is so frequently dialed, the company assigns a speed code: #6098. The components would be:
+
+[width="100%",cols="42%,58%",options="header",]
+|===
+|Component |Value
+|Area/city code |610
+|Phone number |555-1234
+|Speed Dial |#6098
+|===
+
+The field would be transmitted as follows:
+
+^WPN^PH^^^610^5551234^^^#6098
+
+Example 4: home e-mail address. In this example, assume that a person has a primary home e-mail address such as someone@somewhere.com. The components would be:
+
+[width="100%",cols="56%,44%",options="header",]
+|===
+|Component |Value
+|Telecommunication Use Code |PRN
+|Telecommunication Equipment Type |Internet
+|Communication Address |someone@somewhere.com
+|===
+
+The field would be transmitted as follows:
+
+^PRN^Internet^someone@somewhere.com
+
+Example 5: work e-mail address. In this example, assume that a person has a work e-mail address such as someone@somewhere.com. The components would be:
+
+[width="100%",cols="54%,46%",options="header",]
+|===
+|Component |Value
+|Telecommunication Use Code |WPN
+|Telecommunication Equipment Type |Internet
+|Communication Address |someone@somewhere.com
+|===
+
+The field would be transmitted as follows:
+
+^WPN^Internet^someone@somewhere.com
+

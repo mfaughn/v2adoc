@@ -1,0 +1,10 @@
+==== 5.5.4.3 QPD-3 User Parameters (Varies) 01435 
+
+Definition: These successive parameter fields hold the values that the Client passes to the Server.
+
+The client data is presented as a sequence of HL7 fields. Beginning at _QPD-3-User parameters_, the remaining fields of the QPD segment carry user parameter data. Each QPD user parameter field corresponds to one parameter defined in the Query Profile, where each name, type, optionality, and repetition of each parameter has been specified. While these parameters are understood to be usually "anded" together, the user SHALL inspect the required Query Profile to properly understand each. Except in the QSC variant, the parameter names do not need to be stated in the query; they are understood to be positional based on the Query Profile.
+
+Each parameter field may be specified in the Query Profile to be of any single data type, including the complex QIP and QSC types. Parameter fields may also contain the sort control (SRT) field or the segment group (ID) field defined in Sections _5.5.6.6_, "_RCP-6 Sort-by Field (SRT)_ 01624," and _5.5.6.7_, "_RCP-7 Segment Group Inclusion (ID)_ 01594," below.
+
+Parameter fields in the QPD segment appear in the same order as in the Query Profile.
+

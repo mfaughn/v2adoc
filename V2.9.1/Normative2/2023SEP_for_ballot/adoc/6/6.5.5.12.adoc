@@ -1,0 +1,4 @@
+==== 6.5.5.12 GT1-12 Guarantor SSN (ST) 00416
+
+Definition: This field contains the guarantor's social security number.
+

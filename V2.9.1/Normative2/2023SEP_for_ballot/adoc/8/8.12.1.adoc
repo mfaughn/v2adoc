@@ -1,0 +1,63 @@
+=== 8.12.1 MFN/MFK - Inventory Item Master File Message (Event M15)
+
+This section is concerned with describing a master file message that should be used to communicate information that relates to the inventory of items that can be used to perform an ordered service. While an order specifies a service that is represented in an Other Observation/Service Item master file, this message is concerned with communicating attributes of those orderable items (for example lot number and expiration date) that are represented in the Other Observation/Service Item master file. These attributes are more granular than can be represented in the Other Observation/Service Item master file as there may be multiple items in inventory that meet the characteristics of the Service Item but have different specific characteristics, e.g., multiple lots of a vaccine.
+
+Each MFE/IIM structure describes a specific set of lot, expiration date, location, etc. for a Service Item. Multiple instances of MFE/IIM could be used to describe the same Service Item lot at multiple locations, or a location with multiple lots of the same Service Item.
+
+This message is not intended to act as a complete inventory management system. Various inventory management concepts, e.g., PAR levels, invoice and purchase order tracking, are intentionally not supported. The message is intended to synchronize limited orderable item attributes, e.g., quantity on hand, lot number, expiration date, between communicating systems. Such systems may include a Pharmacy Application and a Nurse-based dispensing system. While the Pharmacy application may define the service items (communicated in [MFN^M12^MFN_12] Other Observation/Service Item master file Messages), the dispensing system would communicate the lot numbers, expiration date and quantity on hand for service items in inventory using the Inventory Item Master file message.
+
+*Note*: The IIM segment has been moved to Chapter 17.
+
+MFN^M15^MFN_M15: Master File Notification – Inventory Item
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|\{ |--- MF_INV_ITEM begin | |
+|link:#MFE[MFE] |Master File Entry | |8
+|link:#IIM[IIM] |Inventory Item Master | |17
+|} |--- MF_INV_ITEM end | |
+|===
+
+[width="100%",cols="17%,23%,5%,18%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M15^MFN_M15 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M15^ACK |- |ACK^M15^ACK
+|Application Ack |MFK^M15^MFK_M01 |- |- |MFK^M15^MFK_M01 |MFK^M15^MFK_M01
+|===
+
+MFK^M15^MFK_M01: Master File Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK segment | |8
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M15^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^M15^ACK |- |ACK^M15^ACK
+|Application Ack |- |- |-
+|===
+
+Master Files Query Response: Refer to Section 8.4.4.
+

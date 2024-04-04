@@ -1,0 +1,6 @@
+==== *3.4.21.7* GSC-7 Evidence (ERL) 02528
+
+Components: <Segment ID (ST)> ^ <Segment Sequence (NM)> ^ <Field Position (NM)> ^ <Field Repetition (NM)> ^ <Component Number (NM)> ^ <Sub-Component Number (NM)>
+
+Definition: This field asserts clinical data (e.g. observations, diagnoses) that are used to determine the Sex Parameter for Clinical Use value. The linked information should clearly align with the chosen Sex Parameter for Clinical Use value. This field is allowed to repeat as multiple pieces of clinical data may contribute to the chosen Sex Parameter for Clinical Use value.
+

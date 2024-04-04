@@ -1,0 +1,10 @@
+==== 7.4.2.33 OBX-33 Observation Related Specimen Identifier (EIP) 02454 
+
+Components: <Placer Assigned Identifier (EI)> ^ <Filler Assigned Identifier (EI)>
+
+Subcomponents for Placer Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Filler Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field contains the unique identifier for the specimen as referenced by the Placer application, the Filler application, or both in the SPM segment that describes the specimen this observation is related to, allowing an explicit linkage between the two.
+

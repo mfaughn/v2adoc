@@ -1,0 +1,4 @@
+=== 1.8.11 Tracking of Corrections, Amendments or Refusals to Correct or Amend Protected Health Information
+
+HL7 Version 2.x standards do not provide messages to support the tracking of corrections, amendments or refusals to correct or amend protected health information. These messages would support the process to verify, challenge and ultimately correct inaccuracies discovered in protected health information. Users needing such messages may need to define custom messages to support this requirement.
+

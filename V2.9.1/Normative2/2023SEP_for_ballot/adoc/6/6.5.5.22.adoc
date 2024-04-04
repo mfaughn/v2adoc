@@ -1,0 +1,8 @@
+==== 6.5.5.22 GT1-22 Guarantor Billing Hold Flag (ID) 00773
+
+Definition: Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values. This field indicates whether or not a system should suppress printing of the guarantor's bills.
+
+Y a system should suppress printing of guarantor's bills
+
+N a system should not suppress printing of guarantor's bills
+

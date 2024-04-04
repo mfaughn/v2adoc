@@ -1,0 +1,28 @@
+=== 7.8.1 CSR - Clinical Study Registration Segment
+
+The CSR segment will contain fundamental administrative and regulatory information required to document a patient's enrollment on a clinical trial. This segment is all that is required if one needs to message another system that an enrollment has taken place, i.e., from clinical trials to pharmacy, accounting, or order entry systems. The CSR segment may also be used to identify that OBR, OBX, RXA, and RXR segments that follow represent data applicable to the identified study.
+
+[#CSR .anchor]####HL7 Attribute Table – CSR – Clinical Study Registration
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01011 |Sponsor Study ID
+|2 | | |EI |O | | |01036 |Alternate Study ID
+|3 | | |CWE |O | |0589 |01037 |Institution Registering the Patient
+|4 | | |CX |R | | |01038 |Sponsor Patient ID
+|5 | | |CX |O | | |01039 |Alternate Patient ID - CSR
+|6 | | |DTM |R | | |01040 |Date/Time of Patient Study Registration
+|7 | | |XCN |O |Y | |01041 |Person Performing Study Registration
+|8 | | |XCN |R |Y | |01042 |Study Authorizing Provider
+|9 | | |DTM |C | | |01043 |Date/Time Patient Study Consent Signed
+|10 | | |CWE |C | |0590 |01044 |Patient Study Eligibility Status
+|11 | | |DTM |O |Y/3 | |01045 |Study Randomization Date/time
+|12 | | |CWE |O |Y/3 |0591 |01046 |Randomized Study Arm
+|13 | | |CWE |O |Y/3 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70592[0592] |01047 |Stratum for Study Randomization
+|14 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70593[0593] |01048 |Patient Evaluability Status
+|15 | | |DTM |C | | |01049 |Date/Time Ended Study
+|16 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70594[0594] |01050 |Reason Ended Study
+|17 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00816 |Action Code
+|===
+

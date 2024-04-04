@@ -1,0 +1,6 @@
+==== 17.5.4.8 VND-8 Contract Adjustment (MOP) 02422
+
+Components: <Money or Percentage Indicator (ID)> ^ <Money or Percentage Quantity (NM)> ^ <Monetary Denomination (ID)>
+
+Definition: This field contains the markup amount for this contract item and vendor combination.
+

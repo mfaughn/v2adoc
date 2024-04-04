@@ -1,0 +1,43 @@
+=== 3.4.14 ARV - Access Restrictions segment
+
+The ARV segment is used to communicate the requested/required type of access restrictions from system to system, at both the person/patient and the encounter/visit level__.__
+
+The Access Restrictions segment (ARV) sent after the MSH acts as a manifest and declares the privacy and security classification (i.e the confidentiality level), the sensitivity (i.e. access restriction reason) and provides handling instructions (e.g. what the data can be used for, what must be done to protect it and what may not be done with the data). The segment is optional and can repeat.
+
+Examples:
+
+A person/patient may have the right to object to any or all of his/her information to be disclosed. In addition, the patient may request that protected information not be disclosed to family members or friends who may be involved in their care or for notification purposes.
+
+A realm or organization may have certain privacy policies.
+
+A patient may have the right to opt out of being included on facility directories.
+
+In an international context, a physician may be culturally obligated to protect the patient's privacy.
+
+Any "opt-in" or "opt-out" restrictions are communicated in _ARV-3 - Access Restriction Value._ This segment replaces PD1-12 and PV2-22, which have been deprecated in V2.6. The ARV segment is optional and as of 2.9 is sent immediately following the MSH segment to allow declaration of access restrictions for specific data elements (_ARV-9 – Access Restriction Message Location_), that are different from the overall security level declared in the Message Header Segment. The ARV segment can repeat, so that different security attributes across message elements can be declared.
+
+*Usage Notes:*
+
+The individual system security may want to utilize the Access Restriction Value along with the Access Restriction Reason and with the Confidentiality Code from Code defined in the Security Classification Tag (ARV-7)in order to implement the appropriate type of protection for the identified data. Each system has the flexibility to incorporate/map the access values into their security system appropriately; the actual implementation for access to protected data is determined by the individual system. The Access Restriction Values supported by an enterprise/system would be defined and determined by that organization.
+
+It is expected that these access restriction values would be utilized in [.underline]#combination with# other system security information (e.g., patient locations, user department, caregiver-patient relationships, other access restriction parameters) to determine user access.
+
+System implementers should carefully control access to the restriction codes and values, as they themselves hold sensitive information.
+
+HL7 Attribute Table - ARV - Access Restriction
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |O | | |02143 |Set ID
+|2 |1..1 | |CNE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |02144 |Access Restriction Action Code
+|3 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70717[0717] |02145 |Access Restriction Value
+|4 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70719[0719] |02146 |Access Restriction Reason
+|5 | |250= |ST |O |Y | |02147 |Special Access Restriction Instructions
+|6 | | |DR |O | | |02148 |Access Restriction Date Range
+|7 | | |CWE |R | |0952 |03512 |Security Classification Tag
+|8 | | |CWE |O |Y |0953 |03513 |Security Handling Instructions
+|9 | | |ERL |O |Y | |03514 |Access Restriction Message Location
+|10 | | |EI |C | | |02470 |Access Restriction Instance Identifier
+|===
+

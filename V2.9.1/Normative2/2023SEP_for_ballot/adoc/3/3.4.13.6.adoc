@@ -1,0 +1,8 @@
+==== *3.4.13.6* PDA-6 Autopsy Indicator (ID) 01579
+
+Definition: This field indicates whether an autopsy was performed. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/No Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y an autopsy was performed
+
+N an autopsy was not performed
+

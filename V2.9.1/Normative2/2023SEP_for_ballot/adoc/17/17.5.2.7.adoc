@@ -1,0 +1,6 @@
+==== 17.5.2.7 ITM-7 Manufacturer Identifier (EI) 02191
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the identifying code of the manufacturer of the item.
+

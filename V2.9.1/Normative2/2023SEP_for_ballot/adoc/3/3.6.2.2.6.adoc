@@ -1,0 +1,51 @@
+===== 3.6.2.2.6 A43 - move patient information - patient identifier list
+
+[width="100%",cols="53%,47%",]
+|===
+|A43 - Move patient information - patient identifier list |
+|Use Case - information from ABC HMO is loaded to a repository system each month. Eve Everywoman is entered in January and assigned Enterprise Number 1 (E1). Eve has visited Hospital XYZ and is assigned medical record number MR1. Evi Everywoman (a different person) is also a member of ABC HMO loaded to the repository and assigned Enterprise Number E2. Evi has visited Hospital XYZ and is assigned medical record number MR1. Evi visits Clinic DEF where she is assigned medical record number MR2 which is erroneously associated with Eve's Enterprise Number (E1). When the error is discovered MR2 is moved from Enterprise Number E1 to E2. |
+|Target: _PID-2 - Patient ID_ |
+|Source: _MRG-4 - Prior Patient ID_ |
+a|
+Example transaction:
+
+MSH\|^~\&\|REPOSITORY\|ENT\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A43^ADT_A43\|0000009\|P\|2.8\|<cr>
+
+EVN\|A43\|200301051530<cr>
+
+PID\|1\|E2\|MR2^^^ABCHMO\|\|\|EVERYWOMAN^EVI\|....<cr>
+
+MRG\|MR2^^^ABCHMO\|\|\|E1<cr>
+
+|
+|Before Move |After Move
+a|
+E1 E2
+
+MR1 MR1
+
+MR2
+
+a|
+E1 E2
+
+MR1 MR1
+
+MR2
+
+a|
+Implementation considerations: _PID-3 - Patient Identifier List_ and _MRG-1 - Prior Patient Identifier List_ are the same value since the PID-3 value does not change in this scenario.
+
+The example above would be expressed as follows. In the following example, the assigning authority ENT1 represents an Enterprise and the PE identifier type code represents the Person's Enterprise number. The MR1 identifier is omitted from the message because it is not moved.
+
+MSH\|^~\&\|REPOSITORY\|ENT\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A43^ADT_A43\|0000009\|P\|2.8\|<cr>
+
+EVN\|A43\|200301051530<cr>
+
+PID\|1\|\|E2^^^ENT1^PE~MR2^^^ABCHMO^MR\|\|\|EVERYWOMAN^EVI\|....<cr>
+
+MRG\|E1^^^ENT1^PE~MR2^^^ABCHMO^MR\|. . .<cr>
+
+|
+|===
+

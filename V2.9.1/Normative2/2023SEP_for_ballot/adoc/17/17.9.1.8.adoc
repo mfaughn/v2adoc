@@ -1,0 +1,4 @@
+==== 17.9.1.8 DEV-8 Catalogue Identifier (ST) 01253
+
+Definition: This field contains the manufacturer's catalogue identifier for the product.
+

@@ -1,0 +1,4 @@
+==== 14.4.3.7 NST-7 Send Character Count (NM) 01179
+
+Definition: This field contains the number of characters sent.
+

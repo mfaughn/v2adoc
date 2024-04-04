@@ -1,0 +1,6 @@
+==== 12.4.5.5 REL-5 Target Information Instance Identifier (EI) 02244
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the Instance ID of the Target Segment.
+

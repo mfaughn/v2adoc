@@ -1,0 +1,12 @@
+==== 4A.4.3.1 RXC-1 RX Component Type (ID) 00313
+
+Definition: Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70166[_HL7 Table 0166 – RX Component Type_] in Chapter 2C, Code Tables for valide values.
+
+For the non-IV case, the "B" value may still apply. For example, if a custom dermatologic salve is being prepared, the "B" item might be a standard base ointment into which other components are mixed.
+
+The amount of the "base" specified in the "B" segment(s) is defined to be the quantity into which amounts specified in the "A" components are mixed. Thus the RXC segments as a group define the "recipe" for a particular amount (defined by the base segment(s)). The give amount, as defined in the RXO, does not need to correspond to this base amount. For example, the RXC segments may specify a recipe for a liter of a standard type of saline with 1 gram of a particular antimicrobial, while the give amount (from the RXO) may specify the administration of 2 liters of this IV-solution every 24 hours.
+
+The amount specified in each "A" segment is defined to be the quantity to be added to the amount of the base as specified in its RXC segment.
+
+If any "base" components are present then these should be transmitted first. The first "base" component in the transmission should be considered the "primary base" if such a distinction is necessary. Similarly, the first "additive" in the transmission should be considered the "primary additive" if such a distinction is necessary.
+

@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+SCH-25_vs_AIG-14
+</h1>
+<hr>
+<h3>
+For 00889 there were 5 versions found.<br>This diff compares the version found in fields ["SCH-25", "SCH-25"] from sections ["10.6.2", nil], respectively<br>with the version found in fields ["AIG-14", "AIG-14"] from sections ["10.6.5", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains a code describ<strong>ing</strong> the <strong>st</strong>atus of <strong>the appointment with respect to </strong>the filler application. Refer to _User-Defined Table 0278 - Filler Status Codes_ <strong>in Chapter 2C, Code Tables, </strong>for suggested <strong>valu</strong>es.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains a code <strong>that </strong>describ<strong>es</strong> the <strong>requested/scheduled st</strong>atus of <strong>scheduling resource or activity, from the point of view of </strong>the filler application. Refer to _User-Defined Table 0278 - Filler Status Codes_ for suggested <strong>cod</strong>es.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00889,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:0278,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains a code describ<strong>ing</strong> the <strong>st</strong>atus of <strong>the appointment with respect to </strong>the filler application. Refer to _User-Defined Table 0278 - Filler Status Codes_ <strong>in Chapter 2C, Code Tables, </strong>for suggested <strong>valu</strong>es.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains a code <strong>that </strong>describ<strong>es</strong> the <strong>requested/scheduled st</strong>atus of <strong>scheduling resource or activity, from the point of view of </strong>the filler application. Refer to _User-Defined Table 0278 - Filler Status Codes_ for suggested <strong>cod</strong>es.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

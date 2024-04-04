@@ -1,0 +1,4 @@
+==== 12.4.5.12 REL-12 Negation Indicator (ID) 02251
+
+Definition: This field asserts the absence of the relationship for this particular REL segment. This field, if populated and set a value of 'Y', indicates that the given relationship does not exist.
+

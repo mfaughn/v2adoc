@@ -1,0 +1,8 @@
+==== *3.6.4.5* Client system assigns identifier, person exists on both systems
+
+In this scenario, a client system (e.g., a registration system) will query an MPI for a person, and the person record exists on both systems. The MPI returns a list of possible matching candidates, and one is chosen by the user on the client system. The client system simply asks the MPI for an updated set of demographics and does not assign an identifier since the person already exists with an identifier on the client system.
+
+Prior to querying the MPI, the client system may query its own database to reduce network transactions. However, the full searching capabilities of the MPI may be preferred to the client system in order to prevent the selection of the wrong person.
+
+image:extracted-media/media/image6.emf[extracted-media/media/image6,width=504,height=480]
+

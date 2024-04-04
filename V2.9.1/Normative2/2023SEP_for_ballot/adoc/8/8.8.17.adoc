@@ -1,0 +1,37 @@
+=== 8.8.17 PM1 – Payer Master File Segment
+
+The Technical Steward for the PM1 segment is Orders and Observations.
+
+The PM1 segment contains per insurance company (payer) the policies specific to their organization. Trailing this segment in the message structure are either the Limited Coverage Policy or the Approved Coverage Policy. If an insurance company is listed they have limited coverage. Note, the first 10 fields come directly from the IN1 segment.
+
+HL7 Attribute Table – PM1 – Payer Master File
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |R | |0072 |00368 |Health Plan ID
+|2 | | |CX |R |Y | |00428 |Insurance Company ID
+|3 | | |XON |O |Y | |00429 |Insurance Company Name
+|4 | | |XAD |O |Y | |00430 |Insurance Company Address
+|5 | | |XPN |O |Y | |00431 |Insurance Co Contact Person
+|6 | | |XTN |O |Y | |00432 |Insurance Co Phone Number
+|7 |12= | |ST |O | | |00433 |Group Number
+|8 | | |XON |O |Y | |00434 |Group Name
+|9 | | |DT |O | | |00437 |Plan Effective Date
+|10 | | |DT |O | | |00438 |Plan Expiration Date
+|11 | | |ID |O | |0136 |03454 |Patient DOB Required
+|12 | | |ID |O | |0136 |03455 |Patient Gender Required
+|13 | | |ID |O | |0136 |03456 |Patient Relationship Required
+|14 | | |ID |O | |0136 |03457 |Patient Signature Required
+|15 | | |ID |O | |0136 |03458 |Diagnosis Required
+|16 | | |ID |O | |0136 |03459 |Service Required
+|17 | | |ID |O | |0136 |03460 |Patient Name Required
+|18 | | |ID |O | |0136 |03461 |Patient Address Required
+|19 | | |ID |O | |0136 |03462 |Subscribers Name Required
+|20 | | |ID |O | |0136 |03463 |Workman's Comp Indicator
+|21 | | |ID |O | |0136 |03464 |Bill Type Required
+|22 | | |ID |O | |0136 |03465 |Commercial Carrier Name and Address Required
+|23 | | |ST |O | | |03466 |Policy Number Pattern
+|24 | | |ST |O | | |03467 |Group Number Pattern
+|===
+

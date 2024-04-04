@@ -1,0 +1,4 @@
+==== 13.3.4.7 INV-7 Initial Quantity (NM) 01378
+
+Definition: This field identifies the initial quantity of the substance in inventory.
+

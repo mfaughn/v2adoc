@@ -1,0 +1,4 @@
+==== 12.4.5.15 REL-15 Priority Sequence No (NM) 02254
+
+Definition: This field contains the priority sequence number as used, for example, in relative preference for consideration.
+

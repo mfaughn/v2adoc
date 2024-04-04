@@ -1,0 +1,4 @@
+==== 6.5.5.32 GT1-32 Employment Stop Date (DT) 00783
+
+Definition: This field indicates the date on which the guarantor's employment with a particular employer ended.
+

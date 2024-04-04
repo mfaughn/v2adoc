@@ -1,0 +1,119 @@
+=== 8.11.1 MFN/MFK - Clinical Trials Master File Message (Event M06-M07)
+
+The CM0 (Clinical Study Master), CM1 (Clinical Study Phase), and CM2 (Clinical Study Schedule) segments can be used to transmit master files information between systems. The CM0 segment contains the information about the study itself; the CM1 contains the information about one phase of the study identified in the preceding CM0; and the CM2 contains the information about the scheduled time points for the preceding study or phase-related treatment or evaluation events. When these segments are used in an MFN message, the abstract definition is described below.
+
+*Case 1: MFN message for Clinical Study with phases and schedules*
+
+_MFI-1 - Master File Identifier Code_ = CMA
+
+MFN^M06^MFN_M06: Master File Notification – Clinical Study with Phases and Schedules
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|\{ |--- MF_CLIN_STUDY begin | |
+|link:#MFE[MFE] |Master File Entry | |8
+|link:#CM0[CM0] |Clinical Study Master | |8
+|[\{ |--- MF_PHASE_SCHED_DETAIL begin | |
+|link:#CM1[CM1] |Clinical Study Phase | |8
+|[\{ link:#CM2[CM2] }] |Clinical Study Schedule | |8
+|}] |--- MF_PHASE_SCHED_DETAIL end | |
+|} |--- MF_CLIN_STUDY end | |
+|===
+
+[width="100%",cols="17%,23%,5%,18%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M06^MFN_M06 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M06^ACK |- |ACK^M06^ACK
+|Application Ack |MFK^M06^MFK_M01 |- |- |MFK^M06^MFK_M01 |MFK^M06^MFK_M01
+|===
+
+MFK^M06^MFK_M01: Master File Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK | |8
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M06^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^M06^ACK |- |ACK^M06^ACK
+|Application Ack |- |- |-
+|===
+
+*Case 2: MFN message for Clinical Study without phases but with schedules*
+
+_MFI-1 - Master File Identifier Code_ = CMB
+
+MFN^M07^MFN_M07: Master File Notification – Clinical Study without Phases but with Schedules
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|\{ |--- MF_CLIN_STUDY_SCHED begin | |
+|link:#MFE[MFE] |Master File Entry | |8
+|link:#CM0[CM0] |Clinical Study Master | |8
+|[\{ link:#CM2[CM2] }] |Clinical Study Schedule | |8
+|} |--- MF_CLIN_STUDY_SCHED end | |
+|===
+
+[width="100%",cols="17%,23%,5%,18%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M07^MFN_M07 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M07^ACK |- |ACK^M07^ACK
+|Application Ack |MFK^M07^MFK_M01 |- |- |MFK^M07^MFK_M01 |MFK^M07^MFK_M01
+|===
+
+MFK^M07^MFK_M01: Master File Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK | |8
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M07^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^M07^ACK |- |ACK^M07^ACK
+|Application Ack |- |- |-
+|===
+

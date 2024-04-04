@@ -1,0 +1,4 @@
+==== 2A.2.59.4 Money or Percentage (MOP)
+
+Definition: specifies an amount that may be either currency or a percentage.
+

@@ -1,0 +1,4 @@
+==== 17.5.2.20 ITM-20 Approved to Buy Quantity (NM) 02203
+
+Definition: This field contains the quantity of this item that can be purchased within a user-defined time frame (e.g., one year) at the order unit of measure.
+

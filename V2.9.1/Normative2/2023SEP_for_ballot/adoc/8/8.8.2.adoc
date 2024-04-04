@@ -1,0 +1,4 @@
+=== 8.8.2 MFN/MFK - Master File Notification - Test/Observation [WITHDRAWN] (Event M03)
+
+*_Withdrawn in version 2.7 and later_*; refer to master file messages which follow (Events M08, M09, M10, M11 and M12).
+

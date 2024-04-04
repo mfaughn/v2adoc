@@ -1,0 +1,6 @@
+==== 16.4.8.7 PMT-7 Check Number (EI) 02024
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique check number from the Payer's application system.
+

@@ -1,0 +1,16 @@
+=== 4.9.4 Patient preference
+
+This order specifies that the patient is a vegetarian.
+
+MSH|...<cr>
+
+PID|...<cr>
+
+ORC|NW|1232^NURS|||||60^Q3H^^200608021700||200608021200|333-77-7777^COMRAD^CONNOR^C|999-99-9999^VERIFY^VIRGIL^V|...<cr>
+
+ODS|D||123^LOFAT20^99FD1|...<cr>
+
+ODS|S|4|119^ICE CREAM^99FD8|...<cr>
+
+ODS|P||^VEGETARIAN|...<cr>
+

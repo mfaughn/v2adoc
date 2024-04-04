@@ -1,0 +1,4 @@
+==== 6.5.3.6 DRG-6 Outlier Days (NM) 00386
+
+Definition: This field contains the number of days that have been approved as an outlier payment.
+

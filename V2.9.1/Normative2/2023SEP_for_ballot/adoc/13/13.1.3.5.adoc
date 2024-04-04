@@ -1,0 +1,4 @@
+==== 13.1.3.5 Automation system: 
+
+An automation system refers to a variety of possible systems that can include some of the following types: automated instruments, laboratory information systems (LIS), laboratory automation systems (LAS), hospital information systems (HIS), and front-end processing devices.
+

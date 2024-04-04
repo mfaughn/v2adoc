@@ -1,0 +1,4 @@
+==== 13.1.3.16 Clinical laboratory automation systems:
+
+An assemblage of components that mechanically and electronically transfers, analyzes, and processes information and material related to clinical diagnostic testing of patient specimens, controls, calibrators, standards, and images.
+

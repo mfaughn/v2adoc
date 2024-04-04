@@ -1,0 +1,36 @@
+=== 2.6.1 Formatting codes
+
+____
+When delimiters are included in any component, the delimiters SHALL be escaped. Failure to do so can alter the meaning of the component. The escape character is whichever ASCII character is specified in the <escape character> component of MSH-2 Encoding Characters. For purposes of this section, the character \ will be used to represent the character so designated in a message. An escape sequence consists of the escape character followed by an escape code ID of one character, zero (0) or more data characters, and another occurrence of the escape character. The following escape sequences are defined:
+____
+
+[width="100%",cols="21%,79%",]
+|===
+|\F\ |field separator
+|\S\ |component separator
+|\T\ |subcomponent separator
+|\R\ |repetition separator
+|\E\ |escape character
+|\P\ |truncation character
+|===
+
+____
+When a field, component or sub-component of type TX, FT, or CF is being encoded, additional escape character(s) MAY be used to signal certain special characteristics of portions of the text field. The escape character is whatever display ASCII character is specified in the <escape character> component of MSH-2 Encoding Characters.
+
+The following additional escape sequences are defined:
+____
+
+[width="100%",cols="21%,79%",]
+|===
+|\H\ |start highlighting
+|\N\ |normal text (end highlighting)
+|\Xdddd...\ |hexadecimal data
+|\Zdddd...\ |locally defined escape sequence
+|===
+
+____
+Escape sequences SHALL NOT contain nested escape sequences.
+
+For the purposes of determining length, all the characters inside the escape (all between the opening and closing \, not including the \ symbols themselves) count towards the length. This applies to all the escape sequences, including the formatting ones described below.
+____
+

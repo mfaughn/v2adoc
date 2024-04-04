@@ -1,0 +1,4 @@
+==== 7.12.5.3 PDC-3 Brand Name (ST) 01249
+
+Definition: This field contains the name under which the product is marketed by this manufacturer.
+

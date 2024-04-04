@@ -1,0 +1,10 @@
+==== 7.10.1.7 Adverse drug reaction: 
+
+• Pre-marketing: All noxious and unintended responses to a medicinal product related to any dose.
+
+• Post-marketing/WHO: A response to a drug which is noxious and unintended, and which occurs at doses normally used in man for prophylaxis, diagnosis, or therapy of disease or for the modification of physiologic function
+
+• Post-marketing/European Union: A reaction which is harmful and unintended and which occurs at doses normally used in man for the prophylaxis, diagnosis, or treatment of disease or the modification of physiological function.
+
+• Post-marketing/US: Any undesirable effect reasonably associated with the use of the drug that may occur as part of the pharmacological action of the drug or may be unpredictable.
+

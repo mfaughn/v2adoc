@@ -1,0 +1,20 @@
+==== *3.4.3.4* PV1-4 Admission Type (CWE) 00134
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the circumstances under which the patient was or will be admitted. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70007[_User-defined Table 0007 - Admission Type_] in Chapter 2C, Code Tables, for suggested values. In the US, entities required to be compliant with the US Healthcare Information Technology Standards Panel (HITSP) are required to use the Official Universal Billing (UB) 04 2008 numeric codes found on form locator 14. Refer to External Table UB04FL14 for valid values.
+
+____
+For example:
+
+Non-US |E^Emergency^HL70007|
+
+US: |1^Emergency^UB04FL14^^^^2008, v 2.0|
+
+To report that information is not available:
+
+Non-US: |NI^No Information^HL70532|
+
+US: |9^Information not available^ UB04FL14^^^^2008, v 2.0|
+____
+

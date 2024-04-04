@@ -1,0 +1,6 @@
+=== 10.2.2 Application Roles
+
+In this specification, there are four roles that an application can assume: a filler application role, a placer application role, a querying application role, and an auxiliary application role. These application roles define the interaction that an application will have with other applications in the messaging environment. In many environments, any one application may take on more than one application role.
+
+In this specification, the definition of application roles is not intended to define or limit the functionality of specific products developed by vendors of such applications. Instead, this information is provided to help define the model used to develop this specification, and to provide an unambiguous way for applications to communicate with each other.
+

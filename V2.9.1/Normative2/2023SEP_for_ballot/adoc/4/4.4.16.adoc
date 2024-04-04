@@ -1,0 +1,146 @@
+=== 4.4.16 OPL – Population/Location-Based Laboratory Order Message (Event O37)
+
+This message supports the use-case for submission of field level specimen and order data to diagnostic laboratories
+
+When one wants to convey with the detailed order message a supporting document, such as a CDA, one can transmit that document using the OBX associated with the ORC/OBR(s) using OBX-11 = "O" Order Detail Description Only, using either OBX-2 = "ED" or "RP"."
+
+OPL^O37^OPL_O37: Population/Location-Based Laboratory Order Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ARV}] |Access Restrictions | |3 | |
+|[\{SFT}] |Software | |2 | |
+|[ UAC ] |User Authentication Credential | |2 | |
+|[\{NTE}] |Notes and Comments (for header) | |2 | |
+|\{ PRT } |Participation | |7 | |
+|[ |--- GUARANTOR begin | | | |
+|GT1 |Guarantor | |6 | |
+|[\{NTE}] |Notes and Comments (for Guarantor) | |2 | |
+|] |--- GUARANTOR end | | | |
+|\{ |--- ORDER begin | | | |
+|\{ NK1 } |Next of Kin/Associated Parties | |3 | |
+|[ |---PATIENT begin | | | |
+|PID |Patient | |3 | |
+|[ PD1 ] |Patient Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{PRT}] |Participation (for Patient) | |7 | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 | |
+|[\{ |--- OBSERVATIONS_ON_PATIENT begin | | | |
+|OBX |Observations on the Patient | |7 | |
+|[\{PRT}] |Participation (for Observations on Patient) | |7 | |
+|}] |--- OBSERVATIONS_ON_PATIENT end | | | |
+|[\{ |--- INSURANCE begin | | | |
+|IN1 |Insurance | |6 | |
+|[ IN2 ] |Insurance Additional Information | |6 | |
+|[ IN3 ] |Insurance Additional Information, Certification | |6 | |
+|}] |--- INSURANCE end | | | |
+|[\{AL1}] |Allergy Information | |3 | |
+|] |--- PATIENT end | | | |
+|\{ |--- SPECIMEN begin | | | |
+|SPM |Specimen | |7 | |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | | |
+|OBX |Observation/Result related to specimen | |7 | |
+|[\{PRT}] |Participation (for Specimen Observation) | |7 | |
+|}] |--- SPECIMEN_OBSERVATION end | | | |
+|[\{ |--- CONTAINER begin | | | |
+|SAC |Specimen Container | |13 | |
+|[\{ |--- CONTAINER_OBSERVATION begin | | | |
+|OBX |Observation/Result related to container | |7 | |
+|[\{PRT}] |Participation (for Containter Observation) | |7 | |
+|}] |--- CONTAINER_OBSERVATION end | | | |
+|}] |--- CONTAINER end | | | |
+|\{ |--- OBSERVATION_REQUEST begin | | | |
+|ORC |Common Order | |4 | |
+|[\{PRT}] |Participation | |7 | |
+|OBR |Observation Request | |4 | |
+|[\{PRT}] |Participation (for Observation Request) | |7 | |
+|[\{ |--- TIMING begin | | | |
+|TQ1 |Timing/Quantity | |4 | |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 | |
+|}] |--- TIMING end | | | |
+|[ TCD ] |Test Code Details | |13 | |
+|[\{DG1}] |Diagnosis | |6 | |
+|[\{ |--- ORDER_RELATED_OBSERVATION begin | | | |
+|OBX |Observation/Result Related to Order | |7 | |
+|[\{PRT}] |Participation (for Order Related Observation) | |7 | |
+|}] |--- ORDER_RELATED_OBSERVATION end | | | |
+|} |--- OBSERVATION_REQUEST end | | | |
+|} |--- SPECIMEN end | | | |
+|[SGH] |Segment Group Header | |2 | |
+|[ |--- PRIOR_RESULT begin | | | |
+|\{ NK1 } |Next of Kin/Associated Parties | |3 | |
+|[ |--- PATIENT_PRIOR begin | | | |
+|PID |Patient | |3 | |
+|[PD1] |Patient Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{PRT}] |Participation (for Patient Prior) | |7 | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 | |
+|] |--- PATIENT_PRIOR end | | | |
+|[ |--- PATIENT_VISIT_PRIOR begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[ PV2 ] |Patient Visit – Additional Information | |3 | |
+|[\{PRT}] |Participation (for Patient Visit Prior) | |7 | |
+|] |--- PATIENT_VISIT_PRIOR end | | | |
+|[ AL1 ] |Patient Allergy Information | |3 | |
+|\{ |--- ORDER_PRIOR begin | | | |
+|OBR |Observation Request | |4 | |
+|[ ORC ] |Common Order | |4 | |
+|[\{ |--- OBSERVATION_PARTICIPATION_PRIOR begin | | | |
+|PRT |Participation (for Order Prior) | |7 | |
+|[\{DEV}] |Device | |17 | |
+|}] |--- OBSERVATION_PARTICIPATION_PRIOR end | | | |
+|[ |--- TIMING begin | | | |
+|TQ1 |Timing/Quantity | |4 | |
+|[\{TQ2}] |Timing/Quantity Relationship | |4 | |
+|] |--- TIMING end | | | |
+|\{ |--- OBSERVATION_RESULT_GROUP begin | | | |
+|OBX |Observation/Result for prior order | |7 | |
+|[\{PRT}] |Participation (for Observation/Result) | |7 | |
+|} |--- OBSERVATION_RESULT_GROUP end | | | |
+|} |--- ORDER_PRIOR end | | | |
+|] |--- PRIOR_RESULT end | | | |
+|[SGT] |Segment Group Trailer | |2 | |
+|[\{FT1}] |Financial Transaction | |6 | |
+|[\{CTI}] |Clinical Trial Identification | |7 | |
+|[ BLG ] |Billing Segment | |4 | |
+|} |--- ORDER end | | | |
+|===
+
+This structure represents the way that most orders to veterinary laboratories occur. There is a multi-tier hierarchy in which a single individual (usually a veterinarian or an owner of a production facility) submits one or more specimen samples from one or more animals or non-living entities, such as environmental specimens or feed, etc. There are often many interested participants referenced for each set of orders, which explains the need for the repeating PRT segment. These include individuals such as the government official that is responsible for monitoring the testing of an animal or animal group, the parent organization, etc. This grouped submission of specimens from multiple animal "patients" requires that orders pertaining to animal and non-animal specimens be accommodated. The primary structure of concern is the following:
+
+____
+\{[PID]
+
+\{SPM
+
+\{ORC
+
+OBR}
+
+}
+
+}
+____
+
+This allows for multiple specimens or animal or non-animal origin to have multiple requests associated with them. This is the usual process in field level sample collection from populations or environments.
+
+[width="100%",cols="21%,25%,10%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|OPL^O37^OPL_O37 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O37^ACK
+|Application Ack |OPR^O38^OPR_O38 or +
+OSU^O52^OSU_O52 |- |OPR^O38^OPR_O38 or +
+OSU^O52^OSU_O52 |OPR^O38^OPR_O38 or +
+OSU^O52^OSU_O52
+|===
+

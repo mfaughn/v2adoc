@@ -1,0 +1,4 @@
+==== 17.9.1.16 DEV-16 Software Version Number (ST) 02502
+
+Definition: The version number of the software that is part of the device.
+

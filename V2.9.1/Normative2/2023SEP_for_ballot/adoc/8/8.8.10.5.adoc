@@ -1,0 +1,8 @@
+==== 8.8.10.5 OM2-5 SI Conversion Factor (TX) 00630
+
+Definition: This field contains the continuous, numerically valued tests/observations, with a nature code of A or C (see _OM1-18 - Nature of Service/Test/Observation_). This is a factor for converting the customary units to SI units.
+
+In the case that the observation units are not SI units, this field provides the formula needed to convert from the reported units to SI units, this shall include the equation needed to convert from the reporting to the SI units.
+
+In the case that the relation is simply multiplicative, this field shall include only the conversion factor. For example, if (results SI units) = c * (results reporting units), then only c would be stored in this field. In the case of any other functional relationship, the entire equation would be stored as a test.
+

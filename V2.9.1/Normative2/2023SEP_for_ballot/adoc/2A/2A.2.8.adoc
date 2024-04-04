@@ -1,0 +1,47 @@
+=== 2A.2.8 CNE – coded with no exceptions
+
+As of v2.7 a third tuple, formerly known as triplet, has been added to the CNE data type. Additionally, 3 new components were added to each tuple such that each tuple now has a total of 7 components. The Original Text component applies to the CNE as a whole.
+
+HL7 Component Table - CNE – Coded with No Exceptions
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |20= |ST |R | |Identifier | |2A.2.76
+|2 | |199# |ST |O | |Text | |2A.2.76
+|3 |1..12 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Name of Coding System | |2A.2.35
+|4 | |20= |ST |O | |Alternate Identifier | |2A.2.76
+|5 | |199# |ST |O | |Alternate Text | |2A.2.76
+|6 |1..12 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Name of Alternate Coding System | |2A.2.35
+|7 | |10= |ST |C | |Coding System Version ID | |2A.2.76
+|8 | |10= |ST |O | |Alternate Coding System Version ID | |2A.2.76
+|9 | |199# |ST |O | |Original Text | |2A.2.76
+|10 | |20= |ST |O | |Second Alternate Identifier | |2A.2.76
+|11 | |199# |ST |O | |Second Alternate Text | |2A.2.76
+|12 |1..12 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Name of Second Alternate Coding System | |2A.2.35
+|13 | |10= |ST |C | |Second Alternate Coding System Version ID | |2A.2.76
+|14 | |199= |ST |C | |Coding System OID | |2A.2.76
+|15 | |199= |ST |O | |Value Set OID | |2A.2.76
+|16 | |8= |DTM |C | |Value Set Version ID | |2A.2.22
+|17 | |199= |ST |C | |Alternate Coding System OID | |2A.2.76
+|18 | |199= |ST |O | |Alternate Value Set OID | |2A.2.76
+|19 | |8= |DTM |C | |Alternate Value Set Version ID | |2A.2.22
+|20 | |199= |ST |C | |Second Alternate Coding System OID | |2A.2.76
+|21 | |199= |ST |O | |Second Alternate Value Set OID | |2A.2.76
+|22 | |8= |DTM |C | |Second Alternate Value Set Version ID | |2A.2.22
+|===
+
+*Note:* The Vocabulary TC is the steward of the CNE data type.
+
+Definition: Specifies a coded element and its associated detail. The CNE data type is used when a required or mandatory coded field is needed. The specified HL7 table or imported or externally defined coding system must be used and may not be extended with local values. Text may not replace the code. A CNE field must have an HL7 defined or external table associated with it. A CNE field may be context sensitive such that a choice of explicit coding systems might be designated. This allows for realm and other types of specificity. Every effort will be made to enumerate the valid coding system(s) to be specified in the 3rd component, however, the standards body realizes that this is impossible to fully enumerate.
+
+*Note*: The presence of two sets of equivalent codes in this data type is semantically different from a repetition of a CNE-type field. With repetition, several distinct codes (with distinct meanings) may be transmitted.
+
+Example 1: The drug must be coded and must be taken from the specified coding system. The coding system is an external coding system. Example is derived from _FT1-26_.
+
+|0006-0106-58^Prinivil 10mg oral tablet^NDC|
+
+Example 2: Consent mode must be coded and must be taken from the specified coding system. The coding system is an HL7 code table. Example is taken from _CON-10_.
+
+|V^Verbal^HL70497^^^^2.8|
+

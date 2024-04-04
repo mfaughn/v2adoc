@@ -1,0 +1,6 @@
+==== 7.16.2.8 SHP-8 Number of Packages in Shipment (NM) 02324
+
+Definition: The number of packages in shipment field documents the total number of separate packages that are contained in the shipment. This total should not include packages that are nested inside of one another. For instance if a shipment consisted of 3 separate boxes, this field would contain the value
+
+"…|3|…".
+

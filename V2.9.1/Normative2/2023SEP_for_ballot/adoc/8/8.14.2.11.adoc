@@ -1,0 +1,4 @@
+==== 8.14.2.11 CTR -11 Price Protection Date (DTM) 02402
+
+Definition: This field contains the date through which the contract item prices are protected by an agreement with the vendor.
+

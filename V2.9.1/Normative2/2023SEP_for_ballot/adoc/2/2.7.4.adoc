@@ -1,0 +1,36 @@
+=== 2.7.4 Removing messages or message constituents
+
+A message or message constituent MAY be removed from the standard when criteria described in this section are met. HL7 will track old names so they are not re-used.
+
+*Note*: To refer to the detail of a withdrawn message constituent, the reader will need to review the appropriate earlier version of the standard. By site agreement senders and receivers MAY agree to continue to use messages and/or message constituents that have been removed.
+
+{empty}a) A message constituent MAY be immediately removed from the standard based on the following criteria (immediately means in the same version in which the criteria are met.).
+
+____
+{empty}1) A message structure MAY be removed immediately provided no message references it in the standard. Care must be taken lest a message structure is prematurely removed if the associated trigger event that contributed to its name is removed. For example, if a message structure ABC_D01 is associated with trigger events D01, D02 and D03 and D01 is changed and becomes associated with another existing message structure DEF_E01, the message structure ABC_D01 is still active and valid for trigger events D02 and D03.
+
+{empty}2) A segment MAY be removed immediately provided no message references it in the standard.
+
+{empty}3) A data type MAY be removed immediately provided no fields reference it. This occurs when the data type for a field is changed to a new data type that incorporates the components of the old one.
+
+{empty}4) A table MAY be deprecated provided all fields and components, where the table has been used have been removed. This applies to HL7, user-defined and external tables. It is recognized that this might have a ripple effect.
+____
+
+{empty}b) A message constituent, except as noted in points c, d and e below, will be withdrawn and removed, no sooner than, after 2 versions in a deprecated state. For example, if a message was originally deprecated in v 2.3.1, its definition can be removed when v 2.6 is published.
+
+____
+{empty}1) A message type and its definition MAY be removed.
+
+{empty}2) A trigger event and its definition MAY be removed.
+
+{empty}3) A segment group in an existing message MAY be removed.
+
+{empty}4) A segment in an existing message MAY be removed.
+____
+
+{empty}c) A deprecated field in an existing segment SHALL NOT be removed from the standard. However, no sooner than, after 2 versions in a deprecated state, the field will be marked as withdrawn and all explanatory narrative will be removed
+
+{empty}d) A deprecated component in an existing data type SHALL NOT be removed from the standard. However, no sooner than, after 2 versions in a deprecated state, the component will be marked as withdrawn and all explanatory narrative will be removed.
+
+{empty}e) A deprecated member of an existing HL7 table SHALL NOT be removed from the standard. However, no sooner than, after 2 versions in a deprecated state, the table member will be marked as withdrawn and all explanatory narrative will be removed from the description and comment column.
+

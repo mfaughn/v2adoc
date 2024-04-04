@@ -1,0 +1,10 @@
+==== 7.4.2.17 OBX-17 Observation Method (CWE) 00936
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+This optional field can be used to transmit the method or procedure by which an observation was obtained when the sending system wishes to distinguish among one measurement obtained by different methods and the distinction is not implicit in the test ID. Chemistry laboratories do not usually distinguish between two different methods used to measure a given serum constituent (e.g., serum potassium) as part of the test name. See the LOINC® Users Manualfootnote:[1. McDonald CJ, Huff SM, Deckard J, Armson S, Abhyankar S, Vreeman DJ, eds. Logical Observation Identifiers Names and Codes (LOINC®) Users’ Guide. Indianapolis: Regenstrief Institute; 2016. http://loinc.org/downloads +
+2. LOINC, a universal standard for identifying laboratory observations: a 5-year update. +
+McDonald CJ, Huff SM, Suico JG, Hill G, Leavelle D, Aller R, Forrey A, Mercer K, DeMoor G, Hook J, Williams W, Case J, Maloney P. +
+Clin Chem. 2003 Apr;49(4):624-33. +
+PMID: 12651816 Free Article:] for a more complete discussion of these distinctions. If an observation producing service wanted to report the method used to obtain a particular observation, and the method was NOT embedded in the test name, they can use this field. Refer to Table 0626 - Observation Method in Chapter 2C for valid values.
+

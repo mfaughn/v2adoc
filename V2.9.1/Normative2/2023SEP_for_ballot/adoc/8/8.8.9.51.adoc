@@ -1,0 +1,4 @@
+==== 8.8.9.51 OM1-51 Other Names (recognized by the producer for the observation) (ST) 03399
+
+Definition: This field contains any test aliases or synonyms for the name in the context of the ordering service. These are alternative names, not associated with a particular coding system, by which the battery, test, or observation (e.g., measurement, test, diagnostic study, treatment, etc.) is known to users of the system. Multiple names in this list are separated by repeat delimiters.
+

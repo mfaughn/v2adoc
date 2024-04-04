@@ -1,0 +1,4 @@
+==== *3.4.2.2* PID-2 Patient ID 00105
+
+*Attention:* The PID-2 field was retained for backward compatibility only as of v2.3.1 and was withdrawn and removed from this message structure as of v2.7. It is recommended to use _PID-3 - Patient Identifier List_ for all patient identifiers.
+

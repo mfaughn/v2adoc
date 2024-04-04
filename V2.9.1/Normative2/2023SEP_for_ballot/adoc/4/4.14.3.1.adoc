@@ -1,0 +1,4 @@
+==== 4.14.3.1 BTX-1 Set ID – BTX (SI) 01735
+
+Definition: This field contains the sequence number for the BTX segment under the related BPO segment. For the first product transfusion/disposition transmitted, the sequence number shall be 1; for the second product transfusion/disposition, it shall be 2; and so on.
+

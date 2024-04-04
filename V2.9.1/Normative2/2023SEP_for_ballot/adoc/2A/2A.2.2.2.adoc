@@ -1,0 +1,4 @@
+==== 2A.2.2.2 Date (DT)
+
+Definition: Date of authorization.
+

@@ -1,0 +1,4 @@
+==== 4.17.1.25 DON-25 Aphaeresis Type Machine (ST) 03364
+
+Definition: The type of aphaeresis machine, if used, for the donation. It will be the specific product name of the machine (e.g. Trima, Amicus, Alyx, Symal, etc.).
+

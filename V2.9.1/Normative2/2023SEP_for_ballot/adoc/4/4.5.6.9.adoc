@@ -1,0 +1,6 @@
+==== 4.5.6.9 IPC-9 Scheduled Station AE Title (ST) 01665
+
+Definition: This field contains the Application Entity Title of the modality resource being requested for performance of a particular Scheduled Procedure Step. Application Entity Title is the identifier that identifies an instance of DICOM-compatible equipment for the purpose of addressing during communication. See DICOM Standard, Part 3 for further details on the DICOM Attribute (0040,0001) that conveys equivalent information. A limit of sixteen (16) characters is required to allow compatibility with DICOM.
+
+If the Scheduled Procedure Step is to be performed by an unspecified member of a pool of resources, this field shall be empty and IPC-8 Scheduled Procedure Step Location is used to identify the site-specific resource pool. See section _4.5.6.8_ for explanation of the resource pool.
+

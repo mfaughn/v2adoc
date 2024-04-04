@@ -1,0 +1,4 @@
+==== 13.3.3.32 SAC-32 Hemolysis Index (NM) 01359
+
+Definition: This field is the index identifier that is being used to describe the Hemolysis Index of the specimen.
+

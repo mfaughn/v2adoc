@@ -1,0 +1,4 @@
+==== 2A.2.46.1 Name (CNN)
+
+Definition: This component specifies the name of the person performing a service.
+

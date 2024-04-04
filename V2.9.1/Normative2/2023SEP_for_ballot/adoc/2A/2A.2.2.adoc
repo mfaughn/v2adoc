@@ -1,0 +1,16 @@
+=== 2A.2.2 AUI - authorization information
+
+HL7 Component Table - AUI – Authorization Information
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |30= |ST |O | |Authorization Number | |2A.2.76
+|2 | | |DT |O | |Date | |2A.2.21
+|3 | |199# |ST |O | |Source | |2A.2.76
+|===
+
+Definition: This data type specifies the identifier or code for an insurance authorization instance and its associated detail.
+
+*Note:* Replaces the CM data type used in sections 6.5.6.14 IN1-14, as of v2.5.
+

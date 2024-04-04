@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+ARQ-1_vs_SCH-1
+</h1>
+<hr>
+<h3>
+For 00860 there were 2 versions found.<br>This diff compares the version found in fields ["ARQ-1", "ARQ-1"] from sections ["10.6.1", nil], respectively<br>with the version found in fields ["SCH-1", "SCH-1"] from sections ["10.6.2", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains placer application&#39;s permanent identifier for the appointment request (and the scheduled appointment itself, when <strong>confirmed </strong>as b<strong>ooked by the filler application). This is a composite field. The first component is a string that identifies an individual appointment request, or </strong>booked <strong>appointment. It is assigned </strong>by the <strong>placer application, and it identifies an appointment request, and the subsequent scheduled appointment, uniquely among all such requests and/or booked appointments from a particular requesting app</strong>lication<strong>. If the placer appointment ID identifies a parent of a repeating schedule request, then the individual scheduled child appointments can be uniquely identified either by a new placer appointment ID or the parent&#39;s placer appointment ID plus an occurrence number, specified in _ARQ-3-Occurrence number._</strong></del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains <strong>the </strong>placer application&#39;s permanent identifier for the appointment request (and the scheduled appointment itself, when <strong>it h</strong>as b<strong>een confirmed as a </strong>booked <strong>slot </strong>by the <strong>filler app</strong>lication<strong>). This is a composite field.</strong></ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00860,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:EI,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field contains placer application&#39;s permanent identifier for the appointment request (and the scheduled appointment itself, when <strong>confirmed </strong>as b<strong>ooked by the filler application). This is a composite field. The first component is a string that identifies an individual appointment request, or </strong>booked <strong>appointment. It is assigned </strong>by the <strong>placer application, and it identifies an appointment request, and the subsequent scheduled appointment, uniquely among all such requests and/or booked appointments from a particular requesting app</strong>lication<strong>. If the placer appointment ID identifies a parent of a repeating schedule request, then the individual scheduled child appointments can be uniquely identified either by a new placer appointment ID or the parent&#39;s placer appointment ID plus an occurrence number, specified in _ARQ-3-Occurrence number._</strong></del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field contains <strong>the </strong>placer application&#39;s permanent identifier for the appointment request (and the scheduled appointment itself, when <strong>it h</strong>as b<strong>een confirmed as a </strong>booked <strong>slot </strong>by the <strong>filler app</strong>lication<strong>). This is a composite field.</strong></ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

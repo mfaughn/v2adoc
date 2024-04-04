@@ -1,0 +1,8 @@
+===== 3.6.2.1.4 Change identifier
+
+A change identifier event signals that a single person, patient, account, or visit identifier has been changed. It does not reflect a merge or a move; it is simply a change of an identifier. For example, a "Change Identifier" event would be sent to signal that the registrar has changed an incorrectly assigned person identifier to a correct person identifier. The following picture graphically depicts this event:
+
+____
+image:extracted-media/media/image4.wmf[extracted-media/media/image4]
+____
+

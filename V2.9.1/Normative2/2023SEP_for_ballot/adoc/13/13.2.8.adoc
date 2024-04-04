@@ -1,0 +1,58 @@
+=== 13.2.8 EAR/ACK – Automated Equipment Response (Event U08)
+
+This message is used to send equipment responses to previously issued commands from one application to another (e.g., automated Equipment to a Laboratory Automation System).
+
+EAR^U08^EAR_U08: Equipment Command Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- COMMAND_RESPONSE begin | | | | |
+|link:#ECD[ECD] | |Equipment Command Detail | | | |13 |
+|[ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|\{ [ SPM ] } | |Specimen | | | |7 |
+|] | |--- SPECIMEN_CONTAINER end | | | | |
+|link:#ECR[ECR] | |Equipment Command Response | | | |13 |
+|} | |--- COMMAND_RESPONSE end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="18%,23%,10%,16%,17%,16%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EAR^U08^EAR_U08 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U08^ACK |- |ACK^U08^ACK
+|Application Ack |ACK^U08^ACK |- |- |ACK^U08^ACK |ACK^U08^ACK
+|===
+
+ACK^U08^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U08^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U08^ACK
+|Application Ack |- |- |-
+|===
+

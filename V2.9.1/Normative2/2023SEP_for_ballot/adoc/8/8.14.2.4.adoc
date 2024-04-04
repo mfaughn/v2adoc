@@ -1,0 +1,4 @@
+==== 8.14.2.4 CTR -4 Effective Date (DTM) 02395
+
+Definition: The Effective Date is the date that the contract becomes available to purchase from.
+

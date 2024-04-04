@@ -1,0 +1,6 @@
+==== 6.5.3.24 DRG-24 Discount/Surcharge (MO) 02167
+
+Components: <Quantity (NM)> ^ <Denomination (ID)>
+
+Definition: This field contains the discount/surcharge as determined for this DRG. The addition/re­duction is indicated by _DRG-17 - Status Patient_.
+

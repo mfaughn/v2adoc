@@ -1,0 +1,37 @@
+=== 3.4.16 OH2 - Past or Present Job segment
+
+The OH2 segment is used to communicate the information about a job or jobs which the subject currently holds or has held in the past. It includes related observations about the occupation (type of work), the type of business (industry) in which that occupation is performed, supervisory level (including military pay grade), and the employer's name and location. It should also include observations about the job's compensation and sector employment type (e.g., paid work, self-employed, volunteer) and work schedule, and may also contain observations for job duties and occupational exposures. The type of work a person performs (occupation) and their industry (type of business in which they work) are critical data elements for patient care, population health, and public health, with the current information being the most important. In the health care encounter, current occupation and industry are important because they provide information regarding the exposures a person may have to substances/environments/hazards that may cause illness/injury or may impact the treatment plan. The combination of occupation and industry serves as a key indicator of the person’s work environment. The segment is designed to ensure that these data remain associated with one-another in perpetuity, even if multiple jobs are included.
+
+This segment may relate either to the patient or to the Next of Kin.
+
+The intent is for the segment to be allowed to repeat within a message definition to enable a job history for the person__.__
+
+Examples:
+
+A person/patient may currently hold a job as carpenter, and previously held a job as a painter. This would be represented by repeating OH2 segments.
+
+HL7 Attribute Table – OH2 – Past or Present Job
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |SI |R | | |03522 |Set ID
+|2 |1..1 | |ID |O | |0206 |00816 |Action Code
+|3 | | |DT |O | | |03524 |Entered Date
+|4 | | |CWE |R | |0958 |03525 |Occupation
+|5 | | |CWE |R | |0955 |03526 |Industry
+|6 | | |CWE |O | |0959 |03527 |Work Classification
+|7 |8 | |DT |O | | |02494 |Job Start Date
+|8 |8 | |DT |O | | |02495 |Job End Date
+|9 | | |CWE |O | |0954 |03528 |Work Schedule
+|10 | | |NM |O | | |03529 |Average Hours worked per Day
+|11 | | |NM |O | | |03530 |Average Days Worked per Week
+|12 |48 | |XON |O | | |03531 |Employer Organization
+|13 |106 | |XAD |O |Y | |03546 |Employer Address
+|14 | | |CWE |O | |0956 |03532 |Supervisory Level
+|15 |250 | |ST |O |Y | |03533 |Job Duties
+|16 |250 | |FT |O |Y | |03534 |Occupational Hazards
+|17 | | |EI |O | | |02433 |Job Unique Identifier
+|18 | | |CWE |O | |0136 |02471 |Current Job Indicator
+|===
+

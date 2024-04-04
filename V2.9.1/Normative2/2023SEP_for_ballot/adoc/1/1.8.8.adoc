@@ -1,0 +1,4 @@
+=== 1.8.8 Central, Unified Hardware and Software Controls for Security and Trusted Continuous Protection
+
+HL7 Version 2.x standards do not attempt to support hardware and software security controls, nor does it provide means to insure continuous protection of data from unauthorized changes. Such a feature may be useful in limiting access to certain types of data to devices and/or users, based on device type or location. Certain U.S. DOD requirements and IOM recommendations may require users to implement these on their own and/or rely on specific applications vendors to support this requirement.
+

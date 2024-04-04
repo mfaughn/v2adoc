@@ -1,0 +1,40 @@
+=== 5.2.5 Query specification formats
+
+The previous section explained the three representations for data that are returned to a query client. This section discusses how the client may represent a query for information.
+
+HL7 now recommends one primary way with 3 basic variants for specifying a query.
+
+This query model with its variants is intended to assist implementers in translating specific query needs from the ordinary prose of the business model into an appropriate HL7 query paradigm. The paradigm selected will depend upon the philosophy of the institution: whether to allow relative freedom to client systems in composing query expressions, or to control rigidly the fields and operations to be offered. The following paragraphs compare and contrast the features of each of the HL7 query variant models. The differences between them lie mainly in the processing they require on the Server side.
+
+*_Query by Simple Parameter_*
+
+____
+The first variant is called the Simple Parameter query. In the simple parameter query, the input parameters are passed in order as successive fields of an HL7 segment. The Server need only read them from the corresponding HL7 fields, and plug them into an internal function to evaluate the query.
+
+This is the most basic form of the query in which the Server specifies a fixed list of parameters in its Query Profile. (For example, the Server may direct the querying system to specify a medical record number, a beginning date, and an ending date.) When invoking the query, the Client passes a specific value for each parameter. This is analogous to invoking a stored procedure against a database.
+
+The parameter definition segment (i.e., the QPD) can be seen as a generalization of the QRD and QRF segments of the original mode query. Each field in the QRD and QRF corresponds to 1 parameter of the QPD instance. HL7 recommends that queries defined by QRD and QRF segments be recast as a version 2.4 or later Query By Parameter.
+
+The obvious implementation gain is that the Server can simply map the input values to the parameters specified in the Query Profile. An already known function or procedure is called to evaluate the query and select data to be returned. The bulk of the work effort has already been invested in the development of this predefined function or procedure.
+____
+
+*_Query by Example Variant:_*
+
+____
+The Query by Example (QBE) is an extension of Query by Parameter (QBP) in which search parameters are passed by sending them in the segment which naturally carries them, instead of as fields of the QPD segment. For example, if one wanted to perform a "find_candidates" query using QBE, one would send the demographics information on which to search in the PID and/or PD1 segments, leaving blank those fields in the segment sent that are not query parameters. If, for example, religion were not one of the query parameters, PID-17 would be left blank when the PID was sent in the query. Parameters which do not occur naturally in an HL7 message, such as search algorithm, confidence level, etc., would continue to be carried in the QPD segment as they are in the Query by Parameter. The exact segments and fields available for use as query parameters would be specified in the Query Profile for the query.
+____
+
+*_Query Using the QSC Variant:_*
+
+____
+The third variant is known as the QSC variant because of its use of the QSC data type, which was used in the Virtual Table query. The Query Profile for the query will define all the variables that the Client may use in an expression. At runtime, the Client is able to define the exact search criteria by constructing a "tree" of operator/operand nodes that constrain the available input parameters. To evaluate the query, the Server SHALL be willing to analyze and interpret the query expression at runtime. The Server may translate the input expression into its local data access language, or perhaps it will interpret the request itself, and evaluate the expression for each item of the virtual table. The client's Complex Expression is analogous to an SQL selection statement against a relational database.
+
+This variant is most like the Virtual Table Query (VQQ).
+____
+
+There are a number of factors to consider in determining which variant to offer. In the Complex Expression (QSC) variant, the Client may select any or all of the variables offered and may specify any permissible operators and values for each variable. By contrast, in the Simple Parameter variant or the Query by Example variant, the Client SHALL provide values for exactly the set of variables offered.
+
+____
+The Simple Parameter variant is easy to parse and process because it has positional fields; i.e., the parameters are in a predefined and fixed order. Likewise, the Query by Example variant lends itself to simple processing, since parameters will occur in known positions in defined segments. The Complex Expression variant, on the other hand, requires more involved parsing and processing because of its flexibility and the optionality of its elements. Thus, while the Complex Expression variant offers more functionality to the Client, it is more burdensome for the Server to process. Conversely, the Simple Parameter and Query by Example variants offer less functionality to the Client but are generally easier for the Server to implement; they are often based on existing stored procedures on the Server's system.
+____
+

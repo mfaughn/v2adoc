@@ -1,0 +1,4 @@
+==== 2A.2.12.11 Second Alternate Unit of Measure Identifier (ST)
+
+Definition: A sequence of characters that uniquely identifies a second alternate units designation for the channel sensitivity. Analogous to _CSU.2 Unit of Measure Identifier_.
+

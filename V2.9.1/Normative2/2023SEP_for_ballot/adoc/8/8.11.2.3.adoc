@@ -1,0 +1,6 @@
+==== 8.11.2.3 CM0-3 Alternate Study ID (EI) 01036
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the local or collaborators' cross-referenced study numbers.
+

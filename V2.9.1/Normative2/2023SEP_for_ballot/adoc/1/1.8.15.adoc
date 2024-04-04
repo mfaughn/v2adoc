@@ -1,0 +1,4 @@
+=== 1.8.15 The Longitudinal Health Record
+
+HL7 Version 2.x standards are silent on the actual logical and physical construction of the patient longitudinal health record. While it is certainly possible to build the currently-identified major components of such a record using existing HL7 messages, there is no formal attempt on the part of HL7 to define just what the exact message sequence and content should be to describe this record. Other organizations such as ASTM, CPRI, the IOM and others have published on this subject. It is not the intent of HL7, at this time, to formally define message sequences and structures to directly create the longitudinal health record across multiple information systems within (or outside of) a healthcare delivery system.
+

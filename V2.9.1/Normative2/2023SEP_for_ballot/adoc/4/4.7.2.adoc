@@ -1,0 +1,59 @@
+=== 4.7.2 ORD - dietary order acknowledgment (Event O04)
+
+ORD^O04^ORD_O04: Dietary Order Acknowledgment Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ARV}] |Access Restrictions | |3
+|[\{ ERR }] |Error | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for MSA) | |2
+|[ |--- RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|\{[ PRT ]} |Participation | |7
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3
+|[\{ NTE }] |Notes and Comments (for Patient ID) | |2
+|] |--- PATIENT end | |
+|\{ |--- ORDER_DIET begin | |
+|ORC |Common Order | |4
+|\{[PRT]} |Participation | |7
+|[\{ |--- TIMING_DIET begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING_DIET end | |
+|[\{ ODS }] |Dietary Orders, Supplements, and Preferences | |4
+|[\{ NTE }] |Notes and Comments (for ODS) | |2
+|} |--- ORDER_DIET end | |
+|[\{ |--- ORDER_TRAY begin | |
+|ORC |Common Order | |4
+|\{[PRT]} |Participation | |7
+|[\{ |--- TIMING_TRAY begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING_TRAY end | |
+|[\{ ODT }] |Diet Tray Instructions | |4
+|[\{ NTE }] |Notes and Comments (for ODT) | |2
+|}] |--- ORDER_TRAY end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="99%",cols="27%,33%,16%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ORD^O04^ORD_O04 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O04^ACK |- |ACK^O04^ACK
+|Application Ack |- |- |-
+|===
+
+____
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+____
+

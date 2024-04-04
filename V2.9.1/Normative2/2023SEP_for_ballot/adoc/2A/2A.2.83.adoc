@@ -1,0 +1,12 @@
+=== 2A.2.83 VID – version identifier
+
+HL7 Component Table - VID – Version Identifier
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 |3..5 | |ID |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70104[0104] |Version ID | |2A.2.35
+|2 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70399[0399] |Internationalization Code | |2A.2.13
+|3 | | |CWE |O | |International Version ID | |2A.2.13
+|===
+

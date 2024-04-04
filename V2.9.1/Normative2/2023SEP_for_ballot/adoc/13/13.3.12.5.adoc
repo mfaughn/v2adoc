@@ -1,0 +1,4 @@
+==== 13.3.12.5 EQP-5 Transaction Data (FT) 01433
+
+Definition: This field is the data that the log and/or service event was about and is to be logged.
+

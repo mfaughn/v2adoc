@@ -1,0 +1,4 @@
+==== *3.4.7.20* IAM-20 Statused at Date/Time (DTM) 01565
+
+Definition: The date and time that this allergy was last statused by the _IAM-18 - Statused by Person_ in the _IAM-19 - Statused by Organization_.
+

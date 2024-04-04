@@ -1,0 +1,40 @@
+==== 8.9.3.5 LCH-5 Location Characteristic Value - LCH (CWE) 01294
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the value of the above field's characteristic. The expected coded values for this field will depend upon the previous field. For example, if the previous field is SMK, IMP, INF, the values would be "Y" or "N".
+
+When LCH-4-location characteristic ID contains "SHA"- Shadow, refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values for _LRL-5 - Organizational Location Relationship Value_.
+
+Y not a real bed, but a temporary holding location that does not physically exist in the census
+
+N this is a real bed
+
+When _LCH-4 - Location Characteristic ID_ contains "PRL"- Privacy level (CWE), then _LRL-5 - Organizational Location Relationship Value_ indicates how the room is set up and intended to be used, disregarding different uses under special circumstances. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70262[User-defined Table 0262 - Privacy Level] in Chapter 2C, Code Tables, for suggested values.
+
+When _LCH-4 - Location Characteristic ID_ contains "LCR"- Level of care, then _LRL-5 - Organizational Location Relationship Value_ contains the code which indicates what severity of the patient's medical condition which this location is designed to handle. This indicates how the room is set up and intended to be used, disregarding different uses under special circumstances. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70263[User-defined Table 0263 - Level of Care] in Chapter 2C, Code Tables, for suggested values.
+
+When _LCH-4 - Location Characteristic ID_ contains "IFD"- Infectious disease, refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values for _LRL-5 - Organizational Location Relationship Value_.
+
+Y patients with infectious diseases can be admitted to this location, that is, this location can be used for isolation
+
+N this location cannot be used for isolation
+
+When _LCH-4 - Location Characteristic ID_ contains "SMO"- Smoking, refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values for _LRL-5 - Organizational Location Relationship Value_.
+
+Y this is a smoking location
+
+N this is a non-smoking location
+
+When _LCH-4 - Location Characteristic ID_ contains "IMP"- Implant, refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values for _LRL-5 - Organizational Location Relationship Value_.
+
+Y this location can be used by radiation implant patients
+
+N this location can not be used by radiation implant patients
+
+When _LCH-4 - Location Characteristic ID_ contains "LIC"- Licensed, refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values for _LRL-5 - Organizational Location Relationship Value_.
+
+Y this location is licensed
+
+N this location is not licensed
+

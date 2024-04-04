@@ -1,0 +1,4 @@
+==== 7.4.2.9 OBX-9 Probability (NM) 00577
+
+Definition: This field contains the probability of a result being true for results with categorical values. It mainly applies to discrete coded results. It is a decimal number represented as an ASCII string that must be between 0 and 1, inclusive.
+

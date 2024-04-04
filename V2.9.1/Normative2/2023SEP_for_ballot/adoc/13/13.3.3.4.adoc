@@ -1,0 +1,6 @@
+==== 13.3.3.4 SAC-4 Primary (Parent) Container Identifier (EI) 01332
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: If this field is filled in, it identifies the primary container from which this specimen came. For primary samples this field is empty; for aliquot samples this field should contain the identifier of primary container.
+

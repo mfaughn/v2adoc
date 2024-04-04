@@ -1,0 +1,8 @@
+==== 8.8.9.27 OM1-27 Outside Site(s) Where Observation May Be Performed (CWE) 00612
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+*Note: This field is deprecated and retained for backward compatibility as of v 2.8.*
+
+Definition: This field contains the identification(s) of the outside service(s) that produce(s) the observation. The format of this CWE field uses the producer ID (as defined in _OM1-5 - Producer ID_) and the name of the service separated by component delimiters. An example is ...|39221^ACME lab^MC|... If multiple services are used, they should be separated by repeat delimiter(s). Refer to Table 0638 - Outside Site(s) Where Observation May Be Performed in Chapter 2C for valid values.
+

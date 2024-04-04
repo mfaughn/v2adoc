@@ -1,0 +1,4 @@
+==== 12.2.1.5 Variance: 
+
+*Variances* are documented deviations, either positive or negative, from a pre-defined standard. Variances are documented against expected outcomes, orders, or the patient's progress in general.
+

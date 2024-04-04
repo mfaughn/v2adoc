@@ -1,0 +1,4 @@
+==== 9.7.3.8 TXA-8 Edit Date/Time (DTM) 00921
+
+Definition: This field contains the date and time the document was edited.
+

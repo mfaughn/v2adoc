@@ -1,0 +1,8 @@
+==== 6.5.8.4 IN3-4 Certification Required (ID) 00505
+
+Definition: This field indicates whether certification is required. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y certification required
+
+N certification not required
+

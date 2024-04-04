@@ -1,0 +1,4 @@
+==== 4A.4.5.16 RXD-16 Actual Strength (NM) 01132
+
+Definition: Use when _RXD-2-Dispense/Give Code_ does not specify the strength. This is the numeric part of the strength, of a single dosage unit of the dispensed product, used in combination with _RXD-17-actual strength unit_.
+

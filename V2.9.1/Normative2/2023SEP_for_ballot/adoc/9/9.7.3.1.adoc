@@ -1,0 +1,4 @@
+==== 9.7.3.1 TXA-1 Set ID - TXA (SI) 00914
+
+Definition: This field contains a number that uniquely identifies this transaction for the purpose of adding, changing, or deleting the transaction.
+

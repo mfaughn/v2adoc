@@ -1,0 +1,4 @@
+==== 4A.4.1.13 RXO-13 Number of Refills (NM) 00304
+
+Definition: This field defines the number of times the requested dispense amount can be given to the patient, subject to local regulation. Refers to outpatient only.
+

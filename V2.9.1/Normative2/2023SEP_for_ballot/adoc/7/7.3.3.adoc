@@ -1,0 +1,4 @@
+=== 7.3.3 QRY/ORF - Query for Results of Observation (Events R02, R04) 
+
+*Attention: _Retained for backwards compatibility only as of v 2. .and withdrawn as of v 2.7. _*
+

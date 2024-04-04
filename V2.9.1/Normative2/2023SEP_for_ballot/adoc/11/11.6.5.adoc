@@ -1,0 +1,4 @@
+=== 11.6.5 CCR/ACK – Cancel Collaborative Care Referral (Event I18)
+
+This event triggers a message to be sent from one healthcare provider to another canceling an existing Collaborative Care Referral. A previous Collaborative Care Referral may have been made in error, or perhaps the cancellation has come from the patient. Whilst the acknowledgment is a simple ACK message, the expectation is that the referred to provider(s) will send back a CCU – Asynchronous Collaborative Care Update at a later time to indicate cancellation of the Collaborative Care Referral.
+

@@ -1,0 +1,4 @@
+==== 15.4.2.28 CER-28 Renewal Date (DTM) 01881
+
+Definition: This field contains the date/time when the certificate must/will/ be / has been renewed.
+

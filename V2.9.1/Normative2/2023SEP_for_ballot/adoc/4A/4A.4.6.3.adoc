@@ -1,0 +1,6 @@
+==== 4A.4.6.3 RXG-3 Quantity/Timing
+
+Attention: The RXG-3 field was retained for backward compatibilty only as of v 2.5 and the detail was withdrawn and removed from the standard as of v 2.7.
+
+*Note:* The contents of fields 3-8 should be identical to the comparable fields in the RXE (RXE-2 thru 5).
+

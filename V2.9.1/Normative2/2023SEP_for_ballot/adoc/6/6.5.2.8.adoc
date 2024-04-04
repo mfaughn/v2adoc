@@ -1,0 +1,4 @@
+==== 6.5.2.8 DG1-8 Diagnostic Related Group 00382
+
+*Attention: _DG1-8 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6. _*
+

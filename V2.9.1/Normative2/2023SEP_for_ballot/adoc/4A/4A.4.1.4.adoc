@@ -1,0 +1,12 @@
+==== 4A.4.1.4 RXO-4 Requested Give Units (CWE) 00295
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the units for the give amount. Refer to Table 0748 - Requested Give Units in Chapter 2C for valid values.
+
+The RXO-1, RXO-2 and RXO-4 are mandatory unless the prescription is transmitted as free text using RXO-6, then RXO-1, RXO-2, and RXO-4 may be blank and the first subcomponent of RXO-6 must be blank.
+
+*Note:* These units can be a "compound quantity"; i.e., the units may contain the word "per." For example, micrograms per KG (micg/kg) is an acceptable value, which means that the units are micrograms per KG (of body weight). See Chapter 7 for full definition of ISO+ units.
+
+A table of standard units is needed to define standard abbreviations for compound units. Until such a table is agreed on, a user-defined table is needed for each site. If the interpretation of a compound unit requires knowledge of some observation results (such as body weight or height), these results can be sent in the same order message using the optional OBX segments.
+

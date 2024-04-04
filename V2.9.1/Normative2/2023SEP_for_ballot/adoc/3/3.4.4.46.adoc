@@ -1,0 +1,4 @@
+==== *3.4.4.46* PV2-46 Patient Status Effective Date (DT) 01549
+
+Definition: This field indicates the effective date for _PV2-24 - Patient Status_.
+

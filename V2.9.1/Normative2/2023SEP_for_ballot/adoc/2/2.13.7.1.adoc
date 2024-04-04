@@ -1,0 +1,4 @@
+==== 2.13.7.1 FTS-1 File Batch Count (NM) 00079
+
+Definition: This field contains the number of batches contained in this file.
+

@@ -1,0 +1,6 @@
+==== 17.8.2.1 SLT-1 Device Number (EI) 02094
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The unique identifier of the device (assigned by user, not assigned by the software application; e.g.: 01).
+

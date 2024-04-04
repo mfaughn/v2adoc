@@ -1,0 +1,15 @@
+=== 8.8.14 OM6 - Observations that are Calculated from Other Observations Segment
+
+The Technical Steward for the OM6 segment is Orders and Observations.
+
+This segment contains the information about quantities that are derived from one or more other quantities or direct observations by mathematical or logical means.
+
+[#OM6 .anchor]####HL7 Attribute Table - OM6 - Observations that are Calculated from Other Observations
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |4= |NM |O | | |00586 |Sequence Number - Test/Observation Master File
+|2 | | |TX |O | | |00657 |Derivation Rule
+|===
+

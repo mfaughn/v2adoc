@@ -1,0 +1,4 @@
+==== 16.4.7.14 ADJ-14 Adjustment Date (DTM) 02016
+
+Definition: Date/Time adjustment was made. May also be synonymous with Adjudication Date.
+

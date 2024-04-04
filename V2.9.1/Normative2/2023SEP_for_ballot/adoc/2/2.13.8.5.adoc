@@ -1,0 +1,4 @@
+==== 2.13.8.5 MSA-5 Delayed Acknowledgment Type 00022
+
+*Attention: The _MSA-5_ was deprecated as of v2.2* and the detail was withdrawn and removed from the standard as of v 2.5.
+

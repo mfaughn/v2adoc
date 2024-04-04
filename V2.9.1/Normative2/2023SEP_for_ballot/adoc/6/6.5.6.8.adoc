@@ -1,0 +1,4 @@
+==== 6.5.6.8 IN1-8 Group Number (ST) 00433
+
+Definition: This field contains the group number of the insured's insurance.
+

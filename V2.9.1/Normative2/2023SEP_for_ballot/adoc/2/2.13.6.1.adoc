@@ -1,0 +1,4 @@
+==== 2.13.6.1 FHS-1 File Field Separator (ST) 00067
+
+Definition: This field has the same definition as the corresponding field in the MSH segment.
+

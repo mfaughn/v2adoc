@@ -1,0 +1,10 @@
+==== 6.5.2.24 DG1-24 DRG Grouping Usage (ID) 02154
+
+Definition: This field identifies whether this particular diagnosis has been used for the DRG determination. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/No Indicator_] in Chapter 2C, Code Tables, for suggested values. The values have the following meaning for this field:
+
+____
+Y Yes - Indicates that the diagnosis has been used for the DRG determination
+
+N No – Indicates that the diagnosis has not been used for the DRG determination
+____
+

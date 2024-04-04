@@ -1,0 +1,8 @@
+==== 7.16.3.2 PAC-2 Package ID (EI) 02351
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The Package ID uniquely identifies this package from all other packages within its shipment.
+
+Condition: If _SHP-8 Number of Packages in Shipment_ is greater then 1, then Package ID must be valued.
+

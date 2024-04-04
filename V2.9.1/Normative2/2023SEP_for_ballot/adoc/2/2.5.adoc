@@ -1,0 +1,10 @@
+== 2.5 Message construction rules 
+
+____
+This section addresses HL7 general rules for composing messages. Both the sender and receiver of the data must have predictable rules for how they will process the data. The reader is also referred to Section 2.B, "Conformance Using Message Profiles", where procedures for ensuring messaging integrity are discussed in detail.
+
+In constructing a message, certain special characters are used. They are the segment terminator, the field separator, the component separator, subcomponent separator, repetition separator, escape character and the truncation character. The segment terminator is always a carriage return (in ASCII 13, hex 0D).The other delimiters are defined in the MSH segment, with the field delimiter in the 4th character position, and the other delimiters occurring as in the field called Encoding Characters, which is the first field after the segment ID. The delimiter values used in the MSH segment are the delimiter values used throughout the entire message. In the absence of other considerations, HL7 recommends the suggested values found in Figure 2-1 delimiter values.
+
+*Note:* These message construction rules define the standard HL7 encoding rules, creating variable length delimited messages. Although only one set of encoding rules has been defined as a standard since HL7 Version 2.3, other encoding rules are possible (but since they are non-standard, they MAY only be used by a site-specific agreement).
+____
+

@@ -1,0 +1,4 @@
+==== 2A.2.9.3 Given Name (ST)
+
+Used to specify a first name.
+

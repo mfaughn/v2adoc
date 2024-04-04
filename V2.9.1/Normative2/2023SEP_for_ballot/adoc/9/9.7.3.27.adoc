@@ -1,0 +1,6 @@
+==== 9.7.3.27 TXA-27 Creating Facility (HD) 02413
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the facility in which this document has been created.
+

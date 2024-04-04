@@ -1,0 +1,23 @@
+=== 8.8.10 OM2 - Numeric Observation Segment
+
+The Technical Steward for the OM2 segment is Orders and Observations.
+
+This segment contains the attributes of observations with continuous values (including those with data types of numeric, date, or time stamp). It can be applied to observation batteries of type A and C (see _OM1-18 - Nature of Service/Test/Observation_).
+
+[#_Hlt480772502 .anchor]####HL7 Attribute Table - OM2 - Numeric Observation
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |4= |NM |O | | |00586 |Sequence Number - Test/Observation Master File
+|2 | | |CWE |O | |0648 |00627 |Units of Measure
+|3 | |10= |NM |O |Y | |00628 |Range of Decimal Precision
+|4 | | |CWE |O | |0649 |00629 |Corresponding SI Units of Measure
+|5 | |60= |TX |O | | |00630 |SI Conversion Factor
+|6 | | |RFR |O |Y | |00631 |Reference (Normal) Range for Ordinal and Continuous Observations
+|7 | | |RFR |O |Y | |00632 |Critical Range for Ordinal and Continuous Observations
+|8 | | |RFR |O | | |00633 |Absolute Range for Ordinal and Continuous Observations
+|9 | | |DLT |O |Y | |00634 |Delta Check Criteria
+|10 | | |NM |O | | |00635 |Minimum Meaningful Increments
+|===
+

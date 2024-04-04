@@ -1,0 +1,4 @@
+==== 11.2.4.5 Encounter: 
+
+Refers to a meeting between a covered person and a healthcare provider whose services are provided.
+

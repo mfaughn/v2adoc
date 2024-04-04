@@ -1,0 +1,67 @@
+=== 3.3.45 ADT/ACK - Move Visit Information - Visit Number (Event A45)
+
+A move has been done at the visit identifier level. That is, a _PV1-19 - Visit Number_ or _PV1-50 - Alternate Visit ID_ associated with one account identifier (_PID-18 - Patient Account Number_) has been moved to another account identifier.
+
+An A45 event is used to signal a move of records identified by the _MRG-5 - Prior Visit Number_ or the _MRG-6 - Prior Alternate Visit ID_ from the "incorrect source account identifier" identified in the MRG segment (_MRG-3 - Prior Patient Account Number_) to the "correct target account identifier" identified in the PID segment (_PID-18 - Patient Account Number_).
+
+This event and the message syntax do allow for the specification of "new identifiers" (_PV1-19 - Visit Number_, or _PV1-50 - Alternate Visit ID_), which may be application and/or implementation-specific and therefore require site negotiation.
+
+All of the identifiers superior to the visit number or alternate visit ID should be valued in both the MRG segment and the PID segments. In this message, the account number and _PID-3 - Patient Identifier List_ are superior to the visit number and alternate visit ID.
+
+See sections link:#merging-patientperson-information[_3.6.2_&#44;] "link:#merging-patientperson-information[_Merging patient/person information_]," and link:#move[_3.6.2.1.3_], "link:#move[_Move_]," for a discussion of issues related to the implementation of move messages. The fields included when this message is sent should be the fields pertinent to communicate this event. When demographic data in other fields change, it is recommended that the A08 (update patient information) event be used in conjunction with this message. However, all PID data associated with the "correct target visit ID" are treated as updated information.
+
+ADT^A45^ADT_A45: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|\{ |--- MERGE_INFO begin | |
+|link:#MRG[MRG] |Merge Information | |3
+|link:#_Hlt476040270[PV1] |Patient Visit | |3
+|} |--- MERGE_INFO end | |
+|===
+
+[width="100%",cols="19%,24%,4%,17%,18%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A45^ADT_A45 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A45^ACK |- |ACK^A45^ACK
+|Application Ack |ADT^A45^ADT_A45 |- |- |ACK^A45^ACK |ACK^A45^ACK
+|===
+
+ACK^A45^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,12%,28%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A45^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A45^ACK
+|Application Ack |- |- |-
+|===
+

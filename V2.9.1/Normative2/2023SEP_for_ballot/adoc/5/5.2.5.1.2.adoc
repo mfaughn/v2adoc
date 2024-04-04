@@ -1,0 +1,14 @@
+===== 5.2.5.1.2 Expression as query by example
+
+Just as in the Simple Parameter variant, the Query by Example requires an exact parameter specification. The distinction in a Query by Example is that segments other than QPD are used to transmit the parameters. The segments offered should be already-existing segments that the Server can parse easily.
+
+The client system transmits a Query by Example in the following format.
+
+MSH|^~\&|FEH.IVR|HUHA.CSC|HUHA.DEMO||199902031135-0600||QBP^Z58^QBP_Q13|1|D|2.8
+
+QPD|Z58^Pat Parm Qry 2|Q502
+
+RCP|I
+
+Parameters used in this query are specified in the Query Profile.
+

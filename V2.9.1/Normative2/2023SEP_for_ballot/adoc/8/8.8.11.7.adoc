@@ -1,0 +1,4 @@
+==== 8.8.11.7 OM3-7 Value Type (ID) 00570
+
+Definition: This field contains the allowed data type for a single categorical observation (code A or C in _OM1-18 - Nature of Observation_). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70125[HL7 Table 0125 – Value Type] in Chapter 2C, Code Tables, for valid values.
+

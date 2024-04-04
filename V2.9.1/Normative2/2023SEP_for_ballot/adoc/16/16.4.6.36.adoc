@@ -1,0 +1,4 @@
+==== 16.4.6.36 PSL-36 Internal Scaling Factor PP (NM) 01990
+
+Definition: Internal Scaling Factor for the amount of the professional part of the service.
+

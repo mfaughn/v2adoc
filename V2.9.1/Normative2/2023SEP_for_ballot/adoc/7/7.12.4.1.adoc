@@ -1,0 +1,4 @@
+==== 7.12.4.1 PSH-1 Report Type (ST) 01233
+
+Definition: This field contains the name, title, or other description of the report. Typically, the field will include the agency name (e.g., FDA), agency component if applicable (e.g., CDRH) and the report type (e.g., Medical Device Reporting Baseline Report).
+

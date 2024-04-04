@@ -1,0 +1,8 @@
+===== 2.13.9.18.1 Alphabetic Languages Other Than English
+
+The first occurrence of link:#_MSH-18___Character Set   (ID)   006[MSH-18 Character Set] MAY reference a character set other than 7-bit ASCII. Western alphabetic languages other than English are accommodated by the ISO 8859 series of character encodings. For example, if MSH-18 Character Set is valued *8859/1*, the ISO character set commonly known as "8-bit ASCII" is in use in the message. This includes all values from decimal 0 through decimal 127 (hex 00 through hex 7F), plus an additional 128 values from decimal 128 through decimal 255 (hex 80 through hex FF). The latter values include the accented Latin letters used in common Western European languages, plus some symbolic values such as the paragraph mark (¶) and the trademark symbol (™).
+
+Other ISO character sets in the 8859 series accommodate non-Latin character sets. For example, MSH-18 Character Set could be valued *8859/2* to specify the default character encoding in use in Eastern Europe, while *8859/6* indicates the use of the Arabic alphabet.
+
+The ASCII and ISO character sets all allow the specification of any character in a single byte.
+

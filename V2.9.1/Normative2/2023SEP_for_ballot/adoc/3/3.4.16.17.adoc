@@ -1,0 +1,6 @@
+==== *3.4.16.17* OH2-17 Job Unique Identifier (EI) 02433
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal Identifier (ST)> ^ <Universal Identifier Type (ID)>
+
+Definition: This field contains a value the uniquely identifies a single job for a person.
+

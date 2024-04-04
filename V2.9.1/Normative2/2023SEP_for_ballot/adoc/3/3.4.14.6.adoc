@@ -1,0 +1,6 @@
+==== *3.4.14.6* ARV-6 Access Restriction Date Range (DR) 02148
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This element defines the date from which an access restriction commences until the date it is specifically rescinded.
+

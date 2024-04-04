@@ -1,0 +1,23 @@
+=== 13.5.3 Specimen Status Update 
+
+The chemistry analyzer 0001 recognized an aliquot container (id=092321A) with blood. This container is in a position 1 of carrier type R5 (id=120) and is located in the input buffer 1.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |SSU^U03^SSU|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+SAC|991912376^EXTLAB|01039421^THISLAB|092321A^LAS|092321^LAS||BLD^BLOOD |19980620080037|I^IDENTIFIED|R5^5_HOLE_RACK|120|1||||BUF1^INPUT BUFFER 1<cr>
+
+A pre-analytical instrument 0001 performed aliquoting and sorting operation. +
+(See Fig. 13-5 for visualization of positions and locations) +
+The carrier (id=2002) with primary/parent container (id=12345) at position 2 was transported in the location: output buffer 1, into position 4 of the output tray (id=A1203). +
+The aliquot container (id=12345A) was sorted into the manual transportable carrier (id=045), in row 3, column 2. This carrier is located in the sorter bed at location 4.
+
+MSH|^~\&|PREANPROG|AUTPREAN|LASPROG|LASSYS|19980630080040|SECURITY |SSU^U03^SSU|MSG00002|P|2.9|<cr>
+
+EQU|0001^AQS|19980630080043<cr>
+
+SAC|991912376^EXTLAB|01039421^THISLAB|12345^LAS||||19980620080039|R^COMPLETED |R3^3_HOLE_RACK|2002|1|OT^OUTPUTTRAY|A1203^AQSTRAY|4|OB1^OUTPUTBUFFER<cr>
+
+SAC|991912376^EXTLAB|01039421^THISLAB|12345A^LAS|12345^LAS|||19980620080039 |R^COMPLETED|R14^14_HOLE_RACK|045|3^2||||AQSBED||||||2|0.5||ml<cr>
+

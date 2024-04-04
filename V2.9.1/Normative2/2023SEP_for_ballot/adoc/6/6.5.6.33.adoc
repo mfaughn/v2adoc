@@ -1,0 +1,4 @@
+==== 6.5.6.33 IN1-33 Lifetime Reserve Days (NM) 00458
+
+Definition: This field contains the number of days left for a certain service to be provided or covered under an insurance policy.
+

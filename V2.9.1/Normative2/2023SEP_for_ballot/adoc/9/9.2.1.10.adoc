@@ -1,0 +1,4 @@
+==== 9.2.1.10 Restricted:
+
+A confidentiality status in which access to a document has institutionally assigned limitations.
+

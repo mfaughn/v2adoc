@@ -1,0 +1,23 @@
+=== 6.6.1 Create a patient billing/accounts receivable record
+
+MSH|^~\&|PATA|01|PATB|01|19930908135031||BAR^P01^BAR_P01|641|P|2.8| +
+000000000000001|<cr>
+
+EVN|P01|19930908135030||<cr>
+
+PID|1||8064993^^^PATA1^MR^A~6045681^^^PATA1^BN^A~123456789ABC^^^US^NI~123456789^^^USSSA^SS||EVERYWOMAN^EVE^J^^^||19471007|F||1|22220018 HOMESTREET^^HOUSTON^TX^77030^USA|HAR||||S||6045681<cr>
+
+GT1|001||JOHNSON^SAM^J||1111 HEALTHCARE DRIVE^^BALTIMORE^MD^
+
+21234^USA|||||||193‑22‑1876<cr>
+
+NK1|001|BETTERHALF^BORIS|F|2222 HOME STREET^^CUMBERLAND^MD
+
+^28765^US|(301)555‑2134<cr>
+
+IN1|001|A357|1234|BCMD||||| 132987<cr>
+
+A patient has been registered by the ADT system (PATA) and notification is sent to the Patient Billing system (PATB). The patient's name is Eve J. Everywoman, a female Caucasian, born on October 7, 1947. Living at 1234 Homestreet, Houston, TX.
+
+Ms. Everywoman's medical record number is 8064993 and her billing number is 6045681. Her national identifier is 123456789ABC. Her social security number, assigned by the U.S. Social Security Administration, is 123456789. Ms. Everywoman has provided her father's name and address for next of kin. Ms. Smith is insured under plan ID A357 with an insurance company known to both systems as BCMD, with a company ID of 1234.
+

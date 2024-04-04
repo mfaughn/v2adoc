@@ -1,0 +1,6 @@
+==== 13.3.10.2 TCD-2 Auto-Dilution Factor (SN) 01420
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field is the value that is to be used as the factor for automatically diluting a particular specimen by an instrument for this particular test code. (See examples in definition of _13.3.3.29_, "_SAC-29 Dilution Factor_ (SN) 01356," in the "Specimen Container Detail Segment.")
+

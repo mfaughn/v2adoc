@@ -1,0 +1,4 @@
+== 1.7 Overview
+
+This section contains a description of the conceptual basis of the HL7 Version 2.9.1 Standard, the approach to accommodating intra‑site variations and evolutionary changes, and the way it has been structured in order to accommodate varying current and future communications environments.
+

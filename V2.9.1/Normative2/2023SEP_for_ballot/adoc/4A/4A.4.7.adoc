@@ -1,0 +1,40 @@
+=== 4A.4.7 RXA - Pharmacy/Treatment Administration Segment
+
+The ORC must have the filler order number and the order control code RE. As a site-specific variant, the RXO and associated RXCs and/or the RXE (and associated RXCs) may be present if the receiving application needs any of their data. The RXA carries the administration data.
+
+HL7 Attribute Table – RXA – Pharmacy/Treatment Administration
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | |4= |NM |R | | |00342 |Give Sub-ID Counter
+|2 | |4= |NM |R | | |00344 |Administration Sub-ID Counter
+|3 | | |DTM |R | | |00345 |Date/Time Start of Administration
+|4 | | |DTM |R | | |00346 |Date/Time End of Administration
+|5 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70292[0292] |00347 |Administered Code
+|6 | | |NM |R | | |00348 |Administered Amount
+|7 | | |CWE |C | |0689 |00349 |Administered Units
+|8 | | |CWE |O | |0690 |00350 |Administered Dosage Form
+|9 | | |CWE |O |Y |0691 |00351 |Administration Notes
+|10 | | | |W | | |00352 |Administering Provider
+|11 | | | |W | | |00353 |Administered-at Location
+|12 | |20= |ST |C | | |00354 |Administered Per (Time Unit)
+|13 | | |NM |O | | |01134 |Administered Strength
+|14 | | |CWE |O | |0692 |01135 |Administered Strength Units
+|15 | |20= |ST |O |Y | |01129 |Substance Lot Number
+|16 | | |DTM |O |Y | |01130 |Substance Expiration Date
+|17 | | |CWE |O |Y | |01131 |Substance Manufacturer Name
+|18 | | |CWE |O |Y |0693 |01136 |Substance/Treatment Refusal Reason
+|19 | | |CWE |O |Y |0694 |01123 |Indication
+|20 |2..2 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70322[0322] |01223 |Completion Status
+|21 |1..1 | |ID |O | |0206 |01224 |Action Code – RXA
+|22 | | |DTM |O | | |01225 |System Entry Date/Time
+|23 | |5= |NM |O | | |01696 |Administered Drug Strength Volume
+|24 | | |CWE |O | |0695 |01697 |Administered Drug Strength Volume Units
+|25 | | |CWE |O | |0696 |01698 |Administered Barcode Identifier
+|26 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70480[0480] |01699 |Pharmacy Order Type
+|27 | | |PL |O | | |02264 |Administer-at
+|28 | | |XAD |O | | |02265 |Administered-at Address
+|29 | | |EI |O |Y | |03396 |Administered Tag Identifier
+|===
+

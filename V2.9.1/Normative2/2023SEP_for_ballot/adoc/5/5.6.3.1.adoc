@@ -1,0 +1,16 @@
+==== 5.6.3.1 Interactive continuation algorithm and rules
+
+The rules for the interactive continuation (of a query response) are as follows:
+
+If the Server is sending a subset of the data, the message is terminated with a DSC segment with the _DSC-1-Continuation pointer_ set to the appropriate pointer value and the _DSC-2 -Continuation type_ set to "I".
+
+If the Client wishes to receive the next installment, the query is sent again with a DSC segment following the RCP. The _DSC-1-Continuation pointer_ echoes the value sent by the Server.
+
+The Server continues to send installments in response to the Client's request until there is no more data. The end of data is signified by the absence of the DSC segment OR an empty value in _DSC-1-Continuation pointer_.
+
+If the Client wishes to cancel the query before the end of the data is reached, a Cancel query is sent.
+
+In addition to _DSC-1-Continuation pointer_, _QAK-1-Query tag_ may be used to confirm to the Client which query instance the Server is responding to, since the Client may not be relied upon to have retained the text of each query message and continuation request.
+
+The value of _MSH-10-Message control ID_ will be different for every message sent by the Client (i.e., the initial query and each continuation request). Thus the value of _MSA-2-Message control ID_ for each message sent by the Server (which echoes the value of _MSH-10-Message control ID_ from the Client) will vary among multiple response payload messages. By contrast, _QAK-1-Query tag_ will remain the same across all response payload messages to a given query instance.
+

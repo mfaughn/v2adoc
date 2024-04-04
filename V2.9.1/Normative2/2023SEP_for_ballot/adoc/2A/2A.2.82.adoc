@@ -1,0 +1,15 @@
+=== 2A.2.82 VH - visiting hours 
+
+HL7 Component Table - VH – Visiting Hours
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 |3..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70267[0267] |Start Day Range | |2A.2.35
+|2 |3..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70267[0267] |End Day Range | |2A.2.35
+|3 | | |TM |O | |Start Hour Range | |2A.2.77
+|4 | | |TM |O | |End Hour Range | |2A.2.77
+|===
+
+Definition: This data type contains the hours when a patient location is open for visiting. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70267[_HL7 Table 0267 - Days of_ _the Week_] for valid values for the first two components.
+

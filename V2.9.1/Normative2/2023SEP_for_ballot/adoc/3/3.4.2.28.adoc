@@ -1,0 +1,4 @@
+==== *3.4.2.28* PID-28 Nationality 00739
+
+*Attention:* The PID-28 field was retained for backward compatibility only as of v 2.4 and was withdrawn and removed from this message structure as of v 2.7. It is recommended to refer to _PID-10 - Race_, _PID-22 - Ethnic group_ and _PID-26 - Citizenship_.
+

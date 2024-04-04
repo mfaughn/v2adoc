@@ -1,0 +1,4 @@
+==== 8.11.2.4 CM0-4 Title of Study (ST) 01013
+
+Definition: This field contains the sending institution's title for the clinical trial. It gives recipients further identification of the study.
+

@@ -1,0 +1,65 @@
+=== 6.4.9 BAR/ACK - Update Diagnosis/Procedure (Event P12)
+
+The P12 event is used to communicate diagnosis and/or procedures in update mode. The newly created fields in DG1 and PR1, i.e., identifiers and action codes, must be populated to indicate which change should be applied. When other patient or visit related fields change, use the A08 (update patient information) event.
+
+BAR^P12^BAR_P12: Update Diagnosis/Procedures
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|PID |Patient Identification | |3
+|[ \{ PRT } ] |Participation | |4
+|PV1 |Patient Visit | |3
+|[ \{ |--- DIAGNOSIS begin | |
+|link:#DG1[DG1] |Diagnosis | |6
+|} ] |--- DIAGNOSIS end | |
+|[ DRG ] |Diagnosis Related Group | |6
+|[ \{ |--- PROCEDURE begin | |
+|PR1 |Procedures | |6
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|} ] |--- PROCEDURE end | |
+|[ OBX ] |Observation/Result | |7
+|[ \{ PRT } ] |Participation | |4
+|===
+
+[width="100%",cols="18%,25%,6%,16%,17%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|BAR^P12^BAR_P12 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^P12^ACK |- |ACK^P12^ACK
+|Application Ack |ACK^P12^ACK |- |- |ACK^P12^ACK |ACK^P12^ACK
+|===
+
+ACK^P12^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="24%,37%,10%,29%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^P12^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^P12^ACK
+|Application Ack |- |- |-
+|===
+
+The error segment indicates the fields that caused a transaction to be rejected.
+

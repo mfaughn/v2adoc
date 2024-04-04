@@ -1,0 +1,73 @@
+===== 3.6.2.2.4 A41 - merge account - patient account number (repeating segment)
+
+This event illustrates the concept of a repeating segment merge as defined in _3.6.2.2.1_.
+
+[width="100%",cols="54%,46%",]
+|===
+|A41 - Merge account - patient account number |
+|Use Case - Eve Everywoman (patient identifier MR1) is a recurring outpatient at the Physical Therapy clinic at hospital XYZ with account number ACCT1. She has visited the clinic several times. When she arrives for therapy, a new registrar does not realize she already has an account and opens a new one with account number ACCT2. When the mistake is discovered, the two accounts are merged together, combining all visits under account ACCT1. |
+|Target: _PID-18 - Patient Account Number_ and _PV1-19 - Visit Number_ |
+|Source: _MRG-3 - Prior Patient Account Number_ and _MRG-5 - Prior Visit Number_ |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A41^ADT_A39\|00000005\|P\|2.8\|<cr>
+
+EVN\|A41\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYWOMAN^EVE\|\|19501010\|F\|\|\|123 NORTH STREET^^NY^NY^10021\|\|(212)111-3333\|\|\|S\|\|ACCT1<cr>
+
+MRG\|MR1^^^XYZ\|\|ACCT2\|\|VISIT1<cr>
+
+PV1\|1\|I\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|VISIT3<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYWOMAN^EVE\|\|19501010\|F\|\|\|123 NORTH STREET^^NY^NY^10021\|\|(212)111-3333\|\|\|S\|\|ACCT1<cr>
+
+MRG\|MR1^^^XYZ\|\|ACCT2\|\|VISIT2
+
+PV1\|1\|I\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|VISIT4<cr>
+
+|
+|Before Merge |After Merge
+a|
+MR1
+
+ACCT1
+
+VISIT1
+
+VISIT2
+
+ACCT2
+
+VISIT1*
+
+VISIT2*
+
+*Visits erroneously assigned
+
+a|
+MR1
+
+ACCT1
+
+VISIT1
+
+VISIT2
+
+VISIT3**
+
+VISIT4**
+
+**Visits combined and renumbered as a result of merging the account
+
+a|
+Implementation considerations: This scenario exists when two accounts and associated visits are established for the same patient.
+
+Repeating PID/MRG/PV1 segments report each Account Number and Visit Number affected. This construct is required since the visits are renumbered in this example.
+
+Since there could be a discrepancy in the demographic information between the two records, reconciliation may be required. Surviving and non-surviving demographic information is application and implementation specific. An A08 (update patient information) event should be sent and/or negotiated as necessary to provide for implementation and application-specific needs.
+
+|
+|===
+

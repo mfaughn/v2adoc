@@ -1,0 +1,6 @@
+==== 6.5.16.4 GP2-4 Reimbursement Action Code (CWE) 01606
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the action to be taken during reimbursement calculations. If valued, this code overrides the value in link:#gp2-6-oce-edit-code-cwe-01608[_GP2-6 - OCE Edit Code_]. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70459[_Us__er-defined Table 0459 - Reimbursement Action Code_] in Chapter 2C, Code Tables, for suggested values. This field is defined by CMS or other regulatory agencies
+

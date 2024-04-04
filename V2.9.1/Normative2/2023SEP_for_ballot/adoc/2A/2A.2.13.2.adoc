@@ -1,0 +1,4 @@
+==== 2A.2.13.2 Text (ST)
+
+Definition: The second component contains the descriptive or textual name of the identifier, e.g., "myocardial infarction" or "X-ray impression".
+

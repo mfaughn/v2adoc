@@ -1,0 +1,22 @@
+===== 3.6.2.1.9 Global merge and move message construct versus repeating segment message constructs
+
+A flexible message construct is provided for merge trigger events. The message construct allows for a repeating set of PID, optional PD1, MRG, and optional PV1 segments as illustrated below:
+
+MSH
+
+EVN
+
+\{ PID
+
+{empty}[PD1]
+
+MRG
+
+{empty}[PV1]
+
+}
+
+Trigger events support the concept of a global move or merge, where all the subordinate identifiers are moved or merged. For example, the use case for A41 (merge account-patient account number) (Section _3.6.2.2.3_, "_A41 - merge account - patient account number (global)_") illustrates a merge on the patient account number (_PID-18 - Patient Account Number_). All subordinate identifiers (_PV1-19 - Visit Number_) are moved to the target _PID-18 - Patient Account Number Identifier_, even though they are not specified in the message.
+
+A repeating segment message construct supports reporting of the subordinate identifiers using the repeating segments. This is illustrated in the use case for A40 (merge patient - patient identifier list) (Section _3.6.2.2.2_, "_A40 - merge patient - patient identifier list (repeating segment)_," A41 (merge account - patient account number) (Section _3.6.2.2.4_, "_A41 - merge account - patient account number (repeating segment)_"), and A45 (move visit information-visit number) (Section _3.6.2.2.9_ "_A45 - move visit information - visit number (repeating segment)_"). Specifying each subordinate ID in repeating segments is optional but not recommended. This construct can be used when renumbering of identifiers is necessary as illustrated in Sections _3.6.2.2.2_, "_A40 - merge patient - patient identifier list (repeating segment)_," _3.6.2.2.4_, "_A41 - merge account - patient account number (repeating segment)_," and _3.6.2.2.9_, "_A45 - move visit information - visit number (repeating segment)_," or to explicitly identify individual subordinate identifiers as illustrated in Section _3.6.2.2.9_, "_A45 - move visit information - visit number (repeating segment)_."
+

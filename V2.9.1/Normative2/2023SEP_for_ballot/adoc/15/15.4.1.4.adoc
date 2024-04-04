@@ -1,0 +1,6 @@
+==== 15.4.1.4 AFF-4 Professional Organization Affiliation Date Range (DR) 01446
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This field contains the period the staff member started and ended membership in the professional organization.
+

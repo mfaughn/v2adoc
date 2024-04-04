@@ -1,0 +1,4 @@
+=== 10.4.9 Notification of Cancellation of Service/Resource on Appointment (Event S20)
+
+This trigger event notifies other applications that a service or resource has been removed from an existing scheduled appointment that has not yet begun. A cancel event is used to stop a valid service or resource from participating in the appointment. For example, if a portable X-ray machine scheduled for an exam is no longer needed, then the resource is canceled on the filler application. This trigger event should only be used for appointments that have not been completed, or for parent appointments whose children have not been completed.
+

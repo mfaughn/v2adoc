@@ -1,0 +1,4 @@
+==== 7.12.3.19 PCR-19 Device Operator Qualifications (ID) 01116
+
+Definition: This field identifies the qualification of the person operating the device when the event occurred. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70242[_HL7 Table 0242 - Primary Observer's Qualification_] for valid values.
+

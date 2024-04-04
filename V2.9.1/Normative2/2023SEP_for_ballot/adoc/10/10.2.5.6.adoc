@@ -1,0 +1,4 @@
+==== 10.2.5.6 Filler Application
+
+The filler application role in the scheduling model is very similar to the filler application concept presented in Chapter 4, Order Entry. A filler application, in the scheduling model, is one that "owns" one or more schedules for one or more services or resources. It fulfills requests to book slots for the services or resources over which it exerts control. It also notifies other applications of activity related to appointments, such as new bookings, modifications, cancellations, etc.
+

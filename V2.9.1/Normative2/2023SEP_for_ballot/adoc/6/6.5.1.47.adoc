@@ -1,0 +1,4 @@
+==== 6.5.1.47 FT1-47 DME Certification Revision Date (DT) 03499
+
+Definition: This is the durable medical equipment certification revision/recertification date. It is required when the DME Certification Type Code is set to Renewal or Revised.
+

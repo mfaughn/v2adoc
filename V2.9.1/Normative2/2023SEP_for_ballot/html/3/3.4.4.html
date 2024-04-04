@@ -1,0 +1,1518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 2.0.20">
+<title>3.4.4 PV2 - Patient Visit - Additional Information Segment</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700">
+<style>
+/*! Asciidoctor default stylesheet | MIT License | https://asciidoctor.org */
+/* Uncomment the following line when using as a custom stylesheet */
+/* @import "https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic%7CNoto+Serif:400,400italic,700,700italic%7CDroid+Sans+Mono:400,700"; */
+html{font-family:sans-serif;-webkit-text-size-adjust:100%}
+a{background:none}
+a:focus{outline:thin dotted}
+a:active,a:hover{outline:0}
+h1{font-size:2em;margin:.67em 0}
+b,strong{font-weight:bold}
+abbr{font-size:.9em}
+abbr[title]{cursor:help;border-bottom:1px dotted #dddddf;text-decoration:none}
+dfn{font-style:italic}
+hr{height:0}
+mark{background:#ff0;color:#000}
+code,kbd,pre,samp{font-family:monospace;font-size:1em}
+pre{white-space:pre-wrap}
+q{quotes:"\201C" "\201D" "\2018" "\2019"}
+small{font-size:80%}
+sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}
+sup{top:-.5em}
+sub{bottom:-.25em}
+img{border:0}
+svg:not(:root){overflow:hidden}
+figure{margin:0}
+audio,video{display:inline-block}
+audio:not([controls]){display:none;height:0}
+fieldset{border:1px solid silver;margin:0 2px;padding:.35em .625em .75em}
+legend{border:0;padding:0}
+button,input,select,textarea{font-family:inherit;font-size:100%;margin:0}
+button,input{line-height:normal}
+button,select{text-transform:none}
+button,html input[type=button],input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer}
+button[disabled],html input[disabled]{cursor:default}
+input[type=checkbox],input[type=radio]{padding:0}
+button::-moz-focus-inner,input::-moz-focus-inner{border:0;padding:0}
+textarea{overflow:auto;vertical-align:top}
+table{border-collapse:collapse;border-spacing:0}
+*,::before,::after{box-sizing:border-box}
+html,body{font-size:100%}
+body{background:#fff;color:rgba(0,0,0,.8);padding:0;margin:0;font-family:"Noto Serif","DejaVu Serif",serif;line-height:1;position:relative;cursor:auto;-moz-tab-size:4;-o-tab-size:4;tab-size:4;word-wrap:anywhere;-moz-osx-font-smoothing:grayscale;-webkit-font-smoothing:antialiased}
+a:hover{cursor:pointer}
+img,object,embed{max-width:100%;height:auto}
+object,embed{height:100%}
+img{-ms-interpolation-mode:bicubic}
+.left{float:left!important}
+.right{float:right!important}
+.text-left{text-align:left!important}
+.text-right{text-align:right!important}
+.text-center{text-align:center!important}
+.text-justify{text-align:justify!important}
+.hide{display:none}
+img,object,svg{display:inline-block;vertical-align:middle}
+textarea{height:auto;min-height:50px}
+select{width:100%}
+.subheader,.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{line-height:1.45;color:#7a2518;font-weight:400;margin-top:0;margin-bottom:.25em}
+div,dl,dt,dd,ul,ol,li,h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6,pre,form,p,blockquote,th,td{margin:0;padding:0}
+a{color:#2156a5;text-decoration:underline;line-height:inherit}
+a:hover,a:focus{color:#1d4b8f}
+a img{border:0}
+p{line-height:1.6;margin-bottom:1.25em;text-rendering:optimizeLegibility}
+p aside{font-size:.875em;line-height:1.35;font-style:italic}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{font-family:"Open Sans","DejaVu Sans",sans-serif;font-weight:300;font-style:normal;color:#ba3925;text-rendering:optimizeLegibility;margin-top:1em;margin-bottom:.5em;line-height:1.0125em}
+h1 small,h2 small,h3 small,#toctitle small,.sidebarblock>.content>.title small,h4 small,h5 small,h6 small{font-size:60%;color:#e99b8f;line-height:0}
+h1{font-size:2.125em}
+h2{font-size:1.6875em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.375em}
+h4,h5{font-size:1.125em}
+h6{font-size:1em}
+hr{border:solid #dddddf;border-width:1px 0 0;clear:both;margin:1.25em 0 1.1875em}
+em,i{font-style:italic;line-height:inherit}
+strong,b{font-weight:bold;line-height:inherit}
+small{font-size:60%;line-height:inherit}
+code{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;font-weight:400;color:rgba(0,0,0,.9)}
+ul,ol,dl{line-height:1.6;margin-bottom:1.25em;list-style-position:outside;font-family:inherit}
+ul,ol{margin-left:1.5em}
+ul li ul,ul li ol{margin-left:1.25em;margin-bottom:0}
+ul.circle{list-style-type:circle}
+ul.disc{list-style-type:disc}
+ul.square{list-style-type:square}
+ul.circle ul:not([class]),ul.disc ul:not([class]),ul.square ul:not([class]){list-style:inherit}
+ol li ul,ol li ol{margin-left:1.25em;margin-bottom:0}
+dl dt{margin-bottom:.3125em;font-weight:bold}
+dl dd{margin-bottom:1.25em}
+blockquote{margin:0 0 1.25em;padding:.5625em 1.25em 0 1.1875em;border-left:1px solid #ddd}
+blockquote,blockquote p{line-height:1.6;color:rgba(0,0,0,.85)}
+@media screen and (min-width:768px){h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2}
+h1{font-size:2.75em}
+h2{font-size:2.3125em}
+h3,#toctitle,.sidebarblock>.content>.title{font-size:1.6875em}
+h4{font-size:1.4375em}}
+table{background:#fff;margin-bottom:1.25em;border:1px solid #dedede;word-wrap:normal}
+table thead,table tfoot{background:#f7f8f7}
+table thead tr th,table thead tr td,table tfoot tr th,table tfoot tr td{padding:.5em .625em .625em;font-size:inherit;color:rgba(0,0,0,.8);text-align:left}
+table tr th,table tr td{padding:.5625em .625em;font-size:inherit;color:rgba(0,0,0,.8)}
+table tr.even,table tr.alt{background:#f8f8f7}
+table thead tr th,table tfoot tr th,table tbody tr td,table tr td,table tfoot tr td{line-height:1.6}
+h1,h2,h3,#toctitle,.sidebarblock>.content>.title,h4,h5,h6{line-height:1.2;word-spacing:-.05em}
+h1 strong,h2 strong,h3 strong,#toctitle strong,.sidebarblock>.content>.title strong,h4 strong,h5 strong,h6 strong{font-weight:400}
+.center{margin-left:auto;margin-right:auto}
+.stretch{width:100%}
+.clearfix::before,.clearfix::after,.float-group::before,.float-group::after{content:" ";display:table}
+.clearfix::after,.float-group::after{clear:both}
+:not(pre).nobreak{word-wrap:normal}
+:not(pre).nowrap{white-space:nowrap}
+:not(pre).pre-wrap{white-space:pre-wrap}
+:not(pre):not([class^=L])>code{font-size:.9375em;font-style:normal!important;letter-spacing:0;padding:.1em .5ex;word-spacing:-.15em;background:#f7f7f8;border-radius:4px;line-height:1.45;text-rendering:optimizeSpeed}
+pre{color:rgba(0,0,0,.9);font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;line-height:1.45;text-rendering:optimizeSpeed}
+pre code,pre pre{color:inherit;font-size:inherit;line-height:inherit}
+pre>code{display:block}
+pre.nowrap,pre.nowrap pre{white-space:pre;word-wrap:normal}
+em em{font-style:normal}
+strong strong{font-weight:400}
+.keyseq{color:rgba(51,51,51,.8)}
+kbd{font-family:"Droid Sans Mono","DejaVu Sans Mono",monospace;display:inline-block;color:rgba(0,0,0,.8);font-size:.65em;line-height:1.45;background:#f7f7f7;border:1px solid #ccc;border-radius:3px;box-shadow:0 1px 0 rgba(0,0,0,.2),inset 0 0 0 .1em #fff;margin:0 .15em;padding:.2em .5em;vertical-align:middle;position:relative;top:-.1em;white-space:nowrap}
+.keyseq kbd:first-child{margin-left:0}
+.keyseq kbd:last-child{margin-right:0}
+.menuseq,.menuref{color:#000}
+.menuseq b:not(.caret),.menuref{font-weight:inherit}
+.menuseq{word-spacing:-.02em}
+.menuseq b.caret{font-size:1.25em;line-height:.8}
+.menuseq i.caret{font-weight:bold;text-align:center;width:.45em}
+b.button::before,b.button::after{position:relative;top:-1px;font-weight:400}
+b.button::before{content:"[";padding:0 3px 0 2px}
+b.button::after{content:"]";padding:0 2px 0 3px}
+p a>code:hover{color:rgba(0,0,0,.9)}
+#header,#content,#footnotes,#footer{width:100%;margin:0 auto;max-width:62.5em;*zoom:1;position:relative;padding-left:.9375em;padding-right:.9375em}
+#header::before,#header::after,#content::before,#content::after,#footnotes::before,#footnotes::after,#footer::before,#footer::after{content:" ";display:table}
+#header::after,#content::after,#footnotes::after,#footer::after{clear:both}
+#content{margin-top:1.25em}
+#content::before{content:none}
+#header>h1:first-child{color:rgba(0,0,0,.85);margin-top:2.25rem;margin-bottom:0}
+#header>h1:first-child+#toc{margin-top:8px;border-top:1px solid #dddddf}
+#header>h1:only-child,body.toc2 #header>h1:nth-last-child(2){border-bottom:1px solid #dddddf;padding-bottom:8px}
+#header .details{border-bottom:1px solid #dddddf;line-height:1.45;padding-top:.25em;padding-bottom:.25em;padding-left:.25em;color:rgba(0,0,0,.6);display:flex;flex-flow:row wrap}
+#header .details span:first-child{margin-left:-.125em}
+#header .details span.email a{color:rgba(0,0,0,.85)}
+#header .details br{display:none}
+#header .details br+span::before{content:"\00a0\2013\00a0"}
+#header .details br+span.author::before{content:"\00a0\22c5\00a0";color:rgba(0,0,0,.85)}
+#header .details br+span#revremark::before{content:"\00a0|\00a0"}
+#header #revnumber{text-transform:capitalize}
+#header #revnumber::after{content:"\00a0"}
+#content>h1:first-child:not([class]){color:rgba(0,0,0,.85);border-bottom:1px solid #dddddf;padding-bottom:8px;margin-top:0;padding-top:1rem;margin-bottom:1.25rem}
+#toc{border-bottom:1px solid #e7e7e9;padding-bottom:.5em}
+#toc>ul{margin-left:.125em}
+#toc ul.sectlevel0>li>a{font-style:italic}
+#toc ul.sectlevel0 ul.sectlevel1{margin:.5em 0}
+#toc ul{font-family:"Open Sans","DejaVu Sans",sans-serif;list-style-type:none}
+#toc li{line-height:1.3334;margin-top:.3334em}
+#toc a{text-decoration:none}
+#toc a:active{text-decoration:underline}
+#toctitle{color:#7a2518;font-size:1.2em}
+@media screen and (min-width:768px){#toctitle{font-size:1.375em}
+body.toc2{padding-left:15em;padding-right:0}
+#toc.toc2{margin-top:0!important;background:#f8f8f7;position:fixed;width:15em;left:0;top:0;border-right:1px solid #e7e7e9;border-top-width:0!important;border-bottom-width:0!important;z-index:1000;padding:1.25em 1em;height:100%;overflow:auto}
+#toc.toc2 #toctitle{margin-top:0;margin-bottom:.8rem;font-size:1.2em}
+#toc.toc2>ul{font-size:.9em;margin-bottom:0}
+#toc.toc2 ul ul{margin-left:0;padding-left:1em}
+#toc.toc2 ul.sectlevel0 ul.sectlevel1{padding-left:0;margin-top:.5em;margin-bottom:.5em}
+body.toc2.toc-right{padding-left:0;padding-right:15em}
+body.toc2.toc-right #toc.toc2{border-right-width:0;border-left:1px solid #e7e7e9;left:auto;right:0}}
+@media screen and (min-width:1280px){body.toc2{padding-left:20em;padding-right:0}
+#toc.toc2{width:20em}
+#toc.toc2 #toctitle{font-size:1.375em}
+#toc.toc2>ul{font-size:.95em}
+#toc.toc2 ul ul{padding-left:1.25em}
+body.toc2.toc-right{padding-left:0;padding-right:20em}}
+#content #toc{border:1px solid #e0e0dc;margin-bottom:1.25em;padding:1.25em;background:#f8f8f7;border-radius:4px}
+#content #toc>:first-child{margin-top:0}
+#content #toc>:last-child{margin-bottom:0}
+#footer{max-width:none;background:rgba(0,0,0,.8);padding:1.25em}
+#footer-text{color:hsla(0,0%,100%,.8);line-height:1.44}
+#content{margin-bottom:.625em}
+.sect1{padding-bottom:.625em}
+@media screen and (min-width:768px){#content{margin-bottom:1.25em}
+.sect1{padding-bottom:1.25em}}
+.sect1:last-child{padding-bottom:0}
+.sect1+.sect1{border-top:1px solid #e7e7e9}
+#content h1>a.anchor,h2>a.anchor,h3>a.anchor,#toctitle>a.anchor,.sidebarblock>.content>.title>a.anchor,h4>a.anchor,h5>a.anchor,h6>a.anchor{position:absolute;z-index:1001;width:1.5ex;margin-left:-1.5ex;display:block;text-decoration:none!important;visibility:hidden;text-align:center;font-weight:400}
+#content h1>a.anchor::before,h2>a.anchor::before,h3>a.anchor::before,#toctitle>a.anchor::before,.sidebarblock>.content>.title>a.anchor::before,h4>a.anchor::before,h5>a.anchor::before,h6>a.anchor::before{content:"\00A7";font-size:.85em;display:block;padding-top:.1em}
+#content h1:hover>a.anchor,#content h1>a.anchor:hover,h2:hover>a.anchor,h2>a.anchor:hover,h3:hover>a.anchor,#toctitle:hover>a.anchor,.sidebarblock>.content>.title:hover>a.anchor,h3>a.anchor:hover,#toctitle>a.anchor:hover,.sidebarblock>.content>.title>a.anchor:hover,h4:hover>a.anchor,h4>a.anchor:hover,h5:hover>a.anchor,h5>a.anchor:hover,h6:hover>a.anchor,h6>a.anchor:hover{visibility:visible}
+#content h1>a.link,h2>a.link,h3>a.link,#toctitle>a.link,.sidebarblock>.content>.title>a.link,h4>a.link,h5>a.link,h6>a.link{color:#ba3925;text-decoration:none}
+#content h1>a.link:hover,h2>a.link:hover,h3>a.link:hover,#toctitle>a.link:hover,.sidebarblock>.content>.title>a.link:hover,h4>a.link:hover,h5>a.link:hover,h6>a.link:hover{color:#a53221}
+details,.audioblock,.imageblock,.literalblock,.listingblock,.stemblock,.videoblock{margin-bottom:1.25em}
+details{margin-left:1.25rem}
+details>summary{cursor:pointer;display:block;position:relative;line-height:1.6;margin-bottom:.625rem;outline:none;-webkit-tap-highlight-color:transparent}
+details>summary::-webkit-details-marker{display:none}
+details>summary::before{content:"";border:solid transparent;border-left:solid;border-width:.3em 0 .3em .5em;position:absolute;top:.5em;left:-1.25rem;transform:translateX(15%)}
+details[open]>summary::before{border:solid transparent;border-top:solid;border-width:.5em .3em 0;transform:translateY(15%)}
+details>summary::after{content:"";width:1.25rem;height:1em;position:absolute;top:.3em;left:-1.25rem}
+.admonitionblock td.content>.title,.audioblock>.title,.exampleblock>.title,.imageblock>.title,.listingblock>.title,.literalblock>.title,.stemblock>.title,.openblock>.title,.paragraph>.title,.quoteblock>.title,table.tableblock>.title,.verseblock>.title,.videoblock>.title,.dlist>.title,.olist>.title,.ulist>.title,.qlist>.title,.hdlist>.title{text-rendering:optimizeLegibility;text-align:left;font-family:"Noto Serif","DejaVu Serif",serif;font-size:1rem;font-style:italic}
+table.tableblock.fit-content>caption.title{white-space:nowrap;width:0}
+.paragraph.lead>p,#preamble>.sectionbody>[class=paragraph]:first-of-type p{font-size:1.21875em;line-height:1.6;color:rgba(0,0,0,.85)}
+.admonitionblock>table{border-collapse:separate;border:0;background:none;width:100%}
+.admonitionblock>table td.icon{text-align:center;width:80px}
+.admonitionblock>table td.icon img{max-width:none}
+.admonitionblock>table td.icon .title{font-weight:bold;font-family:"Open Sans","DejaVu Sans",sans-serif;text-transform:uppercase}
+.admonitionblock>table td.content{padding-left:1.125em;padding-right:1.25em;border-left:1px solid #dddddf;color:rgba(0,0,0,.6);word-wrap:anywhere}
+.admonitionblock>table td.content>:last-child>:last-child{margin-bottom:0}
+.exampleblock>.content{border:1px solid #e6e6e6;margin-bottom:1.25em;padding:1.25em;background:#fff;border-radius:4px}
+.sidebarblock{border:1px solid #dbdbd6;margin-bottom:1.25em;padding:1.25em;background:#f3f3f2;border-radius:4px}
+.sidebarblock>.content>.title{color:#7a2518;margin-top:0;text-align:center}
+.exampleblock>.content>:first-child,.sidebarblock>.content>:first-child{margin-top:0}
+.exampleblock>.content>:last-child,.exampleblock>.content>:last-child>:last-child,.exampleblock>.content .olist>ol>li:last-child>:last-child,.exampleblock>.content .ulist>ul>li:last-child>:last-child,.exampleblock>.content .qlist>ol>li:last-child>:last-child,.sidebarblock>.content>:last-child,.sidebarblock>.content>:last-child>:last-child,.sidebarblock>.content .olist>ol>li:last-child>:last-child,.sidebarblock>.content .ulist>ul>li:last-child>:last-child,.sidebarblock>.content .qlist>ol>li:last-child>:last-child{margin-bottom:0}
+.literalblock pre,.listingblock>.content>pre{border-radius:4px;overflow-x:auto;padding:1em;font-size:.8125em}
+@media screen and (min-width:768px){.literalblock pre,.listingblock>.content>pre{font-size:.90625em}}
+@media screen and (min-width:1280px){.literalblock pre,.listingblock>.content>pre{font-size:1em}}
+.literalblock pre,.listingblock>.content>pre:not(.highlight),.listingblock>.content>pre[class=highlight],.listingblock>.content>pre[class^="highlight "]{background:#f7f7f8}
+.literalblock.output pre{color:#f7f7f8;background:rgba(0,0,0,.9)}
+.listingblock>.content{position:relative}
+.listingblock code[data-lang]::before{display:none;content:attr(data-lang);position:absolute;font-size:.75em;top:.425rem;right:.5rem;line-height:1;text-transform:uppercase;color:inherit;opacity:.5}
+.listingblock:hover code[data-lang]::before{display:block}
+.listingblock.terminal pre .command::before{content:attr(data-prompt);padding-right:.5em;color:inherit;opacity:.5}
+.listingblock.terminal pre .command:not([data-prompt])::before{content:"$"}
+.listingblock pre.highlightjs{padding:0}
+.listingblock pre.highlightjs>code{padding:1em;border-radius:4px}
+.listingblock pre.prettyprint{border-width:0}
+.prettyprint{background:#f7f7f8}
+pre.prettyprint .linenums{line-height:1.45;margin-left:2em}
+pre.prettyprint li{background:none;list-style-type:inherit;padding-left:0}
+pre.prettyprint li code[data-lang]::before{opacity:1}
+pre.prettyprint li:not(:first-child) code[data-lang]::before{display:none}
+table.linenotable{border-collapse:separate;border:0;margin-bottom:0;background:none}
+table.linenotable td[class]{color:inherit;vertical-align:top;padding:0;line-height:inherit;white-space:normal}
+table.linenotable td.code{padding-left:.75em}
+table.linenotable td.linenos,pre.pygments .linenos{border-right:1px solid;opacity:.35;padding-right:.5em;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
+pre.pygments span.linenos{display:inline-block;margin-right:.75em}
+.quoteblock{margin:0 1em 1.25em 1.5em;display:table}
+.quoteblock:not(.excerpt)>.title{margin-left:-1.5em;margin-bottom:.75em}
+.quoteblock blockquote,.quoteblock p{color:rgba(0,0,0,.85);font-size:1.15rem;line-height:1.75;word-spacing:.1em;letter-spacing:0;font-style:italic;text-align:justify}
+.quoteblock blockquote{margin:0;padding:0;border:0}
+.quoteblock blockquote::before{content:"\201c";float:left;font-size:2.75em;font-weight:bold;line-height:.6em;margin-left:-.6em;color:#7a2518;text-shadow:0 1px 2px rgba(0,0,0,.1)}
+.quoteblock blockquote>.paragraph:last-child p{margin-bottom:0}
+.quoteblock .attribution{margin-top:.75em;margin-right:.5ex;text-align:right}
+.verseblock{margin:0 1em 1.25em}
+.verseblock pre{font-family:"Open Sans","DejaVu Sans",sans-serif;font-size:1.15rem;color:rgba(0,0,0,.85);font-weight:300;text-rendering:optimizeLegibility}
+.verseblock pre strong{font-weight:400}
+.verseblock .attribution{margin-top:1.25rem;margin-left:.5ex}
+.quoteblock .attribution,.verseblock .attribution{font-size:.9375em;line-height:1.45;font-style:italic}
+.quoteblock .attribution br,.verseblock .attribution br{display:none}
+.quoteblock .attribution cite,.verseblock .attribution cite{display:block;letter-spacing:-.025em;color:rgba(0,0,0,.6)}
+.quoteblock.abstract blockquote::before,.quoteblock.excerpt blockquote::before,.quoteblock .quoteblock blockquote::before{display:none}
+.quoteblock.abstract blockquote,.quoteblock.abstract p,.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{line-height:1.6;word-spacing:0}
+.quoteblock.abstract{margin:0 1em 1.25em;display:block}
+.quoteblock.abstract>.title{margin:0 0 .375em;font-size:1.15em;text-align:center}
+.quoteblock.excerpt>blockquote,.quoteblock .quoteblock{padding:0 0 .25em 1em;border-left:.25em solid #dddddf}
+.quoteblock.excerpt,.quoteblock .quoteblock{margin-left:0}
+.quoteblock.excerpt blockquote,.quoteblock.excerpt p,.quoteblock .quoteblock blockquote,.quoteblock .quoteblock p{color:inherit;font-size:1.0625rem}
+.quoteblock.excerpt .attribution,.quoteblock .quoteblock .attribution{color:inherit;font-size:.85rem;text-align:left;margin-right:0}
+p.tableblock:last-child{margin-bottom:0}
+td.tableblock>.content{margin-bottom:1.25em;word-wrap:anywhere}
+td.tableblock>.content>:last-child{margin-bottom:-1.25em}
+table.tableblock,th.tableblock,td.tableblock{border:0 solid #dedede}
+table.grid-all>*>tr>*{border-width:1px}
+table.grid-cols>*>tr>*{border-width:0 1px}
+table.grid-rows>*>tr>*{border-width:1px 0}
+table.frame-all{border-width:1px}
+table.frame-ends{border-width:1px 0}
+table.frame-sides{border-width:0 1px}
+table.frame-none>colgroup+*>:first-child>*,table.frame-sides>colgroup+*>:first-child>*{border-top-width:0}
+table.frame-none>:last-child>:last-child>*,table.frame-sides>:last-child>:last-child>*{border-bottom-width:0}
+table.frame-none>*>tr>:first-child,table.frame-ends>*>tr>:first-child{border-left-width:0}
+table.frame-none>*>tr>:last-child,table.frame-ends>*>tr>:last-child{border-right-width:0}
+table.stripes-all>*>tr,table.stripes-odd>*>tr:nth-of-type(odd),table.stripes-even>*>tr:nth-of-type(even),table.stripes-hover>*>tr:hover{background:#f8f8f7}
+th.halign-left,td.halign-left{text-align:left}
+th.halign-right,td.halign-right{text-align:right}
+th.halign-center,td.halign-center{text-align:center}
+th.valign-top,td.valign-top{vertical-align:top}
+th.valign-bottom,td.valign-bottom{vertical-align:bottom}
+th.valign-middle,td.valign-middle{vertical-align:middle}
+table thead th,table tfoot th{font-weight:bold}
+tbody tr th{background:#f7f8f7}
+tbody tr th,tbody tr th p,tfoot tr th,tfoot tr th p{color:rgba(0,0,0,.8);font-weight:bold}
+p.tableblock>code:only-child{background:none;padding:0}
+p.tableblock{font-size:1em}
+ol{margin-left:1.75em}
+ul li ol{margin-left:1.5em}
+dl dd{margin-left:1.125em}
+dl dd:last-child,dl dd:last-child>:last-child{margin-bottom:0}
+li p,ul dd,ol dd,.olist .olist,.ulist .ulist,.ulist .olist,.olist .ulist{margin-bottom:.625em}
+ul.checklist,ul.none,ol.none,ul.no-bullet,ol.no-bullet,ol.unnumbered,ul.unstyled,ol.unstyled{list-style-type:none}
+ul.no-bullet,ol.no-bullet,ol.unnumbered{margin-left:.625em}
+ul.unstyled,ol.unstyled{margin-left:0}
+li>p:empty:only-child::before{content:"";display:inline-block}
+ul.checklist>li>p:first-child{margin-left:-1em}
+ul.checklist>li>p:first-child>.fa-square-o:first-child,ul.checklist>li>p:first-child>.fa-check-square-o:first-child{width:1.25em;font-size:.8em;position:relative;bottom:.125em}
+ul.checklist>li>p:first-child>input[type=checkbox]:first-child{margin-right:.25em}
+ul.inline{display:flex;flex-flow:row wrap;list-style:none;margin:0 0 .625em -1.25em}
+ul.inline>li{margin-left:1.25em}
+.unstyled dl dt{font-weight:400;font-style:normal}
+ol.arabic{list-style-type:decimal}
+ol.decimal{list-style-type:decimal-leading-zero}
+ol.loweralpha{list-style-type:lower-alpha}
+ol.upperalpha{list-style-type:upper-alpha}
+ol.lowerroman{list-style-type:lower-roman}
+ol.upperroman{list-style-type:upper-roman}
+ol.lowergreek{list-style-type:lower-greek}
+.hdlist>table,.colist>table{border:0;background:none}
+.hdlist>table>tbody>tr,.colist>table>tbody>tr{background:none}
+td.hdlist1,td.hdlist2{vertical-align:top;padding:0 .625em}
+td.hdlist1{font-weight:bold;padding-bottom:1.25em}
+td.hdlist2{word-wrap:anywhere}
+.literalblock+.colist,.listingblock+.colist{margin-top:-.5em}
+.colist td:not([class]):first-child{padding:.4em .75em 0;line-height:1;vertical-align:top}
+.colist td:not([class]):first-child img{max-width:none}
+.colist td:not([class]):last-child{padding:.25em 0}
+.thumb,.th{line-height:0;display:inline-block;border:4px solid #fff;box-shadow:0 0 0 1px #ddd}
+.imageblock.left{margin:.25em .625em 1.25em 0}
+.imageblock.right{margin:.25em 0 1.25em .625em}
+.imageblock>.title{margin-bottom:0}
+.imageblock.thumb,.imageblock.th{border-width:6px}
+.imageblock.thumb>.title,.imageblock.th>.title{padding:0 .125em}
+.image.left,.image.right{margin-top:.25em;margin-bottom:.25em;display:inline-block;line-height:0}
+.image.left{margin-right:.625em}
+.image.right{margin-left:.625em}
+a.image{text-decoration:none;display:inline-block}
+a.image object{pointer-events:none}
+sup.footnote,sup.footnoteref{font-size:.875em;position:static;vertical-align:super}
+sup.footnote a,sup.footnoteref a{text-decoration:none}
+sup.footnote a:active,sup.footnoteref a:active{text-decoration:underline}
+#footnotes{padding-top:.75em;padding-bottom:.75em;margin-bottom:.625em}
+#footnotes hr{width:20%;min-width:6.25em;margin:-.25em 0 .75em;border-width:1px 0 0}
+#footnotes .footnote{padding:0 .375em 0 .225em;line-height:1.3334;font-size:.875em;margin-left:1.2em;margin-bottom:.2em}
+#footnotes .footnote a:first-of-type{font-weight:bold;text-decoration:none;margin-left:-1.05em}
+#footnotes .footnote:last-of-type{margin-bottom:0}
+#content #footnotes{margin-top:-.625em;margin-bottom:0;padding:.75em 0}
+div.unbreakable{page-break-inside:avoid}
+.big{font-size:larger}
+.small{font-size:smaller}
+.underline{text-decoration:underline}
+.overline{text-decoration:overline}
+.line-through{text-decoration:line-through}
+.aqua{color:#00bfbf}
+.aqua-background{background:#00fafa}
+.black{color:#000}
+.black-background{background:#000}
+.blue{color:#0000bf}
+.blue-background{background:#0000fa}
+.fuchsia{color:#bf00bf}
+.fuchsia-background{background:#fa00fa}
+.gray{color:#606060}
+.gray-background{background:#7d7d7d}
+.green{color:#006000}
+.green-background{background:#007d00}
+.lime{color:#00bf00}
+.lime-background{background:#00fa00}
+.maroon{color:#600000}
+.maroon-background{background:#7d0000}
+.navy{color:#000060}
+.navy-background{background:#00007d}
+.olive{color:#606000}
+.olive-background{background:#7d7d00}
+.purple{color:#600060}
+.purple-background{background:#7d007d}
+.red{color:#bf0000}
+.red-background{background:#fa0000}
+.silver{color:#909090}
+.silver-background{background:#bcbcbc}
+.teal{color:#006060}
+.teal-background{background:#007d7d}
+.white{color:#bfbfbf}
+.white-background{background:#fafafa}
+.yellow{color:#bfbf00}
+.yellow-background{background:#fafa00}
+span.icon>.fa{cursor:default}
+a span.icon>.fa{cursor:inherit}
+.admonitionblock td.icon [class^="fa icon-"]{font-size:2.5em;text-shadow:1px 1px 2px rgba(0,0,0,.5);cursor:default}
+.admonitionblock td.icon .icon-note::before{content:"\f05a";color:#19407c}
+.admonitionblock td.icon .icon-tip::before{content:"\f0eb";text-shadow:1px 1px 2px rgba(155,155,0,.8);color:#111}
+.admonitionblock td.icon .icon-warning::before{content:"\f071";color:#bf6900}
+.admonitionblock td.icon .icon-caution::before{content:"\f06d";color:#bf3400}
+.admonitionblock td.icon .icon-important::before{content:"\f06a";color:#bf0000}
+.conum[data-value]{display:inline-block;color:#fff!important;background:rgba(0,0,0,.8);border-radius:50%;text-align:center;font-size:.75em;width:1.67em;height:1.67em;line-height:1.67em;font-family:"Open Sans","DejaVu Sans",sans-serif;font-style:normal;font-weight:bold}
+.conum[data-value] *{color:#fff!important}
+.conum[data-value]+b{display:none}
+.conum[data-value]::after{content:attr(data-value)}
+pre .conum[data-value]{position:relative;top:-.125em}
+b.conum *{color:inherit!important}
+.conum:not([data-value]):empty{display:none}
+dt,th.tableblock,td.content,div.footnote{text-rendering:optimizeLegibility}
+h1,h2,p,td.content,span.alt,summary{letter-spacing:-.01em}
+p strong,td.content strong,div.footnote strong{letter-spacing:-.005em}
+p,blockquote,dt,td.content,td.hdlist1,span.alt,summary{font-size:1.0625rem}
+p{margin-bottom:1.25rem}
+.sidebarblock p,.sidebarblock dt,.sidebarblock td.content,p.tableblock{font-size:1em}
+.exampleblock>.content{background:#fffef7;border-color:#e0e0dc;box-shadow:0 1px 4px #e0e0dc}
+.print-only{display:none!important}
+@page{margin:1.25cm .75cm}
+@media print{*{box-shadow:none!important;text-shadow:none!important}
+html{font-size:80%}
+a{color:inherit!important;text-decoration:underline!important}
+a.bare,a[href^="#"],a[href^="mailto:"]{text-decoration:none!important}
+a[href^="http:"]:not(.bare)::after,a[href^="https:"]:not(.bare)::after{content:"(" attr(href) ")";display:inline-block;font-size:.875em;padding-left:.25em}
+abbr[title]{border-bottom:1px dotted}
+abbr[title]::after{content:" (" attr(title) ")"}
+pre,blockquote,tr,img,object,svg{page-break-inside:avoid}
+thead{display:table-header-group}
+svg{max-width:100%}
+p,blockquote,dt,td.content{font-size:1em;orphans:3;widows:3}
+h2,h3,#toctitle,.sidebarblock>.content>.title{page-break-after:avoid}
+#header,#content,#footnotes,#footer{max-width:none}
+#toc,.sidebarblock,.exampleblock>.content{background:none!important}
+#toc{border-bottom:1px solid #dddddf!important;padding-bottom:0!important}
+body.book #header{text-align:center}
+body.book #header>h1:first-child{border:0!important;margin:2.5em 0 1em}
+body.book #header .details{border:0!important;display:block;padding:0!important}
+body.book #header .details span:first-child{margin-left:0!important}
+body.book #header .details br{display:block}
+body.book #header .details br+span::before{content:none!important}
+body.book #toc{border:0!important;text-align:left!important;padding:0!important;margin:0!important}
+body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-break-before:always}
+.listingblock code[data-lang]::before{display:block}
+#footer{padding:0 .9375em}
+.hide-on-print{display:none!important}
+.print-only{display:block!important}
+.hide-for-print{display:none!important}
+.show-for-print{display:inherit!important}}
+@media amzn-kf8,print{#header>h1:first-child{margin-top:1.25rem}
+.sect1{padding:0!important}
+.sect1+.sect1{border:0}
+#footer{background:none}
+#footer-text{color:rgba(0,0,0,.6);font-size:.9em}}
+@media amzn-kf8{#header,#content,#footnotes,#footer{padding:0}}
+</style>
+</head>
+<body class="article">
+<div id="header">
+</div>
+<div id="content">
+<div class="sect2">
+<h3 id="_3_4_4_pv2_patient_visit_additional_information_segment">3.4.4 PV2 - Patient Visit - Additional Information Segment</h3>
+<div class="paragraph">
+<p>The PV2 segment is a continuation of information contained on the PV1 segment.</p>
+</div>
+<div class="paragraph">
+<p><span id="PV2 " class="anchor">#</span>#HL7 Attribute Table - PV2 - Patient Visit - Additional Information</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 14%;">
+<col style="width: 6%;">
+<col style="width: 7%;">
+<col style="width: 6%;">
+<col style="width: 6%;">
+<col style="width: 6%;">
+<col style="width: 7%;">
+<col style="width: 7%;">
+<col style="width: 41%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">SEQ</th>
+<th class="tableblock halign-left valign-top">LEN</th>
+<th class="tableblock halign-left valign-top">C.LEN</th>
+<th class="tableblock halign-left valign-top">DT</th>
+<th class="tableblock halign-left valign-top">OPT</th>
+<th class="tableblock halign-left valign-top">RP/#</th>
+<th class="tableblock halign-left valign-top">TBL#</th>
+<th class="tableblock halign-left valign-top">ITEM#</th>
+<th class="tableblock halign-left valign-top">ELEMENT NAME</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00181</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Prior Pending Location</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70129">0129</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00182</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Accommodation Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00183</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Admit Reason</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">4</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00184</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Transfer Reason</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">5</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00185</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient Valuables</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">6</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00186</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient Valuables Location</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">7</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70130">0130</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00187</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visit User Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">8</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DTM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00188</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Admit Date/Time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">9</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DTM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00189</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Discharge Date/Time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">10</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00711</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Estimated Length of Inpatient Stay</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">11</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">3=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00712</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Actual Length of Inpatient Stay</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">12</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50#</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00713</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visit Description</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">13</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XCN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00714</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Referral Source Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">14</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00715</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Previous Service Date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">15</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00716</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Employment Illness Related Indicator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">16</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70213">0213</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00717</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Purge Status Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">17</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00718</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Purge Status Date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">18</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70214">0214</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00719</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Special Program Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">19</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00720</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Retention Indicator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">20</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1=</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">NM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00721</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Number of Insurance Plans</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">21</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70215">0215</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00722</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visit Publicity Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">B</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00723</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visit Protection Indicator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">23</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">XON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00724</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Clinic Organization Name</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">24</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70216">0216</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00725</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient Status Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">25</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70217">0217</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00726</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Visit Priority Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">26</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00727</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Previous Treatment Date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">27</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70112">0112</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00728</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Discharge Disposition</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">28</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00729</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Signature on File Date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">29</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00730</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">First Similar Illness Date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">30</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70218">0218</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00731</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient Charge Adjustment Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">31</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70219">0219</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00732</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recurring Service Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">32</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00733</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Billing Media Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">33</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DTM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00734</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Surgery Date and Time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">34</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00735</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Military Partnership Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">35</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00736</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Military Non-Availability Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">36</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00737</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Newborn Baby Indicator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">37</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1..1</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136">0136</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00738</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Baby Detained Indicator</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">38</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70430">0430</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01543</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Mode of Arrival Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">39</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70431">0431</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01544</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Recreational Drug Use Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">40</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70432">0432</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01545</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Admission Level of Care Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">41</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70433">0433</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01546</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Precaution Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">42</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70434">0434</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01547</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient Condition Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">43</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70315">0315</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00759</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Living Will Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">44</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70316">0316</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">00760</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Organ Donor Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">45</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70435">0435</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01548</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Advance Directive Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">46</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01549</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Patient Status Effective Date</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">47</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DTM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">C</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01550</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected LOA Return Date/Time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">48</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DTM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01841</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Expected Pre-admission Testing Date/Time</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">49</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">CWE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Y</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70534">0534</a></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">01842</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Notify Clergy Code</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">50</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">O</p></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">02141</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Advance Directive Last Verified Date</p></td>
+</tr>
+</tbody>
+</table>
+<div class="sect3">
+<h4 id="_3_4_4_0_pv2_field_definitions"><strong>3.4.4.0</strong> PV2 field definitions</h4>
+
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_1_pv2_1_prior_pending_location_pl_00181"><strong>3.4.4.1</strong> PV2-1 Prior Pending Location (PL) 00181</h4>
+<div class="paragraph">
+<p>Components: &lt;Point of Care (HD)&gt; ^ &lt;Room (HD)&gt; ^ &lt;Bed (HD)&gt; ^ &lt;Facility (HD)&gt; ^ &lt;Location Status (IS)&gt; ^ &lt;Person Location Type (IS)&gt; ^ &lt;Building (HD)&gt; ^ &lt;Floor (HD)&gt; ^ &lt;Location Description (ST)&gt; ^ &lt;Comprehensive Location Identifier (EI)&gt; ^ &lt;Assigning Authority for Location (HD)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Point of Care (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Room (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Bed (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Facility (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Building (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Floor (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Comprehensive Location Identifier (EI): &lt;Entity Identifier (ST)&gt; &amp; &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Assigning Authority for Location (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field is required for cancel pending transfer (A26) messages. In all other events it is optional.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_2_pv2_2_accommodation_code_cwe_00182"><strong>3.4.4.2</strong> PV2-2 Accommodation Code (CWE) 00182</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates the specific patient accommodations for this visit. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70129"><em>User-defined Table 0129 - Accommodation Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_3_pv2_3_admit_reason_cwe_00183"><strong>3.4.4.3</strong> PV2-3 Admit Reason (CWE) 00183</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains the short description of the reason for patient admission.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_4_pv2_4_transfer_reason_cwe_00184"><strong>3.4.4.4</strong> PV2-4 Transfer Reason (CWE) 00184</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains the short description of the reason for a patient location change.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_5_pv2_5_patient_valuables_st_00185"><strong>3.4.4.5</strong> PV2-5 Patient Valuables (ST) 00185</h4>
+<div class="paragraph">
+<p>Definition: This field contains the short description of patient valuables checked in during admission.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_6_pv2_6_patient_valuables_location_st_00186"><strong>3.4.4.6</strong> PV2-6 Patient Valuables Location (ST) 00186</h4>
+<div class="paragraph">
+<p>Definition: This field indicates the location of the patient&#8217;s valuables.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_7_pv2_7_visit_user_code_cwe_00187"><strong>3.4.4.7</strong> PV2-7 Visit User Code (CWE) 00187</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field further categorizes a patient&#8217;s visit with respect to an individual institution&#8217;s needs, and is expected to be site-specific. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70130"><em>User-defined Table 0130 - Visit User Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_8_pv2_8_expected_admit_datetime_dtm_00188"><strong>3.4.4.8</strong> PV2-8 Expected Admit Date/Time (DTM) 00188</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date and time that the patient is expected to be admitted. This field is also used to reflect the date/time of an outpatient/emergency patient registration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_9_pv2_9_expected_discharge_datetime_dtm_00189"><strong>3.4.4.9</strong> PV2-9 Expected Discharge Date/Time (DTM) 00189</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date and time that the patient is expected to be discharged. This is a non-event related date used by ancillaries to determine more accurately the projected workloads. This field is also used to reflect the anticipated discharge date/time of an outpatient/emergency patient, or an inpatient.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_10_pv2_10_estimated_length_of_inpatient_stay_nm_00711"><strong>3.4.4.10</strong> PV2-10 Estimated Length of Inpatient Stay (NM) 00711</h4>
+<div class="paragraph">
+<p>Definition: This field specifies the estimated days of inpatient stays.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_11_pv2_11_actual_length_of_inpatient_stay_nm_00712"><strong>3.4.4.11</strong> PV2-11 Actual Length of Inpatient Stay (NM) 00712</h4>
+<div class="paragraph">
+<p>Definition: This field contains the actual days of inpatient stays. The actual length of the inpatient stay may not be calculated from the admission and discharge dates because of possible leaves of absence.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_12_pv2_12_visit_description_st_00713"><strong>3.4.4.12</strong> PV2-12 Visit Description (ST) 00713</h4>
+<div class="paragraph">
+<p>Definition: This field contains a brief user-defined description of the visit.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_13_pv2_13_referral_source_code_xcn_00714"><strong>3.4.4.13</strong> PV2-13 Referral Source Code (XCN) 00714</h4>
+<div class="paragraph">
+<p>Components: &lt;Person Identifier (ST)&gt; ^ &lt;Family Name (FN)&gt; ^ &lt;Given Name (ST)&gt; ^ &lt;Second and Further Given Names or Initials Thereof (ST)&gt; ^ &lt;Suffix (e.g., JR or III) (ST)&gt; ^ &lt;Prefix (e.g., DR) (ST)&gt; ^ &lt;WITHDRAWN Constituent&gt; ^ &lt;DEPRECATED-Source Table (CWE)&gt; ^ &lt;Assigning Authority (HD)&gt; ^ &lt;Name Type Code (ID)&gt; ^ &lt;Identifier Check Digit (ST)&gt; ^ &lt;Check Digit Scheme (ID)&gt; ^ &lt;Identifier Type Code (ID)&gt; ^ &lt;Assigning Facility (HD)&gt; ^ &lt;Name Representation Code (ID)&gt; ^ &lt;Name Context (CWE)&gt; ^ &lt;WITHDRAWN Constituent&gt; ^ &lt;Name Assembly Order (ID)&gt; ^ &lt;Effective Date (DTM)&gt; ^ &lt;Expiration Date (DTM)&gt; ^ &lt;Professional Suffix (ST)&gt; ^ &lt;Assigning Jurisdiction (CWE)&gt; ^ &lt;Assigning Agency or Department (CWE)&gt; ^ &lt;Security Check (ST)&gt; ^ &lt;Security Check Scheme (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Family Name (FN): &lt;Surname (ST)&gt; &amp; &lt;Own Surname Prefix (ST)&gt; &amp; &lt;Own Surname (ST)&gt; &amp; &lt;Surname Prefix from Partner/Spouse (ST)&gt; &amp; &lt;Surname from Partner/Spouse (ST)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Source Table (CWE): &lt;Identifier (ST)&gt; &amp; &lt;Text (ST)&gt; &amp; &lt;Name of Coding System (ID)&gt; &amp; &lt;Alternate Identifier (ST)&gt; &amp; &lt;Alternate Text (ST)&gt; &amp; &lt;Name of Alternate Coding System (ID)&gt; &amp; &lt;Coding System Version ID (ST)&gt; &amp; &lt;Alternate Coding System Version ID (ST)&gt; &amp; &lt;Original Text (ST)&gt; &amp; &lt;Second Alternate Identifier (ST)&gt; &amp; &lt;Second Alternate Text (ST)&gt; &amp; &lt;Name of Second Alternate Coding System (ID)&gt; &amp; &lt;Second Alternate Coding System Version ID (ST)&gt; &amp; &lt;Coding System OID (ST)&gt; &amp; &lt;Value Set OID (ST)&gt; &amp; &lt;Value Set Version ID (DTM)&gt; &amp; &lt;Alternate Coding System OID (ST)&gt; &amp; &lt;Alternate Value Set OID (ST)&gt; &amp; &lt;Alternate Value Set Version ID (DTM)&gt; &amp; &lt;Second Alternate Coding System OID (ST)&gt; &amp; &lt;Second Alternate Value Set OID (ST)&gt; &amp; &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Assigning Authority (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Assigning Facility (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Name Context (CWE): &lt;Identifier (ST)&gt; &amp; &lt;Text (ST)&gt; &amp; &lt;Name of Coding System (ID)&gt; &amp; &lt;Alternate Identifier (ST)&gt; &amp; &lt;Alternate Text (ST)&gt; &amp; &lt;Name of Alternate Coding System (ID)&gt; &amp; &lt;Coding System Version ID (ST)&gt; &amp; &lt;Alternate Coding System Version ID (ST)&gt; &amp; &lt;Original Text (ST)&gt; &amp; &lt;Second Alternate Identifier (ST)&gt; &amp; &lt;Second Alternate Text (ST)&gt; &amp; &lt;Name of Second Alternate Coding System (ID)&gt; &amp; &lt;Second Alternate Coding System Version ID (ST)&gt; &amp; &lt;Coding System OID (ST)&gt; &amp; &lt;Value Set OID (ST)&gt; &amp; &lt;Value Set Version ID (DTM)&gt; &amp; &lt;Alternate Coding System OID (ST)&gt; &amp; &lt;Alternate Value Set OID (ST)&gt; &amp; &lt;Alternate Value Set Version ID (DTM)&gt; &amp; &lt;Second Alternate Coding System OID (ST)&gt; &amp; &lt;Second Alternate Value Set OID (ST)&gt; &amp; &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Assigning Jurisdiction (CWE): &lt;Identifier (ST)&gt; &amp; &lt;Text (ST)&gt; &amp; &lt;Name of Coding System (ID)&gt; &amp; &lt;Alternate Identifier (ST)&gt; &amp; &lt;Alternate Text (ST)&gt; &amp; &lt;Name of Alternate Coding System (ID)&gt; &amp; &lt;Coding System Version ID (ST)&gt; &amp; &lt;Alternate Coding System Version ID (ST)&gt; &amp; &lt;Original Text (ST)&gt; &amp; &lt;Second Alternate Identifier (ST)&gt; &amp; &lt;Second Alternate Text (ST)&gt; &amp; &lt;Name of Second Alternate Coding System (ID)&gt; &amp; &lt;Second Alternate Coding System Version ID (ST)&gt; &amp; &lt;Coding System OID (ST)&gt; &amp; &lt;Value Set OID (ST)&gt; &amp; &lt;Value Set Version ID (DTM)&gt; &amp; &lt;Alternate Coding System OID (ST)&gt; &amp; &lt;Alternate Value Set OID (ST)&gt; &amp; &lt;Alternate Value Set Version ID (DTM)&gt; &amp; &lt;Second Alternate Coding System OID (ST)&gt; &amp; &lt;Second Alternate Value Set OID (ST)&gt; &amp; &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Assigning Agency or Department (CWE): &lt;Identifier (ST)&gt; &amp; &lt;Text (ST)&gt; &amp; &lt;Name of Coding System (ID)&gt; &amp; &lt;Alternate Identifier (ST)&gt; &amp; &lt;Alternate Text (ST)&gt; &amp; &lt;Name of Alternate Coding System (ID)&gt; &amp; &lt;Coding System Version ID (ST)&gt; &amp; &lt;Alternate Coding System Version ID (ST)&gt; &amp; &lt;Original Text (ST)&gt; &amp; &lt;Second Alternate Identifier (ST)&gt; &amp; &lt;Second Alternate Text (ST)&gt; &amp; &lt;Name of Second Alternate Coding System (ID)&gt; &amp; &lt;Second Alternate Coding System Version ID (ST)&gt; &amp; &lt;Coding System OID (ST)&gt; &amp; &lt;Value Set OID (ST)&gt; &amp; &lt;Value Set Version ID (DTM)&gt; &amp; &lt;Alternate Coding System OID (ST)&gt; &amp; &lt;Alternate Value Set OID (ST)&gt; &amp; &lt;Alternate Value Set Version ID (DTM)&gt; &amp; &lt;Second Alternate Coding System OID (ST)&gt; &amp; &lt;Second Alternate Value Set OID (ST)&gt; &amp; &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains the name and the identification numbers of the person or organization that made the referral. This person/organization is not the same as the referring doctor. For example, Adam Everyman referred me to the Clinic (or to Dr. Everywoman at the Clinic).</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_14_pv2_14_previous_service_date_dt_00715"><strong>3.4.4.14</strong> PV2-14 Previous Service Date (DT) 00715</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date of previous service for the same recurring condition. This may be a required field for billing certain illnesses (e.g., accident related) to a third party.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_15_pv2_15_employment_illness_related_indicator_id_00716"><strong>3.4.4.15</strong> PV2-15 Employment Illness Related Indicator (ID) 00716</h4>
+<div class="paragraph">
+<p>Definition: This field specifies whether a patient&#8217;s illness was job-related. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> in Chapter 2C, Code Tables, for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y the patient&#8217;s illness was job-related</p>
+</div>
+<div class="paragraph">
+<p>N the patient&#8217;s illness was not job-related</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_16_pv2_16_purge_status_code_cwe_00717"><strong>3.4.4.16</strong> PV2-16 Purge Status Code (CWE) 00717</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains the purge status code for the account. It is used by the application program to determine purge processing. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70213"><em>User-defined Table 0213 - Purge Status Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_17_pv2_17_purge_status_date_dt_00718"><strong>3.4.4.17</strong> PV2-17 Purge Status Date (DT) 00718</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date on which the data will be purged from the system.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_18_pv2_18_special_program_code_cwe_00719"><strong>3.4.4.18</strong> PV2-18 Special Program Code (CWE) 00719</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field designates the specific health insurance program for a visit required for healthcare reimbursement. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70214"><em>User-defined Table 0214 - Special Program Codes</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_19_pv2_19_retention_indicator_id_00720"><strong>3.4.4.19</strong> PV2-19 Retention Indicator (ID) 00720</h4>
+<div class="paragraph">
+<p>Definition: This field allows the user to control the financial and demographic purge processes at the visit. It is used to preserve demographic and financial data on specific, high priority visits. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y retain data</p>
+</div>
+<div class="paragraph">
+<p>N normal purge processing</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_20_pv2_20_expected_number_of_insurance_plans_nm_00721"><strong>3.4.4.20</strong> PV2-20 Expected Number of Insurance Plans (NM) 00721</h4>
+<div class="paragraph">
+<p>Definition: This field contains the number of insurance plans that may provide coverage for this visit.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_21_pv2_21_visit_publicity_code_cwe_00722"><strong>3.4.4.21</strong> PV2-21 Visit Publicity Code (CWE) 00722</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains a user-defined code indicating what level of publicity is allowed for a specific visit. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70215"><em>User-defined Table 0215 - Publicity Code</em></a> in Chapter 2C, Code Tables, for suggested values. Refer to <em>PD1-11 - Publicity Code</em> for the patient level publicity code.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_22_pv2_22_visit_protection_indicator_id_00723"><strong>3.4.4.22</strong> PV2-22 Visit Protection Indicator (ID) 00723</h4>
+<div class="paragraph">
+<p>Definition: <strong>From v 2.6 onward, this field has been retained for backwards compatibility only.</strong> Use the ARV segment instead. This field identifies the person&#8217;s protection that determines, in turn, whether access to information about this person should be kept from users who do not have adequate authority for a specific visit. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> in Chapter 2C, Code Tables, for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y protect access to patient information</p>
+</div>
+<div class="paragraph">
+<p>N normal access</p>
+</div>
+<div class="paragraph">
+<p>Refer to <em>PD1-12 - Protection Indicator</em> for the patient level protection indicator.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_23_pv2_23_clinic_organization_name_xon_00724"><strong>3.4.4.23</strong> PV2-23 Clinic Organization Name (XON) 00724</h4>
+<div class="paragraph">
+<p>Components: &lt;Organization Name (ST)&gt; ^ &lt;Organization Name Type Code (CWE)&gt; ^ &lt;WITHDRAWN Constituent&gt; ^ &lt;WITHDRAWN Constituent&gt; ^ &lt;WITHDRAWN Constituent&gt; ^ &lt;Assigning Authority (HD)&gt; ^ &lt;Identifier Type Code (ID)&gt; ^ &lt;Assigning Facility (HD)&gt; ^ &lt;Name Representation Code (ID)&gt; ^ &lt;Organization Identifier (ST)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Organization Name Type Code (CWE): &lt;Identifier (ST)&gt; &amp; &lt;Text (ST)&gt; &amp; &lt;Name of Coding System (ID)&gt; &amp; &lt;Alternate Identifier (ST)&gt; &amp; &lt;Alternate Text (ST)&gt; &amp; &lt;Name of Alternate Coding System (ID)&gt; &amp; &lt;Coding System Version ID (ST)&gt; &amp; &lt;Alternate Coding System Version ID (ST)&gt; &amp; &lt;Original Text (ST)&gt; &amp; &lt;Second Alternate Identifier (ST)&gt; &amp; &lt;Second Alternate Text (ST)&gt; &amp; &lt;Name of Second Alternate Coding System (ID)&gt; &amp; &lt;Second Alternate Coding System Version ID (ST)&gt; &amp; &lt;Coding System OID (ST)&gt; &amp; &lt;Value Set OID (ST)&gt; &amp; &lt;Value Set Version ID (DTM)&gt; &amp; &lt;Alternate Coding System OID (ST)&gt; &amp; &lt;Alternate Value Set OID (ST)&gt; &amp; &lt;Alternate Value Set Version ID (DTM)&gt; &amp; &lt;Second Alternate Coding System OID (ST)&gt; &amp; &lt;Second Alternate Value Set OID (ST)&gt; &amp; &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Assigning Authority (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Subcomponents for Assigning Facility (HD): &lt;Namespace ID (IS)&gt; &amp; &lt;Universal ID (ST)&gt; &amp; &lt;Universal ID Type (ID)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains the organization name or sub-unit and identifier that is associated with the (visit) episode of care. For example, the Allergy or Oncology Clinic within the healthcare facility might be named.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_24_pv2_24_patient_status_code_cwe_00725"><strong>3.4.4.24</strong> PV2-24 Patient Status Code (CWE) 00725</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates the status of the episode of care. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70216"><em>User-defined Table 0216 - Patient Status</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_25_pv2_25_visit_priority_code_cwe_00726"><strong>3.4.4.25</strong> PV2-25 Visit Priority Code (CWE) 00726</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains the priority of the visit. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70217"><em>User-defined Table 0217 - Visit Priority Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_26_pv2_26_previous_treatment_date_dt_00727"><strong>3.4.4.26</strong> PV2-26 Previous Treatment Date (DT) 00727</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date that the patient last had treatment for any condition prior to this visit. In the case of a prior hospital visit, it is likely to be the previous discharge date.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_27_pv2_27_expected_discharge_disposition_cwe_00728"><strong>3.4.4.27</strong> PV2-27 Expected Discharge Disposition (CWE) 00728</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field describes what the patient&#8217;s disposition is expected to be at the end of the visit. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70112"><em>User-defined Table 0112 - Discharge Disposition</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_28_pv2_28_signature_on_file_date_dt_00729"><strong>3.4.4.28</strong> PV2-28 Signature on File Date (DT) 00729</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date on which a signature was obtained for insurance billing purposes.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_29_pv2_29_first_similar_illness_date_dt_00730"><strong>3.4.4.29</strong> PV2-29 First Similar Illness Date (DT) 00730</h4>
+<div class="paragraph">
+<p>Definition: This field is used to determine if the patient has a pre-existing condition.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_30_pv2_30_patient_charge_adjustment_code_cwe_00731"><strong>3.4.4.30</strong> PV2-30 Patient Charge Adjustment Code (CWE) 00731</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field contains a user-defined code that indicates which adjustments should be made to this patient&#8217;s charges. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70218"><em>User-defined Table 0218 - Patient Charge Adjustment</em></a> in in chapter 2C, for suggested values. This field is the same as <em>GT1-26 - Guarantor Charge Adjustment Code</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_31_pv2_31_recurring_service_code_cwe_00732"><strong>3.4.4.31</strong> PV2-31 Recurring Service Code (CWE) 00732</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates whether the treatment is continuous. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70219"><em>User-defined Table 0219 - Recurring Service</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_32_pv2_32_billing_media_code_id_00733"><strong>3.4.4.32</strong> PV2-32 Billing Media Code (ID) 00733</h4>
+<div class="paragraph">
+<p>Definition: This field indicates if the account is to be rejected from tape billing. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> in Chapter 2C, Code Tables, for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y reject account from tape billing</p>
+</div>
+<div class="paragraph">
+<p>N normal processing</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_33_pv2_33_expected_surgery_date_and_time_dtm_00734"><strong>3.4.4.33</strong> PV2-33 Expected Surgery Date and Time (DTM) 00734</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date and time on which the surgery is expected to occur.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_34_pv2_34_military_partnership_code_id_00735"><strong>3.4.4.34</strong> PV2-34 Military Partnership Code (ID) 00735</h4>
+<div class="paragraph">
+<p>Definition: This field indicates that a military healthcare facility has contracted with a non-military healthcare facility for the use of its services. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> in Chapter 2C, Code Tables, for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y contract(s) exist</p>
+</div>
+<div class="paragraph">
+<p>N no contract(s) exist</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_35_pv2_35_military_non_availability_code_id_00736"><strong>3.4.4.35</strong> PV2-35 Military Non-Availability Code (ID) 00736</h4>
+<div class="paragraph">
+<p>Definition: This field indicates whether a patient has permission to use a non-military healthcare facility for treatment. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> in Chapter 2C, Code Tables, for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y the patient has permission to use a non-military healthcare facility</p>
+</div>
+<div class="paragraph">
+<p>N the patient does not have permissions to use a non-military healthcare facility</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_36_pv2_36_newborn_baby_indicator_id_00737"><strong>3.4.4.36</strong> PV2-36 Newborn Baby Indicator (ID) 00737</h4>
+<div class="paragraph">
+<p>Definition: This field indicates whether the patient is a baby. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> in Chapter 2C, Code Tables, for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y the patient is a baby</p>
+</div>
+<div class="paragraph">
+<p>N the patient is not a baby</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_37_pv2_37_baby_detained_indicator_id_00738"><strong>3.4.4.37</strong> PV2-37 Baby Detained Indicator (ID) 00738</h4>
+<div class="paragraph">
+<p>Definition: This field indicates if the baby is detained after the mother&#8217;s discharge. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136"><em>HL7 Table 0136 - Yes/No Indicator</em></a> in Chapter 2C, Code Tables, for valid values.</p>
+</div>
+<div class="paragraph">
+<p>Y the baby was detained</p>
+</div>
+<div class="paragraph">
+<p>N normal discharge of mother and baby</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_38_pv2_38_mode_of_arrival_code_cwe_01543"><strong>3.4.4.38</strong> PV2-38 Mode of Arrival Code (CWE) 01543</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: Identifies how the patient was brought to the healthcare facility. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70430"><em>User-defined Table 0430 - Mode of Arrival Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_39_pv2_39_recreational_drug_use_code_cwe_01544"><strong>3.4.4.39</strong> PV2-39 Recreational Drug Use Code (CWE) 01544</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates what recreational drugs the patient uses. It is used for the purpose of room assignment. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70431"><em>User-defined Table 0431 - Recreational Drug Use Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_40_pv2_40_admission_level_of_care_code_cwe_01545"><strong>3.4.4.40</strong> PV2-40 Admission Level of Care Code (CWE) 01545</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates the acuity level assigned to the patient at the time of admission. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70432"><em>User-defined Table 0432 - Admission Level of Care Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_41_pv2_41_precaution_code_cwe_01546"><strong>3.4.4.41</strong> PV2-41 Precaution Code (CWE) 01546</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates non-clinical precautions that need to be taken with the patient. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70433"><em>User-defined Table 0433 - Precaution Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_42_pv2_42_patient_condition_code_cwe_01547"><strong>3.4.4.42</strong> PV2-42 Patient Condition Code (CWE) 01547</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates the patient&#8217;s current medical condition for the purpose of communicating to non-medical outside parties, e.g., family, employer, religious minister, media, etc. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70434"><em>User-defined Table 0434 - Patient Condition Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_43_pv2_43_living_will_code_cwe_00759"><strong>3.4.4.43</strong> PV2-43 Living Will Code (CWE) 00759</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates whether or not the patient has a living will and, if so, whether a copy of the living will is on file at the healthcare facility. If the patient does not have a living will, the value of this field indicates whether the patient was provided information on living wills. Refer to E:\\V2\\v2.9 final Nov from Frank\\V29_CH02C_Tables.docx#HL70315[<em>User-defined Table 0315 - Living Will Code</em>] in Chapter 2C, Code Tables, for suggested values. See also <em>PD1-7 - Living Will</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_44_pv2_44_organ_donor_code_cwe_00760"><strong>3.4.4.44</strong> PV2-44 Organ Donor Code (CWE) 00760</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates whether the patient wants to donate his/her organs and whether an organ donor card or similar documentation is on file with the healthcare organization. Refer to E:\\V2\\v2.9 final Nov from Frank\\V29_CH02C_Tables.docx#HL70316[<em>User-defined Table 0316 - Organ Donor Code</em>] in Chapter 2C, Code Tables, for suggested values. See also <em>PD1-8 - Organ Donor</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_45_pv2_45_advance_directive_code_cwe_01548"><strong>3.4.4.45</strong> PV2-45 Advance Directive Code (CWE) 01548</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field indicates the patient&#8217;s instructions to the healthcare facility. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70435"><em>User-defined Table 0435 - Advance Directive Code</em></a> in Chapter 2C, Code Tables, for suggested values. See also <em>PD1-15 - Advance Directive Code</em>. This field is required if <em>PV2-50 - Advance Directive Last Verified Date</em> is valued.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> for details about specific consent refer to the Consent (CON) segment in chapter 9.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_46_pv2_46_patient_status_effective_date_dt_01549"><strong>3.4.4.46</strong> PV2-46 Patient Status Effective Date (DT) 01549</h4>
+<div class="paragraph">
+<p>Definition: This field indicates the effective date for <em>PV2-24 - Patient Status</em>.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_47_pv2_47_expected_loa_return_datetime_dtm_01550"><strong>3.4.4.47</strong> PV2-47 Expected LOA Return Date/Time (DTM) 01550</h4>
+<div class="paragraph">
+<p>Definition: This field is conditionally required for <em>A21 - Patient goes on LOA</em>. It may be populated in <em>A22 - Patient returns from LOA</em> as well as in the <em>A53 - Cancel LOA for a patient</em> and the <em>A54 - Cancel patient returns from LOA</em> triggers. This field contains the date/time that the patient is expected to return from LOA.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_48_pv2_48_expected_preadmission_testing_datetime_dtm_01841"><strong>3.4.4.48</strong> PV2-48 Expected Preadmission Testing Date/Time (DTM) 01841</h4>
+<div class="paragraph">
+<p>Definition: This field contains the date/time that the patient is expected for pre-admission testing.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_49_pv2_49_notify_clergy_code_cwe_01842"><strong>3.4.4.49</strong> PV2-49 Notify Clergy Code (CWE) 01842</h4>
+<div class="paragraph">
+<p>Components: &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt; ^ &lt;Alternate Identifier (ST)&gt; ^ &lt;Alternate Text (ST)&gt; ^ &lt;Name of Alternate Coding System (ID)&gt; ^ &lt;Coding System Version ID (ST)&gt; ^ &lt;Alternate Coding System Version ID (ST)&gt; ^ &lt;Original Text (ST)&gt; ^ &lt;Second Alternate Identifier (ST)&gt; ^ &lt;Second Alternate Text (ST)&gt; ^ &lt;Name of Second Alternate Coding System (ID)&gt; ^ &lt;Second Alternate Coding System Version ID (ST)&gt; ^ &lt;Coding System OID (ST)&gt; ^ &lt;Value Set OID (ST)&gt; ^ &lt;Value Set Version ID (DTM)&gt; ^ &lt;Alternate Coding System OID (ST)&gt; ^ &lt;Alternate Value Set OID (ST)&gt; ^ &lt;Alternate Value Set Version ID (DTM)&gt; ^ &lt;Second Alternate Coding System OID (ST)&gt; ^ &lt;Second Alternate Value Set OID (ST)&gt; ^ &lt;Second Alternate Value Set Version ID (DTM)&gt;</p>
+</div>
+<div class="paragraph">
+<p>Definition: This field allows the user to indicate whether the clergy should be notified. Refer to <a href="file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70534"><em>User-defined Table 0534 - Notify Clergy Code</em></a> in Chapter 2C, Code Tables, for suggested values.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_3_4_4_50_pv2_50_advance_directive_last_verified_date_dt_02141"><strong>3.4.4.50</strong> PV2-50 Advance Directive Last Verified Date (DT) 02141</h4>
+<div class="paragraph">
+<p>Definition: This field indicates the date that all the advance directives held in <em>PV2-45 - Advance Directive Code</em> were last verified. When this field is valued, the field <em>PV2-45 - Advance Directive Code</em> is required.</p>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2023-10-04 13:24:26 -0600
+</div>
+</div>
+</body>
+</html>

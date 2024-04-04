@@ -1,0 +1,69 @@
+=== 3.3.42 ADT/ACK - Merge Visit - Visit Number (Event A42)
+
+A merge has been done at the visit identifier level. That is, two _PV1-19 - Visit Number_ identifiers have been merged into one.
+
+An A42 event is used to signal a merge of records for a visit that was incorrectly filed under two different visit numbers. The "incorrect source visit number" identified in the MRG segment (_MRG-5 - Prior Visit Number_) is to be merged with the required "correct target visit number" identified in the PV1 segment (_PV1-19 - Visit Number_). The "incorrect source visit number" would then logically never be referenced in future transactions. It is noted that some systems may still physically keep this "incorrect identifier" for audit trail purposes or other reasons associated with database index implementation requirements.
+
+An A42 (merge visit-visit number) event is intended for merging visit records without merging other identifiers. Any other identifiers that were previously associated with the "incorrect source visit number" are now associated with the "correct target visit number."
+
+Each superior identifier associated with this visit identifier level should have the same value in the PID and MRG segments, or the MRG and PV1 segments, as appropriate.
+
+See sections link:#merging-patientperson-information[_3.6.2_&#44;] "link:#merging-patientperson-information[_Merging patient/person information_]," and link:#merge[_3.6.2.1.2_], "link:#merge[_Merge_]," for a discussion of issues related to the implementation of merge messages.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. When other fields change, it is recommended that the A08 (update patient information) event be used in addition
+
+ADT^A42^ADT_A39: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|\{ |--- PATIENT begin | |
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[ link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|link:#MRG[MRG] |Merge Information | |3
+|[ link:#_Hlt476040270[PV1]] |Patient Visit | |3
+|} |--- PATIENT end | |
+|===
+
+[width="100%",cols="18%,24%,6%,16%,18%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A42^ADT_A39 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A42^ACK |- |ACK^A42^ACK
+|Application Ack |ADT^A42^ADT_A39 |- |- |ACK^A42^ACK |ACK^A42^ACK
+|===
+
+ACK^A42^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="21%,35%,12%,32%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A42^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A42^ACK
+|Application Ack |- |- |-
+|===
+

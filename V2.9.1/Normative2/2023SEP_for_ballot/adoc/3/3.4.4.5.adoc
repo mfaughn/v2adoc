@@ -1,0 +1,4 @@
+==== *3.4.4.5* PV2-5 Patient Valuables (ST) 00185
+
+Definition: This field contains the short description of patient valuables checked in during admission.
+

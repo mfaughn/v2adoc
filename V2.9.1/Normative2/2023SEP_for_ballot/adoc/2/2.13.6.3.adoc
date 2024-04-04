@@ -1,0 +1,6 @@
+==== 2.13.6.3 FHS-3 File Sending Application (HD) 00069
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field has the same definition as the corresponding field in the MSH segment.
+

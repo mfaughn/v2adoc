@@ -1,0 +1,88 @@
+=== 2.5.1 Message Construction Pseudocode
+
+____
+procedure construct_message ( data ) \{
+
+identify_message_needed;
+
+identify_separators_used;
+
+validate( data );
+
+order_segments( data, segment_list );
+
+foreach segment in ( segment_list ) \{
+
+insert segment.name; /* e.g., MSH */
+
+/* gather all data for fields */
+
+foreach field in ( fields_of( segment ) ) \{
+
+insert field separator; /* e.g., | */
+
+/* gather occurrences (MAY be multiple only for fields that are allowed to repeat */
+
+foreach occurrence in ( occurrences_of( field ) ) \{
+
+construct_occurrence( occurrence );
+
+if not last ( populated occurrence ) insert repetition_separator; /* e.g., ~ */
+
+}
+
+break if last ( populated field );
+
+}
+
+insert segment_terminator; /* always<cr>! */
+
+}
+
+return;
+
+}
+
+procedure construct_occurrence ( occurrence ) \{
+
+/* gather populated components */
+
+foreach component in ( components_of( occurrence ) ) \{
+
+get_subcomponent_data( component );
+
+/* gather all data for subcomponents */
+
+foreach subcomponent in ( subcomponents_of( component ) ) \{
+
+substitute( escape_character, \E\ );
+
+/* escape the field separator */
+
+substitute( field_separator, \F\ );
+
+/* escape the encoding characters */
+
+substitute( component_separator, \S\ );
+
+substitute( repetition_separator, \R\ );
+
+substitute( subcomponent_separator, \T\ );
+
+substitute (truncation_character, \P\ ) /*See 2.6.2Truncation Character escape*/
+
+insert subcomponent;
+
+if not last ( populated subcomponent ) insert subcomponent_separator; /* e.g., & */
+
+}
+
+if not last ( populated component ) insert component_separator; /* e.g., ^ */
+
+}
+
+return;
+
+}
+____
+

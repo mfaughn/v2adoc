@@ -1,0 +1,4 @@
+==== *3.4.15.2* OH1-2 Action Code (ID) 00816
+
+Definition: This field contains a code defining the action to be taken for this segment. It allows this segment to be sent to delete or update, for example, previously sent information. Refer to file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20Jan%202019\v29%20CH2C%20Table%200206[*_HL7 Table 0206 – Segment Action Code_*] in Chapter 2C, Code Tables, for valid values.
+

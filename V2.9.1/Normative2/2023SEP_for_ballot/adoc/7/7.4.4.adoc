@@ -1,0 +1,41 @@
+=== 7.4.4 PRT – Participation Information Segment
+
+The Participation Information segment contains the data necessary to add, update, correct, and delete from the record persons, organizations, devices, or locations (participants) participating in the activity being transmitted.
+
+In general, the PRT segment is used to describe a participant playing a particular role within the context of the message. In OO, for example, in the results messages the PRT segment may be used to provide the performing provider, whether a person or organization. In a specimen shipment message it may be the waypoint location relevant for the shipment.
+
+The positional location of the PRT segment indicates the relationship. When the segment is used following the OBX segment, then the participations relate to that OBX addressing participations such as responsible observer.
+
+The PRT segment may be used to communicate U.S. FDA Unique Device Identifier (UDIfootnote:[See http://www.fda.gov/udi[www.fda.gov/udi].]) information, with the PRT-10 field containing the UDI and additional fields added to contain UDI elements, when it is advised to communicate these individually (see Guidance in PRT-10 definition). These identifiers are intended to cover a wide variety of devices. When representing a UDI, PRT-4 would be “EQUIP”.
+
+HL7 Attribute Table - PRT – Participation Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |1..4 | |EI |C |N | |02379 |Participation Instance ID
+|2 |2..2 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[0287] |02534 |Action Code
+|3 | | |CWE |O | | |02380 |Action Reason
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70912[0912] |02381 |Role of Participation
+|5 | | |XCN |C |Y | |02382 |Person
+|6 | | |CWE |C | | |02383 |Person Provider Type
+|7 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70406[0406] |02384 |Organization Unit Type
+|8 | | |XON |C |Y | |02385 |Organization
+|9 | | |PL |C |Y | |02386 |Location
+|10 | | |EI |C |Y | |02348 |Device
+|11 | | |DTM |O | | |02387 |Begin Date/Time (arrival time)
+|12 | | |DTM |O | | |02388 |End Date/Time (departure time)
+|13 | | |CWE |O | | |02389 |Qualitative Duration
+|14 | | |XAD |C |Y | |02390 |Address
+|15 | | |XTN |O |Y | |02391 |Telecommunication Address
+|16 | | |EI |O | | |03476 |UDI Device Identifier
+|17 | | |DTM |O | | |03477 |Device Manufacture Date
+|18 | | |DTM |O | | |03478 |Device Expiry Date
+|19 | | |ST |O | | |03479 |Device Lot Number
+|20 | | |ST |O | | |03480 |Device Serial Number
+|21 | | |EI |O | | |03481 |Device Donation Identification
+|22 | | |CNE |C | |0961 |03483 |Device Type
+|23 | | |CWE |O | |0185 |00684 |Preferred Method of Contact
+|24 | | |PLN |O |Y | |01171 |Contact Identifiers
+|===
+

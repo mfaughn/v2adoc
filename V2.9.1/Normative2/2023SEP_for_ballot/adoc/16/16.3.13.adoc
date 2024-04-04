@@ -1,0 +1,48 @@
+=== 16.3.13 RSP^E22 – Authorization Request Status Query Response (event E22) 
+
+This message is used to respond to a QPB^E22 – Query Authorization Request Status. It provides Authorization status information to a Provider.
+
+A QBP^E22 – Query Authorization Request Status can be used to query against a Authorization Request or a specific Product/Service Line Item in a Authorization Request. The same response message, RSP^E22 – Authorization Request Query Response, is used for both types of query.
+
+Processing Rules:
+
+{empty}1) Provider Invoice Number + Payer Invoice Number + Product/Service Line Item Number on input message must exist on Payer Application's database and must point to the same Product/Service Line Item; otherwise, an error must be generated (mismatched Authorization Request and/or Product/Service Line Item).
+
+{empty}2) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original Authorization Request (submitted via the EHC^E20 – Submit Authorization Request message) for the specified Authorization Request being queried.
+
+{empty}3) A unique query identifier (Query Tag on QPD) must be generated for each query.
+
+RSP^E22^RSP_E22: Authorization Request Query Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |2
+|[ \{ ERR } ] |Error | |2
+|< |--- QUERY_ACK begin | |
+|QAK |Query Acknowledgement | |
+|QPD |Query Parameter Definition | |
+|[ |--- AUTHORIZATION_INFO begin | |
+|IVC |Invoice | |
+|PSG |Product/Service Group | |
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |
+|} |--- PSL_ITEM_INFO end | |
+|] |--- AUTHORIZATION_INFO end | |
+|> |--- QUERY_ACK end | |
+|===
+
+[width="100%",cols="23%,35%,10%,32%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|RSP^E22^RSP_E22 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^E22^ACK
+|Application Ack |- |- |-
+|===
+

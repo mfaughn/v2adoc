@@ -1,0 +1,25 @@
+==== 2.4.3.7 Repetition
+
+____
+Definition: Whether the field MAY repeat. The value that appears in the repetitions column is the maximum number of allowed occurrences, e.g., a value of '3' would mean that the field can have '3 occurrences'; if unspecified, there is only one occurrence, i.e., cannot repeat.
+
+In the segment attribute tables this information is provided in the column labeled *RP/#.* Note that components and subcomponents MAY NOT repeat, so this does not apply to components and subcomponents.
+
+The designations for Repetition are:
+____
+
+[width="100%",cols="14%,4%,82%",]
+|===
+|N or blank |- |no repetition
+|Y |- |the field MAY repeat an indefinite or site-determined number of times
+|(integer) |- |the field MAY repeat up to the number of times specified by the integer
+|===
+
+____
+Each occurrence MAY contain the number of characters specified by the field's maximum length. See Section _2_.
+
+Usage Note: For improved readability some work groups opt to leave the Repetition fields blank to indicate that the field SHALL NOT repeat. A blank SHALL NOT be construed to mean that the field MAY optionally repeat.
+
+As of v2.5 the Repetition column is to be left blank if the field SHALL NOT repeat.
+____
+

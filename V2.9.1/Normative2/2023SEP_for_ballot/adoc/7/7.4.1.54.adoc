@@ -1,0 +1,16 @@
+==== 7.4.1.54 OBR-54 Parent Order (EIP) 00222
+
+Components: <Placer Assigned Identifier (EI)> ^ <Filler Assigned Identifier (EI)>
+
+Subcomponents for Placer Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Filler Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field relates a child order to its parent order when a parent child order relationship exists. The parent child order mechanism is described in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70119[_HL7 Table 0119 – Order Control Codes_] in Chapter 2C, Code Tables, under order control code PA. This field uniquely identifies the parent orders; no other information is required to link the child order with its parent orders. It can be used to express that this order is a reflex being a consequence of original results referred here.
+
+The first component has the same format as _ORC-2-placer order number_ (Section _link:#_OBR-2___Placer order number   (EI) [*Error! Reference source not found.*],_ "link:#_OBR-2___Placer order number   (EI) [*_Error! Reference source not found._*]"). The second component has the same format as _ORC-3-filler order number_ (Section link:#_OBR-3___Filler Order Number   (EI) [*_Error! Reference source not found._*], "link:#_OBR-3___Filler Order Number   (EI) [*_Error! Reference source not found._*]"). The components of the placer order number and the filler order number are transmitted in sub‑components of the two components of this field.
+
+_Note that ORC-8 – Parent Order is equivalent to OBR-54-Parent Order, but neither one_ is the same as _OBR-29-Parent Result Obersvation Identifier_ .
+
+Condition: Where the message has matching ORC/OBR pairs, ORC-8 and OBR-54 must carry the same value.
+

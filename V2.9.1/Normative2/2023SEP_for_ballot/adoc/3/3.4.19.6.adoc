@@ -1,0 +1,6 @@
+==== *3.4.19.6* GSP-6 Validity Period (DR) 02513
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This field asserts the time frame during which the value in GSP-5 applies to the individual. This field may contain values for both the Start Date/Time and End Date/Time for values known to no longer be in use. Alternatively, the field may be populated with just a Start Date/Time which indicates that the value is still currently in use. *Note that the Start Date/Time for the Validitity Period may be different than the date on which the data was collected and/or entered.*
+

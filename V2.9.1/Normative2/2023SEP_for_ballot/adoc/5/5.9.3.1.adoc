@@ -1,0 +1,26 @@
+==== 5.9.3.1 MPI example
+
+The user wishes to know the identity of the patient whose medical record number is "555444222111".
+
+MSH|^~\&|PCR|GenHosp|MPI||199811201400-0800||QBP^Z91^QBP_Q13|8699|P|2.8||||||||
+
+QPD|Z91^WhoAmI^HL7nnnn|Q0009|555444222111^^^MPI^MR
+
+RCP|I|999^RD|
+
+RDF|PatientList^CX^20~PatientName^XPN^48~Mother'sMaidenName^XPN^48~DOB^DTM^24~Sex^IS^1~Race^CWE^80|
+
+The MPI system returns the following RTB message:
+
+MSH|^~\&|MPI|GenHosp|PCR||199811201400-0800||RTB^Z92^RTB_K13|8699|P|2.8||||||||
+
+MSA|AA|8699|
+
+QAK|Q0009|OK|Z91^WhoAmI^HL7nnnn|1|
+
+QPD|Z91^WhoAmI^HL7nnnn|Q0009|555444222111^^MPI^MR
+
+RDF|PatientList^CX^20~PatientName^XPN^48~Mother'sMaidenName^XPN^48~DOB^DTM^24~Sex^IS^1~Race^CWE^80|
+
+RDT|555444222111^^^MPI^MR|Everyman^Adam||19600614|M||
+

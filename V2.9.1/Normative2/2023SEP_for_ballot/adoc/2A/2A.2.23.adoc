@@ -1,0 +1,15 @@
+=== 2A.2.23 DTN - day type and number
+
+HL7 Component Table - DTN – Day Type and Number
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |CWE |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70149[0149] |Day Type | |2A.2.36
+|2 | |3# |NM |R | |Number of Days | |2A.2.47
+|===
+
+Definition: This data type specifies the type and number of days for which a certification is valid.
+
+*Note:* Replaces the CM data type used in section 6.5.8.11 IN3-11, as of v2.5.
+

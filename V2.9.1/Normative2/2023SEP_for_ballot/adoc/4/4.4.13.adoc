@@ -1,0 +1,12 @@
+=== 4.4.13 ORL – Specimen shipment centric laboratory order response message to specimen shipment OML(Event O40 and O56) 
+
+The function of this message is to respond to an OML message. An ORL message is the application acknowledgment to an OML message. See Chapter 2 for a description of the acknowledgment paradigm.
+
+Two message structures are available to acknowledge OML_O40:
+
+____
+• With patient segments
+
+• Optionally without patient segments
+____
+

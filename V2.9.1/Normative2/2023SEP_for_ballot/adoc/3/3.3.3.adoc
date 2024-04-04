@@ -1,0 +1,122 @@
+=== 3.3.3 ADT/ACK - Discharge/End Visit (Event A03)
+
+An A03 event signals the end of a patient's stay in a healthcare facility. It signals that the patient's status has changed to "discharged" and that a discharge date has been recorded. The patient is no longer in the facility. The patient's location prior to discharge should be entered in _PV1-3 - Assigned Patient Location_.
+
+An A03 event can be sent to notify: the pharmacy that the patient's stay has ended and that entitlement to drugs has changed accordingly; the nursing system that the patient has been discharged and that the care plan can be completed; the extended care or home health system that the patient has been discharged and that the new extended care or home health admission assessment can be scheduled; the finance system that the patient billing period has ended; and/or the clinical repository that discharge has taken place for the EMR.
+
+For non-admitted patients, an A03 event signals the end of a patient's visit to a healthcare facility. It could be used to signal the end of a visit for a one-time or recurring outpatient who is not assigned to a bed. It could also be used to signal the end of a visit to the Emergency Room. _PV1-45 - Discharge Date/Time_ can be used for the visit end date/time.
+
+When an account's start and end dates span a period greater than any particular visit, the P06 (end account) event should be used to transmit information about the closing of an account. To indicate that a patient has expired, use an A03 event with the _PID-29 - Patient Death Date and Time_ and _PID-30 - Patient Death Indicator_ filled in.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. The optional allergy, next-of-kin, insurance and guarantor fields should be sent when required to support advanced notification for pending extended care or home health admission requirements (such as scheduling of a nursing assessment in preparation for completion of the extended care plan). When other important fields change, it is recommended that the A08 (update patient information) event be used in addition.
+
+The ROL segment has been deprecated and retained for backwards compatiblity purposes only as of v 2.9. The reader is referred to the PRT segment instead.
+
+The PRT - Participation Segment is used in this message to communicate providers not specified elsewhere. Person level providers with an ongoing relationship are reported in the PRT segment following the PID/PD1 segments. Providers corresponding to the PV1 data are reported in the PRT segment following the PV1/PV2 segments. Providers related to a specific procedure are reported in the PRT segment following the PR1 segment. Providers related to a specific insurance are reported in the PRT segment following the IN1/IN2/IN3 segments. To communicate the begin date and end date of the provider, use the _–PRT-11 - Begin Date/Time_ and the _–PRT-12 - End Date/Time_ in the PRT segment, with the applicable _PRT-4 – Role of Particpation_. Refer to Chapter 7 for the definition of the PRT segment.
+
+ADT^A03^ADT_A03: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ link:++#arv---access-restrictions-segment++[ARV] }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##EVN[EVN] |Event Type | |3
+|file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##PID[PID] |Patient Identification | |3
+|[ link:++#pd1---patient-additional-demographic-segment++[PD1] ] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|[\{ link:++#oh1---person-employment-status-segment++[OH1] }] |Employment Status | |3
+|[\{ link:++#oh2---past-or-present-job-segment++[OH2] }] |Past or Present Job | |3
+|[ OH3 ] |Usual Work | |3
+|[\{ link:++#oh4---combat-zone-work-segment++[OH4] }] |Combat Zone Work | |3
+|[\{ link:++#arv---access-restrictions-segment++[ARV] }] |Access Restrictions |B |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|[\{ |--- NEXT_OF_KIN begin | |
+|file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[NK1] |Next of Kin / Associated Parties | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ link:++#oh2---past-or-present-job-segment++[OH2] }] |Past or Present Job | |3
+|[ link:++#oh3---usual-work-segment++[OH3] ] |Usual Work | |3
+|}] |--- NEXT_OF_KIN end | |
+|file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##PV1[PV1] |Patient Visit | |3
+|[ file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|[\{ link:++#arv---access-restrictions-segment++[ARV] }] |Access Restrictions |B |3
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|[\{ file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##DB1[DB1] }] |Disability Information | |3
+|[\{ file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##AL1[AL1] }] |Allergy Information | |3
+|[\{ link:++#iam---patient-adverse-reaction-information-segment++[IAM] }] |Patient Adverse Event Reaction Information | |3
+|[\{ DG1 }] |Diagnosis Information | |6
+|[ DRG ] |Diagnosis Related Group | |6
+|[\{ |--- PROCEDURE begin | |
+|PR1 |Procedures | |6
+|[\{ ROL }] |Role |B |15
+|[\{ PRT }] |Participation | |7
+|}] |--- PROCEDURE end | |
+|[\{ |--- OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{ PRT }] |Participation | |7
+|}] |--- OBSERVATION end | |
+|[\{ GT1 }] |Guarantor | |6
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ |--- INSURANCE begin | |
+|IN1 |Insurance | |6
+|[ IN2 ] |Insurance Additional Info. | |6
+|[\{ IN3 }] |Insurance Additional Info - Cert. | |6
+|[\{ GT1 }] |Guarantor | |6
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ ROL }] |Deprecated as of V2.9 |B |15
+|[\{ PRT }] |Participation | |7
+|[\{ |--- AUTHORIZATION begin | |
+|AUT |Authorization Record | |11
+|[\{ PRT }] |Participation | |7
+|}] |--- AUTHORIZATION end | |
+|[\{ |--- REFERRAL begin | |
+|RF1 |Referral Information | |11
+|[\{ PRT }] |Participation | |7
+|}] |--- REFERRAL end | |
+|}] |--- INSURANCE end | |
+|[ ACC ] |Accident Information | |6
+|[ file:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##PDA[PDA] ] |Patient Death and Autopsy | |3
+|===
+
+[width="100%",cols="18%,19%,4%,17%,21%,21%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A03^ADT_A03 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A03^ACK |- |ACK^A03^ACK
+|Application Ack |ADT^A03^ADT_A03 |- |- |ACK^A03^ACK |ACK^A03^ACK
+|===
+
+ACK^A03^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="21%,33%,7%,39%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A03^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A03^ACK
+|Application Ack |- |- |-
+|===
+

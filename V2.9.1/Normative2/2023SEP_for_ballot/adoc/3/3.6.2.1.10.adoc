@@ -1,0 +1,4 @@
+===== 3.6.2.1.10 Identifier renumbering
+
+When renumbering of identifiers occurs, the repeating segment construct may be required in order to report identifier number changes. When renumbering occurs, the incorrect source identifier is specified in the MRG segment and the correct target identifier is reported in the PID or PV1 segment. Refer to the use case for A41 (merge account-patient account number) for an illustration.
+

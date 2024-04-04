@@ -1,0 +1,38 @@
+==== 5.9.2.2 Dispense information query showing different instantiation
+
+The following example shows how the same QSC style query can be invoked in a very different way producing very different results.
+
+The user wishes to know all the medications ever dispensed for the patient whose medical record number is "555444222111" prescribed by Dr Lister (provider number 99). The following message is generated. Note that the same Query has been used, but different input specifications were used.
+
+MSH|^~\&|PCR|Gen Hosp|PIMS||199811201300-0800||QBP^Z87^QBP_Q11|8698|P|2.8||||||||
+
+QPD|Q33^Dispense Information^HL7nnnn|Q005| @PID.3^EQ^55544422211^AND|@ORC.1^EQ^RE^AND|@ORC.12.1^EQ^99
+
+RCP|I|999^RD|
+
+The pharmacy system identifies medical record number "555444222111" as belonging to Adam Everyman and locates 2 prescription dispenses as prescribed by Dr. Lister. The response is clearly different than the response to the first query.
+
+MSH|^~\&|PIMS|Gen Hosp|PCR||199811201300-0800||RSP^Z88^RSP_Z88|8857|P|2.8||||||||
+
+MSA|AA|8698|
+
+QAK|Q005|OK|Q33^Dispense Information^HL7nnnn|2|
+
+QPD|Q33^Dispense Information^HL7nnnn|Q005| @PID.3^EQ^55544422211^AND~@ORC.1^EQ^RE^AND~@ORC.12.1^EQ^99
+
+PID|||555444222111^^^MPI^MR||Everyman^Adam||19600614|M||C|2101 Webster # 106^^Oakland^CA^94612||^^^^^510^6271111|^^^^^510^6277654|||||343132266|||N|||||||||
+
+ORC|RE||89968665||||||199603121345-0700|||99^Assigned^Amanda^^^DR^MD ||^^^^^510^ 2673600||||||
+
+RXE|1^BID^^19980529|00182196901^VERAPAMIL HCL ER TAB 180MG ER^NDC |120||mgm||||||||||||||||||||||||||
+
+RXD|1|00182196901^VERAPAMIL HCL ER TAB 180MG ER^NDC|199603122000-0700|100|||1331665|3|||||||||||||||||
+
+RXR|PO||||
+
+ORC|RE||235134030||||||199810121030-0700|||88^PRIMARY^PATRICIA^H^III^DR^MD||^^^^^555^ 5551004||||||
+
+RXD|1|00054384163^THEOPHYLLINE 80MG/15ML SOLN^NDC|199810121145-0700|10|||235134030|5|AS DIRECTED||||||||||||
+
+RXR|PO
+

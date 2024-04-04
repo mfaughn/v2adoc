@@ -1,0 +1,6 @@
+==== 13.1.3.39 Point of reference//Point in space, (POR): 
+
+The intersection of the xy plane and an infinite line in the 'z' direction.
+
+*Note:* The POR is the reference from which all positioning and alignment of specimen containers are measured.
+

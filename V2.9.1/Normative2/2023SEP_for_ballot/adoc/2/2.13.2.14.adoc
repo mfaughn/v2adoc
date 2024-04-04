@@ -1,0 +1,10 @@
+==== 2.13.2.14 BHS-14 Batch Receiving Network Address (HD) 02272
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Identifier of the network location the message was transmitted to. Identified by an OID or text string. (e.g., URL).
+
+This is analogous with the Sending Network Address, however in the receiving role.
+
+This field SHALL only be populated when the underlying communication protocol does not support identification receiving network locations.
+

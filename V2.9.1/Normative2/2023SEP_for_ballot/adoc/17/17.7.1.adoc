@@ -1,0 +1,49 @@
+=== 17.7.1 STC/ACK - Notification of Sterilization Configuration (Event S33)
+
+This message is sent from a filler application to notify other applications of a new sterilization configuration. The information in the STC segment describes the detail of the new sterilization configuration.
+
+STC^S33^STC_S33: Sterilization Configuration Notification
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|\{SCP} |Sterilization Configuration | |17
+|===
+
+[width="100%",cols="19%,22%,9%,16%,17%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|STC^S33^STC_S33 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^S33^ACK |- |ACK^S33^ACK
+|Application Ack |ACK^S33^ACK |- |- |ACK^S33^ACK |ACK^S33^ACK
+|===
+
+ACK^S33^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^S33^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S33^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,4 @@
+==== 9.7.1.14 CON-14 Consent Effective Date/Time (DTM) 01789
+
+Definition: The time the consent becomes/became effective. This only needs to be specified if the time differs from the Consent Decision Date/Time
+

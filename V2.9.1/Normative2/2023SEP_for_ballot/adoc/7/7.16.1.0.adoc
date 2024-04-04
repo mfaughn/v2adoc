@@ -1,0 +1,22 @@
+==== 7.16.1.0 Segment Notes
+
+The Participation (PRT) segment following the Shipment (SHP) segment is used to document participants in a shipment. A minimum of one Participation segment is required for documenting the destination of the shipment. Other participants including shipment originator, shipment packer, shipment waypoints, etc. can also be documented using the Participation segment.
+
+The Observation/Result (OBX) segment in the SHIPPING_OBSERVATION segment group is used to carry any additional shipping information or observations that are not carried in the Shipment segment.
+
+The Participation (PRT) segment following the Specimen (SPM) segment is used to identify the person(s) who collected the specimen.
+
+The Observation/Result (OBX) segment in the SPECIMEN_OBSERVATION segment group is used to document any additional shipping information that is not conveyed in the Specimen (SPM) segment.
+
+The Container (SAC) segment is used to document the containers for a specimen. If it is necessary to document where in a package a particular specimen container is found, use SAC-11 (Position in Carrier) to convey this position. SAC-10 (Carrier Identifier) can be used to carry the identifier of the package within which the specimen container is located.
+
+The Observation/Result (OBX) segment in the CONTAINER_OBSERVATION segment group is used to document observations regarding the specimen container.
+
+The SUBJECT_PERSON/ANIMAL_IDENTIFICATION segment group is used to associate a specimen with the person or animal the specimen was obtained from. If the subject of the testing is something other than a person, the Next of Kin/Associated Parties (NK1) segment will document the person or organization responsible or owning the subject. For patients who are persons, the NK1 segment documents the next of kin of the patient.
+
+If the specimen was obtained from a population of animals or a location then the SUBJECT_POPULATION/LOCATION_IDENTIFICATION segment group should be used instead. The Patient Identification (PID) segment in this segment group is used to carry the species, breed and strain information for a population. The Next of Kin (NK1) segment in this segment group is used to convey information regarding the owner or responsible party for a population of animals or a location.
+
+The Patient Visit (PV1) segment is used to provide basic information about a patient encounter where the specimen was taken.
+
+The Observation/Result (OBX) segment in the PATIENT_VISIT_OBSERVATION segment group is used to document observations regarding the visit.
+

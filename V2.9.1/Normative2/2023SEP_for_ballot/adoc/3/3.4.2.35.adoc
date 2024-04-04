@@ -1,0 +1,14 @@
+==== *3.4.2.35* PID-35 Taxonomic Classification Code (CWE) 01539
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: A code representing the taxonomic classification (e.g. species and/or breed) of an organism. This may include the common or scientific name in the description component, based on the coding system(s) used. SNOMED-CT is the recommended coding system. If this field is not valued, a human is assumed. If the specificity of the coding system is insufficient to represent the organism to the degree desired, the most detailed coded value available may be used in this field and additional information sent in the text field, _PID-37 – Strain_.
+
+For example:
+
+...|L-80700^Canine, NOS^SNM3|...
+
+...|L-80100^Bovine^SNM3|...
+
+...|L-80A00^Feline^SNM3|...
+

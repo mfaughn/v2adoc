@@ -1,0 +1,6 @@
+==== 16.4.5.1 PSG-1 Provider Product/Service Group Number (EI) 01950
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Group Number assigned by the Provider Application.
+

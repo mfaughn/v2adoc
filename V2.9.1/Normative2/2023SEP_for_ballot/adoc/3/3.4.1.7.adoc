@@ -1,0 +1,8 @@
+==== *3.4.1.7* EVN-7 Event Facility (HD) 01534
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the actual facility where the event occurred as differentiated from the sending facility (MSH-4). It would be the facility at which the Operator (EVN-5) has entered the event.
+
+Use Case: System A is where the patient is originally registered. This registration message is sent to an MPI, System B. The MPI needs to broadcast the event of this update and would become the sending facility. This new field would allow for retention of knowledge of the originating facility where the event occurred. The MPI could be the assigning authority for the ID number as well which means that it is performing the function of assigning authority for the facility originating the event.
+

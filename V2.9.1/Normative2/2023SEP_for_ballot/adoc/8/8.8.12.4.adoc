@@ -1,0 +1,4 @@
+==== 8.8.12.4 OM4-4 Container Volume (NM) 00644
+
+Definition: This field indicates the capacity of the container. This field repeats to accommodate all the possible specimen that will be allowed. If a container is preferred, only that container should be messaged here with the alternate containers messaged in a repeat OM4 segment
+

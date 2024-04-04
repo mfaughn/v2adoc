@@ -1,0 +1,6 @@
+==== 13.3.3.31 SAC-31 Temperature (SN) 01358
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This field identifies the specimen temperature in degrees Celsius [°C] at the time of the transaction specified in the EQU segment.
+

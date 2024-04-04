@@ -1,0 +1,4 @@
+=== 2A.2.38 WITHDRAWN (LA1 - location with address variation 1)
+
+*Attention: _The LA1 data type was retained for backward compatibility only as of v 2.5 and the detail was withdrawn and removed from the standard as of v 2.8._*
+

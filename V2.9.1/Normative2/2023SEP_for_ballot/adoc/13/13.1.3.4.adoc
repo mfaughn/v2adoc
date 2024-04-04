@@ -1,0 +1,6 @@
+==== 13.1.3.4 Automated instrument: 
+
+A laboratory instrument that may or may not be connected to a laboratory information system (LIS), hospital information system (HIS), and/or laboratory automation system (LAS), which performs measurements on a patient's sample;
+
+*Note:* These instruments may have specific hardware and/or software modifications that allow interfacing to a laboratory automation system.
+

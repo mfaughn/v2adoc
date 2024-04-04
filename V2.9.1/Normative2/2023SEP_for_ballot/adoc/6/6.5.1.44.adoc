@@ -1,0 +1,17 @@
+==== 6.5.1.44 FT1-44 DME (Durable Medical Equipment) Certificate of Medical Necessity Transmission Code (CWE) 03496
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This code defines the timing, transmission method, or format by which a DME Certificate of Medical Necessity report is to be sent for the service.
+
+For the US realm, the ANSI ASC X12 PWK DMERC CMN Indicator Segment, reference element PWK02, listed below is suggested to map to the X12 837 values:
+
+[width="100%",cols="33%,67%",]
+|===
+|AB |Previously Submitted to Payer
+|AD |Certification Included in this Claim
+|AF |Narrative Segment Included in this Claim
+|AG |No Documentation is Required
+|NS |Not Specified
+|===
+

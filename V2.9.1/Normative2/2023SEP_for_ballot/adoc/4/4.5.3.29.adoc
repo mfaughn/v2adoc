@@ -1,0 +1,10 @@
+==== 4.5.3.29 OBR-29 Parent Result Observation Identifier (EIP) 00261
+
+Components: <Placer Assigned Identifier (EI)> ^ <Filler Assigned Identifier (EI)>
+
+Subcomponents for Placer Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Filler Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field relates a child result to its parent result when a parent child result relationship exists. This field uniquely identifies the order number of the parent result; no other information is required to link the child result with its parent result.
+

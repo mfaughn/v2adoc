@@ -1,0 +1,4 @@
+==== 2A.2.19.4 Days Retained (NM)
+
+Definition: The length of time in days that the value is retained for computing delta checks.
+

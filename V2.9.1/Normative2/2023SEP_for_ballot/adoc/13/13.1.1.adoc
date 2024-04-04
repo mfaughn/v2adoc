@@ -1,0 +1,22 @@
+=== 13.1.1 Background
+
+Clinical laboratory automation involves the integration or interfacing of automated or robotic transport systems, analytical instruments, and pre- or post-analytical process equipment such as automated centrifuges and aliquoters, decappers, recappers, sorters, and specimen storage and retrieval systems. In addition to the electrical and mechanical interfaces of these various components, the computers that control these devices or instruments must also be interfaced to each other and/or the Laboratory Information System (LIS).
+
+The types of information communicated between these systems include process control and status information for each device or analyzer, each specimen, specimen container, and container carrier, information and detailed data related to patients, orders, and results, and information related to specimen flow algorithms and automated decision making. This wide array of communicated information is essential for a Laboratory Automation System (LAS) to control the various processes and to ensure that each specimen or aliquot has the correct tests performed in the proper sequence.
+
+As of 1999 there are already more than 200 clinical laboratories in the world with "total laboratory automation" systems and hundreds more with a lesser level of automation – generally workcells or modular automation systems. The development of prospective standards for these aspects of clinical laboratory automation will facilitate the inter-operability of the systems being developed by the various players in lab automation – the vendors of analytical instruments, LIS systems, automation systems and components and their laboratory customers.
+
+In the early 1990's an ad hoc task force, Clinical Testing Automation Standards Steering Committee (CTASSC), began to meet at the annual meetings of the International Conference on Automation and Robotics (ICAR) and the American Association for Clinical Chemistry (AACC). In 1996, CTASSC approached NCCLS,footnote:[NCCLS, 940 West Valley Road, Suite 1400, Wayne, PA 19087; www.nccls.org] a globally-recognized, consensus standards organization that has developed more than 125 clinical laboratory standards and related products since it was founded in 1968, about taking on a project for clinical laboratory automation. NCCLS agreed to sponsor this project which was separately funded via a direct solicitation of the vendors in lab automation, instruments, LIS systems, and automation customers. It was organized as a "fast track" project to develop prospective standards to guide future developments in laboratory automation. With the oversight of an Area Committee on Automation, five separate subcommittees have worked since 1997 to develop a series of prospective standards for:
+
+• Specimen containers and carriers
+
+• Bar codes for specimen container identification
+
+• Communications
+
+• System operational requirements and characteristics
+
+• Electromechanical interfaces
+
+Approved level standards for all five of these areas were published by NCCLS.
+

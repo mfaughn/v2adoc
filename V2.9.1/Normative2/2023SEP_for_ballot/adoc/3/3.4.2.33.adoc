@@ -1,0 +1,4 @@
+==== *3.4.2.33* PID-33 Last Update Date/Time (DTM) 01537
+
+Definition: This field contains the last update date and time for the patient's/person's identifying and demographic data, as defined in the PID segment. Receiving systems will use this field to determine how to apply the transaction to their systems. If the receiving system (such as an enterprise master patient index) already has a record for the person with a later last update date/time, then the EMPI could decide not to apply the patient's/person's demographic and identifying data from this transaction.
+

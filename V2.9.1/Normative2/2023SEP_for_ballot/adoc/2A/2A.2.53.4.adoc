@@ -1,0 +1,4 @@
+==== 2A.2.53.4 Activation Date (DT)
+
+Definition: Specifies the date the institutional privilege became/becomes valid.
+

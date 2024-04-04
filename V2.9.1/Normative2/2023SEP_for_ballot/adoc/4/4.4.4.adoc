@@ -1,0 +1,166 @@
+=== 4.4.4 OMG – general clinical order message (event O19) 
+
+The function of this message is to initiate the transmission of information about a general clinical order that uses the OBR segment. OMG messages can originate also with a placer, filler, or an interested third party.
+
+The trigger event for this message is any change to a general clinical order. Such changes include submission of new orders, cancellations, updates, patient and non-patient-specific orders, etc.
+
+This trigger includes segments identified as being for 'previous results.' These segments allow the sending system to include demographic and/or result information from previous result reports when they are related to the current order.
+
+For example:
+
+• Diagnostic laboratories referring tests to another lab for either confirmation of results (HIV, etc.) or due to not being equipped to do the tests (genetic testing, etc.).
+
+• Diagnostic laboratories sending test results to Knowledge Bases for the automated generation of diagnostic comments for inclusion into the lab report.
+
+The CTD segment in this trigger is used to transmit temporary patient contact details specific to this order.
+
+When one wants to convey with the detailed order message a supporting document, such as a CDA, one can transmit that document using the OBX associated with the ORC/OBR(s) using OBX-11 = "O" Order Detail Description Only, using either OBX-2 = "ED" or "RP".
+
+The Device segment (DEV) provides additional device information for a device referenced in one or more of the PRT segments in the message (using PRT-10 Participation Device to match DEV-2 Unique Device Identifier or PRT-22 Participation Device Type using DEV-3 Device Type).
+
+OMG^O19^OMG_O19: General Clinical Order Message
+
+[width="100%",cols="30%,46%,10%,10%,4%",options="header",]
+|===
+|Segments |Description |Status |Chapter |
+|MSH |Message Header | |2 |
+|[\{ARV}] |Access Restrictions | |3 |
+|[\{SFT}] |Software | |2 |
+|[ UAC ] |User Authentication Credential | |2 |
+|[\{NTE}] |Notes and Comments (for Header) | |2 |
+|[ |--- PATIENT begin | | |
+|PID |Patient Identification | |3 |
+|[PD1] |Additional Demographics | |3 |
+|[\{GSP}] |Person Gender and Sex | |3 |
+|[\{GSR}] |Recorded Gender and Sex | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | |3 |
+|[\{PRT}] |Participation (for Patient) | |7 |
+| | | | |
+| | | | |
+| | | | |
+|[ |--- OCCUPATIONAL_DATA_FOR_HEALTH begin | | |
+|[\{link:#OH1[OH1]}] |Employment Status | |3 |
+|[\{link:#OH2[OH2]}] |Past or Present Job | |3 |
+|[link:#OH3[OH3]] |Usual Work | |3 |
+|[\{link:#OH4[OH4]}] |Combat Zone Work | |3 |
+|] |--- OCCUPATIONAL_DATA_FOR_HEALTH end | | |
+|[\{NTE}] |Notes and Comments (for Patient ID) | |2 |
+|[\{ |--- NEXT_OF_KIN begin | | |
+|NK1 |Next of Kin/Associated Parties | |3 |
+|[\{GSP}] |Person Gender and Sex | |3 |
+|[\{GSR}] |Recored Sex and Gender | |3 |
+|[\{link:#OH2[OH2]}] |Past or Present Job | |3 |
+|[OH3] |Usual Work | |3 |
+|}] |--- NEXT_OF_KIN end | | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 |
+|[ |--- PATIENT_VISIT begin | | |
+|PV1 |Patient Visit | |3 |
+|[ PV2 ] |Patient Visit- Additional Info | |3 |
+|[\{PRT}] |Participation (for Patient Visit) | |7 |
+|] |--- PATIENT_VISIT end | | |
+|[\{ |--- INSURANCE begin | | |
+|IN1 |Insurance | |6 |
+|[ IN2 ] |Insurance Additional Information | |6 |
+|[ IN3 ] |Insurance Additional Information, Certification | |6 |
+|}] |--- INSURANCE end | | |
+|[ GT1 ] |Guarantor | |6 |
+|[\{AL1}] |Allergy Information | |3 |
+|] |--- PATIENT end | | |
+|\{ |--- ORDER begin | | |
+|ORC |Common Order | |4 |
+|[\{NTE}] |Notes and Comments (for Order) | |2 |
+|[\{PRT}] |Participation (for Common Order) | |7 |
+|[\{ |--- TIMING begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 |
+|}] |--- TIMING end | | |
+|OBR |Observation | |4 |
+|[\{NTE}] |Notes and Comments (for Detail) | |2 |
+|[\{PRT}] |Participation (for Order) | |7 |
+|[ CTD ] |Contact Data | |11 |
+|[\{DG1}] |Diagnosis | |6 |
+|[REL] |Relationship (for Observation) | |12 |
+|[\{ |--- OBSERVATION begin | | |
+|OBX |Observation/Result | |7 |
+|[\{PRT}] |Participation (for Observation) | |7 |
+|[\{NTE}] |Notes and Comments (for Results) | |2 |
+|}] |--- OBSERVATION end | | |
+|[\{ |--- SPECIMEN begin | | |
+|SPM |Specimen | |7 |
+|[\{NTE}] |Notes and Comments (for Specimen) | |2 |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | |
+|OBX |Observation/Result | |7 |
+|[\{PRT}] |Participation (for Specimen Observation) | |7 |
+|}] |--- SPECIMEN_OBSERVATION end | | |
+|[\{ |--- CONTAINER begin | | |
+|SAC |Specimen Container | |13 |
+|[\{NTE}] |Notes and Comments | |2 |
+|[\{ |--- CONTAINER_OBSERVATION begin | | |
+|OBX |Observation/Result | |7 |
+|[\{PRT}] |Participation (for Container Observation) | |7 |
+|}] |--- CONTAINER_OBSERVATION end | | |
+|}] |--- CONTAINER end | | |
+|}] |--- SPECIMEN end | | |
+|[SGH] |Segment Group Header | |2 |
+|[\{ |--- PRIOR_RESULT begin | | |
+|[ |--- PATIENT_PRIOR begin | | |
+|PID |Patient Identification – previous result | |3 |
+|[PD1] |Additional Demographics – previous result | |3 |
+|[\{GSP}] |Person Gender and Sex | |3 |
+|[\{GSR}] |Recorded Gender and Sex | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | |3 |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 |
+|[\{PRT}] |Participation (for Patient Prior) | |7 |
+|] |--- PATIENT_PRIOR end | | |
+|[ |--- PATIENT_VISIT_PRIOR begin | | |
+|PV1 |Patient Visit – previous result | |3 |
+|[ PV2 ] |Patient Visit Add. Info – previous result | |3 |
+|[\{PRT}] |Participation (for Patient Visit Prior) | |7 |
+|] |--- PATIENT_VISIT_PRIOR end | | |
+|[\{AL1}] |Allergy Information - previous result | |3 |
+|\{ |--- ORDER_PRIOR begin | | |
+|ORC |Common Order - previous result | |4 |
+|[\{PRT}] |Participation | |7 |
+|OBR |Order Detail - previous result | |4 |
+|[\{ |--- TIMING_PRIOR begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 |
+|}] |--- TIMING_PRIOR end | | |
+|[\{NTE}] |Notes and Comments - previous result | |2 |
+|[\{ |--- ORDER_DETAIL_PARTICIPATION_PRIOR begin | | |
+|PRT |Participation (for Order Prior) - previous result | |7 |
+|[\{DEV}] |Device | |17 |
+|}] |--- ORDER_DETAIL_PARTICIPATION_PRIOR end | | |
+|[ CTD ] |Contact Data - previous result | |10 |
+|\{ |--- OBSERVATION_PRIOR begin | | |
+|OBX |Observation/Result - previous result | |7 |
+|[\{PRT}] |Participation (for Oservation Prior) | |7 |
+|[\{NTE}] |Notes and Comments - previous result | |2 |
+|} |--- OBSERVATION_PRIOR end | | |
+|} |--- ORDER_PRIOR end | | |
+|}] |--- PRIOR_RESULT end | | |
+|[SGT] |Segment Group Trailer | |2 |
+|[\{FT1}] |Financial Transaction | |6 |
+|[\{CTI}] |Clinical Trial Identification | |7 |
+|[ BLG ] |Billing Segment | |4 |
+|} |--- ORDER end | | |
+|[\{ |--- DEVICE begin | | |
+|DEV |Device (for Participation) | |17 |
+|[\{OBX}] |Observation/Result | |7 |
+|}] |--- DEVICE end | | |
+|===
+
+[width="100%",cols="17%,21%,5%,15%,21%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|OMG^O19^OMG_O19 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^O19^ACK |- |ACK^O19^ACK
+|Application Ack |ORG^O20^ORG_O20 or +
+OSU^O52^OSU_O52 |- |- |ORG^O20^ORG_O20 or +
+OSU^O52^OSU_O52 |ORG^O20^ORG_O20 or +
+OSU^O52^OSU_O52
+|===
+

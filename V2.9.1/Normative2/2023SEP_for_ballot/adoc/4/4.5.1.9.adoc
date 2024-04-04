@@ -1,0 +1,6 @@
+==== 4.5.1.9 ORC-9 Date/Time of Order Event (DTM) 00223
+
+Definition: This field contains the date and time of the event that initiated the current transaction as reflected in ORC-1 Order Control Code. This field is not equivalent to MSH-7 Date and Time of Message, which reflects the date/time of message generation.
+
+Examples: When ORC-1 is “NW” this date represents the date/time when the order was placed by the ordering provider; when ORC-1 is "CA" this date represents the date/time when request for a cancellation was made by the placer, while for a "CR" this date represents the date/time when the cancellation was accepted by the filler (e.g., the change request was applied). When an ORC is included in an ORU message and ORC-1 is "RE", then the date represents the date/time when the observation(s) on the transaction were made available by the source system.
+

@@ -1,0 +1,53 @@
+=== 4A.3.4 ORP - Pharmacy/Treatment Order Acknowledgment (Event O10)
+
+ORP^O10^ORP_O10: Description
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for Response Header) | |2
+|[ |--- RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{ PRT }] |Participation | |7
+|[\{ NTE }] |Notes and Comments (for Patient ID) | |2
+|] |--- PATIENT end | |
+|\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[\{PRT}] |Participation (for ORC) | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|[ |--- ORDER_DETAIL begin | |
+|RXO |Pharmacy/Treatment Order | |4A
+|[\{PRT}] |Participation (for RXO) | |7
+|[\{ NTE }] |Notes and Comments (for RXO) | |2
+|\{ RXR } |Pharmacy/Treatment Route | |4A
+|[\{ |--- COMPONENT begin | |
+|RXC |Pharmacy/Treatment Component | |4A
+|[\{ NTE }] |Notes and Comments (for each RXC) | |2
+|}] |--- COMPONENT end | |
+|] |--- ORDER_DETAIL end | |
+|} |--- ORDER end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="100%",cols="27%,33%,13%,27%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ORP^O10^ORP_O10 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O10^ACK |- |ACK^O10^ACK
+|Application Ack |- |- |-
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+

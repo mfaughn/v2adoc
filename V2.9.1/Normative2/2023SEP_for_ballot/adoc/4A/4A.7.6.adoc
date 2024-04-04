@@ -1,0 +1,71 @@
+=== 4A.7.6 VXU - Unsolicited Vaccination Record Update (Event V04)
+
+Definition: When a provider wishes to update the patient's vaccination record being held in a registry, the provider will transmit an unsolicited update of the record (a V04 trigger event).
+
+An unsolicited update will follow this format. The three-letter code in the leftmost column indicates the segment that is included; the column on the right specifies the chapter in which that segment is fully defined.
+
+VXU^V04^VXU_V04: Unsolicited Vaccination Update
+
+[width="100%",cols="34%,47%,9%,,10%",options="header",]
+|===
+|Segments |Description |Status |Chapter |
+|MSH |Message Header Segment | |2 |
+|[\{ARV}] |Access Restrictions | |3 |
+|[\{ SFT }] |Software | |2 |
+|[ UAC ] |User Authentication Credential | |2 |
+|PID |Patient Identification Segment | |3 |
+|[ PD1 ] |Additional Demographics | |3 |
+|[\{GSP}] |Person Gender and Sex | | |3
+|[\{GSR}] |Recorded Gender and Sex | | |3
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3
+|[\{ PRT }] |Participation | |7 |
+|[\{ NK1 }] |Next of Kin/Associated Parties | |3 |
+|[\{GSP}] |Person Gender and Sex | | |3
+|[\{GSR}] |Recorded Gender and Sex | | |3
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3 |
+|[ |--- PATIENT_VISIT begin | | |
+|PV1 |Patient Visit | |3 |
+|[ PV2 ] |Patient Visit – Additional Info | |3 |
+|[\{ PRT }] |Participation | |7 |
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3 |
+|] |--- PATIENT_VISIT end | | |
+|[\{ GT1 }] |Guarantor | |6 |
+|[\{ |--- INSURANCE begin | | |
+|IN1 |Insurance | |6 |
+|[ IN2 ] |Insurance Additional Information | |6 |
+|[ IN3 ] |Insurance Additional Information, Certification | |6 |
+|}] |--- INSURANCE end | | |
+|[\{ |--- PERSON_OBSERVATION begin | | |
+|OBX |Observation/Result | |7 |
+|[\{ PRT }] |Participation (for Observation) | |7 |
+|[\{ NTE }] |Notes (Regarding Patient Observation) | |2 |
+|}] |--- PERSON_OBSERVATION end | | |
+|[\{ |--- ORDER begin | | |
+|ORC |Common Order | |4 |
+|[\{PRT}] |Participation (for ORC) | |7 |
+|[\{ |--- TIMING begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 |
+|}] |--- TIMING end | | |
+|RXA |Pharmacy Administration Segment | |4A |
+|[\{ PRT }] |Participation | |7 |
+|[ RXR ] |Pharmacy Route | |4A |
+|[\{ |--- OBSERVATION begin | | |
+|OBX |Observation/Result | |7 |
+|[\{ PRT }] |Participation (for Observation) | |7 |
+|[\{ NTE }] |Notes (Regarding Immunization) | |2 |
+|}] |--- OBSERVATION end | | |
+|}] |--- ORDER end | | |
+|===
+
+[width="100%",cols="22%,25%,9%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|VXU^V04^VXU_V04 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH.15 |Blank |NE |NE |AL, SU, ER
+|MSH.16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^V04^ACK
+|Application Ack |ACK^V04^ACK |- |ACK^V04^ACK |ACK^V04^ACK
+|===
+

@@ -1,0 +1,4 @@
+==== 8.8.9.54 OM1-54 Special Instructions (TX) 03435
+
+Definition: This field is used to convey special instructions for the test, for example: "Chain-of-custody documentation is required for samples submitted for pre-employment, random employee testing, and forensic purposes. For other applications, use the standard request form." (Note: this is for toxicology testing); "If reflex test is performed, additional charges/CPT code(s) may apply."; "Please direct any questions regarding this test to Oncology Customer Service"; "Please include tentative diagnosis/treatment on the request form. This is necessary for proper culturing and result interpretation." (Note: this is for chromosome analysis.)
+

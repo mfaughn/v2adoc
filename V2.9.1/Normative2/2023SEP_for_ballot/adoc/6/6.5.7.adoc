@@ -1,0 +1,84 @@
+=== 6.5.7 IN2 ‑ Insurance Additional Information Segment
+
+The IN2 segment contains additional insurance policy coverage and benefit information necessary for proper billing and reimbursement. Fields used by this segment are defined by CMS or other regulatory agencies.
+
+[#IN2 .anchor]####HL7 Attribute Table - IN2 - Insurance Additional Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CX |O |Y | |00472 |Insured's Employee ID
+|2 | |11= |ST |O | | |00473 |Insured's Social Security Number
+|3 | | |XCN |O |Y | |00474 |Insured's Employer's Name and ID
+|4 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70139[0139] |00475 |Employer Information Data
+|5 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70137[0137] |00476 |Mail Claim Party
+|6 | |15= |ST |O | | |00477 |Medicare Health Ins Card Number
+|7 | | |XPN |O |Y | |00478 |Medicaid Case Name
+|8 | |15= |ST |O | | |00479 |Medicaid Case Number
+|9 | | |XPN |O |Y | |00480 |Military Sponsor Name
+|10 | |20= |ST |O | | |00481 |Military ID Number
+|11 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70342[0342] |00482 |Dependent Of Military Recipient
+|12 | |25= |ST |O | | |00483 |Military Organization
+|13 | |25= |ST |O | | |00484 |Military Station
+|14 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70140[0140] |00485 |Military Service
+|15 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70141[0141] |00486 |Military Rank/Grade
+|16 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70142[0142] |00487 |Military Status
+|17 | | |DT |O | | |00488 |Military Retire Date
+|18 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00489 |Military Non-Avail Cert On File
+|19 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00490 |Baby Coverage
+|20 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00491 |Combine Baby Bill
+|21 | |1= |ST |O | | |00492 |Blood Deductible
+|22 | | |XPN |O |Y | |00493 |Special Coverage Approval Name
+|23 | |30# |ST |O | | |00494 |Special Coverage Approval Title
+|24 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70143[0143] |00495 |Non-Covered Insurance Code
+|25 | | |CX |O |Y | |00496 |Payor ID
+|26 | | |CX |O |Y | |00497 |Payor Subscriber ID
+|27 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70144[0144] |00498 |Eligibility Source
+|28 | | |RMC |O |Y | |00499 |Room Coverage Type/Amount
+|29 | | |PTA |O |Y | |00500 |Policy Type/Amount
+|30 | | |DDI |O | | |00501 |Daily Deductible
+|31 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70223[0223] |00755 |Living Dependency
+|32 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70009[0009] |00145 |Ambulatory Status
+|33 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70171[0171] |00129 |Citizenship
+|34 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70296[0296] |00118 |Primary Language
+|35 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70220[0220] |00742 |Living Arrangement
+|36 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70215[0215] |00743 |Publicity Code
+|37 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00744 |Protection Indicator
+|38 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70231[0231] |00745 |Student Indicator
+|39 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70006[0006] |00120 |Religion
+|40 | | |XPN |O |Y | |00109 |Mother's Maiden Name
+|41 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70212[0212] |00739 |Nationality
+|42 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70189[0189] |00125 |Ethnic Group
+|43 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70002[0002] |00119 |Marital Status
+|44 | | |DT |O | | |00787 |Insured's Employment Start Date
+|45 | | |DT |O | | |00783 |Employment Stop Date
+|46 | |20# |ST |O | | |00785 |Job Title
+|47 | | |JCC |O | | |00786 |Job Code/Class
+|48 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70311[0311] |00752 |Job Status
+|49 | | |XPN |O |Y | |00789 |Employer Contact Person Name
+|50 | | |XTN |O |Y | |00790 |Employer Contact Person Phone Number
+|51 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70222[0222] |00791 |Employer Contact Reason
+|52 | | |XPN |O |Y | |00792 |Insured's Contact Person's Name
+|53 | | |XTN |O |Y | |00793 |Insured's Contact Person Phone Number
+|54 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70222[0222] |00794 |Insured's Contact Person Reason
+|55 | | |DT |O | | |00795 |Relationship to the Patient Start Date
+|56 | | |DT |O |Y | |00796 |Relationship to the Patient Stop Date
+|57 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70232[0232] |00797 |Insurance Co Contact Reason
+|58 | | |XTN |O |Y | |00798 |Insurance Co Contact Phone Number
+|59 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70312[0312] |00799 |Policy Scope
+|60 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70313[0313] |00800 |Policy Source
+|61 | | |CX |O | | |00801 |Patient Member Number
+|62 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70063[0063] |00802 |Guarantor's Relationship to Insured
+|63 | | |XTN |O |Y | |00803 |Insured's Phone Number - Home
+|64 | | |XTN |O |Y | |00804 |Insured's Employer Phone Number
+|65 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70343[0343] |00805 |Military Handicapped Program
+|66 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00806 |Suspend Flag
+|67 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00807 |Copay Limit Flag
+|68 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |00808 |Stoploss Limit Flag
+|69 | | |XON |O |Y | |00809 |Insured Organization Name and ID
+|70 | | |XON |O |Y | |00810 |Insured Employer Organization Name and ID
+|71 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70005[0005] |00113 |Race
+|72 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70344[0344] |00811 |Patient's Relationship to Insured
+|73 | | |CP |O | | |01620 |Co-Pay Amount
+|===
+

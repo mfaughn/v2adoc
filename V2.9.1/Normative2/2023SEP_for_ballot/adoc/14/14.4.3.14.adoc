@@ -1,0 +1,4 @@
+==== 14.4.3.14 NST-14 Receive Timeouts (NM) 01186
+
+Definition: This field contains the number of timeouts while waiting for a response to an initiated message.
+

@@ -1,0 +1,4 @@
+==== 13.1.3.22 Decapping:
+
+The removal of a closure from a specimen container.
+

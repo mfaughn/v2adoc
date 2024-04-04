@@ -1,0 +1,4 @@
+==== 14.4.3.11 NST-11 Length Errors Received (NM) 01183
+
+Definition: This field contains the number of messages received with length errors.
+

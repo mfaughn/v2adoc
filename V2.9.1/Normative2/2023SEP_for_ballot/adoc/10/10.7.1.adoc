@@ -1,0 +1,44 @@
+=== 10.7.1 Request and Receive New Appointment - Event S01
+
+The patient has been seen by his primary care physician, Dr. Patricia Primary, and requires treatment by a cardiologist. The PCP requests a new appointment with Dr. Pump at the North Office. The patient has requested that the appointment be scheduled for a time between January 2nd and January 10th, 2007, and between 8:00 AM and 5:00 PM. Dr. Pump's office responds to the request with an appointment at the North Office at 9:30 AM on January 6, 2007.
+
+MSH|^~\&|PRIMARY|EWHIN|SPOCARD|EWHIN|200701010800||SRM^S01^SRM_S01|090849PRIMARY|P|2.8|||AL|AL|||<cr>
+
+ARQ|19940047^SCH001|||||047^Referral||NORMAL|||199401020800^199401101700||||0045^Contact^Carrie^S^^^||||3372^Person^Entered||||<cr>
+
+PID||4875439|484848||Everyman^Adam^A^^| |19401121|M|Alias||2222 Home Street^Jay^WA^99021||555-2003|||M|||444-33-3333|||||||||||<cr>
+
+DG1|001|I9|786.5|CHEST PAINS|200701010730|W|||||||||||||<cr>
+
+DG1|002|I9|412|OLD MYOCARDIAL INFARCTION|200701010730|W|||||||||||||<cr>
+
+RGS|001|<cr>
+
+AIP|001||032^Pump^Patrick|002^CARDIOLOGIST|||||||NO|<cr>
+
+AIL|001|^NORTH OFFICE|002^CLINIC|||||||YES|<cr>
+
+MSH|^~\&|PRIMARY|EWHIN|JONES|EWHIN|200701010802||ACK|021244SPOCARD|P|2.8||||||<cr>
+
+MSA|CA|090849JONES||||<cr>
+
+MSH|^~\&|PRIMARY|EWHIN|JONES|EWHIN|200701010810||SRR^S01^SRR_S01|0934849SPOCARD|P|2.8|||||||<cr>
+
+MSA|AA|090849EVERYMAN||||<cr>
+
+SCH|2007047^SCH001|2007567^SCH100|||||047^Referral|NORMAL||||0045^Contact^Carrie^C^^^|555-2010|||087^By^Entered^^^^|555-2011||||BOOKED<cr>
+
+TQ1||||||30^M|200701060930|200701061000||||||<cr>
+
+PID||4875439|484848||Everyman^Adam^A^^||19401121|M|Alias||2222 Home Street^Jay^WA^99021||555-2003|||M|||444-22-3333|||||||||||<cr>
+
+RGS|001|<cr>
+
+AIP|001|032^Pump^Patrick|002^CARDIOLOGIST|||||||NO|BOOKED<cr>
+
+AIL|001|103^NORTH OFFICE|002^CLINIC|||||||NO|BOOKED<cr>
+
+MSH|^~\&|PRIMARY|EWHIN|SPOCARD|EWHIN|200701010812||ACK|434532JONES|P|2.8||||||<cr>
+
+MSA|CA|0934849SPOCARD||||<cr>
+

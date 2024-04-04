@@ -1,0 +1,53 @@
+=== 16.3.11 EHC^E21 – Cancel Authorization Request (event E21) 
+
+This message is used to cancel an Authorization Request, as a result of a previously submitted EHC^E20 – Submit Authorization Request message.
+
+This message can be used to cancel the entire Authorization Request, or an individual Product/Service Line Item within an Authorization Request.
+
+This message cannot be used to update ancillary information in an Authorization that has been submitted to a Payer. The original request must be cancelled, and a new Authorization Request submitted to the Payer.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Authorization Request, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Authorization Request, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) An Authorization Request can be cancelled regardless of its status with the Payer (i.e., whether approved, denied, pending or status unknown).
+
+{empty}4) At least one NTE segment must be included with this message to describe the cancellation reason for each Product/Service Line Item. The NTE segment may be specified with the (Pr) Authorization Request (following the IVC segment) and applies to all Product/Service Line Items for that Authorization Request. If not specified with the Invoice, then it must be specified for each Product/Service Line Item (following the PSL segment).
+
+{empty}5) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original request (submitted via the EHC^E20 – Submit Authorization Request message).
+
+{empty}6) Provider reference numbers must exist on Payer Application's database and must point to the same Invoice, Product/Service Group or Product/Service Line Item; otherwise, an error must be generated (mismatched Invoice and/or Product/Service Line Item).
+
+EHC^E21^EHC_E21: Cancel Authorization Request
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- AUTHORIZATION_REQUEST begin | |
+|IVC |Invoice Header | |16
+|\{ |--- PSL_ITEM_INFO begin | |
+|PSL |Product/Service Line Item | |16
+|[ \{ NTE } ] |Notes and Comments | |
+|[ AUT ] |Authorization | |16
+|} |--- PSL_ITEM_INFO end | |
+|> |--- AUTHORIZATION_REQUEST end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E21^EHC_E21 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E21^ACK |- |ACK^E21^ACK
+|Application Ack |ACK^E21^ACK |- |- |ACK^E21^ACK |ACK^E21^ACK
+|===
+

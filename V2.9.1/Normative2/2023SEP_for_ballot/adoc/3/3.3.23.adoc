@@ -1,0 +1,62 @@
+=== 3.3.23 ADT/ACK - Delete a Patient Record (Event A23)
+
+The A23 event is used to delete visit or episode-specific information from the patient record. For example, it is used to remove old data from a database that cannot hold all historical patient visit data. When an event was entered erroneously, use one of the cancel transactions. This event can be used to purge account-level data while retaining the person in the database.
+
+ADT^A23^ADT_A21: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|link:#_Hlt476040270[PV1] |Patient Visit | |3
+|[ link:#PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|[ \{ link:#_Hlt479197568[DB1] } ] |Disability Information | |3
+|[\{ |--- OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{ PRT }] |Participation | |7
+|}] |--- OBSERVATION end | |
+|===
+
+[width="100%",cols="19%,24%,5%,17%,17%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A23^ADT_A21 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A23^ACK |- |ACK^A23^ACK
+|Application Ack |ADT^A23^ADT_A21 |- |- |ACK^A23^ACK |ACK^A23^ACK
+|===
+
+ACK^A23^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="22%,35%,9%,34%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A23^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A23^ACK
+|Application Ack |- |- |-
+|===
+

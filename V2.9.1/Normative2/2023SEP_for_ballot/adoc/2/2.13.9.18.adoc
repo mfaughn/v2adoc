@@ -1,0 +1,28 @@
+==== 2.13.9.18 MSH-18 Character Set (ID) 00692
+
+Definition: This field contains the character set for the entire message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70211[_HL7 Table 0211 - Alternate Character Sets_] in Chapter 2C, Code Tables, for valid values.
+
+An HL7 message uses field MSH-18 Character Set to specify the character set(s) in use. Valid values for this field are specified in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70211[_HL7 Table 0211 - Alternate Character Sets_]. MSH-18 Character Set MAY be left blank, or MAY contain one or more values delimited by the repetition separator. If the field is left blank, the character set in use is understood to be the 7-bit ASCII set, decimal 0 through decimal 127 (hex 00 through hex 7F). This default value MAY also be explicitly specified as *ASCII*.
+
+More than one character set MAY be used in a message. The first occurrence, if supplied, of the MSH-18 SHALL indicate the default encoding of the message. The second and subsequent occurrences of MSH-18-character set are used to specify additional character sets that are used.
+
+The repetitions of this field to specify different character sets apply only to fields of the FT, ST and TX data types. See also section _2.6.3,_ "_Escape sequences supporting multiple character sets_".
+
+Any encoding system, single-byte or multi-byte, MAY be specified as the default character encoding in MSH-18 Character Set. If the default encoding is other than 7-bit ASCII, sites SHALL document this usage in the dynamic conformance profile or other implementation agreement. This is particularly effective in promoting interoperability between nations belonging to different HL7 Affiliates, while limiting the amount of testing required to determine the encoding of a message.
+
+By using built-in language functions for string and character manipulation, parsers and applications need not be concerned whether a single or double byte character set is in use, provided it is applied to the entire message. Using a built in function to extract the fourth CHARACTER will always yield the field separator character, regardless of coding set. On the other hand, if the parser looks at the fourth BYTE, it is then limited to single byte character sets, since the fourth byte would contain the low order 8 bits of the character S in a double-byte system.
+
+*Note:* When describing encoding rules, this standard always speaks in terms of character position, not byte offset. Similarly, comparisons SHOULD be done on character values, not their byte equivalents. For this reason, delimiter characters SHOULD always have representation in the standard 7-bit ASCII character set, regardless of the actual character set being used, so that a search for the character CR (carriage return) can be performed.
+
+{empty}a) if the field is not valued, the default single-byte character set (ASCII ("ISO IR6")) SHOULD be assumed. No other character sets are allowed in the message.
+
+{empty}b) if the field repeats, but the first element is empty(I.e. unvalued), the single-byte ASCII ("ISO IR6") is assumed as the default character set.
+
+{empty}c) elements in the remainder of the sequence (i.e., elements 2..n) are alternate character sets that MAY be used.
+
+The reader is referred to the following references for background information on character sets and encodings:
+
+Unicode Technical Report #17 - Character Encoding Model (http://www.unicode.org/unicode/reports/tr17/)
+
+Extensible Markup Language (XML) 1.0 (Second Edition), Section F Autodetection of Character Encodings (http://www.w3.org/TR/REC-xml#sec-guessing)
+

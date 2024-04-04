@@ -1,0 +1,129 @@
+=== 4.4.12 OML – Specimen shipment centric laboratory order (event O39)
+
+The function of this message is to apply an order to all specimens in a shipment or a package within a shipment.
+
+When one wants to convey with the detailed order message a supporting document, such as a CDA, one can transmit that document using the OBX associated with the ORC/OBR(s) using OBX-11 = "O" Order Detail Description Only, using either OBX-2 = "ED" or "RP".
+
+The Device segment (DEV) provides additional device information for a device referenced in one or more of the PRT segments in the message (using PRT-10 Participation Device to match DEV-2 Unique Device Identifier or PRT-22 Participation Device Type using DEV-3 Device Type).
+
+OML^O39^OML_O39: Specimen Shipment Centric Laboratory Order Message
+
+[width="100%",cols="35%,44%,2%,9%,,10%,",options="header",]
+|===
+|Segments |Description | |Status |Chapter | |
+|MSH |Message Header | | |2 | |
+|[\{ARV}] |Access Restrictions | | |3 | |
+|[\{SFT}] |Software | | |2 | |
+|[ UAC ] |User Authentication Credential | | |2 | |
+|[\{NTE}] |Notes and Comments (for Header) | | |2 | |
+|[ |--- PATIENT begin | | | | |
+|PID |Patient Identification | | |3 | |
+|[PD1] |Additional Demographics | | |3 | |
+|[\{GSP}] |Person Gender and Sex | | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | | |3 |
+|[\{PRT}] |Participation (for Patient) | | |7 | |
+|[ |--- OCCUPATIONAL_DATA_FOR_HEALTH begin | | | | |
+|[\{OH1}] |Employment Status | | |3 | |
+|[\{OH2}] |Past or Present Job | | |3 | |
+|[OH3] |Usual Work | | |3 | |
+|[\{OH4}] |Combat Zone Work | | |3 | |
+|] |--- OCCUPATIONAL_DATA_FOR_HEALTH end | | | | |
+|[\{NTE}] |Notes and Comments (for Patient ID) | | |2 | |
+|[\{ |--- NEXT_OF_KIN begin | | | | |
+|NK1 |Next of Kin/Associated Parties | | |3 | |
+|[\{GSP}] |Person Gender and Sex | | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | | |3 |
+| | | | | | |
+|[\{OH2}] |Past or Present Job | | |3 | |
+|[OH3] |Usual Work | | |3 | |
+|}] |--- NEXT_OF_KIN end | | | | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. | |B |3 | |
+|[ |--- PATIENT_VISIT begin | | | | |
+|PV1 |Patient Visit | | |3 | |
+|[ PV2 ] |Patient Visit- Additional Info | | |3 | |
+|[\{PRT}] |Participation (for Patient Visit) | | |7 | |
+|] |--- PATIENT_VISIT end | | | | |
+|[\{ |--- INSURANCE begin | | | | |
+|IN1 |Insurance | | |6 | |
+|[ IN2 ] |Insurance Additional Information | | |6 | |
+|[ IN3 ] |Insurance Additional Information, Certification | | |6 | |
+|}] |--- INSURANCE end | | | | |
+|[ GT1 ] |Guarantor | | |6 | |
+|[\{AL1}] |Allergy Information | | |3 | |
+|] |--- PATIENT end | | | | |
+|\{ |--- ORDER begin | | | | |
+|ORC |Common Order | | |4 | |
+|[\{NTE}] |Notes and Comments (for Order) | | |2 | |
+|[\{PRT}] |Participation (for Order) | | |7 | |
+|[\{ |--- TIMING begin | | | | |
+|TQ1 |Timing/Quantity | | |4 | |
+|[\{TQ2}] |Timing/Quantity Order Sequence | | |4 | |
+|}] |--- TIMING end | | | | |
+|[ |--- OBSERVATION_REQUEST begin | | | | |
+|OBR |Observation Request | | |4 | |
+|[ TCD ] |Test Code Details | | |13 | |
+|[\{NTE}] |Notes and Comments (for Detail) | | |2 | |
+|[\{PRT}] |Participation (for Observation) | | |7 | |
+|[ CTD ] |Contact Data | | |11 | |
+|[\{DG1}] |Diagnosis | | |6 | |
+|[REL} |Relationship (for Observation) | | |12 | |
+|[\{ |--- OBSERVATION begin | | | | |
+|OBX |Observation/Result | | |7 | |
+|[\{PRT}] |Participation (for Observation) | | |7 | |
+|[ TCD ] |Test Code Detail | | |13 | |
+|[\{NTE}] |Notes and Comments (for Results) | | |2 | |
+|}] |--- OBSERVATION end | | | | |
+|[\{ |--- SPECIMEN_SHIPMENT begin | | | | |
+|SHP |Shipment Segment | | | | |
+|[\{ |--- SHIPMENT_OBSERVATION begin | | | | |
+|OBX |Observation/Result Segment (Additional Shipping Information) | | | | |
+|[\{PRT}] |Participation (for OBX) | | |7 | |
+|}] |--- SHIPMENT_OBSERVATION end | | | | |
+|\{ |--- PACKAGE begin | | | | |
+|PAC |Shipping Package Segment | | | | |
+|[\{ |--- SPECIMEN_IN_PACKAGE begin | | | | |
+|SPM |Specimen Information | | |13.4.3 | |
+|[\{NTE}] |Notes and Comments (for Specimen) | | |2 | |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | | | |
+|OBX |Observation/Result Segment (For Specimen) | | | | |
+|[\{ PRT }] |Participation (for Specimen Observation) | | |7 | |
+|}] |--- SPECIMEN_OBSERVATION end | | | | |
+|[\{ |--- SPECIMEN_CONTAINER_IN_PACKAGE begin | | | | |
+|SAC |Container Information | | |7.4.3 | |
+|[\{NTE}] |Notes and Comments (for Specimen Container) | | |2 | |
+|[\{ |--- CONTAINER_OBSERVATION begin | | | | |
+|OBX |Observation/Result Segment (For Container) | | | | |
+|[\{PRT}] |Participation (for Container Observation) | | |7 | |
+|}] |--- CONTAINER_OBSERVATION end | | | | |
+|}] |--- SPECIMEN_CONTAINER_IN_PACKAGE end | | | | |
+|}] |--- SPECIMEN_IN_PACKAGE end | | | | |
+|} |--- PACKAGE _end_ | | | | |
+|}] |--- SPECIMEN_SHIPMENT end | | | | |
+|] |--- OBSERVATION_REQUEST end | | | | |
+|[\{FT1}] |Financial Transaction | | |6 | |
+|[\{CTI}] |Clinical Trial Identification | | |7 | |
+|[ BLG ] |Billing Segment | | |4 | |
+|} |--- ORDER end | | | | |
+|[\{ |--- DEVICE begin | | | | |
+|DEV |Device (for Participation) | | | |17 |
+|[\{OBX}] |Observation/Result | | | |7 |
+|}] |--- DEVICE end | | | | |
+|===
+
+[width="100%",cols="17%,28%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|OML^O39^OML_O39 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O39^ACK
+|Application Ack |ORL^O40^ORL_O40 or +
+ORL^O56^ORL_O56 or +
+OSU^O52^OSU_O52 |- |ORL^O40^ORL_O40 or +
+ORL^O56^ORL_O56 or +
+OSU^O52^OSU_O52 |ORL^O40^ORL_O40 or +
+ORL^O56^ORL_O56 or +
+OSU^O52^OSU_O52
+|===
+

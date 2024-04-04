@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+PD1-20_vs_IN2-15
+</h1>
+<hr>
+<h3>
+For 00486 there were 2 versions found.<br>This diff compares the version found in fields ["PD1-20", "PD1-20"] from sections ["3.4.11", nil], respectively<br>with the version found in fields ["IN2-15", "IN2-15"] from sections ["6.5.7", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:This user-defined field identifies the military rank/grade of the <strong>patient</strong>. Refer to _User-defined Table 0141 - Military Rank/Grade_ in Chapter 2C, Code Tables, for suggested values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This user-defined field identifies the military rank/grade of the <strong>insured</strong>. Refer to _User-defined Table 0141 - Military Rank/Grade_ in Chapter 2C, Code Tables, for suggested values.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00486,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:0141,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This user-defined field identifies the military rank/grade of the <strong>patient</strong>. Refer to _User-defined Table 0141 - Military Rank/Grade_ in Chapter 2C, Code Tables, for suggested values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This user-defined field identifies the military rank/grade of the <strong>insured</strong>. Refer to _User-defined Table 0141 - Military Rank/Grade_ in Chapter 2C, Code Tables, for suggested values.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

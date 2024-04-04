@@ -1,0 +1,4 @@
+=== 7.3.2 OUL – Unsolicited Laboratory Observation Message (Event R21) 
+
+*Attention: _Retained for backwards compatibility only as of v 2.5 and withdrawn as of v 2.7. _* 
+

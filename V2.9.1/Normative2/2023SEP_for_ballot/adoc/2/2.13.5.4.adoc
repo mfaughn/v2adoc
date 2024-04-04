@@ -1,0 +1,8 @@
+==== 2.13.5.4 ERR-4 Severity (ID) 01814
+
+Definition: Identifies the severity of an application error. Knowing if something is Error, Warning or Information is intrinsic to how an application handles the content. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70516[_HL7 Table 0516 - Error Severity_] in Chapter 2C, Code Tables, for valid values. If ERR-3 has a value of "0", ERR-4 will have a value of "I".
+
+Example: a Warning could be used to indicate that notes were present, but ignored because they could not be automatically processed, and therefore information could have been missed.
+
+Example of Information: When submitting a claim, a payor might indicate remaining coverage under limit.
+

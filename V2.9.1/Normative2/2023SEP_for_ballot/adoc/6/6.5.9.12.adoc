@@ -1,0 +1,6 @@
+==== 6.5.9.12 ACC-12 Degree of patient liability (NM) 02374
+
+Definition: This field conveys the amount to which the patient is found to be liable for an accident. The numeric value is given as a percentage value.
+
+If the accident is totally caused by others this value is set to "0". If it is caused by the patient, it is set to "100". Any other value in between allows for a leverage of the fault between the patient and third parties.
+

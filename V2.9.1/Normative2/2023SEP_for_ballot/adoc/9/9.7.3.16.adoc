@@ -1,0 +1,4 @@
+==== 9.7.3.16 TXA-16 Unique Document File Name (ST) 00927
+
+Definition: This field contains a unique name assigned to a document by the sending system. The file name is used to assist the receiving system in matching future updates to the document.
+

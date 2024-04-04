@@ -1,0 +1,17 @@
+==== 6.5.1.53 FT1-53 DME Frequency (CWE) 03505
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+____
+Definition: This is the frequency or type of payment for the rental of durable medical equipment.
+
+For the US realm, the ANSI ASC X12 SV5 Durable Medical Equipment Service Segment, reference element SV506, listed below is suggested to map to the X12 837 values:
+____
+
+[width="100%",cols="24%,76%",]
+|===
+|1 |Weekly
+|4 |Monthly
+|6 |Daily
+|===
+

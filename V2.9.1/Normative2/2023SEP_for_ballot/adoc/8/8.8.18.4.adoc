@@ -1,0 +1,18 @@
+==== 8.8.18.4 MCP-4 Universal Service Price Range – High Value (MO) 03470
+
+____
+Components:  <Quantity (NM)> ^ <Denomination (ID)>
+____
+
+Definition: Specifies the highest price for the Universal Service that needs to be disclosed on the payer notification to the patient (for example Medicare ABN). If there is a single price for this Universal Service Identifier, it is valued in this field.
+
+____
+Example of MCP-4 where price of test is $65.00 and there are no variants to the cost:
+
+MCP||||65.00^USD
+
+Example of MCP-3 and MCP-4 value when the price of test is variable and can range from $35.00 (low) to $75.00 (high)
+
+MCP||||$35.00^USD|75.00^USD
+____
+

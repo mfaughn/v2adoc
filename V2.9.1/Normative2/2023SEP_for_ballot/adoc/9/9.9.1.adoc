@@ -1,0 +1,4 @@
+=== 9.9.1 QRY/DOC - Document Query (Event T12)
+
+Withdrawn in v2.7 and later; refer to Chapter 5, "Queries", section 5.4 instead.
+

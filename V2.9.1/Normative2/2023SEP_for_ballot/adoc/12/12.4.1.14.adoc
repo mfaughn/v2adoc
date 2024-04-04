@@ -1,0 +1,4 @@
+==== 12.4.1.14 GOL-14 Previous Goal Review Date/Time (DTM) 00830
+
+Definition: This field contains the date/time that the goal was reviewed prior to the current review.
+

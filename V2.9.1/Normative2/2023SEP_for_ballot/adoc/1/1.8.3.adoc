@@ -1,0 +1,4 @@
+=== 1.8.3 Department of Defense (DOD) Requirements for Systems Security and Robustness
+
+HL7 Version 2.x standards do not attempt to support U.S. DOD Security Divisions (A, B, C, D) and Classes (1, 2, 3). If a user requires these features, they will have to define their own structures to support these classifications and insure a uniform implementation across multiple systems in an enterprise.
+

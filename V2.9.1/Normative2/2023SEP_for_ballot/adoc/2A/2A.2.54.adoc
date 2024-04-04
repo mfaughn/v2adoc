@@ -1,0 +1,49 @@
+=== 2A.2.54 PL - person location
+
+HL7 Component Table – PL – Person Location
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |HD |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70302[0302] |Point of Care | |2A.2.36
+|2 | | |HD |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70303[0303] |Room | |2A.2.36
+|3 | | |HD |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70304[0304] |Bed | |2A.2.36
+|4 | | |HD |O | |Facility | |2A.2.33
+|5 | |20= |IS |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70306[0306] |Location Status | |2A.2.36
+|6 | |20= |IS |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70305[0305] |Person Location Type | |2A.2.36
+|7 | | |HD |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70307[0307] |Building | |2A.2.36
+|8 | | |HD |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70308[0308] |Floor | |2A.2.36
+|9 | |199# |ST |O | |Location Description | |2A.2.76
+|10 | | |EI |O | |Comprehensive Location Identifier | |2A.2.25
+|11 | | |HD |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70363[0363] |Assigning Authority for Location | |2A.2.33
+|===
+
+Definition: This data type is used to specify a patient location within a healthcare institution. Which components are valued depends on the needs of the site. For example for a patient treated at home, only the person location type is valued. It is most commonly used for specifying patient locations, but may refer to other types of locations within a healthcare setting.
+
+*Note:* This data type contains several location identifiers that should be thought of in the following order from the most general to the most specific: facility, building, floor, point of care, room, bed. +
+Additional data about any location defined by these components can be added in the following components: person location type, location description and location status.
+
+Example: Nursing Unit
+
+____
+A nursing unit at Community Hospital: 4 East, room 136, bed B
+____
+
+4E^136^B^CommunityHospital^^N^^^
+
+Example: Clinic
+
+____
+A clinic at University Hospitals: Internal Medicine Clinic located in the Briones building, 3^rd^ floor.
+____
+
+InternalMedicine^^^UniversityHospitals^^C^Briones^3^
+
+Example: Home
+
+____
+The patient was treated at his home.
+____
+
+^^^^^H^^^
+

@@ -1,0 +1,37 @@
+=== 17.5.7 IVT – Material Location Segment
+
+The Material Location segment (IVT) contains information specific to an inventory location for the inventory supply item in the Material Item (ITM) segment.
+
+HL7 Attribute Table – IVT – Material Location
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |02062 |Set Id – IVT
+|2 | | |EI |R | | |02063 |Inventory Location Identifier
+|3 | |999= |ST |O | | |02277 |Inventory Location Name
+|4 | | |EI |O | | |02064 |Source Location Identifier
+|5 | |999= |ST |O | | |02278 |Source Location Name
+|6 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70625[0625] |02065 |Item Status
+|7 | | |EI |O |Y | |02066 |Bin Location Identifier
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70818[0818] |02067 |Order Packaging
+|9 | | |CWE |O | | |02068 |Issue Packaging
+|10 | | |EI |O | | |02069 |Default Inventory Asset Account
+|11 | | |CNE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[0532] |02070 |Patient Chargeable Indicator
+|12 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70132[0132] |00361 |Transaction Code
+|13 | | |CP |O | | |00366 |Transaction Amount - Unit
+|14 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70634[0634] |02073 |Item Importance Code
+|15 | | |CNE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[0532] |02074 |Stocked Item Indicator
+|16 | | |CNE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[0532] |02075 |Consignment Item Indicator
+|17 | | |CNE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[0532] |02076 |Reusable Item Indicator
+|18 | | |CP |O | | |02077 |Reusable Cost
+|19 | | |EI |O |Y | |02078 |Substitute Item Identifier
+|20 | | |EI |O | | |02079 |Latex-Free Substitute Item Identifier
+|21 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70642[0642] |02080 |Recommended Reorder Theory
+|22 | |4= |NM |O | | |02081 |Recommended Safety Stock Days
+|23 | |4= |NM |O | | |02082 |Recommended Maximum Days Inventory
+|24 | |8# |NM |O | | |02083 |Recommended Order Point
+|25 | |8# |NM |O | | |02084 |Recommended Order Amount
+|26 | | |CNE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[0532] |02085 |Operating Room Par Level Indicator
+|===
+

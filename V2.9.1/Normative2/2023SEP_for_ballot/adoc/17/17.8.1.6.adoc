@@ -1,0 +1,4 @@
+==== 17.8.1.6 SCP-6 Device Model Name (ST) 02091
+
+Definition: The manufacturer's designated model name.
+

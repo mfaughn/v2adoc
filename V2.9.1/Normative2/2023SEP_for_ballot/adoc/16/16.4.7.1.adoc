@@ -1,0 +1,6 @@
+==== 16.4.7.1 ADJ-1 Provider Adjustment Number (EI) 02003
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Adjustment Number assigned by the Provider Application.
+

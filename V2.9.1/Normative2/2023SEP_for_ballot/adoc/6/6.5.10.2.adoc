@@ -1,0 +1,4 @@
+==== 6.5.10.2 UB1-2 Blood Deductible 00531
+
+*Attention: _UB1-2 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6._*
+

@@ -1,0 +1,4 @@
+==== 4.11.2.1 RQ1-1 Anticipated Price (ST) 00285
+
+Definition: This field contains the reference price for the requisition unit of measure that is known to the requisition application. It may or may not be the actual cost of acquiring the item from a supplier. It is also not the price charged to the patient.
+

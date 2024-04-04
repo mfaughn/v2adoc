@@ -1,0 +1,4 @@
+==== 9.7.1.6 CON-6 Subject-specific Consent Text (FT) 01781
+
+Definition: Describes any additions or variations to the standard procedures/information releases/events from a standard consent that are applicable to the subject whose consent is sought.
+

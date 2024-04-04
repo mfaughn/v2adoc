@@ -1,0 +1,8 @@
+==== 8.8.15.11 OM7-11 Consent Indicator (ID) 01489
+
+Definition: This field indicates if a consent is needed for the service item. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables.
+
+Y A consent is required for service item to be ordered/performed.
+
+N No consent is needed for service item to be ordered/performed
+

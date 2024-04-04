@@ -1,0 +1,4 @@
+=== 1.8.16 Integration of the Health Record
+
+HL7 Version 2.x standards are silent on messages to support the integration of a patient’s health record across multiple delivery entities (or outside of) a healthcare delivery system. This would also include messages to insure central control and integrity of information that was “merged” between multiple delivery entities.
+

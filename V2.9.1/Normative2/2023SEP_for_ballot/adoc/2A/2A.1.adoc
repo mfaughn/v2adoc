@@ -1,0 +1,10 @@
+== 2A.1 Purpose
+
+The data types in this section are listed in alphabetical order.
+
+The data type examples in this Standard are given using the standard HL7 encoding rules, with the delimiter values from Figure 2-1 of Chapter 2, "Control", section 2.5.4, "Message delimiters".
+
+*Note:* These message construction rules define the standard HL7 encoding rules, creating variable length delimited messages. Although only one set of encoding rules has been defined as a standard since HL7 Version 2.3, other encoding rules are possible (but since they are non-standard, they may only be used by a site-specific agreement).
+
+In this chapter, square brackets, "[" and "]", are used to specify optional parts of a string. For instance, the format of a date field is “YYYY[MM[DD]]” which denotes that the field may contain four, six, or eight characters respectively. The characters may further constrain the possible contents of the string – this will be documented at the point of use.
+

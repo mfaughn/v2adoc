@@ -1,0 +1,10 @@
+==== 4.14.2.12 BPX-12 BC Special Testing (CNE) 01725
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This is a repeating field to allow multiple entries for special testing that was performed on the blood component. The preferred coding system for Special Testing is defined in the _ISBT 128 Application Specification_. Proposals have been developed and will soon be published by ICCBBA, Inc. for the encodation of other antigen and antibody specificities, including HLA, platelet, red cell and other types of markers. Refer to Table 0580 - BC Special Testing in Chapter 2C for valid values.
+
+This field is optional for blood component messages. It is not applicable for non-commercial product messages.
+
+Refer to _Table I3 - Special Testing Codes_ of the _ISBT 128 Application Specification_.
+

@@ -1,0 +1,4 @@
+==== *3.4.4.9* PV2-9 Expected Discharge Date/Time (DTM) 00189
+
+Definition: This field contains the date and time that the patient is expected to be discharged. This is a non-event related date used by ancillaries to determine more accurately the projected workloads. This field is also used to reflect the anticipated discharge date/time of an outpatient/emergency patient, or an inpatient.
+

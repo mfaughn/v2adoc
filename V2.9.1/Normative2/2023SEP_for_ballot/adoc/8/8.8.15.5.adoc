@@ -1,0 +1,4 @@
+==== 8.8.15.5 OM7-5 Category Synonym (ST) 01483
+
+Definition: This field contains an alternate name(s) for the category of the test/service. Example: The category "Radiology" is a synonym name for the category "Diagnostic Imaging".
+

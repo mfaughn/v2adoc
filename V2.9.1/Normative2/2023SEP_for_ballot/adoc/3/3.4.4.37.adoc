@@ -1,0 +1,8 @@
+==== *3.4.4.37* PV2-37 Baby Detained Indicator (ID) 00738
+
+Definition: This field indicates if the baby is detained after the mother's discharge. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/No Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y the baby was detained
+
+N normal discharge of mother and baby
+

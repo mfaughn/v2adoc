@@ -1,0 +1,30 @@
+==== 2.9.4.1 Snapshot mode update definition 
+
+For segments that do not contain unique identifiers and action codes (mainly NTE and patient administration segments), the only option is to treat the information in the repeating segments and segment groups as a whole.
+
+When an HL7 abstract message syntax includes these repeating units or sets, there is no implicit indication of how they interact with a similar set in a prior or subsequent message. Interpretation is not obvious from the message syntax particularly if the requirement is to update only part of the information previously sent.
+
+The existence of a segment, and possibly the lack of existence of a segment, might serve to add, update, replace, or delete information passed in similar segments in prior messages. Special consideration is warranted in the case where multiple instances of a segment exist in a message.
+
+In the “snapshot” mode, a group of repeating segments from the incoming message replaces the prior group of repeating segments on the receiving system. This is equivalent to a deletion of the prior group followed by the addition of the new group.
+
+To avoid confusion when all of the segments in a repeating group are to be deleted, one must send a single segment with “delete data” indicated for the first field (or all fields) of the segment to indicate that all information related to the segment is to be deleted.  In this scenario, snapshot mode provides for deleting the prior group of repeating segment data on the receiving system.  Otherwise, sending no segment(s) at all without such explicit indication could lead the receiver to assume nothing was changed, thus not sent.  I.e., if no segment is sent, this equates to "no information." No information SHOULD NOT signal the receiver to take an action, i.e. no action SHOULD be taken on any of the data related to the prior group of repeating segments.
+
+Since messages MAY contain multiple, possibly nested, groups, it is critically important to understand the level at which group(s) are subject to snapshot mode, especially the delete functionality outlined above. For example, a results message MAY include results for multiple patients, or a charge batch MAY include charges for multiple patients. Whether snapshot, and especially delete, applies to all the patients in the entire message, all the order-observations within one patient, or all the observations within one order-observation group must be agreed to by the trading partners, or otherwise specified in a conformance profile and/or the section-specific chapters of the HL7 Standard.
+
+To support assertions made in some chapters, e.g., chapter 6, and common practice at implementation sites, as of v2.6, the signal methods have been extended. By agreement among messaging partners or Conformance Profile, a sender might opt to signal deletion of data in the following manner:
+
+Transmit the delete indicator only:
+
+____
+• in the key identifier field if the segment has an explicit one – all other fields have no data
+
+• in the first field of the segment to indicate that all are to be deleted
+
+• in any combination of fields that the Sender customarily sends to the recipient - all other fields have no data
+
+• in all required fields all – all other fields have no data
+____
+
+This obviates the need for the Sender to populate fields ordinarily not sent and not expected by the receiver.
+

@@ -1,0 +1,4 @@
+==== 2A.2.20.1 Range Start Date/Time (DTM)
+
+Definition: The first component contains the earliest date/time (time stamp) in the specified range.
+

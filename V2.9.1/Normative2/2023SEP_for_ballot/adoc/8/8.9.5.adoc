@@ -1,0 +1,25 @@
+=== 8.9.5 LDP - Location Department Segment
+
+The Technical Steward for the LDP segment is Patient Administration.
+
+The LDP segment identifies how a patient location room is being used by a certain department. Multiple departments can use the same patient location, so there can be multiple LDP segments following an LOC segment. There must be at least one LDP segment for each LOC segment. This is not intended to include any current occupant information.
+
+[#LDP .anchor]####HL7 Attribute Table - LDP - Location Department
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |PL |R | | |00963 |Primary Key Value - LDP
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70264[0264] |00964 |Location Department
+|3 | |3= |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70069[0069] |00965 |Location Service
+|4 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70265[0265] |00966 |Specialty Type
+|5 | |1= |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70004[0004] |00967 |Valid Patient Classes
+|6 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70183[0183] |00675 |Active/Inactive Flag
+|7 | | |DTM |O | | |00969 |Activation Date - LDP
+|8 | | |DTM |O | | |00970 |Inactivation Date - LDP
+|9 | |80= |ST |O | | |00971 |Inactivated Reason
+|10 | | |VH |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70267[0267] |00976 |Visiting Hours
+|11 | | |XTN |O | | |00978 |Contact Phone
+|12 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70462[0462] |01584 |Location Cost Center
+|===
+

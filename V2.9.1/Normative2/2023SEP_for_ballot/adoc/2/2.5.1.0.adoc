@@ -1,0 +1,10 @@
+==== 2.5.1.0 Message Construction Flow Chart
+
+____
+The flow charts on the following pages represent another view of the message construction rules. The first shows the rules for transmitting a message; the second shows transmitting field occurrences.
+
+image:extracted-media/media/image1.wmf[extracted-media/media/image1]
+
+image:extracted-media/media/image2.wmf[extracted-media/media/image2]
+____
+

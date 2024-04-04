@@ -1,0 +1,19 @@
+=== 2A.2.50 OG – observation grouper
+
+HL7 Component Table - OG – Observation Grouper
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |20= |ST |O | |Original Sub-Identifier |Reflects OBX-4 data type pre V2.8.2 |2A.2.77
+|2 | | |NM |O | |Group | |2A.2.47
+|3 | | |NM |O | |Sequence | |2A.2.47
+|4 | | |ST |O | |Identifier | |2A.2.77
+|===
+
+Definition: The components that can be used to define the structure of the observation/result segments (OBX) within an observation report segment (OBR).
+
+Example: Original Mode - |1.3 2| where the dot and space are locally defined; Enhanced Mode - |^1^3^2| where the standard defines the purpose of the components to enable grouping.
+
+*Note:* In original mode, OG.1 plus OBX-3 provides uniqueness; in enhanced mode OG.2 and OG.3 plus OBX-3 will provide uniqueness; OG.4 may not be present.
+

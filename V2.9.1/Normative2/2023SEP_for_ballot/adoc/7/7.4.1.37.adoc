@@ -1,0 +1,4 @@
+==== 7.4.1.37 OBR-37 Number of Sample Containers (NM) 01028
+
+Definition: This field identifies the number of containers for a given sample. For sample receipt verification purposes; may be different from the total number of samples which accompany the order.
+

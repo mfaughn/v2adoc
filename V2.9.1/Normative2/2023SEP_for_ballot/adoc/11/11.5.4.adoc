@@ -1,0 +1,4 @@
+=== 11.5.4 REF/RRI - Cancel Patient Referral (Event I14)
+
+This event triggers a message to be sent from one healthcare provider to another canceling a referral. A previous referral may have been made in error, or perhaps the cancellation has come from the patient.
+

@@ -1,0 +1,4 @@
+==== *3.4.3.44* PV1-44 Admit Date/Time (DTM) 00174
+
+Definition: This field contains the admit date/time. It is to be used if the event date/time is different than the admit date and time, i.e., a retroactive update. This field is also used to reflect the date/time of an outpatient/emergency patient registration.
+

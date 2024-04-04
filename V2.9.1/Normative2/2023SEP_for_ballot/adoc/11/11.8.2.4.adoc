@@ -1,0 +1,4 @@
+==== 11.8.2.4 AUT-4 Authorization Effective Date (DTM) 01149
+
+Definition: This field contains the effective date of the authorization.
+

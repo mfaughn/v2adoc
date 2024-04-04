@@ -1,0 +1,63 @@
+=== 4.4.17 OPR – Population/Location-Based Laboratory Order Acknowledgment Message (Event O38)
+
+The function of this message is to respond to an OPL message. An OPR message is the application acknowledgment to an OPL message. See Chapter 2 for a description of the acknowledgment paradigm.
+
+Note: Based upon general message/acknowledgment patterns, it would be expected that this message type would be ORP. However, when this message type was introduced, ORP was already in use as Pharmacy/Treatment Order Acknowledgment.
+
+OPR^O38^OPR_O38: Population/Location-Based Laboratory Order Acknowledgment Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ARV}] |Access Restrictions | |3
+|[\{ ERR }] |Error | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for Header) | |2
+|[ |--- RESPONSE begin | |
+|\{ |--- ORDER begin | |
+|\{NK1} |Next of Kin | |3
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{PRT}] |Participation (for Patient) | |7
+|[\{ARV}] |For backwards compatibilityt only as of V2.9. |B |3
+|] |--- PATIENT end | |
+|[\{ |--- SPECIMEN begin | |
+|SPM |Specimen | |7
+|[\{ |--- SPECIMEN_OBSERVATION begin | |
+|OBX |Observations related to specimen | |7
+|[\{PRT}] |Participation (for Specimen Observation) | |7
+|}] |--- SPECIMEN_OBSERVATION end | |
+|[\{ SAC }] |Specimen Container | |13
+|[\{ |--- OBSERVATION_REQUEST begin | |
+|ORC |Common Order | |4
+|[\{PRT}] |Participation | |7
+|OBR |Observation Request | |4
+|[\{PRT}] |Participation (for Observation Request) | |7
+|}] |--- OBSERVATION_REQUEST end | |
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|}] |--- SPECIMEN end | |
+|} |--- ORDER end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="100%",cols="27%,35%,11%,27%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|OPR^O38^OPR_O38 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O38^ACK |- |ACK^O38^ACK
+|Application Ack |- |- |-
+|===
+
+____
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+____
+

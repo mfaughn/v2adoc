@@ -1,0 +1,4 @@
+==== *3.4.2.7* PID-7 Date/Time of Birth (DTM) 00110
+
+Definition: This field contains the patient's date and time of birth.
+

@@ -1,0 +1,10 @@
+==== 14.4.2.5 NSC-5 Current Facility (HD) 01192 
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a site-specific name for the current facility used by this application. To be used in conjunction with the values for the sending/receiving system and facility values in the MSH. This field further describes the current application, _NSC-5 Current Application_. With the promotion of this field to an HD data type, the usage has been broadened to include not just the current facility but other organizational entities, such as: a) the organizational entity responsible for current application; b) the responsible unit; c) a product or vendor's identifier, etc. Entirely site‑defined. file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70362[_User-defined Table 0362 – Sending/Receiving Facility_] is used as the HL7 identifier for the user-defined table of values for the first component.
+
+____
+*Note:* By site agreement, implementors may continue to use file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70300[_User-defined Table 0300 – Namespace ID_] for the first component.
+____
+

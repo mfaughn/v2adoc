@@ -1,0 +1,4 @@
+==== *3.4.3.49* PV1-49 Total Payments (NM) 00179
+
+Definition: This field contains the total payments for visit.
+

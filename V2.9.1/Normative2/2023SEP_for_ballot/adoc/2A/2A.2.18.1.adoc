@@ -1,0 +1,4 @@
+==== 2A.2.18.1 Driver’s License Number (ST)
+
+Definition: This field contains the driver’s license number.
+

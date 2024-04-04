@@ -1,0 +1,78 @@
+=== 4.13.2 OMB – Blood Product Order Message (Event O27) 
+
+Blood product order messages present the need for additional information that is not included in standard HL7 order messages. Order messages must contain accompanying details regarding the blood product component, such as special processing requirements (e.g., irradiation and leukoreduction), and the amount of the blood product to be administered. Additionally, specific relevant clinical information can be included to allow the prospective review of the appropriateness of the blood product order.
+
+Blood product orders use the OMB message with the BPO segment for the detail segment and the acknowledgment message, ORB as described below.
+
+OMB^O27^OMB_O27: Blood Product Order Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ARV}] |Access Restrictions | |3 | |
+|[\{ SFT }] |Software | |2 | |
+|[ UAC ] |User Authentication Credential | |2 | |
+|[\{ NTE }] |Notes and Comments (for Header) | |2 | |
+|[ |--- PATIENT begin | | | |
+|PID |Patient Identification | |3 | |
+|[ PD1 ] |Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{ PRT }] |Participation (for Patient) | |7 | |
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3 | |
+|[\{ NTE }] |Notes and Comments (for Patient ID) | |2 | |
+|[ |--- PATIENT_VISIT begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[ PV2 ] |Patient Visit – Additional Info | |3 | |
+|[\{ PRT }] |Participation (for Patient Visit) | |7 | |
+|] |--- PATIENT_VISIT end | | | |
+|[\{ |--- INSURANCE begin | | | |
+|IN1 |Insurance | |6 | |
+|[ IN2 ] |Insurance Additional Information | |6 | |
+|[ IN3 ] |Insurance Additional Information, Certification | |6 | |
+|}] |--- INSURANCE end | | | |
+|[ GT1 ] |Guarantor | |6 | |
+|[\{ AL1 }] |Allergy Information | |3 | |
+|] |--- PATIENT end | | | |
+|\{ |--- ORDER begin | | | |
+|ORC |Common Order | |4 | |
+|[\{PRT}] |Participation | |7 | |
+|[\{ |--- TIMING begin | | | |
+|TQ1 |Timing/Quantità | |4 | |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 | |
+|}] |--- TIMING end | | | |
+|BPO |Blood Product Order | |4 | |
+|[ SPM ] |Specimen | |7 | |
+|[\{ NTE }] |Notes and Comments (for Order) | |2 | |
+|[\{ DG1 }] |Diagnosis | |6 | |
+|[\{ |--- OBSERVATION begin | | | |
+|OBX |Observation/Result | |7 | |
+|\{[ PRT ]} |Participation | |7 | |
+|[\{ NTE }] |Notes and Comments (for Results) | |2 | |
+|}] |--- OBSERVATION end | | | |
+|[\{ FT1 }] |Financial Transaction | |6 | |
+|[ BLG ] |Billing Segment | |6 | |
+|} |--- ORDER end | | | |
+|===
+
+OMB use notes
+
+The NTE segment(s) can be included in the OMB message in four places; in each place the NTE refers to the segment that it follows. In particular, the NTEs following the MSH refer only to the message header; the NTEs following the blood product order segment apply to the service defined by that ORC and blood product order segment.
+
+The PID segment is required if and only if new orders are being entered and they are related to a particular patient. For non-patient-related orders the PID segment is never included.
+
+The optional PV1 segment is present mainly to permit transmission of patient visit information such as current location with an order.
+
+[width="100%",cols="20%,27%,9%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|OMB^O27^OMB_O27 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O27^ACK
+|Application Ack |ORB^O28^ORB_O28 or OSU^O52^OSU_O52 |- |ORB^O28^ORB_O28 or OSU^O52^OSU_O52 |ORB^O28^ORB_O28 or OSU^O52^OSU_O52
+|===
+

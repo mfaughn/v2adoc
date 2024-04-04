@@ -1,0 +1,4 @@
+==== 8.8.9.53 OM1-53 Prior Results Instructions (TX) 03434
+
+Definition: This field is used to indicate when the test in OM1-2 Producer's Service/Test/Observation ID is ordered, prior results should accompany the order (OML^O21^OML_O21: Laboratory Order Message). For example, when ordering a Thyroid FNA (Fine Needle Aspiration) Evaluation, send the prior results of Ultrasound Findings. The instructions may also indicate a timeframe; for example, send the prior results of CBC in past 60 days.
+

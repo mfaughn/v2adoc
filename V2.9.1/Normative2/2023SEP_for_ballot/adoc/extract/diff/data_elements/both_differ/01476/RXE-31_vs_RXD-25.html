@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+RXE-31_vs_RXD-25
+</h1>
+<hr>
+<h3>
+For 01476 there were 4 versions found.<br>This diff compares the version found in fields ["RXE-31", "RXE-31"] from sections ["4A.4.4", nil], respectively<br>with the version found in fields ["RXD-25", "RXD-25"] from sections ["4A.4.5", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>table:0<strong>727</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field accommodates the identification of any codes that might be associated with the pharmaceutical substance. Common codes include: the Generic Product Identifier (GPI), Generic Code Number_Sequence Number (GCN_SEQNO), National Drug Code (NDC<strong>). </strong>Refer to Table 07<strong>27</strong> - Supplementary Code in Chapter 2C for valid values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:0<strong>710</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field accommodates the identification of any codes that might be associated with the pharmaceutical substance. Common codes include: the Generic Product Identifier (GPI), Generic Code Number_Sequence Number (GCN_SEQNO), National Drug Code (NDC<strong>**)_._** *_</strong>Refer to Table 07<strong>10</strong> - Supplementary Code in Chapter 2C for valid values.<strong>_*</strong></ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:01476,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="del"><del><span class="symbol">-</span>table:0<strong>727</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field accommodates the identification of any codes that might be associated with the pharmaceutical substance. Common codes include: the Generic Product Identifier (GPI), Generic Code Number_Sequence Number (GCN_SEQNO), National Drug Code (NDC<strong>). </strong>Refer to Table 07<strong>27</strong> - Supplementary Code in Chapter 2C for valid values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:0<strong>710</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field accommodates the identification of any codes that might be associated with the pharmaceutical substance. Common codes include: the Generic Product Identifier (GPI), Generic Code Number_Sequence Number (GCN_SEQNO), National Drug Code (NDC<strong>**)_._** *_</strong>Refer to Table 07<strong>10</strong> - Supplementary Code in Chapter 2C for valid values.<strong>_*</strong></ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

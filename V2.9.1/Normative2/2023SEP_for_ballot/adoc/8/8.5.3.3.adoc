@@ -1,0 +1,4 @@
+==== 8.5.3.3 MFA-3 Event Completion Date/Time (DTM) 00668
+
+Definition: This field may be required or optional depending on the site specifications for the given master file, master file event, and receiving facility.
+

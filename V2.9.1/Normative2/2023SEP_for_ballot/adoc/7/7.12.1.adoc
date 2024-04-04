@@ -1,0 +1,22 @@
+=== 7.12.1 PES - Product Experience Sender Segment
+
+HL7 Attribute Table - PES [#PES .anchor]##– Product Experience Sender
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/ # |TBL # |ITEM # |ELEMENT NAME
+|1 | | |XON |O |Y | |01059 |Sender Organization Name
+|2 | | |XCN |O |Y | |01060 |Sender Individual Name
+|3 | | |XAD |O |Y | |01062 |Sender Address
+|4 | | |XTN |O |Y | |01063 |Sender Telephone
+|5 | | |EI |O | | |01064 |Sender Event Identifier
+|6 | |16= |NM |O | | |01065 |Sender Sequence Number
+|7 | |600= |FT |O |Y | |01066 |Sender Event Description
+|8 | |600= |FT |O | | |01067 |Sender Comment
+|9 | | |DTM |O | | |01068 |Sender Aware Date/Time
+|10 | | |DTM |R | | |01069 |Event Report Date
+|11 |2..3 | |ID |O |Y/2 |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70234[0234] |01070 |Event Report Timing/Type
+|12 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70235[0235] |01071 |Event Report Source
+|13 |1..1 | |ID |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70236[0236] |01072 |Event Reported To
+|===
+

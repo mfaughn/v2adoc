@@ -1,0 +1,4 @@
+==== 8.8.10.1 OM2-1 Sequence Number - Test/Observation Master File (NM) 00586
+
+Definition: This field contains the same value as the sequence number of the associated OM1 segment. Refer to Table 0648 - Units of Measure in Chapter 2C for valid values.
+

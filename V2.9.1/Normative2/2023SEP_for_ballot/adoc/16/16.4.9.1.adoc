@@ -1,0 +1,6 @@
+==== 16.4.9.1 IPR-1 IPR Identifier (EI) 02030
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique IPR Number assigned by the Payer Application.
+

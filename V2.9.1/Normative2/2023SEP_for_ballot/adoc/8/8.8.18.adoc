@@ -1,0 +1,24 @@
+=== 8.8.18 MCP – Master File Coverage Policy Segment
+
+The Technical Steward for the PM1 segment is Orders and Observations.
+
+For the payer defined in PM1-1 and the service provider defined in MFE-4:
+
+____
+• When MFI-1 is MLCP (Medical Limited Coverage Process) this segment is identifing what is in limited coverage.
+
+• When MFI-1 is MACP (Medical Approved Coverage Process) this segment is identifing what is approved. This segment defines the tests that are approved for a given Diagnosis Code based on the Procedure Code.
+____
+
+HL7 Attribute Table – MCP – Master File Coverage
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |03468 |Set ID - MCP
+|2 | | |CWE |R | | |00587 |Producer's Service/Test/Observation ID
+|3 | | |MO |O | | |03469 |Universal Service Price Range – Low Value
+|4 | | |MO |O | | |03470 |Universal Service Price Range – High Value
+|5 | | |ST |C | | |03471 |Reason for Universal Service Cost Range
+|===
+

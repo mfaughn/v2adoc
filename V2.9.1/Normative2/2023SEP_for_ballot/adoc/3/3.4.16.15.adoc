@@ -1,0 +1,4 @@
+==== *3.4.16.15* OH2-15 Job Duties (ST) 03533
+
+Definition: This field lists the regular actions performed at work. For example, a person may have the occupation of “construction laborer” and his specific job duties are to carry construction supplies. Specific job information is important in the healthcare setting because it provides information regarding hazards to which a person may have been exposed, which is pertinent to treatment and prevention. This field may repeat to list multiple job duties, or the job duties may be compiled as a single narrative.
+

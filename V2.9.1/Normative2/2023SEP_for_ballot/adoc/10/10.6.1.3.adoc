@@ -1,0 +1,6 @@
+==== 10.6.1.3 ARQ-3 Occurrence Number (NM) 00862
+
+Definition: This field is used in conjunction with the placer appointment ID and/or the filler appointment ID to uniquely identify an individual occurrence (a child) of a parent repeating schedule appointment.
+
+This field is conditionally required. If the transaction using this segment is meant to apply only to one occurrence of a repeating appointment, and an occurrence number is required to uniquely identify the child appointment (that is, the child does not have a separate and unique placer appointment ID or filler appointment ID), then this field is required.
+

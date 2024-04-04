@@ -1,0 +1,10 @@
+==== 10.2.2.1 The Filler Application Role
+
+The filler application role in the scheduling model is very similar to the filler application concept presented in Chapter 4, Order Entry. A filler application, in the scheduling model, is one that "owns" one or more schedules for one or more services or resources. In other words, a filler application exerts control over a certain set of services or resources and the schedules that define the availability of those services or resources. Because of this control, no other application has the ability to reserve, or to otherwise modify, the schedules controlled by a particular filler application.
+
+Other applications can, on the other hand, make requests to modify the schedules owned by the filler application. The filler application either fulfills or denies requests to book slots, or to otherwise modify the schedules for the services and resources over which it exerts control.
+
+Finally, the filler application also provides information about scheduled activities to other applications. The reasons that an application may be interested in receiving such information are varied. An application may have previously requested bookings or modifications on the schedule, or may simply be interested in the information for its own reporting or statistical purposes. There are two methods whereby filler applications disseminate this information: by issuing unsolicited information messages, or by responding to queries.
+
+The analog of a filler application in a non-automated environment might be an appointment book and the person in charge of maintaining that book. The appointment book describes when the resources are available and when they are booked. This appointment book is the only official record of this information, and controls the availability of the resources to any user. The person in charge of this appointment book takes requests to book the resources, and decides whether to accept or reject the requests based on the information recorded in the appointment book. Anyone needing information from the appointment book either consults the book directly, or contacts the person in charge of the book.
+

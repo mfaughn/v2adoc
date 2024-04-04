@@ -1,0 +1,4 @@
+==== 17.4.2.0 Bowie-Dick Test
+
+A diagnostic test of a dynamic-air-removal steam sterilizer's ability to remove air from the sterilizer chamber and prevent air reentrainment.
+

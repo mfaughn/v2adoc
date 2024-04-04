@@ -1,0 +1,4 @@
+==== *3.4.11.13* PD1-13 Protection Indicator Effective Date (DT) 01566
+
+Definition: *From v 2.6 onward, this field has been retained for backward compatibility only.* Use the ARV segment instead. This field indicates the effective date for _PD1-12 - Protection Indicator_.
+

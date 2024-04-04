@@ -1,0 +1,6 @@
+==== 17.8.1.4 SCP-4 Device Number (EI) 02090
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The number of the device (e.g., 01).
+

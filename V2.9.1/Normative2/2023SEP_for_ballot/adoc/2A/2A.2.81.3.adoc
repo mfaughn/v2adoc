@@ -1,0 +1,4 @@
+==== 2A.2.81.3 Non-Monetary Value Amount / Quantity (NM)
+
+Definition: Specifies the numeric amount when needed to pair with the value when it is non-monetary.
+

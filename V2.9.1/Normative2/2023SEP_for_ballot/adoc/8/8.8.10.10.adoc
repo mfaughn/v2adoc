@@ -1,0 +1,4 @@
+==== 8.8.10.10 OM2-10 Minimum Meaningful Increments (NM) 00635
+
+Definition: This field contains the numerically valued single observations (a nature code of A or C, as described in _OM1-18 - Nature of Service/Test/Observation_) and specifies the smallest meaningful difference between reported values (the effective resolution of the measuring instrument or technique for continuous data, or the smallest discrete interval that can occur for discrete data).
+

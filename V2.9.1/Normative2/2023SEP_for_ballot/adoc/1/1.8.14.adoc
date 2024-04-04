@@ -1,0 +1,4 @@
+=== 1.8.14 Tracking Input Validation
+
+HL7 Version 2.x standards do not provide messages for tracking the validation (or lack of validation) of data from its source (human or machine).
+

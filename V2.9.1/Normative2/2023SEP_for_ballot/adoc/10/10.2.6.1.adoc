@@ -1,0 +1,4 @@
+==== 10.2.6.1 Update mode
+
+This chapter uses the "Action code/unique identifier" mode for updating via repeating segments. For more information on updating via repeating segments, please see section 2.10.4, "Protocol for interpreting repeating segments or segment groups in an update Message," in Chapter 2. The definition of the "Action code/unique identifier" update mode can be found in Chapter 2, Section 2.10.4.2, "Action code/unique identifier mode update definition."
+

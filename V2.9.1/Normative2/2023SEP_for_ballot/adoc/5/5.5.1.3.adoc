@@ -1,0 +1,4 @@
+==== 5.5.1.3 DSP-3 Data Line (TX) 00063 
+
+Definition: This field contains an actual line as it should be displayed. As described for the TX data type, highlighting and other special display characteristics may be included.
+

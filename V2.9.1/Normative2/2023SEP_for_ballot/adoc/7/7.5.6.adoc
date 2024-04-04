@@ -1,0 +1,106 @@
+=== 7.5.6 EKG Results Reporting
+
+Suppose an order has been placed to the EKG system for three EKGs to be performed on successive days. These results can be reported in various ways.
+
+____
+{empty}1) The EKG application needs to communicate to anyone the results of the 1st EKG:
+____
+
+ORU message:
+
+MSH|...<cr>
+
+PID|...<cr>
+
+____
+Order record for EKG
+____
+
+OBR|1|P8753^OE|EK5230^EKG|8601-7^EKG impression^LN|||198703290800|||401
+
+0^INTERN^IRVING^I^^^MD^L|...<cr>
+
+____
+Two interpretation records for EKG
+____
+
+OBX|1|CWE|8601-7^EKG impression^LN|1|^Sinus bradycardia|||A|||F|...<cr>
+
+OBX|2|CWE|8601-7^EKG impression^LN |2|^Occasional PVCs|||A|||F|...<cr>
+
+____
+Four numeric results for EKG
+____
+
+OBX|3|NM|8897-1^QRS COMPLEX RATE ^LN|
+
+|80|/min|60-100|||||F|...<cr>
+
+OBX|4|NM|8894-8^PULSE RATE^LN||80|/min
+
+|60-100||||F|...<cr>
+
+OBX|5|NM|8633-0^QRS DURATION ^LN||.08|msec
+
+|.06-.10||||F|...<cr>
+
+OBX|6|NM|8625-6^P-R INTERVAL ^LN||.22|msec
+
+|.18-.22||||F|...<cr>
+
+• Notice that this report is without reference to the original order.
+
+• No ORC is required because the identifying Fillers Order Number (and other ORC fields) is carried in the OBR segment.
+
+• The EKG application needs to communicate to anyone the original order information, the details of the child orders, the fact of the child spin off, and the results of all three EKGs:
+
+ORU message:
+
+MSH|...<cr>
+
+PID|...<cr>
+
+ORC|PA|A226677^OE|89‑450^EKG|...<cr> // original order's ORC.
+
+OBR|1|||8601-7^EKG REPORT|...<cr> // original order segment
+
+ORC|CH|A226677^OE|89-451^EKG|...<cr> // 1st child ORC.
+
+OBR|1|||8601-7^EKG REPORT|...<cr> // 1st EKG child OBR.
+
+OBX|1|ST|...<cr> // 1st EKG report
+
+OBX|2|ST|...<cr>
+
+...
+
+OBX|14|FT|...<cr>
+
+ORC|CH|A226677^OE|89-452^EKG|...<cr> // 2nd child ORC.
+
+OBR|1|||8601-7^EKG REPORT|...<cr> // 2nd EKG child OBR.
+
+OBX|1|ST|...<cr> // 2nd EKG report
+
+OBX|2|ST|...<cr>
+
+...
+
+OBX|14|FT|...<cr>
+
+ORC|CH|A226677^OE|89-453^EKG|...<cr> // 3rd child ORC.
+
+OBR|1|||8601-7^EKG REPORT|...<cr> // 3rd EKG child OBR.
+
+OBX|1|ST|...<cr> // 3rd EKG report
+
+OBX|2|ST|...<cr>
+
+...
+
+OBX|14|FT|...<cr>
+
+... // Other parts of message might follow.
+
+In this case, we are transmitting the information about the fact of child spin off, the original order and the results all at the same time. Thus, this form of the ORU message reports not only the results of an order, but all of its associated ordering information including the original OBR for three EKGs that was replaced by three separate OBR EKG segments.
+

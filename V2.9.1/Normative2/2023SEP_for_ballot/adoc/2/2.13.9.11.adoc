@@ -1,0 +1,6 @@
+==== 2.13.9.11 MSH-11 Processing ID (PT) 00011
+
+Components: <Processing ID (ID)> ^ <Processing Mode (ID)>
+
+Definition: This field is used to decide whether to process the message as defined in HL7 Application (level 7) Processing rules.
+

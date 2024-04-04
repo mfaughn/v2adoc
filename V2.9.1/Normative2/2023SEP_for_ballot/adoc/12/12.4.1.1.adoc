@@ -1,0 +1,4 @@
+==== 12.4.1.1 GOL-1 Action Code (ID) 02534
+
+Definition: The action code field gives the intent of the problem or goal. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[_HL7 Table 0287 – Problem/Goal Action Co__de_] in Chapter 2C, Code Tables, for valid values.
+

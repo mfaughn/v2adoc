@@ -1,0 +1,6 @@
+==== 17.5.7.19 IVT-19 Substitute Item Identifier (EI) 02078
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The substitute item is an item that is recommended as a substitute for the corresponding item in ITM-1.
+

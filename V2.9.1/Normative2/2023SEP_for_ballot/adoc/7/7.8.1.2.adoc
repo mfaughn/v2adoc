@@ -1,0 +1,6 @@
+==== 7.8.1.2 CSR-2 Alternate Study ID (EI) 01036
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains an alternate identifier that may be used as agreed upon by messaging parties. For example, the sending application may code its internal study number here.
+

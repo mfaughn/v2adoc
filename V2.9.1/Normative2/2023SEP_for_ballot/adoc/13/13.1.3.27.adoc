@@ -1,0 +1,4 @@
+==== 13.1.3.27 Docking site: 
+
+*1)* The location of the physical interface between two components of a system; **2) _In NCCLS LAB AUTOMATION Standard documents, _**the interface between the transportation system and the instrument and/or the specimen processing and handling devices where the specimen container arrives for sampling to occur.
+

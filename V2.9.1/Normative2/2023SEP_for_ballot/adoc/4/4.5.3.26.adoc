@@ -1,0 +1,18 @@
+==== 4.5.3.26 OBR-26 Parent Result (PRL) 00259
+
+Components: <Parent Observation Identifier (CWE)> ^ <Parent Observation Sub-identifier (OG)> ^ <Parent Observation Value Descriptor (TX)>
+
+Subcomponents for Parent Observation Identifier (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Parent Observation Sub-identifier (OG): <Original Sub-Identifier (ST)> & <Group (NM)> & <Sequence (NM)> & <Identifier (ST)>
+
+Definition: This field is defined to make it available for other types of linkages (e.g., toxicology). This important information, together with the information in OBR-29-Parent Result Obersvation Identifier and OBR-54 Parent Order__,__ uniquely identifies the parent result's OBX segment related to this order. The value of this OBX segment in the parent result is the organism or chemical species about which this battery reports, or the specific result for which this order or observation is a reflex. For example, if the current battery is an antimicrobial susceptibility, the parent results identified OBX contains a result which identifies the organism on which the susceptibility was run. This indirect linkage is preferred because the name of the organism in the parent result may undergo several preliminary values prior to finalization. In the case of a reflex order, if it is necessary to point to the specific result value for which it is in response, OBR-26 enables pointing to that specific OBX segment.
+
+The third component may be used to record the name of the microorganism identified by the parent result directly. The organism in this case should be identified exactly as it is in the parent culture.
+
+We emphasize that this field does not take the entire result field from the parent. It is meant only for the text name of the organism or chemical subspecies identified. This field is included only to provide a method for linking back to the parent result for those systems that could not generate unambiguous Observation IDs and sub-IDs.
+
+This field is present only when the parent result is identified by OBR-29- Result Observation Identifier or OBR-54, Parent Order, and the parent spawns child orders or results for each of many results. (See Chapter 7 for more details about this linkage.)
+
+A second mode of conveying this information is to use a standard observation result segment (OBX). If more than one organism is present, OBX-4-observation sub-ID is used to distinguish them. In this case, the first OBX with subID N will contain a value identifying the Nth microorganism, and each additional OBX with subID N will contain susceptibility values for a given antimicrobial test on this organism.
+

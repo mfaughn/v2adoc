@@ -1,0 +1,4 @@
+==== 10.6.6.1 AIL-1 Set ID – AIL (SI) 00902
+
+Definition: This field contains a number that uniquely identifies the information represented by this segment in this transaction for the purposes of addition, change or deletion.
+

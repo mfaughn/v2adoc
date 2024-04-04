@@ -1,0 +1,4 @@
+==== 11.2.4.6 Guarantor: 
+
+Refers to a person who has financial responsibility for the payment of a patient account.
+

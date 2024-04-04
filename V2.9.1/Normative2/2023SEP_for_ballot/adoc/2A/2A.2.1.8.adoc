@@ -1,0 +1,4 @@
+==== 2A.2.1.8 Other Geographic Designation (ST)
+
+Definition: This component specifies any other geographic designation that may be necessary. It includes county, bioregion, SMSA, etc.
+

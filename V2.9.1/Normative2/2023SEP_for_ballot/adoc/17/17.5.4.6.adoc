@@ -1,0 +1,6 @@
+==== 17.5.4.6 VND-6 Corporation (EI) 02420
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a corporation indentifier (code and name) of the entity allowed to purchase from this contract for this vendor.
+

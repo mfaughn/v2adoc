@@ -1,0 +1,4 @@
+==== 2A.2.46.7 Facility (HD)
+
+Definition: This component is subject to site interpretation but generally describes the highest level physical designation of an institution, medical center or enterprise. It is the most general location designation.
+

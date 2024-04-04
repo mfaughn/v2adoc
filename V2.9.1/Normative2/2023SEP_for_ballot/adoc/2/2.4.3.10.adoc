@@ -1,0 +1,8 @@
+==== 2.4.3.10 Name 
+
+____
+Definition: Descriptive name for the data item. In the segment attribute tables this information is provided in the column labeled *ELEMENT NAME*.
+
+When the same name is used in more than one segment, it SHALL have the same data type and semantic meaning in each segment as well as the same ID number. To deal with any ambiguities arising from this convention, whenever a field is referenced herein, the segment name and position SHALL always be included.
+____
+

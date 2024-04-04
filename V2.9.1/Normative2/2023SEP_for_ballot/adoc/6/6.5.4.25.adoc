@@ -1,0 +1,6 @@
+==== 6.5.4.25 PR1-25 Parent Procedure ID (EI) 02373
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definitions: This field contains a procedure ID which points to the procedure group (e.g., complete surgery) in which this instance belongs.
+

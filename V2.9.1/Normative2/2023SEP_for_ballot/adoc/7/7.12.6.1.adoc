@@ -1,0 +1,6 @@
+==== 7.12.6.1 FAC-1 Facility ID-FAC (EI) 01262
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the facility identifier.
+

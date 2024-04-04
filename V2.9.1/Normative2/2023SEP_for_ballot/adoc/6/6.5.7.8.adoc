@@ -1,0 +1,4 @@
+==== 6.5.7.8 IN2-8 Medicaid Case Number (ST) 00479
+
+Definition: This field contains the Medicaid case number, defined by CMS or other regulatory agencies which can be used to group household members for Medicaid service eligibility.
+

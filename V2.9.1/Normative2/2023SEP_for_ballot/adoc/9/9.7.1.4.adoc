@@ -1,0 +1,6 @@
+==== 9.7.1.4 CON-4 Consent Form Number (EI) 01779
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Uniquely identifies a specific recorded consent. This may be the number assigned to an electronic consent, or may be the number on a printed consent form.
+

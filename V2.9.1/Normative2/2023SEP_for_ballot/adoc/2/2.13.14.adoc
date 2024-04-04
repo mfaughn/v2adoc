@@ -1,0 +1,13 @@
+=== 2.13.14 SGT – Segment Group Trailer segment
+
+The SGT segment is only used to provide information about the instantiated message structure to the parsing process to indicate that the segment group ends and subsequent segments SHOULD be interpreted accordingly. It does not contain any patient related data. The Segment Group Trailer is required if the segment group header exists.
+
+HL7 Attribute Table – SGT – Segment Group Trailer
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |4 | |SI |R | | |03394 |Set ID – SGT
+|2 | |60# |ST |O | | |03395 |Segment Group Name
+|===
+

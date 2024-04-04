@@ -1,0 +1,4 @@
+==== 6.5.2.12 DG1-12 Outlier Days 00386
+
+*Attention: _DG1-12 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6_*
+

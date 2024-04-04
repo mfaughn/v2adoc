@@ -1,0 +1,4 @@
+==== 15.4.6.12 PRA-12 Set ID - PRA (SI) 01616
+
+Definition: For all messages except the Staff/Practitioner Master File Notification, this field is required and contains the number that identifies this transaction. For the first occurrence of the segment, the sequence number shall be one; for the second occurrence, the sequence number shall be two; etc. For the Staff/Practitioner Master File Notification message, this field should not be used.
+

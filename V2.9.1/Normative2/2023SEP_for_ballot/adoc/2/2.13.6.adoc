@@ -1,0 +1,28 @@
+=== 2.13.6 FHS ‑ File Header Segment
+
+The FHS segment is used to head a file (group of batches) as defined in Section _2.9.3_, "_HL7 batch protocol_".
+
+HL7 Attribute Table - FHS - File Header
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |1..1 | |ST |R | | |00067 |File Field Separator
+|2 |4..5 | |ST |R | | |00068 |File Encoding Characters
+|3 | | |HD |O | | |00069 |File Sending Application
+|4 | | |HD |O | | |00070 |File Sending Facility
+|5 | | |HD |O | | |00071 |File Receiving Application
+|6 | | |HD |O | | |00072 |File Receiving Facility
+|7 | | |DTM |O | | |00073 |File Creation Date/Time
+|8 | |40= |ST |O | | |00074 |File Security
+|9 | |20= |ST |O | | |00075 |File Name/ID
+|10 | |80# |ST |O | | |00076 |File Header Comment
+|11 | |20= |ST |O | | |00077 |File Control ID
+|12 | |20= |ST |O | | |00078 |Reference File Control ID
+|13 | | |HD |O | | |02269 |File Sending Network Address
+|14 | | |HD |O | | |02270 |File Receiving Network Address
+|15 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70952[0952] |02429 |Security Classification Tag
+|16 | | |CWE |C |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70953[0953] |02430 |Security Handling Instructions
+|17 | | |ST |C |Y | |02431 |Special Access Restriction Instructions
+|===
+

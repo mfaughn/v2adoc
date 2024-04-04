@@ -1,0 +1,34 @@
+===== 3.6.2.2.11 A49 - change patient account number
+
+[width="100%",cols="54%,46%",]
+|===
+|A49 - Change patient account number |
+|Use Case - Patients are automatically assigned an account number by hospital XYZ's Patient Administration system at admission. However, when the Patient Administration system is down, the admitting clerk manually assigns account numbers from a pool of downtime account numbers. ADAM EVERYMAN (patient ID MR1) was manually assigned downtime account number ACCT1. When the Patient Administration system came back up, the admitting clerk accidentally entered the wrong account number, X1, into the system. When the problem was later discovered, the account number was changed from X1 to ACCT1. |
+|Target: _PID-18 - Patient Account Number_ |
+|Source: _MRG-3 - Prior Patient Account Number_ |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A49^ADT_A30\|00000006\|P\|2.8\|<cr>
+
+EVN\|A49\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYMAN^ADAM\|\|19501010\|M\|\|\|123 SOUTH STREET^^NY^NY^10021\|\|(212)111-2222\|\|\|S\|CAT\|ACCT1<cr>
+
+MRG\|MR1^^^XYZ\|\|X1<cr>
+
+|
+|Before Change |After Change
+a|
+MR1
+
+X1
+
+a|
+MR1
+
+ACCT1
+
+|Implementation Considerations: None. |
+|===
+

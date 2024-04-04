@@ -1,0 +1,24 @@
+=== 2.8.1 Message initiation
+
+The initiating application creates a message with data values as defined in the appropriate chapter of this Standard. The fields shown below SHOULD be valued in the MSH segment (as defined under the MSH segment definition of this chapter). The message is encoded according to the applicable rules and sent to the lower level protocols, which will attempt to deliver it to the responding application. (For definitions of the MSH fields see Section _2.13.9_, "_MSH ‑ Message Header segment_")
+
+[width="100%",cols="31%,69%",options="header",]
+|===
+|Field |Notes
+|MSH-3-sending application |
+|MSH-4-sending facility |
+|MSH-5-receiving application |
+|MSH-6-receiving facility |
+|MSH-7-date/time of message |
+|MSH-9-message type |
+|MSH-10-message control ID |Unique identifier used to relate the response to the initial message.
+|MSH-11-processing ID |
+|MSH-12-version ID |
+|MSH-13-sequence number |
+|MSH-14-continuation pointer |Used in implementation of message continuation protocol. See Section _2.9.2_, "_Continuation messages and segments_". Also see chapter 5, "Queries".
+|===
+
+Certain other fields in the MSH segment are required for the operation of the HL7 encoding rules; they will not be relevant if other encoding rules are employed.
+
+The event code in the second component of link:#_MSH-9___Message Type  (MSG)   00009[MSH-9 Message Type] is redundantly shown elsewhere in some messages. For example, the same information is in the EVN segment of the ADT message. This is for compatibility with prior versions of the HL7 protocol. Newly defined messages SHOULD only show the event code in link:#_MSH-9___Message Type  (MSG)   00009[MSH-9 Message Type].
+

@@ -1,0 +1,4 @@
+==== 7.12.5.7 PDC-7 Catalogue Identifier (ST) 01253
+
+Definition: This field contains the manufacturer's catalogue identifier for the product.
+

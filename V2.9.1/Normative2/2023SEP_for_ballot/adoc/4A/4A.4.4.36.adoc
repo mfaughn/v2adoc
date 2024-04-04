@@ -1,0 +1,4 @@
+==== 4A.4.4.36 RXE-36 Formulary Status (ID) 01677
+
+Definition: This field specifies whether or not the pharmaceutical substance is part of the local formulary. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70478[_HL7 table 0478 - Formulary Status_] in Chapter 2C, Code Tables, for valid values.
+

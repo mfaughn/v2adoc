@@ -1,0 +1,4 @@
+==== 9.2.2.12 Consent Text: 
+
+When recording consents electronically it is important to know the specific text that was presented to the consenting person.
+

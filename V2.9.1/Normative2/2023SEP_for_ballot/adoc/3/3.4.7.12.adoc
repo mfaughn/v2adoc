@@ -1,0 +1,4 @@
+==== *3.4.7.12* IAM-12 Onset Date Text (ST) 01557
+
+Definition: This field contains a text description of the time period of the first reaction when an exact date is not known (e.g., adolescence, childhood, spring 1990).
+

@@ -1,0 +1,4 @@
+==== 4.11.1.5 RQD-5 Requisition Quantity (NM) 00279
+
+Definition: This field contains the quantity requisitioned for this item.
+

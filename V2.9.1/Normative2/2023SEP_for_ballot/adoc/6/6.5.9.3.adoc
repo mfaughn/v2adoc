@@ -1,0 +1,4 @@
+==== 6.5.9.3 ACC-3 Accident Location (ST) 00529
+
+Definition: This field contains the location of the accident.
+

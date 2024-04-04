@@ -1,0 +1,4 @@
+==== 15.4.6.10 PRA-10 Date Left Practice (DT) 01348
+
+Definition: This field contains the date the practitioner ended or intends to end practicing at the given institution (e.g., at hospital, at physician organization, at managed care network).
+

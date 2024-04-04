@@ -1,0 +1,6 @@
+==== 15.4.3.3 EDU-3 Academic Degree Program Date Range (DR) 01597
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This field contains the date range when the academic degree program took place.
+

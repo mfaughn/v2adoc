@@ -1,0 +1,4 @@
+==== *3.4.18.3* OH4-3 Combat Zone Start Date (DT) 03544
+
+Definition: This field asserts when the combat zone duty began.
+

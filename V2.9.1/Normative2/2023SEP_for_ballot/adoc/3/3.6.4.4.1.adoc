@@ -1,0 +1,10 @@
+===== 3.6.4.4.1 *Figure 3-1* - Client system assigns identifier, person exists on MPI only
+
+The messages are defined as follows:
+
+*Q22/K22 Find Candidates* - This signals the MPI to search its database for a list of persons that match the demographic criteria sent in the query, using whatever algorithms it has at its disposal, or using the algorithm optionally specified in the query. The response includes a list of "candidates" that matched the criteria in the query, one PID segment for each candidate. The query can also specify the identifier domains to return in _PID-3 - Patient Identifier List_, so that the client system identifier and the MPI enterprise identifier could be returned for each match.
+
+*Q21/K21 Get Person Demographics* - Once a candidate is chosen from the list, another query may be done to retrieve the full set of demographics for that person.
+
+*A24 or A01/A04/A05* - This transaction is to update the MPI with the new identifier the client system has created for the person. It is acceptable for systems to simply send _an A01 Admit/visit notification,_ _A04 Register a patient or A05 Pre-admit a patient_ as may have been done traditionally, with the new client system identifier and the existing MPI enterprise identifier in PID-3. However an _A24 Link patient information_ may be sent instead, with one PID segment containing the MPI enterprise identifier for the person, and the second PID segment containing the new registration system identifier.
+

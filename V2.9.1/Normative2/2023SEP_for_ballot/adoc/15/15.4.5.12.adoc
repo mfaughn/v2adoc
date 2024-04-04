@@ -1,0 +1,8 @@
+==== 15.4.5.12 ORG-12 Primary Care Physician Indicator (ID) 01468
+
+Definition: This field contains an indicator for whether this practice specialty may act as a primary care physician (PCP). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] for valid values.
+
+Y this practice specialty may act as a primary care physician
+
+N this practice specialty may not act as a primary care physician
+

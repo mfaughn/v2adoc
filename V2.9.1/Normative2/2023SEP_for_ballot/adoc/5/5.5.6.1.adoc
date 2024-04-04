@@ -1,0 +1,4 @@
+==== 5.5.6.1 RCP-1 Query Priority (ID) 00027 
+
+Definition: This field contains the time frame in which the response is expected. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70091[_HL7 Table 0091 – Query priority_] in Chapter 2C, Code Tables, for valid values. Table values and subsequent fields specify time frames for response.
+

@@ -1,0 +1,8 @@
+==== 2.13.9.5 MSH-5 Receiving Application (HD) 00005
+
+Components: <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field uniquely identifies the receiving application among all other applications within the network enterprise. The network enterprise consists of all those applications that participate in the exchange of HL7 messages within the enterprise. Entirely site-defined _file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70361[User-defined Table 0361- Application]_ in Chapter 2C, Code Tables, is used as the HL7 identifier for the user-defined table of values for the first component.
+
+*Note*: By site agreement, implementers MAY continue to use file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70300[_User-defined Table 0300 – Namespace ID_] in Chapter 2C, Code Tables, for the first component.
+

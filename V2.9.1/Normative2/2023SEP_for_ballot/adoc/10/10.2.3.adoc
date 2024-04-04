@@ -1,0 +1,4 @@
+=== 10.2.3 Trigger Events, Status, Reasons, and Types
+
+This chapter defines several trigger events used to communicate scheduling information between applications. In addition, it also defines, suggests, or allows for several statuses that scheduled activities may hold, several reasons a scheduled activity may occur, and several types of scheduled activities. The distinction between these four concepts is important for understanding the information in this chapter.
+

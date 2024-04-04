@@ -1,0 +1,17 @@
+=== 16.4.5 PSG – Product/Service Group Segment
+
+The Product/Service Group segment is used to form a logical grouping of Product/Service Line Items, Patients and Response Summaries for a particular Invoice. For example, a Product/Service Group can be used to group all Product/Service Line Items that must be adjudicated as a group in order to be paid.
+
+HL7 Attribute Table – PSG – Product/Service Group
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01950 |Provider Product/Service Group Number
+|2 | | |EI |O | | |01951 |Payer Product/Service Group Number
+|3 |1..4 | |SI |R | | |01952 |Product/Service Group Sequence Number
+|4 |1..1 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01953 |Adjudicate as Group
+|5 | | |CP |R | | |01954 |Product/Service Group Billed Amount
+|6 | |254# |ST |R | | |02044 |Product/Service Group Description
+|===
+

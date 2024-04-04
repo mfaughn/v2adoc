@@ -1,0 +1,4 @@
+==== 9.2.1.2 Canceled:
+
+An availability status in which a document has been "removed" from a patient's record with no replacement. This is done when a document has been erroneously created or assigned to the incorrect patient.
+

@@ -1,0 +1,4 @@
+==== 17.5.5.1 PKG-1 Set ID - PKG (SI) 02221
+
+Definition: This field contains a sequential number that identifies this segment within a given Purchasing Vendor segment group. For the first occurrence of the segment, the sequence number shall be one; for the second occurrence, the sequence number shall be two; etc.
+

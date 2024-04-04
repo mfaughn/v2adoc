@@ -1,0 +1,4 @@
+==== 6.5.8.7 IN3-7 Certification Modify Date/Time (DTM) 00508
+
+Definition: This field contains the date/time that the certification was modified.
+

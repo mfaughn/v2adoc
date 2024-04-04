@@ -1,0 +1,54 @@
+=== 13.2.9 EAN/ACK - Automated Equipment Notification (Event U09)
+
+This message is used to send equipment notifications from one application to another (e.g., alerts sent by automated equipment to a Laboratory Automation System).
+
+EAN^U09^EAN_U09: Equipment Status Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- NOTIFICATION begin | | | | |
+|link:#NDS[NDS] | |Notification Detail | | | |13 |
+|[ NTE ] | |Notification Note | | | |2 |
+|} | |--- NOTIFICATION end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="18%,23%,5%,15%,18%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EAN^U09^EAN_U09 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U09^ACK |- |ACK^U09^ACK
+|Application Ack |ACK^U09^ACK |- |- |ACK^U09^ACK |ACK^U09^ACK
+|===
+
+ACK^U09^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U09^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U09^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,8 @@
+==== 6.5.2.18 DG1-18 Confidential Indicator (ID) 00767
+
+Definition: This field indicates whether the diagnosis is confidential. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, "Code Tables", for valid values.
+
+Y the diagnosis is a confidential diagnosis
+
+N the diagnosis does not contain a confidential diagnosis
+

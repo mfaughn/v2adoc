@@ -1,0 +1,4 @@
+==== 7.12.2.15 PEO-15 Event Description from Patient (FT) 01087
+
+Definition: This field contains a summary narrative text description of the event obtained directly from the patient. Note that laboratory results can be encoded as OBX segments rather then including them in the narrative, which will allow the data to be more readily represented and manipulated.
+

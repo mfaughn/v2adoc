@@ -1,0 +1,4 @@
+==== 6.5.7.13 IN2-13 Military Station (ST) 00484
+
+Definition: This field is defined by CMS or other regulatory agencies.
+

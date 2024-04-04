@@ -1,0 +1,63 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+ORC-35_vs_CDO-2
+</h1>
+<hr>
+<h3>
+For 00816 there were 7 versions found.<br>This diff compares the version found in fields ["ORC-35", "IPC-10", "BTX-21", "DON-34", "BUI-13", "ORC-35", "IPC-10", "BTX-21", "DON-34", "BUI-13"] from sections ["4.5.1", nil, nil, nil, nil, nil, nil, nil, nil, nil], respectively<br>with the version found in fields ["CDO-2", "CDO-2"] from sections ["4A.4.9", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>definition:Th<strong>is field reveals the intent of</strong> the <strong>message</strong>. Refer to HL7 Table 0206 - Segment Action Code<strong> </strong>for valid values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:Th<strong>e Action Code indicates whether the cumulative dosage segment is intended to be added, deleted, updated, or did not change. If the field is not valued in any CDO segments for</strong> the <strong>order, the segments are considered to have been sent in snapshot mode. If some but not all CDO segments for the order do not have the action code valued, the default value is Add</strong>. Refer to <strong>_</strong>HL7 Table 0206 - Segment Action Code<strong>_ in Chapter 2C, Code Tables, </strong>for valid values.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00816,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:1,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:1,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:ID,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>table:0206,</span></li>
+    <li class="del"><del><span class="symbol">-</span>definition:Th<strong>is field reveals the intent of</strong> the <strong>message</strong>. Refer to HL7 Table 0206 - Segment Action Code<strong> </strong>for valid values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:Th<strong>e Action Code indicates whether the cumulative dosage segment is intended to be added, deleted, updated, or did not change. If the field is not valued in any CDO segments for</strong> the <strong>order, the segments are considered to have been sent in snapshot mode. If some but not all CDO segments for the order do not have the action code valued, the default value is Add</strong>. Refer to <strong>_</strong>HL7 Table 0206 - Segment Action Code<strong>_ in Chapter 2C, Code Tables, </strong>for valid values.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

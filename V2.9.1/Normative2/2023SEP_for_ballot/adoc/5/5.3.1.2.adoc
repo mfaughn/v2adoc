@@ -1,0 +1,140 @@
+==== 5.3.1.2 Example of Query Profile with tabular response
+
+Query Profile
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID (Query ID=Z99): |Z99
+|Type: |Query (or Publish)
+|Query Name: |Who Am I
+|Query Trigger (= MSH-9): |QBP^Z99^QBP_Q13
+|Query Mode: |Both
+|Response Trigger (= MSH-9): |RSP^Z84^RSP_Z84
+|Query Characteristics: |Returns response sorted by PatientLastName unless otherwise specified. Note that neither the PID nor the RDF segments are used.
+|Purpose: |Find the identity of the patient for specified medical record number(s)
+|Response Characteristics: |Returns response sorted by PatientLastName unless otherwise specified.
+|Based on Segment Pattern: |
+|===
+
+QBP^Z99^QBP_Q13: Query Grammar: QBP Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec Ref
+|MSH |Message Header Segment | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|link:#QPD[QPD] |Query Parameter Definition | |5.5.4
+|[ PID ] |Patient Identification Segment | |3.4.2
+|[ link:#RDF[RDF] ] |Table Row Definition Segment | |5.5.6.6
+|link:\l[RCP] |Response Control Parameter | |5.5.6
+|[ RDF ] |Table Row Definition Segment | |5.5.6.6
+|[ DSC ] |Continuation Pointer | |2.15.4
+|===
+
+[width="100%",cols="21%,31%,24%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|QBP^Z99^QBP_Q13 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |AL |AL
+|Immediate Ack |- |- |ACK^Z84^ACK
+|Application Ack |RSP^Z84^RSP_Z84 |RSP^Z84^RSP_Z84 |RSP^Z84^RSP_Z84
+|===
+
+RSP^Z84^RSP_Z84: Response Grammar: RTB Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Sec Ref
+|MSH |Message Header Segment | |2.15.9
+|[\{SFT}] |Software Segment | |2.15.12
+|[ UAC ] |User Authentication Credential | |2.14.13
+|MSA |Message Acknowledgement | |2.15.8
+|[ ERR ] |Error | |2.15.5
+|link:#QAK[QAK] |Query Acknowledgement | |5.4.2
+|link:#QPD[QPD] |Query Parameter Definition | |5.5.4
+|[ |--- ROW_DEFINITION begin | |
+|link:#RDF[RDF] |Table Row Definition Segment | |5.5.6.6
+|[ \{ link:#RDT[RDT] } ] |Table Row Data Segment | |5.5.6
+|] |--- ROW_DEFINITION end | |
+|[ DSC ] |Continuation Pointer | |2.15.4
+|===
+
+[width="100%",cols="24%,37%,10%,29%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|RSP^Z84^RSP_Z84 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^Z84^ACK
+|Application Ack |- |- |-
+|===
+
+*QPD Input Parameter Specification*
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq (Query ID=Z99) |Field Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|1 |MessageQueryName | | |60 |CWE |R | | | | | |
+|2 |QueryTag | | |32 |ST |R | | | | | |
+|3 |PatientList |S |Y |20 |CX |O | | | |PID-3 | |PID-3 Patient Identifier List
+|===
+
+*QPD Input Parameter Field Description and Commentary*
+
+[width="100%",cols="20%,11%,6%,63%",options="header",]
+|===
+|Input Parameter (Query ID=Z99) |Comp. Name |DT |Description
+|MessageQueryName | |CWE |SHALL be valued *Z99^WhoAmI^HL7nnnn*.
+|QueryTag | |ST |Unique to each query message instance.
+|PatientList | |CX |
+| | | |Components: <ID (ST)> ^ <check digit (ST)> ^ <code identifying the check digit scheme employed (ID)> ^ < assigning authority (HD)> ^ <identifier type code (IS)> ^ < assigning facility (HD)>
+| | | |The combination of values for _PatientID, and PatientIDAssigningAuthority,_ are intended to identify a unique entry on the PATIENT_MASTER table. The PatientIDTypeCode is useful for further filtering or to supply uniqueness in the event that the assigning authority may have more than one coding system. (The PATIENT_MASTER table contains a constraint that prevents multiple patients from being identified by the same combination of field values.) This PATIENT_MASTER entry will be searched against on the PHARMACY_DISPENSE_TRANSACTION table to retrieve the rows fulfilling the query conditions.
+| | | |If this field is not valued, all values for this field are considered to be a match.
+| | | |
+| |ID |ST |If this field, PID.3.1, is not valued, all values for this field are considered to be a match.
+| |Assigning Authority |HD |If this field, PID.3.4, is not valued, all values for this field are considered to be a match.
+| |Identifier Type Code |CWE |If this field, PID.3.5, is not valued, all values for this field are considered to be a match.
+|===
+
+*RCP Response Control Parameter Field Description and Commentary*
+
+[width="100%",cols="13%,25%,13%,6%,7%,36%",options="header",]
+|===
+|Field Seq (Query ID=Z99) |Name |Com­po­nent Name |LEN |DT |Description
+|1 |Query Priority | |1 |ID |(*D*)eferred or (*I*)mmediate. Default is *I*.
+|2 |Quantity Limited Request | |10 |CQ |
+| | |Quantity | |NM |Number of units (specified by the following component) that will be returned in each increment of the response. If no value is given, the entire response will be returned in a single increment.
+| | |Units | |CWE |**CH**aracters, **LI**nes, **P**a**G**es, or **R**ecor**D**s. Default is *LI*.
+|3 |Response Modality | |60 |CWE |**R**eal time or **B**atch. Default is *R*.
+|6 |Sort-by Field | |256 |SRT |
+| | |Sort-by Field | |ST |Segment field name of an output column by which the response may be sorted. SHALL contain a *Y* in the Sort column of the output specification table.
+| | |Sequencing | |ID |As specified in HL7 Table 0397- Sequencing. Default is **A**scending.
+|===
+
+*Output Specification and Commentary: Virtual Table*
+
+[width="99%",cols="19%,9%,3%,6%,8%,3%,6%,8%,8%,10%,11%,9%",options="header",]
+|===
+|ColName (Query ID=Z99) a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+|PatientList |S |Y |20 |CX |O | | | |PID.3 | |PID-3: Patient Identifier List
+|PatientName | | |48 |XPN | | | | |PID.5 | |PID-5 Patient Name
+|Mother'sMaidenName | | |48 |XPN | | | | |PID.6 | |PID-6 Mother's Maiden Name
+|DOB | | |24 |DTM | | | | |PID.7 | |PID-7 Date/Time of Birth
+|Sex | | |1 |CWE | | | | |PID.8 | |PID-8 Sex
+|Race | | |80 |CWE | | | | |PID.10 | |PID-10 Race
+|===
+

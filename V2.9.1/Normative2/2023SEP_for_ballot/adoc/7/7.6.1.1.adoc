@@ -1,0 +1,4 @@
+==== 7.6.1.1 Clinical trial:
+
+A scientifically rigorous study of individual outcomes to some process of healthcare intervention. Clinical trials usually involve medical treatments so this document will use the term _treatment_, rather than the broader term _intervention_. A clinical trial design may randomly assign and compare one treatment approach with another, or generate safety and efficacy data on a single treatment approach. The clinical trial has a protocol for the patient's course of treatment and/or evaluation. There is usually a schedule for collection of data to measure compliance, safety, and outcomes.
+

@@ -1,0 +1,28 @@
+=== 2A.2.31 FT - formatted text data
+
+HL7 Component Table - FT – Formatted Text Data
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+| | | | | | |Formatted Text Data | |
+|===
+
+*Minimum Length:* 1
+
+*Maximum Length:*
+
+Definition: This data type is derived from the TX data type by allowing the addition of embedded formatting instructions. These instructions are limited to those that are intrinsic and independent of the circumstances under which the field is being used. The actual instructions and their representation are described in section 2.7.6, “Usage and Examples of Formatted Text”. *_The FT field is of arbitrary length [line-through]#(up to 64k)#_* and may contain formatting commands enclosed in escape characters.
+
+*Note:* The length restriction of 64k is retained for backward compatibility as of v2.9 and will be withdawn after two versions.
+
+Example:
+
+|\.sp\(skip one vertical line)|
+
+For additional examples of formatting commands see Section 2.7, "Use of Escape Sequences in Text Fields".
+
+To include alternative character sets, use the appropriate escape sequence. See Chapter 2, "Control", section 2.15.9.18, "Character set" and section 2.14.9.20, "Alternate character set handling scheme".
+
+This specification applies no limit to the length of the FT data type, either here where the data type is defined, or elsewhere where the data type is used. While there is no intrinsic reason to limit the length of this data type for semantic or syntactical reasons, it is expected that some sort of limitation will be imposed for technical reasons in implementations. HL7 recommends that implementation length limits are published in implementation profiles. The contents of an FT field may be truncated, but the truncation pattern does not apply.
+

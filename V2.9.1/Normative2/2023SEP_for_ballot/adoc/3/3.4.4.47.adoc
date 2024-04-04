@@ -1,0 +1,4 @@
+==== *3.4.4.47* PV2-47 Expected LOA Return Date/Time (DTM) 01550
+
+Definition: This field is conditionally required for _A21 - Patient goes on LOA_. It may be populated in _A22 - Patient returns from LOA_ as well as in the _A53 - Cancel LOA for a patient_ and the _A54 - Cancel patient returns from LOA_ triggers. This field contains the date/time that the patient is expected to return from LOA.
+

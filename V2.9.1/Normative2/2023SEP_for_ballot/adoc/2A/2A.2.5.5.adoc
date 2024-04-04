@@ -1,0 +1,4 @@
+==== 2A.2.5.5 Channel Sampling Frequency (NM)
+
+Definition: This component defines the sampling frequency in hertz of the channel, that is, the reciprocal of the time in seconds between successive samples
+

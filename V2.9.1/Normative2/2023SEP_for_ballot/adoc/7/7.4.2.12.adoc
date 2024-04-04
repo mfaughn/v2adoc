@@ -1,0 +1,8 @@
+==== 7.4.2.12 OBX-12 Effective Date of Reference Range (DTM) 00580 
+
+Definition: This field contains the date (and, optionally, the time) on which the values in _OBX-7-reference range_ went into effect.
+
+Usage Rule: This field can be valued only if _OBX-7-reference range_ is populated.
+
+When this field is present, it facilitates comparison between identical results with different reference ranges. Reference range values may vary because of changes in laboratory practice over time. Such variances could reflect updated practice in laboratory medicine, or the use of updated instrumentation.
+

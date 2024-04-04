@@ -1,0 +1,4 @@
+==== 4A.4.6.6 RXG-6 Give Amount - Maximum (NM) 00319
+
+Definition: In a variable dose order, this is the maximum ordered amount. In a non-varying dose order, this field is not used.
+

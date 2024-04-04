@@ -1,0 +1,4 @@
+=== 1.8.20 Interface Engines
+
+The so-called interface engine has grown into a popular implementation and operation tool for HL7 and other message-based interfaces over the last several years. Interface engines, per se, however, are not an a priori consideration in the design of HL7. HL7 makes no assumption about the existence of an interface engine at a particular HL7 site. Hence, there also are no defined HL7 messages to directly communicate with and control the operations of interface engines. This might be of particular use when the interface engine assumes an applications architecture role as a dynamic filter and arbitrator of information based on dynamic rules defined by delivery systems.
+

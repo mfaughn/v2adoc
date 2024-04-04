@@ -1,0 +1,12 @@
+=== 1.7.5 Relationship to Other Protocols
+
+A great deal of consideration has been given to the relationship between the HL7 Standard and other protocols. This discussion has centered on the following three questions:
+
+{empty}a) What is the relationship between the HL7 Version 2.x protocol and “lower layer” service protocols? In strict accordance with the ISO OSI model, HL7 should not replicate features of these protocols. This can even be construed to require HL7 to avoid replicating certain ISO layer 7 functionality contained in the Service Elements. +
+ +
+However, it is the goal of the HL7 group to support healthcare communications in a wide variety of communications environments, including many that are not as complete as ISO will be one day.
+
+{empty}b) What is the relationship between the HL7 Version 2.x Standard and other applications protocols? Protocols of interest include the ASC X12 Standards for Electronic Document Interchange, the ASTM 1238‑88 Standards for laboratory data reporting, the ACR/NEMA DICOM Standards for imaging and other aspects of Radiology Information Systems, and the IEEE P1157 Standards for Medical Data Interchange (MEDIX).
+
+{empty}c) What is the relationship between the HL7 Standard and various proprietary healthcare protocols in use today?
+

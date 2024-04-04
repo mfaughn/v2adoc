@@ -1,0 +1,4 @@
+==== 4.14.1.5 BPO-5 BP Amount (NM) 01704
+
+Definition: This field contains the ordered amount (volume) associated with each quantity of blood product.
+

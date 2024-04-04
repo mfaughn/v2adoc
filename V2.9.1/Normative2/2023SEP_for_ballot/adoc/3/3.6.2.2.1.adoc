@@ -1,0 +1,47 @@
+===== 3.6.2.2.1 A40 - merge patient - patient identifier list
+
+[width="100%",cols="54%,46%",]
+|===
+|A40 - Merge patient - patient identifier list |
+|Use Case - During the admission process, the registrar does not find a record for patient EVE EVERYWOMAN in the ADT system and creates a new record with patient identifier MR2. EVE EVERYWOMAN has actually been to the healthcare facility several times in the past under her maiden name, Eve Maidenname with patient identifier MR1. The problem persists for a while. During that time, several more accounts are assigned to Eve under her newly created patient ID MR2. Finally, the problem is discovered and Medical Records merges her two charts together leaving patient identifier MR1. All the accounts (ACCT1, ACCT2) that were assigned to MR2 are combined under MR1 as a result. |
+|Target: _PID-3 - Patient Identifier List_ (Note: _PID-18 - Patient Account Number_ is not valued; all accounts associated with MR2 are combined under MR1). To merge _PID-18 - Patient Account Number_ data only, use event A41 (merge account-patient account number). To move _PID-18 - Patient Account Number_ data use event A44 (move account information-patient account number). |
+|Source: _MRG-1 - Prior Patient Identifier List_) (Note: _MRG-3 - Prior Patient Account Number_ is not valued; all accounts associated with MR2 are combined under MR1.) |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A40^ADT_A39\|00000003\|P\|2.8\|<cr>
+
+EVN\|A40\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|MAIDENNAME^EVE\|....<cr>
+
+MRG\|MR2^^^XYZ<cr>
+
+|
+|Before Merge |After Merge
+a|
+MR1 MR2
+
+ACCT1 ACCT1
+
+ACCT2 ACCT2
+
+a|
+MR1
+
+ACCT1
+
+ACCT2
+
+ACCT1
+
+ACCT2
+
+a|
+Implementation considerations: This scenario exists when two medical records are established for the same person.
+
+Since there could be a discrepancy in the demographic information between the two records, reconciliation may be required. In the example above, the implementation allowed the older demographic information (in the PID) to survive. The demographics implied by the IDs in the MRG segment, did not survive. Surviving and non-surviving demographic information is application and implementation specific. An A08 (update patient information) event should be sent and/or negotiated as necessary to provide for implementation and application-specific needs.
+
+|
+|===
+

@@ -1,0 +1,99 @@
+=== 6.4.1 BAR/ACK - Add Patient Account (Event P01)
+
+Data are sent from some application (usually a Registration or an ADT system, for example) to the patient accounting or financial system to establish an account for a patient's billing/accounts receivable record. Many of the segments associated with this event are optional. This optionality allows those systems needing these fields to set up transactions that fulfill their requirements and yet satisfy the HL7 requirements.
+
+When an account's start and end dates span a period greater than any particular visit, the P01 (add account) event should be used to transmit the opening of an account. The A01 (admit/visit notification) event can notify systems of the creation of an account as well as notify them of a patient's arrival in the healthcare facility. In order to create a new account without notifying systems of a patient's arrival, use the P01 trigger event.
+
+From Standard Version 2.3 onward, the P01 event should only be used to add a new account that did not exist before, not to update an existing account. The new P05 (update account) event should be used to update an existing account. The new P06 (end account) event should be used to close an account. With the P01 event, _EVN-2 - Recorded Date/Time_ should contain the account start date.
+
+BAR^P01^BAR_P01: Add Billing Account
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|PID |Patient Identification | |3
+|[ PD1 ] |Additional Demographics | |3
+|[ \{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ \{ GSC } ] |Sex Parameter for Clinical Use | |3
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|\{ |--- VISIT begin | |
+|PV1 |Patient Visit | |3
+|[ PV2 ] |Patient Visit - Additional Info | |3
+|[ \{ PRT } ] |Participation | |4
+|[ \{ ROL } ] |Role |B |15
+|[ \{ DB1 } ] |Disability Information | |3
+|[ \{ OBX } ] |Observation/Result | |7
+|[ \{ PRT } ] |Participation | |4
+|[ \{ AL1 } ] |Allergy Information | |3
+|[ \{ |--- DIAGNOSIS begin | |
+|link:#DG1[DG1] |Diagnosis | |6
+|} ] |--- DIAGNOSIS end | |
+|[ link:#DRG[DRG] ] |Diagnosis Related Group | |6
+|[ \{ |--- PROCEDURE begin | |
+|link:#PR1[PR1] |Procedures | |6
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|} ] |--- PROCEDURE end | |
+|[ \{ link:#GT1[GT1] } ] |Guarantor | |6
+|[ \{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ \{ NK1 } ] |Next of Kin/Associated Parties | |3
+|[ \{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ \{ |--- INSURANCE begin | |
+|link:#IN1[IN1] |Insurance | |6
+|[ \{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+|[ link:#IN2[IN2] ] |Insurance - Additional Info. | |6
+|[ \{ link:#IN3[IN3] } ] |Insurance - Add'l Info. - Cert. | |6
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |Role |B |15
+|} ] |--- INSURANCE end | |
+|[ link:#ACC[ACC] ] |Accident Information | |6
+|[ link:#UB1[UB1] ] |Universal Bill Information |B |6
+|[ link:#UB2[UB2] ] |Universal Bill 92 Information | |6
+|} |--- VISIT end | |
+|===
+
+[width="100%",cols="18%,25%,6%,17%,17%,17%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|BAR^P01^BAR_P01 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^P01^ACK |- |ACK^P01^ACK
+|Application Ack |ACK^P01^ACK |- |- |ACK^P01^ACK |ACK^P01^ACK
+|===
+
+ACK^P01^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="24%,37%,10%,29%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^P01^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^P01^ACK
+|Application Ack |- |- |-
+|===
+
+The error segment will indicate the fields that caused a transaction to be rejected.
+

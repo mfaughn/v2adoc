@@ -1,0 +1,6 @@
+==== 17.5.2.1 ITM-1 Item Identifier (EI) 02186
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The Item Identifier is a unique code assigned to the material item by the Item Inventory Master catalog software application to identify the item.
+

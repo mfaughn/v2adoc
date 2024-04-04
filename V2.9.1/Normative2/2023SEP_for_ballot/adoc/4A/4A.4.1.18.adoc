@@ -1,0 +1,10 @@
+==== 4A.4.1.18 RXO-18 Requested Give Strength (NM) 01121
+
+Definition: Required when RXO-1-requested give code does not specify the strength; optionally included otherwise. This is the numeric part of the strength, used in combination with _RXO-19-requested give strength units_.
+
+The need for strength and strength unit fields in addition to the amount and amount units fields included in various RX_ segments requires explanation. Physicians can write a prescription for a drug such as Ampicillin in two ways. One way would be: "Ampicillin 250 mg capsules, 2 capsules four times a day." In this case the give amount would be 2, the give units would be capsules, the strength would be 250 and the strength units would milligrams.
+
+However, the provider could also write the pharmaceutical treatment as "Ampicillin 500 mg four times a day." In this case the give amount would be 500 and the give units would be milligrams. The strength would not be reported in the RXO segment because it is not specified; the drug could be given in two 250 mg caps or one 500 mg cap. But the pharmacist would dispense a specific capsule size and would record the strength in the RXE segment as 250 or 500, depending upon which capsule size was dispensed.
+
+Some coding systems imply the strength, units, route of administration, and manufacturer of substances within a single instructional code. NDC codes, for example, usually imply not only the medical substance, but also the strength, the units, and the form, e.g., 0047-0402-30^Ampicillin 250 MG CAPS^NDC. So all of this information can also be completely specified in _RXO-1-requested give code_ and in the analogous CWE/CNE fields in other pharmacy/treatment segments. In this case, it is not necessary to use the strength and strength units fields to specify this information.
+

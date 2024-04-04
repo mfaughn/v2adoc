@@ -1,0 +1,23 @@
+=== 7.12.6 FAC - Facility Segment
+
+*This segment is maintained for backwards compatibility only as of V2.7.*
+
+HL7 Attribute Table – FAC – Facility
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/ # |TBL # |ITEM # |ELEMENT NAME
+|1 | | |EI |R | | |01262 |Facility ID-FAC
+|2 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70331[0331] |01263 |Facility Type
+|3 | | |XAD |R |Y | |01264 |Facility Address
+|4 | | |XTN |R | | |01265 |Facility Telecommunication
+|5 | | |XCN |O |Y | |01266 |Contact Person
+|6 | |60= |ST |O |Y | |01267 |Contact Title
+|7 | | |XAD |O |Y | |01166 |Contact Address
+|8 | | |XTN |O |Y | |01269 |Contact Telecommunication
+|9 | | |XCN |R |Y | |01270 |Signature Authority
+|10 | |199= |ST |O | | |01271 |Signature Authority Title
+|11 | | |XAD |O |Y | |01272 |Signature Authority Address
+|12 | | |XTN |O | | |01273 |Signature Authority Telecommunication
+|===
+

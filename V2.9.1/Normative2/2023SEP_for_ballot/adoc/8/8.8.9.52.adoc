@@ -1,0 +1,41 @@
+==== 8.8.9.52 OM1-52 Replaced Producer's Service/Test Observation ID (CWE) 03433
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is used in conjunction with a MFE-1 Record-Level Event Code 'MDC' defined as: "Deactivate: discontinue using record in master file, but do not delete from database", in conjunction with an OM1 segment providing detail for the deactivate code. When the OM1-2 Producer's Service/Test/Observation ID is being deactivated, use OM1-52 to indicate the producer's replacement test or observation code(s), as it was defined in the OM1-2 Producer's Service/Test/Observation ID when the new/replacement code was added. Refer to Table 0646 - Replacement Producer's Service/Test/Observation ID in Chapter 2C for valid values.
+
+*Note:* Replacement codes referenced by OM1-52 must be added to the receiver's system before sending a deactivate record for the code being obsoleted. The Sequence is illustrated below:
+
+Sequence 1 – Activate new code
+
+OM1-2 Adding a new code X; Example: X^New Code X^L
+
+OM1-52 Empty
+
+Sequence 2 – Deactive obsolete code and indicate it's new replacement code
+
+OM1-2 obsolete code: Examle: Y^Deactivated code^L
+
+OM1-52 X^New Code X^L
+
+_Table below for information in change request proposal process and not intended for inclusion in the base standard:_
+
+[width="100%",cols="19%,26%,55%",options="header",]
+|===
+a|
+*File-Level Event*
+
+*MFI-3*
+
+a|
+*Record-Level Event*
+
+*MFE-1*
+
+|*Comment*
+|REP |MAD – Add record to master file |Note: If the _MFI-3 - File-Level Event Code_ is "REP" (replace file), then each MFE segment must have an _MFE-1 - Record-Level Event Code_ of "MAD" (add record to master file).
+|UPD |MAD – Add record to master file |(MFI-3) UPD means that the events are defined according to the record-level event code contained in each MFE segment in that message.
+|UPD |MDC – Deactivate: discontinue using record in master file, but do not delete from database |(MFI-3) UPD means that the events are defined according to the record-level event code contained in each MFE segment in that message.
+|UPD |MAC – Reactivate deactivated record |(MFI-3) UPD means that the events are defined according to the record-level event code contained in each MFE segment in that message.
+|===
+

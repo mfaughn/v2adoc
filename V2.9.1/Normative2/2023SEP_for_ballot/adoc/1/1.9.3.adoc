@@ -1,0 +1,26 @@
+=== 1.9.3 Codes and Terminology Sources
+
+[width="100%",cols="21%,79%",]
+|===
+|ACR |Index for Radiological Diagnosis, Revised 3rd Edition
+|CPT4 |Current Procedural Terminologyfootnote:[Available from American Medical Association, 515 N. State Street, Chicago, IL 60610.]
+|CAS |USAN 1990 and the USP dictionary of drug namesfootnote:[William M. Heller, Ph.D., Executive Editor. Available from United States Pharmacopeial Convention, Inc., 12601 Twinbrook Parkway, Rockville, MD 20852-1790.]
+|EUCLIDES |European standard for clinical laboratory data exchangefootnote:[Available from G. De Moor, M.D., Dept. of Medical Informatics 5K3, State University Hospital Gent, De Pintelaan 185, B 9000 GENT, BELGIUM.]
+|Home Health |Home Healthcare Classification System (Virginia Saba, EdD, RN, Georgetown U. School of Nursing, Washington DC)
+|HIBCC |Standard for electronic business data interchange
+|ICCS |Commission on Professional and Hospital Activities
+|ICD-9 |International Classification of Diseases, 9th Revision
+|ICD9-CM |International Classification of Diseases, Clinical Modification Manual of Clinical Microbiologyfootnote:[Available from American Society for Microbiology, 1752 N Street, NW, Washington, D.C. 20036-2904.]
+|NANDA |North American Nursing Diagnosis Association, Philadelphia PA
+|NDC |National drug codesfootnote:[Available from the National Drug Code Directory, FDA, 5600 Fishers Lane, Rockville, MD 20857, and other sources.]
+|NIC |Nursing Interventions Classification, Iowa Intervention Project. U. of Iowa
+|NLM |Unified Medical Languagefootnote:[Available from National Library of Medicine, 8600 Rockville Pike, Bethesda, MD 20894.]
+|Omaha System |Omaha Visiting Nurse Association, Omaha NE
+|Read |Clinical Classification of Medicinefootnote:[  Available from James D. Read, MB, ChB, DRCOG, MRCGP, General Medical Practitioner, Park View Surgery, 26-28 Leicester Rd., Loughborough, Leicestershire LE11 2AG.]
+|SNOMED CT |Systemized Nomenclature of Medicinefootnote:[Available from www.snomed.org] - Clinical Terms (available at http://www.snomed.org[www.snomed.org])
+|WHO |Drug Codesfootnote:[Available from INTDIS, P O Box 26, S-751 03 Uppsele, Sweden.]
+|UMDNS |Universal Medical Device Nomenclature Systemfootnote:[Available from ECRI, 5200 Butler Pike, Plymouth Meeting, PA 19462-1298.]
+|FDA K10 |Device Codes Device and analyte process codesfootnote:[Available from Dept. of Health & Human Services, FDA, Rockville, MD 20857.]
+|LOINC |Logical Observation Identifiers Names and Codes (available at http://www.loinc.org[www.loinc.org])
+|===
+

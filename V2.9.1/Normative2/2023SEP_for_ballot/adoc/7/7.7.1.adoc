@@ -1,0 +1,132 @@
+=== 7.7.1 CRM - Clinical Study Registration Message (Events C01-C08)
+
+The data are entered in a clinical trials or other patient data system and broadcast to other facility systems such as order entry, pharmacy, accounting, and nursing systems. They can be transmitted in batch mode or broadcast to outside-facility computer systems, including diagnostic and patient management systems. It is assumed that proper routing and security mechanisms are in place.
+
+The general acknowledgement message as defined in Chapter 2 should be used for any acknowledgements.
+
+[width="100%",cols="12%,88%",options="header",]
+|===
+|Event |Description
+|C01 |Register a patient on a clinical trial
+|C02 |Cancel a patient registration on clinical trial (for clerical mistakes since an intended registration should not be canceled)
+|C03 |Correct/update registration information
+|C04 |Patient has gone off a clinical trial
+|C05 |Patient enters phase of clinical trial
+|C06 |Cancel patient entering a phase (clerical mistake)
+|C07 |Correct/update phase information
+|C08 |Patient has gone off phase of clinical trial
+|===
+
+CRM^C01-C08^CRM_C01: Clinical Trial Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ARV}] |Access Restrictions | |3 | |
+|[\{ SFT }] |Software Segment | |2 | |
+|[UAC] |User Authentication Credential | |2 | |
+|\{ |--- PATIENT begin | | | |
+|PID |Patient Identification | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient | |7 | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 | |
+|[ |--- PATIENT_VISIT begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient Visit | |7 | |
+|] |--- PATIENT_VISIT end | | | |
+|link:#CSR[CSR] |Clinical Study Registration | |7 | |
+|[\{link:#CSP[CSP]}] |Clinical Study Phase | |7 | |
+|} |--- PATIENT end | | | |
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C01^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C01^ACK
+|Application Ack |ACK^C01^ACK |- |ACK^C01^ACK |ACK^C01^ACK
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C02^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C02^ACK
+|Application Ack |ACK^C02^ACK |- |ACK^C02^ACK |ACK^C02^ACK
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C03^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C03^ACK
+|Application Ack |ACK^C03^ACK |- |ACK^C03^ACK |ACK^C03^ACK
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C04^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C04^ACK
+|Application Ack |ACK^C04^ACK |- |ACK^C04^ACK |ACK^C04^ACK
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C05^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C05^ACK
+|Application Ack |ACK^C05^ACK |- |ACK^C05^ACK |ACK^C05^ACK
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C06^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C06^ACK
+|Application Ack |ACK^C06^ACK |- |ACK^C06^ACK |ACK^C06^ACK
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C07^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C07^ACK
+|Application Ack |ACK^C07^ACK |- |ACK^C07^ACK |ACK^C07^ACK
+|===
+
+[width="100%",cols="21%,24%,11%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|CRM^C08^CRM_C01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^C08^ACK
+|Application Ack |ACK^C08^ACK |- |ACK^C08^ACK |ACK^C08^ACK
+|===
+

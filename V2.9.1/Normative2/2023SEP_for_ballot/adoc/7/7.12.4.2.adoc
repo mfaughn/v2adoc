@@ -1,0 +1,4 @@
+==== 7.12.4.2 PSH-2 Report Form Identifier (ST) 01297
+
+Definition: This field contains the form descriptor which describes the report. Typically, the field will include the agency name (e.g., FDA), agency component if applicable (e.g., CDRH) and the form number (e.g., 3417).
+

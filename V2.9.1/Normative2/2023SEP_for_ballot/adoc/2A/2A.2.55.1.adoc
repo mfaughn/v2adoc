@@ -1,0 +1,4 @@
+==== 2A.2.55.1 ID Number (ST)
+
+Definition: Specifies the license number or other ID number such as UPIN, Medicare and Medicaid number.
+

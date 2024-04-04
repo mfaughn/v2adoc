@@ -1,0 +1,6 @@
+==== 4A.4.6.16 RXG-16 Give Rate Units (CWE) 00333
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the units for _RXG-15-give rate amount_. May be composite. The ratio of the _RXG-15-give rate amount_ and _RXG-16-give rate units_ fields define the actual rate of administration. Thus, if _RXG-15-give rate amount_ = 100 and _RXG-16-give rate units_ = ml/hr, the requested rate of administration is 100 ml/hr. Refer to Table 0740 - Give Rate Units in Chapter 2C for valid values.
+

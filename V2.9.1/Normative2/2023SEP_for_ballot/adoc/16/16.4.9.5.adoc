@@ -1,0 +1,4 @@
+==== 16.4.9.5 IPR-5 IPR Date/Time (DTM) 02034
+
+Definition: Date/Time IPR was created.
+

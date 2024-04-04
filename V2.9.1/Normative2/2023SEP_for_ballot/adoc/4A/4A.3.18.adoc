@@ -1,0 +1,4 @@
+=== 4A.3.18 ROR - Pharmacy/Treatment Order Response
+
+_*Attention: This query/response pair was retained for backward compatibility only as of v2.4 and withdrawn as of v2.7*._ Please refer to Chapter 5 for detailed coverage of query/response methodology to be employed in Versions 2.4 and later.
+

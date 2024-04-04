@@ -1,0 +1,24 @@
+=== 8.11.2 CM0 - Clinical Study Master Segment
+
+The Technical Steward for the CM0 segment is Orders and Observations.
+
+The Clinical Study Master (CM0) segment contains the information about the study itself. The sending application study number for each patient is sent in the CSR segment. The optional CM0 enables information about the study at the sending application that may be useful to the receiving systems. All of the fields in the segment describe the study status at the sending facility unless otherwise agreed upon.
+
+[#CM0 .anchor]####HL7 Attribute Table - CM0 - Clinical Study Master
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |O | | |01010 |Set ID - CM0
+|2 | | |EI |R | | |01011 |Sponsor Study ID
+|3 | | |EI |O |Y/3 | |01036 |Alternate Study ID
+|4 | |300# |ST |R | | |01013 |Title of Study
+|5 | | |XCN |O |Y | |01014 |Chairman of Study
+|6 | | |DT |O | | |01015 |Last IRB Approval Date
+|7 | |8= |NM |O | | |01016 |Total Accrual to Date
+|8 | | |DT |O | | |01017 |Last Accrual Date
+|9 | | |XCN |O |Y | |01018 |Contact for Study
+|10 | | |XTN |O | | |01019 |Contact's Telephone Number
+|11 | | |XAD |O |Y | |01020 |Contact's Address
+|===
+

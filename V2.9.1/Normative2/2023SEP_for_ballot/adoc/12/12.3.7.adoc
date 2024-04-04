@@ -1,0 +1,4 @@
+=== 12.3.7 QRY - Patient Goal Query (Event PC9)
+
+*_Retained for backwards compatibility only as of version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+

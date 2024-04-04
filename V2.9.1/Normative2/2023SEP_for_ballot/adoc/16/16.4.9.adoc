@@ -1,0 +1,19 @@
+=== 16.4.9 IPR – Invoice Processing Results Segment
+
+The Invoice Processing Results (IPR) segment provides summary information about an adjudicated Product/Service Group or Product/Service Line Item.
+
+HL7 Attribute Table – IPR – Invoice Processing Results
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |02030 |IPR Identifier
+|2 | | |EI |R | | |02031 |Provider Cross Reference Identifier
+|3 | | |EI |R | | |02032 |Payer Cross Reference Identifier
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70571[0571] |02033 |IPR Status
+|5 | | |DTM |R | | |02034 |IPR Date/Time
+|6 | | |CP |O | | |02035 |Adjudicated/Paid Amount
+|7 | | |DTM |O | | |02036 |Expected Payment Date/Time
+|8 | |10= |ST |R | | |02037 |IPR Checksum
+|===
+

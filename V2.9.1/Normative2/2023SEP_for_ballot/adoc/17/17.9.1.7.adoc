@@ -1,0 +1,4 @@
+==== 17.9.1.7 DEV-7 Model Identifier (ST) 01252
+
+Definition: This field contains the manufacturer's model identifier for the product.
+

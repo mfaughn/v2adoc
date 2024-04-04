@@ -1,0 +1,6 @@
+==== 16.4.4.1 PSS-1 Provider Product/Service Section Number (EI) 01946
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Section Number assigned by the Provider Application.
+

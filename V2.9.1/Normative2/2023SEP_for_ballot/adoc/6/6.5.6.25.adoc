@@ -1,0 +1,8 @@
+==== 6.5.6.25 IN1-25 Report of Eligibility Flag (ID) 00450
+
+Definition: This field indicates whether this insurance carrier sends a report that indicates that the patient is eligible for benefits and whether it identifies those benefits. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y eligibility report is sent
+
+N no eligibility report is sent
+

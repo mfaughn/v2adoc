@@ -1,0 +1,4 @@
+==== 4.8.1.1 ODS-1 Type (ID) 00269
+
+Definition: This field specifies type of diet. Refer To file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70159[HL7 Table 0159 - Diet Code Specification Type] in Chapter 2C, Code Tables, for valid entries.
+

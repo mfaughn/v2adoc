@@ -1,0 +1,5 @@
+== 16.5 Outstanding Issues
+
+The following items are being discussed in the Financial Management committee for addition to future versions of HL7:
+
+Events E10 (Edit/Adjudication Response), E24 (Authorization Response) and E12 (Request Additional Information) assume that the Payer application is able to process the requests on-line. Future versions of the Standard would include provisions for deferred responses where the Payer responds to the request once it has processed the request offline. In this use case, the Payer would either send the response as unsolicited results, or store the responses on a queue for the Provider application. If left on a queue for the Provider application, then the QVR^Q17^QVR_Q17 (Query for previous events) message might be used by the Provider application to poll the Payer application.

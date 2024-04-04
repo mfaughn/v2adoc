@@ -1,0 +1,10 @@
+==== 10.6.2.1 SCH-1 Placer Appointment ID (EI) 00860
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the placer application's permanent identifier for the appointment request (and the scheduled appointment itself, when it has been confirmed as a booked slot by the filler application). This is a composite field.
+
+The first component is a string that identifies an individual appointment request, or a booked appointment. It is assigned by the placer application, and identifies an appointment request, and the subsequent scheduled appointment, uniquely among all such requests and/or booked appointments from a particular requesting application. If _SCH-1-Placer Appointment ID_ identifies a parent of a repeating schedule request, then the individual child scheduled appointments can be uniquely identified either by a new _SCH-1-Placer Appointment ID_ or by _SCH-23-Parent Placer Appointment ID_ plus an _SCH-3-Occurrence Number_.
+
+If a schedule request originates from a placer it MUST have a placer appointment ID. If the filler sends responses, it may use the placer appointment ID and/or assign a filler appointment ID (which it would echo back to the placer to enable the placer application to associate the two). If the placer appointment ID is not present, the filler appointment ID must be present and vice versa.
+

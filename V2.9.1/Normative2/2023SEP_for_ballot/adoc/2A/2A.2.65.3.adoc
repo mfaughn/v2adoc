@@ -1,0 +1,4 @@
+==== 2A.2.65.3 Coverage Amount (NM)
+
+*Attention:* _The PTA.3 component was deprecated as of v2.5 and the detail was withdrawn and removed from the standard as of v2.7._ Refer to _2A.2.65.4_, "link:#a.2.65.4-money-or-percentage-mop[_Money or Percentage_]".
+

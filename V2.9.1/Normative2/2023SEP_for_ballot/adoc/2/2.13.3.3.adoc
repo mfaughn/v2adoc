@@ -1,0 +1,6 @@
+==== 2.13.3.3 BTS-3 Batch Totals (NM) 00095
+
+Definition: We encourage new users of this field to use the HL7 Version 2.3 data type of NM and to define it as "repeating." This field contains the batch total. If more than a single batch total exists, this field MAY be repeated.
+
+Prior to v2.5 this field might have been defined as a CM data type for backward compatibility with HL7 Versions 2.2 and 2.1 with each total being carried as a separate component. Each component in this case is an NM data type.
+

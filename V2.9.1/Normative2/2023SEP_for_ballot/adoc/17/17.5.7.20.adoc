@@ -1,0 +1,6 @@
+==== 17.5.7.20 IVT-20 Latex-Free Substitute Item Identifier (EI) 02079
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The latex-free substitute item is an item that is latex-free, recommended as a substitute for the corresponding item in the _ITM-1_ segment when a latex-free item is needed.
+

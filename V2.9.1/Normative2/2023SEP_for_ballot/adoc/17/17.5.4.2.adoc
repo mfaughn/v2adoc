@@ -1,0 +1,6 @@
+==== 17.5.4.2 VND-2 Vendor Identifier (EI) 02218
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the identifier of the vendor in the system.
+

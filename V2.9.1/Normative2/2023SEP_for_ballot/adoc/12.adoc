@@ -1,0 +1,1432 @@
+== 12.2 INTRODUCTION AND OVERVIEW
+
+The Patient Carefootnote:[While not an ideal term, the word “patient” is used here to represent the entire spectrum of individuals who receive healthcare in a variety of settings including, but not limited to, acute care, clinic care, long-term care, residential care, home health care, office practices, school-based care and community settings.] Work Group has designed the following messages to support the communication of problem-oriented records, including clinical problems, goals, and pathway information between computer systems. The purpose of this chapter is to describe healthcare messages that need to be communicated between clinical applications for a given individual. These message transactions can be sent in either batch or online mode. As described in Chapter 2, multiple communication transactions may be grouped and sent between applications using a file transfer media or direct networked connection.
+
+This chapter defines the transactions that occur at the seventh OSI level, that is, abstract messages. The examples of messages included in this chapter were constructed using the HL7 Encoding Rules.
+
+This chapter describes a Clinical Relationship segment which enables the run-time expression of relationships between information elements both inside and, where identifiable, by the application, outside the message.
+
+=== 12.2.1 Glossary
+
+The following definitions of key terms are used throughout this chapter:
+
+==== 12.2.1.0 hiddentext
+
+==== 12.2.1.1 Goal:
+
+A *goal* refers to an objective to be achieved as a consequence of healthcare interventions applied to an individual. Goals are set in many areas of the healthcare system, and include educational, behavior modification, and clinical goals such as reduced discomfort, improved circulation. Goals are documented by a variety of healthcare professionals including physicians, nurses, and respiratory and other therapists. Goals are defined during patient visits and they may span one or multiple visits, encounters, or episodes of care.
+
+==== 12.2.1.2 Problem:
+
+A *problem* of a given individual can be described by formal diagnosis coding systems (such as DRGs, NANDA Nursing Diagnosis, ICD9, DSM, etc.) or by other professional descriptions of healthcare issues affecting an individual. Problems can be short- or long-term in nature, chronic or acute, and have a status. In a longitudinal record, all problems may be of importance in the overall long-term care of an individual, and may undergo changes in status repeatedly. Problems are identified during patient visits, and may span multiple visits, encounters, or episodes of care.
+
+==== 12.2.1.3 Role:
+
+A *role* refers to the function or responsibility assumed by a person in the context of a healthcare event. Role information documents a person's association with an identified healthcare activity. Examples include primary care provider, transcriptionist, reviewer, and consulting physician.
+
+==== 12.2.1.4 Clinical pathway: 
+
+A *clinical pathway* is a standardized plan of care against which progress towards health is measured. A clinical pathway is applied based upon the results of a patient assessment. A clinical pathway shows exact timing of all key patient care activities intended to achieve expected standard outcomes within designated time frames. A clinical pathway includes documentation of problems, expected outcomes/goals, and clinical interventions/orders.
+
+==== 12.2.1.5 Variance: 
+
+*Variances* are documented deviations, either positive or negative, from a pre-defined standard. Variances are documented against expected outcomes, orders, or the patient's progress in general.
+
+=== 12.2.2 Scenario Descriptions
+
+==== 12.2.2.0 hiddentext
+
+==== 12.2.2.1 Patient pre-admission or patient admission
+
+A physician's office is scheduling a patient for admission to the hospital. The admitting diagnosis/problem list and admission information is sent by the physician's electronic information system to the hospital's Patient Administration system and longitudinal medical record. The trigger event identifies the message as an "add problem" or update patient medical information to the Patient Administration and medical record system.
+
+==== 12.2.2.2 Consultation
+
+A consultation is requested for an individual. The information system generating the consultation triggers an unsolicited message containing the problem/diagnosis list that is transmitted to the consulting organization. Goals and various kinds of role information are included with the transmission. The trigger event identifies the message as an unchanged record.
+
+==== 12.2.2.3 Loading a clinical repository
+
+Information from point of care, clinical practice management or ancillary systems regarding the creation or update of pathways, problems, diagnoses, or goals are communicated to the clinical repository. Message triggers from the departmental systems may indicate adding, correcting, deleting, or updating records maintained in the clinical data repository.
+
+==== 12.2.2.4 Communicating clinical pathways and multidisciplinary plans of care
+
+The pathway is communicated between Quality Assurance, Point of Care Systems, Research Databases, and Clinical Order Entry Systems. A point of care information system triggers a linkage between a problem and a set of ordered interventions initiated by the clinical order entry system.
+
+=== 12.2.3 Trigger Events
+
+The trigger events originate goal, problem and pathway messages. Each trigger event is documented below, along with the appropriate form of the message exchange. These are message-level event triggers, which are augmented by the action code fields contained in the pathway, problem and goal segments described below. Action codes are required fields in patient care message segments (see Chapter 2 for further information regarding implementation issues). Implementors need to apply the appropriate logic as part of their message construction (for example, logic would state that an "add" trigger event should not include segments with a "delete" action code).
+
+In order to accommodate these high-level events, the following patient care events are included in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70003[_HL7 Table 0003 – Event Type_]. The added events are instantiated in MSH-9 Message Type and are used by the pathway, problem, and goal messages. MSH-9 Message Type contains the message type and trigger event for the message.
+
+=== 12.2.4 Use of Action Codes 
+
+Prior to Version 2.3 of the Standard, all repeating segments had to be sent in an update message, because there was no way to indicate which ones changed and which ones did not. In this *snapshot* mode, all repeating segments must be sent with every subsequent message in the series of messages.
+
+To reduce the number of repeating segments, action codes may be employed. Action codes (e.g., order control codes and result status codes) may be embedded within repeating segments and used by sophisticated application parsers to reduce the number of repetitions required for a complete record.
+
+In either event, for systems implementing Version 2.3 or higher, if a particular repeating segment can be updated by either of these two modes, the parties concerned determine by agreement on a site-specific basis whether an interface uses the *snapshot* mode or the *action code/unique identifier* mode.
+
+A description of valid action codes used in message segments originating in this chapter is given immediately below:
+
+{empty}a) *AD* (*ADD*) - The object defined within the segment should be added to the set of objects that is linked to the previous object in the hierarchical structure of the message. (i.e., a goal under a problem is implicitly linked to the problem. If the goals already exist, the segment placement indicates the addition of a new linkage between the goal and that problem.)
+
+{empty}b) *CO* (*CORRECT*) - The object attributes contained within the segment have been corrected. This is not updated information, but information originally sent and later found to be in error. The previous attributes should be replaced.
+
+{empty}c) *UP* (*UPDATE*) - The object attributes contained within the segment are an update of previously sent information. The previous information was correct for the period of time in which it was sent.
+
+{empty}d) *DE* (*DELETE*) - This object should be deleted from the set of objects which are linked to the previous object in the message hierarchy. An example might be a role deleted from the set of roles contained by the Goal object. Delete presumes the original linkage was in error.
+
+{empty}e) *LI (LINK)* - This action code denotes that the object contained in the segment should be linked in a dependency relationship to the previous object in the hierarchy. It is used to denote relationships and should not contain additional information other than those attributes necessary for specific identification.
+
+{empty}f) *UN* (*UNLINK*) - This is a request that the object be removed from the set of linked objects. An example might be the dissolution of a relationship between a problem and a goal. Unlink presumes the original linkage was correct, but due to life cycle changes the active linkage is no longer appropriate.
+
+{empty}g) *UC* (*UNCHANGED*) - This code signifies that the segment is being included for the purposes of hierarchical set identification. It does not contain any changed or additional data. Its purpose is to allow the identification of the collection set to which subsequent segments belong in the message structure. An example might be the modification of role information requiring the previous goal segment to be appropriately identified.
+
+==== 12.2.4.0 hiddentext
+
+==== 12.2.4.1 Examples of action code usage
+
+A problem list and associated goals are generated in a Point of Care system. This transaction is broadcast through an interface engine that determines which systems in the organization require the event information and then forwards the messages appropriately. Each segment included in the original message contains the Action Code for *ADD* to signify an original message instance.
+
+{empty}h) Upon subsequent review, it is determined that a role segment designates the wrong person as the transcribing clerk for a problem. After the information is changed in the originating system, a new message is sent to provide synchronization. The message includes the original PRB segment with the PRB-1 Action Code for *UNCHANGED* (to identify the problem for which the role is being changed). This code signifies that the segment is included for the purposes of hierarchical linkage identification and that none of the information contained in it has been changed. The accompanying role segment sent would include the role *transcriber* in ROL-3 Role, the correct person in ROL-4 Role Person, and the value for *CORRECT* in ROL-2 Action Code.
+
+{empty}i) It is later decided that an additional goal must be added to a specific problem, and that an already existing goal that is currently supporting another problem should also be linked with this specific problem. The message would be constructed with the problem (PRB) segment for identification (the value for PRB-1 Action Code is *UNCHANGED*). The goal segment (GOL) for the additional goal would include GOL-1 Action Code for *ADD*. The goals already included with the problem list that need to be linked to this problem would have to be included on additional GOL segments with the GOL-1 Action Code for *LINK*. +
+ +
+Once data regarding a Diagnosis/Problem or a Goal have been communicated to other systems, there are occasions on which the data may have to be amended.
+
+{empty}j) New diagnoses/problems must be added to an individual's list. The Problem message is sent with the appropriate Problem Instance ID. All PRB segment(s) included in the message that contain the value for *ADD* in PRB-1 Action Code are processed as additions to the individual's problem list.
+
+{empty}k) New goals are added to the individual's record. The Goal message is sent with the GOL segments indicating the value for *ADD* as GOL-1 Action Code in each segment occurrence.
+
+{empty}l) Changes are made to the attributes of a goal. Examples include a change in the expected resolution date, a change in the life cycle status to reflect its successful conclusion, etc. The Goal message is sent with the appropriate GOL-4 Goal Instance ID. The GOL segments of the Goal message would include the value for *UPDATE* in GOL-1 Action Code.
+
+{empty}m) A new goal is attached to a problem already in the repository (e.g., the goal of "education on diabetes" for an individual diagnosed with "insulin-dependent diabetes"). A problem message would be sent with the PRB segment including the PRB-4 Problem Instance ID for the diabetes problem, and with the value *UNCHANGED* in PRB-1 Action Code. The attached GOL segment for the education goal would accompany the message and contain the value *ADD* in its GOL-1 Action Code field.
+
+{empty}n) A new diagnosis/problem is attached to a goal (e.g., a Goal is to "discharge an individual with intact skin." While the initial problem was "skin breakdown related to immobility," a new problem is "potential for skin breakdown related to draining wounds"). A Goal message would be sent with the GOL segment, including the GOL-4 Goal Instance ID for the discharge goal, and contain the value *UNCHANGED* in GOL-1 Action Code. The attached PRB segment identifying the new problem, "potential for skin breakdown related to draining wounds," would accompany this message and contain the value for *ADD* in PRB-1 Action Code.
+
+*Note:* If there is a requirement to modify information contained on a segment and unlink that same problem/goal, two segments must be transmitted (one for the modification and one for the unlink request).
+
+=== 12.2.5 Message Construction Rules
+
+The semantic meaning of a message is contained in the message through the use of the trigger events, the implicit hierarchical linkages of the segments, and the segment action codes. Each of these has a scope within the message. The message event as included in the MSH-9 Message Type has a scope which is global to the message. The segment hierarchical linkage has a scope which includes both the segment itself and its relationship to its parent. The segment action code's scope is to the segment itself. It may further define link and unlink actions in the hierarchical structure.
+
+==== 12.2.5.0 hiddentext
+
+==== 12.2.5.1 Rule 1
+
+The trigger event defines the action at the first level of the hierarchy, and should not be contradicted by either hierarchical linkages or segment action codes. Thus, a PC1 (problem add) event should only contain problem, goal, and role segments that have action codes *ADD*.
+
+Figure 12-1. Table of allowable trigger event types and action codes
+
+[width="100%",cols="27%,73%",]
+|===
+|Trigger Event Types |Allowable Action Codes
+|xxx-Add |Top level action code must be ADD +
+Dependent segment action code must be ADD (or NW for Order segments)
+|xxx-Update |Top level action code must be CORRECT, UPDATE, or UNCHANGED +
+Dependent segment action codes - Any are allowed at the lower hierarchical levels
+|xxx-Delete |Top level action code must be DELETE +
+Dependent segments' action codes must be DELETE
+|===
+
+==== 12.2.5.2 Rule 2
+
+When using the segment action codes *LINK* and *UNLINK*, only those fields which are used to define a unique instance of the object are used. This action cannot be used to send changes and updates to the other fields of that segment.
+
+==== 12.2.5.3 Rule 3
+
+In dependent segments *ADD* is the action code to use to establish the initial relationship between parent-child objects. The receiving system must be ready to handle multiple adds of the same object. An example is a Problem List of three (3) problems which is being sent. Attached to these problems are three (3) goals. Problem A has Goals 1 and 2 attached to it. Problem B has the same Goal 2 and a new Goal 3 attached to it. All of these will have the *ADD* action code in the segment, and when Problem B is transmitted with Goals 2 and 3, Goal 2 will have been previously transmitted with Problem A. The message construct would look like this:
+
+MSH...
+
+PID...
+
+PRB (Problem A)
+
+GOL (Goal 1)
+
+GOL (Goal 2)
+
+PRB (Problem B)
+
+GOL (Goal 2)
+
+GOL (Goal 3)
+
+PRB (Problem C) (No attached goals)
+
+When two (or more) instances of the same problem or goal segment are present in a message both such segments must have identical values for all fields.
+
+==== 12.2.5.4 Rule 4
+
+Remember that HL7 only provides for error messages at the message level. Thus, if the receiving system cannot process one segment, the entire message is going to be treated as an error (See Chapter 2).
+
+==== 12.2.5.5 Rule 5
+
+The Problem, Goal, and Pathway messages integrate order segments as a method for establishing causal linkages. Linkages or relationships between orders, problems, goals, and pathways can therefore be presented in the Patient Care messages.
+
+Orders referenced in Patient Care messages are used for linkage purposes only. Initiation and status changes to orders are accomplished by using dedicated messages defined in the Order Entry Chapter.
+
+==== 12.2.5.6 Rule 6
+
+Order segments are sent with Problem and Goal segments in order to establish a linkage between them, NOT to communicate new orders or changes to those orders. For purposes of these messages, an LI (Link) and a UL (Unlink) code have been added to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70119[_HL7 Table 0119 - Order Control Codes_].
+
+=== 12.2.6 Acknowledgment Choreography
+
+As of Version 2.9 Infrastructure and Messaging requires that Acknowledgment Choreography be explicitly specified in MSH-15 and MSH-16. Because of the nature of the Query and Response Messaging pattern, the Response message is always an Application Acknowledgment. To specify this, the value in MSH-16 SHALL always be “AL” for those messages that are Queries, to indicate that there will always be an Application Acknowledgment to the Query Message. See Chapter 2 for more details on this subject.
+
+== 12.3 MESSAGE DEFINITIONS
+
+Applications can have differing orientations for representing problem and goal hierarchies. For example, parent/child relationships may map problem(s) to goal(s), or goal(s) to problem(s). To accommodate these different orientations, the Problem message allows representation of goals that are functionally dependent upon a problem, and the Goal message allows representation of problems that are functionally dependent on a goal.
+
+Due to the multiple occurrences of common segments such as Variance (VAR) and Notes (NTE), we have chosen to expand the segment definitions on the message diagrams to explicitly identify the hierarchical relationships. Examples of this would be "Variance (Goal)" and "Variance (Participation)." This does not imply unique segments, but indicates in the first case that the variance is related to its parent Goal, and in the second case that the variance is related to its parent Role.
+
+The notation used to describe the sequence, the optionality, and the repetition of segments is described in Chapter 2, under "Format for defining abstract message."
+
+Note: For all message definitions, the "OBR etc." notation represents all possible combinations of pharmacy and other order detail segments, as outlined in Chapter 4 conventions (See section 4.2.2.4, "Order detail segment").
+
+=== 12.3.1 PGL/ACK - Patient Goal Message (Events PC6, PC7, PC8) 
+
+This message is used to send goals from one application to another (e.g., a point of care system to a clinical repository). Many of the segments associated with this event are optional. This optionality allows systems in need of this information to set up transactions that fulfill their requirements.
+
+PGL^PC6-PC8^PGL_PC6: Patient Goal Message
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|PID |Patient Identification | |3
+|[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|\{ |--- PROVIDER begin | |
+|link:#PRD[PRD] |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|[ |--- PATIENT_VISIT begin | |
+|PV1 |Patient Visit | |3
+|[PV2] |Patient Visit - Additional Info | |3
+|] |--- PATIENT_VISIT end | |
+|\{ |--- GOAL begin | |
+|link:#GOL[GOL] |Detail Goal | |12
+|[\{NTE}] |Notes & Comments & Comments (Goal Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Goal) | |12
+|[\{ |--- GOAL_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Goal) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- GOAL_PARTICIPATION end | |
+|[\{ |--- PATHWAY begin | |
+|link:#PTH[PTH] |Detail Pathway | |12
+|[\{link:#VAR[VAR]}] |Variance (Pathway) | |12
+|}] |--- PATHWAY end | |
+|[\{ |--- OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |2
+|}] |--- OBSERVATION end | |
+|[\{ |--- PROBLEM begin | |
+|link:#PRB[PRB] |Detail Problem | |12
+|[\{NTE}] |Notes & Comments (Problem Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Problem) | |12
+|[\{ |--- PROBLEM_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Problem) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PROBLEM_PARTICIPATION end | |
+|[\{ |--- PROBLEM_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |
+|}] |--- PROBLEM_OBSERVATION end | |
+|}] |--- PROBLEM end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[ |--- ORDER_DETAIL begin | |
+|< |--- CHOICE begin | |
+|OBR |Order Detail Segment | |4
+|\| | | |
+|Hxx |etc. | |
+|> |--- CHOICE end | |
+|[\{NTE}] |Notes (Order Detail Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Order) | |12
+|[\{ |--- ORDER_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Observation/Result) | |12
+|}] |--- ORDER_OBSERVATION end | |
+|] |--- ORDER_DETAIL end | |
+|}] |--- ORDER end | |
+|} |--- GOAL end | |
+|===
+
+[width="100%",cols="18%,23%,5%,19%,14%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|PGL^PC6-PC8^PGL_PC6 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^PC6-PC8^ACK |- |ACK^PC6-PC8^ACK
+|Application Ack |ACK^PC6-PC8^ACK |- |- |ACK^PC6-PC8^ACK |ACK^PC6-PC8^ACK
+|===
+
+ACK^PC6-PC8^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^PC6-PC8^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^PC6-PC8^ACK
+|Application Ack |- |- |-
+|===
+
+This error segment indicates the fields that caused a transaction to be rejected.
+
+=== 12.3.2 PPR/ACK - Patient Problem Message (Events PC1, PC2, PC3) 
+
+The patient problem message is used to send problems from one application to another (e.g., a point of care system to a clinical repository). Many of the segments associated with this event are optional. This optionality allows systems in need of this information to set up transactions that fulfill their requirements.
+
+PPR^PC1-PC3^PPR_PC1: Patient Problem Message
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|PID |Patient Identification | |3
+|[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|\{ |--- PROVIDER begin | |
+|link:#PRD[PRD] |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|[ |--- PATIENT_VISIT begin | |
+|PV1 |Patient Visit | |3
+|[PV2] |Patient Visit | |3
+|] |--- PATIENT_VISIT end | |
+|\{ |--- PROBLEM begin | |
+|link:#PRB[PRB] |Detail Problem | |12
+|[\{NTE}] |Notes & Comments (Problem Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Problem) | |12
+|[\{ |--- PROBLEM_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Problem) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PROBLEM_PARTICIPATION end | |
+|[\{ |--- PATHWAY begin | |
+|link:#PTH[PTH] |Detail Pathway | |12
+|[\{link:#VAR[VAR]}] |Variance (Pathway) | |12
+|}] |--- PATHWAY end | |
+|[\{ |--- PROBLEM_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |2
+|}] |--- PROBLEM_OBSERVATION end | |
+|[\{ |--- GOAL begin | |
+|link:#GOL[GOL] |Detail Goal | |12
+|[\{NTE}] |Notes & Comments (Goal Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Goal) | |12
+|[\{ |--- GOAL_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Goal) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- GOAL_PARTICIPATION end | |
+|[\{ |--- GOAL_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |2
+|}] |--- GOAL_OBSERVATION end | |
+|}] |--- GOAL end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[ |--- ORDER_DETAIL begin | |
+|< |--- CHOICE begin | |
+|OBR |Order Detail Segment | |4
+|\| | | |
+|Hxx |etc. | |
+|> |--- CHOICE end | |
+|[\{NTE}] |Notes & Comments (Order Detail Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Order) | |12
+|[\{ |--- ORDER_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Observation/Result) | |12
+|}] |--- ORDER_OBSERVATION end | |
+|] |--- ORDER_DETAIL end | |
+|}] |--- ORDER end | |
+|} |--- PROBLEM end | |
+|===
+
+[width="100%",cols="18%,23%,5%,19%,14%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|PPR^PC1-PC3^PPR_PC1 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^PC1-PC3^ACK |- |ACK^PC1-PC3^ACK
+|Application Ack |ACK^PC1-PC3^ACK |- |- |ACK^PC1-PC3^ACK |ACK^PC1-PC3^ACK
+|===
+
+ACK^PC1-PC3^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^PC1-PC3^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^PC1-PC3^ACK
+|Application Ack |- |- |-
+|===
+
+This error segment indicates the fields that caused a transaction to be rejected.
+
+=== 12.3.3 PPP/ACK - Patient Pathway Message (Problem-Oriented) (Events PCB, PCC, PCD) 
+
+PPP^PCB-PCD^PPP_PCB: Patient Pathway Problem-Oriented Message
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|PID |Patient Identification | |3
+|[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|\{ |--- PROVIDER begin | |
+|link:#PRD[PRD] |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|[ |--- PATIENT_VISIT begin | |
+|PV1 |Patient Visit | |3
+|[PV2] |Patient Visit | |3
+|] |--- PATIENT_VISIT end | |
+|\{ |--- PATHWAY begin | |
+|link:#PTH[PTH] |Pathway Detail | |12
+|[\{NTE}] |Notes & Comments(Pathway Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Pathway) | |12
+|[\{ |--- PATHWAY_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Pathway) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PATHWAY_PARTICIPATION end | |
+|[\{ |--- PROBLEM begin | |
+|link:#PRB[PRB] |Detail Problem | |12
+|[\{NTE}] |Notes & Comments(Problem Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Problem) | |12
+|[\{ |--- PROBLEM_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Problem) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PROBLEM_PARTICIPATION end | |
+|[\{ |--- PROBLEM_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments(Observation/Result Comments) | |2
+|}] |--- PROBLEM_OBSERVATION end | |
+|[\{ |--- GOAL begin | |
+|link:#GOL[GOL] |Detail Goal | |12
+|[\{NTE}] |Notes & Comments(Goal Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Goal) | |12
+|[\{ |--- GOAL_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Goal) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- GOAL_PARTICIPATION end | |
+|[\{ |--- GOAL_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments (Observation/Result Comments) | |2
+|}] |--- GOAL_OBSERVATION end | |
+|}] |--- GOAL end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[ |--- ORDER_DETAIL begin | |
+|< |--- CHOICE begin | |
+|OBR |Order Detail Segment | |4
+|\| | | |
+|Hxx |etc. | |
+|> |--- CHOICE end | |
+|[\{NTE}] |Notes & Comments(Order Detail Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Order) | |12
+|[\{ |--- ORDER_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments(Observation Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Observation/Result) | |12
+|}] |--- ORDER_OBSERVATION end | |
+|] |--- ORDER_DETAIL end | |
+|}] |--- ORDER end | |
+|}] |--- PROBLEM end | |
+|} |--- PATHWAY end | |
+|===
+
+[width="100%",cols="18%,23%,5%,19%,14%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|PPP^PCB-PCD^PPP_PCB | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^PCB-PCD^ACK |- |ACK^PCB-PCD^ACK
+|Application Ack |ACK^PCB-PCD^ACK |- |- |ACK^PCB-PCD^ACK |ACK^PCB-PCD^ACK
+|===
+
+ACK^PCB-PCD^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^PCB-PCD^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^PCB-PCD^ACK
+|Application Ack |- |- |-
+|===
+
+=== 12.3.4 PPG/ACK - Patient Pathway Message (Goal-Oriented) (Events PCG, PCH, PCJ) 
+
+PPG^PCG,PCH,PCJ^PPG_PCG: Patient Pathway Goal-Oriented Message
+
+[width="99%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|PID |Patient Identification | |3
+|[\{ GSfile:///D:\Eigene%20Dateien\2018\HL7\Standards\v2.9%20May\716%20-%20New.doc##NK1[P] }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|\{ |--- PROVIDER begin | |
+|link:#PRD[PRD] |Provider Data | |11
+|[\{link:#CTD[CTD]}] |Contact Data | |11
+|} |--- PROVIDER end | |
+|[ |--- PATIENT_VISIT begin | |
+|PV1 |Patient Visit | |3
+|[PV2] |Patient Visit | |3
+|] |--- PATIENT_VISIT end | |
+|\{ |--- PATHWAY begin | |
+|link:#PTH[PTH] |Pathway Detail | |12
+|[\{NTE}] |Notes & Comments(Pathway Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Pathway) | |12
+|[\{ |--- PATHWAY_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Pathway) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PATHWAY_PARTICIPATION end | |
+|[\{ |--- GOAL begin | |
+|link:#GOL[GOL] |Detail Goal | |12
+|[\{NTE}] |Notes & Comments(Goal Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Goal) | |12
+|[\{ |--- GOAL_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Goal) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- GOAL_PARTICIPATION end | |
+|[\{ |--- GOAL_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments(Observation/Result Comments) | |2
+|}] |--- GOAL_OBSERVATION end | |
+|[\{ |--- PROBLEM begin | |
+|link:#PRB[PRB] |Detail Problem | |12
+|[\{NTE}] |Notes & Comments (Problem Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Problem) | |12
+|[\{ |--- PROBLEM_PARTICIPATION begin | |
+|link:#ROL[ROL] |For backwards compatibility only as of V2.9 |B |15
+|PRT |Participation (Problem) | |7
+|[\{link:#VAR[VAR]}] |Variance (Participation) | |12
+|}] |--- PROBLEM_PARTICIPATION end | |
+|[\{ |--- PROBLEM_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments(Observation/Result Comments) | |2
+|}] |--- PROBLEM_OBSERVATION end | |
+|}] |--- PROBLEM end | |
+|[\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[ |--- ORDER_DETAIL begin | |
+|< |--- CHOICE begin | |
+|OBR |Order Detail Segment | |4
+|\| | | |
+|Hxx |etc. | |
+|> |--- CHOICE end | |
+|[\{NTE}] |Notes & Comments (Order Detail Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Order) | |12
+|[\{ |--- ORDER_OBSERVATION begin | |
+|OBX |Observation/Result | |7
+|[\{PRT}] |Participation | |
+|[\{NTE}] |Notes & Comments(Observation Comments) | |2
+|[\{link:#VAR[VAR]}] |Variance (Observation/Result) | |12
+|}] |--- ORDER_OBSERVATION end | |
+|] |--- ORDER_DETAIL end | |
+|}] |--- ORDER end | |
+|}] |--- GOAL end | |
+|} |--- PATHWAY end | |
+|===
+
+[width="100%",cols="18%,23%,5%,19%,14%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|PPG^PCG,PCH,PCJ^PPG_PCG | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^PCG,PCH,PCJ^ACK |- |ACK^PCG,PCH,PCJ^ACK
+|Application Ack |ACK^PCG,PCH,PCJ^ACK |- |- |ACK^PCG,PCH,PCJ^ACK |ACK^PCG,PCH,PCJ^ACK
+|===
+
+ACK^PCG,PCH,PCJ^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="22%,34%,9%,35%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^PCG,PCH,PCJ^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^PCG,PCH,PCJ^ACK
+|Application Ack |- |- |-
+|===
+
+=== 12.3.5 QRY - Patient Care Problem Query (Event PC4)
+
+*_Retained for backwards compatibility only as of version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+=== 12.3.6 PRR - Patient Problem Response (Event PC5) 
+
+*_Retained for backwards compatibility only as of version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+=== 12.3.7 QRY - Patient Goal Query (Event PC9)
+
+*_Retained for backwards compatibility only as of version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+=== 12.3.8 PPV - Patient Goal Response (Event PCA) 
+
+*_Retained for backwards compatibility only in version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+=== 12.3.9 QRY - Patient Pathway (Problem-Oriented) Query (Event PCE)
+
+*_Retained for backwards compatibility only in version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+=== 12.3.10 PTR - Patient Pathway (Problem-Oriented) Response (Event PCF) 
+
+*_Retained for backwards compatibility only in version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+=== 12.3.11 QRY - Patient Pathway (Goal-Oriented) Query (Event PCK)
+
+*_Retained for backwards compatibility only in version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+=== 12.3.12 PPT - Patient Pathway (Goal-Oriented) Response (Event PCL) 
+
+*_Retained for backwards compatibility only in version 2.4 and removed from the standard as of v2.8_*; refer to Chapter 5, section 5.4. The original mode query and the QRD/QRF segments have been replaced.
+
+== 12.4 MESSAGE SEGMENTS
+
+=== 12.4.1 GOL - Goal Detail Segment
+
+The goal detail segment contains the data necessary to add, update, correct, and delete the goals for an individual.
+
+HL7 Attribute Table - GOL [#GOL .anchor]##– Goal Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |2..2 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[0287] |02534 |Action Code
+|2 | | |DTM |R | | |00817 |Action Date/Time
+|3 | | |CWE |R | | |00818 |Goal ID
+|4 | | |EI |R | | |00819 |Goal Instance ID
+|5 | | |EI |O | | |00820 |Episode of Care ID
+|6 | |3= |NM |O | | |00821 |Goal List Priority
+|7 | | |DTM |O | | |00822 |Goal Established Date/Time
+|8 | | |DTM |O | | |00824 |Expected Goal Achieve Date/Time
+|9 | | |CWE |O | | |00825 |Goal Classification
+|10 | | |CWE |O | | |00826 |Goal Management Discipline
+|11 | | |CWE |O | | |00827 |Current Goal Review Status
+|12 | | |DTM |O | | |00828 |Current Goal Review Date/Time
+|13 | | |DTM |O | | |00829 |Next Goal Review Date/Time
+|14 | | |DTM |O | | |00830 |Previous Goal Review Date/Time
+|15 | | | |W | | |00831 |Goal Review Interval
+|16 | | |CWE |O | | |00832 |Goal Evaluation
+|17 | |300= |ST |O |Y | |00833 |Goal Evaluation Comment
+|18 | | |CWE |O | | |00834 |Goal Life Cycle Status
+|19 | | |DTM |O | | |00835 |Goal Life Cycle Status Date/Time
+|20 | | |CWE |O |Y | |00836 |Goal Target Type
+|21 | | |XPN |O |Y | |00837 |Goal Target Name
+|22 | | |CNE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70725[0725] |02182 |Mood Code
+|===
+
+==== 12.4.1.0 GOL Field Definitions
+
+The business and/or application must assume responsibility for maintaining knowledge about data ownership, versioning, and/or audit trail control (for purposes of data integrity). It is also their responsibility to represent the appropriate version of that data.
+
+==== 12.4.1.1 GOL-1 Action Code (ID) 02534
+
+Definition: The action code field gives the intent of the problem or goal. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[_HL7 Table 0287 – Problem/Goal Action Co__de_] in Chapter 2C, Code Tables, for valid values.
+
+==== 12.4.1.2 GOL-2 Action Date/Time (DTM) 00817
+
+Definition: This field contains the date/time that the operation represented by the action code was performed.
+
+==== 12.4.1.3 GOL-3 Goal ID (CWE) 00818
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the goal. This is the identifier from an institution's master list of goals.
+
+==== 12.4.1.4 GOL-4 Goal Instance ID (EI) 00819
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the unique identifier assigned by an initiating system to this instance of the goal.
+
+*Note:* It is required that the value in this field be unique over time. This instance ID identifies a specific instance for a specific patient and is unique across all patients. See entity ID data type description in Chapter 2.
+
+==== 12.4.1.5 GOL-5 Episode of Care ID (EI) 00820
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field uniquely identifies the episode of care to which this goal applies. See note under "Ongoing issues."
+
+*Note*: Based on application use, this field is required to be unique over time.
+
+==== 12.4.1.6 GOL-6 Goal List Priority (NM) 00821
+
+Definition: This field prioritizes this goal on a list that is maintained for an individual.
+
+==== 12.4.1.7 GOL-7 Goal Established Date/Time (DTM) 00822
+
+Definition: This field identifies the date/time when the stated goal was initially created.
+
+==== 12.4.1.8 GOL-8 Expected Goal Achieve Date/Time (DTM) 00824
+
+Definition: This field contains the projected date/time for achieving the stated goal.
+
+==== 12.4.1.9 GOL-9 Goal Classification (CWE) 00825
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the kind of goal. This field can be used to categorize goals so that they may be managed and viewed independently within different applications (e.g., admission, final, post-operative, pre-operative, outpatient, discharge, etc.).
+
+*Note:* This field can be used to differentiate separate goal lists that may be managed independently within applications.
+
+==== 12.4.1.10 GOL-10 Goal Management Discipline (CWE) 00826
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the category of caregiver with responsibility for managing this specific goal (e.g., care team, nursing, medicine, respiratory therapy, occupational therapy, dietary etc.). This is a repeating field to allow identification of all disciplines that may have the responsibility for this goal.
+
+==== 12.4.1.11 GOL-11 Current Goal Review Status (CWE) 00827
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the current point in the continuum of a goal review cycle (e.g., due, initiated, reviewed, overdue, verified, etc.).
+
+==== 12.4.1.12 GOL-12 Current Goal Review Date/Time (DTM) 00828
+
+Definition: This field contains the date/time of the current review of the goal.
+
+==== 12.4.1.13 GOL-13 Next Goal Review Date/Time (DTM) 00829
+
+Definition: This field contains the date/time of the next scheduled goal review.
+
+==== 12.4.1.14 GOL-14 Previous Goal Review Date/Time (DTM) 00830
+
+Definition: This field contains the date/time that the goal was reviewed prior to the current review.
+
+==== 12.4.1.15 GOL-15 Goal Review Interval 00831
+
+*_As of Version 2.5, this field was retained for backward compatibility only and withdrawn and removed as of v2.7._* Refer to the TQ1 segment described in Chapter 4.
+
+==== 12.4.1.16 GOL-16 Goal Evaluation (CWE) 00832
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field provides an indicator of progress towards achievement of the goal (e.g., achieved, ahead of schedule, delayed, failed to achieve, etc.).
+
+==== 12.4.1.17 GOL-17 Goal Evaluation Comment (ST) 00833
+
+Definition: This field contains the comments associated with the goal evaluation. Examples of comments that might be entered in this field include: a reason for delay in achieving goal, or a clinical footnote about progress made towards the goal, etc.
+
+==== 12.4.1.18 GOL-18 Goal Life Cycle Status (CWE) 00834
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains an indication of the state of the goal (e.g., Active, Canceled, Inactive, Suspended, etc.).
+
+==== 12.4.1.19 GOL-19 Goal Life Cycle Status Date/Time (DTM) 00835
+
+Definition: This field contains the effective date/time of the current goal life cycle status.
+
+==== 12.4.1.20 GOL-20 Goal Target Type (CWE) 00836
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the individual/group for whom the goal has been established (e.g., family group, family member, patient, etc.).
+
+*Note*: This field is focused on a specific person/group that is directly patient-related.
+
+==== 12.4.1.21 GOL-21 Goal Target Name (XPN) 00837
+
+Components: <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <Name Type Code (ID)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Called By (ST)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the identification of the person(s) on whom the goal is focused. This is a repeating field which allows for the identification of a group of individuals.
+
+==== 12.4.1.22 GOL-22 Mood Code (CNE) 02182
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the Mood of the Goal. It allows expression of the context of the problem.
+
+*Note:* As Mood Code changes the meaning of the segment it must only be used in new messages as of v2.6.
+
+Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70725[_HL7 Table 0725 – Mood Codes_] in Chapter 2C, Code Tables, for allowed values.
+
+=== 12.4.2 PRB - Problem Detail Segment
+
+NOTE: This segment will be taken over by the Orders and Observations Work Group.
+
+The problem detail segment contains the data necessary to add, update, correct, and delete the problems of a given individual.
+
+HL7 Attribute Table - PRB [#PRB .anchor]##– Problem Details
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |2..2 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[0287] |02534 |Action Code
+|2 | | |DTM |R | | |00817 |Action Date/Time
+|3 | | |CWE |R | | |00838 |Problem ID
+|4 | | |EI |R | | |00839 |Problem Instance ID
+|5 | | |EI |O | | |00820 |Episode of Care ID
+|6 | | |NM |O | | |00841 |Problem List Priority
+|7 | | |DTM |O | | |00842 |Problem Established Date/Time
+|8 | | |DTM |O | | |00843 |Anticipated Problem Resolution Date/Time
+|9 | | |DTM |O | | |00844 |Actual Problem Resolution Date/Time
+|10 | | |CWE |O | | |00845 |Problem Classification
+|11 | | |CWE |O |Y | |00846 |Problem Management Discipline
+|12 | | |CWE |O | | |00847 |Problem Persistence
+|13 | | |CWE |O | | |00848 |Problem Confirmation Status
+|14 | | |CWE |O | | |00849 |Problem Life Cycle Status
+|15 | | |DTM |O | | |00850 |Problem Life Cycle Status Date/Time
+|16 | | |DTM |O | | |00851 |Problem Date of Onset
+|17 | |80= |ST |O | | |00852 |Problem Onset Text
+|18 | | |CWE |O | | |00853 |Problem Ranking
+|19 | | |CWE |O | | |00854 |Certainty of Problem
+|20 | |4# |NM |O | | |00855 |Probability of Problem (0-1)
+|21 | | |CWE |O | | |00856 |Individual Awareness of Problem
+|22 | | |CWE |O | | |00857 |Problem Prognosis
+|23 | | |CWE |O | | |00858 |Individual Awareness of Prognosis
+|24 | |200= |ST |O | | |00859 |Family/Significant Other Awareness of Problem/Prognosis
+|25 | | |CWE |O | | |00823 |Security/Sensitivity
+|26 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70836[0836] |02234 |Problem Severity
+|27 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70838[0838] |02235 |Problem Perspective
+|28 | | |CNE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70725[0725] |02237 |Mood Code
+|===
+
+The business and/or application must assume the responsibility for maintaining knowledge about data ownership, versioning, and/or audit trail control (for purposes of data integrity). It is also their responsibility to represent the appropriate version of that data.
+
+==== 12.4.2.0 PRB Field Definitions
+
+==== 12.4.2.1 PRB-1 Action Code (ID) 02534
+
+Definition: This field contains the intent of the message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[_HL7 Table 0287 – Problem/Goal Action Code_] in Chapter 2C, Code Tables, for valid values.
+
+==== 12.4.2.2 PRB-2 Action Date/Time (DTM) 00817
+
+Definition: This field contains the date/time that the operation represented by the action code was performed.
+
+==== 12.4.2.3 PRB-3 Problem ID (CWE) 00838
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies the problem. This is the identifier from an institution's master list of problems.
+
+==== 12.4.2.4 PRB-4 Problem Instance ID (EI) 00839
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the identifier assigned by an initiating system to an instance of a problem.
+
+*Note:* It is required that this value remain unique over time. This instance ID identifies a specific instance for a specific patient and is unique across all patients. See entity ID data type description in Chapter 2.
+
+==== 12.4.2.5 PRB-5 Episode of Care ID (EI) 00820
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field uniquely identifies the episode of care to which this problem applies. (See note under "Ongoing issues.")
+
+*Note:* It is required that this field be unique over time.
+
+==== 12.4.2.6 PRB-6 Problem List Priority (NM) 00841
+
+Definition: This field prioritizes this problem on a list that is maintained for the individual.
+
+==== 12.4.2.7 PRB-7 Problem Established Date/Time (DTM) 00842
+
+Definition: This field contains the date/time when the corresponding problem was initially identified by the caregiver.
+
+==== 12.4.2.8 PRB-8 Anticipated Problem Resolution Date/Time (DTM) 00843
+
+Definition: This field contains the estimated date/time for resolving the stated problem.
+
+==== 12.4.2.9 PRB-9 Actual Problem Resolution Date/Time (DTM) 00844
+
+Definition: This field contains the date/time that the problem was actually resolved.
+
+==== 12.4.2.10 PRB-10 Problem Classification (CWE) 00845
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the kind of problem. This field can be used to categorize problems so that they may be managed and viewed independently within different applications (e.g., admission, final, post-operative, pre-operative, outpatient, discharge, etc.).
+
+==== 12.4.2.11 PRB-11 Problem Management Discipline (CWE) 00846
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the category of caregiver with responsibility for managing this specific problem (e.g., care team, nursing, medicine, respiratory therapy, occupational therapy, dietary, etc.). This is a repeating field to allow identification of all disciplines that may have the responsibility for this problem.
+
+==== 12.4.2.12 PRB-12 Problem Persistence (CWE) 00847
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the perseverance of a problem (e.g., acute, chronic, etc.).
+
+==== 12.4.2.13 PRB-13 Problem Confirmation Status (CWE) 00848
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the verification status of a problem (e.g., confirmed, differential, provisional, rule-out, etc.).
+
+==== 12.4.2.14 PRB-14 Problem Life Cycle Status (CWE) 00849
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the current status of the problem at this particular date/time (e.g., active, active-improving, active-stable, active-worsening, inactive, resolved, etc.).
+
+==== 12.4.2.15 PRB-15 Problem Life Cycle Status Date/Time (DTM) 00850
+
+Definition: This field indicates the effective date/time of the current problem life cycle status.
+
+==== 12.4.2.16 PRB-16 Problem Date of Onset (DTM) 00851
+
+Definition: This field contains the date/time when the problem began.
+
+==== 12.4.2.17 PRB-17 Problem Onset Text (ST) 00852
+
+Definition: This field allows for a textual representation of the time when the problem began.
+
+==== 12.4.2.18 PRB-18 Problem Ranking (CWE) 00853
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains a user-defined prioritization of a problem (e.g., numeric ranking, or the use of words such as "primary," "secondary," etc.).
+
+==== 12.4.2.19 PRB-19 Certainty of Problem (CWE) 00854
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains a qualitative representation of the certainty of a problem (e.g., HI - high, LO - low, ME - medium, etc.).
+
+==== 12.4.2.20 PRB-20 Probability of Problem (0-1) (NM) 00855
+
+Definition: This field contains a quantitative or numeric representation of the certainty that the problem exists for this patient. This field has a valid range of 0 to 1. For example, a healthcare provider may be 75% (.75) sure that the problem has been correctly identified.
+
+*Note*: We have provided for two different representations of the certainty of the problem due to varying representations in applications.
+
+==== 12.4.2.21 PRB-21 Individual Awareness of Problem (CWE) 00856
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the individual's comprehension of the problem (e.g., full, marginal, partial, etc.).
+
+==== 12.4.2.22 PRB-22 Problem Prognosis (CWE) 00857
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the prognosis for the individual's problem (e.g., good, poor, etc.).
+
+==== 12.4.2.23 PRB-23 Individual Awareness of Prognosis (CWE) 00858
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the individual's comprehension of the prognosis for the problem (e.g., full, marginal, partial, etc.).
+
+==== 12.4.2.24 PRB-24 Family/Significant Other Awareness of Problem/Prognosis (ST) 00859
+
+Definition: This field indicates the individual's family or significant other's comprehension of the actual problem/prognosis.
+
+==== 12.4.2.25 PRB-25 Security/Sensitivity (CWE) 00823
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains information about the level of security and/or sensitivity surrounding the problem (e.g., highly sensitive, not sensitive, sensitive, etc.).
+
+==== 12.4.2.26 PRB-26 Problem Severity (CWE) 02234
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the severity of the Problem. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70836[_User-defined Table 0836- Problem Severity_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 12.4.2.27 PRB-27 Problem Perspective (CWE) 02235
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates from whose perspective this problem was identified. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70838[_User-defined Table 0838 - Problem Perspective_] in Chapter 2C, Code Tables, for suggested values.
+
+==== 12.4.2.28 PRB-28 Mood Code (CNE) 02237
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the Mood of the Problem. It allows expression of the context of the problem.
+
+*Note:* As Mood Code changes the meaning of the segment it must only be used in new messages as of v2.6.
+
+Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70725[HL7 Table 0725 - Mood Codes] in Chapter 2C, Code Tables, for allowed values.
+
+=== 12.4.3 PTH - Pathway Segment
+
+The pathway segment contains the data necessary to add, update, correct, and delete from the record pathways that are utilized to address an individual's health care.
+
+HL7 Attribute Table - PTH [#PTH .anchor]##- Pathway
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |2..2 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[0287] |02534 |Action Code
+|2 | | |CWE |R | | |01207 |Pathway ID
+|3 | | |EI |R | | |01208 |Pathway Instance ID
+|4 | | |DTM |R | | |01209 |Pathway Established Date/Time
+|5 | | |CWE |O | | |01210 |Pathway Life Cycle Status
+|6 | | |DTM |C | | |01211 |Change Pathway Life Cycle Status Date/Time
+|7 | | |CNE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70725[0725] |02239 |Mood Code
+|===
+
+==== 12.4.3.0 PTH - Field Definitions
+
+==== 12.4.3.1 PTH-1 Action Code (ID) 02534
+
+Definition: This field reveals the intent of the message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[_HL7 Table 0287 – Problem/Goal Action Code_] in Chapter 2C, Code Tables, for valid values.
+
+==== 12.4.3.2 PTH-2 Pathway ID (CWE) 01207
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the pathway master data identifier associated with the referenced problem or goal. Examples: open heart pathway, new diabetic, total hip replace.
+
+==== 12.4.3.3 PTH-3 Pathway Instance ID (EI) 01208
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a value generated by the originating application that represents an associated order placer group number, or other unique identifier assigned to the grouping of pathway directives.
+
+*Note:* It is required that this value remain unique over time. This instance ID identifies a specific instance for a specific patient and is unique across all patients. See entity ID data type description in Chapter 2.
+
+==== 12.4.3.4 PTH-4 Pathway Established Date/Time (DTM) 01209
+
+Definition: This field contains the identification of the event time for the current pathway record.
+
+==== 12.4.3.5 PTH-5 Pathway Life Cycle Status (CWE) 01210
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains an application-specific set of state identifiers (e.g., Active, Suspended, Complete, Canceled, Delayed, Scheduled).
+
+==== 12.4.3.6 PTH-6 Change Pathway Life Cycle Status Date/Time (DTM) 01211
+
+Definition: This field contains the date/time when pathway has been modified or deactivated. (Marked as conditional – must be filled in if trigger event is update or terminate pathway.)
+
+==== 12.4.3.7 PTH-7 Mood Code (CNE) 02239
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates the Mood of the Pathway. It allows expression of the context of the Pathway.
+
+*Note:* As Mood Code changes the meaning of the segment it must only be used in new messages as of v2.6.
+
+Refer to _file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70725[HL7 Table 0725 - Mood Codes]_ in Chapter 2C, Code Tables, for allowed values.
+
+=== 12.4.4 VAR - Variance Segment
+
+The variance segment contains the data necessary to describe differences that may have occurred at the time when a healthcare event was documented.
+
+HL7 Attribute Table - VAR [#VAR .anchor]##- Variance
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |EI |R | | |01212 |Variance Instance ID
+|2 | | |DTM |R | | |01213 |Documented Date/Time
+|3 | | |DTM |O | | |01214 |Stated Variance Date/Time
+|4 | | |XCN |O |Y | |01215 |Variance Originator
+|5 | | |CWE |O | | |01216 |Variance Classification
+|6 | |512= |ST |O |Y | |01217 |Variance Description
+|===
+
+==== 12.4.4.0 VAR - Field Definitions
+
+==== 12.4.4.1 VAR-1 Variance Instance ID (EI) 01212
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the unique identifier of the specific variance record.
+
+==== 12.4.4.2 VAR-2 Documented Date/Time (DTM) 01213
+
+Definition: This field contains the time stamp that identifies the timed occurrence of the variance documentation.
+
+==== 12.4.4.3 VAR-3 Stated Variance Date/Time (DTM) 01214
+
+Definition: This field contains the time stamp that identifies a stated time of the variance which may be different than the time it was documented.
+
+==== 12.4.4.4 VAR-4 Variance Originator (XCN) 01215
+
+Components: <Person Identifier (ST)> ^ <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <DEPRECATED-Source Table (CWE)> ^ <Assigning Authority (HD)> ^ <Name Type Code (ID)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Source Table (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the originator (person or system) documenting the variance.
+
+==== 12.4.4.5 VAR-5 Variance Classification (CWE) 01216
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field identifies a categorical set of variances. Classification may be used by applications for presentation and processing functions.
+
+==== 12.4.4.6 VAR-6 Variance Description (ST) 01217
+
+Definition: This field specifies the details of a variance. The content of the field is a string with optional formatting.
+
+=== 12.4.5 REL - Clinical Relationship Segment
+
+The Clinical Relationship segment contains the data necessary to relate two data elements within and/or external to the message at run-time. It also includes information about the relationship.
+
+Relationships are constrained to being between explicit segments of messages rather than beween the identities of entities they reference. Segments are available within the message but related persistent information may not be. Because of the transient nature of messages applications must manage the associations with entities which persist outside or across messages.
+
+Examples:
+
+Problem is a consequence of a diagnosis.
+
+Diagnosis is supported by observation.
+
+Observation is a manifestation of a diagnosis.
+
+Complication is a consequence of a procedure.
+
+HL7 Attribute Table - REL – Clinical Relationship Segment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |1..4 | |SI |C | | |02240 |Set ID –REL
+|2 | | |CWE |R | |0948 |02241 |Relationship Type
+|3 | | |EI |R | | |02242 |This Relationship Instance Identifier
+|4 | | |EI |R | | |02243 |Source Information Instance Identifier
+|5 | | |EI |R | | |02244 |Target Information Instance Identifier
+|6 | | |EI |O | | |02245 |Asserting Entity Instance ID
+|7 | | |XCN |O | | |02246 |Asserting Person
+|8 | | |XON |O | | |02247 |Asserting Organization
+|9 | | |XAD |O | | |02248 |Assertor Address
+|10 | | |XTN |O | | |02249 |Assertor Contact
+|11 | | |DR |O | | |02250 |Assertion Date Range
+|12 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |02251 |Negation Indicator
+|13 | | |CWE |O | | |02252 |Certainty of Relationship
+|14 | |5= |NM |O | | |02253 |Priority No
+|15 | |5= |NM |O | | |02254 |Priority Sequence No (rel preference for consideration)
+|16 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |02255 |Separability Indicator
+|17 | | |ID |O | |0203 |02455 |Source Information Instance Object Type
+|18 | | |ID |O | |0203 |02456 |Target Information Instance Object Type
+|===
+
+==== 12.4.5.0 REL - Field Definitions
+
+==== 12.4.5.1 REL-1 Set ID - REL (SI) 02240
+
+Definition: This field contains the Set ID of the specific relationship Record.
+
+==== 12.4.5.2 REL-2 Relationship Type (CWE) 02241
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the type of the relationship. Refer to User-defined Table 0948 – Relationship Type, as defined in Chapter 2C, Code Tables for suggested values.
+
+==== 12.4.5.3 REL-3 This Relationship Instance Identifier (EI) 02242
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the instance identifier of this relationship.
+
+==== 12.4.5.4 REL-4 Source Information Instance Identifier (EI) 02243
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the Instance ID of the Source Segment.
+
+==== 12.4.5.5 REL-5 Target Information Instance Identifier (EI) 02244
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the Instance ID of the Target Segment.
+
+==== 12.4.5.6 REL-6 Asserting Entity Instance ID (EI) 02245
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the Instance ID of the Person or Organization that asserted the relationship.
+
+==== 12.4.5.7 REL-7 Asserting Person (XCN) 02246
+
+Components: <Person Identifier (ST)> ^ <Family Name (FN)> ^ <Given Name (ST)> ^ <Second and Further Given Names or Initials Thereof (ST)> ^ <Suffix (e.g., JR or III) (ST)> ^ <Prefix (e.g., DR) (ST)> ^ <WITHDRAWN Constituent> ^ <DEPRECATED-Source Table (CWE)> ^ <Assigning Authority (HD)> ^ <Name Type Code (ID)> ^ <Identifier Check Digit (ST)> ^ <Check Digit Scheme (ID)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Name Context (CWE)> ^ <WITHDRAWN Constituent> ^ <Name Assembly Order (ID)> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Professional Suffix (ST)> ^ <Assigning Jurisdiction (CWE)> ^ <Assigning Agency or Department (CWE)> ^ <Security Check (ST)> ^ <Security Check Scheme (ID)>
+
+Subcomponents for Family Name (FN): <Surname (ST)> & <Own Surname Prefix (ST)> & <Own Surname (ST)> & <Surname Prefix from Partner/Spouse (ST)> & <Surname from Partner/Spouse (ST)>
+
+Subcomponents for Source Table (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Name Context (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Jurisdiction (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Agency or Department (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the Identifier details of the Person who asserted the relationship.
+
+==== 12.4.5.8 REL-8 Asserting Organization (XON) 02247
+
+Components: <Organization Name (ST)> ^ <Organization Name Type Code (CWE)> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <WITHDRAWN Constituent> ^ <Assigning Authority (HD)> ^ <Identifier Type Code (ID)> ^ <Assigning Facility (HD)> ^ <Name Representation Code (ID)> ^ <Organization Identifier (ST)>
+
+Subcomponents for Organization Name Type Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Assigning Authority (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Assigning Facility (HD): <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field contains the Identifier details of the Organization that asserted the relationship.
+
+==== 12.4.5.9 REL-9 Assertor Address (XAD) 02248
+
+Components: <Street Address (SAD)> ^ <Other Designation (ST)> ^ <City (ST)> ^ <State or Province (ST)> ^ <Zip or Postal Code (ST)> ^ <Country (ID)> ^ <Address Type (ID)> ^ <Other Geographic Designation (ST)> ^ <County/Parish Code (CWE)> ^ <Census Tract (CWE)> ^ <Address Representation Code (ID)> ^ <WITHDRAWN Constituent> ^ <Effective Date (DTM)> ^ <Expiration Date (DTM)> ^ <Expiration Reason (CWE)> ^ <Temporary Indicator (ID)> ^ <Bad Address Indicator (ID)> ^ <Address Usage (ID)> ^ <Addressee (ST)> ^ <Comment (ST)> ^ <Preference Order (NM)> ^ <Protection Code (CWE)> ^ <Address Identifier (EI)>
+
+Subcomponents for Street Address (SAD): <Street or Mailing Address (ST)> & <Street Name (ST)> & <Dwelling Number (ST)>
+
+Subcomponents for County/Parish Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Census Tract (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Expiration Reason (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Protection Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Address Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field contains the address of the Person or Organization that asserted the relationship.
+
+==== 12.4.5.10 REL-10 Assertor Contact (XTN) 02249
+
+Components: <WITHDRAWN Constituent> ^ <Telecommunication Use Code (ID)> ^ <Telecommunication Equipment Type (ID)> ^ <Communication Address (ST)> ^ <Country Code (SNM)> ^ <Area/City Code (SNM)> ^ <Local Number (SNM)> ^ <Extension (SNM)> ^ <Any Text (ST)> ^ <Extension Prefix (ST)> ^ <Speed Dial Code (ST)> ^ <Unformatted Telephone number (ST)> ^ <Effective Start Date (DTM)> ^ <Expiration Date (DTM)> ^ <Expiration Reason (CWE)> ^ <Protection Code (CWE)> ^ <Shared Telecommunication Identifier (EI)> ^ <Preference Order (NM)>
+
+Subcomponents for Expiration Reason (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Protection Code (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Subcomponents for Shared Telecommunication Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field contains the address of the Person or Organization that asserted the relationship.
+
+==== 12.4.5.11 REL-11 Assertion Date Range (DR) 02250
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: This field contains the date range during which assertion of the relationship took place.
+
+==== 12.4.5.12 REL-12 Negation Indicator (ID) 02251
+
+Definition: This field asserts the absence of the relationship for this particular REL segment. This field, if populated and set a value of 'Y', indicates that the given relationship does not exist.
+
+==== 12.4.5.13 REL-13 Certainty of Relationship (CWE) 02252
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the certainty of existence of the relationship.
+
+NOTE that there are no suggested values for this coded element.
+
+==== 12.4.5.14 REL-14 Priority No (NM) 02253
+
+Definition: This field contains the priority number as used, for example, in relative ordering, plans, and workflows.
+
+==== 12.4.5.15 REL-15 Priority Sequence No (NM) 02254
+
+Definition: This field contains the priority sequence number as used, for example, in relative preference for consideration.
+
+==== 12.4.5.16 REL-16 Separability Indicator (ID) 02255
+
+Definition: This field indicates whether source and target can be interpreted independently. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 – Yes/no Indicator_], as defined in Chapter 2C, Code Tables.
+
+==== 12.4.5.17 REL-17 Source Information Instance Object Type (ID) 02455
+
+Components: Identifier (ID)
+
+Definition: This field contains the identifier type code drawn from coding system HL70203 describing the object identifed by the Source Information Instance Identifier (REL-4).
+
+==== 12.4.5.18 REL-18 Target Information Instance Object Type (ID) 02456
+
+Components: Identifier (ID)
+
+Definition: This field contains the identifier type code drawn from coding system HL70203 describing the object identifed by the Target Information Instance Identifier (REL-5).
+
+== 12.5 EXAMPLE TRANSACTIONS
+
+The following is an example of a patient goal message.
+
+MSH|^~\&|SENDAP|SENDFAC|RECAP|RECFAC|||PGL^PC4| <cr>
+
+PID||0123456‑1||EVERYMAN^ADAM^A|||||||9821111|<cr>
+
+PV1|1|I|2000^2012^01||||004777^ATTEND^AARON^A.|||SUR||­||ADM|A0­|<cr>
+
+GOL|AD|199505011200|00312^Improve Peripheral Circulation^Goal Master List||||199505011200|199505101200|Due^Review Due^Next Review List|||199505021200||QAM|||ACT^Active^Level Seven Healthcare, Inc. Internal|199505011200| P^Patient^Level Seven Healthcare, Inc. Internal||<cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRT||AD||EP^Entering Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRB|AD|199505011200|04411^Restricted Circulation^Nursing Problem List|| ||199505011200|||IP^Inpatient^Problem Classification List| NU^Nursing^Management Discipline List|Acute^Acute^Persistence List| C^Confirmed^Confirmation Status List|A1^Active^Life Cycle Status List| 199505011200|199504250000||2^Secondary^Ranking List|HI^High^Certainty Coding List||1^Fully^Awareness Coding List|2^Good^Prognosis Coding List|||| <cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+OBX|001|TX|^Peripheral Dependent Edema|1|Increasing Edema in lower limbs|<cr>
+
+The following is an example of a patient problem message.
+
+MSH|^~\&|SENDAP|SENDFAC|RECAP|RECFAC|||PPR^PC1| <cr>
+
+PID||0123456‑1||EVERYMAN^ADAM^A|||||||9821111|<cr>
+
+PV1|1|I|2000^2012^01||||004777^ATTEND^AARON^A.|||SUR||­||ADM|A0­|<cr>
+
+PRB|AD|199505011200|04411^Restricted Circulation^Nursing Problem List|| ||199505011200|||IP^Inpatient^Problem Classification List| NU^Nursing^Management Discipline List|Acute^Acute^Persistence List| C^Confirmed^Confirmation Status List|A1^Active^Life Cycle Status List| 199505011200|199504250000||2^Secondary^Ranking List|HI^High^Certainty Coding List||1^Fully^Awareness Coding List|2^Good^Prognosis Coding List|||| <cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRT||AD||EP^Entering Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+OBX|001|TX|^Peripheral Dependent Edema|1|Increasing Edema in lower limbs|<cr>
+
+GOL|AD|199505011200|00312^Improve Peripheral Circulation^Goal Master List||||199505011200|199505101200|Due^Review Due^Next Review List|| 199505021200||QAM|||ACT^Active^ Level Seven Healthcare, Inc. Internal|199505011200| P^Patient^Level Seven Healthcare, Inc.||<cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+The following is an example of a patient pathway problem-oriented message.
+
+MSH|^~\&|SENDAP|SENDFAC|RECAP|RECFAC|||PPP^PCB| <cr>
+
+PID||0123456‑1||EVERYMAN^ADAM^A|||||||9821111|<cr>
+
+PV1|1|I|2000^2012^01||||004777^ATTEND^AARON^A.|||SUR||­||ADM|A0­|<cr>
+
+PTH|AD^^HL70287|OH457^Open Heart Pathway^AHCPR|0018329078785^PCIS1|199505011200|A1^Active^Pathway Life Cycle Status List|199505011200|<cr>
+
+VAR|84032847876^LOCK|199505011200||^Verify^Virgil^V^^RN|23^Coincident^Variance Class List|Exceeds APACHE III threshold score.|<cr>
+
+PRB|AD|199505011200|04411^Restricted Circulation^Nursing Problem List|| ||199505011200|||IP^Inpatient^Problem Classification List| NU^Nursing^Management Discipline List|Acute^Acute^Persistence List| C^Confirmed^Confirmation Status List|A1^Active^Life Cycle Status List| 199505011200|199504250000||2^Secondary^Ranking List|HI^High^Certainty Coding List||1^Fully^Awareness Coding List|2^Good^Prognosis Coding List|||| <cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRT||AD||EP^Entering Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+ORC|NW|2045^OE||||E|^C^199505011200^199505011200^^TM30^^^^|<cr>
+
+RXO|||3|L|IV|D5W WITH 1/2 NS WITH 20 MEQ KCL EVERY THIRD BOTTLE STARTING WITH
+
+FIRST||W8&825&A^|N||||||||H30<cr>
+
+ORC|NW|1000^OE|9999999^RX|||E|^Q6H^D10^^^R|||||||<cr>
+
+RXA|1|199505011200|||0047-0402-30^Ampicillin 250 MG TAB^NDC|2|TAB||<cr>
+
+== 12.6 IMPLEMENTATION CONSIDERATIONS
+
+The Patient Care Technical Committee recognizes that this document contains a great deal of information for computer systems that are currently under development. The participating institutions/vendors will be responsible for defining the necessary tables that have been previously discussed. As these tables are defined and clarified, they will be included in this document for distribution.
+
+Applications can have differing orientations for representing problem and goal hierarchies. For example, parent:child relationships may map problem(s) to goal(s), or goal(s) to problem(s). To accommodate these different orientations, the Problem message allows representation of goals that are functionally dependent upon a problem, and the Goal message allows representation of problems that are functionally dependent on a goal. We recognize that institutions will decide on one or the other of the methodologies based on practice preferences.
+
+== 12.7 Outstanding Issues
+
+In both the Problem and Goal segments a field named "Episode of Care" has been included. This field is intended to accommodate an entity defined by consensus business rules that defines an episode of care.
+
+Individual businesses/applications must be cognizant of and able to handle data integrity issues that may arise from the fact that problem lists and goal lists may not have a single owner of record. This chapter does not address the need for joint data ownership (of problem and goal data) between two or more front-end clinical applications concurrently supporting patient care in real-time. From a data integrity perspective, problem/goal data must be sourced/originated (and thus owned) by a single application only - for example, a front-end clinical application (source) transmitting to a back-end repository application. This is not recognized to be within the current scope of the Patient Care Committee; therefore, this concern will be submitted to the Infrastructure & Messaging committee for further debate.

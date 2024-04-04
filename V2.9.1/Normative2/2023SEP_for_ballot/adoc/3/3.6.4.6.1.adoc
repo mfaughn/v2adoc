@@ -1,0 +1,8 @@
+===== 3.6.4.6.1 *Figure 3-3* - Client system assigns identifier, does not exist on either system
+
+The message flow again begins with a _Q22/K22_ _Find Candidates_ query. The response may or may not contain a list of candidates.
+
+If the client system assigns a person identifier when the record is created, an _A28 Add person information_ could be sent to the MPI to notify it of the record creation. If the client system does not create an identifier until the registration is completed, the A01, A04 or A05 events could serve the purpose of notifying the MPI of an added person and identifier. The fact that the person will have an identifier unknown to the MPI, and no enterprise identifier, will allow the MPI to infer that a person record is being added.
+
+When the person record is added to the MPI with the new identifier, an enterprise identifier is assigned, and ancillary systems may be notified of the new person record creation.
+

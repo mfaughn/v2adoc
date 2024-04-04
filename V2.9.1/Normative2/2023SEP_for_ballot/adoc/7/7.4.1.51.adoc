@@ -1,0 +1,6 @@
+==== 7.4.1.51 OBR-51 Observation Group ID (EI) 02307
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The Observation Group ID is the identifier assigned by the producer of a result to uniquely identify the results associated with this OBR segment. The Observation Group ID is intended to remain the same regardless of the change in status to the result (i.e., it is not a snapshot ID). This field is intended to promote forward compatibility with HL7 V3.
+

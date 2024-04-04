@@ -1,0 +1,122 @@
+=== 3.3.58 QBP/RSP - Get Corresponding Identifiers (QBP) and Response (RSP) (Events Q23 and K23)
+
+This query/response is designed for interaction between a client system and an MPI (Master Person Index). The query consists of an identifier for a person, and the response is a list of identifiers for that person from the domains specified.
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID: |Q23
+|Query Type: |Query
+|Query Name: |Q23 Get Corresponding Identifiers
+|Query Trigger: |QBP^Q23^QBP_Q21
+|Query Mode: |
+|Response Trigger: |RSP^K23^RSP_K23
+|Query Characteristics |
+|Purpose: |Returns list of identifiers from the specified domains, given an identifier from a given domain.
+|===
+
+QBP^Q23^QBP_Q21: Query By Parameter
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|QPD |Query Parameter Definition Segment | |5
+|RCP |Response Control Parameters | |5
+|[ DSC ] |Continuation Pointer | |2
+|===
+
+[width="100%",cols="19%,24%,4%,16%,18%,19%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|QBP^Q23^QBP_Q21 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^Q23^ACK |- |ACK^Q23^ACK
+|Application Ack |RSP^K23^RSP_K23 |- |- |RSP^K23^RSP_K23 |RSP^K23^RSP_K23
+|===
+
+RSP^K23^RSP_K23: Segment Pattern Response
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ERR] |Error | |2
+|QAK |Query Acknowledgment | |5
+|QPD |Query Parameter Definition Segment | |5
+|[ |--- QUERY_RESPONSE begin | |
+|PID |Patient Identification | |3
+|] |--- QUERY_RESPONSE end | |
+|[DSC] |Continuation Pointer | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|RSP^K23^RSP_K23 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^K23^ACK
+|Application Ack |- |- |-
+|===
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq. |Field Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |LOINC or HL7 Code/Domain |Element Name
+|1 |PersonIdentifier |S |Y |20 |CX |R |N | | |PID-3 | |Patient Identifier List
+|2 |WhatDomainsReturned | | | |CX |O |Y | | |PID-3 | |Patient Identifier List
+|===
+
+[width="100%",cols="19%,11%,6%,64%",options="header",]
+|===
+|Input Parameter |Comp. Name |DT |Description
+|PersonIdentifier | |CX |Components: <ID (ST)> ^ <check digit (ST)> ^ <code identifying the check digit scheme employed (ID)> ^ < assigning authority (HD)> ^ <identifier type code (IS)> ^ < assigning facility (HD)
+| | | |The combination of values for _PersonIdentifier.ID, and PersonIdentifier.AssigningAuthority,_ are intended to identify a person uniquely. The _PersonIdentifier.IDTypeCode_ is useful for further filtering or to supply uniqueness in the event that the assigning authority may have more than one coding system.
+| | | |Example: ...\|112234^^^GOOD HEALTH HOSPITAL\|...
+| | | |Only one PID.3 may be specified, only 1 segment pattern will be returned.
+| | | |
+|PersonIdentifier |ID | |PID.3.1must be valued.
+|PersonIdentifier |Assigning Authority | |PID.3.4 must be valued.
+|PersonIdentifier |Identifier type code | |
+|WhatDomainsReturned | |CX |Components: <ID (ST)> ^ <check digit (ST)> ^ <code identifying the check digit scheme employed (ID)> ^ < assigning authority (HD)> ^ <identifier type code (IS)> ^ < assigning facility (HD)
+| | | |This parameter restricts the set of domains for which identifiers are returned in PID-3. If this is not specified, then identifiers for all known domains shall be returned. It does not restrict the search for the person.
+| | | |Example: \|^^^GOOD HEALTH HOSPITAL~^^^SOUTH LAB\|
+| | | |Only the following components should be valued.
+|WhatDomainsReturned |Assigning Authority | |PID.3.4 must be valued.
+|WhatDomainsReturned. |Identifier type code | |
+|===
+
+Following is an example of a Q23/K23 query/response pair of messages. First is the query:
+
+MSH|^~\&|CLINREG|WESTCLIN|HOSPMPI|HOSP|199912121135-0600||QBP^Q23^QBP_Q21|1|D|2.5
+
+QPD|Q23^Get Corresponding IDs^HL7nnnn|111069|112234^^^GOOD HEALTH HOSPITAL|^^^WEST CLINIC~^^^SOUTH LAB|
+
+RCP||I|
+
+This query is asking for identifiers from WEST CLINIC and SOUTH LAB for the person identified with the identifier 112234 from the assigning authority GOOD HEALTH HOSPITAL. Here is a sample response:
+
+MSH|^~\&|HOSPMPI|HOSP|CLINREG|WESTCLIN|199912121135-0600||RSP^K23^RSP_K23|1|D|2.5|
+
+MSA|AA|8699|
+
+QAK|111069|OK|Q23^Get Corresponding IDs^HL7nnnn|1|
+
+QPD|Q23^Get Corresponding IDs^HL7nnn|111069|112234^^^GOOD HEALTH HOSPITAL|^^^WEST CLINIC~^^^SOUTH LAB|
+
+PID|||56321A^^^WEST CLINIC~66532^^^SOUTH LAB||EVERYMAN^ADAM||19630423|M||C|N2378 South Street^^Madison^WI^53711|
+
+*Note:* that the identifiers returned do not include the GOOD HEALTH HOSPITAL identifier, as it was not specified in the list of WhatDomainsReturned.
+

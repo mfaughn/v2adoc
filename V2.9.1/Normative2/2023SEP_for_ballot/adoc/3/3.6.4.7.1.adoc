@@ -1,0 +1,16 @@
+===== 3.6.4.7.1 *Figure 3-4* - Example of two healthcare organizations merging
+
+Figure 3-4 shows a case where identifiers may need to be assigned by a third party. In the example, East Health Organization had one identifier domain (XXXX numbers) for both the hospital registration system and the outpatient clinic registration numbers. Coordination was done through the use of pre-printed charts for new patients, which prevented the two systems from using the same XXXX number for two patients.
+
+Later West Health Organization is bought and merged with East. West has been using its own identifier domain (YYYY numbers). An MPI is also implemented to keep a cross-reference between the two systems, and assigns its own enterprise identifier (EEEE number) to each patient.
+
+Because the organization is attempting to go paperless, East decides to forgo its pre-printed charts, but still keep the XXXX numbers. Since the pre-printed charts are no longer there to keep numbers from being re-used between the hospital and clinic, a third party is needed to assign the XXXX numbers.
+
+A patient arrives at East Hospital that had never been there, but had been to West previously. To register the patient, the hospital system submits a Find Candidates Q22/K22 query to get from the MPI a list of possible matching patients. The user finds the patient since she had been to West previously. Since the patient is new to East, she must be given a new East identifier (XXXX number). An Allocate Identifiers A56/K24 query is sent from the East Hospital to the MPI and the MPI generates an XXXX number and returns it. Later when the registration is finished, an A24 Link Person Information message is sent to notify the MPI that the allocated identifier has been assigned to a patient
+
+In the following first scenario, the person record exists on the MPI, however it does not exist on the client system. The message flow assumes that the MPI is assigning identifiers for the client system that are not the enterprise identifiers. If this were not the case, the Allocate Identifiers A56/K24 query would not be needed.
+
+____
+image:extracted-media/media/image9.wmf[extracted-media/media/image9]
+____
+

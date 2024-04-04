@@ -1,0 +1,14 @@
+==== 5.2.4.2 Tabular response
+
+A data owner may decide that the best model for the data it wishes to offer is that of a fairly conventional table of rows and columns. In this case, a data owner advertises support for a straightforward ("virtual") table of data, with specific columns of specific data types. It further indicates which of the columns the Client can constrain in its query. The response to a query will be in the form of a set of rows from the advertised table.
+
+The Virtual Table is an abstraction around a traditional database table. However, there are important differences between a traditional database table and the Virtual Table. The Virtual Table need not be based on a single table or collection of data. It may represent a "join" or combination of data among database tables (although the "join" or combination is not explicitly exposed to the Client).
+
+The concept of _table,_ borrowed from the relational database world, is used merely as a representational aid. The actual internal data structure of the Server need not be relational. Virtual Tables may be used to present data elements from internal structures that are hierarchical, object-oriented, or otherwise non-relational in nature.
+
+Virtual Tables therefore insulate the user from the exact data layout or representation in the data source. That is to say, the requestor need not understand the structure of the tables, rows and columns of the database being queried but only the structure of the Virtual Table representation. Likewise, the responder (database owner) does not have to expose the structure of the real database. Neither the owner nor the requestor needs to worry if the structure of the database changes.
+
+The rows and columns of the Virtual Table for a query are fully described in the Query Profile for that query.
+
+A virtual table data representation is appropriate when the information being offered is relatively simple. It would not be the appropriate representation for lab reports that typically involve a complex nesting of results into sections. Data carried by the typical HL7 segment or segment group could be modeled as a virtual table. For example, the ADT system might offer a table consisting of the fields of PID, NK1 and a single PV1 segment. On the other hand, it would be difficult to represent the visit history of a patient in a single virtual table.
+

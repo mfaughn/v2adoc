@@ -1,0 +1,56 @@
+=== 8.4.2 MFN/MFK - Master File Notification - General (Event M13) 
+
+The MFN General master file notification transaction is used where the master file is a simple one that contains only a key and the text value of that key. Both values are carried in _MFE-4 - Primary Key Value - MFE_. The specific master file being updated is identified by _MFI-1 - Master File Identifier_ and _MFI-2 - Master Files Application Identifier_.
+
+The General master file notification is defined as follows:
+
+MFN^M13^MFN_M13: Master File Notification - General
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|\{ link:#MFE[MFE] } |Master File Entry | |8
+|===
+
+[width="100%",cols="17%,23%,5%,18%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M13^MFN_M13 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M13^ACK |- |ACK^M13^ACK
+|Application Ack |MFK^M13^MFK_M01 |- |- |MFK^M13^MFK_M01 |MFK^M13^MFK_M01
+|===
+
+MFK^M13^MFK_M01: Master File Application Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK segment | |8
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M13^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^M13^ACK
+|Application Ack |- |- |-
+|===
+
+*Note:* The MFK message is used for an application acknowledgment in either the original or enhanced acknowledgment modes.
+

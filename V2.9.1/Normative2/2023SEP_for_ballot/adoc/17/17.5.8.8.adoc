@@ -1,0 +1,4 @@
+==== 17.5.8.8 ILT-8 Inventory on Hand Date (DTM) 01808
+
+Definition: This field specifies the most recent date that an inventory count was performed for the inventory item.
+

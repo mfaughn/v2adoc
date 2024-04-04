@@ -1,0 +1,4 @@
+==== 4.17.2.8 BUI-8 Container Catalog Number (ST) 03380
+
+Definition: The string catalog number of the blood unit container, which includes a specific container code to identify a collection bag.
+

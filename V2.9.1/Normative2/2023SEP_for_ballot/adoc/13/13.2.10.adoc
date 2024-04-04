@@ -1,0 +1,54 @@
+=== 13.2.10 TCU/ACK - Automated Equipment Test Code Settings Update (Event U10)
+
+This message is used to send information concerning test codes and parameters from one application to another (e.g., automated equipment to a Laboratory Automation System). This message transfers the current snapshot of the test parameters of the sending system. The sent parameter sets are supposed to replace the parameter sets existing at the receiver of this message before the trigger (there is no selective "Add" or "Delete").
+
+TCU^U10^TCU_U10: Test Code Settings Update
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- TEST_CONFIGURATION begin | | | | |
+|[ SPM ] | |Specimen | | | |7 |
+|\{ link:#TCC[TCC] } | |Test Code Configuration | | | |13 |
+|} | |--- TEST_CONFIGURATION end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="99%",cols="18%,23%,7%,16%,19%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|TCU^U10^TCU_U10 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U10^ACK |- |ACK^U10^ACK
+|Application Ack |ACK^U10^ACK |- |- |ACK^U10^ACK |ACK^U10^ACK
+|===
+
+ACK^U10^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U10^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U10^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,4 @@
+==== 6.5.16.2 GP2-2 Number of Service Units (NM) 01604
+
+Definition: This field contains the quantitative count of units for each HCPC/CPT. This field is the same as UB92 Form Locator 46 "Units of Service". This field is defined by CMS or other regulatory agencies.
+

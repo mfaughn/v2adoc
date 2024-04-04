@@ -1,0 +1,4 @@
+==== 9.7.3.7 TXA-7 Transcription Date/Time (DTM) 00920
+
+Definition: This field contains the date and time the input was actually transcribed. This field is conditional based upon the presence of a value in link:#txa-17-document-completion-status-id-00928[TXA-17-Document Completion Status] of anything except "dictated."
+

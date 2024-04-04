@@ -1,0 +1,4 @@
+==== *3.4.4.12* PV2-12 Visit Description (ST) 00713
+
+Definition: This field contains a brief user-defined description of the visit.
+

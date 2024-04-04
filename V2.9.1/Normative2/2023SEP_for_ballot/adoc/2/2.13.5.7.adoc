@@ -1,0 +1,4 @@
+==== 2.13.5.7 ERR-7 Diagnostic Information (TX) 01817
+
+Definition: Information that MAY be used by help desk or other support personnel to diagnose a problem.
+

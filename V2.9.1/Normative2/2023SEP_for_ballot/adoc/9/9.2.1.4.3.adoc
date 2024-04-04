@@ -1,0 +1,4 @@
+===== 9.2.1.4.3 Documented:
+
+A completion status in which document content, other than dictation, has been received but has not been translated into the final electronic format. Examples include paper documents, whether hand-written or typewritten, and intermediate electronic forms, such as voice to text.
+

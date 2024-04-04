@@ -1,0 +1,16 @@
+==== 10.6.8.1 APR-1 Time Selection Criteria (SCV) 00908
+
+Components: <Parameter Class (CWE)> ^ <Parameter Value (ST)>
+
+Subcomponents for Parameter Class (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is used to communicate parameters and preferences to the filler application regarding the selection of an appropriate time slot for an appointment. The first component of this field is a code identifying the parameter or preference being passed to the filler application. The second component is the actual data value for that parameter.
+
+For example, if a filler application allows preference parameters to be passed to specify a preferred start time, a preferred end time, and preferred days of the week for the appointment, it may define the parameter class codes and valid data sets based on suggested codes from file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70294[_User-defined Table 0294 - Time Selection Criteria Parameter Class Codes_] in Chapter 2C, Code Tables, for suggested values.
+
+Given the set of parameter class codes and valid value sets from User-Defined table 0294, a placer may indicate a preferred start time of 8:00 AM on Monday, Wednesday or Friday by specifying the following in _APR-1 Time Selection Criteria_:
+
+...|PREFSTART^0800~MON^OK~WED^OK~FRI^OK~TUE^NO~THU^NO~SAT^NO~SUN^NO|...
+
+The valid set of preferences should be determined by the placer and filler applications during implementation of the interface.
+

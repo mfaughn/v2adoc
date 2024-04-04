@@ -1,0 +1,4 @@
+==== 2A.2.43.2 Money or Percentage Quantity (NM)
+
+Definition: Specifies the currency or percentage quantity.
+

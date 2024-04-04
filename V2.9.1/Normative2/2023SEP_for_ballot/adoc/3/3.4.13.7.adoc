@@ -1,0 +1,6 @@
+==== *3.4.13.7* PDA-7 Autopsy Start and End Date/Time (DR) 01580
+
+Components: <Range Start Date/Time (DTM)> ^ <Range End Date/Time (DTM)>
+
+Definition: If an autopsy is performed, this field is valued with the date and time the autopsy was begun and completed
+

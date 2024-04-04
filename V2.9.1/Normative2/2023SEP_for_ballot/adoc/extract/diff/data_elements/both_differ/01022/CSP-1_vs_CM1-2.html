@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+CSP-1_vs_CM1-2
+</h1>
+<hr>
+<h3>
+For 01022 there were 3 versions found.<br>This diff compares the version found in fields ["CSP-1", "CSP-1"] from sections ["7.8.2", nil], respectively<br>with the version found in fields ["CM1-2", "CM1-2"] from sections ["8.11.3", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>table:<strong>0587</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field <strong>identifies the phase of the study that a patient has entered. The set of codes will generally be developed for each clinical trial, although</strong> the<strong>re are patterns that trials in particular disease or prevention categories may follow. The </strong>phase <strong>structure will be based on data collation and report</strong>ing <strong>needs for the study. It is an operational structure and need not be discussed in the clinical trial protocol documentation or even made known to patient care or data collection personnel. The coding system will usually be developed by the sponsor for multicentered clinical trials to standardize the receipt of automated data. Local codes could be added if an additional local message is desired. Otherwise, local coding conventions will be used. Refer to Table 0587 - </strong>Study Phase I<strong>dentifier in Chapter 2C for valid values.</strong></del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field <strong>should correspond to</strong> the<strong> study </strong>phase <strong>ID cod</strong>ing <strong>system in Chapter 7, section 7.7.2.1, &quot;</strong>Study Phase I<strong>D.&quot;</strong></ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:01022,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="del"><del><span class="symbol">-</span>table:<strong>0587</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field <strong>identifies the phase of the study that a patient has entered. The set of codes will generally be developed for each clinical trial, although</strong> the<strong>re are patterns that trials in particular disease or prevention categories may follow. The </strong>phase <strong>structure will be based on data collation and report</strong>ing <strong>needs for the study. It is an operational structure and need not be discussed in the clinical trial protocol documentation or even made known to patient care or data collection personnel. The coding system will usually be developed by the sponsor for multicentered clinical trials to standardize the receipt of automated data. Local codes could be added if an additional local message is desired. Otherwise, local coding conventions will be used. Refer to Table 0587 - </strong>Study Phase I<strong>dentifier in Chapter 2C for valid values.</strong></del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field <strong>should correspond to</strong> the<strong> study </strong>phase <strong>ID cod</strong>ing <strong>system in Chapter 7, section 7.7.2.1, &quot;</strong>Study Phase I<strong>D.&quot;</strong></ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

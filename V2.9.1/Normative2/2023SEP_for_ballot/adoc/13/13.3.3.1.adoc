@@ -1,0 +1,8 @@
+==== 13.3.3.1 SAC-1 External Accession Identifier (EI) 01329
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the laboratory accession (see section _Glossary_). This identifier is assigned by the external laboratory information system.
+
+Example: If laboratory A sends a specimen to laboratory B, then within laboratory B this field contains accession identifier of lab A.
+

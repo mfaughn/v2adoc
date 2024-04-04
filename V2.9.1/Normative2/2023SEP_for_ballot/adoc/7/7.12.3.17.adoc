@@ -1,0 +1,4 @@
+==== 7.12.3.17 PCR-17 Evaluated Product Source (ID) 01114
+
+Definition: This field contains the source of the product evaluated. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70248[_HL7 Table 0248 - Product Source_] for valid values.
+

@@ -1,0 +1,17 @@
+==== 6.5.1.45 FT1-45 DME Certification Type (CWE) 03497
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This code identifies the type of certification for the durable medical equipment service.
+
+____
+For the US realm, the ANSI ASC X12 CR3 Durable Medical Equipment Certification Segment, reference element CR301, listed below is suggested to map to the X12 837 values:
+____
+
+[width="100%",cols="33%,67%",]
+|===
+|I |Initial
+|R |Renewal
+|S |Revised
+|===
+

@@ -1,0 +1,6 @@
+==== 8.8.16.13 OMC-13 Number of Decimals (NM) 03453
+
+Definition: For numeric answers the number of digits after the decimal.
+
+The field is valued only if OMC-9 is valued 'NM' or 'SN'.
+

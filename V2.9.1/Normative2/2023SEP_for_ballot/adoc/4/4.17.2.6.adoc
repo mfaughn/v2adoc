@@ -1,0 +1,4 @@
+==== 4.17.2.6 BUI-6 Blood Unit Volume (NM) 03378
+
+Definition: The volume of the blood unit collected.
+

@@ -1,0 +1,18 @@
+=== 2A.2.30 FN - family name
+
+HL7 Component Table - FN – Family Name
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |50# |ST |R | |Surname | |2A.2.76
+|2 | |20# |ST |O | |Own Surname Prefix | |2A.2.76
+|3 | |50# |ST |O | |Own Surname | |2A.2.76
+|4 | |20# |ST |O | |Surname Prefix from Partner/Spouse | |2A.2.76
+|5 | |50# |ST |O | |Surname from Partner/Spouse | |2A.2.76
+|===
+
+Definition: This data type allows full specification of the surname of a person. Where appropriate, it differentiates the person's own surname from that of the person's partner or spouse, in cases where the person's name may contain elements from either name. It also permits messages to distinguish the surname prefix (such as "van" or "de") from the surname root.
+
+*Note:* Appears ONLY in the PPN, XCN and XPN.
+

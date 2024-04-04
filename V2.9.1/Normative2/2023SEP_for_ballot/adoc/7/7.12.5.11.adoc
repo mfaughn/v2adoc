@@ -1,0 +1,4 @@
+==== 7.12.5.11 PDC-11 Marketing Approval ID (ST) 01257
+
+Definition: This field contains the designation or description of the marketing basis.
+

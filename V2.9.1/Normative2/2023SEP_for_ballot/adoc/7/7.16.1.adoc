@@ -1,0 +1,90 @@
+=== 7.16.1 OSM - Unsolicited Specimen Shipment Manifest Message (Event R26)
+
+The OSM^R26 Unsolicited Specimen Shipment Manifest message is used to communicate the contents of a specimen shipment to a specimen receiver (typically a laboratory). The message documents details regarding the following:
+
+• Shipment information including sender, receiver, shipper, shipping container, etc.;
+
+• Specimens in the shipment;
+
+• Specimen containers; and,
+
+• Identification of persons/places/things associated with the specimens.
+
+OSM^R26^OSM_R26: Specimen Shipment Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|\{[ARV}] |Access Restrictions | |3 | |
+|[\{SFT}] |Software Segment | |2 | |
+|[UAC] |User Authentication Credential | |2 | |
+|\{ |--- SHIPMENT begin | | | |
+|link:++#shp---shipment-segment++[SHP] |Shipment Segment | |7 | |
+|\{link:#prt-participation-information-segment[PRT]} |Participation (for Shipment) | |7 | |
+|[\{ |--- SHIPPING_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation/Result Segment (Additional Shipping Information) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Shipping Observation) | |7 | |
+|}] |--- SHIPPING_OBSERVATION end | | | |
+|\{ |--- PACKAGE begin | | | |
+|link:#shp-12-action-code-id-00816[PAC] |Shipping Package Segment | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Shipping Package) | |7 | |
+|[\{ |--- SPECIMEN begin | | | |
+|link:#obx-31-action-code-id-00816[SPM] |Specimen Information | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Specimen) | |7 | |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation/Result Segment (For Specimen) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Specimen Observation) | |7 | |
+|}] |--- SPECIMEN_OBSERVATION end | | | |
+|[\{ |--- CONTAINER begin | | | |
+|SAC |Container Information | |13 | |
+|[\{ |--- CONTAINER_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation/Result Segment (For Container) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Container Observation Result) | |7 | |
+|}] |--- CONTAINER_OBSERVATION end | | | |
+|}] |--- CONTAINER end | | | |
+|[ |--- SUBJECT_PERSON_OR_ANIMAL_IDENTIFICATION begin | | | |
+|PID |Patient Identification (For Person/Animal) | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient) | |7 | |
+|[\{ARV}] |For backwards compability only as of V2.9. |B |3 | |
+|[\{ |--- PATIENT_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation/Result Segment (For Patient) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Observation) | |7 | |
+|}] |--- PATIENT_OBSERVATION end | | | |
+|[\{ |--- NEXT_OF_KIN begin | | | |
+|NK1 |Next of Kin/Associated Parties (For Person/Animal) | | | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|}] |--- NEXT_OF_KIN end | | | |
+|] |--- SUBJECT_PERSON_OR_ANIMAL_IDENTIFICATION end | | | |
+|[ |--- SUBJECT_POPULATION_OR_LOCATION_IDENTIFICATION begin | | | |
+|PV1 |Patient Visit (For Population/Location) | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient Visit) | |7 | |
+|[\{ |--- PATIENT_VISIT_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation/Result Segment (For Visit) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient Visit Observation) | |7 | |
+|}] |--- PATIENT_VISIT_OBSERVATION end | | | |
+|[PID] |Patient Identification (For Population) | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient) | |7 | |
+|[\{ |--- NEXT_OF_KIN begin | | | |
+|NK1 |Next of Kin/Associated Parties (For Population/Location) | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|}] |--- NEXT_OF_KIN end | | | |
+|] |--- SUBJECT_POPULATION_OR_LOCATION_IDENTIFICATION end | | | |
+|}] |--- SPECIMEN end | | | |
+|} |--- PACKAGE end | | | |
+|} |--- SHIPMENT end | | | |
+|===
+
+[width="100%",cols="25%,27%,9%,18%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|OSM^R26^OSM_R26 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^R26^ACK
+|Application Ack |ACK^R26^ACK |- |ACK^R26^ACK |ACK^R26^ACK
+|===
+

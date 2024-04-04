@@ -1,0 +1,36 @@
+=== 6.5.4 PR1 - Procedures Segment
+
+The PR1 segment contains information relative to various types of procedures that can be performed on a patient. The PR1 segment can be used to send procedure information, for example: Surgical, Nuclear Medicine, X‑ray with contrast, etc. The PR1 segment is used to send multiple procedures, for example, for medical records encoding or for billing systems.
+
+[#PR1 .anchor]####HL7 Attribute Table - PR1 - Procedures
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |00391 |Set ID - PR1
+|2 | | | |W | | |00392 |Procedure Coding Method
+|3 | | |CNE |R | |file:///E:\V2\V29_CH02C_Tables.docx#HL70088[0088] |00393 |Procedure Code
+|4 | | | |W | | |00394 |Procedure Description
+|5 | | |DTM |R | | |00395 |Procedure Date/Time
+|6 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70230[0230] |00396 |Procedure Functional Type
+|7 | |4= |NM |O | | |00397 |Procedure Minutes
+|8 | | | |W | | |00398 |Anesthesiologist
+|9 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70019[0019] |00399 |Anesthesia Code
+|10 | |4= |NM |O | | |00400 |Anesthesia Minutes
+|11 | | | |W | | |00401 |Surgeon
+|12 | | | |W | | |00402 |Procedure Practitioner
+|13 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70059[0059] |00403 |Consent Code
+|14 |1..2 | |NM |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70418[0418] |00404 |Procedure Priority
+|15 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70051[0051] |00772 |Associated Diagnosis Code
+|16 | | |CNE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70340[0340] |01316 |Procedure Code Modifier
+|17 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70416[0416] |01501 |Procedure DRG Type
+|18 | | |CWE |O |Y |file:///E:\V2\V29_CH02C_Tables.docx#HL70417[0417] |01502 |Tissue Type Code
+|19 | | |EI |C | | |01848 |Procedure Identifier
+|20 |1..1 | |ID |C | |file:///E:\V2\V29_CH02C_Tables.docx#HL70206[0206] |01849 |Procedure Action Code
+|21 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70761[0761] |02177 |DRG Procedure Determination Status
+|22 | | |CWE |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70763[0763] |02178 |DRG Procedure Relevance
+|23 | | |PL |O |Y | |02371 |Treating Organizational Unit
+|24 |1..1 | |ID |O | |file:///E:\V2\V29_CH02C_Tables.docx#HL70136[0136] |02372 |Respiratory Within Surgery
+|25 | | |EI |O | | |02373 |Parent Procedure ID
+|===
+

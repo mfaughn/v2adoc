@@ -1,0 +1,4 @@
+==== 12.4.1.6 GOL-6 Goal List Priority (NM) 00821
+
+Definition: This field prioritizes this goal on a list that is maintained for an individual.
+

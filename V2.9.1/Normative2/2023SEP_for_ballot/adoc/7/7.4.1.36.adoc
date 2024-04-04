@@ -1,0 +1,4 @@
+==== 7.4.1.36 OBR-36 Scheduled Date/Time (DTM) 00268
+
+Definition: This field is the date/time the filler scheduled an observation, when applicable (e.g., action code in _OBR-11-specimen action code_ = "S"). This is a result of a request to schedule a particular test and provides a way to inform the placer of the date/time a study is scheduled (result only).
+

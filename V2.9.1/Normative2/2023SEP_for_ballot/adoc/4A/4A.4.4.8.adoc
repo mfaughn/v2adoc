@@ -1,0 +1,4 @@
+==== 4A.4.4.8 RXE-8 Deliver-to Location
+
+Attention: The RXE-8 field was retained for backward compatibilty only as of v 2.5 and the detail was withdrawn and removed from the standard as of v 2.7.
+

@@ -1,0 +1,52 @@
+=== 17.7.4 SDN/ACK - Notification of Anti-Microbial Device Data (Event S36) 
+
+This message is sent from a filler application to notify other applications that anti-microbial device data has been generated. The information in the SDN segment and the other detail segments as appropriate describe the detail of a device during a sterilization or decontamination cycle.
+
+SDN^S36^SDR_S31: Anti-Microbial Device Data Notification
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|< |--- ANTI-MICROBIAL_DEVICE_DATA begin | |
+|SDD |Sterilization Device | |17
+|[\{SCD}] |Sterilization Cycle | |17
+|> |--- ANTI-MICROBIAL_DEVICE_DATA end | |
+|===
+
+[width="99%",cols="19%,22%,9%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SDN^S36^SDR_S31 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^S36^ACK |- |ACK^S36^ACK
+|Application Ack |ACK^S36^ACK |- |- |ACK^S36^ACK |ACK^S36^ACK
+|===
+
+ACK^S36^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[UAC] |User Authentication Credential Segment | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^S36^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^S36^ACK
+|Application Ack |- |- |-
+|===
+

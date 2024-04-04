@@ -1,0 +1,4 @@
+=== 6.4.4 QRY/DSR - Generate Bills And Accounts Receivable Statements (Event P04)
+
+*_Retained for backwards compatibility only in version 2.4 and later_*; refer to Chapter 5, "Queries", section 5.4.  The original mode query and the QRD/QRF segments have been replaced.
+

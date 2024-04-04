@@ -1,0 +1,68 @@
+=== 13.2.7 EAC/ACK – Automated Equipment Command (Event U07)
+
+This message is used to send equipment commands from one application to another (e.g., a Laboratory Automation System to automated Equipment). The OBR segments attached to the SAC should be used for transfer of information about tests assigned to a specific aliquot in the aliquoting command (not included in the SAC segment, but relevant for automating processing).
+
+The repeatability of the DST segment should be used for multiple destinations in sequence and the remark may be used as additional information, e.g. for destination dependent bar code labels for the secondary (aliquot) containers.
+
+The repeatability of the Specimen Container block enables sending commands for Pooling specimen (multiple sources) from a Primary Specimen. Command for multiple aliquots requires specific Command group for each aliquot.
+
+EAC^U07^EAC_U07: Equipment Command Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- COMMAND begin | | | | |
+|link:#ECD[ECD] | |Equipment Command Detail | | | |13 |
+|[ TQ1 ] | |Timing/quantity | | | |4 |
+|[ \{ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|[\{ | |---ORDER_FOR_SPECIMEN_CONTAINER begin | | | | |
+|[\{ OBR }] | |Specimen container info. on requested test | | | |4 |
+|[\{ PRT }] | |Participation (for requested test) | | | |7 |
+|}] | |---ORDER_FOR_SPECIMEN_CONTAINER end | | | | |
+|[\{ SPM }] | |Specimen | | | |7 |
+|[\{ link:#dst-transport-destination-segment[DST] }] | |Transport destination | | | |13 |
+|} ] | |--- SPECIMEN_CONTAINER end | | | | |
+|[ link:#CNS[CNS] ] | |Clear Notification | | | |13 |
+|} | |--- COMMAND end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,24%,5%,16%,18%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EAC^U07^EAC_U07 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U07^ACK |- |ACK^U07^ACK
+|Application Ack |EAR^U08^EAR_U08 |- |- |EAR^U08^EAR_U08 |EAR^U08^EAR_U08
+|===
+
+ACK^U07^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U07^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U07^ACK
+|Application Ack |- |- |-
+|===
+

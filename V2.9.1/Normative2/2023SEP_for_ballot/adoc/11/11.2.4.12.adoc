@@ -1,0 +1,4 @@
+==== 11.2.4.12 Referring provider: 
+
+Indicates the provider who requests services from a specialist or another primary care provider. A referring provider may, in fact, be a specialist who is referring a patient to another specialist.
+

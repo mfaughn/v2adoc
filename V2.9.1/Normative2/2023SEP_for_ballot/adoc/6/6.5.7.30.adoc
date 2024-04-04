@@ -1,0 +1,10 @@
+==== 6.5.7.30 IN2-30 Daily Deductible (DDI) 00501
+
+Components: <Delay Days (NM)> ^ <Monetary Amount (MO)> ^ <Number of Days (NM)>
+
+Subcomponents for Monetary Amount (MO): <Quantity (NM)> & <Denomination (ID)>
+
+Definition: This field contains the number of days after which the daily deductible begins, the amount of the deductible, and the number of days to apply the deductible.
+
+If "number of days" is not valued, the deductible is ongoing.
+

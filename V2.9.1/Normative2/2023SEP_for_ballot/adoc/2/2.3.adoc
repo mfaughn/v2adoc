@@ -1,0 +1,30 @@
+== 2.3 Communications Environment
+
+____
+The HL7 Standard defines the messages as they are exchanged among application entities and the procedures used to exchange them. As such, it conceptually operates at the seventh level of the ISO model for Open System Intercon­nection (OSI). It is primarily concerned with the data content and interrelationship of messages and with communicating certain application-level error conditions.
+
+Since the OSI protocols are not universally implemented, the HL7 Working Group is interested in providing standards that will be useful in the interim. It is also recognized that there is now, and will continue to be, interest in communicating health data among systems operating in communications environ­ments that provide a high level of functionality, but use protocols other than ISO OSI. The universe of environments of interest to HL7 includes, but is not restricted to:
+____
+
+{empty}a) ad hoc environments that do not provide even basic transport reliability. Such environments consist of point-to-point RS-232 links, modems, and even LANs, if their connection to host computers is made via RS-232 communications links. Until OSI high level standards become truly prevalent, many healthcare interfaces will be implemented over such links. In such an environment, the HL7 Lower Level Protocols (LLP) MAY be used between systems to enhance the capabilities of the communications environment. The HL7 Lower Level Protocols are defined in the HL7 Implementation Guide, which is not an official part of the Standard.
+
+{empty}b) environments that support a robust transport level, but do not meet the high level requirements. This includes environments such as TCP/IP, DECNET, and SNA.
+
+{empty}c) ISO and proprietary networks that implement up to presentation and other high level services. IBM's SNA LU6.2 and IETF NFS are examples of complete proprietary networks.
+
+{empty}d) two or more applications running on the same physical and/or logical machine that are not tightly integrated. In these environments, the messaging capabilities MAY be provided by inter-process communications services (e.g., Pipes in a UNIX System).
+
+____
+The HL7 Standard assumes that the communications environment will provide the following capabilities:
+____
+
+{empty}a) error free transmission. Applications can assume that they correctly received all of the transmitted bytes in the order in which they were sent. This implies that error checking is done at a lower level. However, sending applications MAY NOT assume that the message was actually received without receiving an acknowledgment message.
+
+{empty}b) character conversion. If the two machines exchanging data use different representations of the same character set, the communications environment will convert the data from one representation to the other.
+
+{empty}c) message length. HL7 sets no limits on the maximum size of HL7 messages. The Standard assumes that the communications environment can transport messages of any length that might be necessary. In practice, sites MAY agree to place some upper bound on the size of messages and MAY use the message continuation protocol, described later in this chapter, for messages that exceed the upper limit.
+
+____
+*Note:* Just as HL7 makes no assumptions about the design or architecture of the application systems sending and receiving HL7 messages, it makes no assumptions about the communications environment beyond those listed above. In particular, aside from the above assumptions, the communications environment, including its architecture, design and implementation, is outside the scope of HL7.
+____
+

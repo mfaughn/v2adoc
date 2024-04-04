@@ -1,0 +1,15 @@
+==== 2.12.1.0 Acknowledgment Choreography
+
+[width="100%",cols="27%,38%,35%",options="header",]
+|===
+|Acknowledgment Choreography | |
+|ACK^varies^ACK (Event Varies) | |
+|Field name |Field value: Original Mode |Field value
+|MSH-15 |Blank |NE
+|MSH-16 |Blank |NE
+|Immediate Ack |- |-
+|Application Ack |- |-
+|===
+
+*Note:* In general, there is no purpose for a receiver to acknowledge an Immediate Acknowledgment message while at times it is appropriate to acknowledge an Application Acknowledgment.  Site specific profiles MAY require this based on the use case.
+

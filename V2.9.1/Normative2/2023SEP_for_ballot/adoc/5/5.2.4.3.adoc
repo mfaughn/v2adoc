@@ -1,0 +1,6 @@
+==== 5.2.4.3 Display response
+
+A display message can be generated where the update information does not need to be captured by the receiving system's database, but only displayed, either on a visual medium (such as a PC, workstation or a CRT) or on printed medium.
+
+The display response does not actually represent a formal style of data organization. It represents a decision to return data formatted for human, rather than for computer, consumption. The Server offers a pretty-printed version of the data in a format that is meaningful for human readers. Logically, the content of the pretty-printed message might be the complex data carried by an HL7 segment pattern, or could be a simple record normally carried by a tabular response.
+

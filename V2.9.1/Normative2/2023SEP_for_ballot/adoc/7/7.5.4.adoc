@@ -1,0 +1,130 @@
+=== 7.5.4 Narrative report messages
+
+This example of the body of reports shows the following observation from what are usually free text reports. The text within these examples that begins with **-- and ends with --** are explanatory comments, not a formal part of the message. The following outline shows the segments that are included in this example message.
+
+{empty}a) patient identifying record (PID)
+
+{empty}b) order record for chest x-ray (OBR)
+
+{empty}c) two diagnostic impressions for CXR (OBX)
+
+{empty}d) description record for CXR (OBX)
+
+{empty}e) a recommendation record for CXR (OBX)
+
+{empty}f) an order record for surgical pathology (OBR)
+
+{empty}g) a gross description record for pathology showing use of anatomy fields (OBX)
+
+{empty}h) a microscopic description record for pathology (OBX)
+
+{empty}i) vital signs request (OBR)
+
+{empty}j) six vital signs (OBX)
+
+{empty}k) part of the physical history (OBR & OBX)
+
+{empty}l) end record
+
+MSH|...<cr>
+
+PID|...<cr>
+
+____
+Order record for CXR
+____
+
+OBR|2|P8754^OE|XR1501^XR|24646-2^CXR PA+LAT^LN|||198703290800|||
+
+401-0^INTERN^IRVING^I^^^MD^L|...<cr>
+
+____
+Two CXR diagnostic impressions
+____
+
+OBX|1|CWE|24646-2&IMP^CXR PA+LAT^LN
+
+|1|.61^RUL^ACR~.212^Bronchopneumonia^ACR|||A|||F|...<cr>
+
+OBX|2|CWE|24646-2&IMP^CXR PA+LAT^LN |2|51.71^Congestive heart failure^ACR|||A|||F|...<cr>
+
+____
+CXR Description with continuation records
+____
+
+OBX|3|TX|24646-2&GDT^CXR PA+LAT^LN||Infiltrate probably representing bronchopneumonia in the right lower lobe. Also pulmonary venous congestion cardiomegaly and cephalization, indicating early congestive heart failure.|...<cr>
+
+____
+Recommendations about CXR report to follow up one month with a repeat CXR
+____
+
+OBX|4|CWE|24646-2&REC^CXR PA+LAT^LN||71020^Followup CXR 1 month^AS4||||||F|...<cr>
+
+____
+Order record for pathology report
+____
+
+OBR|3|P8755^OE|SP89-739^SP|11529-5^Surgical Path
+
+Report^LN|||198703290800|||401-0^INTERN^IRVING^I^^^MD^L|...<cr>
+
+OBX|1|CWE|11529-5&ANT^Surgical Path Report^LN|1|Y0480-912001^orbital region^SNM||||||F|...<cr>
+
+____
+Gross description record (with overflow) for pathology
+____
+
+OBX|2|TX|22634-0^Path report.gross observation^LN||The specimen is received in four containers. The first is labeled with the patient's name and consists of three fragments of reddish-brown tissue each of which measures 2 mm in greatest dimension. They are wrapped in tissue paper and submitted in toto in a single cassette|...<cr>
+
+____
+Microscopic description record for pathology
+____
+
+OBX|3|TX|22635-7^Path report.microscopic observation^LN|1|Sections of the first specimen received for frozen section diagnosis reveal thick walled, ramifying vessels lined by a single layer of flattened endothelial cells. The thick smooth muscle walls exhibit no malignant cytologic features nor do the endothelial lining cells. Within the same specimen are also found fragments of fibrous connective tissue, bone, and nerve which are histologically unremarkable||||||F|...<cr>
+
+____
+Vital signs using LOINC® codes as observation identifiers
+____
+
+OBR|4|P8756^OE|N2345^NR|29274-8^VITAL SIGNS^LN| ||198703290800|||401-0^INTERN^IRVING^I^^^MD^L|...<cr>
+
+OBX|1|NM|8462-4^INTRAVASCULAR DIASTOLIC:PRES^LN||90|mm(hg)|60-90||||F|...<cr>
+
+OBX|2|NM|8479-8^INTRAVASCULAR SYSTOLIC:PRES^LN||120|mm(hg)
+
+|100-160||||F|...<cr>
+
+OBX|3|NM|8478-0^INTRAVASCULAR MEAN:PRES^LN||100|mm(hg)|80-120|N|||F|...<cr>
+
+OBX|4|NM|8867-4^HEART BEAT RATE^LN||74|/min|60-100|N|||F|...<cr>
+
+OBX|5|ST|8357-6^BLOOD PRESSURE METHOD^LN||MANUAL BY CUFF||||||F|...<cr>
+
+OBX|6|ST|8886-4^HEART RATE METHOD^LN||MANUAL BY PALP||||||F|...<cr>
+
+____
+Part of the patient's history
+____
+
+OBR|5|P8568^OE|HX2230^^CLN||2000^HISTORY| ||198703290800||401
+
+0^INTERN^IRVING^I^^^MD^L||...<cr>
+
+OBX|1|CWE|8661-1^CHIEF COMPLAINT^LN||...<cr>
+
+OBX|2|ST|8674-4^HISTORY SOURCE^LN||PATIENT||||||F|...<cr>
+
+OBX|3|TX|8684-3^PRESENT ILLNESS^LN||SUDDEN ONSET OF CHEST PAIN. 2 DAYS,
+
+PTA ASSOCIATED WITH NAUSEA, VOMITING \T\ SOB. NO RELIEF WITH ANTACIDS
+
+OR NTG. NO OTHER SX. NOT PREVIOUSLY ILL.||||||F|...<cr>
+
+.
+
+.
+
+____
+and so on.
+____
+

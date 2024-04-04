@@ -1,0 +1,6 @@
+==== *3.4.15.5* OH1-5 Employment Status End Date (DT) 03520
+
+Definition: This field asserts when the employment status ended. If employment status is current, Employment Status End Date should be empty.
+
+*Note:* The Employment Status End Date SHALL not be greater than the time the observation is made (OH1-6 Entered Date).
+

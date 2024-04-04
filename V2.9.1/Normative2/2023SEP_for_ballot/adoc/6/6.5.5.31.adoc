@@ -1,0 +1,4 @@
+==== 6.5.5.31 GT1-31 Guarantor Hire Effective Date (DT) 00782
+
+Definition: This field contains the date that the guarantor's employment began.
+

@@ -1,0 +1,6 @@
+==== 16.4.2.2 IVC-2 Payer Invoice Number (EI) 01915
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Invoice Number assigned by the Payer Application.
+

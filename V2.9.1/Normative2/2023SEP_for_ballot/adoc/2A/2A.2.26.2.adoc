@@ -1,0 +1,12 @@
+==== 2A.2.26.2 Filler Assigned Identifier (EI)
+
+Definition: Specifies an identifier assigned to an entity by the filler system.
+
+For example, the component might convey the following:
+
+{empty}a) filler order number of the parent order.
+
+{empty}b) the specimen identifier as assigned by the filler.
+
+{empty}c) a location identifier assigned (or used by) the filler.
+

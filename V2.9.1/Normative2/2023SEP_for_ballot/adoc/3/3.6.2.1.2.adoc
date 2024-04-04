@@ -1,0 +1,10 @@
+===== 3.6.2.1.2 Merge
+
+A merge event signals that two distinct records have been combined together into a single record with a single set of identifiers and data surviving at the level of the merge. All records at a level subordinate to the merged identifier are combined under the surviving record. For example, an A40 (merge patient - patient identifier list) event would be sent to signal that two person records (identified by _MRG-1 - Prior Patient ID_ and by _PID-3 - Patient ID_) have been merged into a single record. All of the identifiers, accounts, and visits under the person record are not merged together - they are instead combined under the same person record. The following figure graphically depicts the merge event:
+
+____
+image:extracted-media/media/image2.wmf[extracted-media/media/image2]
+____
+
+*Note:* It is not the intent of the merge definition to define the application or implementation specifics of how various systems or environments define, use or handle non-surviving information. "Non-surviving" in this document implies that a data set was existing in a fashion that was incorrect. Merging it into a new data set in itself implies that where there were two datasets, there is now only one. The means by which any system or environment conveys this new data set and the absence of the previous data set to the user is application specific. It is noted that some systems may still physically keep these "incorrect" datasets for audit trail or other purposes.
+

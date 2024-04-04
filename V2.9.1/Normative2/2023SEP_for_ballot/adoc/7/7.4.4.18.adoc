@@ -1,0 +1,8 @@
+==== 7.4.4.18 PRT-18 Device Expiry Date (DTM) 03478
+
+Definition: Date and time when the device is no longer approved for use.
+
+Note: The user system may need to convert the date and optional hour from the UDI Human Readable Form to a timestamp style data type, augmenting the date as required to provide for a complete date and optionally the hour.
+
+Example: |20160712|
+

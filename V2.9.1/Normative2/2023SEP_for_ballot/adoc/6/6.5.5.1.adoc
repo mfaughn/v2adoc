@@ -1,0 +1,4 @@
+==== 6.5.5.1 GT1-1 Set ID ‑ GT1 (SI) 00405
+
+Definition: _GT1-1 - Set ID_ contains a number that identifies this transaction. For the first occurrence of the segment the sequence shall be 1, for the second occurrence it shall be 2, etc.
+

@@ -1,0 +1,4 @@
+==== 8.8.15.6 OM7-6 Effective Test/Service Start Date/Time (DTM) 01484
+
+Definition: This field contains the date and time that the service item is available to be ordered, performed, etc.
+

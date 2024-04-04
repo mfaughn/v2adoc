@@ -1,0 +1,4 @@
+==== 6.5.6.52 IN1-52 Insured's Birth Place (ST) 01899
+
+Definition: This field contains the description of the insured's birth place, for example "St. Francis Community Hospital of Lower South Side." The actual address is reported in _IN1-19 – Insured's Address_ with an identifier of "N".
+

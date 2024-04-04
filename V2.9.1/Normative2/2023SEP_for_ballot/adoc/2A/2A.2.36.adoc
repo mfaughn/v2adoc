@@ -1,0 +1,22 @@
+=== 2A.2.36 IS - coded value for user-defined tables
+
+HL7 Component Table - IS – Coded Value for User-Defined Tables
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+| |1.. |20= | | | |Coded Value for User-Defined Tables | |
+|===
+
+*Note:* The Vocabulary TC is the steward of the IS data type.
+
+*Minimum Length:* ≥ 1- Varies - dependent on length of shortest code in code set.
+
+*Maximum Length:* Varies - dependent on length of longest code in code set.
+
+As of v2.7, the only approved use of the IS data type is in the _HD.1_, _EI.2_ and _PL.6_ plus a limited number of fields where a determination could not readily be made as to whether the item is an identifier or an actual coded item. Additionally, in accordance with chapter 2 rules, any field or data type component marked as "Retained for backward compatibility" will retain any IS data type.
+
+The value of such a field follows the formatting rules for a ST field except that it is drawn from a site-defined (or user-defined) table of legal values. There shall be an HL7 table number associated with IS data types. An example of an IS field is the Event reason code defined in Chapter 3, "Patient Administration", section 3.4.1.4, "Event reason code". This data type should be used only for user-defined tables (see Chapter 2C, "Code Tables", section 2.C.1.1, "User-defined Tables"). The reverse is not true, since in some circumstances, it is more appropriate to use the CWE data type for user-defined tables.
+
+It is never acceptable to truncate an IS value.
+

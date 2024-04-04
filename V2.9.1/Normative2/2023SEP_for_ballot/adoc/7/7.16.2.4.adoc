@@ -1,0 +1,4 @@
+==== 7.16.2.4 SHP-4 Shipment Status Date/Time (DTM) 02320
+
+Definition: The shipment status date/time carries the date and time the status in _SHP-3 Shipment Status_ occurred.
+

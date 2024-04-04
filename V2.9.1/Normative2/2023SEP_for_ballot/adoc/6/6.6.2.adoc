@@ -1,0 +1,15 @@
+=== 6.6.2 Post a charge to a patient's account
+
+MSH|^~\&|PATA|01|PATB|01|19930908135031||DFT^P03^DFT_P03|641|P|2.8| +
+000000000000001|<cr>
+
+EVN|P03|19930908135030||<cr>
+
+PID||0008064993^^^ENT^PE|0008064993^^^PAT^MR||0006045681^^^PATA^AN|EVERYWOMEN^EVE^J^^^|19471007|F||1|2222 HOMESTREET^^HOUSTON^TX^77030^USA|HAR||||S||6045681^^^PATA^AN<cr>
+
+FT1|1|||19950715|19950716|CG|B1238^BIOPSY-SKIN^SYSTEMA|||1|||ONC|A357||||||P8765^KILDARE^BEN<cr>
+
+A patient has been registered by the ADT system (PATA) and notification is sent to the Patient Billing system (PATB). The patient's name is Eve J. Everywoman, a female Caucasian, born on October 7, 1947. Living at 1234 Homestreet, Houston, TX.
+
+Ms. Everywoman's patient number is 8064993 and her billing number is 6045681. This transaction is posting a charge for a skin biopsy to her account.
+

@@ -1,0 +1,4 @@
+===== 9.2.1.4.4 In Progress/Assigned:
+
+A workflow status in which the recipient has assigned the material to personnel to perform the task of transcription. The document remains in this state until the document is transcribed.
+

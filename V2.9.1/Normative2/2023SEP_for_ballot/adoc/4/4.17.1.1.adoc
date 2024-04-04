@@ -1,0 +1,6 @@
+==== 4.17.1.1 DON-1 Donation Identification Number - DIN (EI) 03340
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a unique identifier, Donation Identification Number (DIN), for the specific donation and is therefore mandatory except when using an eligibility message type in which only DON-9, DON-10, and DON-11 are populated. DON-2 Donation Type (CNE) 03341
+

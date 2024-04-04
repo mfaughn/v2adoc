@@ -1,0 +1,6 @@
+==== 16.4.6.2 PSL-2 Payer Product/Service Line Item Number (EI) 01956
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Line Item Number assigned by the Payer Application.
+

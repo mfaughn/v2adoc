@@ -1,0 +1,4 @@
+==== 6.5.1.3 FT1-3 Transaction Batch ID (ST) 00357
+
+Definition: This field uniquely identifies the batch in which this transaction belongs.
+

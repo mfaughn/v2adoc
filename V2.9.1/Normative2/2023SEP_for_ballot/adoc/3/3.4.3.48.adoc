@@ -1,0 +1,4 @@
+==== *3.4.3.48* PV1-48 Total Adjustments (NM) 00178
+
+Definition: This field contains the total adjustments for visit.
+

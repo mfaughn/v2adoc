@@ -1,0 +1,4 @@
+==== 2A.2.11.1 Quantity (NM)
+
+Definition: This component specifies the numeric quantity or amount of an entity.
+

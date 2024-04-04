@@ -1,0 +1,4 @@
+==== 16.4.2.7 IVC-7 Invoice Date/Time (DTM) 01920
+
+Definition: Date Invoice was created.
+

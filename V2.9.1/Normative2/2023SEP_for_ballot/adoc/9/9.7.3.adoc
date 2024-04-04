@@ -1,0 +1,42 @@
+=== 9.7.3 TXA - Transcription Document Header Segment
+
+The TXA segment contains information specific to a transcribed document but does not include the text of the document. The message is created as a result of a document status change. This information updates other healthcare systems and allows them to identify reports that are available in the transcription system. By maintaining the TXA message information in these systems, the information is available when constructing queries to the transcription system requesting the full document text.
+
+HL7 Attribute Table – TXA[#TXA .anchor]#### – Transcription Document Header
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |00914 |Set ID- TXA
+|2 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70270[0270] |00915 |Document Type
+|3 | | |ID |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70191[0191] |00916 |Document Content Presentation
+|4 | | |DTM |O | | |00917 |Activity Date/Time
+|5 | | |XCN |C |Y | |00918 |Primary Activity Provider Code/Name
+|6 | | |DTM |O | | |00919 |Origination Date/Time
+|7 | | |DTM |C | | |00920 |Transcription Date/Time
+|8 | | |DTM |O |Y | |00921 |Edit Date/Time
+|9 | | |XCN |O |Y | |00922 |Originator Code/Name
+|10 | | |XCN |O |Y | |00923 |Assigned Document Authenticator
+|11 | | |XCN |C |Y | |00924 |Transcriptionist Code/Name
+|12 | | |EI |R | | |00925 |Unique Document Number
+|13 | | |EI |C | | |00926 |Parent Document Number
+|14 | | |EI |O |Y | |00216 |Placer Order Number
+|15 | | |EI |O | | |00217 |Filler Order Number
+|16 | | |ST |O | | |00927 |Unique Document File Name
+|17 |2..2 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70271[0271] |00928 |Document Completion Status
+|18 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70272[0272] |00929 |Document Confidentiality Status
+|19 |2..2 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70273[0273] |00930 |Document Availability Status
+|20 |2..2 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70275[0275] |00932 |Document Storage Status
+|21 | | |ST |O | | |00933 |Document Change Reason
+|22 | | |PPN |C |Y | |00934 |Authentication Person, Time Stamp (set)
+|23 | | |XCN |O |Y | |00935 |Distributed Copies (Code and Name of Recipient(s) )
+|24 | | |CWE |O |Y |0791 |02378 |Folder Assignment
+|25 | | |ST |O |Y | |03301 |Document Title
+|26 | | |DTM |O | | |03302 |Agreed Due Date/Time
+|27 | | |HD |O | | |02413 |Creating Facility
+|28 | | |CWE |O | |0792 |02414 |Creating Specialty
+|29 | | |CWE |O |Y |0832 |02530 |Document Class
+|30 | | |CWE |O |Y |0833 |02531 |Document Event
+|31 | | |EI |O |Y | |02532 |Folder Instance Association
+|===
+

@@ -1,0 +1,4 @@
+==== 9.2.2.20 Translator Assistance Indicator: 
+
+To obtain informed consent, the patient must understand what he or she is consenting to. For subjects who do not understand the commonly used language of the institution, or who are unable to hear/read/speak, translation services may be required.
+

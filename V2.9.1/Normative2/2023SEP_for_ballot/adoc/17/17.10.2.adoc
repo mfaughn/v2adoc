@@ -1,0 +1,28 @@
+=== 17.10.2 Request New Sterilization Lot - Event S28
+
+The sterilizer operator is preparing to run a flash sterilizer load. The sterilizer requests a lot number from the instrument-tracking system to assign to the load.
+
+MSH|^~\&|Sterila|FacilB|Instrutrak|FacilA|200410010800||SLR^S28 SLR_S28|021244STER|P|2.9|||AL|AL||||||<cr>
+
+SFT|Hospital A|9.0|Sterila|10101010|9.0 999|New Load|200402140900|<cr>
+
+UAC|KERB|MATSYS|AP|Octet-stream|A|Clerk|<cr>
+
+SLT|87995|DEVICE NAME|A46|LF4|1435567677<cr>
+
+MSH|^~\&|Sterila|FacilB|Instrutrak|FacilA|200410010800||ACK^S28^ACK|021244STER|P|2.9|||NE|NE||||||<cr>
+
+MSA|CA|021244STER||||<cr>
+
+MSH|^~\&|Instrutrak|FacilB|Sterila|FacilA|2004010010801||SLS^S28 SLR_S28|021244STER|P|2.9|||AL|NE|||||<cr>
+
+SFT|Hospital A|9.0|Sterila|10101010|9.0 999|New Load|200402140900|<cr>
+
+UAC|KERB|MATSYS|AP|Octet-stream|A|Admin|<cr>
+
+SLT|01||||<cr>
+
+MSH|^~\&|Instrutrak|FacilB|Sterila|FacilA|2004010010801||SLS^S28|021244STER|P|2.9|||NE|NE||||||<cr>
+
+MSA|CA|021244STER||||<cr>
+

@@ -1,0 +1,6 @@
+==== *3.4.15.7* OH1-7 Employment Status Unique Identifier (EI) 02432
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (ST)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a value that uniquely identifies a single employment status for a person.
+

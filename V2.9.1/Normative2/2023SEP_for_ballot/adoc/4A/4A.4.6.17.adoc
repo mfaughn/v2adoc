@@ -1,0 +1,4 @@
+==== 4A.4.6.17 RXG-17 Give Strength (NM) 01126
+
+Definition: Use when _RXG-4-Give code_ does not specify the strength. This is the numeric part of the strength, used in combination with _RXG-18-Give strength units_.
+

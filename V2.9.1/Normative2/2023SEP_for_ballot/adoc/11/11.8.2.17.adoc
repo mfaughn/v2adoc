@@ -1,0 +1,4 @@
+==== 11.8.2.17 AUT-17 Reason Text (ST) 03417
+
+Definition: The authorization reason is a free text field allowing a user to capture, in a non-coded format, the reason for the authorization. Typically this would describe the patient's condition or illness for which the authorization is recorded.
+

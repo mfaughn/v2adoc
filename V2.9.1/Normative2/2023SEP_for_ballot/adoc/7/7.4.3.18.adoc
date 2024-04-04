@@ -1,0 +1,4 @@
+==== 7.4.3.18 SPM-18 Specimen Received Date/Time (DTM) 00248 
+
+Definition: The specimen received date/time is the time that the specimen is received at the diagnostic service facility. The actual time that is recorded is based on how specimen receipt is managed and may correspond to the time the sample is logged in. This is fundamentally different from _SPM-17 Specimen Collection date/time_.
+

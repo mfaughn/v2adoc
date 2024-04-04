@@ -1,0 +1,4 @@
+==== 2A.2.85.1 Channel Number (NM)
+
+Definition: This component specifies the number of the recording channel.
+

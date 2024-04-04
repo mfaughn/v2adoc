@@ -1,0 +1,6 @@
+==== 12.4.5.18 REL-18 Target Information Instance Object Type (ID) 02456
+
+Components: Identifier (ID)
+
+Definition: This field contains the identifier type code drawn from coding system HL70203 describing the object identifed by the Target Information Instance Identifier (REL-5).
+

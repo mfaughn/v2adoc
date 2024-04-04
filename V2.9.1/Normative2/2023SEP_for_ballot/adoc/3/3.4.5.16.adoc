@@ -1,0 +1,4 @@
+==== *3.4.5.16* NK1-16 Date/Time of Birth (DTM) 00110
+
+Definition: This field contains the next of kin/associated party's birth date and time.
+

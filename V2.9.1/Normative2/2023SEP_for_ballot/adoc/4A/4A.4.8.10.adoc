@@ -1,0 +1,4 @@
+==== 4A.4.8.10 RXV-10 PCA Dose Amount Volume (NM) 03327
+
+Definition: This field defines the volume measurement for the ordered PCA amount volume. For example, if the ordered bolus is 5 ml, this field contains the value of 5.
+

@@ -1,0 +1,6 @@
+==== 13.3.9.12 TCC-12 Equipment Dynamic Range (SN) 01418
+
+Components: <Comparator (ST)> ^ <Num1 (NM)> ^ <Separator/Suffix (ST)> ^ <Num2 (NM)>
+
+Definition: This is the range over which the equipment can produce results.
+

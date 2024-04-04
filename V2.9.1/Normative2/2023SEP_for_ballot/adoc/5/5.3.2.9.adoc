@@ -1,0 +1,14 @@
+==== 5.3.2.9 QBE input parameter field description and commentary
+
+The QPD Input Parameter Field Description and Commentary provides a more detailed description of each of the fields transmitted in the example segments sent in a Query by Example.
+
+*QBE Input Parameter Field Description and Commentary*
+
+[width="100%",cols="17%,11%,8%,64%",]
+|===
+|Input Parameter (Query ID=Znn) |Comp. Name |DT |Description
+| | | |
+|===
+
+Fields are indicated by their actual Segment Field Name, which specifies both segment and position. Except for this distinguishing feature, the remaining columns in this table are identical in meaning to their counterparts in the "_QPD input parameter field description and commentary_" in section _5.3.2.7_ above.
+

@@ -1,0 +1,77 @@
+===== 3.6.2.2.9 A45 - move visit information - visit number (repeating segment)
+
+[width="100%",cols="54%,46%",]
+|===
+|A45 - Move visit information - visit number |
+|Use Case -Eve Everywoman (patient identifier MR1) is a recurring outpatient at the Physical Therapy and Speech Therapy clinics at hospital XYZ. She is assigned a different account for each clinic; her account number for Physical Therapy is ACCT1 and her account number for Speech Therapy is X1. However, on two different occasions, the Speech Therapy registrar accidentally assigned her visits (VISIT2 and VISIT3) to the Physical Therapy account. The problem is later discovered and the corresponding visits are moved to the correct account. |
+|Target: _PID-18 - Patient Account Number_ and _PV1-19 - Visit Number._ |
+|Source: _MRG-3 - Prior Patient Account Number_ and _MRG-5 - Prior Visit Number_. |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A45^ADT_A45\|00000005\|P\|2.8\|<cr>
+
+EVN\|A45\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYWOMAN^EVE\|\|19501010\|M\|\|\|123 NORTH STREET^^NY^NY^10021\|\|(212)111-3333\|\|\|S\|\|X1<cr>
+
+MRG\|MR1^^^XYZ\|\|ACCT1\|\|VISIT2<cr>
+
+PV1\|\|O\|PT\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|VISIT4<cr>
+
+MRG\|MR1^^^XYZ\|\|ACCT1\|\|VISIT3<cr>
+
+PV1\|\|O\|PT\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|VISIT5<cr>
+
+|
+|Before Move |After Move
+a|
+MR1
+
+ACCT1
+
+VISIT1
+
+VISIT2*
+
+VISIT3*
+
+X1
+
+VISIT1
+
+VISIT2
+
+VISIT3
+
+*Visits erroneously assigned
+
+a|
+MR1
+
+ACCT1
+
+VISIT1
+
+X1
+
+VISIT1
+
+VISIT2
+
+VISIT3
+
+VISIT4**
+
+VISIT5**
+
+**visits moved and renumbered
+
+a|
+In the above transaction/implementation, the application that generated the message allows non-unique visit numbers.
+
+Implementation Considerations: If Visit Numbers are not unique (as implied by the After Move example above) and renumbering of the visits is required, you must use a repeating MRG/PV1 construct as illustrated in the Example Transaction. Refer to _3.6.2.2.1_, "_A40 - merge patient - patient identifier list_," for additional information regarding message construct.
+
+|
+|===
+

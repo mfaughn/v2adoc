@@ -1,0 +1,4 @@
+==== 12.2.2.3 Loading a clinical repository
+
+Information from point of care, clinical practice management or ancillary systems regarding the creation or update of pathways, problems, diagnoses, or goals are communicated to the clinical repository. Message triggers from the departmental systems may indicate adding, correcting, deleting, or updating records maintained in the clinical data repository.
+

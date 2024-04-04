@@ -1,0 +1,51 @@
+==== 5.3.2.6 QPD input parameter specification
+
+The Input Parameter Specification section of the Query Profile looks very much like an attribute table and is followed by a commentary on the fields. Each row of the QPD Input Parameter Specification specifies one user parameter within the QPD segment. Values for user parameters are transmitted in successive fields of the QPD segment, beginning at QPD-3.
+
+When the QSC variant is employed (see section _5.2.5.1.3_, "_Expression as a complex expression_"), a complex query expression may be used as the only input parameter, or may be combined with other (simple) input parameters.
+
+*QPD Input Parameter Specification*
+
+[width="100%",cols="11%,14%,8%,3%,6%,8%,3%,3%,8%,8%,9%,8%,11%",options="header",]
+|===
+|Field Seq (Query ID=Z99) |Name a|
+Key/
+
+Search
+
+|Sort |LEN |TYPE |Opt |Rep |Match Op |TBL |Segment Field Name |Service Identifier Code |Element Name
+| | | | | | | | | | | | |
+|===
+
+The following is a description of the attributes of the above table.
+
+*Field Seq*: The ordinal number of the element being discussed. Sequence 1 is [.underline]#always# Message Query Name, and sequence 2 is [.underline]#always# Query Tag. Sequence 3 and above are reserved for user parameters.
+
+*Name*: the user-defined name for the element as will be used in the query. Example: MedicationDispensed. When *Name* is derived from an actual HL7 element (segment and field), the segment field name and element name appear in the columns headed by those names. When *Name* is not derived from an actual HL7 element (segment and field), the source system defines the values they expect in this field.
+
+For Query Profiles published in the HL7 Standard, the Input Parameter Specification table includes the Query Profile ID in parentheses in the upper left-hand cell. This allows the table to be imported automatically into the HL7 database.
+
+*Key/Search*: This field identifies which element is the key and which elements are searchable. The key field is designated by a value of 'K'. A value of 'S' designates fields upon which an indexed search can be performed by the source. 'L' designates non-indexed fields. (Note that searching on a non-indexed field requires the Server to perform a linear scan of the data base.) If this column is left blank, the field may not be searched.
+
+*Sort*: valued as "Y" if the output of the query can be sorted on this field. This column should only be valued in Virtual Tables that are used as output specifications.
+
+*Len*: the maximum field length that will be transmitted by the source.
+
+*Type*: the data type of this user parameter. The values available for this field are described in Chapter 2, section 2.16 of this standard. Data types QIP and QSC are available for transmitting complex user parameters.
+
+*Opt*: defines whether the field is required ('R'), optional ('O'), conditionally required ('C'), or required for backward compatibility ('B').
+
+*Rep*: valued as 'Y' if the field may repeat (i.e., be multiply valued).
+
+*Match Op*: the relational operator that will be applied against the value that the querying system specifies for this field.
+
+*Note:* These are defined by file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70209[_HL7 Table 0209 – Relatio__nal Operator_], a component of the QSC data type
+
+*TBL*: identifies the HL7 table from which the values are derived.
+
+*Segment Field Name*: identifies the HL7 segment and field from which the new definition is derived. This field will be blank if the Name is NOT derived from an actual HL7 segment and field.
+
+*Service Identifier Code:* a value of data type CWE that contains the applicable LOINC code, if it exists, or the applicable HL7 code, if it exists, if no Segment Field Name has been identified. If a Segment Field Name has been identified, this field is not populated.
+
+*Element Name*: the name of the element identified by Segment Field Name. This may also be a user-defined 'Z'-element.
+

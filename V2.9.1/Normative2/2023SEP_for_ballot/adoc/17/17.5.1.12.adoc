@@ -1,0 +1,4 @@
+==== 17.5.1.12 IIM-12 Inventory on Hand Quantity (NM) 01809
+
+Definition: This field contains the quantity of this inventory item that was available for issue/use as of the date specified in _IIM-11 Inventory on Hand Date_. No adjustment has been made for subsequent use.
+

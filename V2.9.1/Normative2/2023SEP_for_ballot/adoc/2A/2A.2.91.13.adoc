@@ -1,0 +1,4 @@
+==== 2A.2.91.13 Effective Start Date (DTM)
+
+Definition: The first date, if known, on which the telecommunication number is valid and active.
+

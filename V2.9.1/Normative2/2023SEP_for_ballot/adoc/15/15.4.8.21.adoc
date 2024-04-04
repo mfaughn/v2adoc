@@ -1,0 +1,8 @@
+==== 15.4.8.21 STF-21 Additional Insured on Auto (ID) 01275
+
+Definition: This field contains an indicator for whether the present institution is named as an additional insured on the staff member's auto insurance, especially for use when staff is a driver for the institution. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y indicates that the institution is named as an additional insured
+
+N indicates that the institution is not named as an additional insured
+

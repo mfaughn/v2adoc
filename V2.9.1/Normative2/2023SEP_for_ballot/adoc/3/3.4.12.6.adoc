@@ -1,0 +1,4 @@
+==== *3.4.12.6* DB1-6 Disability End Date (DT) 01288
+
+Definition: This field specifies the ending date of the person's disability.
+

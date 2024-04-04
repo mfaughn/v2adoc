@@ -1,0 +1,4 @@
+==== 8.8.9.11 OM1-11 Preferred Long Name for the Observation (ST) 00596
+
+Definition: This field contains the fully-specified name for the observation or battery. It may include the full (unabbreviated) multiple-word names and contain up to 200 characters. It should be as scientifically precise as possible.
+

@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+OM7-24_vs_CDM-1
+</h1>
+<hr>
+<h3>
+For 01306 there were 2 versions found.<br>This diff compares the version found in fields ["OM7-24", "OM7-24"] from sections ["8.8.15", nil], respectively<br>with the version found in fields ["CDM-1", "CDM-1"] from sections ["8.10.2", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>table:,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:<strong>Allows the ability to associate a Service/Test/Observation item with a CIM (charge item master)</strong>. This field contains the co<strong>rresponding value of CDM-1 </strong>for the <strong>CIM being linked to. It is possible to allow multiple </strong>charg<strong>e items to a single Service/Test/Observation item</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:<strong>0132</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:<strong>The key field of the entry. Must match _MFE-4 - Primary Key Value - MFE_</strong>. This field contains the co<strong>de assigned by the institution </strong>for the <strong>purpose of uniquely identifying the thing that can be charged. For example, this field would be used to uniquely identify a procedure, item, or test for </strong>charg<strong>ing purposes. Probably the same set of values as used in _FT1-7- Transaction Code_ in financial messages (refer to User-defined Table 0132 - Transaction Code in Chapter 2C, Code Tables, for suggested values). See Chapter 7 for discussion of the universal service ID</strong>.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:01306,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="del"><del><span class="symbol">-</span>table:,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:<strong>Allows the ability to associate a Service/Test/Observation item with a CIM (charge item master)</strong>. This field contains the co<strong>rresponding value of CDM-1 </strong>for the <strong>CIM being linked to. It is possible to allow multiple </strong>charg<strong>e items to a single Service/Test/Observation item</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:<strong>0132</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:<strong>The key field of the entry. Must match _MFE-4 - Primary Key Value - MFE_</strong>. This field contains the co<strong>de assigned by the institution </strong>for the <strong>purpose of uniquely identifying the thing that can be charged. For example, this field would be used to uniquely identify a procedure, item, or test for </strong>charg<strong>ing purposes. Probably the same set of values as used in _FT1-7- Transaction Code_ in financial messages (refer to User-defined Table 0132 - Transaction Code in Chapter 2C, Code Tables, for suggested values). See Chapter 7 for discussion of the universal service ID</strong>.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

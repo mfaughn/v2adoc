@@ -1,0 +1,4 @@
+==== 8.9.3.2 LCH-2 Segment Action Code (ID) 00763
+
+Definition: This field indicates whether this repetition of the segment is being added, changed or deleted. The action code adds a validation check to indicate, from the point of view of the sending system, whether this repetition of a segment is being added, changed or deleted. This and the following field are used to implement the "unique key" mode of updating repeating segments. (See Chapter 2, section 2.10.4.2, "Action code/unique identifier mode update definition.") Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[HL7 Table 0206 - Segment Action Code] in Chapter 2C, Code Tables, for valid values.
+

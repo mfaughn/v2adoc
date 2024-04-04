@@ -1,0 +1,8 @@
+==== 10.6.1.4 ARQ-4 Placer Order Group Number (EI) 00218
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a unique identifier for the Placer Group as referenced by the Placer application. A Placer Order Group is a set of appointments grouped together by the placer application, and subsequently identified by the placer application.
+
+The second through fourth components contain the assigning authority identifying information.
+

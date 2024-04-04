@@ -1,0 +1,6 @@
+==== 6.5.3.16 DRG-16 Monetary Amount (MO) 02160
+
+Components: <Quantity (NM)> ^ <Denomination (ID)>
+
+Definition: This field contains the monetary amount as calculated for this DRG, i.e., the sum of money the insurance company will pay.
+

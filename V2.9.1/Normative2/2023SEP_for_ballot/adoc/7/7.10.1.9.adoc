@@ -1,0 +1,4 @@
+==== 7.10.1.9 Causal relationship:
+
+When an event occurs a product may be suspected as causing the event but rarely can it be proven particularly at an early stage of the product's life. Certain information about the relationship between the product and the event can reinforce the belief in a causal relationship between the product and the event while others can decrease the probability that there is a causal relationship.
+

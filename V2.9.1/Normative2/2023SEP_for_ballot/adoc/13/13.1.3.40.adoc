@@ -1,0 +1,4 @@
+==== 13.1.3.40 Process instruments:
+
+*_In NCCLS LAB AUTOMATION Standard documents_*, components of an automated laboratory comprising the automated devices that perform a multitude of pre- and postanalytical tasks, and perform nonanalytical tasks on specimens, containers, carriers, and similar processes.
+

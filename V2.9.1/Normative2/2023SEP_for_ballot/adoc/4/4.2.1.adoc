@@ -1,0 +1,18 @@
+=== 4.2.1 Preface (organization of this chapter)
+
+This chapter has been organized into six major sections, General, Diet, Supply, Pharmacy, Vaccine and Transfusion Services. Each section contains the trigger events, message definitions, segments and examples for the specific type of order messages. Each section about a type of order is organized into background and overview, message structure, and message segments (that are specific to the order class in question). Special discussions of the use of fields, segments or messages, and examples are included. Segments are introduced in order of occurrence in a message. A list of allowable values for a field is included in the body of the text, along with the field definition for easier reference.
+
+*Section 4.3* refers the reader to Chapter 2 for an outline of the Quantity Timing (TQ) Data Type Definition.
+
+*Sections 4.4 to 4.6* 'General' includes the triggers and segments for the clinical observations and diagnostic studies as well as the triggers and message segments that are common to all of the order entry messages. Orders for laboratory tests, bedside monitoring, diagnostic imaging, electrocardiograms, vital signs, etc., are subsumed under this order message set.
+
+*Sections 4.7 to 4.9* 'Diet' includes all of the usual diet specifications including snacks and guest trays
+
+*Sections 4.10 to 4.12* 'Supply' includes order messages for both Stock and No-stock orders. Supply orders are different in that they often are not patient-centered (e.g., requests to stock the ward supply room).
+
+*Sections 4.13 to 4.16* 'Pharmacy / Treatment' includes all pharmacy and treatment related order messages. These sections additionally include triggers related to the dispensing, giving and administration of orders. In the development of the treatment order transaction set, the focus has been on medication treatments, but the same transaction set works well for total parenteral nutrition (TPN). There is hope that it is also sufficient for other kinds of treatment orders, such as those performed by the nursing service. But it has not yet been exercised in that context and may well need further development.
+
+*Sections 4.17 to 4.19* 'Vaccine' includes triggers and segments specific to vaccination order messages. These sections also include RXA definitions specific to vaccination messages.
+
+*Sections 4.20 to 4.22* "Transfusion Service (Blood Bank)" includes triggers and segments specific to transfusion service messages.
+

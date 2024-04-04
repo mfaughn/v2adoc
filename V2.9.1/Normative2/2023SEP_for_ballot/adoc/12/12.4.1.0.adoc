@@ -1,0 +1,4 @@
+==== 12.4.1.0 GOL Field Definitions
+
+The business and/or application must assume responsibility for maintaining knowledge about data ownership, versioning, and/or audit trail control (for purposes of data integrity). It is also their responsibility to represent the appropriate version of that data.
+

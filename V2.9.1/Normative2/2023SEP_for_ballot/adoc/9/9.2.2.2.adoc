@@ -1,0 +1,4 @@
+==== 9.2.2.2 Consent Decision Date/Time: 
+
+Related to the above, there also needs to be a record of the time the subject actually made their consent decision.
+

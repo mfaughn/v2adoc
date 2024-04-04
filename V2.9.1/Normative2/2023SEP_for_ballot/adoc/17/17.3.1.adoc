@@ -1,0 +1,4 @@
+=== 17.3.1 Inventory Item Master Updates
+
+The goal of the Inventory Item Master Update message specifications is to facilitate the communication of inventory item master catalog and lot information between applications. The main subject of such communication is the _supply item_. These inventory item master segments are used with trigger event M15 – Inventory Item Master File Message , and M16 – Inventory Item Master File Message – Enhanced. The message structures of these events are published in Chapter 8 - Master Files.
+

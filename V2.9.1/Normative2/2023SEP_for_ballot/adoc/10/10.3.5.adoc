@@ -1,0 +1,4 @@
+=== 10.3.5 Request Appointment Discontinuation (Event S05)
+
+The request appointment discontinuation is sent by the placer application to the filler application to request that an appointment in progress be stopped, or that the remaining occurrences of a parent appointment not occur as scheduled. If none of the child appointments of a parent appointment have occurred, then a cancel trigger event should be sent instead. If it is successful, an application acknowledgment is returned, optionally containing an SCH segment and related detail segments describing the discontinued appointment.
+

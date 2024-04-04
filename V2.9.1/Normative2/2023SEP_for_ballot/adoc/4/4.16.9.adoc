@@ -1,0 +1,57 @@
+=== 4.16.9 RSP - Get Donor Record Response (K34)
+
+RSP^K34^RSP_O34: Segment Pattern Response Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ARV}] |Access Restrictions | |3
+|[\{SFT}] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgement | |2
+|[ERR] |Error | |2
+|QAK |Query Acknowledgement | |5
+|QPD |Query Parameter Definition | |5
+|[ |--- DONOR begin | |
+|PID |Patient Identification Segment | |3
+|[ PD1 ] |Additional Demographics | |3
+|[\{ PRT }] |Participation | |7
+|[\{ |--- DONOR_OBSERVATIONS begin | |
+|OBX |Donor Observations | |7
+|[\{ PRT }] |Participation | |7
+|}] |--- DONOR_OBSERVATIONS end | |
+|[\{ NTE }] |Notes and Comments (for Donor) | |2
+|[\{ AL1 }] |Allergy Information | |3
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3
+|[ |--- DONOR_REGISTRATION begin | |
+|PV1 |Patient Visit (Donor Registration) | |3
+|[\{ PRT }] |Participation | |7
+|[\{ NTE }] |Notes and Comments (for Donor Registration) | |2
+|] |--- DONOR_REGISTRATION end | |
+|] |--- DONOR end | |
+|[ |--- DONATION begin | |
+|DON |Donation | |4
+|[\{ |--- DONOR_OBSERVATIONS begin | |
+|OBX |Adverse Reaction Observations | |
+|[\{ PRT }] |Participation | |7
+|}] |--- DONOR_OBSERVATIONS end | |
+|[\{ NTE }] |Notes and Comments (For Donation) | |2
+|] |--- DONATION end | |
+|===
+
+[width="99%",cols="28%,37%,11%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|RSP^K34^RSP_O34 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^K34^ACK |- |ACK^K34^ACK
+|Application Ack |- |- |-
+|===
+
+____
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+____
+

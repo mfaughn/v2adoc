@@ -1,0 +1,10 @@
+=== 2.10.6 Tables
+
+Rules for locally extending tables are the same as discussed in section _2.4.3.8_, "_Table_":
+
+{empty}a) Users MAY redefine suggested values in User-defined tables.
+
+{empty}b) Local tables MAY be defined for Z fields.
+
+{empty}c) Local tables MAY be assigned to HL7 fields with data type CWE.
+

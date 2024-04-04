@@ -1,0 +1,4 @@
+==== 12.4.3.6 PTH-6 Change Pathway Life Cycle Status Date/Time (DTM) 01211
+
+Definition: This field contains the date/time when pathway has been modified or deactivated. (Marked as conditional – must be filled in if trigger event is update or terminate pathway.)
+

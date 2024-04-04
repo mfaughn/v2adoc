@@ -1,0 +1,39 @@
+=== 4.16.8 QBP - Get Donor Record (Event Q34)
+
+This query/response is designed for interaction between a viewing system and the system which contains the Donor Book of Record. The query consists of query parameters, and the response of the demographics for that donor.
+
+[width="100%",cols="39%,61%",options="header",]
+|===
+|Query Statement ID: |Q34
+|Query Type: |Query by Parameter
+|Query Name: |Get Donor Record
+|Query Trigger: |QBP^Q34^QBP_Q34
+|Query Mode: |Immediate
+|Response Trigger: |RSP^K34^RSP_K34
+|Query Characteristics |Uses donor id to find a specific donor record and return it.
+|Purpose: |Returns demographic information and donations for a donor
+|===
+
+QBP^Q34^QBP_O34: Get Donor Record Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|QPD |Query Parameter Definition Segment | |5
+|RCP |Response Control Parameters | |5
+|===
+
+[width="100%",cols="21%,25%,10%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|QBP^Q34^QBP_O34 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |RSP^K34^RSP_O34
+|Application Ack |RSP^K34^RSP_O34 |- |RSP^K34^RSP_O34 |RSP^K34^RSP_O34
+|===
+

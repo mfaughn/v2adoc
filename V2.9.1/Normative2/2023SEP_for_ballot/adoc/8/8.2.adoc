@@ -1,0 +1,42 @@
+== 8.2 PURPOSE
+
+In an open-architecture healthcare environment there often exists a set of common reference files used by one or more application systems. Such files are called master files. Some common examples of master files in the healthcare environment include:
+
+{empty}a) staff and health practitioner master file
+
+{empty}b) system user (and password) master file
+
+{empty}c) location (census and clinic) master file
+
+{empty}d) device type and location (e.g., workstations, terminals, printers, etc.)
+
+{empty}e) lab test definition file
+
+{empty}f) exam code (radiology) definition file
+
+{empty}g) charge master file
+
+{empty}h) patient status master
+
+{empty}i) patient type master
+
+{empty}j) service item master file
+
+These common reference files need to be synchronized across the various applications at a given site. The Master Files Notification message provides a way of maintaining this synchronization by specifying a standard for the transmission of this data between applications.
+
+In many implementations, one application system will "own" a particular master file such as the staff and practitioner master file. The changes (e.g., adds, deletes, updates) to this file are made available to various other applications on a routine basis. The Master Files Notification message supports this common case, but also supports the situation where an application not "owning" a particular master file transmits update information to other systems (usually to the "owning" system) for review and possible inclusion.
+
+The Master Files Notification message supports the distribution of changes to various master files between systems in either online or batch modes, and allows the use of either original or enhanced acknowledgment modes. These messages use the MSH segment to pass the basic event code (master files notification or acknowledgment). The MFI (master file identification) segment identifies the master file being updated as well as the initial and requested dates for "file-level" events (such as "replace file"). For each record being changed, the MFE (Master File Entry) segment carries the record-level event code (such as add, update, etc.), the initial and requested dates for the event, and the record-level key identifying the entry in the master file. The MFA (master file acknowledgment) segment returns record-specific acknowledgment information.
+
+*Note*: The MFE segment is not the master file record, but only specifies its identifier, event, and event dates. The master file record so identified is contained in either Z-segments or HL7-defined segments immediately following the MFE segment. This record may be either a flat record contained in a single segment, or a complex record needing more than a single segment to carry its data and (usually hierarchical) structure.
+
+The master file segments commonly needed across HL7 applications as well as those specific to the various application chapters, are defined in Sections 0 through 4 of this chapter.
+
+A given master files message concerns only a single master file. However, the provision of a record-level event code (and requested activation date) on the MFE and the MFA segments allows a single message to contain several types of changes (events) to that file.
+
+The Master Files Notification events do not specify whether the receiving system must support an automated change of the master file in question, nor do they specify whether the receiving system must create a file in the same form as that maintained on the sending system.
+
+In general, the way in which the receiving system processes the change notification message will depend on both the design of the receiving system and the requirements negotiated at the site. Some systems and/or sites may specify a manual review of all changes to a particular master file. Some may specify a totally automated process. Not every system at every site will need all the fields contained in the master file segment(s) following the MFE segment for a particular master file entry.
+
+This also means that an application acknowledgment (or a deferred application acknowledgment) from a receiving system that it changed a particular record in its version of the master file does not imply that the receiving system now has an exact copy of the information and state that is on the sending system: it means only that whatever subset of that master file's data (and state) that has been negotiated at the site is kept on the receiving system in such a manner that a new Master Files Notification transaction with the same primary key can be applied unambiguously (in the manner negotiated at the site) to that subset of information.
+

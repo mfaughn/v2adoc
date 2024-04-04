@@ -1,0 +1,16 @@
+==== 4A.5.3.2 Actual dispense amount, Actual dispense units, Actual strength, Actual strength units
+
+For example, the RXD-4, RXD-5, RXD-16 and RXD-17 together might say
+
+100 tabs of 240 mg strength:
+
+RXD||||100|tab^tablet^FDB|||||||||||240|mg|...<cr>
+
+Or, 100 each of 60 units per cc
+
+RXD||||100|EA||||||||||||60|iu/ml^^ISO+|...<cr>
+
+Or, perhaps a volume, 3 liters with 60 grams per liter
+
+RXD||||3|L^liter^ISO|||||||||||60|g/L^^ISO+|...<cr>
+

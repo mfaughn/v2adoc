@@ -1,0 +1,16 @@
+==== 4A.5.3.1 RXD-4 and RXD-5 Dispense amount and Actual dispense units
+
+The RXD-4 and RXD-5 together might say
+
+100 tabs:
+
+RXD||||100|TAB^tablet^FDB|...<cr>
+
+Or, 100 each
+
+RXD||||100|EA^each^FDB|...<cr>
+
+Or, perhaps a volume, 3 liters
+
+RXD||||3|L^liter^ISO|...<cr>
+

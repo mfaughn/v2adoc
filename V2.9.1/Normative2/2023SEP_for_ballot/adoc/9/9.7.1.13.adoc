@@ -1,0 +1,4 @@
+==== 9.7.1.13 CON-13 Consent Decision Date/Time (DTM) 01788
+
+Definition: Identifies the time when the decision to grant/refuse consent was made. In the case of written consent, this is the time the consent form is signed.
+

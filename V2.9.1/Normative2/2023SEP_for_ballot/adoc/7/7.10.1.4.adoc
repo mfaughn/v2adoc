@@ -1,0 +1,4 @@
+==== 7.10.1.4 Non-proprietary (generic) name:
+
+Drug name that is not protected by a trademark, usually descriptive of its chemical structure; sometimes called a public name. In the US, most generic drug names are assigned by the US Adopted Name Council (USAN). Other generic names in common use are the National Formulary (NF) and the US Pharmacopoeia (USP) names. Figure 7-3 lists other available drug coding systems.
+

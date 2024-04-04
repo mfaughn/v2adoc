@@ -1,0 +1,4 @@
+==== 2A.2.15.1 Delay Days (NM)
+
+Definition: The number of days after which the daily deductible begins.
+

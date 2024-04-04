@@ -1,0 +1,37 @@
+=== 10.6.1 ARQ - Appointment Request Segment
+
+The ARQ segment defines a request for the booking of an appointment. It is used in transactions sent from an application acting in the role of a placer.
+
+HL7 Attribute Table – ARQ – Appointment Request
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |00860 |Placer Appointment ID
+|2 | | |EI |C | | |00861 |Filler Appointment ID
+|3 | |5= |NM |C | | |00862 |Occurrence Number
+|4 | | |EI |O | | |00218 |Placer Order Group Number
+|5 | | |CWE |O | | |00864 |Schedule ID
+|6 | | |CWE |O | | |00865 |Request Event Reason
+|7 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70276[0276] |00866 |Appointment Reason
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70277[0277] |00867 |Appointment Type
+|9 | |5= |NM |O | | |00868 |Appointment Duration
+|10 | | |CNE |O | | |00869 |Appointment Duration Units
+|11 | | |DR |O |Y | |00870 |Requested Start Date/Time Range
+|12 | |5= |ST |O | | |00871 |Priority-ARQ
+|13 | | |RI |O | | |00872 |Repeating Interval
+|14 | |5= |ST |O | | |00873 |Repeating Interval Duration
+|15 | | |XCN |R |Y | |00874 |Placer Contact Person
+|16 | | |XTN |O |Y | |00875 |Placer Contact Phone Number
+|17 | | |XAD |O |Y | |00876 |Placer Contact Address
+|18 | | |PL |O | | |00877 |Placer Contact Location
+|19 | | |XCN |R |Y | |00878 |Entered By Person
+|20 | | |XTN |O |Y | |00879 |Entered By Phone Number
+|21 | | |PL |O | | |00880 |Entered By Location
+|22 | | |EI |O | | |00881 |Parent Placer Appointment ID
+|23 | | |EI |O | | |00882 |Parent Filler Appointment ID
+|24 | | |EI |C |Y | |00216 |Placer Order Number
+|25 | | |EI |C |Y | |00217 |Filler Order Number
+|26 | | |EIP |O | | |03547 |Alternate Placer Order Group Number
+|===
+

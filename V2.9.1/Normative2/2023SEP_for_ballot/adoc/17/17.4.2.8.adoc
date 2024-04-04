@@ -1,0 +1,4 @@
+==== 17.4.2.8 Exposure Time
+
+Period of time during a sterilization process in which items are exposed to the sterilant at the specified sterilization parameters.
+

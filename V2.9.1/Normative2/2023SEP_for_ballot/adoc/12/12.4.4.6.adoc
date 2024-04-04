@@ -1,0 +1,4 @@
+==== 12.4.4.6 VAR-6 Variance Description (ST) 01217
+
+Definition: This field specifies the details of a variance. The content of the field is a string with optional formatting.
+

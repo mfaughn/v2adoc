@@ -1,0 +1,4 @@
+==== 16.4.9.7 IPR-7 Expected Payment Date/Time (DTM) 02036
+
+Definition: Date payment is expected for this IPR.
+

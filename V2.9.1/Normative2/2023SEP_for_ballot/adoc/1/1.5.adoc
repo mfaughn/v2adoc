@@ -1,0 +1,24 @@
+== 1.5 Goals of the Standard
+
+As noted above, the specifications of this HL7 Version 2 Standard were developed in accordance with *a priori* specified goals. Future extensions of the Standard should also support these goals.
+
+HL7’s purpose is to facilitate communication in healthcare settings. The *primary goal* is to provide standards for the exchange of data among healthcare computer applications that eliminate or substantially reduce the custom interface programming and program maintenance that may otherwise be required. This primary goal can be delineated as a set of goals:
+
+{empty}a) The Standard should support exchanges among systems implemented in the widest variety of technical environments. Its implementation should be practical in a wide variety of programming languages and operating systems. It should also support communications in a wide variety of communications environments, ranging from a full, OSI-compliant, 7‑level network “stack” to less complete environments including primitive point‑to‑point RS‑232C interconnections and transfer of data by batch media such as tape, CD and USB Flash Drive.
+
+{empty}b) Immediate transfer of single transactions should be supported along with file transfers of multiple transactions.
+
+{empty}c) The greatest possible degree of standardization should be achieved, consistent with site variations in the usage and format of certain data elements. The Standard should accommodate necessary site‑specific variations. This will include, at least, site-specific tables, local code definitions and possibly site-specific message segments (i.e., HL7 Z-segments).
+
+{empty}d) The Standard must support evolutionary growth as new requirements are recognized. This includes support of the process of introducing extensions and new releases into existing operational environments.
+
+{empty}e) The Standard should be built upon the experience of existing production protocols and accepted industry‑wide standard protocols. It should not, however, favor the proprietary interests of specific companies to the detriment of other users of the Standard. At the same time, HL7 seeks to preserve the unique attributes that an individual vendor can bring to the marketplace.
+
+{empty}f) While it is both useful and pertinent to focus on information systems within hospitals, the long‑term goal should be to define formats and protocols for computer applications in all and among healthcare environments.
+
+{empty}g) The very nature of the diverse business processes that exist within the healthcare delivery system prevents the development of either a universal process or data model to support a definition of HL7’s target environments. In addition, HL7 Version 2.8 does not make a priori assumptions about the architecture of healthcare information systems nor does it attempt to resolve architectural differences between healthcare information systems. *[.underline]#For at least these reasons, HL7 Version 2.9.1 cannot be a true “plug and play” interface standard.#* These differences at HL7 Version 2.9.1 sites will most likely require some level of site negotiated agreements.
+
+{empty}h) A primary interest of the HL7 Working Group has been to employ the Standard as soon as possible. Having achieved this, HL7 has also developed an infrastructure that supports a consensus balloting process and has been recognized by the American National Standards Institute (ANSI) as an Accredited Standards Organization (ASO).
+
+{empty}i) Cooperation with other related healthcare standards efforts, which are outlined later in this chapter.
+

@@ -1,0 +1,10 @@
+==== 17.9.1.2 DEV-2 Unique Device Identifier (EI) 02457
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a unique identifier for the Device represented, either an actual device, or type of device.
+
+When this segment is used as an extension of a PRT segment in the message, e.g., additional device information obtained for an implantable device, DEV-2 must be equal to PRT-10 Participation Device. When PRT-22 Participation Device Type is used, DEV-3 must be equal to PRT-22.
+
+Condition: Either DEV-2 Unique Device Identifier or DEV-3 Device Type must be valued, or both are valued.
+

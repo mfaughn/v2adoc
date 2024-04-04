@@ -1,0 +1,23 @@
+=== 10.6.7 AIP - Appointment Information - Personnel Resource Segment
+
+The AIP segment contains information about the personnel types that can be scheduled. Personnel included in a transaction using this segment are assumed to be controlled by a schedule on a schedule filler application. Personnel not controlled by a schedule are not identified on a schedule request using this segment. The kinds of personnel described on this segment include any healthcare provider in the institution controlled by a schedule (for example: technicians, physicians, nurses, surgeons, anesthesiologists, or CRNAs).
+
+HL7 Attribute Table – AIP[#AIP .anchor]#### – Appointment Information – Personnel Resource
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |00906 |Set ID - AIP
+|2 |1..1 | |ID |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00763 |Segment Action code
+|3 | | |XCN |C |Y | |00913 |Personnel Resource ID
+|4 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70182[0182] |00907 |Resource Type
+|5 | | |CWE |O | | |00899 |Resource Group
+|6 | | |DTM |C | | |01202 |Start Date/Time
+|7 | | |NM |C | | |00891 |Start Date/Time Offset
+|8 | | |CNE |C | | |00892 |Start Date/Time Offset Units
+|9 | | |NM |O | | |00893 |Duration
+|10 | | |CNE |O | | |00894 |Duration Units
+|11 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70279[0279] |00895 |Allow Substitution Code
+|12 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70278[0278] |00889 |Filler Status Code
+|===
+

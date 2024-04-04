@@ -1,0 +1,4 @@
+==== 4A.4.1.11 RXO-11 Requested Dispense Amount (NM) 00302
+
+Definition: This field specifies the amount to be dispensed. See above note.
+

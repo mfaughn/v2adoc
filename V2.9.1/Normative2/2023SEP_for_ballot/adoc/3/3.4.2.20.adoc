@@ -1,0 +1,4 @@
+==== *3.4.2.20* PID-20 Driver's License Number - Patient 00123
+
+*Attention:* The PID-20 field was retained for backward compatibility only as of v 2.5 and was withdrawn and removed from this message structure as of v 2.7. It is recommended to use _PID-3 - Patient Identifier List_ for all patient identifiers.
+

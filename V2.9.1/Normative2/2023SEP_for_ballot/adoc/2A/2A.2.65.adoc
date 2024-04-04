@@ -1,0 +1,17 @@
+=== 2A.2.65 RMC - room coverage
+
+HL7 Component Table - RMC – Room Coverage
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |CWE |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70145[0145] |Room Type | |2A.2.36
+|2 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70146[0146] |Amount Type | |2A.2.36
+|3 | | | |W | |Coverage Amount |Withdrawn as of v2.7. |2A.2.47
+|4 | | |MOP |R | |Money or Percentage | |2A.2.43
+|===
+
+Definition: This data type specifies insurance coverage detail for a room.
+
+*Note:* Replaces the CM data type used in section 6.5.7.28 IN2-28, as of v 2.5.
+

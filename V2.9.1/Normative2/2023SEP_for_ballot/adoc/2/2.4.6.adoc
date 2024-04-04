@@ -1,0 +1,31 @@
+=== 2.4.6 Acknowledgment Choreography
+
+____
+Acknowledgment Choreography is defined as the definition of the acknowledgments to be expected for a given trigger event. It is required to document the expected acknowledgment based on the values in link:#_MSH-15___Accept Acknowledgment Type[MSH-15] and link:#_MSH-16___Application Acknowledgment[MSH-16].
+
+As of V2.9, all chapters SHALL include in their trigger event definitions the acknowledgment choreography.
+
+The first row SHALL contain the words "Acknowledgment Choreography". The second row SHALL contain the message definition being described. When multiple message definitions have the same response in the same chapter all of the message pairs MAY be listed in the second row.
+
+The values rows MSH-15 and MSH-16 are extracted from the valid values for the field.
+
+The Application ACK row SHOULD contain the message expected in reponse to the processing of the message named in third row containing the value(s) for MSH-16 in that column.
+
+An example can be found in Section 2.11.2
+____
+
+[width="100%",cols="18%,22%,6%,16%,19%,19%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|XXX^YYY^ZZZ/XXX^YYY^ZZZ | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^xxx ^ACK |- |ACK^xxx^ACK
+|Application Ack |ACK^xxx^xxxx_xxxx |- |- |ACK^xxx^xxxx_xxxx |ACK^xxx^xxxx_xxxx
+|===
+
+____
+For proper formatting please consult the styleguide.
+____
+

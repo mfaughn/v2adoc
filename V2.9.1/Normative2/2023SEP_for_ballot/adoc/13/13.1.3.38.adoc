@@ -1,0 +1,4 @@
+==== 13.1.3.38 Pitch:
+
+The center distance between two specimen containers in a carrier or between two sequential specimen container carriers.
+

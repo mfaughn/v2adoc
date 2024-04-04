@@ -1,0 +1,4 @@
+==== 6.5.11.10 UB2-10 UB92 Locator 11 (state) (ST) 00562
+
+Definition: The value in this field may repeat up to two times.
+

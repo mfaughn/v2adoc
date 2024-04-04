@@ -1,0 +1,93 @@
+=== 16.3.2 EHC^E02 – Cancel HealthCare Services Invoice (event E02) 
+
+This message is used to cancel one HealthCare Services Invoices or one Product/Service Group in an Invoice or one Product/Service Line Item in an Invoice that have previously been submitted to a TPA/Payer for processing and payment. Invoice Control codes are used to indicate the specific action being requested of the Payer (CN for Cancel Invoice, CG for Cancel Product/Service Group and CI for Cancel Product/Service Line Item). An Invoice that is cancelled must be marked as cancel only and not purged from the Payer Application's database.
+
+The Payer may/may not be able to cancel the Invoice/Product/Service Line Item, and will indicate processing results in the response message. In some situations, the Payer has already paid the Product/Service Line Item, and therefore will hold a debit amount for the Payee until subsequent billing from the Payee utilizes the debit amount.
+
+This message cannot be used to cancel or remove ancillary information for an Invoice and/or Product/Service Line Item such as Authorization or Contact information or any referenced health documents.
+
+Processing Rules:
+
+{empty}1) The Provider Application and the Payer Application must uniquely identify each Invoice, Product/Service Group, Product/Service Line Item and Adjustment. +
+These numbers appear as a pair on the IVC, PSG, PSL and ADJ segments and must be echoed on any subsequent interactions for the Invoice, group or line item between the Provider Application and Payer Application.
+
+{empty}2) The Provider Application and/or Payer Application may also supply a tracking number for each Product/Service Line Item it processes, specified as the Provider Tracking Number or Payer Tracking Number. +
+The Provider Tracking Number and Payer Tracking Number must be echoed on any subsequent interactions for the Product/Service Line Item between the Provider Application and Payer Application.
+
+{empty}3) At least one NTE segment must be included with this message to describe the cancellation reason for each Product/Service Line Item. The NTE segment may be specified with the Invoice (following the IVC segment) and applies to all Product/Service Line Items for that Invoice. If not specified with the Invoice, then it must be specified for each Product/Service Line Item (following the PSL segment).
+
+{empty}4) Sending Organization and Sending Application on input message must be the same as the Sending Organization and Sending Application from the original Invoice (submitted via the EHC^E01 – Submit HealthCare Services Invoice message) for the specified Invoice being queried.
+
+{empty}5) Provider reference numbers and Payer reference numbers must exist on Payer Application's database and must point to the same Invoice, Product/Service Group or Product/Service Line Item, otherwise an error must be generated (mismatched Invoice and/or Product/Service Line Item).
+
+{empty}6) Product/Service Clarification Codes: Each Product/Service Line Item allows a number of clarification codes to be specified. These are specified as 2 fields: Product/Service Clarification Code Type and Product/Service Clarification Code Value. Both of these fields repeat within the PSL segment and must repeat the same number of times. For example, if 2 clarification codes are specified, then 2 repetitions of each field is required, the first repetition corresponding to the 1^st^ clarification code, the second repetition corresponding to the 2^nd^ clarification code.
+
+{empty}7) To cancel an Invoice, use Invoice Control Code on IVC of "CN". In addition, the following fields must be supplied and must match the original Invoice submitted: +
+HDR.Sending Organization +
+IVC.Provider Organization +
+IVC.Invoice Amount +
+IVC.Provider Invoice Number +
+IVC.Payer Invoice Number +
+PYE.Payee Identification List
+
+{empty}8) To cancel a Product/Service Group within an Invoice, use Invoice Control Code on IVC of "CG". In addition, the following fields must be supplied and must match the original Invoice submitted: +
+HDR.Sending Organization +
+IVC.Provider Organization +
+IVC.Invoice Amount +
+IVC.Provider Invoice Number +
+IVC.Payer Invoice Number +
+PYE.Payee Identification List +
+PSG.Provider Product/Service Group Number +
+PSG.Payer Product/Service Group Number
+
+{empty}9) To cancel a Product/Service Line Item within an Invoice, use Invoice Control Code on IVC of "CI". In addition, the following fields must be supplied and must match the original Invoice submitted: +
+HDR.Sending Organization +
+IVC.Provider Organization +
+IVC.Invoice Amount +
+IVC.Provider Invoice Number +
+IVC.Payer Invoice Number +
+PYE.Payee Identification List +
+PSG.Provider Product/Service Group Number +
+PSG.Payer Product/Service Group Number +
+PSL.Provider Product/Service Line Item Number +
+PSL.Payer Product/Service Line Item Number +
+PSL.Product/Service Code +
+PSL.Product/Service Effective Date +
+PSL.Billed Amount
+
+{empty}10) This message must not be used to cancel a Product/Service Line Item in a Product/Service Group which was submitted with Adjudicated as Group = "Y".
+
+EHC^E02^EHC_E02: Cancel HealthCare Services Invoice
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Secondary Header | |2
+|[ \{ UAC } ] |User Authentication Credential | |2
+|< |--- INVOICE_INFORMATION_CANCEL begin | |
+|IVC |Invoice | |16
+|PYE |Payee Information | |16
+|[ \{ CTD } ] |Contact Data | |
+|[ \{ NTE } ] |Notes and Comments | |
+|[ \{ |--- PRODUCT_SERVICE_SECTION begin | |
+|PSS | | |
+|[ \{ |--- PSG begin | |
+|PSG |Product/Service Group | |
+|[ \{ PSL } ] |Product/Service Line Item | |
+|} ] |--- PSG end | |
+|} ] |--- PRODUCT_SERVICE_SECTION end | |
+|> |--- INVOICE_INFORMATION_CANCEL end | |
+|===
+
+[width="100%",cols="18%,26%,6%,17%,16%,17%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|EHC^E02^EHC_E02 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^E02^ACK |- |ACK^E02^ACK
+|Application Ack |ACK^E02^ACK |- |- |ACK^E02^ACK |ACK^E02^ACK
+|===
+

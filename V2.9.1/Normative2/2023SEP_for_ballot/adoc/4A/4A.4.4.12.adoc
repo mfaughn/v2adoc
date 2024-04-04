@@ -1,0 +1,4 @@
+==== 4A.4.4.12 RXE-12 Number of Refills (NM) 00304
+
+Definition: This field contains the total original number of refills. Outpatient only.
+

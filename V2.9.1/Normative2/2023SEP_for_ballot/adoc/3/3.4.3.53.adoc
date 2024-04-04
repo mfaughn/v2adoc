@@ -1,0 +1,4 @@
+==== *3.4.3.53* PV1-53 Service Episode Description (ST) 02290
+
+Definition: This field contains a brief user-defined description of a Service Episode in or for which the visit occurs. A Service Episode is the context in which the treatment or management of an arbitrary subset of a Patient’s medical conditions occurs. The definition of the start time, stop time, and included events of a Service Episode is entirely arbitrary; it may include a single outpatient visit or a hospitalization, or extend over significant period of time, e.g., the duration of a pregnancy, or an oncology treatment regimen, or a cardiac episode from infarction through rehabilitation. A Service Episode may involve one or more Healthcare Organizations.
+

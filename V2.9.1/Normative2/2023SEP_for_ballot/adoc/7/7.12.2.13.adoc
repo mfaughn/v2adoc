@@ -1,0 +1,4 @@
+==== 7.12.2.13 PEO-13 Event Description from Others (FT) 01085
+
+Definition: This field contains a summary narrative text description of the event that occurred written by the sender. Note that laboratory results can be encoded as OBX segments rather then including them in the narrative. By representing clinical information in OBX segments rather than in the narrative, these data become much more useful and flexible.
+

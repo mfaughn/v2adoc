@@ -1,0 +1,20 @@
+==== 7.5.5.1 Culture battery/report representation
+
+Organisms and other observations/tests are reported using multiple OBX segments. The granularity expected for HL7culture reports is one observation per organism.
+
+All OBX segments which have the same observation ID and sub-ID are part of a single observation.
+
+Each organism in a culture battery is assigned a unique _OBX-4 Observation Sub-ID_ (and is therefore a separate observation). The organism name is given in _OBX-5 Observation Value_ (results). It is recommended, but not required, that the organism name may change over time, but the corresponding observation sub-ID never changes. (The observation ID will be identical for all organisms reported.)
+
+Recommended:
+
+OBX|1|CWE|600-7^Micro Organism Identified^LN|1|^E. Coli||||||F|...<cr>
+
+OBX|2|CWE|600-7^Micro Organism Identified^LN |2|^S. Aureus||||||F|...<cr>
+
+Not recommended:
+
+OBX|1|CWE|600-7^Micro Organism Identified^LN |1|^E. Coli||||||F|...<cr>
+
+OBX|2|CWE|600-7^Micro Organism Identified^LN |1|^S. Aureus||||||F|...<cr>
+

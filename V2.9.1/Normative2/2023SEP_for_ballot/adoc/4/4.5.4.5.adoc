@@ -1,0 +1,16 @@
+==== 4.5.4.5 TQ1-5 Relative Time and Units (CQ) 01631
+
+Components: <Quantity (NM)> ^ <Units (CWE)>
+
+Subcomponents for Units (CWE): <Identifier (ST)> & <Text (ST)> & <Name of Coding System (ID)> & <Alternate Identifier (ST)> & <Alternate Text (ST)> & <Name of Alternate Coding System (ID)> & <Coding System Version ID (ST)> & <Alternate Coding System Version ID (ST)> & <Original Text (ST)> & <Second Alternate Identifier (ST)> & <Second Alternate Text (ST)> & <Name of Second Alternate Coding System (ID)> & <Second Alternate Coding System Version ID (ST)> & <Coding System OID (ST)> & <Value Set OID (ST)> & <Value Set Version ID (DTM)> & <Alternate Coding System OID (ST)> & <Alternate Value Set OID (ST)> & <Alternate Value Set Version ID (DTM)> & <Second Alternate Coding System OID (ST)> & <Second Alternate Value Set OID (ST)> & <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field is used to define the interval between schedules for service request or bottle records. If this field contains a value, it overrides any value in the explicit time interval field. The units component of the CQ data type is constrained to units of time.
+
+Examples:
+
+TQ1|1|1|Q1H||60^min&&ANS+ - Q1H is defined with an interval between services of 60 minutes
+
+TQ1|1|1|Q6H||6^hr&&ANS+ - Q6H is defined with an interval between services of 6 hours
+
+TQ1|1|1|QD||1^d&&ANS+ - QD is defined with an interval between services of 1 day
+

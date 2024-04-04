@@ -1,0 +1,32 @@
+=== 7.3.13 ORA – Observation Report Alert Acknowledgement (Event R41) 
+
+This message enables application level acknowledgements in response to the ORU^R40 alert observation message.
+
+The R41 trigger event is used to indicate that the alert observation has been delivered to, and acknowledged by, a clinical user. If the clinical user can be identified, that identity can be conveyed in the PRT segment (with PRT-4 value AAP Alert Acknowledging Provider).
+
+Considering that the alerts may be received by multiple providers, multiple acknowledgements may be returned. The behavior associated with the user acknowledgement may be specified in a local implementation agreement or implementation guide and may be indicated in MSH-21 Message Profile Identifier.
+
+ORA^R41^ORA_R41: Observation Report Alert Acknowledgement
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Acknowledgment | |2
+|[\{ SFT }] |Software segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|[\{ PRT }] |Participation (Acknowledging User) | |7
+|===
+
+[width="100%",cols="21%,31%,24%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ORA^R41^ORA_R41 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^R41^ACK
+|Application Ack |ACK^R41^ACK |- |-
+|===
+

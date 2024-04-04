@@ -1,0 +1,6 @@
+=== 2.5.3 Encoding rules notes
+
+____
+If a segment is to be continued across messages, use the extended encoding rules. These rules are defined in terms of the more general message continuation protocol (see Section _2.9.2_, "_Continuation messages and segments_").
+____
+

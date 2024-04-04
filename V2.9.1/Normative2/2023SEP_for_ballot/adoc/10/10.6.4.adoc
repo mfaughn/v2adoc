@@ -1,0 +1,23 @@
+=== 10.6.4 AIS - Appointment Information - Service Segment
+
+The AIS segment contains information about various kinds of services that can be scheduled. Services included in a transaction using this segment are assumed to be controlled by a schedule on a schedule filler application. Services not controlled by a schedule are not identified on a schedule request using this segment.
+
+HL7 Attribute Table - AIS[#AIS .anchor]#### - Appointment Information
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |00890 |Set ID - AIS
+|2 |1..1 | |ID |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00763 |Segment Action Code
+|3 | | |CWE |R | | |00238 |Universal Service Identifier
+|4 | | |DTM |C | | |01202 |Start Date/Time
+|5 | | |NM |C | | |00891 |Start Date/Time Offset
+|6 | | |CNE |C | | |00892 |Start Date/Time Offset Units
+|7 | | |NM |O | | |00893 |Duration
+|8 | | |CNE |O | | |00894 |Duration Units
+|9 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70279[0279] |00895 |Allow Substitution Code
+|10 | | |CWE |C | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70278[0278] |00889 |Filler Status Code
+|11 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70411[0411] |01474 |Placer Supplemental Service Information
+|12 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70411[0411] |01475 |Filler Supplemental Service Information
+|===
+

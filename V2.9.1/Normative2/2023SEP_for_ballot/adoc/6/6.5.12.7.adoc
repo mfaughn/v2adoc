@@ -1,0 +1,4 @@
+==== 6.5.12.7 ABS-7 Abstract Completion Date/Time (DTM) 01520
+
+Definition: Date/time the abstraction was completed.
+

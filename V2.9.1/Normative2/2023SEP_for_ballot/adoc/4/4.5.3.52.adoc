@@ -1,0 +1,6 @@
+==== 4.5.3.52 OBR-52 Parent Observation Group ID (EI) 02308
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The Parent Observation Group ID field relates this child OBR to its parent OBR segment using the Observation Group ID of the parent result.
+

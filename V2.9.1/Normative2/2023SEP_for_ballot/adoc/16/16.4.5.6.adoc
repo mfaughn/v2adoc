@@ -1,0 +1,4 @@
+==== 16.4.5.6 PSG-6 Product/Service Group Description (ST) 02044
+
+Definition: Product/Service Group description or heading
+

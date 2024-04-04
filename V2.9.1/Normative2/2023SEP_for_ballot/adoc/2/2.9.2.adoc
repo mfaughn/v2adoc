@@ -1,0 +1,12 @@
+=== 2.9.2 Continuation messages and segments
+
+Sometimes, implementation limitations require that large messages or segments be broken into manageable chunks. We use the term "fragmentation" to describe how a logical message is broken into one or more separate HL7 messages. HL7 consciously identifies two situations where this MAY happen.
+
+First, a single segment mightbe too large. HL7 uses the "ADD" segment to handle breaking a single segment into several smaller segments.
+
+Second, a single HL7 message might be too large. HL7 uses the DSC segment and the continuation protocol to handle message fragmentation.
+
+*Note*: HL7 does not define what "too large" means. Acceptable values are subject to site negotiations.
+
+See chapter 5 for a discussion of the continuation pointer segment and the continuation pointer field, and their use in the continuation of responses to queries and in the continuation of unsolicited update messages.
+

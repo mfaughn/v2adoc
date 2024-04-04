@@ -1,0 +1,4 @@
+==== 9.2.1.8 Purged:
+
+A storage status in which a document is no longer available in this system.
+

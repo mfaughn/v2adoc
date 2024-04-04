@@ -1,0 +1,6 @@
+==== 4A.4.6.10 RXG-10 Substitution Status (ID) 00322
+
+Definition: Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70167[_HL7 Table 0167 - Substitution Status_] in Chapter 2C, Code Tables, for valid values.
+
+*Note:* The next two fields are equivalent to the corresponding fields of the RXE segment. They are included (optionally) in the RXG so that it may "stand alone" as a "give" instruction segment.
+

@@ -1,0 +1,4 @@
+==== 6.5.7.21 IN2-21 Blood Deductible (ST) 00492
+
+Definition: Use this field instead of link:#ub1-2-blood-deductible-00531[_UB1-2 - Blood Deductible_], as the blood deductible can be associated with the specific insurance plan via this field.
+

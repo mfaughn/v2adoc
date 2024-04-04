@@ -1,0 +1,22 @@
+=== 4.12.1 Patient order
+
+This example is a requisition from the ORSUPPLY application to the MMSUPPLY application for two items for patient Adam A. Everyman. One item is a stock item for an IV Solution and the second item is a nonstock implant manufactured by Detter. The requisition numbers used by the ORSUPPLY application are RQ101 & RQ102.
+
+MSH|^~\&|ORSUPPLY|ORSYS|MMSUPPLY|MMSYS|20061105131523||OMS^O05^OMS_O05| ...<cr>
+
+PID|... <cr>
+
+ORC|NW|RQ101^ORSUPPLY||||N|||20061105130000||333-77-7777^COMRAD^CONNOR^C|999-99-9999^VERIFY^VIRGIL^V|MAINOR^2W|321-1234 X2304^^^^^^3211234^2304|...<cr>
+
+RQD|1|1234^Solution, 2.25% Saline||S1786^Saline Solution|1|BT^Bottle|1234‑5678||ORSUP^Main OR Supply Room|20061123|...<cr>
+
+MSH|^~\&|ORSUPPLY|ORSYS|MMSUPPLY|MMSYS|19911105131523||OMN^O07^OMN_O07|...<cr>
+
+PID|... <cr>
+
+ORC|NW|RQ102^ORSUPPLY||||N|||20061105130000||333-77-7777^COMRAD^CONNOR^C|999-99-9999^VERIFY^VIRGIL^V |MAINOR^2W|321-1234 X2304^^^^^^3211234^2304<cr>
+
+RQD|1|23455^Implant, Special Hip||I45323^Implant|1|EA^ Each|1234‑5678||ORSUP^Main OR Supply Room|20061123|...<cr>
+
+RQ1|123.45|DET^Detter, Inc.|444456|DST^Local Distributors, Inc.|333‑456|N|...<cr>
+

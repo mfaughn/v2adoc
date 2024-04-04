@@ -1,0 +1,50 @@
+=== 3.3.20 ADT/ACK - Bed Status Update (Event A20)
+
+Certain nursing/census applications need to be able to update the Patient Administration system's bed status. The following is the associated record layout:
+
+ADT^A20^ADT_A20: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#NPU[NPU] |Non-Patient Update | |3
+|===
+
+[width="100%",cols="18%,25%,4%,17%,18%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A20^ADT_A20 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A20^ACK |- |ACK^A20^ACK
+|Application Ack |ADT^A20^ADT_A20 |- |- |ACK^A20^ACK |ACK^A20^ACK
+|===
+
+ACK^A20^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,10%,32%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A20^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A20^ACK
+|Application Ack |- |- |-
+|===
+

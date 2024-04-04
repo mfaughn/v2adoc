@@ -1,0 +1,4 @@
+==== *3.4.20.1* GSR-1 Set ID (SI) 03543
+
+Definition: This field contains the sequence number used to identify the GSR segment instances in a message.
+

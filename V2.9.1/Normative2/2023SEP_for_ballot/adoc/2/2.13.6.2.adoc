@@ -1,0 +1,4 @@
+==== 2.13.6.2 FHS-2 File Encoding Characters (ST) 00068
+
+Definition: This field has the same definition as the corresponding field in the MSH segment.
+

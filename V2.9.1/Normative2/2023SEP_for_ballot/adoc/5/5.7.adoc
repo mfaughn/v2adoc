@@ -1,0 +1,4 @@
+== 5.7 PUBLISH AND SUBSCRIBE
+
+This section outlines the framework/process of the publish and subscribe machinery.
+

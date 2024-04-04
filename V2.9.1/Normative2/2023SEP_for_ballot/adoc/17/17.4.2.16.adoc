@@ -1,0 +1,4 @@
+==== 17.4.2.16 Stocked Items
+
+Supply items that are routinely ordered and issued at a specific supply location.
+

@@ -1,0 +1,6 @@
+==== 17.5.4.9 VND-9 Associated Contract ID (EI) 02423
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains a contract that is linked to the contract sent in the CTR segment (described in Chapter 8). For example, the contract in CTR maybe of supplier type M (manufacturer); a contract sent in VND may be a linked distributor contract for a supplier authoized so distribute this item.
+

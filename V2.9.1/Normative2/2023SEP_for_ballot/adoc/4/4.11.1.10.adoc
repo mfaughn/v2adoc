@@ -1,0 +1,12 @@
+==== 4.11.1.10 RQD-10 Date Needed (DT) 00284
+
+Definition: This field contains the date this item is required.
+
+*Note:* Although none of the fields are required, one of the three identifying codes—RQD-2-item code-internal, RQD-3-item code-external, or RQD-4-hospital item code—must be specified in order for the receiving application to process the request.
+
+It is left to the vendors to determine which will be used as the common link between the two applications. HL7 recommends using the RQD-4-Hospital Item Code.
+
+Hospital accounting requires an identifier to charge a particular cost center or patient for a requisitioned supply. If the supply is for a patient, then this identifier comes from the PID segment; otherwise, from RQD-7-Dept. Cost Center and RQD-8-Item Natural Account Code must be used. It is recommended that the "final" cost center responsible for providing the supply to the patient be included, even when the patient ID is provided.
+
+Hospital accounting applications use RQD-7-Dept. Cost Center concatenated with RQD-8-Item Natural Account Code in order to post this transaction to the General Ledger. This concatenated value should correspond to a valid entry in the accounting applications "Chart of Accounts."
+

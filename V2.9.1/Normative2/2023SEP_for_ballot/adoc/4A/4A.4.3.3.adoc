@@ -1,0 +1,4 @@
+==== 4A.4.3.3 RXC-3 Component Amount (NM) 00315
+
+Definition: This field identifies the amount of this component to be added to the specified amount of the base.
+

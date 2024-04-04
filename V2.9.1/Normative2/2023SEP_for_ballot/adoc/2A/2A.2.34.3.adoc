@@ -1,0 +1,4 @@
+==== 2A.2.34.3 Date/Time Certification Required (DTM)
+
+Definition: The date/time by which the certification must be obtained.
+

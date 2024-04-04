@@ -1,0 +1,4 @@
+==== *3.4.5.8* NK1-8 Start Date (DT) 00197
+
+Definition: This field contains the start date of the contact role.
+

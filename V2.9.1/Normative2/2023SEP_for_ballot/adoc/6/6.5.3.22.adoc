@@ -1,0 +1,6 @@
+==== 6.5.3.22 DRG-22 Basic Charge (MO) 02165
+
+Components: <Quantity (NM)> ^ <Denomination (ID)>
+
+Definition: The basic charge is calculated as a multiplication of the relative weight with the base rate.
+

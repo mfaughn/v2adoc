@@ -1,0 +1,70 @@
+=== 15.3.1 PMU/ACK – Add Personnel Record (Event B01)
+
+An event B01 signals to add a new record for healthcare administration information about an individual healthcare practitioner establishing a relationship between that practitioner and the institution.
+
+The EVN segment is used to indicate the effective or planned date.
+
+PMU^B01^PMU_B01: Personnel Record Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|EVN |Event Type | |3
+|link:#_Hlt489344064[STF] |Staff | |15.4.8
+|[ \{ GSP } ] |Person Gender and Sex | |3
+|[ \{ GSR } ] |Recorded Gender and Sex | |3
+| | | |
+|[ \{ link:#PRA[PRA] } ] |Practitioner | |15.4.6
+|[ \{ link:#ORG[ORG] } ] |Organization | |15.4.5
+|[ \{ link:#AFF[AFF] } ] |Affiliation | |15.4.1
+|[ \{ link:#LAN[LAN] } ] |Language | |15.4.4
+|[ \{ link:#EDU[EDU] } ] |Education | |15.4.3
+|[ \{ link:#CER[CER] } ] |Certificate | |15.4.2
+|[\{ |--- NEXT_OF_KIN begin | |
+|[ \{ NK1 } ] |Next of Kin | |13
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|}] |--- NEXT_OF_KIN end | |
+|[ \{ PRT } ] |Participation | |
+|[ \{ ROL } ] |deprecated as of v2.9 |deprecated |15.4.7
+|===
+
+[width="100%",cols="23%,27%,10%,20%,20%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|PMU^B01^PMU_B01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^B01^ACK
+|Application Ack |ACK^B01^ACK |- |ACK^B01^ACK |ACK^B01^ACK
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 in the Application Acknowledgement message SHALL always be set to NE (Never).
+
+ACK^B01^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[ \{ SFT } ] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^B01^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^B01^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+CSS-1_vs_CTI-3
+</h1>
+<hr>
+<h3>
+For 01055 there were 2 versions found.<br>This diff compares the version found in fields ["CSS-1", "CSS-1"] from sections ["7.8.3", nil], respectively<br>with the version found in fields ["CTI-3", "CTI-3"] from sections ["7.8.4", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>table:059<strong>5</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field <strong>contains the</strong> time point <strong>for which some instance of data for t</strong>he clinical trial <strong>was scheduled. The time point may be expressed in any coded format. Some examples of t</strong>ime <strong>p</strong>oint<strong> </strong>value<strong>s are: *Prestudy, Pretreatment, 4 times/day, Weekly, Every 3 days, Every course, At Relapse, At Off</strong> Study<strong>.* Alternatively, frequency values from Section 2.A.81.2, &quot;Interval component (RI),&quot; (the Interval component of the TQ Timing/Quantity data type could be used; however, note that as of version 2.5, the TQ data type is retained only for backward compatibility). Time p</strong>oint<strong> naming conventions and usage must be specified by implementers</strong>. Refer to Table 059<strong>5</strong> - Study Scheduled Time Point in Chapter 2C for valid values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:059<strong>8</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field <strong>identifies a</strong> time point <strong>in t</strong>he clinical trial <strong>phase. _CTI-2 Study Phase Identifier_ must be valued if _CTI-3 Study Scheduled T</strong>ime <strong>P</strong>oint<strong>_ is </strong>value<strong>d. Should correspond to _CSS-1</strong> Study<strong> Scheduled Time P</strong>oint<strong>_</strong>. Refer to Table 059<strong>8</strong> - Study Scheduled Time Point in Chapter 2C for valid values.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:01055,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="del"><del><span class="symbol">-</span>table:059<strong>5</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field <strong>contains the</strong> time point <strong>for which some instance of data for t</strong>he clinical trial <strong>was scheduled. The time point may be expressed in any coded format. Some examples of t</strong>ime <strong>p</strong>oint<strong> </strong>value<strong>s are: *Prestudy, Pretreatment, 4 times/day, Weekly, Every 3 days, Every course, At Relapse, At Off</strong> Study<strong>.* Alternatively, frequency values from Section 2.A.81.2, &quot;Interval component (RI),&quot; (the Interval component of the TQ Timing/Quantity data type could be used; however, note that as of version 2.5, the TQ data type is retained only for backward compatibility). Time p</strong>oint<strong> naming conventions and usage must be specified by implementers</strong>. Refer to Table 059<strong>5</strong> - Study Scheduled Time Point in Chapter 2C for valid values.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:059<strong>8</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field <strong>identifies a</strong> time point <strong>in t</strong>he clinical trial <strong>phase. _CTI-2 Study Phase Identifier_ must be valued if _CTI-3 Study Scheduled T</strong>ime <strong>P</strong>oint<strong>_ is </strong>value<strong>d. Should correspond to _CSS-1</strong> Study<strong> Scheduled Time P</strong>oint<strong>_</strong>. Refer to Table 059<strong>8</strong> - Study Scheduled Time Point in Chapter 2C for valid values.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

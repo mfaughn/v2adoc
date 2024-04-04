@@ -1,0 +1,40 @@
+=== 3.4.21 GSC – Sex Parameter for Clinical Use Segment
+
+A Sex Parameter for Clinical Use is a parameter that provides guidance on how a recipient should apply settings or reference ranges that are derived from observable information such as an organ inventory, recent hormone lab tests, genetic testing, menstrual status, obstetric history, etc.  This property is intended for use in clinical decision making, and indicates that treatment or diagnostic tests should consider best practices associated with the relevant reference population.  When exchanging these concepts, refer to the guidance in the [Gender Harmony Implementation Guide](http://hl7.org/xprod/ig/uv/gender-harmony/).While clinical decision-making processes could account for the specific physiological or anatomical attributes of the patient, there are several practical considerations, such as patient privacy and limited capabilities of existing systems which create the need for a categorization that is easy to exchange. The Sex Parameter for Clinical Use categorization is intended to bridge the gap between the hypothetical ideal and the practical needs of operational systems.
+
+Sex Parameter for Clinical Use is a contextual concept. For example, a patient may generally be categorized as male-typical, but for a specific lab test, the resulting lab should use the reference ranges associated with a female-typical reference population. In this case, systems may provide a patient-context Sex Parameter for Clinical Usethat acts as a 'default' for most care and annotate the lab order with a context-specific Sex Parameter for Clinical Use. Systems may determine what enclosing contexts are useful, but Patient, Encounter, Order and Episode Of Care are enclosing contexts that may often apply.
+
+Prior to the definition of Sex Parameter for Clinical Use as a concept, systems may have used administrative gender as an approximation of patient-level Sex Parameter for Clinical Use. This practice required pre-coordination among exchange partners to explicitly overload the administrative sex concept for use as a clinical sex concept. In cases where there was no pre-coordination, some systems may have incorrectly inferred information about a patient's clinical sex from administrative gender.
+
+For ease of interoperability, a patient’s Sex Parameter for Clinical Use is constrained to four possible categories. Any patient for which special considerations apply should be categorized as 'Specified'. The 'Specified' category is often represented as 'Other' in existing systems.
+
+*female-typical* - Available data indicates that diagnostics, analytics, and treatments should consider best practices associated with female reference populations.
+
+*male-typical* - Available data indicates that diagnostics, analytics, and treatments should consider best practices associated with male reference populations.
+
+*specified* - Available data indicates that diagnostics, analytics, and treatment best practices may be undefined or not aligned with existing sex-derived reference populations. Individuals or systems providing care should either use default behavior that is safe for both male-typical and female-typical populations, individually review treatment options with the patient, or carefully inspect relevant observations before proceeding with treatment.
+
+*unknown* - The Sex Parameter for Clinical Use cannot be determined because there are no relevant evidence or documentation, or the evidence or documentation are not sufficient to determine a value.
+
+ Sex Parameter for Clinical Use History and Practices
+
+Because the Sex Parameter for Clinical Use can be context-specific, on rare occasions there may be more than one concurrent Sex Parameter for Clinical Use for a patient. For example, there could be multiple procedure results, each identifying a context specific Sex Parameter for Clinical Use determination used to set the normal range used.
+
+The Sex Parameter for Clinical Use values exchanged in a message should be limited to those appropriate for the context(s) in the message. That is, an individual may have different Sex Parameter for Clinical Use values for two different procedures, but if the message only contains one of the procedures, only the Sex Parameter for Clinical Use value related to that procedure should be included in the message. Note that a single Sex Parameter for Clinical Use value may apply to multiple contexts within a single message (i.e. GSC-6 is allowed to repeat and point to multiple locations within the message).
+
+The GSC segment should only be used to declare Sex Parameter for Clinical Use values for the patient conveyed in the message. Conveyance of a Sex Parameter for Clinical Use for other individuals that may be described in the message (e.g. next of kin, guarantors, providers) is not permitted as these individuals will not have clinical contexts within the message.
+
+HL7 Attribute Table – GSC – Sex Parameter for Clinical Use
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |SI |R | | |03543 |Set ID
+|2 |1..1 | |ID |R | |0206 |00816 |Action Code
+|3 | | |EI |C | | |02524 |GSC Instance Identifier
+|4 | | |CWE |R | |0828 |02525 |Sex Parameter for Clinical Use
+|5 | | |DR |O | | |02526 |Validity Period
+|6 | | |ERL |R |Y | |02527 |Context
+|7 | | |ERL |O |Y | |02528 |Evidence
+|8 | | |TX |O | | |02529 |Comment
+|===

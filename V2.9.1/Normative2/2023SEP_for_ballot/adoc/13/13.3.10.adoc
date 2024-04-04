@@ -1,0 +1,22 @@
+=== 13.3.10 TCD - Test Code Detail Segment 
+
+The test code detail segment contains the data necessary to perform operations or calculations, or execute decisions by the laboratory automation system, and which are not supported by the original HL7 segments related to orders (ORC, OBR). For detail of use see messages of laboratory orders and observations in chapters 4 and 7.
+
+HL7 Attribute Table – TCD – Test Code Detail
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | | |CWE |R | |0789 |00238 |Universal Service Identifier
+|2 | | |SN |O | | |01420 |Auto-Dilution Factor
+|3 | | |SN |O | | |01421 |Rerun Dilution Factor
+|4 | | |SN |O | | |01422 |Pre-Dilution Factor
+|5 | | |SN |O | | |01413 |Endogenous Content of Pre-Dilution Diluent
+|6 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01416 |Automatic Repeat Allowed
+|7 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01424 |Reflex Allowed
+|8 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70389[0389] |01425 |Analyte Repeat Status
+|*9* | | |*CQ* |*O* | | |*03490* |*Specimen Consumption Quantity*
+|*10* | | |*NM* |*O* | | |*03493* |*Pool Size*
+|*11* | | |*CWE* |*O* | |*0945* |*03494* |*Auto-Dilution Type*
+|===
+

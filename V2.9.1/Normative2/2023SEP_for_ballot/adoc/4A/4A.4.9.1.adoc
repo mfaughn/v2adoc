@@ -1,0 +1,4 @@
+==== 4A.4.9.1 CDO-1 Set ID – CDO (SI) 03430
+
+Definition: For the first cumulative dose specification transmitted, the sequence number shall be 1; for the second cumulative dose, it shall be 2; and so on.
+

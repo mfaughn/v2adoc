@@ -1,0 +1,6 @@
+=== 10.4.15 Broadcast Notification of Scheduled Appointments (Event S27)
+
+____
+The broadcast notification of scheduled appointments event is triggered on the filler application in advance of upcoming, active, scheduled appointments according to preset time considerations (i.e., a batch interface in which both the time the messages are to be sent and/or the time/date range of the upcoming appointments-to-be-sent could be configured). Given those configured time considerations, the trigger event includes information for any/all scheduled appointments for the preset event processing period without regard for any new, modified or rescheduled appointment information. Receiving systems should then plan to interchangeably accept and process inbound messages as either new or updated appointment messages. Also, since cancelled or deleted appointments that may have been scheduled for a given processing period are no longer a part of an active, upcoming schedule, information for such appointments should not be included in this event’s processing (other events like the S15 or S17 should still be used for this purpose). This trigger event should only be used for appointments that have not been completed, or for parent appointments whose children have not been completed.
+____
+

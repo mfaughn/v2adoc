@@ -1,0 +1,4 @@
+==== 2A.2.41.1 Quantity (NM)
+
+Definition: The first component is a quantity.
+

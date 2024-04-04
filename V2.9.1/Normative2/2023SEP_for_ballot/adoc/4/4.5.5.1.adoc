@@ -1,0 +1,4 @@
+==== 4.5.5.1 TQ2-1 Set ID – TQ2 (SI) 01648
+
+Definition: For the first timing specification transmitted, the sequence number shall be 1; for the second timing specification, it shall be 2; and so on.
+

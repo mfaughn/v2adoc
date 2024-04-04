@@ -1,0 +1,4 @@
+==== 4A.4.4.16 RXE-16 Number of Refills Remaining (NM) 00326
+
+Definition: Number of refills remaining. This field is conditional because it is required when a prescription is dispensed to an outpatient. It is not relevant to inpatient treatment orders.
+

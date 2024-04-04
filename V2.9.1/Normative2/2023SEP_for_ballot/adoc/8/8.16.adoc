@@ -1,0 +1,3 @@
+== 8.16 OUTSTANDING ISSUES
+
+We invite proposals for the specification of other HL7-wide master files segments.

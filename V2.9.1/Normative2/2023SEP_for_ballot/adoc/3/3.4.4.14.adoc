@@ -1,0 +1,4 @@
+==== *3.4.4.14* PV2-14 Previous Service Date (DT) 00715
+
+Definition: This field contains the date of previous service for the same recurring condition. This may be a required field for billing certain illnesses (e.g., accident related) to a third party.
+

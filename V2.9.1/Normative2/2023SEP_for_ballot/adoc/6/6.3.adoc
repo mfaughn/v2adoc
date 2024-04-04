@@ -1,0 +1,8 @@
+== 6.3 PATIENT ACCOUNTING MESSAGE SET
+
+The patient accounting message set provides for the entry and manipulation of information on billing accounts, charges, payments, adjustments, insurance, and other related patient billing and accounts receivable information.
+
+This Standard includes all of the data defined in the National Uniform Billing Field Specifications. We have excluded state-specific coding and suggest that, where required, it be implemented in site-specific "Z" segments. State-specific fields may be included in the Standard at a later time. In addition, no attempt has been made to define data that have traditionally been required for the financial responsibility ("proration") of charges. This requirement is unique to a billing system and not a part of an interface.
+
+We recognize that a wide variety of billing and accounts receivable systems exist today. Therefore, in an effort to accommodate the needs of the most comprehensive systems, we have defined an extensive set of transaction segments.
+

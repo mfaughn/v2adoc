@@ -1,0 +1,4 @@
+=== 16.3.15 EHC^E30 – Submit Health Document related to Authorization Request (event E30) 
+
+Not yet defined.
+

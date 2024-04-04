@@ -1,0 +1,4 @@
+==== 12.4.2.8 PRB-8 Anticipated Problem Resolution Date/Time (DTM) 00843
+
+Definition: This field contains the estimated date/time for resolving the stated problem.
+

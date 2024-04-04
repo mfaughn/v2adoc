@@ -1,0 +1,4 @@
+==== 13.3.2.1 ISD-1 Reference Interaction Number (NM) 01326
+
+Definition: This number uniquely identifies the interaction. If the interaction is performed as the result of a previous command, then the Reference Command Number should be used. (See _13.3.5.1_, "_ECD-1 Reference Command Number (NM) 01390_.")
+

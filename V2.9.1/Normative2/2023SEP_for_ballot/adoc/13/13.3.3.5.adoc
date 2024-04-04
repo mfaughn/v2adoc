@@ -1,0 +1,6 @@
+==== 13.3.3.5 SAC-5 Equipment Container Identifier (EI) 01333
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field identifies the container in a particular device (e.g., one container in a carousel or rack of containers within an analyzer, analyzer specific bar code mapping, etc.).
+

@@ -1,0 +1,4 @@
+==== 2A.2.17.2 Effective Date (DTM)
+
+Definition: Specifies the date on which the patient was discharged to a healthcare facility.
+

@@ -1,0 +1,6 @@
+==== 8.8.15.4 OM7-4 Category Description (TX) 01482
+
+Definition: This field contains a text description for the category of the test/service item.
+
+Example: The category "Pathology" may be described as a specialty practice concerned with all aspects of disease, with special reference to the essential natural cause and development of abnormal conditions, as well as the structural and functional changes that result from the disease process.
+

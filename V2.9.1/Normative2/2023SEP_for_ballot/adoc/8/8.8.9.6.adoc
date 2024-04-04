@@ -1,0 +1,4 @@
+==== 8.8.9.6 OM1-6 Observation Description (TX) 00591
+
+Definition: This field contains a text description of this observation.
+

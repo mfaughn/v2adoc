@@ -1,0 +1,4 @@
+==== 2A.2.12.2 Unit of Measure Identifier (ST) 
+
+Definition: The unit designation for the channel sensitivity. This field is required if the unit of measure description is not present.
+

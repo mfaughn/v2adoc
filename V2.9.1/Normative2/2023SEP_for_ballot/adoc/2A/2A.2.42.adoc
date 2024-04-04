@@ -1,0 +1,15 @@
+=== 2A.2.42 MOC - money and charge code 
+
+HL7 Component Table - MOC – Money and Code
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |MO |O | |Monetary Amount | |2A.2.41
+|2 | | |CWE |O | |Charge Code | |2A.2.13
+|===
+
+Definition: Transmits monetary information and the associated charge code for services performed.
+
+*Note:* Replaces the CM data type used in sections 4.5.3.23 OBR-23 and 7.4.1.23- OBR-23 as of v 2.5.
+

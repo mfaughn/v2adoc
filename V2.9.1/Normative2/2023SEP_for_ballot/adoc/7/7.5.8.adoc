@@ -1,0 +1,106 @@
+=== 7.5.8 Patient-connected medical device reporting
+
+Information acquired from patient-connected medical devices may be relatively simple, such as monitored values from a pulse-oximeter or infusion pump, or highly complex and rich such as comprehensive data from a multi-parameter physiological monitor or ventilator. In acute care contexts, many devices may be associated with a single patient and are often added and removed during an episode of care. Though point-of-care devices typically use non-HL7 protocols for their communication interfaces, data acquired from these devices are often aggregated and periodically published to enterprise applications using an HL7-based interface.
+
+In order to enhance interoperability between point-of-care medical device systems and enterprise applications, there have been a number of collaborative projects to establish a consistent mapping of information acquired from these devices to HL7 messages. This clause provides an overview and examples of such a project by the IHE Patient Care Device ("PCD") groupfootnote:[Information on Integrating the Healthcare Enterprise (“IHE”), including PCD message profiles are available at http://www.IHE.net[www.IHE.net].] that defines a consistent mapping from specialized device semantics to HL7 messages.
+
+Standardized representation of device semantics is provided by the ISO/IEEE 11073 ("X73") family of standards. Specifically the ISO/IEEE 11073-10101 standardfootnote:[Additional ISO/IEEE 11073-1010x standards may be used to represent abstract device semantics, such as ISO/IEEE 11073-10102 Annotated ECG.] provides a nomenclature or terminology for the representation of device information and is referenced in file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[_HL7 Table 0396 – Coding System_] as "MDC."
+
+Additionally, a device-specific information model is defined, ISO/IEEE 11073-10201 Domain Information Model ("DIM"), to support the specialized, real-time communication needs of medical devices. The following diagram presents a simplified example of the X73 objects in which a given observation or Metric::Numeric are contained. The MDS, VMD, and Channel objects provide the information that is often necessary to identify specific devices and their configuration (e.g., serial numbers or internal time settings), as well as the association of data items that come from the same device subsystem (VMD or Channel) and shouldn't be confused with other observations that may have the same identifier.
+
+image:extracted-media/media/image1.emf[extracted-media/media/image1]
+
+Figure 7-5 Basic ISO/IEEE 11073-10201 Containment Tree
+
+The IHE PDC Device-to-Enterprise ("DEC") profile defines a single HL7 message, ORU^R01, that maps X73 abstract device semantics to specific message segments and fields. The message specification includes the following:
+
+• Device terms should be communicated using their "MDC" code within and among devices. Between devices and medical record systems other standard vocabulary, e.g., LOINC (emerging as the global standard) and SNOMED, may be used.
+
+• Units of measurement may be either those defined in the ISO/IEEE 11073-10101 Nomenclature, or UCUM. Carrying both is recommended.
+
+• Devices and device-related applications and systems are identified using the 64-bit IEEE EUI-64 identifier (Table 0301) that is specified in the X73 standards.
+
+• OBX-4 is used with a dotted nomenclaturefootnote:[See section 7.4.2.5 OBX-4 Observation Sub-ID discussion, including Figure 7-4 Example of sub‑identifier usage.] to indicate containment of specific measurements within Channels, Virtual Medical Devices and Medical Device Systems.
+
+Complete details of this message profile are defined in the IHE PCD DEC framework. The following message examples illustrate how device information is communicated using this profile.
+
+____
+*Message Example from a Single Simple Device*
+____
+
+MSH|^~\&|PAT_DEVICE_PUMPCO^0012210000000001^EUI-64|PUMPCO|CIS_HITCO|HITCO|20071204153604-0600||ORU^R01^ORU_R01|11|P|2.8|||NE|AL||ASCII|EN^English^ISO659||IHE PCD ORU-R01 2006^HL7^2.16.840.1.113883.9.n.m^HL7
+
+PID|||CD60002^^^IHE^PI||Darwin^Charles^^^^^L|Emerine|19620101000000-0600|M
+
+PV1||I|3 West ICU^3002^1
+
+OBR|0|AB12345^HL7^ACDE48234567ABCD^EUI-64|CD12345^HL7^ACDE48234567ABCD^EUI-64|69985^MDC_DEV_PUMP_INFUS_MDS^MDC|||20071204153602-0600
+
+OBX|1||69985^MDC_DEV_PUMP_INFUS_MDS^MDC|1000002.0.0.0|||||||X|||||N60002||^^A0002^PUMPCO
+
+OBX|2||69986^MDC_DEV_PUMP_INFUS_VMD^MDC|1000002.1.0.0|||||||X
+
+OBX|3||126978^MDC_DEV_PUMP_INFUS_CHAN_DELIVERY^MDC|1000002.1.1.0|||||||X
+
+OBX|4||126977^MDC_DEV_PUMP_INFUS_CHAN_SOURCE^MDC|1000002.1.2.0|||||||X
+
+OBX|5||126977^MDC_DEV_PUMP_INFUS_CHAN_SOURCE^MDC|1000002.1.3.0|||||||X
+
+OBX|6|NM|68063^MDC_ATTR_PT_WEIGHT^MDC|1000002.0.0.2|95.0|1731^kg^UCUM^263875^MDC_DIM_X_KILO_G^MDC|||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|7|ST|184504^MDC_PUMP_MODE^MDC|1000002.1.1.101|pump-mode-drug-dosing||||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|8|ST|184508^MDC_PUMP_STAT^MDC|1000002.1.1.102|pump-status-infusing||||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|9|NM|157784^MDC_FLOW_FLUID_PUMP^MDC|1000002.1.1.103|24.9|3122^mL/h^UCUM^265266^MDC_DIM_MILLI_L_PER_HR^MDC|||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|10|NM|157784^MDC_FLOW_FLUID_PUMP^MDC|1000002.1.2.201|24.9|3122^mL/h^UCUM^265266^MDC_DIM_MILLI_L_PER_HR^MDC|||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|11|NM|157872^MDC_VOL_FLUID_TBI_REMAIN^MDC|1000002.1.2.202|250.0|1618^mL^UCUM^263762^MDC_DIM_MILLI_L^MDC|||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|12|NM|157916^MDC_TIME_PD_REMAIN^MDC|1000002.1.2.203|601|2208^min^UCUM^264352^MDC_DIM_MIN^MDC|||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|13|ST|184330^MDC_DRUG_NAME_TYPE^MDC|1000002.1.2.204|DOPamine||||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|14|NM|157760^MDC_CONC_DRUG^MDC|1000002.1.2.205|1.6|2162^mg/mL^UCUM^264306^MDC_DIM_MILLI_G_PER_ML^MDC|||||R|||20071204153602-0600|||||20071204153602-0600
+
+OBX|15|NM|157924^MDC_RATE_DOSE^MDC|1000002.1.2.206|7.00|3475^ug/kg/min^UCUM^265619^MDC_DIM_MICRO_G_PER_KG_PER_MIN^MDC|1-20||||R|||20071204153602-0600|||||20071204153602-0600
+
+____
+*Message Example for Multiple Devices*
+____
+
+MSH|^~\&|CIS_HITCO ^ACDE48234567ABCD^EUI-64||||20061220214210-0500||ORU^R01^ORU_R01|D1220214210609b5f9aa|P|2.8|||NE|AL
+
+PID|||LM60005^^^Health IT Co^PI||Montgomery^Larry^^^^^L||19560101000000|M
+
+PV1||I|UNIT_1^^Bed1
+
+OBR|1|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|69640^MDC_DEV_ANALY_SAT_O2^MDC|||20061220213500
+
+OBX|1|NM|150456^MDC_PULS_OXIM_SAT_O2^MDC|1.1.1.150456|99|262688^MDC_DIM_PERCENT^MDC||N|||F|||20061220213500
+
+OBR|2|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|69636^MDC_DEV_ANALY^MDC|||20061220213500
+
+OBX|1|NM|147842^MDC_ECG_HEART_RATE^MDC|1.1.1.147842|133|264864^MDC_DIM_BEAT_PER_MIN^MDC||A|||F|||20061220213500
+
+OBR|3|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|69708^MDC_DEV_ANALY_PRESS_BLD^MDC|||20061220213500
+
+OBX|1|NM|150037^MDC_PRESS_BLD_ART_ABP_SYS^MDC|1.1.1.150037|126|266016^MDC_DIM_MMHG^MDC||N|||F|||20061220213500
+
+OBX|2|NM|150038^MDC_PRESS_BLD_ART_ABP_DIA^MDC|1.1.1.150038|76|266016^MDC_DIM_MMHG^MDC||N|||F|||20061220213500
+
+OBX|3|NM|150039^MDC_PRESS_BLD_ART_ABP_MEAN^MDC|1.1.1.150039|92|266016^MDC_DIM_MMHG^MDC||N|||F|||20061220213500
+
+OBR|4|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|69708^MDC_DEV_ANALY_PRESS_BLD^MDC|||20061220213500
+
+OBX|1|NM|150087^MDC_PRESS_BLD_VEN_CENT_MEAN^MDC|1.1.1.150087|12|266048^MDC_DIM_CM_H2O^MDC||N|||F|||20061220213500
+
+OBR|5|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|D1220214210609b5f9aa^CIS_HITCO^ACDE48234567ABCD^EUI-64|69708^MDC_DEV_ANALY_PRESS_BLD^MDC|||20061220213500
+
+OBX|1|NM|150045^MDC_PRESS_BLD_ART_PULM_SYS^MDC|1.1.1.150045|26|266016^MDC_DIM_MMHG^MDC||A|||F|||20061220213500
+
+OBX|2|NM|150046^MDC_PRESS_BLD_ART_PULM_DIA^MDC|1.1.1.150046|9|266016^MDC_DIM_MMHG^MDC||A|||F|||20061220213500
+
+OBX|3|NM|150047^MDC_PRESS_BLD_ART_PULM_MEAN^MDC|1.1.1.150047|14|266016^MDC_DIM_MMHG^MDC||A|||F|||20061220213500
+

@@ -1,0 +1,4 @@
+==== 13.3.12.3 EQP-3 Start Date/Time (DTM) 01202
+
+Definition: This field is the date/time that the event started.
+

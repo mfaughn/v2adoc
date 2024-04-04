@@ -1,0 +1,4 @@
+==== 2A.2.90.4 Suffix (ST)
+
+Definition: Used to specify a name suffix (e.g., Jr. or III).
+

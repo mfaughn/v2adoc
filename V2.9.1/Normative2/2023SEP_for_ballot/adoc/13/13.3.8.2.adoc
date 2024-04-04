@@ -1,0 +1,4 @@
+==== 13.3.8.2 CNS-2 Ending Notification Reference Number (NM) 01403
+
+Definition: This field contains the ending notification reference number that is to be cleared. If empty, then only notification with Starting Notification Reference Number will be cleared.
+

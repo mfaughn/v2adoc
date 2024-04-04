@@ -1,0 +1,4 @@
+===== 3.6.2.1.5 Source and target identifiers
+
+Merge, move, and change events reference target and source identifiers. The incorrect source identifier is specified in the MRG segment. The correct target identifier is identified in the PID or PV1 segment. For example, when you are changing a patient account number the source would be _MRG-3 - Prior Patient Account Number_. The target is _PID-18 - Patient Account Number_.
+

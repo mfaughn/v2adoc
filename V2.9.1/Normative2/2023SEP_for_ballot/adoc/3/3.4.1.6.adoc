@@ -1,0 +1,4 @@
+==== *3.4.1.6* EVN-6 Event Occurred (DTM) 01278
+
+Definition: This field contains the date/time that the event actually occurred. For example, on a transfer (A02 transfer a patient), this field would contain the date/time the patient was actually transferred. On a cancellation event, this field should contain the date/time that the event being cancelled occurred.
+

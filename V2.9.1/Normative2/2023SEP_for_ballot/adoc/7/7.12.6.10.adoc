@@ -1,0 +1,4 @@
+==== 7.12.6.10 FAC-10 Signature Authority Title (ST) 01271
+
+Definition: This field contains the title of the individual with signature authority or who is responsible for this report.
+

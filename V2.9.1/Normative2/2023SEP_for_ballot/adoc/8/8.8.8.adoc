@@ -1,0 +1,59 @@
+=== 8.8.8 MFN/MFK – Master File Notification – Test/Observation (Payer) (Event M18)
+
+MFN^M18^MFN_M18: Master File Notification – Test/Observation (Payer)
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|\{ |--- MF_PAYER begin | |
+|link:#MFE[MFE] |Master File Entry | |8
+|\{ |--- PAYER_MF_ENTRY begin | |
+|PM1 |link:#pm1-payer-master-file-segment[Payer Master File] | |8
+|\{ |--- PAYER_MF_COVERAGE begin | |
+|link:#OM7[MCP] |link:#mcp-master-file-coverage-policy-segment[Master File Coverage Policy] | |8
+|[\{ DPS }] |link:#dps-diagnosis-and-procedure-code-segment[Diagnosis and Procedure] | |8
+|} |--- PAYER_MF_COVERAGE end | |
+|} |--- PAYER_MF_ENTRY end | |
+|} |--- MF_PAYER end | |
+|===
+
+[width="100%",cols="17%,21%,4%,16%,21%,21%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M18^MFN_M18 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M18^ACK |- |ACK^M18^ACK
+|Application Ack |MFK^M18^MFK_M01 |- |- |MFK^M18^MFK_M01 |MFK^M18^MFK_M01
+|===
+
+MFK^M18^MFK_M01: Master File Application Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK segment | |8
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M18^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^M18^ACK
+|Application Ack |- |- |-
+|===
+

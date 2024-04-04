@@ -1,0 +1,8 @@
+==== 8.10.3.15 PRC-15 Chargeable Flag (ID) 01008
+
+Definition: This field contains a chargeable indicator. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values.
+
+N charge is not billable, that is, do not create charges for this CDM entry; this is zero price item
+
+Y item is billable (this is also the default when NULL)
+

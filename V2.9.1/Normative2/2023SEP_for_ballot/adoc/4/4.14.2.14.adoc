@@ -1,0 +1,4 @@
+==== 4.14.2.14 BPX-14 BP Quantity (NM) 01727
+
+Definition: This field indicates the number of blood components or commercial products to which this message refers.
+

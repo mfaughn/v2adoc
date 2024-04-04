@@ -1,0 +1,8 @@
+==== 12.4.1.5 GOL-5 Episode of Care ID (EI) 00820
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field uniquely identifies the episode of care to which this goal applies. See note under "Ongoing issues."
+
+*Note*: Based on application use, this field is required to be unique over time.
+

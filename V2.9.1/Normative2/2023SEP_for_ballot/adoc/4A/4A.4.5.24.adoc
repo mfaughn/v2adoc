@@ -1,0 +1,4 @@
+==== 4A.4.5.24 RXD-24 Dispense Package Method (ID) 01222
+
+Definition: This field contains the method by which treatment is dispensed. Refer To file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70321[_HL7 Table 0321 - Dispense Method_] in Chapter 2C, Code Tables, for valid values.
+

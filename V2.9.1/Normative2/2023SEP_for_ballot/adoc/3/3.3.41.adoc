@@ -1,0 +1,71 @@
+=== 3.3.41 ADT/ACK - Merge Account - Patient Account Number (Event A41)
+
+A merge has been done at the account identifier level. That is, two _PID-18 - Patient Account Number_ identifiers have been merged into one.
+
+An A41 event is used to signal a merge of records for an account that was incorrectly filed under two different account numbers. The "incorrect source patient account number" identified in the MRG segment (_MRG-3 - Prior Patient Account Number_) is to be merged with the "correct target patient account number" identified in the PID segment (_PID-18 - Patient Account Number_). The "incorrect source patient account number" would then logically never be referenced in future transactions. It is noted that some systems may still physically keep this "incorrect identifier" for audit trail purposes or other reasons associated with database index implementation requirements.
+
+The patient account numbers involved may or may not have visits. An A41 (merge account-patient account number) is intended for merging account records without merging other subordinate identifiers. Any other subordinate identifiers that were previously associated with the "incorrect source account number" are now associated with the required "correct target account number." Specification of these other subordinate identifiers is not required.
+
+This event and the message syntax do, however, allow for the specification of any other "new subordinate identifiers" (in addition to the _PID-18 - Patient Account Number_ identifier). For those environments that may require changes to these other subordinate identifiers because of this A41 (merge account-patient account number) event, it is required that the old and new identifiers be a "tightly coupled" pair.
+
+Each superior identifier associated with this account identifier level should have the same value in both the PID and MRG segments.
+
+See sections link:#merging-patientperson-information[_3.6.2_], "link:#merging-patientperson-information[_Merging patient/person information_]," and link:#merge[_3.6.2.1.2_], "link:\l[_Merge_]," for a discussion of issues related to the implementation of merge messages.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. When other fields change, it is recommended that the A08 (update patient information) event be used in addition
+
+ADT^A41^ADT_A39: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|\{ |--- PATIENT begin | |
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[ link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|link:#MRG[MRG] |Merge Information | |3
+|[ link:#_Hlt479197572[PV1]] |Patient Visit | |3
+|} |--- PATIENT end | |
+|===
+
+[width="100%",cols="19%,25%,5%,17%,17%,17%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A41^ADT_A39 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A41^ACK |- |ACK^A41^ACK
+|Application Ack |ADT^A41^ADT_A39 |- |- |ACK^A41^ACK |ACK^A41^ACK
+|===
+
+ACK^A41^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="23%,37%,6%,34%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A41^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A41^ACK
+|Application Ack |- |- |-
+|===
+

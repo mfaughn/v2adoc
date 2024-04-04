@@ -1,0 +1,4 @@
+==== 10.6.1.12 ARQ-12 Priority-ARQ (ST) 00871
+
+Definition: This field contains the urgency of the request. The definition of this field is equivalent to the definition of TQ1-9 in the Order Entry chapter (Chapter 4), "Priority" component."
+

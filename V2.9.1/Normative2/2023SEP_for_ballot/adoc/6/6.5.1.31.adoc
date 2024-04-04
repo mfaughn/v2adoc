@@ -1,0 +1,4 @@
+==== 6.5.1.31 FT1-31 Transaction Reference Key (SI) 01847
+
+Definition: The reference key linking the payment to the corresponding charge in an e-claim. This field should contain the link:#ft1-1-set-id-ft1-si-00355[_FT1-1 - Set ID FT1_] that identifies the charge corresponding to the payment. This field is repeating to allow a payment to be posted against multiple charges.
+

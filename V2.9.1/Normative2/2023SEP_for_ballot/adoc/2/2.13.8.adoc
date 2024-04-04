@@ -1,0 +1,19 @@
+=== 2.13.8 MSA ‑ Message Acknowledgment segment
+
+The MSA segment contains information sent while acknowledging another message.
+
+HL7 Attribute Table - MSA[#MSA .anchor]#### - Message Acknowledgment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |2..2 | |ID |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70008[0008] |00018 |Acknowledgment Code
+|2 |1..199 |199= |ST |R | | |00010 |Message Control ID
+|3 | | | |W | | |00020 |Text Message
+|4 | | |NM |O | | |00021 |Expected Sequence Number
+|5 | | | |W | | |00022 |Delayed Acknowledgment Type
+|6 | | | |W | | |00023 |Error Condition
+|7 | | |NM |O | | |01827 |Message Waiting Number
+|8 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70520[0520] |01828 |Message Waiting Priority
+|===
+

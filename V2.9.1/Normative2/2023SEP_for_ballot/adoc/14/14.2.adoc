@@ -1,0 +1,8 @@
+== 14.2 Introduction
+
+The information in this chapter was relocated from Appendix C as of v2.4 of the standard. It had previously been entitled Network Management, and has been renamed to more accurately describe the purpose of the messages described herein. This chapter does not specify a protocol for managing networks, á la TCP/IP SNMP. Rather, its messages provide a means to manage HL7-supporting applications over a network.
+
+Because this chapter was originally named "Network Management," the messages and segments have labels beginning with the letter "N." These labels are retained for backward compatibility.
+
+As a technical chapter, this information is now normative with respect to the HL7 standard. It is anticipated that additional messages and message content will be added to this chapter in the near future.
+

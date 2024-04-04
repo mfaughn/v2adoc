@@ -1,0 +1,43 @@
+=== 2A.2.7 CF - coded element with formatted values
+
+As of v2.7 a third tuple, formerly known as triplet, has been added to the CF data type. Additionally, 3 new components were added to each tuple such that each tuple now has a total of 7 components. The Original Text component applies to the CF as a whole.
+
+HL7 Component Table - CF – Coded Element with Formatted Values
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |20= |ST |O | |Identifier | |2A.2.76
+|2 | | |FT |O | |Formatted Text | |2A.2.31
+|3 |1..12 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Name of Coding System | |2A.2.35
+|4 | |20= |ST |O | |Alternate Identifier | |2A.2.76
+|5 | | |FT |O | |Alternate Formatted Text | |2A.2.31
+|6 |1..12 | |ID |C |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Name of Alternate Coding System | |2A.2.35
+|7 | |10= |ST |C | |Coding System Version ID | |2A.2.76
+|8 | |10= |ST |O | |Alternate Coding System Version ID | |2A.2.76
+|9 | |199# |ST |O | |Original Text | |2A.2.76
+|10 | |20= |ST |O | |Second Alternate Identifier | |2A.2.76
+|11 | | |FT |O | |Second Alternate Formatted Text | |2A.2.76
+|12 |1..12 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70396[0396] |Name of Second Alternate Coding System | |2A.2.35
+|13 | |10= |ST |C | |Second Alternate Coding System Version ID | |2A.2.76
+|14 | |199= |ST |C | |Coding System OID | |2A.2.76
+|15 | |199= |ST |O | |Value Set OID | |2A.2.76
+|16 | |8= |DTM |C | |Value Set Version ID | |2A.2.76
+|17 | |199= |ST |C | |Alternate Coding System OID | |2A.2.76
+|18 | |199= |ST |O | |Alternate Value Set OID | |2A.2.76
+|19 | |8= |DTM |C | |Alternate Value Set Version ID | |2A.2.76
+|20 | |199= |ST |C | |Second Alternate Coding System OID | |2A.2.76
+|21 | |199= |ST |O | |Second Alternate Value Set OID | |2A.2.76
+|22 | |8= |DTM |C | |Second Alternate Value Set Version ID | |2A.2.76
+|===
+
+*Note:* The Vocabulary TC is the steward of the CF data type.
+
+Definition: This data type transmits codes and the formatted text associated with the code. This data type can be used to transmit for the first time the formatted text for the *canned text* portion of a report, for example, a standard radiological description for a normal chest X‑ray. The receiving system can store this information and in subsequent messages only the identifier need be sent. Another potential use of this data type is transmitting master file records that contain formatted text. This data type has six components as follows:
+
+The components, primary and alternate, are defined exactly as in the CE data type with the exception of the second and fifth components, which are of the formatted text data type.
+
+Example:
+
+OBX||CF|71020^CXR^99CPMC||79989^\H\Description:\N\\.sp\\ti+4\Heart is not enlarged. There is no evidence of pneumonia, effusion, pneumothorax or any masses. \.sp+3\\H\Impression:\N\\.sp\\.ti+4\Negative chest.^99CPMC
+

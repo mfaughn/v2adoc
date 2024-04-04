@@ -1,0 +1,4 @@
+==== 8.9.5.7 LDP-7 Activation Date - LDP (DTM) 00969
+
+Definition: This field contains the date and time when the location became active or "in service" for a department (disregarding whether it is waiting to be maintained by housekeeping).
+

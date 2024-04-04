@@ -1,0 +1,6 @@
+==== 12.4.5.3 REL-3 This Relationship Instance Identifier (EI) 02242
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the instance identifier of this relationship.
+

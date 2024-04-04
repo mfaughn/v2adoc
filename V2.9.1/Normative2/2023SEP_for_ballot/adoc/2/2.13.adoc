@@ -1,0 +1,32 @@
+== 2.13 Message Control Segments
+
+The following segments are necessary to support the functionality described in this chapter.
+
+*Note*: The HL7 message construction rules define the standard HL7 encoding rules, creating variable length delimited messages from the segments defined below. Although only one set of encoding rules is defined as a standard in HL7 Version 2.3, other encoding rules are possible (but since they are non-standard, they MAY only used by a site-specific agreement).
+
+The segments in this section are listed in alphabetical order. The following chart shows a summary of the segments listed by category.
+
+Figure 2-8. HL7 message segments
+
+[width="100%",cols="26%,38%,36%",options="header",]
+|===
+|Segment Category |Segment Name |HL7 Section Reference
+|Control | |
+| |ADD |2.13.1
+| |BHS |2.13.2
+| |BTS |2.13.3
+| |DSC |2.13.4
+| |ERR |2.13.5
+| |FHS |2.13.6
+| |FTS |2.13.7
+| |MSA |2.13.8
+| |MSH |2.13.9
+|General Purpose | |
+| |NTE |2.13.10
+| |OVR |2.13.10.5
+| |SFT |2.13.12
+| |SGH |2.13.13
+| |SGT |2.13.14
+| |UAC |link:#_UAC_-_User_Authentication Credentia[2.13.15]
+|===
+

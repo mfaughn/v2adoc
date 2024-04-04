@@ -1,0 +1,4 @@
+==== 17.5.2.8 ITM-8 Manufacturer Name (ST) 02275
+
+Definition: This field identifies the name of the manufacturer of the manufacturer identified in ITM-7.
+

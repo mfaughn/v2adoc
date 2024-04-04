@@ -1,0 +1,23 @@
+=== 2A.2.10 CP - composite price
+
+HL7 Component Table - CP – Composite Price
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |MO |R | |Price | |2A.2.41
+|2 |1..2 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70205[0205] |Price Type | |2A.2.35
+|3 | |= |NM |O | |From Value | |2A.2.47
+|4 | |= |NM |O | |To Value | |2A.2.47
+|5 | | |CWE |C | |Range Units | |2A.2.13
+|6 |1..1 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70298[0298] |Range Type | |2A.2.35
+|===
+
+*Note:* This data type is often used to define a repeating field within a given segment.
+
+Example:
+
+|100.00&USD^UP^0^9^min^P~50.00&USD^UP^10^59^min^P~10.00&USD^UP^60^999^P~50.00&USD^AP~200.00&USD^PF
+
+~80.00&USD^DC|
+

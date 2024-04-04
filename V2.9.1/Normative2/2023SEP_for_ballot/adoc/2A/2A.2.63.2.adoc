@@ -1,0 +1,4 @@
+==== 2A.2.63.2 Sex (CWE)
+
+Definition: This component specifies the clinically relevant sex for which the reference range is valid. This may be the Sex Parameter for Clinical Use concept (refer to _file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70001[User-defined Table 0828 –Sex] Parameter for Clinical Use_ in Chapter 2C for suggested values) or some other representation of a clinically relevent sex. For backwards compatibility purposes only, implementers may also refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70001[_User-defined Table 0001 – Administrative Sex_] in Chapter 2C for additional valuesBecause multiple tables may potentially be used in this component, inclusion of the Name of the Coding System component of the CWE data type is critical so that the receiving system can appropriately interpret the received code.
+

@@ -1,0 +1,20 @@
+=== 7.16.3 PAC – Shipment Package Segment
+
+The intent of this segment is to describe the information associated with the shipping package specimens are sent in.
+
+HL7 Attribute Table – PAC – Shipment Package
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 |1..4 | |SI |R |N | |02350 |Set Id – PAC
+|2 | | |EI |C |N | |02351 |Package ID
+|3 | | |EI |O |N | |02352 |Parent Package ID
+|4 | | |NA |O |N | |02353 |Position in Parent Package
+|5 | | |CWE |R |N |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70908[0908] |02354 |Package Type
+|6 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70544[0544] |02355 |Package Condition
+|7 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70376[0376] |02356 |Package Handling Code
+|8 | | |CWE |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70489[0489] |02357 |Package Risk Code
+|9 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[0206] |00816 |Action Code
+|===
+

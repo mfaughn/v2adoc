@@ -1,0 +1,4 @@
+==== 8.9.5.9 LDP-9 Inactivated Reason (ST) 00971
+
+Definition: This field contains the reason the location was put out of service. It is used when _LDP-8 - Inactivation Date-LDP_ is sent.
+

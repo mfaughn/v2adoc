@@ -1,0 +1,4 @@
+==== 6.5.9.9 ACC-9 Brought in By (ST) 01504
+
+Definition: This field identifies the person or organization that brought in the patient.
+

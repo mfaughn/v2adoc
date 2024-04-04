@@ -1,0 +1,22 @@
+=== 17.5.4 VND – Purchasing Vendor Segment
+
+This segment contains purchasing vendors that supply the inventory supply item specified in the ITM segment.
+
+HL7 Attribute Table – VND – Purchasing Vendor
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |02217 |Set Id – VND
+|2 | | |EI |R | | |02218 |Vendor Identifier
+|3 | |999= |ST |O | | |02276 |Vendor Name
+|4 | | |EI |O | | |02219 |Vendor Catalog Number
+|5 | | |CNE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70532[0532] |02220 |Primary Vendor Indicator
+|6 | | |EI |O |Y | |02420 |Corporation
+|7 | | |XCN |O | | |02421 |Primary Contact
+|8 | | |MOP |O | | |02422 |Contract Adjustment
+|9 | | |EI |O |Y | |02423 |Associated Contract ID
+|10 | | |ST |O |Y | |02424 |Class of Trade
+|11 | | |CWE |O | | |02425 |Pricing Tier Level
+|===
+

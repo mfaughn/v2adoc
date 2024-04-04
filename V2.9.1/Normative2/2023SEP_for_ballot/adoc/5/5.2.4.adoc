@@ -1,0 +1,14 @@
+=== 5.2.4 Response format
+
+The first decision a data owner SHALL make in formulating a query is to decide which style of representing data is most appropriate for their needs.
+
+[width="100%",cols="19%,81%",]
+|===
+|HL7 recognizes three main styles of representing responses to queries: *_tabular, segment pattern, or display_*. _Segment pattern_ and _tabular_ were previously known as _record-oriented_ as described in earlier versions of this Standard. _Segment pattern_ responses consist of a set of HL7 segments. Each query will define, in its Query Profile, the precise grammar of HL7 segments that it will return. Tabular responses return data as a set of rows, one RDT segment per row. Display queries return data in DSP segments. An HL7 conformant system interested in supporting queries will choose one or more of these styles before proceeding with a detailed design. |
+|Tabular |The responding system formats the data in a relational format, as rows and columns.
+|Segment pattern |The responding system formats the data on the basis of an application-specific segment-oriented (record-oriented) message.
+|Display |The responding system formats the data in human readable format for direct outputting to a display device (in both original and enhanced modes).
+|===
+
+These structures support all original mode and enhanced mode responses, as well as the Conformance Based Queries.
+

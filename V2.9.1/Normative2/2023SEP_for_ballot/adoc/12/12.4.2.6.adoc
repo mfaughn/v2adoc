@@ -1,0 +1,4 @@
+==== 12.4.2.6 PRB-6 Problem List Priority (NM) 00841
+
+Definition: This field prioritizes this problem on a list that is maintained for the individual.
+

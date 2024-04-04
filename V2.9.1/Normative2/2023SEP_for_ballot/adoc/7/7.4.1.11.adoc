@@ -1,0 +1,4 @@
+==== 7.4.1.11 OBR-11 Specimen Action Code (ID) 00245
+
+Definition: This field identifies the action to be taken with respect to the specimens that accompany or precede this order. The purpose of this field is to further qualify (when appropriate) the general action indicated by the order control code contained in the accompanying ORC segment. For example, when a new order (ORC – "NW") is sent to the lab, this field would be used to tell the lab whether or not to collect the specimen ("L" or "O"). Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70065[_HL7 Table 0065 – Specimen Action Code_] in Chapter 2C, Code Tables, for valid values.
+

@@ -1,0 +1,6 @@
+==== *3.4.21.3* GSC-3 GSC Instance Identifier (EI) 02524
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (ST)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the value that uniquely identifies a single GSC declaration for an individual. This field is conditionally required when the Action Code in GSC-2 indicates data is not being sent in Snapshot Mode (valued “S”).
+

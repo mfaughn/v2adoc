@@ -1,0 +1,4 @@
+==== 4A.4.6.2 RXG-2 Dispense Sub-ID Counter (NM) 00334
+
+Definition: This is the dispense sub-ID to which this give message is related.
+

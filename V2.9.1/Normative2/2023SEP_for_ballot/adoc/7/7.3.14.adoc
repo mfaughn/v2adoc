@@ -1,0 +1,122 @@
+=== 7.3.14 ORU – Unsolicited Device Event Observation Message (Event R42) 
+
+The R42 trigger event is used for observation reports that identify a device-sourced event (e.g., transition on an infusion pump between primary and secondary modes of operation) that is relevant to clinical workflow but that does not require a response from a clinician or clinical management system (in which case, an R40 alert message should be used). These events are episodic (vs. periodic), require low latency and appropriate prioritized handling (i.e., should be communicated immediately after the event is signaled), and typically require low transmission bandwidth. R42 messages do not need to provide for an application level response, as does the ORU^R40 message (via the ORA^R41 message).
+
+Use examples of this message include:
+
+____
+• Electronic medication administration record (eMAR) systems that record the pre-programmed transition event of an infusion pump between primary and secondary operational modes, or when it is manually paused and then restarted;
+
+• Clinical decision support systems (CDSS) that track a patient’s progress by monitoring, among other events, ventilator transitions from the primary operational mode to a backup mode (e.g., patient triggered to fully mechanical breaths);
+
+• Clinical information systems that note an event when a patient’s physiological monitor is placed into Standby Mode;
+
+• Computerized Maintenance Management Systems (CMMS) records usage events and technical (non-alert) maintenance events to determine when a piece of equipment should be evaluated for proper operation.
+____
+
+In contrast to ORU^R42, the ORU^R01 message is typically used to periodically report “bulk” or full-disclosure device data that may include event information, albeit not reported in a timely manner and in a way that requires more processing to identify. As mentioned, the ORU^R40 message supports a class of episodic events, but focuses on those alerts and alarms that require some level of clinical response to resolve. The ORU^R42 message explicitly does not require clinical action to be taken in response to receipt of the message.
+
+The OBX-8 field for these messages should be left blank or set to “N” for normal. Any abnormal or other non-normal indications should result in usage of the ORU^R40 message.
+
+The ORU^R40 message is outside of the order-fulfilling cycle of the ORU and OUL messages with other trigger events, and is supplemental to those order-fulfilling observations. As such, the results conveyed in the ORU^R40 message do not replace, edit, or override the results of messages with other trigger events.
+
+ORU^R42^ORU_R01: Observation Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ARV}] |Access Restrictions | |3 | |
+|[\{ SFT }] |Software Segment | |2 | |
+|[UAC] |User Authentication Credential | |2 | |
+|\{ |--- PATIENT_RESULT begin | | | |
+|[ |--- PATIENT begin | | | |
+|PID |Patient Identification | |3 | |
+|[PD1] |Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient) | |7 | |
+|[\{link:#OH1[OH1]}] |Employment Status | |3 | |
+|[\{link:#OH2[OH2]}] |Past or Present Job | |3 | |
+|[link:#OH3[OH3]] |Usual Work | |3 | |
+|[\{link:#OH4[OH4]}] |Combat Zone Work | |3 | |
+|[\{NTE}] |Notes and Comments | |2 | |
+|[\{ |--- NEXT_OF_KIN begin | | | |
+|NK1 |Next of Kin/Associated Parties | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{OH2}] |Past or Prsent Job | |3 | |
+|[OH3] |Usual Work | |3 | |
+|}] |--- NEXT_OF_KIN end | | | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 | |
+|[\{ |--- PATIENT_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation (for Patient ID) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|}] |--- PATIENT_OBSERVATION end | | | |
+|[ |--- VISIT begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[PV2] |Patient Visit – Additional Info | |3 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Patient Visit) | |7 | |
+|] |--- VISIT end | | | |
+|[\{ |--- INSURANCE begin | | | |
+|IN1 |Insurance | |6 | |
+|[IN2] |Insurance Additional Information | |6 | |
+|[IN3] |Insurance Additional Information, Certification | |6 | |
+|}] |--- INSURANCE end | | | |
+|] |--- PATIENT end | | | |
+|\{ |--- ORDER_OBSERVATION begin | | | |
+|[ |--- COMMON_ORDER begin | | | |
+|ORC |Order common | |4 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (for Observation) | |7 | |
+|[ |--- ORDER_DOCUMENT begin | | | |
+|OBX |Observation containing Document | |7 | |
+|[\{PRT}] |Participation | |7 | |
+|TXA |Transcription Document Header | |9 | |
+|] |--- ORDER_DOCUMENT end | | | |
+|] |--- COMMON_ORDER end | | | |
+|link:#OBR[OBR] |Observations Request | |7 | |
+|\{[NTE]} |Notes and comments | |2 | |
+|[\{ |--- OBSERVATION_PARTICIPATION begin | | | |
+|link:#prt-participation-information-segment[PRT] |Participation (for Observation) | |7 | |
+|[\{DEV}] |Device | |17 | |
+|}] |--- OBSERVATION_PARTICIPATION end | | | |
+|[\{ |--- TIMING_QTY begin | | | |
+|TQ1 |Timing/Quantity | |4 | |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 | |
+|}] |--- TIMING_QTY end | | | |
+|[CTD] |Contact Data | |11 | |
+|[\{ |--- OBSERVATION begin | | | |
+|link:#OBX[OBX] |Observation related to OBR | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|\{[NTE]} |Notes and comments | |2 | |
+|}] |--- OBSERVATION end | | | |
+|[\{FT1}] |Financial Transaction | |6 | |
+|\{[link:#CTI[CTI]]} |Clinical Trial Identification | |7 | |
+|[\{ |--- SPECIMEN begin | | | |
+|link:#SPM[SPM] |Specimen | | | |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | | |
+|link:#OBX[OBX] |Observation (for Patient ID) | |7 | |
+|[\{link:#prt-participation-information-segment[PRT]}] |Participation (Observation Participation) | |7 | |
+|}] |--- SPECIMEN_OBSERVATION end | | | |
+|}] |--- SPECIMEN end | | | |
+|} |--- ORDER_OBSERVATION end | | | |
+|[\{ |--- DEVICE begin | | | |
+|DEV |Device (for Participation) | |17 | |
+|[\{OBX}] |Observation/Result | |7 | |
+|}] |--- DEVICE end | | | |
+|} |--- PATIENT_RESULT end | | | |
+|[DSC] |Continuation Pointer | |2 | |
+|===
+
+[width="99%",cols="21%,24%,15%,18%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|ORU^R42^ORU_R01 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^R42^ACK
+|Application Ack |ACK^R42^ACK |- |ACK^R42^ACK |ACK^R42^ACK
+|===
+

@@ -1,0 +1,83 @@
+=== 7.17.2 External Units of Measure Examples
+
+Figure 7-11. ISO single case units abbreviations
+
+[width="100%",cols="21%,17%,13%,17%,15%,17%",]
+|===
+|Units |Abbreviation |Units |Abbreviation |Units |Abbreviation
+|Base units code/abbreviations | | | | |
+|Ampere |a |kelvin |K |meter |m
+|Candela |cd |Kilogram |Kg |mole |mol
+| | | | |second |s
+|Derived units with specified name and abbreviation | | | | |
+|coulomb |c |hour |Hr |pascal |pal
+|day |d |joule |J |volt |v
+|degree Celsius |cel |minute (ti) |Min |watt |w
+|farad |f |newton |N |weber |wb
+|hertz |hz |ohm |Ohm |year |ann
+|Other units | | | | |
+|atomic mass unit |u |grey |gy |minute of arc |mnt
+|Bel |b |henry |h |radian |rad
+|Decibel |db |liter |l |siemens |sie
+|Degree |deg |lumen |Lm |steradian |sr
+|Gram |g |lux |Lx |tesla |t
+|See ISO 2955-1983 for full set | | | | |
+|===
+
+Figure 7-12. ANSI+ unit codes for some U.S. customary units
+
+[width="100%",cols="24%,,16%,,19%,,15%,,11%,,15%",]
+|===
+|Units |Abbreviation | |Units | |Abbreviation | |Units | |Abbreviation |
+|LENGTH | | |VOLUME | | | |TIME | | |
+|Inch |In | |cubic foot | |Cft | |Year | |yr |
+|Foot |Ft | |cubic inch | |Cin | |Month | |mo |
+|Mile (statute) |Mi | |cubic yard | |Cyd | |Week | |wk |
+|nautical mile |Nmi | |tablespoon | |Tbs | |Day | |d |
+|Rod |Rod | |teaspoon | |Tsp | |Hour | |hr |
+|Yard |Yd | |pint | |Pt | |minute | |min |
+| | | |quart | |Qt | |second | |sec |
+| | | |gallon | |Gal | | | | |
+| | | |ounce (fluid) | |Foz | | | | |
+|AREA | | |MASS | | | | | | |
+|square foot |Sqf | |dram | |Dr | | | | |
+|square inch |Sin | |grain | |gr (avoir) | | | | |
+|square yard |Syd | |ounce (weight) | |Oz | | | | |
+| | | |pound | |Lb | | | | |
+|Other ANSI units, derived units, and miscellaneous | | | | | | | | | |
+|**British thermal unit | |Btu | |**degrees Fahrenheit | |Degf | |**millirad | |mrad
+|cubic feet/minute |cft/min | |**feet/minute | |ft/min | |**RAD | |rad |
+|*Note:* The abbreviations for conventional U.S. units of time are the same as ISO, except for year. ISO = ANN, AMSI = yr. The metric units in X3.50 are the same as ISO, except for: pascal ("pa" in ANSI, "pal" in ISO); ANSI uses "min" for both time and arc while ISO uses "mnt" for minutes of arc; and in ISA seconds are abbreviated "s", in ANSI, "sec". | | | | | | | | | |
+|*Caution:* Because the ANS+ specification includes both ISO and US customary units, as well as miscellaneous non-metric units, some of the abbreviations are ambiguous. Although there should be little confusion, in the context of a particular observation, this ambiguity is a good reason for a voiding ANS+ unit codes when possible. | | | | | | | | | |
+|This list is not exhaustive. Refer to ANSI X3.50-1986, Table 1, for other metric and standard U.S. units. | | | | | | | | | |
+|**Non-metric units not explicitly listed in ANSI | | | | | | | | | |
+|===
+
+The ISO abbreviations for multiplier prefixes are given in Figure 7-13. Prefixes ranging from 10^-24^ (1/billion billionth) to 10^24^ (a billion billion) are available. The single case abbreviation for kilo (x1000) is *k*. A unit consisting of 1000 seconds would be abbreviated as *ks*, 1000 grams as *kg*, 1000 meters as *km*, and so on. Some prefixes share the abbreviation of a base unit. Farad and femto, for example, (10^-18^) both have the abbreviation of *f*. To avoid confusion, ISO forbids the use of solitary prefixes. It also deprecates the use of two prefixes in one complex unit. Thus, *f* always means farad, *ff* would mean 1 million billionth of a farad. Compound prefixes are not allowed.
+
+A unit can be raised to an exponential power. Positive exponents are represented by a number immediately following a unit's abbreviation, i.e., a square meter would be denoted by m2. Negative exponents are signified by a negative number following the base unit, e.g., *1/m2* would be represented *as m-2.* Fractional exponents are expressed by a numeric fraction in parentheses: the square root of a meter would be expressed as m(1/2). The multiplication of units is signified by a period (.) between the units, e.g., meters X seconds would be denoted *m.s*. Notice that spaces are not permitted. Division is signified by a slash (/) between two units, e.g. meters per second would be denoted as *m/s*. Algebraic combinations of ISO unit abbreviations constructed by dividing, multiplying, or exponentiating base ISO units, are also valid ISO abbreviations units. Exponentiation has precedence over multiplication or division. For example, microvolts squared per hertz (a unit of spectral power) would be denoted *uv2/hz* and evaluated as uv ^2^/hz while microvolts per square root of hertz (a unit of spectral amplitude) would be denoted uv/hz(1/2) and evaluated as uv/hz^½^. If more than one division operator is included in the expression the associations should be parenthesized to avoid any ambiguity, but the best approach is to convert a/(b/c) to a.c/b or a.c.b-1 to simplify the expression.
+
+Figure 7-13. Single case ISO abbreviations for multiplier prefixes
+
+[width="100%",cols="19%,15%,15%,17%,17%,17%",options="header",]
+|===
+|Prefix | |Code |Prefix | |Code
+|yotta* |10^24^ |ya |yocto |10^-24^ |Y
+|zetta* |10^21^ |za |zepto |10^-21^ |Z
+|exa |10^18^ |ex |atto |10^-18^ |A
+|peta |10^15^ |pe |femto |10^-15^ |F
+|tera |10^12^ |t |pico |10^-12^ |p
+|giga |10^9^ |g |nano |10^-9^ |n
+|mega |10^6^ |ma |micro |10^-6^ |u
+|kilo |10^3^ |k |milli |10^-3^ |m
+|hecto |10^2^ |h |centi |10^-2^ |c
+|deca |10^1^ |da |deci |10^-1^ |d
+|*These abbreviations are not defined in the ISO specification for single case abbreviations. | | | | |
+|===
+
+Figure 7-9 lists the abbreviations for common ISO derived units. It also includes standard unit abbreviations for common units, e.g., Milliequivalents, and international units, mm(Hg), and for counting per which we denote by a division sign, a denominator, but no numerator, e.g., /c, that are not part of the above referenced ISO standards. We have extended the units table to better accommodate drug routes and physiologic measures, and otherwise fill in gaps in v2.2.
+
+We have generally followed the IUPAC 1995 Silver Book^2^ in the definitions of units. However, IUPAC specifies standards for reporting or displaying units and employs 8-bit data sets to distinguish them. This Standard is concerned with the _transmission_ of patient information. Therefore, we have restricted ourselves to case insensitive alphabetic characters and a few special characters (e.g., ".", "/", "(", ")", "*", and "_") to avoid any possible confusion in the transmission. Therefore, we use ISO 2955-1983 (Information processing -- representation of SI and other units in systems with limited character sets) and ANSI X3.50-1986 (Representations for U.S. customary, SI, and other units to be used in systems with limited character sets) case insensitive units abbreviations where they are defined. This means that in some cases, IUPAC abbreviations have different abbreviations in ISO+ even when the IUPAC abbreviations use only standard alphabetic characters. For example, *Pascal* is abbreviated *Pa* in IUPAC but *PAL* in ISO+ (following ISO 2955) because *Pa* in a case insensitive context also means *Picoampere*. However, the requirements for transmission do not preclude usage of IUPAC standards for presentation on paper or video display reports to end-users.
+
+All unit abbreviations are case insensitive. One could write milliliters as ML, ml, or mL. In this table we have used lower case for all of the abbreviations except for the letter *L* which we represent in upper case so that readers will not confuse it with the numeral one (1). This is just a change in presentation, not a change in the Standard. Systems should continue to send the codes as upper or lower case as they always have.
+

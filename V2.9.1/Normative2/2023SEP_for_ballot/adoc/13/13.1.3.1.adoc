@@ -1,0 +1,8 @@
+==== 13.1.3.1 Aliquot: 
+
+*_In Quantitative Analysis,_* a sample comprising a known fraction or measured portion of the whole; *2)* *_In NCCLS LAB AUTOMATION Standard documents_*, a portion of a specimen placed in a separate container to facilitate concurrent testing or to hold in reserve for future use.
+
+*Notes:* a) The portion of the specimen is typically removed from the original specimen after initial processing, such as centrifugation, to obtain serum or plasma samples, and is considered to be chemically identical to all other subdivisions of an original sample of serum, plasma, urine, CSF, etc.;
+
+{empty}b) It may be necessary to identify the aliquot as an individual specimen distinct from the original specimen in a collection container labeled with a unique identifier that may be linked to or associated with the primary collection container.
+

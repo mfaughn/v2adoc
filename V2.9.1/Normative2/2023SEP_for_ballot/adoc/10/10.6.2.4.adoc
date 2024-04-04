@@ -1,0 +1,12 @@
+==== 10.6.2.4 SCH-4 Placer Order Group Number (EIP) 00218
+
+Components: <Placer Assigned Identifier (EI)> ^ <Filler Assigned Identifier (EI)>
+
+Subcomponents for Placer Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Filler Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field contains a unique identifier for the Placer Group as referenced by the Placer application, the Filler application, or both. A Placer Group is a set of appointments grouped together by the placer application, and subsequently identified by the placer application and/or by the filler application.
+
+Within each of the two subcomponents, the first component is a string that identifies a group of appointment requests. It is assigned by the Placer or Filler application, and it identifies an appointment group uniquely among all such groups of requests from a particular requesting application.
+

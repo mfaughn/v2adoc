@@ -1,0 +1,6 @@
+==== 8.14.2.17 CTR -17 Parent of Corporation (EI) 02408
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the parent of the corporation sent in CTR-17 such as an integrated delivery network.
+

@@ -1,0 +1,27 @@
+==== 2.8.3.1 Transmit general acknowledgment message
+
+A general acknowledgment message is not always required by the initiating system, but if it is the responding system sends one of the following:
+
+{empty}a) a commit accept (CA) in link:#_MSA-1___Acknowledgment Code  (ID)  [MSA-1 Acknowledgment Code] if the message can be accepted for processing
+
+{empty}b) a commit reject (CR) in link:#_MSA-1___Acknowledgment Code  (ID)  [MSA-1 Acknowledgment Code] if the one of the values of link:#_MSH-9___Message Type  (MSG)   00009[MSH-9 Message Type], link:#msh-12-version-id-vid-00012[MSH-12 Version ID] or link:#_MSH-11___Processing ID  (PT)   0001[MSH-11 Processing ID] is not acceptable to the receiving application
+
+{empty}c) a commit error (CE) in link:#_MSA-1___Acknowledgment Code  (ID)  [MSA-1 Acknowledgment Code] if the message cannot be accepted for any other reason (e.g., sequence number error)
+
+*Note: If the Acknowledgment Code is other than CA, the reason(s) for the rejection SHOULD be sent in the ERR segment(s) to notify the sender of the exact problem.*
+
+The MSH segment in the response is constructed anew following the rules used to create the initial message described above. In particular, link:#_MSH-7___Date/Time Of Message  (DTM)[MSH-7 Date/Time of Message] and link:#_MSH-10___Message Control ID  (ST)  [MSH-10 Message Control ID] refer to the response message; they are not echoes of the fields in the initial message. link:#_MSH-5___Receiving Application  (HD)[MSH-5 Receiving Application], link:#_MSH-6___Receiving Facility  (HD)   [MSH-6 Receiving Facility], and link:#_MSH-11___Processing ID  (PT)   0001[MSH-11 Processing ID] contain codes that are copied from link:#_MSH-3___Sending Application  (HD)  [MSH-3 Sending Application], link:#_MSH-4___Sending Facility  (HD)   00[MSH-4 Sending Facility] and link:#_MSH-11___Processing ID  (PT)   0001[MSH-11 Processing ID] in the initiating message.
+
+For this response, the following values are put in the MSA segment. Note that the field definitions for the MSA segment fields are in Section _2.13.8_, '_MSA ‑ Message Acknowledgment segment_":
+
+[width="100%",cols="35%,65%",]
+|===
+|Field |Notes
+|MSA-2-message control ID |MSH-10-message control ID from the incoming message.
+|MSA-1-acknowledgment code |As described above.
+|MSA-4-expected sequence number |As described in Section _2.9.1_, "_Sequence number protocol_" (if the sequence number protocol is being used).
+|ERR segment fields |Refer to section 2.13.5 link:#err-error-segment[ERR - error segment]
+|===
+
+*Note*: MSH-15-accept acknowledgment type and MSH-16-application acknowledgment type are not valued (i.e. not present or empty). At this point, the accept portion of this message exchange is considered complete.
+

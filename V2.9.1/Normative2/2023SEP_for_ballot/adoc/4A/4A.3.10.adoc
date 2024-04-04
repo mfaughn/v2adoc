@@ -1,0 +1,4 @@
+=== 4A.3.10 RGV/RRG - pharmacy/treatment give message (O01/O02)
+
+*_Attention: The use of RGV with the trigger of O01 and RRG with the trigger O02 is maintained for backward compatibility as of v 2.4 and is withdrawn as of v 2.7. Refer to RGV with trigger O15 and RRG with trigger O16 instead._*
+

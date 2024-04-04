@@ -1,0 +1,16 @@
+==== 6.5.1.55 FT1-55 DME Condition Indicator (CWE) 03507
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+____
+Definition: This the condition indicator code for durable medical equipment. It is used on the claim service line when this information is necessary for adjudication. Two occurrences are supported.
+
+For the US realm, the ANSI ASC X12 CRC DMERC Condition Indicator Segment, reference element CRC03, listed below is suggested to map to the X12 837 values:
+____
+
+[width="100%",cols="20%,80%",]
+|===
+|38 |Certification signed by the physician is on file at the supplier’s office
+|ZV |Replacement Item
+|===
+

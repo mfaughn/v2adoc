@@ -1,0 +1,4 @@
+==== 11.8.2.10 AUT-10 Process Date (DTM) 01145
+
+Definition: This field contains the date that the authorization originated with the authorizing party.
+

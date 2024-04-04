@@ -1,0 +1,4 @@
+==== 2A.2.29.2 Effective Date (DTM)
+
+Definition: This component contains the effective date/time of the person’s assignment to the financial class specified in the first component.
+

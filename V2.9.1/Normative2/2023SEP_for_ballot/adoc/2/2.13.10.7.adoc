@@ -1,0 +1,4 @@
+==== 2.13.10.7 NTE-7 Effective Start Date (DTM) 01004
+
+Definition: This field contains the date the comment becomes or became effective.
+

@@ -1,0 +1,8 @@
+== 1.8 The Scope of HL7
+
+It is useful to understand both what HL7 Version 2 is and what it is not. This chapter, up to this point, represents some effort to give the reader an overall understanding of HL7 by looking at purpose, history, and some of its overall features and architecture. It is also of value to understand the “edges” or limitation of HL7. HL7 Version 2 can, and routinely does, provide a considerable service in everyday use today in thousands of locations and in many different countries, However, there are certainly many areas of healthcare system integration that HL7 does not address or addresses with what may prove to be an inadequate or incomplete solution.
+
+Many of these topic areas are being worked on today by HL7 and will, hopefully, appear in later versions of this balloted Standard or other HL7 balloted Standards. Some of these other topics may never be addressed by HL7 because they are being addressed by some other standards body. Still other areas may never be addressed by HL7 due to a lack of interest, or at least available energy by its members.
+
+In any case, it is certainly useful for the analyst to understand what these boundaries are and to then either choose to solve them in some other way or to merely ignore them if they are deemed not sufficiently important. The following features listed in this section may well be best served by the participating applications themselves. However, it is possible to conceive of an architecture that expects these features to be present in the messaging standard itself. These potential deficiencies are included to give the reader a complete view.
+

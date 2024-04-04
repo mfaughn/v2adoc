@@ -1,0 +1,70 @@
+== 12.5 EXAMPLE TRANSACTIONS
+
+The following is an example of a patient goal message.
+
+MSH|^~\&|SENDAP|SENDFAC|RECAP|RECFAC|||PGL^PC4| <cr>
+
+PID||0123456‑1||EVERYMAN^ADAM^A|||||||9821111|<cr>
+
+PV1|1|I|2000^2012^01||||004777^ATTEND^AARON^A.|||SUR||­||ADM|A0­|<cr>
+
+GOL|AD|199505011200|00312^Improve Peripheral Circulation^Goal Master List||||199505011200|199505101200|Due^Review Due^Next Review List|||199505021200||QAM|||ACT^Active^Level Seven Healthcare, Inc. Internal|199505011200| P^Patient^Level Seven Healthcare, Inc. Internal||<cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRT||AD||EP^Entering Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRB|AD|199505011200|04411^Restricted Circulation^Nursing Problem List|| ||199505011200|||IP^Inpatient^Problem Classification List| NU^Nursing^Management Discipline List|Acute^Acute^Persistence List| C^Confirmed^Confirmation Status List|A1^Active^Life Cycle Status List| 199505011200|199504250000||2^Secondary^Ranking List|HI^High^Certainty Coding List||1^Fully^Awareness Coding List|2^Good^Prognosis Coding List|||| <cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+OBX|001|TX|^Peripheral Dependent Edema|1|Increasing Edema in lower limbs|<cr>
+
+The following is an example of a patient problem message.
+
+MSH|^~\&|SENDAP|SENDFAC|RECAP|RECFAC|||PPR^PC1| <cr>
+
+PID||0123456‑1||EVERYMAN^ADAM^A|||||||9821111|<cr>
+
+PV1|1|I|2000^2012^01||||004777^ATTEND^AARON^A.|||SUR||­||ADM|A0­|<cr>
+
+PRB|AD|199505011200|04411^Restricted Circulation^Nursing Problem List|| ||199505011200|||IP^Inpatient^Problem Classification List| NU^Nursing^Management Discipline List|Acute^Acute^Persistence List| C^Confirmed^Confirmation Status List|A1^Active^Life Cycle Status List| 199505011200|199504250000||2^Secondary^Ranking List|HI^High^Certainty Coding List||1^Fully^Awareness Coding List|2^Good^Prognosis Coding List|||| <cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRT||AD||EP^Entering Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+OBX|001|TX|^Peripheral Dependent Edema|1|Increasing Edema in lower limbs|<cr>
+
+GOL|AD|199505011200|00312^Improve Peripheral Circulation^Goal Master List||||199505011200|199505101200|Due^Review Due^Next Review List|| 199505021200||QAM|||ACT^Active^ Level Seven Healthcare, Inc. Internal|199505011200| P^Patient^Level Seven Healthcare, Inc.||<cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+The following is an example of a patient pathway problem-oriented message.
+
+MSH|^~\&|SENDAP|SENDFAC|RECAP|RECFAC|||PPP^PCB| <cr>
+
+PID||0123456‑1||EVERYMAN^ADAM^A|||||||9821111|<cr>
+
+PV1|1|I|2000^2012^01||||004777^ATTEND^AARON^A.|||SUR||­||ADM|A0­|<cr>
+
+PTH|AD^^HL70287|OH457^Open Heart Pathway^AHCPR|0018329078785^PCIS1|199505011200|A1^Active^Pathway Life Cycle Status List|199505011200|<cr>
+
+VAR|84032847876^LOCK|199505011200||^Verify^Virgil^V^^RN|23^Coincident^Variance Class List|Exceeds APACHE III threshold score.|<cr>
+
+PRB|AD|199505011200|04411^Restricted Circulation^Nursing Problem List|| ||199505011200|||IP^Inpatient^Problem Classification List| NU^Nursing^Management Discipline List|Acute^Acute^Persistence List| C^Confirmed^Confirmation Status List|A1^Active^Life Cycle Status List| 199505011200|199504250000||2^Secondary^Ranking List|HI^High^Certainty Coding List||1^Fully^Awareness Coding List|2^Good^Prognosis Coding List|||| <cr>
+
+PRT||AD||AT^Attending Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+PRT||AD||EP^Entering Provider^HL70912|^Admit^Alan^A^^RN||||||199505011200<cr>
+
+ORC|NW|2045^OE||||E|^C^199505011200^199505011200^^TM30^^^^|<cr>
+
+RXO|||3|L|IV|D5W WITH 1/2 NS WITH 20 MEQ KCL EVERY THIRD BOTTLE STARTING WITH
+
+FIRST||W8&825&A^|N||||||||H30<cr>
+
+ORC|NW|1000^OE|9999999^RX|||E|^Q6H^D10^^^R|||||||<cr>
+
+RXA|1|199505011200|||0047-0402-30^Ampicillin 250 MG TAB^NDC|2|TAB||<cr>
+

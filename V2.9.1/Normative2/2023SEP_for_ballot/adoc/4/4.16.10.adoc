@@ -1,0 +1,42 @@
+=== 4.16.10 DRG - Donor Registration (Event O43)
+
+The Donor Registration messages contain information to register a donor for a donation.
+
+DRG^O43^DRG_O43: Donor Registration Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|[ |--- DONOR begin | |
+|PID |Patient Identification Segment | |3
+|[ PD1 ] |Additional Demographics | |3
+|[\{ PRT }] |Participation | |7
+|[\{ |--- DONOR_OBSERVATIONS begin | |
+|OBX |Donor Observations | |7
+|[\{ PRT }] |Participation | |7
+|}] |--- DONOR_OBSERVATIONS begin | |
+|[\{ NTE }] |Notes and Comments (for Donor) | |2
+|[\{ AL1 }] |Allergy Information | |3
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3
+|[ |--- DONOR_REGISTRATION begin | |
+|PV1 |Patient Visit (Donor Registration) | |3
+|[\{ PRT }] |Participation | |7
+|[\{ NTE }] |Notes and Comments (for Donor Registration) | |2
+|] |--- DONOR_REGISTRATION end | |
+|] |--- DONOR end | |
+|===
+
+[width="100%",cols="22%,28%,6%,22%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|DRG^O43^DRG_O43 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O43^ACK
+|Application Ack |ACK^O43^ACK |- |ACK^O43^ACK |ACK^O43^ACK
+|===
+

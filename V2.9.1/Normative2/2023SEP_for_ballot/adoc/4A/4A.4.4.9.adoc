@@ -1,0 +1,4 @@
+==== 4A.4.4.9 RXE-9 Substitution Status (ID) 00322
+
+Definition: Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70167[_HL7 Table 0167 - Substitution Status_] in Chapter 2C, Code Tables, for valid values. If a substitution has been made, and a record of the original requested give code (_RXO-1-requested give code_) is needed, the optional RXO segment can be included in the RDE message.
+

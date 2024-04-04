@@ -1,0 +1,8 @@
+==== 14.4.3.1 NST-1 Statistics Available (ID) 01173 
+
+Definition: This field indicates the availability of statistics. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] for valid values.
+
+N - the responding application does not keep any statistics. If the value "N" is specified, the response message is used to signify to the initiating application that the communication link between the initiating application and the responding application is operational (and fields 2‑15 are empty in the response message).
+
+Y - the responding application does keep statistics, fields 4 and 5 are required (and the response message contains one or more not empty or not unvalued fields in the range 2‑3, 6‑15).
+

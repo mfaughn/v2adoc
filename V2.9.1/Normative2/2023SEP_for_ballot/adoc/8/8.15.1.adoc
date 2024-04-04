@@ -1,0 +1,66 @@
+=== 8.15.1 Master file update examples: with original and enhanced acknowledgment protocol
+
+This example shows the lab system using the Master Files specification to send two update test dictionary entries to an ICU system. The OM1 (observation dictionary) segment, currently under development by HL7 and ASTM, carries the dictionary information. Several varieties of acknowledgement are shown. The choice of acknowledgment mode is site-specific.
+
+*Original mode example:*
+
+MSH|^~\&|LABxxx|ClinLAB|ICU||19910918060544||MFN^M03^MFN_M03|MSGID002|P|2.9
+
+MFI|OMA|LABxxx^Lab Test Dictionary^L|UPD|||AL
+
+MFE|MUP|199109051000|199110010000|12345^WBC^L|CWE
+
+OM1|...
+
+MFE|MP|199109051015|199110010000|6789^RBC^L|CWE
+
+OM1|...
+
+*Original mode acknowledgment of the HL7 message according to MFI Response Level Code of AL.*
+
+MSH|^~\&|ICU||LABxxx|ClinLAB|19910918060545||MFK^M03^MFK_M01|MSGID99002|P|2.9
+
+MSA|AA|MSGID002
+
+MFI|OMA|LABxxx^Lab Test Dictionary^L|UPD|||AL
+
+MFA|MUP|199110010000|199110010040|S|12345^WBC^L|CWE
+
+MFA|MUP|199110010000|199110010041|S|6789^RBC^L|CWE
+
+*Enhanced mode example*
+
+Initial message with accept acknowledgment
+
+MSH|^~\&|LABxxx|ClinLAB|ICU||19910918060544||MFN^M03^MFN_M03|MSGID002|P|2.9|||AL|AL
+
+MFI|OMA|LABxxx^Lab Test Dictionary^L|UPD|||AL
+
+MFE|MUP|199109051000|199110010000|12345^WBC^L|CWE
+
+OM1|...
+
+MFE|MUP|199109051015|199110010000|6789^RBC^L|CWE
+
+OM1|...
+
+MSH|^~\&|ICU||LABxxx|ClinLAB|19910918060545||ACK^M03^ACK|MSGID99002|P|2.7
+
+MSA|CA|MSGID002
+
+*Application acknowledgment message*
+
+MSH|^~\&|ICU||LABxxx|ClinLAB|19911001080504||MFK^M03^MFK_M01|MSGID5002|P|2.9|||AL|
+
+MSA|AA|MSGID002
+
+MFI|OMA|LABxxx^Lab Test Dictionary^L|UPD|||AL
+
+MFA|MUP|199109051000|199110010040|S|12345^WBC^L|CWE
+
+MFA|MUP|199109051015|199110010041|S|6789^RBC^L|CWE
+
+MSH|^~\&|LABxxx|ClinLAB|ICU||19911001080507||ACK^M03^ACK|MSGID444|P|2.7
+
+MSA|CA|MSGID5002
+

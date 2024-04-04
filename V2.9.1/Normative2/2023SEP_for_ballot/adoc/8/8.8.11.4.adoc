@@ -1,0 +1,12 @@
+==== 8.8.11.4 OM3-4 Normal Text/Codes for Categorical Observations (CWE) 00638
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: Certain observations/tests with a nature code of A or C (see _OM1-18 - Nature of Service/Test/Observation_) have text (alpha) results (e.g., reactive, nonreactive). Alpha normals for those tests should be entered in this field (e.g., "nonreactive"). Refer to Table 0654 - Normal Text/Codes for Categorical Observations in Chapter 2C for valid values.
+
+The format of this field is:
+
+The first component is a code taken from a standard code source list. The second component is the text associated with the code. The third component is the identification of the code table source. When only a text description of a possible answer is available, it is recorded as ^<text>.
+
+Care should be taken to transmit only those results that are considered normal for that test. A drug screen may have possible results of "negative" and "positive." However, only a result of "negative" is considered to be normal. When an observation has more than one "normal" result, multiple values in this field should be separated with a repeat delimiter.
+

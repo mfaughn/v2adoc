@@ -1,0 +1,15 @@
+=== 4.5.2 BLG – Billing Segment
+
+The BLG segment is used to provide billing information, on the ordered service, to the filling application.
+
+HL7 Attribute Table – BLG – Billing
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CCD |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70100[0100] |00234 |When to Charge
+|2 |2..2 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70122[0122] |00235 |Charge Type
+|3 | | |CX |O | | |00236 |Account ID
+|4 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70475[0475] |01645 |Charge Type Reason
+|===
+

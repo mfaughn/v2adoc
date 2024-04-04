@@ -1,0 +1,4 @@
+==== 15.4.8.7 STF-7 Active/Inactive Flag (ID) 00675
+
+Definition: This field indicates whether person is currently a valid staff member. Refer to _file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70183[HL7 Table 0183 - Active/Inactive]_ in Chapter 2C, Code Tables, for valid values. This table contains values for active or inactive.
+

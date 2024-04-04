@@ -1,0 +1,4 @@
+==== 12.4.2.15 PRB-15 Problem Life Cycle Status Date/Time (DTM) 00850
+
+Definition: This field indicates the effective date/time of the current problem life cycle status.
+

@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+RXE-2_vs_RXG-4
+</h1>
+<hr>
+<h3>
+For 00317 there were 2 versions found.<br>This diff compares the version found in fields ["RXE-2", "RXE-2"] from sections ["4A.4.4", nil], respectively<br>with the version found in fields ["RXG-4", "RXG-4"] from sections ["4A.4.6", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>table:0<strong>479</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field identifie<strong>s </strong>the medical substance<strong> or </strong>treatment <strong>that has been </strong>ordered to be given to the patient<strong>, as encoded by the pharmacy or treatment supplier</strong>; it is equivalent to _OBR-4-<strong>u</strong>niversal service ID_ in function. <strong>In</strong> the RXE segment<strong>, this give code must be fully encoded. The dispense fields, which define the units and amount</strong> of <strong>what is to be issued to the patient (see </strong>_RXE-<strong>10-dispense amount_ and _RXE-11-dispense units_ below) do not necessarily correlate with the instructions of what amount is to be &quot;</strong>given<strong>&quot; or administered with each dose, and may or</strong> may <strong>not be specified with the order. For example, the &quot;give&quot; part of the order may convey the f</strong>ield<strong>-representation of _give 250 mg of Ampicillin_, while the request to dispense part of the order may convey _issue 30 tablets of generic equivalent for this outpatient prescription_</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:0<strong>292</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field i<strong>s the i</strong>dentifie<strong>r of </strong>the medical substance<strong>/</strong>treatment ordered to be given to the patient; it is equivalent to _OBR-4-<strong>U</strong>niversal service ID_ in function. <strong>See</strong> the RXE segment<strong> for a complete definition</strong> of <strong>the </strong>_RXE-<strong>2-Give code_. If the substance </strong>given<strong> is a vaccine, CVX codes</strong> may <strong>be used to code this f</strong>ield<strong> (see _HL7 Table 0292 - Vaccines administered_ in Chapter 2C, Code Tables)</strong>.</ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00317,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="del"><del><span class="symbol">-</span>table:0<strong>479</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:This field identifie<strong>s </strong>the medical substance<strong> or </strong>treatment <strong>that has been </strong>ordered to be given to the patient<strong>, as encoded by the pharmacy or treatment supplier</strong>; it is equivalent to _OBR-4-<strong>u</strong>niversal service ID_ in function. <strong>In</strong> the RXE segment<strong>, this give code must be fully encoded. The dispense fields, which define the units and amount</strong> of <strong>what is to be issued to the patient (see </strong>_RXE-<strong>10-dispense amount_ and _RXE-11-dispense units_ below) do not necessarily correlate with the instructions of what amount is to be &quot;</strong>given<strong>&quot; or administered with each dose, and may or</strong> may <strong>not be specified with the order. For example, the &quot;give&quot; part of the order may convey the f</strong>ield<strong>-representation of _give 250 mg of Ampicillin_, while the request to dispense part of the order may convey _issue 30 tablets of generic equivalent for this outpatient prescription_</strong>.</del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:0<strong>292</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:This field i<strong>s the i</strong>dentifie<strong>r of </strong>the medical substance<strong>/</strong>treatment ordered to be given to the patient; it is equivalent to _OBR-4-<strong>U</strong>niversal service ID_ in function. <strong>See</strong> the RXE segment<strong> for a complete definition</strong> of <strong>the </strong>_RXE-<strong>2-Give code_. If the substance </strong>given<strong> is a vaccine, CVX codes</strong> may <strong>be used to code this f</strong>ield<strong> (see _HL7 Table 0292 - Vaccines administered_ in Chapter 2C, Code Tables)</strong>.</ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

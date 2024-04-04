@@ -1,0 +1,4 @@
+==== 13.1.3.23 Delimiter: 
+
+A symbol used to separate items in a list.
+

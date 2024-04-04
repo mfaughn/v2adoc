@@ -1,0 +1,18 @@
+=== 11.8.4 CTD - Contact Data Segment
+
+The CTD segment may identify any contact personnel associated with a patient referral message and its related transactions. The CTD segment will be paired with a PRD segment. The PRD segment contains data specifically focused on provider information in a referral. While it is important in an inter-enterprise transaction to transmit specific information regarding the providers involved (referring and referred-to), it may also be important to identify the contact personnel associated with the given provider. For example, a provider receiving a referral may need to know the office manager or the billing person at the institution of the provider who sent the referral. This segment allows for multiple contact personnel to be associated with a single provider.
+
+[#CTD .anchor]####HL7 Attribute Table - CTD – Contact Data
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |R |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70131[0131] |00196 |Contact Role
+|2 | | |XPN |O |Y | |01165 |Contact Name
+|3 | | |XAD |O |Y | |01166 |Contact Address
+|4 | | |PL |O | | |01167 |Contact Location
+|5 | | |XTN |O |Y | |01168 |Contact Communication Information
+|6 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70185[0185] |00684 |Preferred Method of Contact
+|7 | | |PLN |O |Y |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70338[0338] |01171 |Contact Identifiers
+|===
+

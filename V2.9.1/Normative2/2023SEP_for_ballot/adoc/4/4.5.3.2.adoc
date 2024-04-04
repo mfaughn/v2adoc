@@ -1,0 +1,22 @@
+==== 4.5.3.2 OBR-2 Placer order number (EI) 00216
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field is identical to ORC-2-Placer Order Number.
+
+This field is a special case of the Entity Identifier data type (Chapter 2A, section 2.A.28). The first component is a string that identifies an individual order (i.e., ORC segment and associated order detail segment). A limit of fifteen (15) characters is suggested but not required. It is assigned by the placer (ordering application). An implementation is HL7 compliant when the number of characters for this field is increased to accommodate applications that require a greater number of characters for the Placer order number. It identifies an order uniquely among all orders from a particular ordering application. The second through fourth components contain the application ID of the placing application in the same form as the HD data type (section 2.A.36, "HD – Hierarchic designator"). The second component, namespace ID, is a user-defined coded value that will be uniquely associated with an application. A limit of six (6) characters is suggested but not required. A given institution or group of intercommunicating institutions should establish a unique list of applications that may be potential placers and fillers and assign unique application IDs. The components are separated by component delimiters.
+
+See ORC-2-placer order number (section _4.5.1.2_) for information on when this field must be valued.
+
+A given institution or group of intercommunicating institutions should establish a list of applications that may be potential placers and fillers of orders and assign each a unique application ID. The application ID list becomes one of the institution's master dictionary lists that is documented in Chapter 8. Since third-party applications (those other than the placer and filler of an order) can send and receive ORM and ORR messages, the placer application ID in this field may not be the same as any sending and receiving application on the network (as identified in the MSH segment).
+
+The conditions which make this field required are divided into two main issues. The data in ORC-2 and OBR-2 are logically the same thing: a placer id. The data in ORC-3 and OBR-3 are logically the same thing: the filler id.
+
+From that perspective, each message must have either a placer or a filler id with an exception for the case of a "Send Number" control code since its purpose is to request a placer id.
+
+If both ORC and OBR are present in a message, then only one of the Segments must contain the value(s). If both segments contain either ORC-2/OBR-2 or ORC-3/OBR-3, then each pair must be a matching pair. The sending system can include both the filler and the placer number in both the ORC and OBR segments as long as the data is the same between the two segments.
+
+It is recommended that the initiating system should provide a unique number when a new order or unsolicited result is initially communicated.
+
+These rules apply to the few other fields that are present in both ORC and OBR for upward compatibility (e.g., quantity/timing, parent numbers, ordering provider, and ordering call back numbers).
+

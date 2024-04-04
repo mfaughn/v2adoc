@@ -1,0 +1,6 @@
+==== 7.16.3.4 PAC-4 Position in Parent Package (NA) 02353
+
+Components: <Value1 (NM)> ^ <Value2 (NM)> ^ <Value3 (NM)> ^ <Value4 (NM)> ^ < ()>
+
+Definition: The position in parent package field is used when it is important to communicate specifically where in the parent package this package resides. Each position is identified with a position number. The NA (numeric array) data type is used to allow, if necessary, to transfer multiple axis information, e.g., 2-dimensional tray (X^Y).
+

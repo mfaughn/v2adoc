@@ -1,0 +1,4 @@
+==== 8.8.12.9 OM4-9 Special Handling Requirements (TX) 00649
+
+Definition: This field contains the special handling requirements here (e.g., ice specimen, deliver within two hours of obtaining).
+

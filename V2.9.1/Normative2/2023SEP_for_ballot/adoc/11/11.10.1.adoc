@@ -1,0 +1,11 @@
+=== 11.10.1 HL7 Overlapping With ASC X12N
+
+There have been discussions regarding overlap of the proposed Patient Referral Chapter with recent development efforts by a committee within the ASC X12N organization. In the Healthcare Task Group (Task Group 2) of the ASC X12N Insurance Subcommittee, the Services Review Working Group (Working Group 10) has been working on a referral transaction (Transaction 278). This transaction has been designed from a payor perspective by focusing on _certification_ of a referral or _notification_ that a referral took place. This focus deals primarily with the financial or reimbursement side of a referral. There are some similarities between the two messages. However, there are also some clear differences. For example, the ASC X12 transaction does not provide for provider-to-provider referrals containing clinical data. Referrals containing a patient's clinical record along with diagnoses and requested procedures are the major focus of the work being done by HL7. In an effort to alleviate some of the controversy that this issue has caused, sections of this HL7 Patient Referral chapter have been removed. These sections dealt primarily with eligibility and plan coverage information. That information will be specifically handled by ASC X12N transactions 271 and 272, and the new interactive transactions.
+
+There are some convergence activities currently in progress. The HL7 - X12 Joint Coordinating Committee has been formed to facilitate efforts to unify these two standard development organizations as well as others. Work is in progress to harmonize HL7 trigger events within X12N transactions, as well as in joint data modeling. There has also been some work done at the working group level to harmonize the common data segments of the two respective referral messages. There is ongoing participation by both HL7 committees and X12N work groups to achieve a certain level of data compatibility.
+
+The HL7 Board of Directors has directed HL7 to continue development of the Patient Referral Chapter for the following reasons:
+
+The HL7 - X12 coordination is ongoing, but will not be complete in time for Standard Version 2.7.
+
+The HL7 Patient Referral Chapter addresses business needs that the X12 transaction does not (e.g., transmission of codified clinical data).

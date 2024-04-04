@@ -1,0 +1,16 @@
+==== 5.2.4.1 Segment pattern response
+
+Segment Pattern data responses reflect the traditional way of offering data within HL7. The Server responds to queries by returning a pattern of HL7 segments. For example, the core of a response to a query for Lab data might be defined by the following segment grammar:
+
+\{PID
+
+OBR
+
+{empty}[\{OBX}]
+
+}
+
+For example, patient information will be returned in the PID segment and laboratory results in OBR and OBX segments. In this style, the message returned by a Server is often a close approximation to an existing unsolicited update HL7 message.
+
+In creating a Query Profile for a segment pattern response, the data owner SHALL decide on the exact segment grammar it will return. The output specification of the Query Profile for a segment pattern response will have a structure very similar to the message definition of a standard HL7 transaction. It SHALL define a grammar of segments that will be returned, and, for each segment, it should clarify, where necessary, the meaning of each field, the cardinality of the data, and whether the data is optional or required.
+

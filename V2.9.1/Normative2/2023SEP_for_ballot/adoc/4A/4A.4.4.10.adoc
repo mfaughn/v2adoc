@@ -1,0 +1,4 @@
+==== 4A.4.4.10 RXE-10 Dispense Amount (NM) 00323
+
+Definition: This field contains the amount to be dispensed as encoded by the pharmacy or treatment supplier.
+

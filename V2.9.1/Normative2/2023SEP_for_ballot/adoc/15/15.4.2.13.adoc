@@ -1,0 +1,4 @@
+==== 15.4.2.13 CER-13 Subject Name (ST) 01907
+
+Definition: This field defines the name of the subject of the certificate as used by the certifying body.
+

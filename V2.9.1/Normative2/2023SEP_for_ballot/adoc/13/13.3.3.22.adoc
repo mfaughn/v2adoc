@@ -1,0 +1,4 @@
+==== 13.3.3.22 SAC-22 Available Specimen Volume (NM) 01349
+
+Definition: This field identifies the current specimen volume available for use in this container in the units specified below.
+

@@ -1,0 +1,8 @@
+==== 8.8.17.11 PM1-11 Patient DOB Required (ID) 03454
+
+Definition: This field indicates whether this insurance carrier requires the patient DOB. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values.
+
+Y DOB Required
+
+N DOB Not Required
+

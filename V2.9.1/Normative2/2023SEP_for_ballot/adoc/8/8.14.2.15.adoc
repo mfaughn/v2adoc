@@ -1,0 +1,4 @@
+==== 8.14.2.15 CTR -15 Actual Markup (MOP) 02406
+
+Definition: This field contains the actual percentage (markup or discount) applied to each item’s Product Cost.
+

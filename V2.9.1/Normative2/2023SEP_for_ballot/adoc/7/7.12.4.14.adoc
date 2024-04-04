@@ -1,0 +1,4 @@
+==== 7.12.4.14 PSH-14 Number of Product Experience Reports Filed by Distributor (NM) 01246
+
+Definition: This field contains the number of product experience reports filed by distributor.
+

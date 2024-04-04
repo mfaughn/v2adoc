@@ -1,0 +1,4 @@
+==== 9.7.3.20 TXA-20 Document Storage Status (ID) 00932
+
+Definition: This optional field identifies the storage status of the document. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70275[_HL7 Table 0275 - Document Storage Status_] for valid values.
+

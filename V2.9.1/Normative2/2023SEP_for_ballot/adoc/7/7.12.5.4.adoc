@@ -1,0 +1,4 @@
+==== 7.12.5.4 PDC-4 Device Family Name (ST) 01250
+
+Definition: This field contains the name used by the manufacturer to describe the family of products to which this product belongs.
+

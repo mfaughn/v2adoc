@@ -1,0 +1,8 @@
+==== 6.5.3.3 DRG-3 DRG Approval Indicator (ID) 00383
+
+Definition: This field indicates if the DRG has been approved by a reviewing entity. Refer to file:///E:\V2\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/no Indicator_] for valid values.
+
+Y the DRG has been approved by a reviewing entity
+
+N the DRG has not been approved
+

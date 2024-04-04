@@ -1,0 +1,6 @@
+==== *3.4.21.6* GSC-6 Context (ERL) 02527
+
+Components: <Segment ID (ST)> ^ <Segment Sequence (NM)> ^ <Field Position (NM)> ^ <Field Repetition (NM)> ^ <Component Number (NM)> ^ <Sub-Component Number (NM)>
+
+Definition: This field asserts the clinical context(s) relevant for the declared Sex Parameter for Clinical Use value. The ERL data type is used to specify a location in the message which carries the clinical context. For example, GSC-6 may point to procedure (PR1) or order (ORC) segment within the message. This field is allowed to repeat to allow a single declared Sex Parameter for Clinical Use value to be applied to multiple contexts within the message. As well, the GSC segment is allowed to repeat within a message as an individual may have different Sex Parameter for Clinical Use values for different contexts within a single message. The GSC-6 field is required as any Sex Parameter for Clinical Use value declared within a message must relate to at least one context within the same message.
+

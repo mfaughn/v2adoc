@@ -1,0 +1,6 @@
+==== 4A.4.7.16 RXA-16 Substance Expiration Date (DTM) 01130
+
+Definition: This field contains the expiration date of the medical substance administered.
+
+*Note:* Vaccine expiration date does not always have a "day" component; therefore, such a date may be transmitted as YYYYMM.
+

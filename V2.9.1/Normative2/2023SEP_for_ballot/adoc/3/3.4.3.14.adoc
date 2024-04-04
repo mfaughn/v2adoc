@@ -1,0 +1,16 @@
+==== *3.4.3.14* PV1-14 Admit Source (CWE) 00144
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates from where the patient was admitted. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70023[_User-defined Table 0023 - Admit Source_] in Chapter 2C, Code Tables, for suggested values. In the US, this field should use the Official Uniform Billing (UB) 04 2008 numeric codes found on form locator 15. Refer to _External Table UB04FL15 Source of Origin_ for valid values. The UB has redefined the Admission Source as the Point of Origin for Admission or Visit. The new UB definition is the code indicating the Point of Origin for this Admission or Visit
+
+____
+For Example:
+
+US: |1^Physician Referral^UB04FL15^^^^2008, v 2.0|
+
+To report that information is not available:
+
+US: |9^Information not available^ UB04FL15^^^^2008, v 2.0|
+____
+

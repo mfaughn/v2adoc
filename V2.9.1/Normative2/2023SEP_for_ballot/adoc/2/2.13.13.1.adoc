@@ -1,0 +1,4 @@
+==== 2.13.13.1 SGH-1 Set ID – SGH (SI) 03389
+
+Definition: For the first segment group transmitted, the sequence number SHALL be 1; for the second , it SHALL be 2; and so on.
+

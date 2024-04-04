@@ -1,0 +1,98 @@
+=== 4A.3.11 RGV - Pharmacy/Treatment Give Message (Event O15) 
+
+When the "give" (i.e., administration) information needs to be transmitted from the pharmacy or treatment application to another application, it is done with the RGV message. The RGV message uses the RXG segment to record drug or treatment administration instructions, which is not contained in an RDS, dispense message. The RGV message may carry information about a single scheduled administration on a drug or treatment, or it may carry information about multiple administrations. If the pharmacy or treatment application (or some other application) needs to create an unambiguous MAR report where each administration is matched to a particular give date/time instruction, it may use the RGV message as described in the following way:
+
+For each scheduled administration of the medication, the pharmacy/treatment issues either a single RGV message or a single RGV message with multiple RXG segments, one for each scheduled administration. The actual administrations (transmitted by one or more RAS messages) are matched against the scheduled ones by recording in each RXA segment the Give Sub-ID of the corresponding RXG segment. If more than one administration needs to be matched (as in the case of recording a change or rate of an IV solution) the administering application issues additional RXA segment(s) (corresponding to the same RXG segment). If no matching is needed, the Give Sub-ID of the RXA segments has the value zero (0).
+
+When used for a scheduled administration or for the start of a continuous administration such as an IV fluid, the ORC must have the filler order number and the order control code RE.
+
+When used for an update to a continuous administration which is currently in progress (e.g. change of rate of an IV fluid), the ORC must have the filler order number and the order control code XO. For these updates the value of RXG-1 Give Sub-ID Counter may be used to provide a unique reference (see section 4A.4.6.1).
+
+The RXE and associated RXCs may be present if the receiving application needs any of their data. The RXG carries the scheduled administration data for either a single "give instruction" (single dose) of medication or for multiple "give instructions." The RXG is not a complete record of an order. Use the RXO and RXE segments if a complete order is needed. It is a record from the pharmacy or treatment application to the Nursing application (or other) with drug/treatment administration instructions.
+
+RGV^O15^RGV_O15: Pharmacy/Treatment Give
+
+[width="100%",cols="34%,47%,9%,,10%",options="header",]
+|===
+|Segments |Description |Status |Chapter |
+|MSH |Message Header | |2 |
+|[\{ARV}] |Access Restrictions | |3 |
+|[\{ SFT }] |Software | |2 |
+|[ UAC ] |User Authentication Credential | |2 |
+|[\{ NTE }] |Notes and Comments (for Header) | |2 |
+|[ |--- PATIENT begin | | |
+|PID |Patient Identification | |3 |
+|[\{ GSP }] |Person Gender and Sex | | |3
+|[\{ GSR }] |Recorded Gender and Sex | | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | | |3
+|[\{ PRT }] |Participation | |7 |
+|[\{ NTE }] |Notes and Comments (for PID) | |2 |
+|[\{ AL1 }] |Allergy Information | |2 |
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3 |
+|[ |--- PATIENT_VISIT begin | | |
+|PV1 |Patient Visit | |3 |
+|[ PV2 ] |Patient Visit – Additional Info | |3 |
+|[\{PRT}] |Participation (for Patient Visit) | |7 |
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3 |
+|] |--- PATIENT_VISIT end | | |
+|] |--- PATIENT end | | |
+|\{ |--- ORDER begin | | |
+|ORC |Common Order | |4 |
+|[\{PRT}] |Participation (for ORC) | |7 |
+|[\{ |--- TIMING begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 |
+|}] |--- TIMING end | | |
+|[ |--- ORDER_DETAIL begin | | |
+|RXO |Pharmacy /Treatment Order | |4A |
+|[\{PRT}] |Participation (for RXO) | |7 |
+|[ |--- ORDER_DETAIL_SUPPLEMENT begin | | |
+|\{ NTE } |Notes and Comments (for RXO) | |2 |
+|\{ RXR } |Pharmacy/Treatment Route | |4A |
+|[\{ |--- COMPONENTS begin | | |
+|RXC |Pharmacy/Treatment Component | |4A |
+|[\{ NTE }] |Notes and Comments (for each RXC) | |2 |
+|}] |--- COMPONENTS end | | |
+|] |--- ORDER_DETAIL_SUPPLEMENT end | | |
+|] |--- ORDER_DETAIL end | | |
+|[ |--- ENCODING begin | | |
+|RXE |Pharmacy/Treatment Encoded Order | |4A |
+|[\{PRT}] |Participation (for Encoded Order) | |7 |
+|[\{ NTE }] |Notes and Comments (for RXE) | |2 |
+|\{ |--- TIMING_ENCODED begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 |
+|} |--- TIMING_ENCODED end | | |
+|\{ RXR } |Pharmacy/Treatment Route | |4A |
+|[\{ RXC }] |Pharmacy/Treatment Component | |4A |
+|] |--- ENCODING end | | |
+|\{ |--- GIVE begin | | |
+|RXG |Pharmacy/Treatment Give | |4A |
+|[\{ PRT }] |Participation | |7 |
+|\{ |--- TIMING_GIVE begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 |
+|} |--- TIMING_GIVE end | | |
+|\{ RXR } |Pharmacy/Treatment Route | |4A |
+|[\{ RXC }] |Pharmacy/Treatment Component | |4A |
+|[\{ CDO }] |Cumulative Dosage Segment | |4A |
+|[\{ |--- OBSERVATION begin | | |
+|OBX |Observation/Results | |7 |
+|[\{PRT}] |Participation (for Observation) | |7 |
+|[\{ NTE }] |Notes and Comments (for OBX) | |2 |
+|}] |--- OBSERVATION end | | |
+|} |--- GIVE end | | |
+|} |--- ORDER end | | |
+|===
+
+[width="100%",cols="21%,27%,6%,23%,23%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|RGV^O15^RGV_O15 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O15^ACK
+|Application Ack |RRG^O16^RRG_O16 |- |RRG^O16^RRG_O16 |RRG^O16^RRG_O16
+|===
+

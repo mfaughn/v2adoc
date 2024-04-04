@@ -1,0 +1,8 @@
+==== *3.4.4.36* PV2-36 Newborn Baby Indicator (ID) 00737
+
+Definition: This field indicates whether the patient is a baby. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/No Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y the patient is a baby
+
+N the patient is not a baby
+

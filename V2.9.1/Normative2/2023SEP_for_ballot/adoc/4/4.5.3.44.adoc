@@ -1,0 +1,8 @@
+==== 4.5.3.44 OBR-44 Procedure Code (CNE) 00393
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains a unique identifier assigned to the procedure, if any, associated with the charge. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70088[Externally-defined table 0088 – Procedure code] in Chapter 2C, Code Tables, for suggested values__.__ This field is a coded data type for compatibility with clinical and ancillary systems.
+
+As of version 2.6, applicable external coding systems include those in the referenced table. If the code set used is in the referenced table, then the coding scheme designation in the table shall be used.
+

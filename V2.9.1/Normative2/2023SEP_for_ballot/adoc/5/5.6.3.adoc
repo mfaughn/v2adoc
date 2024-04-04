@@ -1,0 +1,10 @@
+=== 5.6.3 Interactive continuation of response messages
+
+The Interactive Continuation Protocol defines the methodology for the intentional transmission of a large query-response payload over multiple HL7 messages. Without this protocol, the response would be returned in a single large logical message.
+
+The protocol is called interactive because there is an ongoing dialog between the Client and the Server. The dialog commences when the Client issues a query for a potentially large amount of data, but specifies in the _RCP-2-Quantity limited request,_ that only a limited amount of data is to be returned in each continued response. The Server then returns one response message containing data up to the requested quantity. The Client may continue to ask for further subsets of the data until the entire set is exhausted or may choose to cancel the query.
+
+This use of the term "continuation" responses in queries should not be confused with its use in continuing an unsolicited fragmented message. In the case of continuing a response to query the control is on the side of the querying application and there is an explicit cancellation event. In the case of continuation of an unsolicited message, the control is on the part of the sending application and there is no concept of canceling the message transmission.
+
+Segment fragmentation and message fragmentation are discussed in Chapter 2.
+

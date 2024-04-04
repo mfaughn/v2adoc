@@ -1,0 +1,8 @@
+==== 8.8.9.16 OM1-16 Observation Producing Department/Section (CWE) 00601
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+*Note: This field is deprecated and retained for backward compatibility as of v 2.8.*
+
+Definition: This field permits the sorting of observation orders and values by the providing service's department/section. It provides "source oriented" reporting when required. Free text may be used instead of these codes, but in that case, they should be recorded as the second "component" of the field to distinguish them from the standard codes. Multiple codes in this field are separated by repeat delimiters. Refer to Table 0636 - Observation Producing Department/Section in Chapter 2C for valid values.
+

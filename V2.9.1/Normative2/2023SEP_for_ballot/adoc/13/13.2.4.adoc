@@ -1,0 +1,54 @@
+=== 13.2.4 SSR/ACK - Specimen Status Request (Event U04)
+
+This message is used to request information concerning the location and status of specimens from one application to another (e.g., Laboratory Automation System to automated equipment). The request can be addressed for a specific container, a specific carrier, a specific tray or a specific location, depending on the arguments set in the SAC segment. The equipment specified in the EQU segment should respond with the "Specimen Status Update."
+
+SSR^U04^SSR_U04: Specimen Status Message
+
+[width="99%",cols="3%,31%,,47%,,9%,,10%",options="header",]
+|===
+|Segments | |Description | |Status | |Chapter |
+|MSH | |Message Header | | | |2 |
+|[\{SFT}] | |Software Segment | | | |2 |
+|[UAC] | |User Authentication Credential | | | |2 |
+|link:#EQU[EQU] | |Equipment Detail | | | |13 |
+|\{ | |--- SPECIMEN_CONTAINER begin | | | | |
+|link:#SAC[SAC] | |Specimen Container Detail | | | |13 |
+|\{ [ SPM ] } | |Specimen | | | |7 |
+|} | |--- SPECIMEN_CONTAINER end | | | | |
+|[ROL] | |Role Detail | |B | |12 |
+|===
+
+[width="100%",cols="19%,23%,5%,16%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|SSR^U04^SSR_U04 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^U04^ACK |- |ACK^U04^ACK
+|Application Ack |SSU^U03^SSU_U03 |- |- |SSU^U03^SSU_U03 |SSU^U03^SSU_U03
+|===
+
+ACK^U04^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{SFT}] |Software Segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|===
+
+[width="100%",cols="23%,35%,12%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ACK^U04^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^U04^ACK
+|Application Ack |- |- |-
+|===
+

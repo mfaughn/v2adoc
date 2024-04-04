@@ -1,0 +1,63 @@
+=== 3.3.53 ADT/ACK - Cancel Patient Returns from a Leave of Absence (Event A53)
+
+The A53 event is sent when an A22 (patient returns from "leave of absence") event is cancelled, either because of erroneous entry of the A22 event or because of a decision not to return the patient from "leave of absence" after all.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. When other important fields change, it is recommended that the A08 (update patient information) event be used in addition.
+
+As there is no specific field for the cancel LOA date/time, it is recommended that field _EVN-6 - Event Occurred_ contain the date/time the return from LOA was actually cancelled (but not necessarily recorded).
+
+_PV2-47 - Expected LOA Return Date/Time_ is used to communicate the date/time the patient is expected to return from LOA.
+
+ADT^A53^ADT_A52: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|file:///\\AMG\DATA\Word\HL7\Standard\V24\Memberballot\Ch3.doc#PV1[PV1] |Patient Visit | |3
+|[ link:#PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|===
+
+[width="100%",cols="20%,26%,4%,16%,16%,18%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A53^ADT_A52 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A53^ACK |- |ACK^A53^ACK
+|Application Ack |ADT^A53^ADT_A52 |- |- |ACK^A53^ACK |ACK^A53^ACK
+|===
+
+ACK^A53^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="26%,34%,6%,34%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A53^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A53^ACK
+|Application Ack |- |- |-
+|===
+

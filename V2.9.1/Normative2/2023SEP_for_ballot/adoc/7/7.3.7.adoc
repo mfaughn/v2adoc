@@ -1,0 +1,33 @@
+=== 7.3.7 ORA – Observation Report Acknowledgement (Event R33) 
+
+This message enables a response to the ORU^R30 message to provide an application level acknowledgement that may include a placer order number.
+
+ORA^R33^ORA_R33: Observation Report Acknowledgement
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Acknowledgment | |2
+|[\{ SFT }] |Software segment | |2
+|[UAC] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|[ |--- ORDER begin | |
+|ORC |Common Order Information | |4
+|[\{PRT}] |Participation | |7
+|] |--- ORDER end | |
+|===
+
+[width="100%",cols="25%,33%,20%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ORA^R33^ORA_R33 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^R33^ACK |- |ACK^R33^ACK
+|Application Ack |- |- |-
+|===
+
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+

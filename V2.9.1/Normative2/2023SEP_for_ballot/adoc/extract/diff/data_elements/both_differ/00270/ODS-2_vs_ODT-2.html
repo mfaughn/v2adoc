@@ -1,0 +1,66 @@
+<html>
+<head>
+<style>
+.diff{overflow:auto;}
+.diff ul{background:#fff;overflow:auto;font-size:13px;list-style:none;margin:0;padding:0;display:table;width:100%;}
+.diff del, .diff ins{display:block;text-decoration:none;}
+.diff li{padding:0; display:table-row;margin: 0;height:1em;}
+.diff li.ins{background:#dfd; color:#080}
+.diff li.del{background:#fee; color:#b00}
+.diff li:hover{background:#ffc}
+/* try 'whitespace:pre;' if you don't want lines to wrap */
+.diff del, .diff ins, .diff span{white-space:pre-wrap;font-family:courier;}
+.diff del strong{font-weight:normal;background:#fcc;}
+.diff ins strong{font-weight:normal;background:#9f9;}
+.diff li.diff-comment { display: none; }
+.diff li.diff-block-info { background: none repeat scroll 0 0 gray; }
+
+</style>
+</head>
+<body>
+<h1>
+ODS-2_vs_ODT-2
+</h1>
+<hr>
+<h3>
+For 00270 there were 2 versions found.<br>This diff compares the version found in fields ["ODS-2", "ODS-2"] from sections ["4.8.1", nil], respectively<br>with the version found in fields ["ODT-2", "ODT-2"] from sections ["4.8.2", nil], respectively.
+</h3>
+<hr>
+<h3>
+Synopsis Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="del"><del><span class="symbol">-</span>table:062<strong>7</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:When blank, the modifier applies to all service periods. <strong>Diet orders, for example, typically apply to all service periods. </strong>This field <strong>usually specifies supplements. This field all</strong>ows you to designate <strong>a modification for on</strong>e or more of the <strong>service</strong> periods during a day by combining <strong>service specific</strong>ation<strong>s</strong> as <strong>needed</strong>. Th<strong>e se</strong>rvice period<strong>s will be local CEs, normally numbers. Suggested are:</strong></del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:062<strong>9</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:When blank, the modifier applies to all service periods. This field <strong>all</strong>ows you to designate <strong>on</strong>e or more of the <strong>feeding</strong> periods during a day by combining <strong>the codes as needed. It can also combine with quantity/timing to give such inform</strong>ation as <strong>which service period the order belongs with</strong>. Th<strong>is field is identical in meaning with ODS-2-se</strong>rvice period<strong>. See section _4.8.1.2_, &quot;_ODS-2 Service Period_ (CWE) 00270,&quot; for further details. Refer to Table 0629 - Service Period in Chapter 2C for valid values.</strong></ins></li>
+  </ul>
+</div>
+
+<hr>
+</h3>
+<h3>
+Full Message Structure Diff
+</h3>
+<hr>
+<div class="diff">
+  <ul>
+    <li class="unchanged"><span><span class="symbol"> </span>item_number:00270,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>name:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>min_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>max_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>c_length:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>may_truncate:true,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>dt_varies:,</span></li>
+    <li class="unchanged"><span><span class="symbol"> </span>data_type:CWE,</span></li>
+    <li class="del"><del><span class="symbol">-</span>table:062<strong>7</strong>,</del></li>
+    <li class="del"><del><span class="symbol">-</span>definition:When blank, the modifier applies to all service periods. <strong>Diet orders, for example, typically apply to all service periods. </strong>This field <strong>usually specifies supplements. This field all</strong>ows you to designate <strong>a modification for on</strong>e or more of the <strong>service</strong> periods during a day by combining <strong>service specific</strong>ation<strong>s</strong> as <strong>needed</strong>. Th<strong>e se</strong>rvice period<strong>s will be local CEs, normally numbers. Suggested are:</strong></del></li>
+    <li class="ins"><ins><span class="symbol">+</span>table:062<strong>9</strong>,</ins></li>
+    <li class="ins"><ins><span class="symbol">+</span>definition:When blank, the modifier applies to all service periods. This field <strong>all</strong>ows you to designate <strong>on</strong>e or more of the <strong>feeding</strong> periods during a day by combining <strong>the codes as needed. It can also combine with quantity/timing to give such inform</strong>ation as <strong>which service period the order belongs with</strong>. Th<strong>is field is identical in meaning with ODS-2-se</strong>rvice period<strong>. See section _4.8.1.2_, &quot;_ODS-2 Service Period_ (CWE) 00270,&quot; for further details. Refer to Table 0629 - Service Period in Chapter 2C for valid values.</strong></ins></li>
+  </ul>
+</div>
+
+</body>
+</html>

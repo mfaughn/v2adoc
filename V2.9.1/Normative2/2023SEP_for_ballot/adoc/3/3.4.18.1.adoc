@@ -1,0 +1,4 @@
+==== *3.4.18.1* OH4-1 Set ID (SI) 03543
+
+Definition: This field contains the sequence number used to identify the OH4 segment instances in message structures where the OH4 segment repeats. For the first occurrence of the segment, the sequence number shall be one, for the second occurrence, the sequence number shall be two, etc.
+

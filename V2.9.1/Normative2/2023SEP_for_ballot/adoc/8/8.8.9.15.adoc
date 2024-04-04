@@ -1,0 +1,8 @@
+==== 8.8.9.15 OM1-15 Portable Device Indicator (ID) 00600
+
+Definition: This field indicates whether or not a portable device may be used for the service/test/observation. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values.
+
+Y the observation can be obtained with a portable device brought to the patient
+
+N the patient or specimen must be transported to the device
+

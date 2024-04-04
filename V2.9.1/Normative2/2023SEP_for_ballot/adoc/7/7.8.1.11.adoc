@@ -1,0 +1,4 @@
+==== 7.8.1.11 CSR-11 Study Randomization Date/Time (DTM) 01045
+
+Definition: This field contains the date the patient was randomized. The time component is optional. Up to three randomizations are supported. Sequential randomizations are listed in chronological order.
+

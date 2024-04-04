@@ -1,0 +1,4 @@
+==== 13.3.3.38 SAC-38 Fibrin Index (NM) 01365
+
+Definition: This field is the index identifier that is being used to describe the Fibrin Index of the specimen. In the case of only differentiating between Absent and Present, we recommend using 0 and 1 respectively and send the field Fibrin Index Units null.
+

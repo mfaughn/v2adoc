@@ -1,0 +1,8 @@
+==== 8.8.17.17 PM1-17 Patient Name Required (ID) 03460
+
+Definition: This field indicates whether this insurance carrier requires a patient name on all requests. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[HL7 Table 0136 - Yes/no Indicator] in Chapter 2C, Code Tables, for valid values.
+
+Y Patient’s name Required
+
+N Patient’s name Not Required
+

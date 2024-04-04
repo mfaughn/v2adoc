@@ -1,0 +1,4 @@
+==== 2A.2.84.1 First Data Code Value (ST)
+
+Definition: Specifies the lower bound value.
+

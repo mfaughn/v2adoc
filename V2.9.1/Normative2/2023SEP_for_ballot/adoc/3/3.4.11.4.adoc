@@ -1,0 +1,4 @@
+==== *3.4.11.4* PD1-4 Patient Primary Care Provider Name & ID No. 00757
+
+Definition: *The PD1-4 field was retained for backward compatibility only as of v 2.4 and withdrawn as of v 2.7.* The reader is advised that the PRT segment is now used to convey more complete information about the primary care provider.
+

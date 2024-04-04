@@ -1,0 +1,6 @@
+==== 8.8.9.35 OM1-35 Rules that Trigger Reflex Testing (TX) 00620
+
+Definition: This field contains the rules that trigger the reflex tests listed above. If multiple reflex tests are listed in _OM1-34 - Reflex Text/Observations_ separated by repeat delimiters, a set of corresponding rules will be included in this section. The first rule will apply to the first test, the second to the second test, and so on.
+
+Most reflex rules will usually be transmitted as free text. In such cases, the contents serve only as information for human reading. However, an alternative for machine readable rules also exists. The rule may be defined formally in the Arden Syntax (ASTM 1460-1992) which has syntax for defining algebraic and transcendental equations, as well as temporal and logical selection criteria based on patient information stored in the computer record. Reflex rules that are written in Arden Syntax should begin and end with a double semi-colon (;;), the Arden slot delimiter.
+

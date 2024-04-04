@@ -1,0 +1,4 @@
+==== 2.13.10.1 NTE-1 Set ID ‑ NTE (SI) 00096
+
+Definition: This field MAY be used where multiple NTE segments are included in a message. Their numbering must be described in the application message definition.
+

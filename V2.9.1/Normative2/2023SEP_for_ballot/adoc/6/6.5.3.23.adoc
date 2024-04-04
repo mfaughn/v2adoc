@@ -1,0 +1,6 @@
+==== 6.5.3.23 DRG-23 Total Charge (MO) 02166
+
+Components: <Quantity (NM)> ^ <Denomination (ID)>
+
+Definition: This field contains the total charge including surcharges or discounts.
+

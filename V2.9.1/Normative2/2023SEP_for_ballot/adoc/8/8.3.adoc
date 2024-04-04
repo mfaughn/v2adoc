@@ -1,0 +1,34 @@
+== 8.3 TRIGGER EVENTS
+
+The Master Files Change Notification message can be used for the following message-level trigger events:
+
+[width="100%",cols="19%,81%",options="header",]
+|===
+|Trigger Event |Name
+|M01 |Master File Notification - not otherwise specified [WITHDRAWN]
+|M02 |Master File Notification – Staff/Practitioner
+|M03 |Master File Notification – Test/Observation [WITHDRAWN]
+|M04 |Master File Notification – Charge Description
+|M05 |Master File Notification – Patient Location
+|M06 |Master File Notification – Clinical Study with Phases and Schedules
+|M07 |Master File Notification – Clinical Study without phases but with schedules
+|M08 |Master File Notification – Test/Observation (Numeric)
+|M09 |Master File Notification – Test/Observation (Categorical)
+|M10 |Master File Notification – Test/Observation Batteries
+|M11 |Master File Notification – Test/Calculated Observations
+|M12 |Master File Notification – Test/Observation – Additional Basic
+|M13 |Master File Notification – General
+|M14 |Master File Notification – Site Defined
+|M15 |Master File Notification – Inventory Item
+|M16 |Master File Notification – Inventory Item - Enhanced
+|M17 |Master File Notification – DRG
+|M18 |Master File Notification – Test/Observation (Payer)
+|M19 |Contract Master File
+|===
+
+It is recommended that site-specific master files use event M13 or M14; alternately a code of the form Znn can be used (see also section 8.5.1, "MFI - Master File Identification Segment.")
+
+The MFN message specifies whether the master file, as a whole, has been replaced or if a record within the file has been updated. See section link:#_MFI-3___File-Level Event Code   (ID[_8.5.13_&#44; "_MFI-3 File Event Code_]," for further details.
+
+The MFN message transmits the specific action taken on a record. See section link:#_MFE-1___Record-Level Event Code   ([_8.5.2.1_&#44; "_MFE-1 Record Event Code_]," for further details.
+

@@ -1,0 +1,6 @@
+==== 16.4.5.2 PSG-2 Payer Product/Service Group Number (EI) 01951
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: Unique Product/Service Group Number assigned by the Payer Application
+

@@ -1,0 +1,61 @@
+=== 3.3.52 ADT/ACK- Cancel Leave of Absence for a Patient (Event A52)
+
+The A52 event is sent when an A21 (patient goes on "leave of absence") event is cancelled, either because of erroneous entry of the A21 event or because of a decision not to put the patient on "leave of absence" after all.
+
+The fields included when this message is sent should be the fields pertinent to communicate this event. When other important fields change, it is recommended that the A08 (update patient information) event be used in addition.
+
+As there is no specific field for the cancel LOA date/time, it is recommended field _EVN-6 - Event Occurred_ contain the date/time the LOA was actually cancelled (but not necessarily recorded).
+
+ADT^A52^ADT_A52: ADT Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ ARV }] |Access Restrictions | |3
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#EVN[EVN] |Event Type | |3
+|link:#_Hlt479197644[PID] |Patient Identification | |3
+|[link:#_Hlt479197572[PD1]] |Additional Demographics | |3
+|[\{ GSP }] |Person Gender and Sex | |3
+|[\{ GSR }] |Recorded Gender and Sex | |3
+|[\{ GSC }] |Sex Parameter for Clinical Use | |3
+|link:#_Hlt476040270[PV1] |Patient Visit | |3
+|[ link:#PV2[PV2] ] |Patient Visit - Additional Info. | |3
+|===
+
+[width="100%",cols="19%,25%,5%,17%,17%,17%",options="header",]
+|===
+|Acknowledgment Choreography | | | | |
+|ADT^A52^ADT_A52 | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH.15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^A52^ACK |- |ACK^A52^ACK
+|Application Ack |ADT^A52^ADT_A52 |- |- |ACK^A52^ACK |ACK^A52^ACK
+|===
+
+ACK^A52^ACK: General Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software Segment | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Message Acknowledgment | |2
+|[ \{ ERR } ] |Error | |2
+|===
+
+[width="100%",cols="25%,35%,6%,34%",options="header",]
+|===
+|Acknowledgment Choreography | | |
+|ACK^A52^ACK | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH.15 |Blank |NE |AL, SU, ER
+|MSH.16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^A52^ACK
+|Application Ack |- |- |-
+|===
+

@@ -1,0 +1,16 @@
+=== 5.2.1 Query/response model
+
+A query with its response should be thought of as a message pair. The following illustration shows the three generic models of message pairs: the *_declarative, interrogative,_* and *_imperative_*. Within each model, one system assumes the role of initiator and the other system assumes the role of responder. HL7 queries follow the "interrogative" style of messaging as described below.
+
+image:extracted-media/media/image1.wmf[extracted-media/media/image1]
+
+*Note:* All messaging in HL7 assumes a single basic paradigm using a point-to-point transmission of an initial message from a sender to a receiver, followed by a response or acknowledgement message from the receiver back to the sender. The response/acknowledgment message may be optional depending on several use cases that will be discussed below. The point-to-point transmission is defined independent of any particular technology or architecture.
+
+The *_declarative_* model is employed for distribution or broadcast of unsolicited *events* such as the ORU and RDS. *Clients* (*interested parties*) that desire information that resides on a *Server* or *data owner* may "subscribe" to be updated when new information is available on the Server. The Server initiates a transmission of event information. This transmission may be to a single Client, or may be a broadcast to multiple Clients. Each Client responds with an acknowledgement of receipt.
+
+The *_interrogative_* model is employed for queries. A Client initiates a query (a request for data) to the Server. The Server processes the query, responds with a report of success or failure of the query to the Client, and further responds by delivering information requested by the query.
+
+The *_imperative_* model is employed for remote interoperation. A Client initiates a request for action (such as an order) to the Server. The Server processes the request and responds with a report of success or failure to the Client.
+
+*Note:* In HL7 v2, there is no formal assumption of client-server architecture, or of a particular "publish and subscribe" architecture. Thus the roles of the intercommunicating applications may change according to the messaging needs. _i.e._, an application may be a data owner or Server for one set of messages (e.g., an order entry system creating orders), and an interested party or Client for another set of messages (e.g., an order entry system receiving order status messages from an ancillary departmental system). Furthermore, the "data owning" system may be a middleware component such as an "application server" or a "messaging gateway" or "router" that distributes information from a server application. In the discussions below, "_Client_" and "_Server_" are used as shorthand synonyms for "requesting system/application" and "responding system/application" without implying the assumption of a client/server architecture. Likewise, the support for "publish and subscribe" does not assume a particular operating system or architecture, but is defined at the application level (level 7), in a technology-neutral form. The phrase "_data owner_" is used to refer to the human institution that operates the Server program. One would say that "the data owner defines the data to be made available by the Server program."
+

@@ -1,0 +1,4 @@
+==== 6.5.4.8 PR1-8 Anesthesiologist 00398
+
+*Attention: _PR1-8 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6._*
+

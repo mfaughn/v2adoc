@@ -1,0 +1,25 @@
+==== 2.8.2.1 Accept and validate/process the message in the receiving application
+
+Upon successful validation by the responding system, the message is passed to the receiving application, which performs one of these functions:
+
+{empty}a) process the message successfully, generating the functional response message with a value of *AA* in link:#_MSA-1___Acknowledgment Code  (ID)  [MSA-1 Acknowledgment Code].
+
+{empty}b) send an error response, providing error information in functional segments to be included in the response message with a value of *AE* in link:#_MSA-1___Acknowledgment Code  (ID)  [MSA-1 Acknowledgment Code].
+
+{empty}c) fail to process (reject) the message for reasons unrelated to its content or format (system down, internal error, etc.). For most such problems it is likely that the responding system will be able to accept the same message at a later time. The implementers must decide on an application-specific basis whether the message SHOULD be automatically sent again. The response message contains a value of *AR* in link:#_MSA-1___Acknowledgment Code  (ID)  [MSA-1 Acknowledgment Code].
+
+The MSH segment in the response is constructed anew following the rules used to create the initial message described above. In particular, link:#_MSH-7___Date/Time Of Message  (DTM)[MSH-7 Date/Time of Message] and link:#_MSH-10___Message Control ID  (ST)  [MSH-10 Message Control ID] refer to the response message; they are not echoes of the fields in the initial message. link:#_MSH-5___Receiving Application  (HD)[MSH-5 Receiving Application], link:#_MSH-6___Receiving Facility  (HD)   [MSH-6 Receiving Facility], and link:#_MSH-11___Processing ID  (PT)   0001[MSH-11 Processing ID] contain codes that are copied from link:#_MSH-3___Sending Application  (HD)  [MSH-3 Sending Application], link:#_MSH-4___Sending Facility  (HD)   00[MSH-4 Sending Facility] and link:#_MSH-11___Processing ID  (PT)   0001[MSH-11 Processing ID] in the initiating message.
+
+In all the responses described above, the following values are put in the MSA segment. Note that the field definitions for the MSA segment fields are in Section _2.13.8_, "_MSA ‑ Message Acknowledgment segment_".
+
+[width="100%",cols="36%,64%",]
+|===
+|Field |Notes
+|MSA-1-acknowledgment code |As described above.
+|MSA-2-message control ID |MSH-10-message control ID from MSH segment of incoming message.
+|MSA-4-expected sequence number |As described in Section _2.9.1_, "_Sequence number protocol_," (if the sequence number protocol is being used).
+|ERR segment fields |Refer to section 2.13.5 link:#err-error-segment[ERR - error segment].
+|===
+
+The receiving application then passes the response message back to the responding system for the next step in the process.
+

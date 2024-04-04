@@ -1,0 +1,12 @@
+==== 7.4.3.3 SPM-3 Specimen Parent IDs (EIP) 01756 
+
+Components: <Placer Assigned Identifier (EI)> ^ <Filler Assigned Identifier (EI)>
+
+Subcomponents for Placer Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Subcomponents for Filler Assigned Identifier (EI): <Entity Identifier (ST)> & <Namespace ID (IS)> & <Universal ID (ST)> & <Universal ID Type (ID)>
+
+Definition: This field contains the identifiers for the specimen or specimens that contributed to the specimen that is described by the segment instance.
+
+If this field repeats, then _SPM-11-Specimen Role_ should be valued with "L" (pooled). The repetitions of this field then carry the specimen IDs of the parent specimens contributing to the pool.
+

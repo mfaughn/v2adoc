@@ -1,0 +1,6 @@
+==== 7.8.1.17 CSR-17 Action Code (ID) 00816
+
+Definition: This field reveals the intent of the message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[_HL7 Table 0206 - Segment Action Code_] for valid values.
+
+The action code can only be used when CSR-1 and CSR-4, or CSR-2 and CSR-5 are valued as agreed to by the trading partners in accordance with the guidance in Chapter 2, Section 2.10.4.2.
+

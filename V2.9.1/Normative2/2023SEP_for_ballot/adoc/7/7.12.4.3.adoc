@@ -1,0 +1,4 @@
+==== 7.12.4.3 PSH-3 Report Date (DTM) 01235
+
+Definition: This field contains the date as assigned by the sender.
+

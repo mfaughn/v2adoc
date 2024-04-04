@@ -1,0 +1,4 @@
+==== 2A.2.14.1 ID Number (ST)
+
+Definition: The value of the identifier itself.
+

@@ -1,0 +1,4 @@
+==== 6.5.10.20 UB1-20 UB‑82 Locator 2 00549
+
+*Attention: _UB1-20 was deprecated as of v 2.3 and the detail was withdrawn and removed from the standard as of v 2.6._*
+

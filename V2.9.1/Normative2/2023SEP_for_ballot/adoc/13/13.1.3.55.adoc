@@ -1,0 +1,4 @@
+==== 13.1.3.55 Specimen-positioning system//Sample-positioning system (SPS): 
+
+A device to position a specimen container within acceptable tolerances of a POR.
+

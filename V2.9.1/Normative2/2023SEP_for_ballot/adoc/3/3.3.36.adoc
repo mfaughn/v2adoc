@@ -1,0 +1,4 @@
+=== 3.3.36 ADT/ACK - Merge Patient Information - Patient ID & Account Number (Event A36)
+
+Attention: The Merge Patient Information – Patient ID & Account Number (A36) event was maintained for backward compatibility only as of v2.3.1 and withdrawn as of v2.7. From V 2.3.1 onwards, the reader is referred to the A40 (Merge Patient-Patient Identifier List) event and the A41 (merge patient - patient account number) event.
+

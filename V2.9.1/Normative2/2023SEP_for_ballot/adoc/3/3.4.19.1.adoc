@@ -1,0 +1,4 @@
+==== *3.4.19.1* GSP-1 Set ID (SI) 03543
+
+Definition: This field contains the sequence number used to identify the GSP segment instances in a message.
+

@@ -1,0 +1,6 @@
+==== 12.4.5.4 REL-4 Source Information Instance Identifier (EI) 02243
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the Instance ID of the Source Segment.
+

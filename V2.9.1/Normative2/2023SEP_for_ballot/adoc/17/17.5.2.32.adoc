@@ -1,0 +1,6 @@
+==== 17.5.2.32 ITM-32 Material Safety Data Sheet Number (EI) 03305
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: The Material Safety Data Sheet Number is the manufacturer's identification number for the Material Saftey Data Sheet (if one exists for the item). A Material Safety Data Sheet contains the characteristics, protected measures, and regulations to follow when handling the item. It is relevant for dangerous substances. Field3 3 and 4 of the EI data type may be blank for communicating MSDS number; Manufacturer is already identified in this message via _ITM-7, Manufacturer Identifier_, and _ITM-8, Manufacturer Name_.
+

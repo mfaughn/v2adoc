@@ -1,0 +1,55 @@
+===== 3.6.2.2.2 A40 - merge patient - patient identifier list (repeating segment)
+
+[width="100%",cols="54%,46%",]
+|===
+|A40 - Merge patient - patient identifier list |
+|Use Case - During the admission process, the registrar does not find a record for patient EVE EVERYWOMAN in the Patient Administration system and creates a new record with patient identifier MR2. EVE EVERYWOMAN has actually been to the healthcare facility several times in the past under her maiden name, EVE MAIDENNAME with patient identifier MR1. The problem persists for a while. During that time, several more accounts are assigned to EVE under her newly created patient ID MR2. Finally, the problem is discovered and Medical Records merges her two charts together leaving patient identifier MR1. All the accounts (ACCT1, ACCT2) that were assigned to MR2 are combined under MR1 as a result. Since the account numbers are not unique, they are also renumbered. |
+|Target: _PID-3 - Patient Identifier List_ and _PID-18 - Patient Account Number_ |
+|Source: _MRG-1 - Prior Patient Identifier List_ and _MRG-3 - Prior Patient Account Number_ |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A40^ADT_A39\|00000003\|P\|2.8\|<cr>
+
+EVN\|A40\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYWOMAN^EVE\|\|\|\|\|\|\|\|\|\|\|\|\|ACCT3<cr>
+
+MRG\|MR2^^^XYZ\|\|ACCT1<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYWOMAN^EVE\|\|\|\|\|\|\|\|\|\|\|\|\|ACCT4<cr>
+
+MRG\|MR2^^^XYZ\|\|ACCT2<cr>
+
+|
+|Before Merge |After Merge
+a|
+MR1 MR2
+
+ACCT1 ACCT1*
+
+ACCT2 ACCT2*
+
+a|
+MR1
+
+ACCT1
+
+ACCT2
+
+ACCT3*
+
+ACCT4*
+
+*accounts renumbered
+
+a|
+Implementation considerations: This scenario exists when two medical records are established for the same person.
+
+If the account numbers are not unique (as implied by the After Merge example above) and renumbering of the accounts is required, you must use repeating segments as illustrated in the Example Transaction. Refer to Section _3.6.2.1.9_, "_Global merge and move message construct versus repeating segment message constructs_," for additional information regarding message construct.
+
+Since there could be a discrepancy in the demographic information between the two records, reconciliation may be required. In the example above, the implementation allowed the older demographic information (in the PID) to survive. The demographics implied by the IDs in the MRG segment, did not survive. Surviving and non-surviving demographic information is application and implementation specific. An A08 (update patient information) event should be sent and/or negotiated as necessary to provide for implementation and application specific needs.
+
+|
+|===
+

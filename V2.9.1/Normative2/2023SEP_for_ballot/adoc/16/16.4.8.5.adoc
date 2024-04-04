@@ -1,0 +1,4 @@
+==== 16.4.8.5 PMT-5 Payment/Remittance Date/Time (DTM) 02022
+
+Definition: Date Payment/Remittance Advice was paid, which might not be the same as Date/Time of Message on MSH.
+

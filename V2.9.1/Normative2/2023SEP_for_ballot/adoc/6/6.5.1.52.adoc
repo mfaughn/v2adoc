@@ -1,0 +1,6 @@
+==== 6.5.1.52 FT1-52 DME Purchase Price (MO) 03504
+
+____
+Definition: This is the purchase price for the durable medical equipment.
+____
+

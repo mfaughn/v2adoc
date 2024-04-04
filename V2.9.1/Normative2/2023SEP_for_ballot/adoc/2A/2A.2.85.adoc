@@ -1,0 +1,17 @@
+=== 2A.2.85 WVI - channel identifier 
+
+*Attention: _Retained for backward compatibility only in v 2.7._* This is used only in the CD Channel Definition data type, which has been retained for backward compatibility only in v2.7.
+
+HL7 Component Table – WVI - Channel Identifier
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | |4= |NM |R | |Channel Number | |2A.2.47
+|2 | |17# |ST |O | |Channel Name | |2A.2.76
+|===
+
+*Definition:* This data type specifies the number and name of the recording channel where waveform data is transmitted.
+
+*Note:* Replaces the CM data type used in 7.14.1.3.1 OBX-5.1 where OBX-5 Observation value (*) is data type CD as of v 2.5.
+

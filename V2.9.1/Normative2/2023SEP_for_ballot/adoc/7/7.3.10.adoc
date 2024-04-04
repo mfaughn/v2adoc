@@ -1,0 +1,113 @@
+=== 7.3.10 OUL – Unsolicited Order Oriented Observation Message (Event R24)
+
+This message was designed to accommodate multi-specimen oriented testing. It should be applicable to, e.g., laboratory automation systems requiring container.
+
+Generally this construct allows *transfer of multiple results, each one related to none, one or more specific containers with one or more specimens from a patient.* (Example: Creatinine Clearance result with detailed information about the urine and serum specimens and their containers.)
+
+In addition to the patient results themselves it permits the communication of the following kinds of information:
+
+• Analysis results of a non patient related sample (e.g., environmental) – patient related segments (e.g., PID, PD1, PV1, PV2) are optional.
+
+• Analysis results to a particular container with QC sample and the lot and manufacturer information about this sample (SAC-INV segments).
+
+• Basic identification data (lot, manufacturer, etc.) of the reagents and other substances involved in the generation of analysis results (TCD-SID segments).
+
+Refer to Chapter 13 Laboratory Automation for additional examples of usage of SAC.
+
+The Device segment (DEV) provides additional device information for a device referenced in one or more of the PRT segments in the message (using PRT-10 Participation Device to match DEV-2 Unique Device Identifier or PRT-22 Participation Device Type using DEV-3 Device Type).
+
+OUL^R24^OUL_R24: Observation Message
+
+[width="100%",cols="34%,47%,9%,,10%,",options="header",]
+|===
+|Segments |Description |Status |Chapter | |
+|MSH |Message Header | |2 | |
+|[\{ARV}] |Access Restrictions | |3 | |
+|[\{ SFT }] |Software Segment | |2 | |
+|[UAC] |User Authentication Credential | |2 | |
+|[NTE] |Notes and Comments | |2 | |
+|[ |--- PATIENT begin | | | |
+|PID |Patient Identification | |3 | |
+|[PD1] |Additional Demographics | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|[\{GSC}] |Sex Parameter for Clinical Use | | |3 |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Participation (for Patient) | |7 | |
+|[\{link:#OH1[OH1]}] |Employment Status | |3 | |
+|[\{link:#OH2[OH2]}] |Past or Present Job | |3 | |
+|[link:#OH3[OH3]] |Usual Work | |3 | |
+|[\{link:#OH4[OH4]}] |Combat Zone Work | |3 | |
+|[\{ARV}] |For backwards compatibility only as of V2.9. |B |3 | |
+|[\{NTE}] |Notes and Comments (for Patient ID) | |2 | |
+|[\{ |--- PATIENT_OBSERVATION begin | | | |
+|link:#obx-observationresult-segment[OBX] |Observation (for Patient ID) | |7 | |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Participation (for Observation) | |7 | |
+|}] |--- PATIENT_OBSERVATION end | | | |
+|[ |--- VISIT begin | | | |
+|PV1 |Patient Visit | |3 | |
+|[PV2] |Patient Visit – Additional Information | |3 | |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Participation (for Patient Visit) | |7 | |
+|] |--- VISIT end | | | |
+|] |--- PATIENT end | | | |
+|[\{ |--- NEXT_OF_KIN begin | | | |
+|NK1 |Next of Kin | |3 | |
+|[\{GSP}] |Person Gender and Sex | | |3 |
+|[\{GSR}] |Recorded Gender and Sex | | |3 |
+|}] |--- NEXT_OF_KIN end | | | |
+|\{ |--- ORDER begin | | | |
+|link:#OBR[OBR] |Observation Order | |7 | |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Participation (for observation) | |7 | |
+|[ |--- COMMON_ORDER begin | | | |
+|ORC |Common Order | |4 | |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Participation (for common order) | |7 | |
+|[ |--- ORDER_DOCUMENT begin | | | |
+|OBX |Observation containing Document | |7 | |
+|[\{PRT}] |Participation | |7 | |
+|TXA |Transcription Document Header | |9 | |
+|] |--- ORDER_DOCUMENT end | | | |
+|] |--- COMMON_ORDER end | | | |
+|[\{NTE}] |Notes and Comments (for Detail) | |2 | |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Deprecated as of V2.8 |Deprecated |7 | |
+|[\{ |--- TIMING_QTY begin | | | |
+|TQ1 |Timing/Quantity | |4 | |
+|[\{TQ2}] |Timing/Quantity Order Sequence | |4 | |
+|}] |--- TIMING_QTY end | | | |
+|[\{ |--- SPECIMEN begin | | | |
+|link:#SPM[SPM] |Specimen information | |7 | |
+|[\{ |--- SPECIMEN_OBSERVATION begin | | | |
+|link:#OBX[OBX] |Observation (for Specimen) | |7 | |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Participation (for Observation) | |7 | |
+|}] |--- SPECIMEN_OBSERVATION end | | | |
+|[\{ |--- CONTAINER begin | | | |
+|SAC |Container information | |13 | |
+|[INV] |Detailed Substance information (e.g., id, lot, manufacturer, ... of QC specimen) | |13 | |
+|}] |--- CONTAINER end | | | |
+|}] |--- SPECIMEN end | | | |
+|[\{ |--- RESULT begin | | | |
+|link:#OBX[OBX] |Observation Result | |7 | |
+|[\{link:#obx-31-action-code-id-00816[PRT]}] |Participation | |7 | |
+|[TCD] |Test Code Detail | |13 | |
+|[\{SID}] |Substance Identifier (e.g., reagents used for testing) |B |13 | |
+|[\{INV}] |Inventory Detail (Detailed substance data e.g., reagents used for testing) | |13 | |
+|[\{NTE}] |Notes and Comments | |2 | |
+|}] |--- RESULT end | | | |
+|[\{link:#CTI[CTI]}] |Clinical Trial Identification | |7 | |
+|[\{ |--- DEVICE begin | | | |
+|DEV |Device (for Participation) | |17 | |
+|[\{OBX}] |Observation/Result (for Device) | |7 | |
+|}] | | | | |
+|} |--- ORDER end | | | |
+|[DSC] |Continuation Pointer | |2 | |
+|===
+
+[width="100%",cols="21%,25%,15%,17%,22%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|OUL^R24^OUL_R24 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^R24^ACK
+|Application Ack |ACK^R24^ACK |- |ACK^R24^ACK |ACK^R24^ACK
+|===
+

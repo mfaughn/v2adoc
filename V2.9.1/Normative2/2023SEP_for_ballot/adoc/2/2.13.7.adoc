@@ -1,0 +1,13 @@
+=== 2.13.7 FTS ‑ File Trailer Segment 
+
+The FTS segment defines the end of a file.
+
+HL7 Attribute Table - FTS - File Trailer
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM # |ELEMENT NAME
+|1 | |10# |NM |O | | |00079 |File Batch Count
+|2 | |80# |ST |O | | |00080 |File Trailer Comment
+|===
+

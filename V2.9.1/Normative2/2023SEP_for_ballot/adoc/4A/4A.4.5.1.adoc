@@ -1,0 +1,4 @@
+==== 4A.4.5.1 RXD-1 Dispense Sub-ID counter (NM) 00334
+
+Definition: This field starts with 1 the first time that medication/treatment is delivered/dispensed for this order. Increments by one with each additional issuance.
+

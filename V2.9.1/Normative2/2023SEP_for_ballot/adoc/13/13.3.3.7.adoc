@@ -1,0 +1,4 @@
+==== 13.3.3.7 SAC-7 Registration Date/Time (DTM) 01334
+
+Definition: This field is the date/time that the container was last registered with the "automated system," e.g., reading of a container bar code by a device.
+

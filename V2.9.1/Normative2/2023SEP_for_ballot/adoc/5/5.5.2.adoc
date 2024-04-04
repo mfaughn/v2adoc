@@ -1,0 +1,17 @@
+=== 5.5.2 QAK - Query Acknowledgment segment
+
+The QAK segment contains information sent with responses to a query. The QAK segment may appear as an optional segment placed after the (optional) ERR segment in any query response (message) to any original mode query.
+
+HL7 Attribute Table – QAK[#QAK .anchor]#### – Query Acknowledgment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | |32= |ST |C | | |00696 |Query Tag
+|2 |2..2 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70208[0208] |00708 |Query Response Status
+|3 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70471[0471] |01375 |Message Query Name
+|4 | |10= |NM |O | | |01434 |Hit Count Total
+|5 | |10= |NM |O | | |01622 |This payload
+|6 | |10= |NM |O | | |01623 |Hits remaining
+|===
+

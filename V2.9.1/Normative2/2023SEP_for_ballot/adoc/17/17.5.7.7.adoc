@@ -1,0 +1,6 @@
+==== 17.5.7.7 IVT-7 Bin Location Identifier (EI) 02066
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: A unique code assigned to a bin location located within the inventory location in IVT-2, where the inventory supply item may be stored.
+

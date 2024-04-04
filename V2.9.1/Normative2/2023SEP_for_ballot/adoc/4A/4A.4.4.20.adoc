@@ -1,0 +1,8 @@
+==== 4A.4.4.20 RXE-20 Needs Human Review (ID) 00307
+
+Definition: This field uses file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/No Indicator_] in Chapter 2C, Code Tables. The values have the following meaning for this field:
+
+Y Yes - Indicates that a warning is present. The application receiving the encoded order needs to warn the person administering the drug or treatment to pay attention to the text in _RXE-21-pharmacy/treatment special dispensing instructions_.
+
+N No - Indicates no warning is present. This is the equivalent default (null) value.
+

@@ -1,0 +1,20 @@
+=== 2A.2.43 MOP - money or percentage
+
+HL7 Component Table – MOP – Money or Percentage
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |ID |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70148[0148] |Money or Percentage Indicator | |2A.2.35
+|2 | |= |NM |R | |Money or Percentage Quantity | |2A.2.47
+|3 |3..3 | |ID |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#ISO0913[0913] |Monetary Denomination | |2A.2.35
+|===
+
+Definition: This data type specifies an amount that may be either currency or a percentage. It is a variation on the MO data type that is limited to currency.
+
+*Note:* Replaces the CM data type used in section 6.5.8.5 IN3-5, as of v 2.5. This data type is restricted to this field.
+
+Example: USD is the ISO 4217 code for the U.S. American dollar.
+
+|AT^99.50^USD|
+

@@ -1,0 +1,4 @@
+==== 4A.4.7.1 RXA-1 Give Sub-ID Counter (NM) 00342
+
+Definition: Use this field if matching this RXA segment to its corresponding RXG segment. If the two applications are not matching RXG and RXA segments, this field's value is zero (0).
+

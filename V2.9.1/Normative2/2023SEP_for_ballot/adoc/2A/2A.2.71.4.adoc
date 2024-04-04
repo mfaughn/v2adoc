@@ -1,0 +1,4 @@
+==== 2A.2.71.4 Num2 (NM)
+
+Definition: A number or null depending on the measurement.
+

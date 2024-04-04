@@ -1,0 +1,27 @@
+=== 6.5.16 GP2 - Grouping/Reimbursement - Procedure Line Item Segment
+
+This segment is used for items that pertain to each HCPC/CPT line item.
+
+*The GP2 segment is specific to the US and may not be implemented in non-US systems.*
+
+[#GP2 .anchor]####HL7 Attribute Table - GP2 - Grouping/Reimbursement - Procedure Line Item
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |CWE |O | |link:#gp1-3-overall-claim-disposition-code-cwe-01601[0456] |01600 |Revenue Code
+|2 | |7# |NM |O | | |01604 |Number of Service Units
+|3 | | |CP |O | | |01605 |Charge
+|4 | | |CWE |O | |link:#gp2-5-denial-or-rejection-code-cwe-01607[0459] |01606 |Reimbursement Action Code
+|5 | | |CWE |O | |link:#gp2-6-oce-edit-code-cwe-01608[0460] |01607 |Denial or Rejection Code
+|6 | | |CWE |O |Y |link:#gp1-5-outlier-cost-cp-00387[0458] |01608 |OCE Edit Code
+|7 | | |CWE |O | |link:#gp2-8-modifier-edit-code-cwe-01610[0466] |01609 |Ambulatory Payment Classification Code
+|8 | | |CWE |O |Y |link:#HL70467[0467] |01610 |Modifier Edit Code
+|9 | | |CWE |O | |link:#gp2-10-packaging-status-code-cwe-01617[0468] |01611 |Payment Adjustment Code
+|10 | | |CWE |O | |link:#gp2-11-expected-cms-payment-amount-cp-01618[0469] |01617 |Packaging Status Code
+|11 | | |CP |O | | |01618 |Expected CMS Payment Amount
+|12 | | |CWE |O | |link:#gp2-13-co-pay-amount-cp-01620[0470] |01619 |Reimbursement Type Code
+|13 | | |CP |O | | |01620 |Co-Pay Amount
+|14 | |4= |NM |O | | |01621 |Pay Rate per Service Unit
+|===
+

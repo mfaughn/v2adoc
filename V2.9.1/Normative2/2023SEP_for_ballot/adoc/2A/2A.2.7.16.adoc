@@ -1,0 +1,8 @@
+==== 2A.2.7.16 Value Set Version ID (DTM)
+
+Definition: This component carries the version for the value set identified by _CF.15_. The version is a date. The date is the date/time that the value set being used was published.
+
+Value set version ID is required if _CF.15_ is populated.
+
+*Note*: If a code is provided, the meaning of the code must come from the definition of the code in the code system. The meaning of the code SHALL NOT depend on the value set. Applications SHALL NOT be required to interpret the code in light of the valueSet, and they SHALL NOT reject an instance because of the presence or absence of any or a particular value set/ value set version ID.
+

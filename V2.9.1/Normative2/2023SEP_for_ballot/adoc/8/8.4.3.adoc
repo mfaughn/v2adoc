@@ -1,0 +1,59 @@
+=== 8.4.3 MFN/MFK - Master File Notification - Site Defined (Event M14) 
+
+The MFN Site defined master file notification transaction is used where the master file is not a simple one (as defined for MFN^M13) and is not a transaction type currently defined by HL7, but rather requires one or more HL7 and/or 'Z' segments to carry the master file information.
+
+The Site defined master file notification is defined as follows:
+
+MFN^M14^MFN_Znn: Master File Notification - Site Defined
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|\{ |--- MF_SITE_DEFINED begin | |
+|link:#MFE[MFE] |Master File Entry | |8
+|... |One or more HL7 and/or Z-segments carrying the data for the entry identified in the MFE segment | |(varies)
+|} |--- MF_SITE_DEFINED end | |
+|===
+
+[width="100%",cols="17%,23%,5%,18%,19%,18%",options="header",]
+|===
+|Acknowledgement Choreography | | | | |
+|MFN^M14^MFN_Znn | | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | | |
+|MSH-15 |Blank |NE |AL, SU, ER |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |ACK^M14^ACK |- |ACK^M14^ACK
+|Application Ack |MFK^M14^MFK_M01 |- |- |MFK^M14^MFK_M01 |MFK^M14^MFK_M01
+|===
+
+MFK^M14^MFK_M01: Master File Application Acknowledgment
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|MSA |Acknowledgment | |2
+|[\{ ERR }] |Error | |2
+|link:#MFI[MFI] |Master File Identification | |8
+|[\{ link:#MFA[MFA] }] |Master File ACK segment | |8
+|===
+
+[width="100%",cols="23%,37%,10%,30%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|MFK^M14^MFK_M01 | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode |
+|MSH-15 |Blank |NE |AL, SU, ER
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |- |- |ACK^M14^ACK
+|Application Ack |- |- |-
+|===
+
+*Note:* The MFK message is used for an application acknowledgment in either the original or enhanced acknowledgment modes.
+

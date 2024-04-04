@@ -1,0 +1,16 @@
+=== 6.6.3 Update patient accounts - update UB1 information
+
+MSH|^~\&|UREV||PATB||19930906135030||BAR^P05^BAR_P05|MSG0018|P|2.8<cr>
+
+EVN|P05|19930908135030
+
+PID|||125976||EVERYMAN^ADAM^J|||||||||||||125976011<cr>
+
+UB1|1|1|5|3|1||39|||01^500.00|||1|19880501|19880507|10^19880501<cr>
+
+Utilization review sends data for Patient Billing to the Patient Accounting system. The patient's insurance program has a 1-pint deductible for blood; the patient received five pints of blood, and three pints were replaced, with one pint not yet replaced.
+
+The patient has been assigned to a medically necessary private room (UB condition code 39). The hospital's most common semi-private rate is $500.00 (UB value code 01.)
+
+The services provided for the period 05/01/88 through 05/07/88 are fully approved (PSRO/UR Approval Code 1). The patient's hospitalization is the result of an auto accident (UB occurrence code 01.)
+

@@ -1,0 +1,8 @@
+==== 8.5.1.3 MFI-3 File-Level Event Code (ID) 00660
+
+Definition: This field defines the file-level event code. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70178[HL7 Table 0178 – File Level Event Code] in Chapter 2C, Code Tables, for valid values.
+
+*Note*: The replace option allows the sending system to replace a file without sending delete record-level events for each record in that file. UPD means that the events are defined according to the record-level event code contained in each MFE segment in that message.
+
+If the _MFI-3 - File-Level Event Code_ is "REP" (replace file), then each MFE segment must have an _MFE-1 - Record-Level Event Code_ of "MAD" (add record to master file).
+

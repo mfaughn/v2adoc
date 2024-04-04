@@ -1,0 +1,116 @@
+=== 4A.3.6 RDE - Pharmacy/Treatment Encoded Order Message (Event O11)
+
+This message communicates the pharmacy or treatment application's encoding of the pharmacy/treatment order ,OMP, message. It may be sent as an unsolicited message to report on either a single order or multiple pharmacy/treatment orders for a patient.
+
+The RDE/RRE message pair can also be used to communicate a refill authorization request; however, a specific trigger event has been assigned. See section _4A.3.16 "RDE - Pharmacy/Treatment Refill Authorization Request Message_ (Event O25)_."_ As a site-specific variant, the original order segments (RXO, RXRs, associated RXCs, and any NTEs) may be sent optionally (for comparison).
+
+The event O11 represents an encoding of an order. To communicate explicit dispense requests, which are different event types, the RDE^O11/RRE^O12 message pair is also used, but the event O49 is preferred. See section 4A.3.23 "RDE - Pharmacy/Treatment Refill Authorization Request Message (Event O25)." As a site-specific variant, the original order segments (RXO, RXRs, associated RXCs, and any NTEs) may be sent optionally (for comparison).
+
+RDE^O11^RDE_O11: Pharmacy/Treatment Encoded Order Message
+
+[width="100%",cols="34%,47%,9%,,10%",options="header",]
+|===
+|Segments |Description |Status |Chapter |
+|MSH |Message Header | |2 |
+|[\{ARV}] |Access Restrictions | |3 |
+|[\{ SFT }] |Software | |2 |
+|[ UAC ] |User Authentication Credential | |2 |
+|[\{ NTE }] |Notes and Comments (for Header) | |2 |
+|[ |--- PATIENT begin | | |
+|PID |Patient Identification | |3 |
+|[PD1] |Additional Demographics | |3 |
+|[\{GSP}] |Person Gender and Sex | | |3
+|[\{GSR}] |Recorded Gender and Sex | | |3
+|[\{GSC}] |Sex Parameter for Clinical UseSex Parameter for Clinical Use | | |3
+|[\{PRT}] |Participation (for Patient) | |7 |
+|[\{ NTE }] |Notes and Comments (for Patient ID) | |2 |
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3 |
+|[ |--- PATIENT_VISIT begin | | |
+|PV1 |Patient Visit | |3 |
+|[ PV2 ] |Patient Visit – Additional Info | |3 |
+|[\{PRT}] |Participation (for Patient Visit) | |7 |
+|[\{ ARV }] |For backwards compatibility only as of V2.9. |B |3 |
+|] |--- PATIENT_VISIT end | | |
+|[\{ |--- INSURANCE begin | | |
+|IN1 |Insurance | | |
+|[ IN2 ] |Insurance Additional Information | |6 |
+|[ IN3 ] |Insurance Additional Information, Certification | |6 |
+|}] |--- INSURANCE end | | |
+|[ GT1 ] |Guarantor | |6 |
+|[\{ AL1 }] |Allergy Information | |3 |
+|] |--- PATIENT end | | |
+|\{ |--- ORDER begin | | |
+|ORC |Common Order | |4 |
+|[\{PRT}] |Participation (for ORC) | |7 |
+|[\{ |--- TIMING begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 |
+|}] |--- TIMING end | | |
+|[ |--- ORDER_DETAIL begin | | |
+|RXO |Pharmacy/Treatment Prescription Order | |4A |
+|[\{PRT}] |Participation (for RXO) | |7 |
+|[\{ NTE }] |Notes and Comments (for RXO) | |2 |
+|\{ RXR } |Pharmacy/Treatment Route | |4A |
+|[\{ |--- COMPONENT begin | | |
+|RXC |Pharmacy/Treatment Component (for RXO) | |4A |
+|[\{ NTE }] |Notes and Comments (for each RXC) | |2 |
+|}] |--- COMPONENT end | | |
+|] |--- ORDER_DETAIL end | | |
+|RXE |Pharmacy/Treatment Encoded Order | |4A |
+|[\{PRT}] |Participation (for RXE) | |7 |
+|[\{ NTE }] |Notes and Comments (for RXE) | |2 |
+|\{ |--- TIMING_ENCODED begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 |
+|} |--- TIMING_ENCODED end | | |
+|[\{ |--- PHARMACY_TREATMENT_INFUSION_ORDER begin | | |
+|RXV |Pharmacy/Treatment Infusion Order | |4A |
+|[\{PRT}] |Participation (for RXV) | |7 |
+|[\{ NTE }] |Notes and Comments (for RXV) | |2 |
+|\{ |--- TIMING_ENCODED begin | | |
+|TQ1 |Timing/Quantity | |4 |
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4 |
+|} |--- TIMING_ENCODED end | | |
+|}] |--- PHARMACY_TREATMENT_INFUSION_ORDER end | | |
+|\{ RXR } |Pharmacy/Treatment Route | |4A |
+|[\{ RXC }] |Pharmacy/Treatment Component (for RXE) | |4A |
+|[\{ CDO }] |Cumulative Dosage Segment | |4A |
+|[\{ |--- OBSERVATION begin | | |
+|OBX |Results | |7 |
+|[\{PRT}] |Participation (for Observation) | |7 |
+|[\{ NTE }] |Notes and Comments (for OBX) | |2 |
+|}] |--- OBSERVATION end | | |
+|[\{ FT1 }] |Financial Detail | |6 |
+|[ BLG ] |Billing Segment | |4 |
+|[\{ CTI }] |Clinical Trial Identification | |7 |
+|} |--- ORDER end | | |
+|===
+
+Note: The RXCs which follow the RXO may not be fully encoded, but those that follow the RXE must be fully encoded.
+
+The NTE segment(s) following the PD1 segment are intended to communicate notes and comments relative to the patient.
+
+The NTE segment(s) following the RXO segment are intended to communicate notes and comments relative to the pharmacy/treatment order.
+
+The NTE segment(s) following the RXE segment are intended to communicate notes and comments relative to the encoded order.
+
+The NTE segment(s) following the RXV segment are intended to communicate notes and comments relative to the encoded order.
+
+The NTE segment(s) following the RXC segment are intended to communicate notes and comments relative to the component(s).
+
+The NTE segment following the OBX segment is intended to communicate notes and comments relative to the results.
+
+[width="100%",cols="18%,28%,8%,23%,23%",options="header",]
+|===
+|Acknowledgement Choreography | | | |
+|RDE^O11^RDE_O11 | | | |
+|Field name |Field Value: Original mode |Field value: Enhanced mode | |
+|MSH-15 |Blank |NE |NE |AL, SU, ER
+|MSH-16 |Blank |NE |AL, SU, ER |AL, SU, ER
+|Immediate Ack |- |- |- |ACK^O11^ACK
+|Application Ack |RRE^O12^RRE_O12 or +
+OSU^O52^OSU_O52 |- |RRE^O12^RRE_O12 or +
+OSU^O52^OSU_O52 |RRE^O12^RRE_O12 or +
+OSU^O52^OSU_O52
+|===
+

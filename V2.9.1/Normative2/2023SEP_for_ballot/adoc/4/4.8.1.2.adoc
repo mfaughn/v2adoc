@@ -1,0 +1,20 @@
+==== 4.8.1.2 ODS-2 Service Period (CWE) 00270
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: When blank, the modifier applies to all service periods. Diet orders, for example, typically apply to all service periods. This field usually specifies supplements. This field allows you to designate a modification for one or more of the service periods during a day by combining service specifications as needed. The service periods will be local CEs, normally numbers. Suggested are:
+
+[width="100%",cols="23%,9%,68%",]
+|===
+|service 1 |is |breakfast
+|service 2 |is |mid-morning snack
+|service 3 |is |lunch
+|service 4 |is |mid-afternoon snack
+|service 5 |is |dinner
+|service 6 |is |bedtime snack
+|===
+
+Ex: |1~5| means service 1 and service 5, whatever these are locally defined to be.
+
+Refer to Table 0627 - Service Period in Chapter 2C for valid values.
+

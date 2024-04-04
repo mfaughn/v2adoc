@@ -1,0 +1,10 @@
+==== 4A.4.1.10 RXO-10 Requested Dispense Code (CWE) 00301
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field indicates what is to be/was dispensed; it is analogous to _OBR-4-universal service ID_ in function. It may be present in the order or not, depending on the application. If not present, and values are given for _RXO-11-requested dispense amount_ and _RXO-12-requested dispense units_, the _RXO-1-requested give code_ is assumed. If the requested dispense code does not include the dosage form, then _RXO-5-requested dosage form_ is required. Refer to Table 0753 - Requested Dispense Code in Chapter 2C for valid values.
+
+Note on request-to-dispense fields:
+
+Sometimes an order will be written in which the total amount of the drug or treatment requested to be dispensed has no direct relationship with the give amounts and schedule. For example, an outpatient pharmacy/treatment order might be _take four tablets a day of <drug name, value>, Q6H (every 6 hours) -- dispense 30 tablets_. An inpatient order might be _NS/D5W (normal saline with 5% dextrose) at 1000cc/hour—dispense 3 1-liter bottles of NSD5W solution_. The request-to-dispense fields support this common style of ordering.
+

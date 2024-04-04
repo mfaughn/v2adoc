@@ -1,0 +1,44 @@
+===== 3.6.2.2.15 Example using multiple messages
+
+[width="100%",cols="54%,46%",]
+|===
+|A44 - Move account information - patient account number and A49 - Change patient account number |
+|Use Case - During the admitting process, the admitting clerk uses the Medical Record Number of Adam Everyman, III (MR1) instead of Adam Everyman, Jr. (MR2). The Patient Administration system assigns the new admission account number A1. When the mistake is discovered, the account is moved to the correct Medical Record, MR2. The Patient Administration system generates a new account number as a result: number X1. |
+|Target: _PID-3 - Patient Identifier List_ (Message 1) and _PID-18 - Patient Account Number_ (Message 2) |
+|Source: _MRG-1 - Prior Patient Identifier List_ (Message 1) and _MRG-3 - Prior Patient Account Number_ (Message 2) |
+a|
+Example Transaction (Message 1):
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A44^ADT_A43\|00000007\|P\|2.8\|<cr>
+
+EVN\|A44\|200301051530<cr>
+
+PID\|\|\|MR2^^^XYZ^MR\|\|EVERYMAN^ADAM^A^JR\|\|19501010\|M\|\|\|123 EAST STREET^^NY^NY^10021\|\|(212)111-3333\|\|\|S\|\|ACCT1<cr>
+
+MRG\|MR1^^^XYZ^MR\|\|ACCT1<cr>
+
+Example Transaction (Message 2):
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A49^ADT_A30\|00000007\|P\|2.5<cr>
+
+EVN\|A49\|200301051530<cr>
+
+PID\|\|\|MR2^^^XYZ^MR\|\|EVERYMAN^ADAM^A^JR\|\|19501010\|M\|\|\|123 EAST STREET^^NY^NY^10021\|\|(212)111-3333\|\|\|S\|\|X1<cr>
+
+MRG\|MR2^^^XYZ^MR\|\|ACCT1<cr>
+
+|
+|Before Change |After Change
+a|
+MR1 MR2
+
+ACCT1
+
+a|
+MR1 MR2
+
+X1
+
+|Implementation Considerations: Message 1, A44 (move account information-patient account number), moves the account from MR1 to MR2. Message 2, A49 (change patient account number), changes the account number. |
+|===
+

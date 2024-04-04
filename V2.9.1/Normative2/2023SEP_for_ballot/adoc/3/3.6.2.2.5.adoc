@@ -1,0 +1,42 @@
+===== 3.6.2.2.5 A42 - Merge visit - visit number
+
+[width="100%",cols="54%,46%",]
+|===
+|A42 - Merge visit - visit number |
+|Use Case - A42 (merge visit -visit number) - Eve Everywoman (patient identifier MR1) is a recurring outpatient at the Physical Therapy clinic at hospital XYZ with account number ACCT1. She has visited the clinic several times. When she arrives for therapy, two different registrars create a new visit numbers. The mistake is not discovered immediately and clinical data is recorded under both visit numbers. When the mistake is discovered, the two visits are merged together, leaving visit VISIT1. |
+|Target: _PV1-19 - Visit Number_ |
+|Source: _MRG-5 - Prior Visit Number_ |
+a|
+Example Transaction:
+
+MSH\|^~\&\|REGADT\|MCM\|RSP1P8\|MCM\|200301051530\|SEC\|ADT^A42^ADT_A39\|00000005\|P\|2.8\|<cr>
+
+EVN\|A42\|200301051530<cr>
+
+PID\|\|\|MR1^^^XYZ\|\|EVERYEWOMAN^EVE\|\|19501010\|F\|\|\|123 NORTH STREET^^NY^NY^10021\|\|(212)111-3333\|\|\|S\|\|ACCT1<cr>
+
+MRG\|MR1^^^XYZ\|\|ACCT1\|\|VISIT2<cr>
+
+PV1\|1\|I\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|\|VISIT1
+
+|
+|Before Merge |After Merge
+a|
+MR1
+
+ACCT1
+
+VISIT1
+
+VISIT2
+
+a|
+MR1
+
+ACCT1
+
+VISIT1
+
+|Implementation considerations: This scenario exists when two visits are established in error for the same patient and episode of care. |
+|===
+

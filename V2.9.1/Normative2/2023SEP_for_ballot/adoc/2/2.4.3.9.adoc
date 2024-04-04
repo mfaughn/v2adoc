@@ -1,0 +1,6 @@
+==== 2.4.3.9 ID number
+
+____
+Definition: a small integer that uniquely identifies the data item throughout the Standard**.** In the segment definition this information is provided in the column labeled *ITEM #.*
+____
+

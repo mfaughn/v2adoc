@@ -1,0 +1,6 @@
+==== 12.4.5.6 REL-6 Asserting Entity Instance ID (EI) 02245
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field contains the Instance ID of the Person or Organization that asserted the relationship.
+

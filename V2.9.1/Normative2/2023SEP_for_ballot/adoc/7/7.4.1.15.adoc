@@ -1,0 +1,4 @@
+==== 7.4.1.15 OBR-15 Specimen Source
+
+*Attention: _The OBR-15 element was retained for backward compatibility only as of v 2.5 and the detail was withdrawn and removed from the standard as of v 2.7. See SPM in Chapter 7._*
+

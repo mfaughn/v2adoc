@@ -1,0 +1,4 @@
+==== 8.8.17.7 PM1-7 Group Number (ST) 00433
+
+Definition: This field contains the group number of the insured's insurance.
+

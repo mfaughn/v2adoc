@@ -1,0 +1,53 @@
+=== 4.4.15 ORI – Imaging Order Response Message to Any OMI (Event O24)
+
+The function of this message is to respond to an OMI message. An ORI message is the application acknowledgment to an OMI message. See Chapter 2 for a description of the acknowledgment paradigm.
+
+ORI^O24^ORI_O24: Imaging Order Acknowledgment Message
+
+[width="100%",cols="33%,47%,9%,11%",options="header",]
+|===
+|Segments |Description |Status |Chapter
+|MSH |Message Header | |2
+|MSA |Message Acknowledgment | |2
+|[\{ARV}] |Access Restrictions | |3
+|[\{ ERR }] |Error | |2
+|[\{ SFT }] |Software | |2
+|[ UAC ] |User Authentication Credential | |2
+|[\{ NTE }] |Notes and Comments (for Header) | |2
+|[ |--- RESPONSE begin | |
+|[ |--- PATIENT begin | |
+|PID |Patient Identification | |3
+|[\{ARV}] |For backwards compatibilitty only as of V2.9. |B |3
+|[\{ NTE }] |Notes and Comments (for Patient ID) | |2
+|[\{PRT}] |Participation (for Patient) | |7
+|] |--- PATIENT end | |
+|\{ |--- ORDER begin | |
+|ORC |Common Order | |4
+|[\{PRT}] |Participation (for Order) | |7
+|[\{ |--- TIMING begin | |
+|TQ1 |Timing/Quantity | |4
+|[\{ TQ2 }] |Timing/Quantity Order Sequence | |4
+|}] |--- TIMING end | |
+|OBR |Observation | |4
+|[\{ NTE }] |Notes and Comments (for Detail) | |2
+|[\{PRT}] |Participation (for Observation Request) | |7
+|\{ IPC } |Imaging Procedure Control | |4
+|} |--- ORDER end | |
+|] |--- RESPONSE end | |
+|===
+
+[width="100%",cols="28%,35%,13%,24%",options="header",]
+|===
+|Acknowledgement Choreography | | |
+|ORI^O24^ORI_O24 | | |
+|Field name |Field Value: Original mode |Field Value: Enhanced Mode |
+|MSH-15 |Blank |NE |AL, ER, SU
+|MSH-16 |Blank |NE |NE
+|Immediate Ack |ACK^O24^ACK |- |ACK^O24^ACK
+|Application Ack |- |- |-
+|===
+
+____
+There is not supposed to be an Application Level acknowledgement to an Application Level Acknowledgement message. In Enhanced Mode, MSH-16 SHALL always be set to NE (Never).
+____
+

@@ -1,0 +1,4 @@
+==== 8.8.15.14 OM7-14 Consent Effective End Date/Time (DTM) 01492
+
+Definition: This field contains the date and time the consent is no longer valid for the test/service.
+

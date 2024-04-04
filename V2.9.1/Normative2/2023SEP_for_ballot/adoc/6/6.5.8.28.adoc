@@ -1,0 +1,4 @@
+==== 6.5.8.28 IN3-28 Online Verification Date/Time (DTM) 02483
+
+Definition: This field contains the timestamp of the online verification of the insurance information.
+

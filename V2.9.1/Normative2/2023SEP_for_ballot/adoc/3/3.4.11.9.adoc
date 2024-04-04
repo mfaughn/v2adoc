@@ -1,0 +1,8 @@
+==== *3.4.11.9* PD1-9 Separate Bill (ID) 00761
+
+Definition: This field specifies that charges for this patient are to be billed separately from other patient bills with the same guarantor. (This bill is now a patient bill rather than a guarantor bill.) Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[_HL7 Table 0136 - Yes/No Indicator_] in Chapter 2C, Code Tables, for valid values.
+
+Y Bill separately
+
+N normal processing
+

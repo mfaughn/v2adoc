@@ -1,0 +1,4 @@
+==== 9.2.2.8 Consent Mode: 
+
+The manner in which consent can be given may vary greatly within a specific program, from program to program, or from organization to organization. Therefore, the standard must allow applications to identify how consent was obtained (i.e., verbally, written, etc.).
+

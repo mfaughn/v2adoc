@@ -1,0 +1,6 @@
+==== 2.13.9.28 MSH-28 Special Access Restriction Instructions (ST) 2431 ? 
+
+Definition: Used to convey specific instructions about the protection of the patient's data, which must be rendered to end users in accordance with patient consent directive, organizational policy, or jurisdictional law. For example, in US law 42 CFR Part 2, disclosed information made with patient consent must include a renderable “Prohibition on re-disclosure” warning (§ 2.32[multiblock footnote omitted]) In addition, organizational policy might require that some or all of the ARV field privacy tag values be rendered to end users, e.g., marking a consult note with “Restricted Confidentiality” or with sensitivity tags such as “VIP” or “EMP” for employee of the organization.
+
+This field MAY also be used to specify instructions about the release of information to family and friends (e.g., "Do not release information to patient's brother, Adam Everyman"). These instructions MAY be in conjunction with other fields (as elected by the system).
+

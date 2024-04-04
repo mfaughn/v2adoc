@@ -1,0 +1,16 @@
+=== 2A.2.44 MSG - message type
+
+HL7 Component Table - MSG – Message Type
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 |3..3 | |ID |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70076[0076] |Message Code | |2A.2.35
+|2 |3..3 | |ID |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70003[0003] |Trigger Event | |2A.2.35
+|3 |3,7 | |ID |R |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70354[0354] |Message Structure | |2A.2.35
+|===
+
+Definition: This field contains the message type, trigger event, and the message structure ID for the message.
+
+*Note*: Replaces the CM data type used in 2.16.9.9 MSH-9 as of v 2.5.
+

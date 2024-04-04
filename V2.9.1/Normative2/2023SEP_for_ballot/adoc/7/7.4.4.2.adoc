@@ -1,0 +1,4 @@
+==== 7.4.4.2 PRT-2 Action Code (ID) 02534
+
+Definition: This field reveals the intent of the message. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70287[_HL7 Table 0287 – Problem/goal action code_] for valid values.
+

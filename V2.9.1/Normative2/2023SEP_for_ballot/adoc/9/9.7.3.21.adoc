@@ -1,0 +1,4 @@
+==== 9.7.3.21 TXA-21 Document Change Reason (ST) 00933
+
+Definition: This free text field (limited to 30 characters) contains the reason for document status change.
+

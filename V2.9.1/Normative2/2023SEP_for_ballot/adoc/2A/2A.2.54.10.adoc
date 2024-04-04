@@ -1,0 +1,4 @@
+==== 2A.2.54.10 Comprehensive Location Identifier (EI)
+
+Definition: The unique identifier that represents the physical location as a whole without regard for the individual components. This accommodates sites that may have a different method of defining physical units or who may code at a less granular level. For example, point of care, room, and bed may be 1 indivisible code.
+

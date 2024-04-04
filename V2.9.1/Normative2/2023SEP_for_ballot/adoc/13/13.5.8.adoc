@@ -1,0 +1,12 @@
+=== 13.5.8 Automated Equipment Response
+
+The chemistry analyzer confirms completion of the execution of the initialization command.
+
+MSH|^~\&|INSTPROG|AUTINST|LASPROG|LASSYS|19980630080040|SECURITY |EAR^U08^EAR|MSG00001|P|2.9|<cr>
+
+EQU|0001^CHEMISTRYANALYZER|19980630080038<cr>
+
+ECD|89421|IN^INIT|Y^YES<cr>
+
+ECR|OK^COMMAND_COMPLETE|19980630080035<cr>
+

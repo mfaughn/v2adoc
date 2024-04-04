@@ -1,0 +1,4 @@
+==== 7.12.2.4 PEO-4 Event Exacerbation Date/Time (DTM) 01076
+
+Definition: This field identifies the best estimate of the date/time the event was exacerbated.
+

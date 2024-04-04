@@ -1,0 +1,6 @@
+==== 17.5.8.7 ILT-7 Inventory Received Item Cost (MO) 01807
+
+Components: <Quantity (NM)> ^ <Denomination (ID)>
+
+Definition: This field contains the per-unit cost of the inventory item at the time of receipt. _ILT-6 Inventory Received Quantity Unit_ field specifies the per-unit basis of this field.
+

@@ -1,0 +1,4 @@
+==== 2A.2.10.4 To Value (NM)
+
+Definition: The number specifying the high limit or boundary of the range.
+

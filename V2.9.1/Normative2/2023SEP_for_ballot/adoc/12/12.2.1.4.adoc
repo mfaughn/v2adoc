@@ -1,0 +1,4 @@
+==== 12.2.1.4 Clinical pathway: 
+
+A *clinical pathway* is a standardized plan of care against which progress towards health is measured. A clinical pathway is applied based upon the results of a patient assessment. A clinical pathway shows exact timing of all key patient care activities intended to achieve expected standard outcomes within designated time frames. A clinical pathway includes documentation of problems, expected outcomes/goals, and clinical interventions/orders.
+

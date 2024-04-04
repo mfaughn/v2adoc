@@ -1,0 +1,4 @@
+==== 11.2.4.3 Dependent: 
+
+Refers to a person who is affiliated with a subscriber, such as spouse or child.
+

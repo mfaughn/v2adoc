@@ -1,0 +1,4 @@
+==== 6.5.8.13 IN3-13 Non-Concur Effective Date/Time (DTM) 00514
+
+Definition: This field contains the effective date of the non-concurrence classification.
+

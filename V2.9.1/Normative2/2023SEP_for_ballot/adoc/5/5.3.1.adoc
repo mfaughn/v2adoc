@@ -1,0 +1,10 @@
+=== 5.3.1 Using the Query Profile
+
+Critical to the proper usage of the new query/response pairs is the Query Profile concept. In the absence of a Query Profile, the Client might not be aware of the existence of a query, or might not know how to use it or what to expect from it.
+
+The Server advertises the existence of, and support for, a query by publishing a *_Query Profile_*. The Query Profile identifies the query, specifies what items can be queried and describes what the response will look like.
+
+*Query Profile:* A declaration which sets forth the name of the query supported by the Server, the logical structure of the information that can be queried, and the logical structure of what can be returned.
+
+A number of examples of Query Profiles can be found in section _5.9_, "_QUERY/RESPONSE MESSAGE EXAMPLES_."
+

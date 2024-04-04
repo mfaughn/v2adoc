@@ -1,0 +1,4 @@
+==== *3.4.21.2* GSC-2 Action Code (ID) 00816
+
+Definition: This field contains a code defining the action to be taken for this segment.
+

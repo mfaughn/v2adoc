@@ -1,0 +1,28 @@
+== 1.11 Suggestions and Comments
+
+The HL7 Working Group welcomes comments and suggestions for improving the Standard. The Working Group is also open to new membership. Both feedback on the Standard and interest in membership should be sent to:
+
+[width="100%",cols="34%,33%,33%",]
+|===
+|**Karen Van Hentenryck +
+**Associate Executive Director +
+Health Level Seven +
+3300 Washtenaw Avenue, Suite 227 +
+Ann Arbor, MI 48104-4261 +
+Phone: (734) 677-7777 +
+Fax: (734) 677-6622 +
+email: hq@hl7.org a|
+**Andrew Truscott +
+**Chair, HL7 Board of Directors +
+Health Level Seven, International
+
+Phone: USA +1 713-855-8402 +
+mailto:andrew.j.truscott%40accenture.com/[andrew.j.truscott@accenture.com]
+
+|**Daniel Vreeman +
+**Chief Standards Development Officer +
+Health Level Seven, International +
+Phone: (734) 677-7777 +
+email: dan@HL7.org
+|===
+

@@ -1,0 +1,4 @@
+==== 16.4.6.10 PSL-10 Product/Service Effective Date (DTM) 01964
+
+Definition: [ Start ] Date/Time product/service was delivered/received.
+

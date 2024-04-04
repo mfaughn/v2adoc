@@ -1,0 +1,4 @@
+==== 16.4.4.5 PSS-5 Section Description or Heading (ST) 02043
+
+Definition: Section description or heading.
+

@@ -1,0 +1,19 @@
+=== 3.4.12 DB1 - Disability Segment
+
+The disability segment contains information related to the disability of a person. This segment was created instead of adding disability attributes to each segment that contains a person (to which disability may apply). This is an optional segment that can be used to send disability information about a person already defined by the Patient Administration Chapter. The disabled person code and identifier allow for the association of the disability information to the person.
+
+[#_Hlt479197568 .anchor]####HL7 Attribute Table - DB1 - Disability
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 |1..4 | |SI |R | | |01283 |Set ID - DB1
+|2 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70334[0334] |01284 |Disabled Person Code
+|3 | | |CX |O |Y | |01285 |Disabled Person Identifier
+|4 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01286 |Disability Indicator
+|5 | | |DT |O | | |01287 |Disability Start Date
+|6 | | |DT |O | | |01288 |Disability End Date
+|7 | | |DT |O | | |01289 |Disability Return to Work Date
+|8 | | |DT |O | | |01290 |Disability Unable to Work Date
+|===
+

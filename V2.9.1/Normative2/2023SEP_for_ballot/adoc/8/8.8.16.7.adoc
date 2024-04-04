@@ -1,0 +1,8 @@
+==== 8.8.16.7 OMC-7 Answer Required to Complete the Test (ID) 03447
+
+Definition: Must the question be answered, or just displayed and can be blank. Refer to _HL7 Table 0136 – Yes/no Indicator_ for valid values.
+
+Y Answer must be provided
+
+N Answer not required
+

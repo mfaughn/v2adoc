@@ -1,0 +1,4 @@
+=== 1.8.21 Rules Engines
+
+As a close practical application of an interface engine in the topology of healthcare interfaces, rules engines are becoming increasingly popular. HL7 does not have, at this time, specific messages to define and control the rules that might be dynamically associated with a rules engine. These might include, but are not limited to: create and modify patient therapeutic or diagnostic protocols; activate clinical or operational processes (e.g., conditional orders, critical paths, etc.); cancel or hold active clinical processes; and, notify appropriate users of a state or condition.
+

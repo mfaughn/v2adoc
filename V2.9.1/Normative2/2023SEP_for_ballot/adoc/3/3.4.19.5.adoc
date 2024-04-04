@@ -1,0 +1,12 @@
+==== *3.4.19.5* GSP-5 SOGI Concept Value (CWE) 02512
+
+Components: <Identifier (ST)> ^ <Text (ST)> ^ <Name of Coding System (ID)> ^ <Alternate Identifier (ST)> ^ <Alternate Text (ST)> ^ <Name of Alternate Coding System (ID)> ^ <Coding System Version ID (ST)> ^ <Alternate Coding System Version ID (ST)> ^ <Original Text (ST)> ^ <Second Alternate Identifier (ST)> ^ <Second Alternate Text (ST)> ^ <Name of Second Alternate Coding System (ID)> ^ <Second Alternate Coding System Version ID (ST)> ^ <Coding System OID (ST)> ^ <Value Set OID (ST)> ^ <Value Set Version ID (DTM)> ^ <Alternate Coding System OID (ST)> ^ <Alternate Value Set OID (ST)> ^ <Alternate Value Set Version ID (DTM)> ^ <Second Alternate Coding System OID (ST)> ^ <Second Alternate Value Set OID (ST)> ^ <Second Alternate Value Set Version ID (DTM)>
+
+Definition: This field contains the value asserted for the concept conveyed in GSP-4. The appropriate value set to use will vary with the concept being communicated (i.e. the valid list of concepts for Gender Identity will be different than the valid list of concepts for Sexual Orientation).
+
+For Gender Identity (GSP-4 is populated with ‘76691-5^Gender Identity^LN) refer to User-defined Table HL7 Table 0821 - Gender Identity in Chapter 2C, Code Tables, for suggested values.
+
+For Personal Pronouns (GSP-4 is populated with ‘90778-2^Personal pronouns - Reported^LN) refer to User-defined Table HL7 Table 0822 - Personal Pronouns in Chapter 2C, Code Tables,for suggested values.
+
+For Sexual Orientation (GSP-4 is populated with ‘76690-7^Sexual orientation^LN) refer to User-defined Table HL7 0823 - Sexual Orientation in Chapter 2C, Code Tables, for suggested values; use of external code systems like SNOMED CT to represent these concepts is recommended; for example in the US see USCDI v2 values (https://www.healthit.gov/isa/taxonomy/term/2741/uscdi-v2), which can be used as the base set, if appropriate for the jurisdiction.
+

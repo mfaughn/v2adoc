@@ -1,0 +1,4 @@
+=== 8.4.1 MFN/MFK - Master File Notification [WITHDRAWN] (Event M01) 
+
+*_Withdrawn in version 2.7 and later_*; refer to master file messages which follow.
+

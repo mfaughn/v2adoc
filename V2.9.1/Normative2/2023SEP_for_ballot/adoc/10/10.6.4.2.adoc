@@ -1,0 +1,6 @@
+==== 10.6.4.2 AIS-2 Segment Action Code (ID) 00763
+
+Definition: This field contains the action to be taken when updating or modifying information in this segment from previously sent interface transactions. Refer to file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70206[_HL7 Table 0206 - Segment Action Code_] in Chapter 2C, Code Tables, for valid values.
+
+This field is conditionally required. It is required for all updating or modifying trigger events.
+

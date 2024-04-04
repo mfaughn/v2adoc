@@ -1,0 +1,4 @@
+==== 13.3.3.34 SAC-34 Lipemia Index (NM) 01361
+
+Definition: This field is the index identifier that is being used to describe the Lipemia Index of the specimen. It is recommended to use the optical turbidity at 600 nm (in absorbance units).
+

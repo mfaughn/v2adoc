@@ -1,0 +1,4 @@
+==== 9.2.1.9 Replacement Document:
+
+A document that replaces an existing document. The original document becomes obsolete, but is still retained in the system for historical reference.
+

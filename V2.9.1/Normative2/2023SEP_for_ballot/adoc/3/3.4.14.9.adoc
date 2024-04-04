@@ -1,0 +1,8 @@
+==== *3.4.14.9* ARV-9 Access Restriction Message Location (ERL) 03514
+
+Components: <Segment ID (ST)> ^ <Segment Sequence (NM)> ^ <Field Position (NM)> ^ <Field Repetition (NM)> ^ <Component Number (NM)> ^ <Sub-Component Number (NM)>
+
+Definition: This field is optional and repeating and identifies the location in a message related to the identified access restricted data. If multiple repetitions are present, the listed access restrictions apply to all listed places.
+
+*Note:* Realm, business and policy rules will determine to what level the restrictions need to be supported. For example in a lab result exchange setting identifying elements more granular than the result at the segment level (i.e.OBX) is not expected, while in other settings more granular settings may apply.
+

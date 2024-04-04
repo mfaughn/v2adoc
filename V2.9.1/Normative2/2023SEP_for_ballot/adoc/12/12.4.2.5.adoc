@@ -1,0 +1,8 @@
+==== 12.4.2.5 PRB-5 Episode of Care ID (EI) 00820
+
+Components: <Entity Identifier (ST)> ^ <Namespace ID (IS)> ^ <Universal ID (ST)> ^ <Universal ID Type (ID)>
+
+Definition: This field uniquely identifies the episode of care to which this problem applies. (See note under "Ongoing issues.")
+
+*Note:* It is required that this field be unique over time.
+

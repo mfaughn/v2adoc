@@ -1,0 +1,28 @@
+=== 8.8.1 General Approach of Service/Test/Observation Master Files
+
+These segments define the format for the general information about the observations that a clinical or diagnostic service produces and sends to its "clients." This format can be used to send the producer's entire service/test/observation definition or a few of the producer's observations, such as those with procedure, technique, or interpretation changes.
+
+In anticipation of an object-oriented organization of segments in future releases of this Standard, the attributes of observations/batteries have been grouped into seven different segments:
+
+OM1 contains the attributes that apply to all observations
+
+OM2 applies to numerically-valued observations
+
+OM3 applies to text or code-valued observations
+
+OM4 applies to observations or batteries that require specimens
+
+OM5 contains the attributes of batteries, or sets of observations or other batteries
+
+OM6 contains the quantities (observations in a most general sense) that are calculated from one or more other observations
+
+OM7 contains additional basic attributes that apply to the definition of most observations/services.
+
+Thus, the full definition of a numerically-valued laboratory observation would require the transmission of OM1, OM2, and OM4.
+
+In the following discussion, we use OMx to refer to any of the seven observation-defining segments. Each instance of an OMx segment contains the information about one observation or observation battery. These OMx segments are designed to be "inclusive" and accommodate the attributes of many kinds of observations. Thus, the fact that a field is listed in a particular segment should not be construed as meaning that a producer must include information about that item in its definition transmission. Many fields will apply to some terms; others will not. One observation producer may choose to populate one set of fields; another may choose to populate a different set of fields, according to the requirements of that producer's "client."
+
+Most of the fields of data type TX in those segments are intended to include information typically contained in a diagnostic service's user manual. Such fields should describe how the data is to be interpreted or used, and are not intended for computer interpretation.
+
+Remember that the magnitude of a treatment can also be regarded as an observation and, as such, can be represented as an observation within these segments. Many examples exist. When a blood gas is transmitted, the requesting service usually transmits the amount of inspired O2 (a treatment) on requisition. (In an electronic transmission, the service would send this as an OBX segment, along with the electronic order for the test.) When blood levels are drawn, the amount and time of the last dose are routinely included as observations on the request for service. A pharmacy system could routinely send to a medical record system the average daily dose of each outpatient medication it dispenses. In such cases, the treatment amounts would be observations to the receiving system and would be transmitted as OBX segments. When received, they would be treated like any other observation. A medical record system could then create, for example, a flowchart of lab results, or lab results mixed with relevant treatments.
+

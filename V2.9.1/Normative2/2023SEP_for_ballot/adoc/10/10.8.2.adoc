@@ -1,0 +1,8 @@
+=== 10.8.2 Multiple Placer Applications
+
+When implementing the transactions defined in this chapter with multiple placer applications, one must consider the implications of a situation when more than one placer application asks to book, hold, lock, or otherwise reserve the same slot or set of slots on a particular schedule.
+
+This chapter makes no attempt to define attribute ownership (e.g., based on application roles). Ownership is the right to create or update attribute content. If two or more applications attempt simultaneously to update the same attribute(s), deadly update collisions may occur, causing data corruption, unless robust mechanisms for bidding and locking such attributes are in place between applications. This chapter makes no attempt to address data ownership issues or to define attribute bidding and locking mechanisms.
+
+This chapter assumes that the placer and filler applications have put such mechanisms into place, therefore resolving any contention or collision issues at the application level. Further, if such mechanisms have not been implemented by the applications, then this chapter assumes that procedural solutions have been implemented by the healthcare provider organization to resolve contention and collision issues.
+

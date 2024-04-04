@@ -1,0 +1,4 @@
+==== 9.2.1.4 Document completion table:
+
+The following terms are used to describe the workflow progression of a document:
+

@@ -1,0 +1,4 @@
+==== 8.11.2.7 CM0-7 Total Accrual to Date (NM) 01016
+
+Definition: This field is a quality control field to enable checks that patient data have been transmitted on all registered patients.
+

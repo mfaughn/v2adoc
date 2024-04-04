@@ -1,0 +1,19 @@
+=== 2A.2.11 CQ - composite quantity with units 
+
+HL7 Component Table - CQ – Composite Quantity with Units
+
+[width="99%",cols="10%,7%,8%,6%,7%,7%,32%,13%,10%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |OPT |TBL# |COMPONENT NAME |COMMENTS |SEC.REF.
+|1 | | |NM |O | |Quantity | |2A.2.47
+|2 | | |CWE |O |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70794[0794] |Units | |2A.2.13
+|===
+
+*Note:* CQ cannot be legally expressed when embedded within another data type. Its use is constrained to a segment field.
+
+Examples:
+
+|123.7^kg| kilograms is an ISO unit
+
+|150^lb&&ANSI+| weight in pounds is a customary US unit defined within ANSI+.
+

@@ -1,0 +1,4 @@
+==== 2A.2.25.3 Universal ID (ST)
+
+Definition: See Section _2A.2.33.2_, "_Universal ID (ST)_" for definition.
+

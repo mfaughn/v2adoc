@@ -1,0 +1,4 @@
+==== *3.4.5.38* NK1-38 Next of Kin Birth Place (ST) 01905
+
+Definition: This field indicates the location of the next-of-kin's birth; for example, "St. Francis Community Hospital of Lower South Side." The actual address is reported in _NK1-4 - Address_ with an identifier of "N".
+

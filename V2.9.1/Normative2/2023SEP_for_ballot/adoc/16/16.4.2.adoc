@@ -1,0 +1,41 @@
+=== 16.4.2 IVC – Invoice Segment
+
+The Invoice segment is used for HealthCare Services Invoices and contains header style information for an invoice including invoice numbers, Provider Organization and Payer Organization identification.
+
+HL7 Attribute Table – IVC – Invoice Segment
+
+[width="100%",cols="14%,6%,7%,6%,6%,6%,7%,7%,41%",options="header",]
+|===
+|SEQ |LEN |C.LEN |DT |R/O |RP/# |TBL# |ITEM# |ELEMENT NAME
+|1 | | |EI |R | | |01914 |Provider Invoice Number
+|2 | | |EI |O | | |01915 |Payer Invoice Number
+|3 | | |EI |O | | |01916 |Contract/Agreement Number
+|4 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70553[0553] |01917 |Invoice Control
+|5 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70554[0554] |01918 |Invoice Reason
+|6 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70555[0555] |01919 |Invoice Type
+|7 | | |DTM |R | | |01920 |Invoice Date/Time
+|8 | | |CP |R | | |01921 |Invoice Amount
+|9 | |80= |ST |O | | |01922 |Payment Terms
+|10 | | |XON |R | | |01923 |Provider Organization
+|11 | | |XON |R | | |01924 |Payer Organization
+|12 | | |XCN |O | | |01925 |Attention
+|13 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01926 |Last Invoice Indicator
+|14 | | |DTM |O | | |01927 |Invoice Booking Period
+|15 | |250= |ST |O | | |01928 |Origin
+|16 | | |CP |O | | |01929 |Invoice Fixed Amount
+|17 | | |CP |O | | |01930 |Special Costs
+|18 | | |CP |O | | |01931 |Amount for Doctors Treatment
+|19 | | |XCN |O | | |01932 |Responsible Physician
+|20 | | |CX |O | | |01933 |Cost Center
+|21 | | |CP |O | | |01934 |Invoice Prepaid Amount
+|22 | | |CP |O | | |01935 |Total Invoice Amount without Prepaid Amount
+|23 | | |CP |C | | |01936 |Total-Amount of VAT
+|24 | |1..5 |NM |O |Y | |01937 |VAT-Rates applied
+|25 | | |CWE |R | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70556[0556] |01938 |Benefit Group
+|26 | |20= |ST |O | | |02038 |Provider Tax ID
+|27 | |20= |ST |O | | |02039 |Payer Tax ID
+|28 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70572[0572] |02040 |Provider Tax Status
+|29 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70572[0572] |02041 |Payer Tax Status
+|30 | |20= |ST |O | | |02042 |Sales Tax ID
+|===
+

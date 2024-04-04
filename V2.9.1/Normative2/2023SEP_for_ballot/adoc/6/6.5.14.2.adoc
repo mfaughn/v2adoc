@@ -1,0 +1,4 @@
+==== 6.5.14.2 RMI-2 Date/Time Incident (DTM) 01531
+
+Definition: This field contains the date and time the Risk Management Incident identified in link:#rmi-1-risk-management-incident-code-cwe-01530[_RMI-1 - Risk Management Incident Code_] occurred.
+
