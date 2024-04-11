@@ -1,0 +1,3 @@
+This is a collection of .docx files that have been converted to .adoc files.  It also includes Ruby code which extracts v2 artifacts from these .adoc files.  All of this is simply a stepping stone towards getting a first version of v2+ represented as a collection of computable artifacts (i.e., files).  While that collection will include .adoc files, these files aren't those files!
+
+Given that all of this is not intended for long term use or maintainence, minimal effort is being exerted to provide extensive documentation and/or a complete set of supporting code.
