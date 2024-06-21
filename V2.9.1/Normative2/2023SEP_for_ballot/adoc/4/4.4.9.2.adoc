@@ -1,7 +1,6 @@
 ==== 4.4.9.2 Patient Segments Optional
 
-ORL^O54^ORL_O54: Laboratory Order Acknowledgment Message – Multiple Order Per Specimen +
-(Patient Optional)
+ORL^O54^ORL_O54: Laboratory Order Acknowledgment Message – Multiple Order Per Specimen (Patient Optional)
 
 [width="100%",cols="33%,47%,9%,11%",options="header",]
 |===

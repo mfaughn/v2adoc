@@ -1,7 +1,6 @@
 ==== 4.4.9.1 Patient Segments Required
 
-ORL^O34^ORL_O34: Laboratory Order Acknowledgment Message – Multiple Order Per Specimen +
-(Patient Required)
+ORL^O34^ORL_O34: Laboratory Order Acknowledgment Message – Multiple Order Per Specimen (Patient Required)
 
 [width="100%",cols="33%,47%,9%,11%",options="header",]
 |===

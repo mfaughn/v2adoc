@@ -1340,8 +1340,7 @@ The STF segment can identify any personnel referenced by information systems. Th
 |16 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70185[0185] |00684 |Preferred Method of Contact
 |17 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70002[0002] |00119 |Marital Status
 |18 | |20# |ST |O | | |00785 |Job Title
-|19 | | |JCC |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70327[0327]/ +
-file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL700328[0328] |00786 |Job Code/Class
+|19 | | |JCC |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70327[0327]/ file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL700328[0328] |00786 |Job Code/Class
 |20 | | |CWE |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70066[0066] |01276 |Employment Status Code
 |21 |1..1 | |ID |O | |file:///E:\V2\v2.9%20final%20Nov%20from%20Frank\V29_CH02C_Tables.docx#HL70136[0136] |01275 |Additional Insured on Auto
 |22 | | |DLN |O | | |01302 |Driver's License Number – Staff
