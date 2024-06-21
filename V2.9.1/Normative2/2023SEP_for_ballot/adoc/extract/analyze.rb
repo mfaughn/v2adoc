@@ -276,7 +276,7 @@ module V2AD
   
   def analyze_acs
     acs  = v2.ack_chors
-    msgs = v2.messages.select { |m| m.trigger_for&.status != 'W' }
+    msgs = v2.messages.select { |m| m.trigger&.status != 'W' }
     puts "There are #{acs.size} Acknowledgement Choreographies"
     puts "There are #{msgs.size} Messages"
     acless = []
@@ -285,7 +285,7 @@ module V2AD
       acless << msg if msg.ack_chor.nil? 
     end
     puts "There are #{acless.size} Messages with no AC:"
-    acless.each { |a| puts (a&.trigger_for&.code || 'Response to ?') }
+    acless.each { |a| puts (a&.trigger&.code || 'Response to ?') }
   end
   
   def analyze_messages
@@ -296,7 +296,7 @@ module V2AD
       end
     end
         
-    msgs = v2.messages.select { |m| m.trigger_for&.status != 'W' }
+    msgs = v2.messages.select { |m| m.trigger&.status != 'W' }
     msgs.each do |msg|
       next if msg.trigger&.code.to_s =~ /^E3(0|1)$/
       if msg.message_type

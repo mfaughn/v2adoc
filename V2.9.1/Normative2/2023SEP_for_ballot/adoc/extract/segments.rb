@@ -11,74 +11,32 @@ module V2AD
     V2AD.v2.segment_defs['Hxx'] = segdef
   end
   
-  def extract_segment(lines, section, opts = {})
+  def extract_segment(section, opts = {})
+    section_num = section.num
     verbose = opts[:verbose]
-    return if section == '4A.8.1' # This is a profile on the RXA segment and not a separate segment definition    
-    l1 = lines.shift
+    return if section_num == '4A.8.1' # This is a profile on the RXA segment and not a separate segment definition    
+    l1 = section.title
     # puts l1
     # FIXME this does not cover the variable segment (...) or the Hxx segment
-    code = l1.slice(/(?<=\d)\s+[A-Z][A-Z][A-Z0-9]\s*(?=[–‑-])/)&.strip
+    code = l1.slice(/^[A-Z][A-Z][A-Z0-9]\s*(?=[–‑-])/)&.strip
     name = l1.slice(/(?<=[–‑-]).+(?=Segment)/i)&.strip
-    raise "#{section} No segment name in #{l1}" unless name
-    # puts (code && name) ? Rainbow(section).green : Rainbow(section).red
+    raise "#{section_num} No segment name in #{l1}" unless name
+    # puts (code && name) ? Rainbow(section_num).green : Rainbow(section_num).red
     # puts Rainbow(name).orange
     # puts code;return
     
-    puts Rainbow('SegDef ').green + "#{section} #{code} - #{name}" if verbose
-    raise unless code
+    puts Rainbow('SegDef ').green + "#{section_num} #{code} - #{name}" if verbose
+    unless code
+      raise "No code found in #{section.title}" 
+    end
 
     segdef = V2AD::SegmentDefinition.new(code, name, section)
-    V2AD.v2.segment_defs[code] = segdef
-    segdef.section = section
-    segdef.adoc_source = lines
-    segdef.text = Text.new(remove_segment_tables(lines), true)
-    # lines.each { |l| puts Rainbow(l).lightskyblue }
-    # puts Rainbow('-'*33).orange
-    text_buffer  = []
-    table_buffer = []
-    table = false
-    table_mark = 0
-    lines.shift if lines.first.strip == ''
-    lines.each_with_index do |l, i|
-      if l =~ /\[width="\d+%",cols=/ # a table is next
-        table = true
-      else
-        if table
-          if l.strip =~ /\|==+/
-            table_mark += 1
-            if table_mark > 1
-              table = false
-              table_mark = 0
-            end
-            next
-          end
-          table_buffer << l
-        else
-          if table_buffer.any?
-            table_type, processed_table = process_table(table_buffer, section, :segment => code) 
-            if table_type == :segment_definition
-              text_buffer << '\include::segment_table'
-              # pp processed_table
-              processed_table.each { |field| segdef.add_field(field) }
-              # segdef.fields = processed_table
-            elsif table_type == :other
-              text_buffer += processed_table
-            else
-              puts processed_table
-              # puts "TEXT BUFFER"
-              # pp text_buffer
-              # puts "TABLE BUFFER"
-              # pp table_buffer
-              raise "Wrong kind of table!! -- #{table_type}"
-            end
-            table_buffer = []
-          end
-          text_buffer << l
-        end
-      end
-    end
-    segdef.text = text_buffer.join("\n").gsub(/\n+/, "\n") unless text_buffer.reject { |x| x.strip == '' }.empty?
-    # pp segdef
+
+    segdef_tables = section.tables.select { |tbl| tbl.type == :segment_definition }
+    raise unless segdef_tables.size == 1
+    segdef_tables.first.objects << segdef
+    processed_table = process_segment_table(segdef_tables.first, section, :segment => code) 
+    processed_table.each { |field| segdef.add_field(field) }
   end
   
   def remove_segment_tables(lines)
@@ -103,8 +61,10 @@ module V2AD
     # str = lines.join("\n").sub(/^\n+/m, '').sub(/\n+$/m, '').split("\n")
   end
   
-  def process_segment_table(lines, section, opts)
-    header = lines.shift
+  def process_segment_table(table, section, opts)
+    section_num = section.num
+    rows = table.rows[1..-2].dup
+    header = rows.shift
     cols = []
     split_row(header).each_with_index { |x, i| cols << i if x.strip[0] }
     unless cols.size == 9
@@ -113,8 +73,8 @@ module V2AD
     end
     code = opts[:segment]
     fields = []
-    lines.each do |l|
-      field = process_field_row(l, cols, code, section)
+    rows.each do |r|
+      field = process_field_row(r, cols, code, section)
       if field
         fields << field
         V2AD.v2.fields["#{code}-#{field.seq}"] = field
@@ -122,39 +82,54 @@ module V2AD
     end
     sff = subsection_files(section)
     # puts sff.sort
-    # puts section
+    # puts section_num
     fields.each do |fd|
-      sf = sff.find { |f| f =~ /#{section}\.#{fd.seq.sub('-n', '')}\.adoc/ }
+      next if section_num == '15.4.7' # because they just aren't there...
+      field_section_num = "#{section_num}\.#{fd.seq.sub('-n', '')}"
+      field_section = V2AD.v2.sections.dig(field_section_num, :obj)
+      raise "No section for #{field_section_num}" unless field_section
+      fd.section = field_section
+      # field_section.display(content:true)
+      defns = field_section.content.select { |c| c.is_a?(Definition) }
+      descriptions = field_section.content.reject { |c| c.is_a?(Definition) || c.is_a?(DataTypeComponent)}
+      # fscontent = field_section.content.reject { |c| c.class.name =~ /Component/ }
+      # field_section.display(color: :magenta)
+      # fscontent.each(&:display)
+      if descriptions.any?
+        fd.description = descriptions.map do |d| 
+          if d.is_a?(Table)
+            # FIXME do we need to convert Asciidoc to Markdown here?
+            ([(d.caption || d.possible_caption)] + d.rows).join("\n")
+          elsif d.is_a?(Block)
+            d.content
+          else
+            raise "What the heck is this? #{d.inspect}"
+          end
+        end.join("\n\n").gsub(/\n\n+/, "\n\n") 
+      end
+      
+      if defns.size > 1
+        defns.each(&:display)
+        raise "Whoa, multiple definitions in #{field_section_num} for #{code}-#{fd.seq}" unless ['6.5.11.9'].include?(field_section_num) 
+      end
+      if defns.size < 1
+        # puts Rainbow("No definition for #{code}-#{fd.seq} in section  #{field_section_num}").coral
+        next
+      end
+      fd.definition_text = defns.first
+      fd.data_element.definition_text = defns.first
+      
+      # FIXME the rest of this stuff can go away after we're sure the stuff above works well
+      sf = sff.find { |f| f =~ /#{field_section_num}\.adoc/ }
       # puts fd.seq
       if sf.nil? && fd.seq == '1-n'
         sf = sff.find { |f| f =~ /2\.13\.1\.1\.adoc/ }
       end
       unless sf
-        puts Rainbow(code.to_s + '-' + fd.seq).red + " No adoc for #{section}.#{fd.seq}" unless section == '15.4.7'
+        puts Rainbow(code.to_s + '-' + fd.seq).red + " No adoc for #{section_num}.#{fd.seq}"
+        puts "sff: \n#{sff.sort.join("\n")}"
         next
       end
-      buffer = []
-      lines = File.readlines(sf)
-      fd.adoc_source = lines
-      fd.text = lines[1..-1]
-      # puts Rainbow(File.basename(sf)).cyan
-      lines.each do |l|
-        next if l =~ /====/
-        next if l.strip =~ /^Components:/
-        next if l.strip =~ /^Subcomponents:? for/
-        if l.strip =~ /^Definition:/
-          defn = l.sub(/^\s*Definition:?/, '').strip.gsub(/\n+/, "\n")
-          defn = remove_links(defn, section)
-          fd.definition_text = defn
-          fd.data_element.definition_text = defn
-          # puts Rainbow(defn).lightskyblue
-          next
-        end
-        buffer << l
-      end
-      fd.description = buffer.join("\n").gsub(/\n+/, "\n") unless buffer.reject { |x| x.strip == '' }.empty?
-      # puts Rainbow(fd.description).coral
-      
     end
     fields
   end
@@ -162,11 +137,12 @@ module V2AD
   # TODO registering the data element requires the ability to differentiate multiple instances of the same data element
   # This can probably best be acheived by attaching it to the segdef identifier of the field, e.g., MSH-1k
   def process_field_row(line, cols, segment_code, section)
-    raw_row = split_row(line)
+    section_num = section.num
+    raw_row = split_row(line, unbold:true)
     # puts line.inspect
     row = cols.map { |c| raw_row[c] }
     seq, len, clen_and_flag, dt, opt, rp, tbl, item_number, name = row
-    # tbl = remove_links(tbl, section)
+    # tbl = remove_links(tbl, section_num)
     # puts row.inspect
     if seq
       field = V2AD::Field.new(seq)

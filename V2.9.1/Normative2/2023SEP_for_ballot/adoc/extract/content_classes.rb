@@ -3,9 +3,10 @@ module V2AD
   end
 
   class Table < ContentObj
-    attr_accessor :caption, :header, :rows, :type, :declaration, :possible_caption
+    attr_accessor :caption, :header, :rows, :type, :declaration, :possible_caption, :objects
     def initialize
-      @rows = []
+      @rows    = []
+      @objects = []
     end
     
     def finalize
@@ -13,14 +14,14 @@ module V2AD
       self.type = :other if self.type.nil?
     end
     
-    def summary
+    def display(color = nil)
       type_str = type ? "(#{type})" : ''
       if type == :ack_chor
         cap = rows[2].delete('|').strip
       end
       cap ||= caption ? caption : (possible_caption ? "<possible_caption>: #{possible_caption}" : 'NO CAPTION')
       str = "TABLE#{type_str}: #{cap}"
-      puts str
+      puts (color ? Rainbow(str).send(color.to_sym) : str)
       puts rows[1..3] if type.nil?
     end
     
@@ -52,6 +53,42 @@ module V2AD
         return
       end
     end
+    
+    def get_message_codes_from_caption
+      unless caption || possible_caption
+        pp self
+        raise "No caption or possible_caption for table."
+      end
+      if type == :ack_message_structure
+        str = caption.slice(V2AD.ack_message_code_regex) || caption.slice(V2AD.ack_message_code_regex_multiple_events)
+        unless str
+          display
+          puts "Normal: " + V2AD.ack_message_code_regex.inspect
+          puts "Multi:  " + V2AD.ack_message_code_regex_multiple_events.inspect
+          raise "Can't deduce codes for table."
+        end
+      elsif type.to_s =~ /message_structure/      
+        if caption
+          str = caption.slice(V2AD.query_message_code_regex) || caption.slice(V2AD.response_message_code_regex) || caption.slice(V2AD.message_code_regex) || caption.slice(V2AD.message_code_regex_multiple_events)
+        end
+        unless str
+          display
+          puts "Normal: " + V2AD.message_code_regex.inspect
+          puts "Multi:  " + V2AD.message_code_regex_multiple_events.inspect
+          # puts V2AD.message_structure_table_caption_regex
+          raise "Can't deduce codes for table."
+        end
+        # else
+        #   str = possible_caption.slice(V2AD.message_code_regex_multiple_events)
+        #   unless str
+        #     display
+        #     puts V2AD.message_code_regex_multiple_events.inspect
+        #     raise "Can't deduce codes for table."
+        #   end
+      end
+      msg_type_code, event_code, msg_structure_code = str.split('^')
+      [msg_type_code, event_code, msg_structure_code]
+    end
   end
   
   class Block < ContentObj
@@ -69,9 +106,10 @@ module V2AD
       @content.last
     end
     
-    def summary
+    def display
       puts "#{self.class.name.split('::').last}(#{content.size}): #{content.map { |c| c[0..30]}.join(' | ')}"
     end
+        
   end  
   
   class Image < Block
@@ -83,14 +121,18 @@ module V2AD
   class Paragraph < Block
     def initialize
       super
-      # @type = :paragraph
     end
   end
   
-  class Example < Block # TODO should this instead inherit from Paragraph?  Does it matter?
+  class Note < Block
     def initialize
       super
-      # @type = :example
+    end
+  end
+  
+  class Example < Block
+    def initialize
+      super
     end
   end
   
@@ -103,18 +145,26 @@ module V2AD
   class ER7 < Code
     def initialize
       super
-      # @type = :er7
     end
-    def summary
+    def display
       x = "ER7(#{content.size}): "
-      puts Rainbow(x).magenta + "#{content.map { |c| c[0..30]}.join("\n" + " "*x.size) }"
+      puts Rainbow(x).darkseagreen + "#{content.map { |c| c[0..30]}.join("\n" + " "*x.size) }"
+    end
+  end
+  
+  class ER7Snippet < ER7
+    def initialize
+      super
+    end
+    def display
+      x = "ER7Snippet(#{content.size}): "
+      puts Rainbow(x).lightgreen + "#{content.map { |c| c[0..30]}.join("\n" + " "*x.size) }"
     end
   end
   
   class Definition < Block
     def initialize
       super
-      # @type = :definition
     end
   end
   
@@ -128,50 +178,6 @@ module V2AD
     def initialize
       super
     end
-  end
-  
-  module_function
-
-  def process_text(val, info = nil)
-    # puts Rainbow(info).cornflower if info
-    data = TextProcessor.new(val, info).process_text
-  end
-  
-
-
-
-  def get_asciidoc_body(val, debug = false)
-    raise "Do not use this method"
-    lines = nil
-    if val.is_a?(String)
-      lines = val.split("\n")
-    elsif val.is_a?(Array)
-      lines = val.dup
-    else
-      raise "I can't deheaderize this: #{val.inspect}"
-    end
-    trimmed = nil
-    header = lines.shift if lines&.first.to_s.strip =~ /^=+/
-    lines.each_with_index do |l, i|
-      puts "#{i} " + Rainbow(l).green if debug
-      next if l.strip.empty?
-      trimmed = lines[i..-1]
-      break
-    end
-    if debug
-      puts "ORIGINAL:"
-      puts val
-      puts "TRIMMED:"
-      puts trimmed
-      raise
-    end
-    return [] unless trimmed
-    trimmed.reverse!
-    trimmed.each_with_index do |l, i|
-      next if l.strip.empty?
-      return trimmed[i..-1].reverse
-    end
-    
   end
 
 end  

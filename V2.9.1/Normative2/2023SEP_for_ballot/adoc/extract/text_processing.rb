@@ -2,12 +2,12 @@ require_relative 'content_classes'
 module V2AD
   class TextProcessor
     attr_accessor :content, :data #, :lines
-    attr_reader :val, :info, :lines
-    def initialize(val, info)
+    attr_reader :val, :lines, :section
+    def initialize(val, section)
       @val     = val
-      @info    = info
       @content = []
       @data    = {}
+      @section = section
       reset
     end
     
@@ -16,7 +16,8 @@ module V2AD
       @table_start_content_index = nil
     end
     
-    def process_text
+    def process_text(opts = {})
+      verbose = opts[:verbose]
       block = nil
       table = nil
       if val.is_a?(String)
@@ -33,13 +34,13 @@ module V2AD
       if l1 =~ /^=+/
         l1 = l1.sub(/^=+/, '').strip
         number = l1.slice(V2AD.section_number_regex)
-        puts Rainbow(info).coral + " #{l1}" unless number
+        puts Rainbow(section.num).coral + " #{l1}" unless number
         number.strip!
         title  = l1.sub(number, '').strip
         data[:title]  = title
         data[:number] = number.delete('*')
         lines.shift
-        puts Rainbow(data.to_s).green
+        puts Rainbow(data.to_s).green if verbose
       else
         data[:title]  = nil
         data[:number] = nil
@@ -66,7 +67,7 @@ module V2AD
           table.rows << line
           if @table_marker == 3 # We have reached the end of the table
             lc = get_last_content
-            caption, type = get_caption_and_type(lc)
+            caption, type = get_caption_and_type(lc, data)
             
             content << table
             
@@ -78,7 +79,7 @@ module V2AD
             
             table.type = type if type
             table.finalize
-            # table.summary
+            # table.display
 
             # reset
             @table_start_content_index = nil
@@ -109,6 +110,25 @@ module V2AD
               end
               next
             end
+            if V2AD.is_er7_snippet?(line)
+              if block.is_a?(Example)
+                block.add_content(ER7Snippet.new.add_content(line))
+              else
+                block = ER7Snippet.new
+                block.add_content(line)
+              end
+              next
+            end
+            if V2AD.is_note?(line)
+              block = Note.new
+              block.add_content(line)
+              next
+            end
+            if V2AD.is_example?(line)
+              block = Example.new
+              block.add_content(line)
+              next
+            end
             if V2AD.is_data_type_component_expression?(line)
               block = DataTypeComponent.new
               block.add_content(line)
@@ -137,7 +157,7 @@ module V2AD
         end
       end
       finalize_content
-      content.each(&:summary)
+      content.each(&:summary) if verbose
       data[:content] = content
       return data
     end
@@ -159,7 +179,7 @@ module V2AD
       @content = finalized
     end
 
-    def get_caption_and_type(last_content)
+    def get_caption_and_type(last_content, data)
       return [nil, nil] if last_content == :table || last_content.nil?
       possible_caption = last_content
       type             = caption_type(possible_caption)
@@ -167,7 +187,12 @@ module V2AD
         remove_caption_from_content
         [possible_caption, type]
       else
-        # puts Rainbow("caption?: ").gold + possible_caption
+        # Here is where we can see captions for tables that don't look like message structure or ack chor tables.
+        # puts data[:number] + ' - ' + data[:title] + '  ' + Rainbow("caption?: ").gold + possible_caption.inspect
+        if possible_caption =~ /General Acknowledgment/ && data[:number] != '2.12.1'
+          puts V2AD.ack_message_structure_table_caption_regex.inspect
+          raise
+        end
         [nil, nil]
       end
     end
@@ -185,12 +210,12 @@ module V2AD
     end
     
     def caption_type(str)
-      return :message_structure     if str =~ V2AD.message_structure_table_caption_regex
-      return :message_structure     if str =~ V2AD.response_message_structure_table_caption_regex
-      return :message_structure     if str =~ V2AD.query_message_structure_table_caption_regex
-      return :ack_message_structure if str =~ V2AD.ack_message_structure_table_caption_regex
-      return :segment_definition    if str =~ V2AD.segment_defitiniton_table_caption_regex
-      return :datatype_definition   if str =~ V2AD.data_type_defitiniton_table_caption_regex
+      return :query_message_structure    if str =~ V2AD.query_message_structure_table_caption_regex
+      return :response_message_structure if str =~ V2AD.response_message_structure_table_caption_regex
+      return :ack_message_structure      if str =~ V2AD.ack_message_structure_table_caption_regex
+      return :message_structure          if str =~ V2AD.message_structure_table_caption_regex
+      return :segment_definition         if str =~ V2AD.segment_defitiniton_table_caption_regex
+      return :datatype_definition        if str =~ V2AD.data_type_defitiniton_table_caption_regex
       nil
     end
 
@@ -198,9 +223,9 @@ module V2AD
   
   module_function
 
-  def process_text(val, info = nil)
-    # puts Rainbow(info).cornflower if info
-    data = TextProcessor.new(val, info).process_text
+  def process_text(val, section)
+    # puts Rainbow(section.num).cornflower if section
+    data = TextProcessor.new(val, section).process_text
   end
   
 

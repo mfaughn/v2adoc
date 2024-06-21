@@ -5,7 +5,8 @@ module V2AD
   module_function
   
   def adoc_dir(ch = nil)
-    dir = File.expand_path(ch ? File.join(__dir__, '..', ch.to_s) : __dir__)
+    adoc_base_dir = File.join(__dir__, '..')
+    dir = File.expand_path(ch ? File.join(adoc_base_dir, ch.to_s) : adoc_base_dir)
     raise "NOPE: #{dir}" unless File.exist?(dir)
     dir
   end
@@ -22,25 +23,38 @@ module V2AD
     ch ? File.join(html_dir, ch) : html_dir
   end
   
-  def chapters
-    %w{1 2A 3 4 4A 5 6 7 8 9 10 11 12 13 14 15 16 17}
+  def markdown_dir
+    @markdown_dir ||= File.expand_path('../../markdown', __dir__)
   end
   
-  def split_row(l)
+  def markdown_ch_dir(ch)
+    ch ? File.join(markdown_dir, ch) : markdown_dir
+  end
+  
+  def chapters
+    %w{1 2 2A 3 4 4A 5 6 7 8 9 10 11 12 13 14 15 16 17}
+  end
+  
+  def split_row(l, opts = {})
     row = l.split('|').map(&:strip).map do |v|
       if v =~ /file:/
         v.gsub(/file.+\[/, '').sub(/\]$/, '')
       else
         v
       end
-    end 
+    end
+    if opts[:unbold]
+      row = row.map do |cell|
+        cell.sub(/^\*/, '').sub(/\*$/, '').strip
+      end
+    end
     row.shift if row.first == ''
     row
   end
   
   def subsection_files(section)
-    ch = section.slice(/^\d+A?/)
-    files = Dir["#{adoc_dir(ch)}/*.adoc"].select { |f| f =~ /#{section}/ }
+    ch = section.num.slice(/^\d+A?/)
+    files = Dir["#{adoc_dir(ch)}/*.adoc"].select { |f| f =~ /#{section.num}/ }
   end
   
   def remove_empty_cells(str)
@@ -58,7 +72,7 @@ module V2AD
     return str unless str =~ /:/
     if false #section =~ /4.5.3/
       verbose = true
-      puts Rainbow(section).lawngreen + " #{str}"
+      puts Rainbow(section.num).lawngreen + " #{str}"
     end
     str = remove_file_backslashes(str)
     show_backslashes(str, :red, :green)

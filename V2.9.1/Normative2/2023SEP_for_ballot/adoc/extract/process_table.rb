@@ -1,20 +1,19 @@
 module V2AD
   module_function
   
-  def process_table(lines, section, opts = {})
-    # puts lines; puts Rainbow('----------------------').orange
-    # puts Rainbow(lines.first).cyan
-    if is_message_structure_table_header?(lines.first) && section != '2.13.13'
-      lines.shift
-      [:message_structure, process_msg_structure_table(lines, section, opts)]
-    elsif lines.first =~ ack_chor_table_regex
+  def process_table(table, section, opts = {})
+    # puts table.rows; puts Rainbow('----------------------').orange
+    # puts Rainbow(table.caption || table.possible_caption).cyan
+    if [:message_structure, :ack_message_structure, :query_message_structure, :response_message_structure].include?(table.type)
+      process_msg_structure_table(table, section, opts)
+    elsif table.type == :ack_chor
       lines.shift      
-      [:ack_chor, process_ack_chor_table(lines, section, opts)]
-    elsif is_segment_table_header?(lines.first)
-      [:segment_definition, process_segment_table(lines, section, opts)]
+      process_ack_chor_table(table, section, opts)
+    elsif table.type == :segment_definition
+      process_segment_table(table, section, opts)
     else
-      puts Rainbow("#{section} has another kind of table.").magenta + " #{lines.first}"
-      [:other, lines]
+      puts Rainbow("#{section.num} has another kind of table.").magenta + " #{table.caption || table.possible_caption}"
+      table
     end
   end
 end
