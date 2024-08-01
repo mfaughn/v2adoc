@@ -11,7 +11,7 @@ module V2AD
       @name        = name
       @section     = section
       @responses   = []
-      message  = Message.new(section)
+      message  = V2AD::Message.new(section)
       message.trigger = self
       @message = message
       V2AD.add_event(self, section)

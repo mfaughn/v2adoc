@@ -23,7 +23,7 @@ module V2AD
       raise "to_msg is not associated with a trigger event and is not a response to a message"
     end
     
-    ack_msg = Message.new(to_msg.section)
+    ack_msg = V2AD::Message.new(to_msg.section)
     ack_msg.message_type = find_or_create_message_type('ACK', 'General ACK')
     if complete
       ack_msg.message_structure = general_ack_struct
@@ -39,7 +39,7 @@ module V2AD
   
   def create_response_message(to_msg)
     # to_msg is the message that this response is for
-    resp_msg = Message.new(to_msg.section)
+    resp_msg = V2AD::Message.new(to_msg.section)
     to_msg.add_response(resp_msg)
     resp_msg
   end

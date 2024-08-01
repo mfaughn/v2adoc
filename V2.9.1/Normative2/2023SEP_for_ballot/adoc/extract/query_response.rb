@@ -56,12 +56,14 @@ module V2AD
       query_message.add_response(response_msg)
     end
     
-    if verbose
+    if verbose# || query_message.code =~ /Q21/
+      puts "From Section #{section_num}"
       puts "Query message is #{query_message.code}"
       puts "Ack: #{query_message.ack}"
       puts "Response message is #{response_msg.code}"
       puts "Ack: #{response_msg.ack}"
     end
+    # raise if query_message.code =~ /Q21/
   end
   
   # FIXME this is more or less just a regular event with no explicit ack table....or is it?
